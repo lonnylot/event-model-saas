@@ -39,7 +39,7 @@ export function teamPageHtml(
   isSiteAdmin: boolean,
   team: Team,
 ): string {
-  return teamShell(email, isSiteAdmin, ``);
+  return teamShell(email, isSiteAdmin, `<h1>${team.name}</h1>`);
 }
 
 export function adminTeamsHtml(email: string, teams: Team[]): string {

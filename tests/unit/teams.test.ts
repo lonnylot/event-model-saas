@@ -155,4 +155,16 @@ describe("create team", () => {
     );
     expect(response.headers.get("Location")).toBe("/app/teams/team-1");
   });
+
+  it("GET `/app/teams/{id}` as a member shows a heading whose accessible name is the Team name", async () => {
+    const { env } = await adminEnv();
+    await handleRequest(createTeamPost(), env);
+    const response = await handleRequest(
+      new Request("https://event-model.lonnylot.com/app/teams/team-1", {
+        headers: { Cookie: "session=sess-admin" },
+      }),
+      env,
+    );
+    expect(await response.text()).toContain("<h1>Library</h1>");
+  });
 });

@@ -13,6 +13,7 @@ import type { AuthRuntime } from "./auth/types";
 import { createTeam } from "./teams/create-team";
 import {
   noTeamsAdminHtml,
+  teamPageHtml,
 } from "./teams/pages";
 
 export type AssetEnv = {
@@ -127,7 +128,7 @@ export async function handleRequest(
   if (path === "/api" || path.startsWith("/api/")) {
     return jsonNotFound();
   }
-  if (path === "/app") {
+  if (path === "/app" || path.startsWith("/app/")) {
     if (!env.auth) {
       return new Response(null, {
         status: 303,
@@ -142,6 +143,18 @@ export async function handleRequest(
       });
     }
     const teams = await env.auth.store.listTeamsForPerson(person.id);
+    const teamPage = path.match(/^\/app\/teams\/([^/]+)$/);
+    if (teamPage) {
+      const team = await env.auth.store.getTeam(teamPage[1]);
+      if (!team) return jsonNotFound();
+      return new Response(
+        teamPageHtml(person.email, person.isSiteAdmin, team),
+        {
+          status: 200,
+          headers: { "content-type": "text/html; charset=utf-8" },
+        },
+      );
+    }
     if (path === "/app") {
       if (teams.length === 1) {
         return new Response(null, {

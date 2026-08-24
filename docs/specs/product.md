@@ -39,7 +39,7 @@ The Mac app is local-only: one person, one `.eventmodel` file, no accounts. Team
 3. If the email is unknown: do **not** send a login link. Still show the same success copy. Email the site admin: `{address} tried to sign in and has no account`.
 4. Rate limit: 5 login submissions per email per hour, and 20 per client IP per hour. Over limit: same success copy, no extra mail.
 5. Consuming a valid link sets an httpOnly, Secure, SameSite=Lax session cookie (7 days). Invalid or used link: heading “This link is expired or already used.”
-6. After login: if the Person has one team, open that team’s model list. If several, show a team picker. Site admin also sees a Teams admin screen (create team, invite).
+6. After login: if the Person has one team, open that team’s page. If several, show a team picker. Site admin with no teams creates a Team on `/app`. Site admin also sees a Teams admin screen (invite).
 
 Outbound mail uses Cloudflare Email. Login links come from `auth@event-model.lonnylot.com`. Admin notifications go to `SITE_ADMIN_EMAIL`.
 
@@ -101,7 +101,7 @@ Each slice is its own feature spec, branch, and PR. Do not implement a later sli
 
 1. **hosted-app** — Worker, static assets, `event-model.lonnylot.com`, CI. A reachable login (or placeholder) page. **released**
 2. **magic-link-auth** — People, sessions, magic links, unknown-email notify, `SITE_ADMIN_EMAIL` bootstrap, rate limits. **released**
-3. **teams-and-invites** — Site admin creates teams, invites emails, membership, team picker / team model list.
+3. **teams-and-invites** — Site admin creates teams, invites emails, membership, team picker / empty team page.
 4. **model-persistence** — Create / list / open / import / export / versioned Save. R2 current JSON + D1 metadata. Thin open/save UI is enough; the full canvas is the next slices.
 5. **editor-shell** — Sidebar \| canvas \| inspector, empty timeline, New Slice.
 6. **editor-blocks** — Add/edit/delete actors, commands, events, read models, automations, fields.
