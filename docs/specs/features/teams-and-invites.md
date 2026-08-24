@@ -9,7 +9,7 @@ A signed-in Person has no Team. The site admin cannot create a Team or Invite an
 ## Acceptance criteria
 
 - [x] POST `/api/teams` as site admin returns status 201
-- [ ] POST `/api/teams` as site admin returns content-type `application/json; charset=utf-8`
+- [x] POST `/api/teams` as site admin returns content-type `application/json; charset=utf-8`
 - [ ] POST `/api/teams` as a Person who is not site admin returns status 403
 - [ ] POST `/api/teams` as site admin with name `Library` creates a Team named `Library`
 - [ ] POST `/api/teams` as site admin adds a membership for that site admin on the new Team

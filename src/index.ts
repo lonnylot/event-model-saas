@@ -100,6 +100,7 @@ export async function handleRequest(
     if (result.status === 201 && result.team) {
       return new Response(JSON.stringify({ ok: true, id: result.team.id }), {
         status: 201,
+        headers: { "content-type": "application/json; charset=utf-8" },
       });
     }
     return new Response(JSON.stringify({ error: "forbidden" }), {

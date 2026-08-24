@@ -46,4 +46,12 @@ describe("create team", () => {
     const response = await handleRequest(createTeamPost(), env);
     expect(response.status).toBe(201);
   });
+
+  it("POST `/api/teams` as site admin returns content-type `application/json; charset=utf-8`", async () => {
+    const { env } = await adminEnv();
+    const response = await handleRequest(createTeamPost(), env);
+    expect(response.headers.get("content-type")).toBe(
+      "application/json; charset=utf-8",
+    );
+  });
 });
