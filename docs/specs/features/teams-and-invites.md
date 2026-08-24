@@ -27,7 +27,7 @@ A signed-in Person has no Team. The site admin cannot create a Team or Invite an
 - [x] GET `/app` as a Person with two Teams shows a link whose accessible name is the first Team name
 - [x] GET `/app` as a Person with two Teams shows a link whose accessible name is the second Team name
 - [x] GET `/app` as site admin with no teams shows a link whose accessible name is `Teams admin`
-- [ ] GET `/app` as site admin with two Teams shows a link whose accessible name is `Teams admin`
+- [x] GET `/app` as site admin with two Teams shows a link whose accessible name is `Teams admin`
 - [ ] GET `/app/admin/teams` as a Person who is not site admin returns status 303
 - [ ] GET `/app/admin/teams` as a Person who is not site admin sets `Location` to `/app`
 - [ ] GET `/app/admin/teams` as site admin shows the Person's email
