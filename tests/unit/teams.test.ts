@@ -119,4 +119,15 @@ describe("create team", () => {
     );
     expect(await response.text()).toContain("<button type=\"submit\">Sign out</button>");
   });
+
+  it("GET `/app` as site admin with no teams shows a link whose accessible name is `Teams admin`", async () => {
+    const { env } = await adminEnv();
+    const response = await handleRequest(
+      new Request("https://event-model.lonnylot.com/app", {
+        headers: { Cookie: "session=sess-admin" },
+      }),
+      env,
+    );
+    expect(await response.text()).toContain("<a href=\"/app/admin/teams\">Teams admin</a>");
+  });
 });

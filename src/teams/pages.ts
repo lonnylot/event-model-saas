@@ -1,7 +1,9 @@
 import type { Team } from "../auth/types";
 
 function emptyShell(email: string, inner: string): string {
-  const admin = "";
+  const admin = isSiteAdmin
+    ? `<p><a href="/app/admin/teams">Teams admin</a></p>`
+    : "";
   return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"></head><body><main>${inner}<p>${email}</p>${admin}<form method="post" action="/api/auth/sign-out"><button type="submit">Sign out</button></form></main><script src="/teams.js"></script></body></html>`;
 }
 
