@@ -27,19 +27,23 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | After merge, learn from review | `post-merge-improvement`, `post-merge-improver` |
 | Two or more feat/ PRs at once | `parallel-feature-work`, `using-git-worktrees`, `releasing-a-spec` |
 | Playwright / flow CI | `playwright-e2e`, `testing` |
+| Async form fetch / last-mail before the invite POST | `playwright-e2e` |
 | Accessible name **is** X / Playwright substring | `testing`, `playwright-e2e` |
+| Unit `toContain(">X<")` for a named link/button/textbox | `testing` |
 | Module / seam / adapter vocabulary | `codebase-design` |
 | Architecture adapter constructed only under a test flag | `testing`, `codebase-design`, `keeping-specs-current` |
-| Architecture-named store never constructed in a test | `testing` |
+| Architecture-named store never constructed in a test / each new SQL untested | `testing` |
 | Packed "and" AC / independent env/branch cases | `testing`, `keeping-specs-current` |
 | Assumption vs acceptance criterion | `keeping-specs-current` |
 | Restated AC with leftover sections / leftover test title / leftover Restates | `keeping-specs-current` |
-| product.md leftover locked words / Next slice still names a released slug | `keeping-specs-current` |
+| 303/redirect AC vs a shows bullet on the same path | `keeping-specs-current` |
+| product.md leftover locked words / Next slice still names a released slug / removing product.md from Restates | `keeping-specs-current` |
 | Domain terms line without a `CONTEXT.md` entry | `keeping-specs-current`, `domain-modeling` |
 | Independently revertible ACs / grouping by screen / spec-only | `logical-commits` |
 | Tests-after / production that landed as a dependency | `logical-commits` |
 | Review-thread batch / commit subject names two threads with "and" | `logical-commits` |
-| Extra visible chrome / document title / extra host observability without an AC | `keeping-specs-current` |
+| Extra visible chrome / document title / extra form or link on a route / extra host observability without an AC | `keeping-specs-current` |
+| Playwright workers / test-runner isolation without a spec sentence | `keeping-specs-current`, `playwright-e2e` |
 | Mail subject / From display name without a spec sentence | `keeping-specs-current`, `testing` |
 | `run_worker_first` path list vs architecture Compute row | `keeping-specs-current`, `testing` |
 | How agents write docs | this skill |

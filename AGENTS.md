@@ -52,13 +52,13 @@ Load the matching skill **before** the work. Do not re-derive the procedure from
 
 | Skill | Reach for it when |
 |-------|-------------------|
-| `keeping-specs-current` | Any behavior change; suspected spec drift; leftover sections after restating an AC; packed "and" AC bullets; extra `<title>` or heading or host config; `run_worker_first` vs architecture Compute row; leftover product.md locked words |
+| `keeping-specs-current` | Any behavior change; suspected spec drift; leftover sections after restating an AC; 303 vs shows on the same path; packed "and" AC bullets; extra `<title>` or heading or form or link or host config; Playwright workers; `run_worker_first` vs architecture Compute row; leftover product.md locked words; removing product.md from Restates |
 | `writing-for-agents` | Editing AGENTS.md, skills, or agents; spec changed a procedure |
 | `domain-modeling` | New or conflicting domain term; CONTEXT.md; ADR |
 | `codebase-design` | Module shape, seam, adapter, depth; architecture adapter constructed only under a test flag |
-| `testing` | Test placement, seams, mapping criteria, weaker-reading fixtures, packed "and" (status vs content-type vs body); architecture adapter constructed only under a test flag; architecture-named store untested |
-| `tdd-loop` | Implementing or fixing; before production code; Playwright `name: X` without exact: true; extra `<title>` or heading |
-| `logical-commits` | A criterion is green; deciding whether / what to commit; tests-after; review-thread batch |
+| `testing` | Test placement, seams, mapping criteria, weaker-reading fixtures (unit `toContain(">X<")` for a named control); packed "and" (status vs content-type vs body); architecture adapter constructed only under a test flag; architecture-named store untested (each new SQL) |
+| `tdd-loop` | Implementing or fixing; before production code; Playwright `name: X` without exact: true; unit `toContain(">X<")` for a named control; extra `<title>` or heading |
+| `logical-commits` | A criterion is green; deciding whether / what to commit; grouping by screen; independently revertible ACs; spec-only; subject with "and"; tests-after; review-thread batch |
 | `github-ci-loop` | Starting work; branching; opening a PR; waiting on CI; workflow `on:` events |
 | `spec-review-loop` | PR exists; merge/release |
 | `post-merge-improvement` | PR just merged; learn from review into skills/docs |
@@ -67,7 +67,7 @@ Load the matching skill **before** the work. Do not re-derive the procedure from
 | `releasing-a-spec` | Given a spec to implement; iterating; validating; shipping |
 | `parallel-feature-work` | Two or more feature specs at once; separate implementer agents |
 | `using-git-worktrees` | Isolated checkout for a feat/ branch; parallel agents |
-| `playwright-e2e` | Browser user flows; flow CI job; test-server fakes; exact accessible name; exact `test:e2e` script |
+| `playwright-e2e` | Browser user flows; flow CI job; test-server fakes; exact accessible name; exact `test:e2e` script; async fetch wait / last-mail race |
 
 Handed a spec, or asked to implement/ship: `releasing-a-spec`. Two or more specs this session: `parallel-feature-work` first. Implementing any slice: `tdd-loop` then `logical-commits`. First edit of a spec: `github-ci-loop`. Isolated tree for a parallel agent: `using-git-worktrees`. Ready to merge: `spec-review-loop` (dispatches `.agents/agents/spec-reviewer/AGENT.md`). After merge: `post-merge-improvement`. Addressing comments: `receiving-code-review`. Browser flow tests: `playwright-e2e`. Spec changed a procedure: `writing-for-agents`.
 
