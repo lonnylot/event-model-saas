@@ -3,7 +3,8 @@ name: testing
 description: >
   Use when adding or placing tests, choosing seams, writing unit or
   Playwright tests, mapping acceptance criteria to tests, checking a
-  weaker-reading fixture, copy pinned in tests but not the spec, splitting an "and" (any case) test name or
+  weaker-reading fixture, unit `toContain(">X<")` for a named link or button,
+  copy pinned in tests but not the spec, splitting an "and" (any case) test name or
   AC bullet, status vs content-type vs body, independent env/branch cases, proving a screen/shows
   criterion (not a source grep), leftover test filename after a
   deleted SUT, leftover test title after a restated AC, host
@@ -53,6 +54,7 @@ A criterion that names a screen, "shows", or "lists" is proven at the app or flo
    | One row's own text | Document-level `toContain` or `[\s\S]*` that can cross a tag |
    | Packed "and" | One `it` covering independent cases (status vs heading vs content-type vs body; `pull_request` vs `push` vs a `run` step) |
    | Accessible name **is** `X` | Playwright `name: "X"` without `exact: true` (matches `Xyz`) |
+   | Named link/button/textbox `X` (unit HTML) | `toContain(">X<")` (heading or span named X stays green) |
    | Exact script / command value | Unordered `toContain` of each token (`echo playwright test`) |
    | YAML key / workflow event | Prefix match (`/pull_request:/` also hits `pull_request_target:`) |
    | "does not show a control named X" | Querying only `button` and `link` (checkbox/menuitem named X stays green) |

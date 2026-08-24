@@ -5,6 +5,7 @@ description: >
   code, when adding an operator CLI or npm script that changes persisted
   state, when constructing an architecture adapter only under a test
   flag, when a Playwright locator uses `name: X` without exact: true,
+  when a unit assertion uses `toContain(">X<")` for a named control,
   when adding a document title or heading or form or link the AC does not name,
   or when the user mentions TDD, red-green-refactor, the build
   loop, or looping.
@@ -28,7 +29,7 @@ Always for features, fixes, and behavior changes. Exceptions only if the human s
 
 1. **Criterion.** One independent behavior from a `validated` spec bullet (or `draft` only while exploring a test that you will throw away). If the bullet contains "and" (any case) or independent env/branch cases, split — one `it` per case (`testing`). Completion: test title is that one behavior, not the packed paragraph.
 
-2. **RED.** Load `testing`. Write one failing test at the seam the testing spec (or this pack's default layers) names. If the criterion is a browser flow, that test is Playwright (`playwright-e2e`) and lands with that production (`logical-commits`). A Playwright locator for accessible name **is** `X` without `exact: true` is the weaker reading (`testing`, `playwright-e2e`). A hosted path criterion (`GET /app`) is unproven by a handler unit test (`testing`); adding the path to `run_worker_first` restates architecture (`keeping-specs-current`). Run it. Completion: it fails because the behavior is missing, not because of a typo; the assertion would also fail a weaker reading of the criterion (that skill). If it passes, or if swapping in the weaker algorithm would still pass, you tested existing behavior — fix the test.
+2. **RED.** Load `testing`. Write one failing test at the seam the testing spec (or this pack's default layers) names. If the criterion is a browser flow, that test is Playwright (`playwright-e2e`) and lands with that production (`logical-commits`). A Playwright locator for accessible name **is** `X` without `exact: true` is the weaker reading (`testing`, `playwright-e2e`). A unit `toContain(">X<")` for a named link, button, or textbox is the weaker reading (`testing`). A hosted path criterion (`GET /app`) is unproven by a handler unit test (`testing`); adding the path to `run_worker_first` restates architecture (`keeping-specs-current`). Run it. Completion: it fails because the behavior is missing, not because of a typo; the assertion would also fail a weaker reading of the criterion (that skill). If it passes, or if swapping in the weaker algorithm would still pass, you tested existing behavior — fix the test.
 
 3. **GREEN.** Smallest code that passes that test. No extra branches, events, or UI. Extra chrome without an AC is `keeping-specs-current`. A 303/redirect AC contradicts every "shows" bullet on that path (`keeping-specs-current`). A leftover POST that skips the new path is an extra branch — delete it or name it Out of scope (`keeping-specs-current`). Architecture-named adapters are constructed on the production composition root, not only behind a test flag (`testing`, `codebase-design`). Run the test (and neighbors you touched). Completion: the test passes; no extra `<title>`, heading, form, or link the AC does not name on that route (`keeping-specs-current`).
 
