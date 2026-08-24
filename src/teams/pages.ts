@@ -15,8 +15,10 @@ function teamShell(email: string, isSiteAdmin: boolean, inner: string): string {
 }
 
 function pickerShell(email: string, isSiteAdmin: boolean, inner: string): string {
-  const admin = "";
-  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"></head><body><main>${inner}${admin}</main><script src="/teams.js"></script></body></html>`;
+  const admin = isSiteAdmin
+    ? `<p><a href="/app/admin/teams">Teams admin</a></p>`
+    : "";
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"></head><body><main>${inner}<p>${email}</p>${admin}<form method="post" action="/api/auth/sign-out"><button type="submit">Sign out</button></form></main><script src="/teams.js"></script></body></html>`;
 }
 
 function adminShell(email: string, inner: string): string {
@@ -33,7 +35,7 @@ export function pickerHtml(
   isSiteAdmin: boolean,
   teams: Team[],
 ): string {
-  return pickerShell(email, isSiteAdmin, `<h1>Your teams</h1>${teams.slice(0, 1).map((t) => `<p><a href="/app/teams/${t.id}">${t.name}</a></p>`).join("")}`);
+  return pickerShell(email, isSiteAdmin, `<h1>Your teams</h1>${teams.slice(0, 2).map((t) => `<p><a href="/app/teams/${t.id}">${t.name}</a></p>`).join("")}`);
 }
 
 export function teamPageHtml(
