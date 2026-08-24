@@ -15,6 +15,7 @@ import {
   noTeamsAdminHtml,
   teamPageHtml,
   pickerHtml,
+  adminTeamsHtml,
 } from "./teams/pages";
 
 export type AssetEnv = {
@@ -144,6 +145,11 @@ export async function handleRequest(
       });
     }
     const teams = await env.auth.store.listTeamsForPerson(person.id);
+    if (path === "/app/admin/teams") {
+      if (!person.isSiteAdmin) {
+        return new Response(null, { status: 303 });
+      }
+    }
     const teamPage = path.match(/^\/app\/teams\/([^/]+)$/);
     if (teamPage) {
       const member = await env.auth.store.isMember(teamPage[1], person.id);
