@@ -18,6 +18,13 @@ export async function inviteToTeam(
   if (!email) return { status: 400, sent: [] };
 
   let person = await runtime.store.getPersonByEmail(email);
-  if (!person) return { status: 201, sent: [] };
+  if (!person) {
+    person = {
+      id: runtime.randomId(),
+      email,
+      isSiteAdmin: false,
+    };
+    await runtime.store.insertPerson(person);
+  }
   return { status: 201, sent: [] };
 }
