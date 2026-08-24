@@ -12,12 +12,12 @@ The host is public and invite-only, but nobody can sign in. This slice lets a Pe
 - [ ] GET `/` shows a button whose accessible name is `Email me a link`
 - [x] POST `/api/auth/request-link` returns status 200, content-type `application/json; charset=utf-8`, and body `{"ok":true,"message":"If you have access, check your inbox."}`
 - [x] POST `/api/auth/request-link` with `SITE_ADMIN_EMAIL` when no Person exists creates the site admin Person
-- [ ] POST `/api/auth/request-link` with `SITE_ADMIN_EMAIL` sends a magic-link mail to that address
-- [ ] POST `/api/auth/request-link` with an existing Person email sends a magic-link mail to that address
-- [ ] POST `/api/auth/request-link` with an unknown email does not send a magic-link mail to that address
-- [ ] POST `/api/auth/request-link` with an unknown email sends a notify mail to `SITE_ADMIN_EMAIL` whose text includes that address
-- [ ] The sixth POST `/api/auth/request-link` for the same email within one hour does not send mail
-- [ ] The twenty-first POST `/api/auth/request-link` from the same client IP within one hour does not send mail
+- [x] POST `/api/auth/request-link` with `SITE_ADMIN_EMAIL` sends a magic-link mail to that address
+- [x] POST `/api/auth/request-link` with an existing Person email sends a magic-link mail to that address
+- [x] POST `/api/auth/request-link` with an unknown email does not send a magic-link mail to that address
+- [x] POST `/api/auth/request-link` with an unknown email sends a notify mail to `SITE_ADMIN_EMAIL` whose text includes that address
+- [x] The sixth POST `/api/auth/request-link` for the same email within one hour does not send mail
+- [x] The twenty-first POST `/api/auth/request-link` from the same client IP within one hour does not send mail
 - [ ] GET `/api/auth/consume` with a valid unused magic-link token returns status 303
 - [ ] GET `/api/auth/consume` with a valid unused magic-link token sets `Location` to `/app`
 - [ ] GET `/api/auth/consume` with a valid unused magic-link token sets a Session cookie named `session` that includes `HttpOnly`

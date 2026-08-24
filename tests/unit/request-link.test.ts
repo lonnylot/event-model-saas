@@ -74,4 +74,67 @@ describe("request-link", () => {
     expect(person).not.toBeNull();
     expect(person?.isSiteAdmin).toBe(true);
   });
+
+  it("POST `/api/auth/request-link` with `SITE_ADMIN_EMAIL` sends a magic-link mail to that address", async () => {
+    const { env, sent } = authEnv();
+    await handleRequest(requestLinkPost("lonny@lonnylot.com"), env);
+    expect(sent.some((m) => m.to === "lonny@lonnylot.com")).toBe(true);
+    expect(sent[0]?.subject).toBe("Sign in to Event Model");
+    expect(sent[0]?.text).toContain("/api/auth/consume?token=");
+  });
+
+  it("POST `/api/auth/request-link` with an existing Person email sends a magic-link mail to that address", async () => {
+    const { env, auth, sent } = authEnv({
+      randomId: () => "token-existing",
+    });
+    await auth.store.insertPerson({
+      id: "p-2",
+      email: "teammate@example.com",
+      isSiteAdmin: false,
+    });
+    await handleRequest(requestLinkPost("teammate@example.com"), env);
+    expect(sent.some((m) => m.to === "teammate@example.com")).toBe(true);
+  });
+
+  it("POST `/api/auth/request-link` with an unknown email does not send a magic-link mail to that address", async () => {
+    const { env, sent } = authEnv();
+    await handleRequest(requestLinkPost("stranger@example.com"), env);
+    expect(sent.some((m) => m.to === "stranger@example.com")).toBe(false);
+  });
+
+  it("POST `/api/auth/request-link` with an unknown email sends a notify mail to `SITE_ADMIN_EMAIL` whose text includes that address", async () => {
+    const { env, sent } = authEnv();
+    await handleRequest(requestLinkPost("stranger@example.com"), env);
+    const notify = sent.find((m) => m.to === "lonny@lonnylot.com");
+    expect(notify).toBeDefined();
+    expect(notify?.subject).toBe("Sign-in attempt without an account");
+    expect(notify?.text).toContain("stranger@example.com");
+  });
+
+  it("The sixth POST `/api/auth/request-link` for the same email within one hour does not send mail", async () => {
+    const { env, sent } = authEnv();
+    for (let i = 0; i < 6; i++) {
+      await handleRequest(requestLinkPost("lonny@lonnylot.com"), env);
+    }
+    expect(sent).toHaveLength(5);
+  });
+
+  it("The twenty-first POST `/api/auth/request-link` from the same client IP within one hour does not send mail", async () => {
+    let n = 0;
+    const { env, sent, auth } = authEnv({
+      randomId: () => `id-${n++}`,
+    });
+    for (let i = 0; i < 21; i++) {
+      await auth.store.insertPerson({
+        id: `p-${i}`,
+        email: `person${i}@example.com`,
+        isSiteAdmin: false,
+      });
+      await handleRequest(
+        requestLinkPost(`person${i}@example.com`, "198.51.100.9"),
+        env,
+      );
+    }
+    expect(sent).toHaveLength(20);
+  });
 });
