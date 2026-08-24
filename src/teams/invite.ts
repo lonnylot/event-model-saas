@@ -2,7 +2,7 @@ import { normalizeEmail } from "../auth/request-link";
 import type { AuthRuntime, MailMessage } from "../auth/types";
 
 const LINK_TTL_MS = 15 * 60 * 1000;
-export const INVITE_SUBJECT = "Magic link";
+export const INVITE_SUBJECT = "You are invited to Event Model";
 
 export async function inviteToTeam(
   runtime: AuthRuntime,

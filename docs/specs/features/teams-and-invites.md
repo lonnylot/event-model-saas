@@ -40,7 +40,7 @@ A signed-in Person has no Team. The site admin cannot create a Team or Invite an
 - [x] POST `/api/teams/{id}/invites` with an unknown email creates a Person with that email
 - [x] POST `/api/teams/{id}/invites` adds a membership for that Person on that Team
 - [x] POST `/api/teams/{id}/invites` sends a magic-link mail to that email
-- [ ] Invite magic-link mail subject is `You are invited to Event Model`
+- [x] Invite magic-link mail subject is `You are invited to Event Model`
 - [ ] After a site admin creates Team `Library` and invites `teammate@example.com`, that Person's signed-in page shows a heading whose accessible name is `Library`
 - [x] `createD1Store` `insertTeam` with name `Library` returns that Team from `getTeam`
 - [x] `createD1Store` `addMembership` then `isMember` returns true

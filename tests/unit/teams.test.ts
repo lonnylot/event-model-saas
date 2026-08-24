@@ -488,4 +488,27 @@ describe("create team", () => {
     );
     expect(sent.some((m) => m.to === "teammate@example.com")).toBe(true);
   });
+
+  it("Invite magic-link mail subject is `You are invited to Event Model`", async () => {
+    const sent: { to: string; subject: string }[] = [];
+    const { env, auth } = await adminEnv();
+    auth.mail = {
+      async send(message) {
+        sent.push(message);
+      },
+    };
+    await handleRequest(createTeamPost(), env);
+    await handleRequest(
+      new Request("https://event-model.lonnylot.com/api/teams/team-1/invites", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          Cookie: "session=sess-admin",
+        },
+        body: JSON.stringify({ email: "teammate@example.com" }),
+      }),
+      env,
+    );
+    expect(sent[0]?.subject).toBe("You are invited to Event Model");
+  });
 });
