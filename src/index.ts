@@ -11,6 +11,9 @@ import {
 } from "./auth/session";
 import type { AuthRuntime } from "./auth/types";
 import { createTeam } from "./teams/create-team";
+import {
+  noTeamsAdminHtml,
+} from "./teams/pages";
 
 export type AssetEnv = {
   ASSETS: { fetch: (request: Request) => Promise<Response> };
@@ -138,10 +141,19 @@ export async function handleRequest(
         headers: { Location: "/" },
       });
     }
-    return new Response(appPageHtml(person.email), {
-      status: 200,
-      headers: { "content-type": "text/html; charset=utf-8" },
-    });
+    const teams = await env.auth.store.listTeamsForPerson(person.id);
+    if (path === "/app") {
+      if (person.isSiteAdmin) {
+        return new Response(noTeamsAdminHtml(person.email), {
+          status: 200,
+          headers: { "content-type": "text/html; charset=utf-8" },
+        });
+      }
+      return new Response(appPageHtml(person.email), {
+        status: 200,
+        headers: { "content-type": "text/html; charset=utf-8" },
+      });
+    }
   }
   return env.ASSETS.fetch(request);
 }
