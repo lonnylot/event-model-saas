@@ -45,8 +45,12 @@ export function teamPageHtml(
   );
 }
 
-export function modelPageHtml(email: string, title: string): string {
-  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"></head><body><main><h1>${title}</h1><p>${email}</p></main></body></html>`;
+export function modelPageHtml(
+  email: string,
+  title: string,
+  modelId: string,
+): string {
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"></head><body><main><h1>${title}</h1><form id="save-model" method="post" action="/api/models/${modelId}"><button type="submit">Save</button></form><p>${email}</p></main></body></html>`;
 }
 
 export function adminTeamsHtml(email: string, teams: Team[]): string {
