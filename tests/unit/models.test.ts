@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 import { createMemoryStore } from "../../src/auth/memory-store.ts";
 import type { AuthRuntime } from "../../src/auth/types.ts";
+import { createMemoryDocuments } from "../../src/models/documents.ts";
 import { handleRequest } from "../../src/index.ts";
 
 async function memberEnv() {
@@ -28,9 +29,40 @@ async function memberEnv() {
     expiresAt: auth.now() + 60_000,
   });
   return {
-    env: { ASSETS: { fetch: vi.fn() }, auth },
+    env: {
+      ASSETS: { fetch: vi.fn() },
+      auth,
+      documents: createMemoryDocuments(),
+    },
     auth,
   };
+}
+
+async function createdUntitled() {
+  const ctx = await memberEnv();
+  await handleRequest(
+    new Request("https://event-model.lonnylot.com/api/teams", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        Cookie: "session=sess-admin",
+      },
+      body: JSON.stringify({ name: "Library" }),
+    }),
+    ctx.env,
+  );
+  await handleRequest(
+    new Request("https://event-model.lonnylot.com/api/teams/team-1/models", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        Cookie: "session=sess-admin",
+      },
+      body: JSON.stringify({}),
+    }),
+    ctx.env,
+  );
+  return ctx;
 }
 
 describe("create model", () => {
@@ -216,6 +248,36 @@ describe("create model", () => {
     expect(await response.text()).toContain(
       '<button type="submit">Create model</button>',
     );
+  });
+
+  it("POST `/api/teams/{id}/models` as a member writes R2 object `models/{id}.eventmodel`", async () => {
+    const { env } = await memberEnv();
+    await handleRequest(
+      new Request("https://event-model.lonnylot.com/api/teams", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          Cookie: "session=sess-admin",
+        },
+        body: JSON.stringify({ name: "Library" }),
+      }),
+      env,
+    );
+    await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/api/teams/team-1/models",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            Cookie: "session=sess-admin",
+          },
+          body: JSON.stringify({}),
+        },
+      ),
+      env,
+    );
+    expect(await env.documents.get("models/model-1.eventmodel")).not.toBeNull();
   });
 
 });

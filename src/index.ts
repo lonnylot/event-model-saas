@@ -11,6 +11,7 @@ import {
 } from "./auth/session";
 import type { AuthRuntime } from "./auth/types";
 import { createModel } from "./models/create-model";
+import { type DocumentsPort } from "./models/documents";
 import { createTeam } from "./teams/create-team";
 import { inviteToTeam } from "./teams/invite";
 import {
@@ -26,6 +27,7 @@ export type AssetEnv = {
 
 export type AppEnv = AssetEnv & {
   auth?: AuthRuntime;
+  documents?: DocumentsPort;
   TEST_MAIL?: string;
 };
 
@@ -126,7 +128,12 @@ export async function handleRequest(
         headers: { Location: "/" },
       });
     }
-    const result = await createModel(env.auth, person.id, modelsMatch[1]);
+    const result = await createModel(
+      env.auth,
+      env.documents,
+      person.id,
+      modelsMatch[1],
+    );
     if (result.status === 201) {
       return new Response(JSON.stringify({ ok: true }), {
         status: 201,
