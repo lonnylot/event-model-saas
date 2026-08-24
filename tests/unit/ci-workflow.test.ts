@@ -2,10 +2,21 @@ import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 
 describe("GitHub Actions CI", () => {
-  it("GitHub Actions workflow `.github/workflows/ci.yml` runs on `pull_request` and on `push` to `main` and has a step whose `run` is `npm test`", () => {
-    const text = readFileSync(".github/workflows/ci.yml", "utf8");
-    expect(text).toMatch(/^on:\n(?:  .*\n)*  pull_request:/m);
+  const text = readFileSync(".github/workflows/ci.yml", "utf8");
+  const lines = text.split("\n");
+
+  it("GitHub Actions workflow `.github/workflows/ci.yml` runs on `pull_request`", () => {
+    expect(lines).toContain("  pull_request:");
+    expect(lines.some((line) => line.includes("pull_request_target"))).toBe(
+      false,
+    );
+  });
+
+  it("GitHub Actions workflow `.github/workflows/ci.yml` runs on `push` to `main`", () => {
     expect(text).toMatch(/push:\n\s+branches:\s*\[main\]/);
-    expect(text).toMatch(/^\s+- run: npm test$/m);
+  });
+
+  it("GitHub Actions workflow `.github/workflows/ci.yml` has a step whose `run` is `npm test`", () => {
+    expect(lines).toContain("      - run: npm test");
   });
 });
