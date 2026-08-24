@@ -613,4 +613,17 @@ describe("create model", () => {
     expect(response.status).toBe(404);
   });
 
+  it("GET `/api/models/{id}/export` as a member sets `Content-Disposition` to `attachment; filename=\"Untitled.eventmodel\"`", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/api/models/model-1/export",
+        { headers: { Cookie: "session=sess-admin" } },
+      ),
+      env,
+    );
+    expect(response.headers.get("Content-Disposition")).toBe(
+      'attachment; filename="Untitled.eventmodel"',
+    );
+  });
 });

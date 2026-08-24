@@ -164,7 +164,10 @@ export async function handleRequest(
     if (result.status === 200) {
       return new Response(result.body ?? "{}", {
         status: 200,
-        headers: { "content-type": "application/json" },
+        headers: {
+          "content-type": "application/json",
+          "Content-Disposition": `attachment; filename="${result.title}.eventmodel"`,
+        },
       });
     }
     return jsonNotFound();
