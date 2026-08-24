@@ -37,7 +37,7 @@ One commit is one finished thought: one spec criterion (or one review/CI fix) wi
 
 1. `git status` and `git diff`. Stage only this slice.
 2. Message names the criterion or review thread: `feat(orders): total stays within ±5%`. A subject that names two new ACs or two review threads with "and" is two commits.
-3. Commit spec + tests + production code together. Completion: `git show --stat` lists all three when all three changed. A later test-only commit for a criterion whose production already landed is tests-after — not a logical slice. A Playwright flow (or any dedicated test) in a later commit than the production that implemented that criterion is the same miss, even after the PR is open.
+3. Commit spec + tests + production code together. Completion: `git show --stat` lists all three when all three changed. A later test-only commit for a criterion whose production already landed is tests-after — not a logical slice. A Playwright flow (or any dedicated test) in a later commit than the production that implemented that criterion is the same miss, even after the PR is open. When splitting status vs content-type, the status commit must not already send that header — otherwise the content-type commit is test-only (land 201 without the header, then the content-type commit adds it with its test, same as 303 then Location). Client `fetch` in `public/*.js` that a Playwright flow needs is that flow's production; landing it under a mail-subject (or other sibling) commit makes the flow commit Playwright-only.
 
 Prefer conventional prefixes (`feat`, `fix`, `docs`, `test`, `refactor`, `chore`). The subject (and body if needed) states what changed. Specs do not keep a Changelog section.
 
