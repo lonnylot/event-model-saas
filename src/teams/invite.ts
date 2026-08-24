@@ -11,6 +11,7 @@ export async function inviteToTeam(
   emailRaw: string,
   origin: string,
 ): Promise<{ status: number; sent: MailMessage[] }> {
+  if (!isSiteAdmin) return { status: 403, sent: [] };
   const team = await runtime.store.getTeam(teamId);
   if (!team) return { status: 404, sent: [] };
   const email = normalizeEmail(emailRaw);

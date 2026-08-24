@@ -36,7 +36,7 @@ A signed-in Person has no Team. The site admin cannot create a Team or Invite an
 - [x] GET `/app/admin/teams` as site admin with a Team shows a textbox whose accessible name is `Invite email`
 - [x] GET `/app/admin/teams` as site admin with a Team shows a button whose accessible name is `Send invite`
 - [x] POST `/api/teams/{id}/invites` as site admin returns status 201
-- [ ] POST `/api/teams/{id}/invites` as a Person who is not site admin returns status 403
+- [x] POST `/api/teams/{id}/invites` as a Person who is not site admin returns status 403
 - [ ] POST `/api/teams/{id}/invites` with an unknown email creates a Person with that email
 - [ ] POST `/api/teams/{id}/invites` adds a membership for that Person on that Team
 - [ ] POST `/api/teams/{id}/invites` sends a magic-link mail to that email
