@@ -3,10 +3,11 @@ name: testing
 description: >
   Use when adding or placing tests, choosing seams, writing unit or
   Playwright tests, mapping acceptance criteria to tests, checking a
-  weaker-reading fixture, splitting an "and" (any case) test name,
-  proving a screen/shows criterion (not a source grep), leftover test
-  filename after a deleted SUT, leftover test title after a restated
-  AC, or updating a testing spec.
+  weaker-reading fixture, splitting an "and" (any case) test name or
+  AC bullet, independent env/branch cases, proving a screen/shows
+  criterion (not a source grep), leftover test filename after a
+  deleted SUT, leftover test title after a restated AC, or updating a
+  testing spec.
 ---
 
 # Testing
@@ -33,7 +34,7 @@ A criterion that names a screen, "shows", or "lists" is proven at the app or flo
 
 ## Steps
 
-1. **Quote the criterion.** Open the spec. Write the test name as the criterion. If that name contains "and" (any case) or independent env/branch cases, split into one `it` each. The assertion must fail a weaker implementation of those words.
+1. **Quote the criterion.** Open the spec. Write the test name as the criterion. If that name contains "and" (any case) or independent env/branch cases, split into one `it` each. Status vs a heading, two workflow `on:` events, and a `run` step are independent — if deleting one assertion still leaves a spec-worthy outcome, split even when the sentence reads as one story. The assertion must fail a weaker implementation of those words.
 
    Weaker readings this step exists to catch:
 
@@ -48,7 +49,7 @@ A criterion that names a screen, "shows", or "lists" is proven at the app or flo
    | "a name the previous state did not list" | A name already on the previous fixture |
    | Non-empty placeholder | `/placeholder=/` on `placeholder=""` |
    | One row's own text | Document-level `toContain` or `[\s\S]*` that can cross a tag |
-   | Packed "and" | One `it` covering independent cases |
+   | Packed "and" | One `it` covering independent cases (status vs heading; `pull_request` vs `push` vs a `run` step) |
 
    When a production module is deleted, rename or delete its dedicated test file in the same change. When an AC is restated, rename the `it` / `test()` that quoted the old words. Renaming is unfinished until that leftover test's assertions fail a weaker reading of the new words, or the leftover title drops the new words. A restated "does not show X" inverts the assertion (`not.toContain`); dropping `toContain` is not the proof. Completion: deleting the feature, or swapping in the weaker algorithm, fails this test for that reason.
 

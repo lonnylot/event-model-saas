@@ -2,7 +2,8 @@
 name: keeping-specs-current
 description: >
   Use when adding a feature, changing behavior, fixing a bug, writing or
-  reviewing a pull request, when two spec bullets can conflict, when
+  reviewing a pull request, when two spec bullets can conflict, when an
+  AC bullet contains "and" or independent env/branch cases, when
   restating an AC while UI/Events/Assumptions still describe the old
   behavior, when Restates omits a released spec that still describes
   deleted behavior, when Restates names leftover files whose bullets
@@ -38,7 +39,7 @@ Status on every spec: `draft` → `validated` → `released`.
 
 2. **Read before edit.** Read that spec, `CONTEXT.md` (terms), and any linked system spec. When the change adds a caller, npm script, or CLI that reuses a constructor, search other feature specs for exclusive "only X" / "constructed only" bullets the new caller would falsify. Completion: you can quote the criterion you are implementing and every exclusive bound the new caller touches.
 
-3. **Edit the spec first.** New or changed rules, events, primitives, seams, or terms go into the spec (and `CONTEXT.md` / other system specs they belong in). Extra visible chrome without an AC is a behavior change — add an AC first or omit it. A feature Domain terms line that names a word `CONTEXT.md` does not define is unfinished. When a spec forbids using a term as a visible title or field label, that term's `_Avoid_` lists title / field label. Do not add a Changelog section — the commit message is the history. If two bullets cannot both hold, write the resolution in the spec before `tdd-loop`. Silent drop is not a resolution.
+3. **Edit the spec first.** New or changed rules, events, primitives, seams, or terms go into the spec (and `CONTEXT.md` / other system specs they belong in). An AC bullet that contains "and" (any case) or independent env/branch cases is unfinished — split (`testing`). Do not copy a packed plan sentence into the spec. Extra visible chrome without an AC is a behavior change — add an AC first or omit it. A feature Domain terms line that names a word `CONTEXT.md` does not define is unfinished. When a spec forbids using a term as a visible title or field label, that term's `_Avoid_` lists title / field label. Do not add a Changelog section — the commit message is the history. If two bullets cannot both hold, write the resolution in the spec before `tdd-loop`. Silent drop is not a resolution.
 
    Restating or deleting an AC is unfinished until UI, Events, Assumptions, Used by, every spec that AC restates, and the `it` / `test()` titles that quoted the old words no longer describe the deleted behavior. Search `docs/specs/` and `it("` / `test("` titles for the deleted words. Add every spec hit to Restates and rewrite the leftover bullets. Rename leftover test titles (`testing`). A leftover title that now includes the restated words must prove those words or drop them (`testing`). Listing a path in Restates without rewriting that file is unfinished. Completion of that search: grep for the deleted phrase is empty except the restated sentences; every Restates path now uses the new words; no leftover `it` / `test()` still quotes the old words.
 
@@ -87,6 +88,7 @@ Status on every spec: `draft` → `validated` → `released`.
 - Restates names a leftover file whose bullets still use the deleted words
 - A deleted control still has an action POST the spec does not name
 - An AC is restated but a `test()` title still quotes the old words
+- An AC bullet contains "and" or two independent env/branch cases
 - Two numbered rules in the same spec cannot both hold
 - A fake / test-double parse tightened with a new unit test and no spec hunk
 - Extra visible chrome with no AC
