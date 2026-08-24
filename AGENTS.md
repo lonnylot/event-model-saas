@@ -56,7 +56,7 @@ Load the matching skill **before** the work. Do not re-derive the procedure from
 | `writing-for-agents` | Editing AGENTS.md, skills, or agents; spec changed a procedure |
 | `domain-modeling` | New or conflicting domain term; CONTEXT.md; ADR |
 | `codebase-design` | Module shape, seam, adapter, depth; architecture adapter constructed only under a test flag |
-| `testing` | Test placement, seams, mapping criteria, weaker-reading fixtures, packed "and" (status vs content-type vs body); architecture adapter constructed only under a test flag; architecture-named store untested |
+| `testing` | Test placement, seams, mapping criteria, weaker-reading fixtures, packed "and" (status vs content-type vs body); architecture adapter constructed only under a test flag; architecture-named store untested (each new SQL) |
 | `tdd-loop` | Implementing or fixing; before production code; Playwright `name: X` without exact: true; extra `<title>` or heading |
 | `logical-commits` | A criterion is green; deciding whether / what to commit; grouping by screen; independently revertible ACs; spec-only; subject with "and"; tests-after; review-thread batch |
 | `github-ci-loop` | Starting work; branching; opening a PR; waiting on CI; workflow `on:` events |
