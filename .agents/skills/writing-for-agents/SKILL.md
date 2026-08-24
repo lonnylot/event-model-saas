@@ -2,8 +2,9 @@
 name: writing-for-agents
 description: >
   Use when creating or editing AGENTS.md, a skill under .agents/skills,
-  an agent under .agents/agents, or when a spec change requires updating
-  those procedures.
+  an agent under .agents/agents, when a spec change requires updating
+  those procedures, or when specs or plans would land under docs/superpowers
+  or another vendor spec/plan tree.
 ---
 
 # Writing for agents
@@ -36,6 +37,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Tests-after / production that landed as a dependency | `logical-commits` |
 | Extra visible chrome / document title / extra host observability without an AC | `keeping-specs-current` |
 | How agents write docs | this skill |
+| Spec tree location / vendor plan dirs / `docs/superpowers/` | this skill, `keeping-specs-current` |
 | Product architecture / UI kit / telemetry / domain rules | the product skill that owns that fact — add a row here when you add that skill |
 
 Completion: `git diff` shows spec + skill together when the procedure changed.
@@ -76,4 +78,5 @@ Inline what every branch needs. Disclose what only some branches need.
 - Skills: `.agents/skills/<name>/SKILL.md`
 - Named agents: `.agents/agents/<name>/AGENT.md`
 - Always-on: `AGENTS.md`
-- Do not add a parallel vendor directory.
+- Specs: `docs/specs/` (system) and `docs/specs/features/` (slices). ADRs: `docs/adr/`
+- Do not add a parallel vendor directory (`docs/superpowers/` or any other spec/plan tree). Feature work is `releasing-a-spec`. The feature spec is the work list.

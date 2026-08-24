@@ -11,8 +11,9 @@ description: >
   control, when a leftover test title still quotes a restated AC, when
   a Domain terms line names a word CONTEXT.md does not define, when
   tightening a fake or test-double parse, when adding an operator CLI,
-  extra document title or host observability without an AC, or whenever
-  CONTEXT.md, docs/specs, or docs/adr may be missing or stale.
+  extra document title or host observability without an AC, when specs
+  or plans would land under docs/superpowers, or whenever CONTEXT.md,
+  docs/specs, or docs/adr may be missing or stale.
 ---
 
 # Keeping specs current
@@ -65,6 +66,7 @@ Status on every spec: `draft` → `validated` → `released`.
 | Test layer, seam list | `docs/specs/testing.md` when the product has one |
 | Primitive, token | `docs/specs/design-system.md` when the product has one |
 | Event or span name | `docs/specs/observability.md` when the product has one |
+| Locked v1 product decisions | `docs/specs/product.md` |
 
 ## Rationalizations
 
@@ -95,5 +97,6 @@ Status on every spec: `draft` → `validated` → `released`.
 - A fake / test-double parse tightened with a new unit test and no spec hunk
 - Extra visible chrome with no AC (`<title>`, extra nav)
 - Extra host `observability` or unused binding with no AC and no architecture row
+- A spec or plan under `docs/superpowers/` (or any tree other than `docs/specs/` and `docs/adr/`)
 
 **All of these mean: stop coding. Update the spec.**

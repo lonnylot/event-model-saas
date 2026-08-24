@@ -9,7 +9,8 @@ This file and `.agents/` are the only project agent instructions. They are harne
 1. Read this file, then `CONTEXT.md`, then `docs/specs/README.md`.
 2. Treat specs as the product. Code is an implementation of a spec. A change that is not in a spec is unfinished.
 3. Load the skill for the work you are doing **before** you edit code (table below). Skills live in `.agents/skills/`. Named agents live in `.agents/agents/`.
-4. If you cannot name the spec file you are implementing or updating, stop and write or find it.
+4. If you cannot name the spec file you are implementing or updating, stop and write or find it under `docs/specs/` (or `docs/adr/`). Do not write `docs/superpowers/` or any other vendor spec/plan tree.
+5. Implement with `releasing-a-spec`. There is no parallel implementation-plan directory.
 
 After ten minutes you should be able to answer: what outcome this app exists for; which spec is source of truth for the current task; what must never ship (unspecced behavior, untested behavior, silent actions).
 
@@ -37,7 +38,7 @@ NO SHIP UNTIL CI IS GREEN, A SEPARATE REVIEWER APPROVES THIS HEAD, AND THE RELEA
 | Ubiquitous language | `CONTEXT.md` | Domain terms only. No implementation. |
 | Spec catalog | `docs/specs/README.md` | Index + status of every spec. |
 | Architecture | `docs/specs/architecture.md` | Stack, modules, seams. |
-| Product design | `docs/superpowers/specs/2026-08-24-event-model-saas-design.md` | Locked v1 decisions and spec slices. |
+| Product | `docs/specs/product.md` | Locked v1 decisions and spec slices. |
 | Feature specs | `docs/specs/features/<slug>.md` | One vertical slice. Template: `docs/specs/features/_TEMPLATE.md`. |
 | Hard decisions | `docs/adr/NNNN-slug.md` | Irreversible trade-offs only. |
 | Procedures | `.agents/skills/*/SKILL.md` | How to write, test, review, and release. |
