@@ -21,7 +21,7 @@ function adminShell(email: string, inner: string): string {
 }
 
 export function noTeamsAdminHtml(email: string): string {
-  return emptyShell(email, `<form method="post" action="/api/teams" id="create-team"><label for="team-name">Team name</label><input id="team-name" name="name" required /></form>`);
+  return emptyShell(email, `<form method="post" action="/api/teams" id="create-team"><label for="team-name">Team name</label><input id="team-name" name="name" required /><button type="submit">Create team</button></form>`);
 }
 
 export function pickerHtml(

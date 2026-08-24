@@ -97,4 +97,15 @@ describe("create team", () => {
     );
     expect(await response.text()).toContain("<label for=\"team-name\">Team name</label>");
   });
+
+  it("GET `/app` as site admin with no teams shows a button whose accessible name is `Create team`", async () => {
+    const { env } = await adminEnv();
+    const response = await handleRequest(
+      new Request("https://event-model.lonnylot.com/app", {
+        headers: { Cookie: "session=sess-admin" },
+      }),
+      env,
+    );
+    expect(await response.text()).toContain("<button type=\"submit\">Create team</button>");
+  });
 });
