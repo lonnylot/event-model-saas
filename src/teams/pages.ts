@@ -33,7 +33,7 @@ export function pickerHtml(
   isSiteAdmin: boolean,
   teams: Team[],
 ): string {
-  return pickerShell(email, isSiteAdmin, `<h1>Your teams</h1>`);
+  return pickerShell(email, isSiteAdmin, `<h1>Your teams</h1>${teams.slice(0, 1).map((t) => `<p><a href="/app/teams/${t.id}">${t.name}</a></p>`).join("")}`);
 }
 
 export function teamPageHtml(

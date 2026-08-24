@@ -240,4 +240,19 @@ describe("create team", () => {
     );
     expect(await response.text()).toContain("<h1>Your teams</h1>");
   });
+
+  it("GET `/app` as a Person with two Teams shows a link whose accessible name is the first Team name", async () => {
+    const { env, auth } = await adminEnv();
+    await auth.store.insertTeam({ id: "t-a", name: "Alpha" });
+    await auth.store.insertTeam({ id: "t-b", name: "Beta" });
+    await auth.store.addMembership("t-a", "p-admin");
+    await auth.store.addMembership("t-b", "p-admin");
+    const response = await handleRequest(
+      new Request("https://event-model.lonnylot.com/app", {
+        headers: { Cookie: "session=sess-admin" },
+      }),
+      env,
+    );
+    expect(await response.text()).toContain("<a href=\"/app/teams/t-a\">Alpha</a>");
+  });
 });
