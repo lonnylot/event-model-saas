@@ -373,4 +373,16 @@ describe("create team", () => {
     );
     expect(await response.text()).toContain("<label for=\"invite-team-1\">Invite email</label>");
   });
+
+  it("GET `/app/admin/teams` as site admin with a Team shows a button whose accessible name is `Send invite`", async () => {
+    const { env } = await adminEnv();
+    await handleRequest(createTeamPost(), env);
+    const response = await handleRequest(
+      new Request("https://event-model.lonnylot.com/app/admin/teams", {
+        headers: { Cookie: "session=sess-admin" },
+      }),
+      env,
+    );
+    expect(await response.text()).toContain("<button type=\"submit\">Send invite</button>");
+  });
 });
