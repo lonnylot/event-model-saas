@@ -8,7 +8,7 @@ Nothing is reachable at event-model.lonnylot.com. This slice puts a Worker and a
 
 ## Acceptance criteria
 
-- [ ] GET `/` shows a heading whose accessible name is `Event Model`
+- [x] GET `/` shows a heading whose accessible name is `Event Model`
 - [ ] GET `/` shows the text `Access is by invite.`
 - [ ] GET `/` does not show a control whose accessible name is `Sign up`
 - [ ] GET an unknown document path returns status 404 and a heading whose accessible name is `Not found`
