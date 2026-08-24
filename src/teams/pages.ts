@@ -23,7 +23,7 @@ function pickerShell(email: string, isSiteAdmin: boolean, inner: string): string
 
 function adminShell(email: string, inner: string): string {
   const admin = "";
-  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"></head><body><main>${inner}${admin}</main><script src="/teams.js"></script></body></html>`;
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"></head><body><main>${inner}<p>${email}</p>${admin}</main><script src="/teams.js"></script></body></html>`;
 }
 
 export function noTeamsAdminHtml(email: string): string {

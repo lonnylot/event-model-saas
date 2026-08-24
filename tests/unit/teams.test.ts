@@ -327,4 +327,15 @@ describe("create team", () => {
     );
     expect(response.headers.get("Location")).toBe("/app");
   });
+
+  it("GET `/app/admin/teams` as site admin shows the Person's email", async () => {
+    const { env } = await adminEnv();
+    const response = await handleRequest(
+      new Request("https://event-model.lonnylot.com/app/admin/teams", {
+        headers: { Cookie: "session=sess-admin" },
+      }),
+      env,
+    );
+    expect(await response.text()).toContain("lonny@lonnylot.com");
+  });
 });

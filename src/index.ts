@@ -152,6 +152,10 @@ export async function handleRequest(
           headers: { Location: "/app" },
         });
       }
+      return new Response(adminTeamsHtml(person.email, teams), {
+        status: 200,
+        headers: { "content-type": "text/html; charset=utf-8" },
+      });
     }
     const teamPage = path.match(/^\/app\/teams\/([^/]+)$/);
     if (teamPage) {
