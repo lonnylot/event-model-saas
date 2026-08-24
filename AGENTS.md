@@ -52,7 +52,7 @@ Load the matching skill **before** the work. Do not re-derive the procedure from
 
 | Skill | Reach for it when |
 |-------|-------------------|
-| `keeping-specs-current` | Any behavior change; suspected spec drift; leftover sections after restating an AC; packed "and" AC bullets; extra `<title>` or heading or host config; `run_worker_first` vs architecture Compute row; leftover product.md locked words; removing product.md from Restates |
+| `keeping-specs-current` | Any behavior change; suspected spec drift; leftover sections after restating an AC; 303 vs shows on the same path; packed "and" AC bullets; extra `<title>` or heading or host config; `run_worker_first` vs architecture Compute row; leftover product.md locked words; removing product.md from Restates |
 | `writing-for-agents` | Editing AGENTS.md, skills, or agents; spec changed a procedure |
 | `domain-modeling` | New or conflicting domain term; CONTEXT.md; ADR |
 | `codebase-design` | Module shape, seam, adapter, depth; architecture adapter constructed only under a test flag |
