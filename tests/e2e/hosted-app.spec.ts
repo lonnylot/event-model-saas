@@ -5,7 +5,7 @@ test("GET `/` shows a heading whose accessible name is `Event Model`", async ({
 }) => {
   await page.goto("/");
   await expect(
-    page.getByRole("heading", { name: "Event Model", level: 1 }),
+    page.getByRole("heading", { name: "Event Model", exact: true, level: 1 }),
   ).toBeVisible();
 });
 
