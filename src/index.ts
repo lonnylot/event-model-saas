@@ -145,6 +145,10 @@ export async function handleRequest(
     const teams = await env.auth.store.listTeamsForPerson(person.id);
     const teamPage = path.match(/^\/app\/teams\/([^/]+)$/);
     if (teamPage) {
+      const member = await env.auth.store.isMember(teamPage[1], person.id);
+      if (!member) {
+        return jsonNotFound();
+      }
       const team = await env.auth.store.getTeam(teamPage[1]);
       if (!team) return jsonNotFound();
       return new Response(
