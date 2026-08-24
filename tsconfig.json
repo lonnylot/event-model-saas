@@ -10,5 +10,5 @@
     "noEmit": true,
     "isolatedModules": true
   },
-  "include": ["src/**/*.ts", "tests/unit/**/*.ts"]
+  "include": ["src/**/*.ts"]
 }
