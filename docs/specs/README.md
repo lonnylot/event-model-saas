@@ -6,12 +6,13 @@ System specs (architecture, business, testing, design, observability) are option
 
 | Spec | Path | Status |
 |------|------|--------|
-| — | — | — |
+| Architecture | [architecture.md](./architecture.md) | draft |
+| Product design | [../superpowers/specs/2026-08-24-event-model-saas-design.md](../superpowers/specs/2026-08-24-event-model-saas-design.md) | draft |
 
 Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPLATE.md). List each feature here when created:
 
 | Feature | Path | Status |
 |---------|------|--------|
-| — | — | — |
+| Hosted app | [features/hosted-app.md](./features/hosted-app.md) | validated |
 
 Status: `draft` → `validated` → `released`.
