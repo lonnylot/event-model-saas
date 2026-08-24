@@ -13,6 +13,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 
 | Feature | Path | Status |
 |---------|------|--------|
-| — | — | — |
+| Hosted app | [features/hosted-app.md](./features/hosted-app.md) | validated |
 
 Status: `draft` → `validated` → `released`.

@@ -1,0 +1,14 @@
+{
+  "name": "event-model-saas",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:unit": "vitest run"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "latest",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4",
+    "wrangler": "^4.120.0"
+  }
+}
