@@ -54,6 +54,9 @@ Person, Site admin, Session, Magic link
 
 - `SITE_ADMIN_EMAIL` is `lonny@lonnylot.com` in production wrangler vars.
 - `AUTH_FROM` is `auth@event-model.lonnylot.com`.
+- Production From display name is `Event Model`.
+- Magic-link mail subject is `Sign in to Event Model`.
+- Unknown-email notify mail subject is `Sign-in attempt without an account`.
 - Playwright `webServer` env sets `TEST_MAIL` to `1` and `SITE_ADMIN_EMAIL` to `lonny@lonnylot.com`.
 - GET `/api/test/last-mail` exists only when `TEST_MAIL` is `1` (test adapter). When `TEST_MAIL` is not `1`, that path is JSON 404 like any other unknown `/api` path.
 - Magic-link TTL is 15 minutes. Session TTL is 7 days.
@@ -64,3 +67,5 @@ Person, Site admin, Session, Magic link
 Teams, Invites, Event Model persistence, editor canvas. Signed-in `/app` shows the Person's email and Sign out only.
 
 ## Restates
+
+- [architecture.md](../architecture.md) — Mail From display name is `Event Model`

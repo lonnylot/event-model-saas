@@ -3,7 +3,7 @@ name: testing
 description: >
   Use when adding or placing tests, choosing seams, writing unit or
   Playwright tests, mapping acceptance criteria to tests, checking a
-  weaker-reading fixture, splitting an "and" (any case) test name or
+  weaker-reading fixture, copy pinned in tests but not the spec, splitting an "and" (any case) test name or
   AC bullet, status vs content-type vs body, independent env/branch cases, proving a screen/shows
   criterion (not a source grep), leftover test filename after a
   deleted SUT, leftover test title after a restated AC, host
@@ -66,7 +66,7 @@ A criterion that names a screen, "shows", or "lists" is proven at the app or flo
 
 3. **Confirm the seam.** Fake adapters at the seams the architecture spec (or `codebase-design`) names. If the criterion names a persistence behavior of a specific adapter, the test constructs that adapter — faking the port only proves the orchestrator called it. A `readFileSync` of wiring for a fake identifier is a parse test. Proof is a call under the test adapter, or a flow that fails if those constructors are unused. Architecture-named adapters are constructed on the production composition root (Worker `fetch`). A test-only flag (`TEST_MAIL=1`) as the only constructor leaves those adapters unproven — tests that inject the runtime stay green if that path is deleted (`codebase-design`). Architecture naming D1 (or another production store) is a persistence adapter even when the feature spec names a fake-store seam for unit tests. Construct that adapter in a test so a broken SQL statement fails. Playwright on the memory fake is not that proof. Completion: no mock of a domain collaborator that is not an adapter. No live third-party in tests.
 
-4. **Independent expected values.** Pull numbers, event names, and catalog fields from the spec tree. Do not reimplement the unit under test inside the assertion.
+4. **Independent expected values.** Pull numbers, event names, and catalog fields from the spec tree. Do not reimplement the unit under test inside the assertion. Mail subject, From display name, and other user-visible copy asserted in tests must be sentences in the spec. A test that pins copy the spec does not name is unfinished — add the spec sentence or drop the assertion.
 
 5. **Telemetry contract.** If the product catalogs actions: for each new `action`, assert `capture` was called with that name (fake Telemetry). A property allowlist is proven against the observability catalog, not a handwritten table exercised on one action.
 
