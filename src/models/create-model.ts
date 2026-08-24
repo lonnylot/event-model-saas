@@ -26,6 +26,7 @@ export async function createModel(
         format: "eventmodel",
         schemaVersion: 1,
         id,
+        title: "Untitled",
         slices: [],
       }),
     );
