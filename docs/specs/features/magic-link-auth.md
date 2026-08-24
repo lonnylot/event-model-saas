@@ -18,16 +18,16 @@ The host is public and invite-only, but nobody can sign in. This slice lets a Pe
 - [x] POST `/api/auth/request-link` with an unknown email sends a notify mail to `SITE_ADMIN_EMAIL` whose text includes that address
 - [x] The sixth POST `/api/auth/request-link` for the same email within one hour does not send mail
 - [x] The twenty-first POST `/api/auth/request-link` from the same client IP within one hour does not send mail
-- [ ] GET `/api/auth/consume` with a valid unused magic-link token returns status 303
-- [ ] GET `/api/auth/consume` with a valid unused magic-link token sets `Location` to `/app`
-- [ ] GET `/api/auth/consume` with a valid unused magic-link token sets a Session cookie named `session` that includes `HttpOnly`
-- [ ] GET `/api/auth/consume` with a valid unused magic-link token over https sets a Session cookie that includes `Secure`
-- [ ] GET `/api/auth/consume` with a valid unused magic-link token sets a Session cookie that includes `SameSite=Lax`
-- [ ] GET `/api/auth/consume` with a used magic-link token returns status 200
-- [ ] GET `/api/auth/consume` with a used magic-link token shows a heading whose accessible name is `This link is expired or already used.`
-- [ ] GET `/api/auth/consume` with an expired magic-link token returns status 200
-- [ ] GET `/api/auth/consume` with an expired magic-link token shows a heading whose accessible name is `This link is expired or already used.`
-- [ ] GET `/api/auth/consume` with a used magic-link token does not set a Session cookie
+- [x] GET `/api/auth/consume` with a valid unused magic-link token returns status 303
+- [x] GET `/api/auth/consume` with a valid unused magic-link token sets `Location` to `/app`
+- [x] GET `/api/auth/consume` with a valid unused magic-link token sets a Session cookie named `session` that includes `HttpOnly`
+- [x] GET `/api/auth/consume` with a valid unused magic-link token over https sets a Session cookie that includes `Secure`
+- [x] GET `/api/auth/consume` with a valid unused magic-link token sets a Session cookie that includes `SameSite=Lax`
+- [x] GET `/api/auth/consume` with a used magic-link token returns status 200
+- [x] GET `/api/auth/consume` with a used magic-link token shows a heading whose accessible name is `This link is expired or already used.`
+- [x] GET `/api/auth/consume` with an expired magic-link token returns status 200
+- [x] GET `/api/auth/consume` with an expired magic-link token shows a heading whose accessible name is `This link is expired or already used.`
+- [x] GET `/api/auth/consume` with a used magic-link token does not set a Session cookie
 - [ ] GET `/app` without a Session returns status 303
 - [ ] GET `/app` without a Session sets `Location` to `/`
 - [ ] GET `/app` with a Session shows the Person's email

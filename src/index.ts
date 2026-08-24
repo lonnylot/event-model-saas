@@ -1,3 +1,4 @@
+import { consumeLink } from "./auth/consume-link";
 import { requestLink, REQUEST_LINK_OK_BODY } from "./auth/request-link";
 import type { AuthRuntime } from "./auth/types";
 
@@ -51,6 +52,11 @@ export async function handleRequest(
       });
     }
     return jsonOk(REQUEST_LINK_OK_BODY);
+  }
+  if (path === "/api/auth/consume" && request.method === "GET") {
+    if (env.auth) {
+      return consumeLink(env.auth, url.searchParams.get("token") ?? "", url);
+    }
   }
   if (path === "/api" || path.startsWith("/api/")) {
     return jsonNotFound();
