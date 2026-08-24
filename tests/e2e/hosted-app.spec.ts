@@ -21,3 +21,13 @@ test("GET `/` does not show a control whose accessible name is `Sign up`", async
   await expect(page.getByRole("button", { name: "Sign up" })).toHaveCount(0);
   await expect(page.getByRole("link", { name: "Sign up" })).toHaveCount(0);
 });
+
+test("GET an unknown document path returns status 404 and a heading whose accessible name is `Not found`", async ({
+  page,
+}) => {
+  const response = await page.goto("/no-such-page");
+  expect(response?.status()).toBe(404);
+  await expect(
+    page.getByRole("heading", { name: "Not found", level: 1 }),
+  ).toBeVisible();
+});
