@@ -1,6 +1,6 @@
 # Hosted app
 
-Status: validated
+Status: released
 
 ## Problem
 
