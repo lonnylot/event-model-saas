@@ -10,6 +10,7 @@ import {
   readSessionId,
 } from "./auth/session";
 import type { AuthRuntime } from "./auth/types";
+import { createTeam } from "./teams/create-team";
 
 export type AssetEnv = {
   ASSETS: { fetch: (request: Request) => Promise<Response> };
@@ -73,6 +74,38 @@ export async function handleRequest(
     const g = globalThis as unknown as { __emSent?: MailMessage[] };
     const last = g.__emSent?.at(-1) ?? null;
     return jsonOk(JSON.stringify({ text: last?.text ?? "" }));
+  }
+  if (path === "/api/teams" && request.method === "POST") {
+    if (!env.auth) return jsonNotFound();
+    const person = await personFromRequest(env.auth, request);
+    if (!person) {
+      return new Response(null, {
+        status: 303,
+        headers: { Location: "/" },
+      });
+    }
+    let name = "";
+    try {
+      const body = (await request.json()) as { name?: string };
+      name = typeof body.name === "string" ? body.name : "";
+    } catch {
+      name = "";
+    }
+    const result = await createTeam(
+      env.auth,
+      person.id,
+      person.isSiteAdmin,
+      name,
+    );
+    if (result.status === 201 && result.team) {
+      return new Response(JSON.stringify({ ok: true, id: result.team.id }), {
+        status: 201,
+      });
+    }
+    return new Response(JSON.stringify({ error: "forbidden" }), {
+      status: result.status,
+      headers: { "content-type": "application/json; charset=utf-8" },
+    });
   }
   if (path === "/api/auth/sign-out" && request.method === "POST") {
     if (env.auth) {
