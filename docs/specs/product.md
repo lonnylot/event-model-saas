@@ -38,7 +38,7 @@ The Mac app is local-only: one person, one `.eventmodel` file, no accounts. Team
 2. If the email is `SITE_ADMIN_EMAIL` or belongs to an invited Person, send a one-time magic link (TTL 15 minutes, single use).
 3. If the email is unknown: do **not** send a login link. Still show the same success copy. Email the site admin: `{address} tried to sign in and has no account`.
 4. Rate limit: 5 login submissions per email per hour, and 20 per client IP per hour. Over limit: same success copy, no extra mail.
-5. Consuming a valid link sets an httpOnly, Secure, SameSite=Lax session cookie (7 days). Invalid or used link: “This link is expired or already used. Request a new one.”
+5. Consuming a valid link sets an httpOnly, Secure, SameSite=Lax session cookie (7 days). Invalid or used link: heading “This link is expired or already used.”
 6. After login: if the Person has one team, open that team’s model list. If several, show a team picker. Site admin also sees a Teams admin screen (create team, invite).
 
 Outbound mail uses Cloudflare Email. Login links come from `auth@event-model.lonnylot.com`. Admin notifications go to `SITE_ADMIN_EMAIL`.
