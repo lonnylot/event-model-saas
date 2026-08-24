@@ -38,7 +38,7 @@ A signed-in Person has no Team. The site admin cannot create a Team or Invite an
 - [x] POST `/api/teams/{id}/invites` as site admin returns status 201
 - [x] POST `/api/teams/{id}/invites` as a Person who is not site admin returns status 403
 - [x] POST `/api/teams/{id}/invites` with an unknown email creates a Person with that email
-- [ ] POST `/api/teams/{id}/invites` adds a membership for that Person on that Team
+- [x] POST `/api/teams/{id}/invites` adds a membership for that Person on that Team
 - [ ] POST `/api/teams/{id}/invites` sends a magic-link mail to that email
 - [ ] Invite magic-link mail subject is `You are invited to Event Model`
 - [ ] After a site admin creates Team `Library` and invites `teammate@example.com`, that Person's signed-in page shows a heading whose accessible name is `Library`

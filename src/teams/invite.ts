@@ -26,5 +26,6 @@ export async function inviteToTeam(
     };
     await runtime.store.insertPerson(person);
   }
+  await runtime.store.addMembership(teamId, person.id);
   return { status: 201, sent: [] };
 }
