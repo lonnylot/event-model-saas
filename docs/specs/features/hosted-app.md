@@ -10,7 +10,7 @@ Nothing is reachable at event-model.lonnylot.com. This slice puts a Worker and a
 
 - [x] GET `/` shows a heading whose accessible name is `Event Model`
 - [x] GET `/` shows the text `Access is by invite.`
-- [ ] GET `/` does not show a control whose accessible name is `Sign up`
+- [x] GET `/` does not show a control whose accessible name is `Sign up`
 - [ ] GET an unknown document path returns status 404 and a heading whose accessible name is `Not found`
 - [x] GET `/api` returns status 404, content-type `application/json; charset=utf-8`, and body `{"error":"not found"}`
 - [x] GET `/api/anything` returns status 404, content-type `application/json; charset=utf-8`, and body `{"error":"not found"}`
