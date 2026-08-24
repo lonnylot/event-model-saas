@@ -21,6 +21,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Domain terms, CONTEXT.md, ADR | `domain-modeling` |
 | Test layers or seams | `testing`, `tdd-loop` |
 | Commit / branch / PR / CI | `logical-commits`, `github-ci-loop` |
+| YAML event prefix / `pull_request_target` | `testing`, `github-ci-loop` |
 | Review or release gate | `spec-review-loop`, `releasing-a-spec`, `spec-reviewer` |
 | After merge, learn from review | `post-merge-improvement`, `post-merge-improver` |
 | Two or more feat/ PRs at once | `parallel-feature-work`, `using-git-worktrees`, `releasing-a-spec` |

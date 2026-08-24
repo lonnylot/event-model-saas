@@ -2,8 +2,9 @@
 name: github-ci-loop
 description: >
   Use when starting feature work, creating a branch, opening or updating a
-  GitHub pull request, waiting on CI, or when local tests are green and the
-  change must run on GitHub.
+  GitHub pull request, waiting on CI, adding workflow `on:` events,
+  pull_request vs pull_request_target, or when local tests are green and
+  the change must run on GitHub.
 ---
 
 # GitHub CI loop
@@ -35,7 +36,7 @@ PR body names:
 3. Watch checks (`gh pr checks` or the PR status). Completion: every required check is green on **this** HEAD, or you have a failing log.
 4. Red CI: treat the failure as a failing test. Reproduce, `tdd-loop`, `logical-commits`, push. Re-watch the whole suite.
 
-If `.github/workflows/` is missing, add a workflow that runs the product's typecheck, test, and build scripts on `pull_request` and on pushes to the default branch **before** you claim CI is a gate. Do not invent script names — read `package.json` (or the equivalent).
+If `.github/workflows/` is missing, add a workflow that runs the product's typecheck, test, and build scripts on `pull_request` and on pushes to the default branch **before** you claim CI is a gate. Do not invent script names — read `package.json` (or the equivalent). Do not use `pull_request_target` in place of `pull_request`. A test that matches `/pull_request:/` stays green for `pull_request_target:` (`testing`). Match the event as a full YAML key.
 
 ## Merge
 

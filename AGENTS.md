@@ -58,7 +58,7 @@ Load the matching skill **before** the work. Do not re-derive the procedure from
 | `testing` | Test placement, seams, mapping criteria, weaker-reading fixtures, packed "and" |
 | `tdd-loop` | Implementing or fixing; before production code |
 | `logical-commits` | A criterion is green; deciding whether / what to commit |
-| `github-ci-loop` | Starting work; branching; opening a PR; waiting on CI |
+| `github-ci-loop` | Starting work; branching; opening a PR; waiting on CI; workflow `on:` events |
 | `spec-review-loop` | PR exists; merge/release |
 | `post-merge-improvement` | PR just merged; learn from review into skills/docs |
 | `receiving-code-review` | Implementing or pushing back on review comments |
