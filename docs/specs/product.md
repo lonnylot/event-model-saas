@@ -92,7 +92,7 @@ The JSON Schema stays `format: "eventmodel"`, `schemaVersion: 1`, compatible wit
 
 - **Unit** at the document module: schema validation, legal edges, mutations (add/move/delete slice and blocks). This is the web counterpart of `EventModelTests`.
 - **Unit** at API seams with fake D1, R2, and email: invite-only gate, `SITE_ADMIN_EMAIL` bootstrap, unknown-email notify, magic-link consume, version match vs 409, failed write does not bump version.
-- **Playwright**: request login (test email adapter, never live mail), land on that Team's page, open editor, add a slice, Save, second session Save → 409 UI.
+- **Playwright**: request login (test email adapter, never live mail), land on that Team's page, open editor, add a slice, Save, second session Save → 409 UI. Playwright `workers` is `1` because the `TEST_MAIL` memory adapter is process-global.
 - **CI**: GitHub Actions on pull request and on `main` — typecheck, unit, e2e. Wrangler/Miniflare for the Worker. No live Cloudflare and no live inbox in CI.
 
 ## Spec slices (implementation order)

@@ -6,8 +6,8 @@ description: >
   browser user flow, an accessible-name locator, a does-not-show
   control assertion, the CI job that runs flow tests, Playwright
   webServer env, blanking live API keys, an already-mounted UI
-  re-open, or an async form fetch before reading last-mail. Also when
-  updating a Flow row in a testing spec.
+  re-open, an async form fetch before reading last-mail, or Playwright
+  `workers` isolation. Also when updating a Flow row in a testing spec.
 ---
 
 # Playwright e2e
@@ -24,7 +24,7 @@ Flow tests prove the catalogued user path through a real browser. Domain and app
 
 1. **Quote the criterion.** Open the feature spec and the Flow row in the testing spec if it exists. Test name is that criterion. The Playwright spec lands in the same commit as the production that implements that criterion (`logical-commits`). Completion: deleting the flow would fail this test for that reason.
 
-2. **Script and CI.** Read `package.json` (or the product's equivalent). If `test:e2e` is missing, add it (Playwright's documented runner) in the same change. If CI has no job that runs that script, add one on `pull_request` — unit tests + build do not prove a click path. A unit test that only checks `scripts["test:e2e"]` is a non-empty string stays green if the script is `true` or `echo`. Unordered `toContain("playwright")` plus `toContain("test")` stays green for `echo playwright test`. An AC that says the script "includes the tokens" is a weaker criterion — restate as the script **is** `playwright test` (`keeping-specs-current`). Completion: the manifest and the workflow name the same script; any script-existence test asserts the exact value `playwright test` (consecutive runner tokens), not `length > 0` and not unordered token inclusion.
+2. **Script and CI.** Read `package.json` (or the product's equivalent). If `test:e2e` is missing, add it (Playwright's documented runner) in the same change. Changing Playwright `workers` (or other runner isolation) needs a spec sentence first (`keeping-specs-current`) — do not silently set `workers: 1` always. If CI has no job that runs that script, add one on `pull_request` — unit tests + build do not prove a click path. A unit test that only checks `scripts["test:e2e"]` is a non-empty string stays green if the script is `true` or `echo`. Unordered `toContain("playwright")` plus `toContain("test")` stays green for `echo playwright test`. An AC that says the script "includes the tokens" is a weaker criterion — restate as the script **is** `playwright test` (`keeping-specs-current`). Completion: the manifest and the workflow name the same script; any script-existence test asserts the exact value `playwright test` (consecutive runner tokens), not `length > 0` and not unordered token inclusion.
 
 3. **Seams in the test server.** The documented test adapter constructs auth, persistence, and any model/HTTP fakes **once per Node process** so register, login, and later requests in the same worker still see that state (`codebase-design` composition root). Playwright's webServer env blanks live API keys so the suite cannot reach third-party hosts. Point any file database at a temp path. Flow tests use that documented test adapter; they do not prove a production store (`testing`). Completion: a second request in the same worker still sees the registered account; the spec does not call the live vendor. A leftover identifier in wiring source is not this proof (`testing`).
 
