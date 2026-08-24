@@ -11,7 +11,8 @@ description: >
   control, when a leftover test title still quotes a restated AC, when
   a Domain terms line names a word CONTEXT.md does not define, when
   tightening a fake or test-double parse, when adding an operator CLI,
-  or whenever CONTEXT.md, docs/specs, or docs/adr may be missing or stale.
+  extra document title or host observability without an AC, or whenever
+  CONTEXT.md, docs/specs, or docs/adr may be missing or stale.
 ---
 
 # Keeping specs current
@@ -39,7 +40,7 @@ Status on every spec: `draft` → `validated` → `released`.
 
 2. **Read before edit.** Read that spec, `CONTEXT.md` (terms), and any linked system spec. When the change adds a caller, npm script, or CLI that reuses a constructor, search other feature specs for exclusive "only X" / "constructed only" bullets the new caller would falsify. Completion: you can quote the criterion you are implementing and every exclusive bound the new caller touches.
 
-3. **Edit the spec first.** New or changed rules, events, primitives, seams, or terms go into the spec (and `CONTEXT.md` / other system specs they belong in). An AC bullet that contains "and" (any case) or independent env/branch cases is unfinished — split (`testing`). Do not copy a packed plan sentence into the spec. Extra visible chrome without an AC is a behavior change — add an AC first or omit it. A feature Domain terms line that names a word `CONTEXT.md` does not define is unfinished. When a spec forbids using a term as a visible title or field label, that term's `_Avoid_` lists title / field label. Do not add a Changelog section — the commit message is the history. If two bullets cannot both hold, write the resolution in the spec before `tdd-loop`. Silent drop is not a resolution.
+3. **Edit the spec first.** New or changed rules, events, primitives, seams, or terms go into the spec (and `CONTEXT.md` / other system specs they belong in). An AC bullet that contains "and" (any case) or independent env/branch cases is unfinished — split (`testing`). Do not copy a packed plan sentence into the spec. Extra visible chrome without an AC is a behavior change — add an AC first or omit it. Document title (`<title>`), extra nav, and extra headings are chrome. Extra production host config the spec and architecture do not name (Worker `observability`, unused bindings) is the same miss — add an AC (or architecture row) first or omit it. Scaffold (`$schema`, `compatibility_date`) and operator scripts that do not change persisted state (`dev`) are not chrome. A feature Domain terms line that names a word `CONTEXT.md` does not define is unfinished. When a spec forbids using a term as a visible title or field label, that term's `_Avoid_` lists title / field label. Do not add a Changelog section — the commit message is the history. If two bullets cannot both hold, write the resolution in the spec before `tdd-loop`. Silent drop is not a resolution.
 
    Restating or deleting an AC is unfinished until UI, Events, Assumptions, Used by, every spec that AC restates, and the `it` / `test()` titles that quoted the old words no longer describe the deleted behavior. Search `docs/specs/` and `it("` / `test("` titles for the deleted words. Add every spec hit to Restates and rewrite the leftover bullets. Rename leftover test titles (`testing`). A leftover title that now includes the restated words must prove those words or drop them (`testing`). Listing a path in Restates without rewriting that file is unfinished. Completion of that search: grep for the deleted phrase is empty except the restated sentences; every Restates path now uses the new words; no leftover `it` / `test()` still quotes the old words.
 
@@ -92,6 +93,7 @@ Status on every spec: `draft` → `validated` → `released`.
 - An AC bullet contains "and" or two independent env/branch cases
 - Two numbered rules in the same spec cannot both hold
 - A fake / test-double parse tightened with a new unit test and no spec hunk
-- Extra visible chrome with no AC
+- Extra visible chrome with no AC (`<title>`, extra nav)
+- Extra host `observability` or unused binding with no AC and no architecture row
 
 **All of these mean: stop coding. Update the spec.**

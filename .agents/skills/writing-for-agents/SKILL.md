@@ -34,7 +34,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Domain terms line without a `CONTEXT.md` entry | `keeping-specs-current`, `domain-modeling` |
 | Independently revertible ACs / grouping by screen / spec-only | `logical-commits` |
 | Tests-after / production that landed as a dependency | `logical-commits` |
-| Extra visible chrome without an AC | `keeping-specs-current` |
+| Extra visible chrome / document title / extra host observability without an AC | `keeping-specs-current` |
 | How agents write docs | this skill |
 | Product architecture / UI kit / telemetry / domain rules | the product skill that owns that fact — add a row here when you add that skill |
 
