@@ -5,6 +5,7 @@ description: >
   code, when adding an operator CLI or npm script that changes persisted
   state, when constructing an architecture adapter only under a test
   flag, when a Playwright locator uses `name: X` without exact: true,
+  when adding a document title or heading the AC does not name,
   or when the user mentions TDD, red-green-refactor, the build
   loop, or looping.
 ---
@@ -29,7 +30,7 @@ Always for features, fixes, and behavior changes. Exceptions only if the human s
 
 2. **RED.** Load `testing`. Write one failing test at the seam the testing spec (or this pack's default layers) names. If the criterion is a browser flow, that test is Playwright (`playwright-e2e`) and lands with that production (`logical-commits`). A Playwright locator for accessible name **is** `X` without `exact: true` is the weaker reading (`testing`, `playwright-e2e`). Run it. Completion: it fails because the behavior is missing, not because of a typo; the assertion would also fail a weaker reading of the criterion (that skill). If it passes, or if swapping in the weaker algorithm would still pass, you tested existing behavior — fix the test.
 
-3. **GREEN.** Smallest code that passes that test. No extra branches, events, or UI. Extra chrome without an AC is `keeping-specs-current`. A leftover POST that skips the new path is an extra branch — delete it or name it Out of scope (`keeping-specs-current`). Architecture-named adapters are constructed on the production composition root, not only behind a test flag (`testing`, `codebase-design`). Run the test (and neighbors you touched). Completion: the test passes; output is clean.
+3. **GREEN.** Smallest code that passes that test. No extra branches, events, or UI. Extra chrome without an AC is `keeping-specs-current`. A leftover POST that skips the new path is an extra branch — delete it or name it Out of scope (`keeping-specs-current`). Architecture-named adapters are constructed on the production composition root, not only behind a test flag (`testing`, `codebase-design`). Run the test (and neighbors you touched). Completion: the test passes; no extra `<title>` or heading the AC does not name (`keeping-specs-current`).
 
 4. **Sync.** If the slice taught a tighter rule, update the spec in the same tree (`keeping-specs-current`). A tighter fake / test-double parse is a tighter rule.
 
