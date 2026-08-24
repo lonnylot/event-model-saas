@@ -108,5 +108,48 @@ export function createD1Store(db: D1Database): AuthStore {
         .bind(key, at)
         .run();
     },
+    async insertTeam(team) {
+      await db
+        .prepare("INSERT INTO teams (id, name) VALUES (?, ?)")
+        .bind(team.id, team.name)
+        .run();
+    },
+    async getTeam(id) {
+      const row = await db
+        .prepare("SELECT id, name FROM teams WHERE id = ?")
+        .bind(id)
+        .first();
+      if (!row) return null;
+      return { id: String(row.id), name: String(row.name) };
+    },
+    async listTeamsForPerson(personId) {
+      const result = await db
+        .prepare(
+          "SELECT t.id, t.name FROM teams t JOIN memberships m ON m.team_id = t.id WHERE m.person_id = ?",
+        )
+        .bind(personId)
+        .all();
+      return (result.results ?? []).map((row) => ({
+        id: String(row.id),
+        name: String(row.name),
+      }));
+    },
+    async addMembership(teamId, personId) {
+      await db
+        .prepare(
+          "INSERT OR IGNORE INTO memberships (team_id, person_id) VALUES (?, ?)",
+        )
+        .bind(teamId, personId)
+        .run();
+    },
+    async isMember(teamId, personId) {
+      const row = await db
+        .prepare(
+          "SELECT 1 AS n FROM memberships WHERE team_id = ? AND person_id = ?",
+        )
+        .bind(teamId, personId)
+        .first();
+      return row != null;
+    },
   };
 }

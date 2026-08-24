@@ -73,4 +73,11 @@ describe("create team", () => {
     );
     expect(response.status).toBe(403);
   });
+
+  it("POST `/api/teams` as site admin with name `Library` creates a Team named `Library`", async () => {
+    const { env, auth } = await adminEnv();
+    await handleRequest(createTeamPost(), env);
+    const team = await auth.store.getTeam("team-1");
+    expect(team?.name).toBe("Library");
+  });
 });

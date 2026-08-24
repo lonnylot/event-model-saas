@@ -1,6 +1,4 @@
-import type { AuthRuntime } from "../auth/types";
-
-type Team = { id: string; name: string };
+import type { AuthRuntime, Team } from "../auth/types";
 
 export async function createTeam(
   runtime: AuthRuntime,
@@ -12,5 +10,6 @@ export async function createTeam(
   const trimmed = name.trim();
   if (!trimmed) return { status: 400 };
   const team: Team = { id: runtime.randomId(), name: trimmed };
+  await runtime.store.insertTeam(team);
   return { status: 201, team };
 }

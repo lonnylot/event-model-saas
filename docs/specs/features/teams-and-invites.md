@@ -11,7 +11,7 @@ A signed-in Person has no Team. The site admin cannot create a Team or Invite an
 - [x] POST `/api/teams` as site admin returns status 201
 - [x] POST `/api/teams` as site admin returns content-type `application/json; charset=utf-8`
 - [x] POST `/api/teams` as a Person who is not site admin returns status 403
-- [ ] POST `/api/teams` as site admin with name `Library` creates a Team named `Library`
+- [x] POST `/api/teams` as site admin with name `Library` creates a Team named `Library`
 - [ ] POST `/api/teams` as site admin adds a membership for that site admin on the new Team
 - [ ] GET `/app` as site admin with no teams shows a textbox whose accessible name is `Team name`
 - [ ] GET `/app` as site admin with no teams shows a button whose accessible name is `Create team`
@@ -42,7 +42,7 @@ A signed-in Person has no Team. The site admin cannot create a Team or Invite an
 - [ ] POST `/api/teams/{id}/invites` sends a magic-link mail to that email
 - [ ] Invite magic-link mail subject is `You are invited to Event Model`
 - [ ] After a site admin creates Team `Library` and invites `teammate@example.com`, that Person's signed-in page shows a heading whose accessible name is `Library`
-- [ ] `createD1Store` `insertTeam` with name `Library` returns that Team from `getTeam`
+- [x] `createD1Store` `insertTeam` with name `Library` returns that Team from `getTeam`
 - [ ] `createD1Store` `addMembership` then `isMember` returns true
 
 ## Domain terms
@@ -52,6 +52,7 @@ Person, Site admin, Team, Invite, Membership, Session, Magic link
 ## Seams
 
 - `createTeam` and `inviteToTeam` in `src/teams/` — unit tests pass a fake store and fake mail
+- `createD1Store` in `src/auth/d1-store.ts` — unit tests construct it so a broken teams or memberships statement fails
 - `handleRequest` — HTTP routing
 - Browser — Playwright against `wrangler dev` with `TEST_MAIL=1`
 
