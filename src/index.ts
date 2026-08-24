@@ -11,11 +11,12 @@ import {
 } from "./auth/session";
 import type { AuthRuntime } from "./auth/types";
 import { createTeam } from "./teams/create-team";
+import { inviteToTeam } from "./teams/invite";
 import {
-  noTeamsAdminHtml,
-  teamPageHtml,
-  pickerHtml,
   adminTeamsHtml,
+  noTeamsAdminHtml,
+  pickerHtml,
+  teamPageHtml,
 } from "./teams/pages";
 
 export type AssetEnv = {
@@ -113,6 +114,40 @@ export async function handleRequest(
       status: result.status,
       headers: { "content-type": "application/json; charset=utf-8" },
     });
+  }
+  const inviteMatch = path.match(/^\/api\/teams\/([^/]+)\/invites$/);
+  if (inviteMatch && request.method === "POST") {
+    if (!env.auth) return jsonNotFound();
+    const person = await personFromRequest(env.auth, request);
+    if (!person) {
+      return new Response(null, {
+        status: 303,
+        headers: { Location: "/" },
+      });
+    }
+    let email = "";
+    try {
+      const body = (await request.json()) as { email?: string };
+      email = typeof body.email === "string" ? body.email : "";
+    } catch {
+      email = "";
+    }
+    const result = await inviteToTeam(
+      env.auth,
+      person.isSiteAdmin,
+      inviteMatch[1],
+      email,
+      request.headers.get("Origin") ?? url.origin,
+    );
+    return new Response(
+      JSON.stringify(
+        result.status === 201 ? { ok: true } : { error: "forbidden" },
+      ),
+      {
+        status: result.status,
+        headers: { "content-type": "application/json; charset=utf-8" },
+      },
+    );
   }
   if (path === "/api/auth/sign-out" && request.method === "POST") {
     if (env.auth) {

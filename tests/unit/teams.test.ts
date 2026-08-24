@@ -385,4 +385,21 @@ describe("create team", () => {
     );
     expect(await response.text()).toContain("<button type=\"submit\">Send invite</button>");
   });
+
+  it("POST `/api/teams/{id}/invites` as site admin returns status 201", async () => {
+    const { env } = await adminEnv();
+    await handleRequest(createTeamPost(), env);
+    const response = await handleRequest(
+      new Request("https://event-model.lonnylot.com/api/teams/team-1/invites", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          Cookie: "session=sess-admin",
+        },
+        body: JSON.stringify({ email: "teammate@example.com" }),
+      }),
+      env,
+    );
+    expect(response.status).toBe(201);
+  });
 });
