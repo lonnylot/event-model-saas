@@ -14,5 +14,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Feature | Path | Status |
 |---------|------|--------|
 | Hosted app | [features/hosted-app.md](./features/hosted-app.md) | released |
+| Magic-link auth | [features/magic-link-auth.md](./features/magic-link-auth.md) | validated |
 
 Status: `draft` → `validated` → `released`.
