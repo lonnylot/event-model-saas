@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "deploy": "wrangler deploy",
     "test:unit": "vitest run",
     "test:e2e": "playwright test"
   },

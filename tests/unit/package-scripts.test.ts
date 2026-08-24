@@ -13,4 +13,8 @@ describe("package.json scripts", () => {
     expect(tokens).toContain("playwright");
     expect(tokens).toContain("test");
   });
+
+  it("`package.json` script `deploy` is `wrangler deploy`", () => {
+    expect(pkg.scripts.deploy).toBe("wrangler deploy");
+  });
 });
