@@ -19,7 +19,7 @@ A signed-in Person has no Team. The site admin cannot create a Team or Invite an
 - [x] GET `/app` as site admin with one Team returns status 303
 - [x] GET `/app` as site admin with one Team sets `Location` to `/app/teams/{id}`
 - [x] GET `/app/teams/{id}` as a member shows a heading whose accessible name is the Team name
-- [ ] GET `/app/teams/{id}` as a member shows the Person's email
+- [x] GET `/app/teams/{id}` as a member shows the Person's email
 - [ ] GET `/app/teams/{id}` as a member shows a button whose accessible name is `Sign out`
 - [ ] GET `/app/teams/{id}` as site admin shows a link whose accessible name is `Teams admin`
 - [ ] GET `/app/teams/{id}` as a Person who is not a member returns status 404
