@@ -23,7 +23,6 @@ async function consumeAdmin(page: Page, request: APIRequestContext) {
 test("After a member creates a model and a second session Saves with version `1` after the first Save, the second session shows the text `This Event Model was saved by someone else.`", async ({
   page,
   request,
-  browser,
 }) => {
   await consumeAdmin(page, request);
   const createTeam = page.getByRole("textbox", {
@@ -51,8 +50,7 @@ test("After a member creates a model and a second session Saves with version `1`
     page.getByRole("heading", { name: "Untitled", exact: true }),
   ).toBeVisible();
   const modelUrl = page.url();
-  const page2 = await browser.newPage();
-  await consumeAdmin(page2, request);
+  const page2 = await page.context().newPage();
   await page2.goto(modelUrl);
   await expect(
     page2.getByRole("heading", { name: "Untitled", exact: true }),
