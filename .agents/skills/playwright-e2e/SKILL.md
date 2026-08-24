@@ -2,10 +2,10 @@
 name: playwright-e2e
 description: >
   Use when adding or changing Playwright tests, a test:e2e script, a
-  script-existence guard, a browser user flow, the CI job that runs
-  flow tests, Playwright webServer env, blanking live API keys, or an
-  already-mounted UI re-open. Also when updating a Flow row in a
-  testing spec.
+  script-existence guard, a browser user flow, an accessible-name
+  locator, the CI job that runs flow tests, Playwright webServer env,
+  blanking live API keys, or an already-mounted UI re-open. Also when
+  updating a Flow row in a testing spec.
 ---
 
 # Playwright e2e
@@ -26,7 +26,7 @@ Flow tests prove the catalogued user path through a real browser. Domain and app
 
 3. **Seams in the test server.** The documented test adapter constructs auth, persistence, and any model/HTTP fakes **once per Node process** so register, login, and later requests in the same worker still see that state (`codebase-design` composition root). Playwright's webServer env blanks live API keys so the suite cannot reach third-party hosts. Point any file database at a temp path. Completion: a second request in the same worker still sees the registered account; the spec does not call the live vendor. A leftover identifier in wiring source is not this proof (`testing`).
 
-4. **Drive the UI the user sees.** Prefer role + accessible name (the same label the screen already has). Add `data-testid` only when no accessible name exists, and only in the same change as the screen. One flow per test. A re-open after a panel is already mounted is close, then follow-up submit, then assert open without clicking the trigger — first-paint `data-state="open"` is not this proof (`testing`). Completion: the test fails if that button or heading is removed.
+4. **Drive the UI the user sees.** Prefer role + accessible name (the same label the screen already has). If the AC says the accessible name **is** `X`, the locator must fail a heading named `X` plus a suffix (`{ exact: true }` or `/^X$/`) — substring `name: "X"` is a weaker reading (`testing`). Add `data-testid` only when no accessible name exists, and only in the same change as the screen. One flow per test. A re-open after a panel is already mounted is close, then follow-up submit, then assert open without clicking the trigger — first-paint `data-state="open"` is not this proof (`testing`). Completion: the test fails if that button or heading is removed, and fails if the accessible name is `X` plus more characters.
 
 5. **Session.** Register (or login) through the UI in the test. Do not mint a session cookie in the spec unless a documented test-only helper exists. Completion: an unauthenticated visit still redirects to the login route (or the product's documented unauthenticated path).
 

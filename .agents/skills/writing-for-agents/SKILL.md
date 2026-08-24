@@ -25,6 +25,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | After merge, learn from review | `post-merge-improvement`, `post-merge-improver` |
 | Two or more feat/ PRs at once | `parallel-feature-work`, `using-git-worktrees`, `releasing-a-spec` |
 | Playwright / flow CI | `playwright-e2e`, `testing` |
+| Accessible name **is** X / Playwright substring | `testing`, `playwright-e2e` |
 | Module / seam / adapter vocabulary | `codebase-design` |
 | Packed "and" AC / independent env/branch cases | `testing`, `keeping-specs-current` |
 | Assumption vs acceptance criterion | `keeping-specs-current` |
