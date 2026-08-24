@@ -8,6 +8,7 @@ export async function createTeam(
   isSiteAdmin: boolean,
   name: string,
 ): Promise<{ status: number; team?: Team }> {
+  if (!isSiteAdmin) return { status: 403 };
   const trimmed = name.trim();
   if (!trimmed) return { status: 400 };
   const team: Team = { id: runtime.randomId(), name: trimmed };

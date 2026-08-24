@@ -54,4 +54,23 @@ describe("create team", () => {
       "application/json; charset=utf-8",
     );
   });
+
+  it("POST `/api/teams` as a Person who is not site admin returns status 403", async () => {
+    const { env, auth } = await adminEnv();
+    await auth.store.insertPerson({
+      id: "p-user",
+      email: "teammate@example.com",
+      isSiteAdmin: false,
+    });
+    await auth.store.insertSession({
+      id: "sess-user",
+      personId: "p-user",
+      expiresAt: auth.now() + 60_000,
+    });
+    const response = await handleRequest(
+      createTeamPost("session=sess-user"),
+      env,
+    );
+    expect(response.status).toBe(403);
+  });
 });
