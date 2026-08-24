@@ -4,7 +4,7 @@ description: >
   Use when adding or placing tests, choosing seams, writing unit or
   Playwright tests, mapping acceptance criteria to tests, checking a
   weaker-reading fixture, splitting an "and" (any case) test name or
-  AC bullet, independent env/branch cases, proving a screen/shows
+  AC bullet, status vs content-type vs body, independent env/branch cases, proving a screen/shows
   criterion (not a source grep), leftover test filename after a
   deleted SUT, leftover test title after a restated AC, host
   `run_worker_first` wiring, an architecture adapter constructed only
@@ -35,7 +35,7 @@ A criterion that names a screen, "shows", or "lists" is proven at the app or flo
 
 ## Steps
 
-1. **Quote the criterion.** Open the spec. Write the test name as the criterion. If that name contains "and" (any case) or independent env/branch cases, split into one `it` each. Status vs a heading, two workflow `on:` events, and a `run` step are independent — if deleting one assertion still leaves a spec-worthy outcome, split even when the sentence reads as one story. The assertion must fail a weaker implementation of those words.
+1. **Quote the criterion.** Open the spec. Write the test name as the criterion. If that name contains "and" (any case) or independent env/branch cases, split into one `it` each. Status vs a heading, status vs content-type vs body, two workflow `on:` events, and a `run` step are independent — if deleting one assertion still leaves a spec-worthy outcome, split even when the sentence reads as one story. The assertion must fail a weaker implementation of those words.
 
    Weaker readings this step exists to catch:
 
@@ -50,7 +50,7 @@ A criterion that names a screen, "shows", or "lists" is proven at the app or flo
    | "a name the previous state did not list" | A name already on the previous fixture |
    | Non-empty placeholder | `/placeholder=/` on `placeholder=""` |
    | One row's own text | Document-level `toContain` or `[\s\S]*` that can cross a tag |
-   | Packed "and" | One `it` covering independent cases (status vs heading; `pull_request` vs `push` vs a `run` step) |
+   | Packed "and" | One `it` covering independent cases (status vs heading vs content-type vs body; `pull_request` vs `push` vs a `run` step) |
    | Accessible name **is** `X` | Playwright `name: "X"` without `exact: true` (matches `Xyz`) |
    | Exact script / command value | Unordered `toContain` of each token (`echo playwright test`) |
    | YAML key / workflow event | Prefix match (`/pull_request:/` also hits `pull_request_target:`) |
