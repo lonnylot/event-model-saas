@@ -33,7 +33,7 @@ export function pickerHtml(
   isSiteAdmin: boolean,
   teams: Team[],
 ): string {
-  return pickerShell(email, isSiteAdmin, ``);
+  return pickerShell(email, isSiteAdmin, `<h1>Your teams</h1>`);
 }
 
 export function teamPageHtml(

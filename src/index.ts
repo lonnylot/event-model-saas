@@ -14,6 +14,7 @@ import { createTeam } from "./teams/create-team";
 import {
   noTeamsAdminHtml,
   teamPageHtml,
+  pickerHtml,
 } from "./teams/pages";
 
 export type AssetEnv = {
@@ -165,6 +166,15 @@ export async function handleRequest(
           status: 303,
           headers: { Location: `/app/teams/${teams[0].id}` },
         });
+      }
+      if (teams.length > 1) {
+        return new Response(
+          pickerHtml(person.email, person.isSiteAdmin, teams),
+          {
+            status: 200,
+            headers: { "content-type": "text/html; charset=utf-8" },
+          },
+        );
       }
       if (person.isSiteAdmin) {
         return new Response(noTeamsAdminHtml(person.email), {
