@@ -26,6 +26,7 @@ export type MailMessage = {
 
 export type AuthStore = {
   getPersonByEmail(email: string): Promise<Person | null>;
+  getPersonById(id: string): Promise<Person | null>;
   insertPerson(person: Person): Promise<void>;
   insertMagicLink(link: MagicLink): Promise<void>;
   getMagicLink(token: string): Promise<MagicLink | null>;

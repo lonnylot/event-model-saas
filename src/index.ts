@@ -1,5 +1,11 @@
 import { consumeLink } from "./auth/consume-link";
 import { requestLink, REQUEST_LINK_OK_BODY } from "./auth/request-link";
+import {
+  appPageHtml,
+  clearSessionCookie,
+  personFromRequest,
+  readSessionId,
+} from "./auth/session";
 import type { AuthRuntime } from "./auth/types";
 
 export type AssetEnv = {
@@ -58,8 +64,40 @@ export async function handleRequest(
       return consumeLink(env.auth, url.searchParams.get("token") ?? "", url);
     }
   }
+  if (path === "/api/auth/sign-out" && request.method === "POST") {
+    if (env.auth) {
+      const sid = readSessionId(request.headers.get("Cookie"));
+      if (sid) await env.auth.store.deleteSession(sid);
+    }
+    return new Response(null, {
+      status: 303,
+      headers: {
+        Location: "/",
+        "Set-Cookie": clearSessionCookie(),
+      },
+    });
+  }
   if (path === "/api" || path.startsWith("/api/")) {
     return jsonNotFound();
+  }
+  if (path === "/app") {
+    if (!env.auth) {
+      return new Response(null, {
+        status: 303,
+        headers: { Location: "/" },
+      });
+    }
+    const person = await personFromRequest(env.auth, request);
+    if (!person) {
+      return new Response(null, {
+        status: 303,
+        headers: { Location: "/" },
+      });
+    }
+    return new Response(appPageHtml(person.email), {
+      status: 200,
+      headers: { "content-type": "text/html; charset=utf-8" },
+    });
   }
   return env.ASSETS.fetch(request);
 }

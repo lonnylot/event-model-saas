@@ -15,6 +15,9 @@ export function createMemoryStore(): AuthStore {
     async getPersonByEmail(email) {
       return people.find((p) => p.email === email) ?? null;
     },
+    async getPersonById(id) {
+      return people.find((p) => p.id === id) ?? null;
+    },
     async insertPerson(person) {
       people.push(person);
     },

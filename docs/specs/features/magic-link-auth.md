@@ -28,13 +28,13 @@ The host is public and invite-only, but nobody can sign in. This slice lets a Pe
 - [x] GET `/api/auth/consume` with an expired magic-link token returns status 200
 - [x] GET `/api/auth/consume` with an expired magic-link token shows a heading whose accessible name is `This link is expired or already used.`
 - [x] GET `/api/auth/consume` with a used magic-link token does not set a Session cookie
-- [ ] GET `/app` without a Session returns status 303
-- [ ] GET `/app` without a Session sets `Location` to `/`
-- [ ] GET `/app` with a Session shows the Person's email
-- [ ] GET `/app` with a Session shows a button whose accessible name is `Sign out`
-- [ ] POST `/api/auth/sign-out` with a Session returns status 303
-- [ ] POST `/api/auth/sign-out` with a Session sets `Location` to `/`
-- [ ] POST `/api/auth/sign-out` clears the Session cookie
+- [x] GET `/app` without a Session returns status 303
+- [x] GET `/app` without a Session sets `Location` to `/`
+- [x] GET `/app` with a Session shows the Person's email
+- [x] GET `/app` with a Session shows a button whose accessible name is `Sign out`
+- [x] POST `/api/auth/sign-out` with a Session returns status 303
+- [x] POST `/api/auth/sign-out` with a Session sets `Location` to `/`
+- [x] POST `/api/auth/sign-out` clears the Session cookie
 - [ ] Submitting `Email me a link` on `/` with `SITE_ADMIN_EMAIL` shows the text `If you have access, check your inbox.`
 - [ ] After consuming the magic-link from that submission, `/app` shows `SITE_ADMIN_EMAIL`
 
