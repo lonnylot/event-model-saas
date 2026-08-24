@@ -130,4 +130,17 @@ describe("create team", () => {
     );
     expect(await response.text()).toContain("<a href=\"/app/admin/teams\">Teams admin</a>");
   });
+
+  it("GET `/app` as site admin with one Team returns status 303", async () => {
+    const { env, auth } = await adminEnv();
+    await handleRequest(createTeamPost(), env);
+    const response = await handleRequest(
+      new Request("https://event-model.lonnylot.com/app", {
+        headers: { Cookie: "session=sess-admin" },
+      }),
+      env,
+    );
+    expect(response.status).toBe(303);
+    void auth;
+  });
 });

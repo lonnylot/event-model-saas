@@ -16,7 +16,7 @@ A signed-in Person has no Team. The site admin cannot create a Team or Invite an
 - [x] GET `/app` as site admin with no teams shows a textbox whose accessible name is `Team name`
 - [x] GET `/app` as site admin with no teams shows a button whose accessible name is `Create team`
 - [x] GET `/app` as site admin with no teams shows a button whose accessible name is `Sign out`
-- [ ] GET `/app` as site admin with one Team returns status 303
+- [x] GET `/app` as site admin with one Team returns status 303
 - [ ] GET `/app` as site admin with one Team sets `Location` to `/app/teams/{id}`
 - [ ] GET `/app/teams/{id}` as a member shows a heading whose accessible name is the Team name
 - [ ] GET `/app/teams/{id}` as a member shows the Person's email
@@ -69,4 +69,4 @@ Event Model create/import/save/export, editor canvas, per-model ACLs, non-admin 
 
 ## Restates
 
-
+- [magic-link-auth.md](./magic-link-auth.md) — GET `/app` with a Session that is not redirected shows email and Sign out. GET `/app` with one Team redirects to `/app/teams/{id}` where the Person's email and Sign out still show.

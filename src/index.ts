@@ -143,6 +143,9 @@ export async function handleRequest(
     }
     const teams = await env.auth.store.listTeamsForPerson(person.id);
     if (path === "/app") {
+      if (teams.length === 1) {
+        return new Response(null, { status: 303 });
+      }
       if (person.isSiteAdmin) {
         return new Response(noTeamsAdminHtml(person.email), {
           status: 200,

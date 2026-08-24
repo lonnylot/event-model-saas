@@ -50,7 +50,7 @@ describe("signed-in app", () => {
     expect(response.headers.get("Location")).toBe("/");
   });
 
-  it("GET `/app` with a Session shows the Person's email", async () => {
+  it("GET `/app` with a Session that is not redirected shows the Person's email", async () => {
     const { env } = await signedIn();
     const response = await handleRequest(
       new Request("https://event-model.lonnylot.com/app", {
@@ -61,7 +61,7 @@ describe("signed-in app", () => {
     expect(await response.text()).toContain("lonny@lonnylot.com");
   });
 
-  it("GET `/app` with a Session shows a button whose accessible name is `Sign out`", async () => {
+  it("GET `/app` with a Session that is not redirected shows a button whose accessible name is `Sign out`", async () => {
     const { env } = await signedIn();
     const response = await handleRequest(
       new Request("https://event-model.lonnylot.com/app", {
