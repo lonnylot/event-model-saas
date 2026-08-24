@@ -69,3 +69,4 @@ Teams, Invites, Event Model persistence, editor canvas. Signed-in `/app` shows t
 ## Restates
 
 - [architecture.md](../architecture.md) — Mail From display name is `Event Model`
+- [product.md](../product.md) — session cookie is 7 days (not sliding on use); this slice is released; next slice is teams-and-invites

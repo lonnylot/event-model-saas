@@ -69,7 +69,7 @@ Add product gate rows (observability, design system) when those specs exist. Any
 
 ### 5. Release
 
-`verification-before-completion` applies to every row: quote fresh command output, not an earlier run. Only when the table is green: merge the PR, set spec status `released`, update the catalog, quote merge SHA and check evidence, then run `post-merge-improvement`. Completion: merge SHA exists; catalog says `released`; review-cycle count is on the PR body. No merge → not released.
+`verification-before-completion` applies to every row: quote fresh command output, not an earlier run. Only when the table is green: merge the PR, set spec status `released`, update the catalog, restate `product.md` slice list and Next slice if they still name this slug as the work, quote merge SHA and check evidence, then run `post-merge-improvement`. Completion: merge SHA exists; catalog says `released`; `product.md` Next slice is the next unreleased slug; review-cycle count is on the PR body. No merge → not released.
 
 ## Rationalizations
 
