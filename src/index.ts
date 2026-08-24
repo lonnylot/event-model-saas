@@ -232,7 +232,7 @@ export async function handleRequest(
       if (!model || model.teamId !== modelPage[1]) {
         return jsonNotFound();
       }
-      return new Response(modelPageHtml(model.title), {
+      return new Response(modelPageHtml(person.email, model.title), {
         status: 200,
         headers: { "content-type": "text/html; charset=utf-8" },
       });

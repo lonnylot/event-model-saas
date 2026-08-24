@@ -381,4 +381,16 @@ describe("create model", () => {
     );
     expect(response.status).toBe(404);
   });
+  it("GET `/app/teams/{id}/models/{mid}` as a member shows the Person's email", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/app/teams/team-1/models/model-1",
+        { headers: { Cookie: "session=sess-admin" } },
+      ),
+      env,
+    );
+    expect(await response.text()).toContain("<p>lonny@lonnylot.com</p>");
+  });
+
 });

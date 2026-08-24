@@ -45,8 +45,8 @@ export function teamPageHtml(
   );
 }
 
-export function modelPageHtml(title: string): string {
-  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"></head><body><main><h1>${title}</h1></main></body></html>`;
+export function modelPageHtml(email: string, title: string): string {
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"></head><body><main><h1>${title}</h1><p>${email}</p></main></body></html>`;
 }
 
 export function adminTeamsHtml(email: string, teams: Team[]): string {
