@@ -36,6 +36,8 @@ NO SHIP UNTIL CI IS GREEN, A SEPARATE REVIEWER APPROVES THIS HEAD, AND THE RELEA
 |------|------|------|
 | Ubiquitous language | `CONTEXT.md` | Domain terms only. No implementation. |
 | Spec catalog | `docs/specs/README.md` | Index + status of every spec. |
+| Architecture | `docs/specs/architecture.md` | Stack, modules, seams. |
+| Product design | `docs/superpowers/specs/2026-08-24-event-model-saas-design.md` | Locked v1 decisions and spec slices. |
 | Feature specs | `docs/specs/features/<slug>.md` | One vertical slice. Template: `docs/specs/features/_TEMPLATE.md`. |
 | Hard decisions | `docs/adr/NNNN-slug.md` | Irreversible trade-offs only. |
 | Procedures | `.agents/skills/*/SKILL.md` | How to write, test, review, and release. |

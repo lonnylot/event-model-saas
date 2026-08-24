@@ -1,8 +1,8 @@
 # Event Model SaaS
 
-A hosted Event Modeling canvas. Authenticated teams own models together and edit one Event Model as a group.
+A hosted Event Modeling canvas. Invite-only people sign in with a magic link, belong to teams the site admin creates, and edit one Event Model as a group with version-checked saves.
 
-The document language comes from the native Mac app [EventModel](https://github.com/lonnylot/EventModel) and [Event Modeling](https://eventmodeling.org/) (Adam Dymitruk). SaaS terms (Team, Person, membership) will be sharpened as those specs land.
+The document language comes from the native Mac app [EventModel](https://github.com/lonnylot/EventModel) and [Event Modeling](https://eventmodeling.org/) (Adam Dymitruk).
 
 ## Language
 
@@ -43,9 +43,25 @@ A named typed property on a command, event, read model, or automation (`String`,
 _Avoid_: attribute, property (as the schema name)
 
 **Team**:
-A named group of people who can share Event Models. Membership and roles are not specified yet.
-_Avoid_: org, organization, workspace, account (until a spec picks one)
+A named group created only by the site admin. Every Event Model belongs to exactly one Team. Every Person on the Team may edit every Event Model on that Team.
+_Avoid_: org, organization, workspace, account
 
 **Person**:
-Someone who signs in. Not the same as Actor (an Actor is a block on the canvas).
-_Avoid_: user (until a spec picks Person vs User), member (membership is a relationship, not the person)
+Someone who can sign in. Created by an Invite, or by the first login of `SITE_ADMIN_EMAIL`. Not the same as Actor (an Actor is a block on the canvas).
+_Avoid_: user, member (membership is a relationship, not the person)
+
+**Site admin**:
+The Person whose email is `SITE_ADMIN_EMAIL`. They create Teams and send Invites. They may sign in without an Invite.
+_Avoid_: owner, superuser, operator (as the role name)
+
+**Invite**:
+An email asking a Person to join one Team. If that Person does not exist, the Invite creates them. It is not a login session.
+_Avoid_: invite link (the magic link is a separate login token), share
+
+**Session**:
+The httpOnly cookie created when a Person consumes a magic link. It is not membership.
+_Avoid_: login, token (as the product word)
+
+**Version**:
+The integer on Event Model metadata that Save must match. It is not a history of old documents.
+_Avoid_: revision, etag, lock
