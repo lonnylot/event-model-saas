@@ -47,6 +47,6 @@ export function teamPageHtml(
 }
 
 export function adminTeamsHtml(email: string, teams: Team[]): string {
-  const invites = teams.map((t) => `<section><h1>${t.name}</h1><form class="invite" method="post" action="/api/teams/${t.id}/invites"></form></section>`).join("");
+  const invites = teams.map((t) => `<section><h1>${t.name}</h1><form class="invite" method="post" action="/api/teams/${t.id}/invites"><label for="invite-${t.id}">Invite email</label><input id="invite-${t.id}" name="email" type="email" required /></form></section>`).join("");
   return adminShell(email, invites);
 }
