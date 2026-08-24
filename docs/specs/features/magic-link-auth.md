@@ -8,8 +8,8 @@ The host is public and invite-only, but nobody can sign in. This slice lets a Pe
 
 ## Acceptance criteria
 
-- [ ] GET `/` shows a textbox whose accessible name is `Email`
-- [ ] GET `/` shows a button whose accessible name is `Email me a link`
+- [x] GET `/` shows a textbox whose accessible name is `Email`
+- [x] GET `/` shows a button whose accessible name is `Email me a link`
 - [x] POST `/api/auth/request-link` returns status 200, content-type `application/json; charset=utf-8`, and body `{"ok":true,"message":"If you have access, check your inbox."}`
 - [x] POST `/api/auth/request-link` with `SITE_ADMIN_EMAIL` when no Person exists creates the site admin Person
 - [x] POST `/api/auth/request-link` with `SITE_ADMIN_EMAIL` sends a magic-link mail to that address
@@ -35,8 +35,8 @@ The host is public and invite-only, but nobody can sign in. This slice lets a Pe
 - [x] POST `/api/auth/sign-out` with a Session returns status 303
 - [x] POST `/api/auth/sign-out` with a Session sets `Location` to `/`
 - [x] POST `/api/auth/sign-out` clears the Session cookie
-- [ ] Submitting `Email me a link` on `/` with `SITE_ADMIN_EMAIL` shows the text `If you have access, check your inbox.`
-- [ ] After consuming the magic-link from that submission, `/app` shows `SITE_ADMIN_EMAIL`
+- [x] Submitting `Email me a link` on `/` with `SITE_ADMIN_EMAIL` shows the text `If you have access, check your inbox.`
+- [x] After consuming the magic-link from that submission, `/app` shows `SITE_ADMIN_EMAIL`
 
 ## Domain terms
 

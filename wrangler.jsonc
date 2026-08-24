@@ -8,6 +8,10 @@
     "enabled": true,
     "head_sampling_rate": 1
   },
+  "vars": {
+    "SITE_ADMIN_EMAIL": "lonny@lonnylot.com",
+    "AUTH_FROM": "auth@event-model.lonnylot.com"
+  },
   "routes": [
     { "pattern": "event-model.lonnylot.com", "custom_domain": true }
   ],

@@ -23,9 +23,15 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: `npx wrangler dev --ip 127.0.0.1 --port ${PORT}`,
+    command: `npx wrangler dev --ip 127.0.0.1 --port ${PORT} --var TEST_MAIL:1`,
     url: BASE,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
+    env: {
+      ...process.env,
+      TEST_MAIL: "1",
+      SITE_ADMIN_EMAIL: "lonny@lonnylot.com",
+      AUTH_FROM: "auth@event-model.lonnylot.com",
+    },
   },
 });
