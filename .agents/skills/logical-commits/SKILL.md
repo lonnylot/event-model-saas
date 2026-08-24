@@ -5,7 +5,9 @@ description: >
   opening or updating a pull request, when deciding whether to commit,
   when grouping by screen, when independently revertible ACs share a
   commit, when a spec-only commit lists every AC, when production
-  landed as a dependency of another AC, or when a dedicated test or
+  landed as a dependency of another AC, when several review threads
+  share a commit, when a commit subject names two threads with "and",
+  or when a dedicated test or
   Playwright flow would land after its production.
 ---
 
@@ -26,6 +28,7 @@ One commit is one finished thought: one spec criterion (or one review/CI fix) wi
 - Two unrelated criteria in one tree
 - One screen commit that lands multiple independent ACs
 - Grouping by screen
+- Several review threads in one tree
 - A spec-only commit that lists every AC
 - Secrets, `.env`, or credentials
 - On the default branch for feature work — branch first (`github-ci-loop`)
@@ -33,7 +36,7 @@ One commit is one finished thought: one spec criterion (or one review/CI fix) wi
 ## How
 
 1. `git status` and `git diff`. Stage only this slice.
-2. Message names the criterion or review thread: `feat(orders): total stays within ±5%`.
+2. Message names the criterion or review thread: `feat(orders): total stays within ±5%`. A subject that names two new ACs or two review threads with "and" is two commits.
 3. Commit spec + tests + production code together. Completion: `git show --stat` lists all three when all three changed. A later test-only commit for a criterion whose production already landed is tests-after — not a logical slice. A Playwright flow (or any dedicated test) in a later commit than the production that implemented that criterion is the same miss, even after the PR is open.
 
 Prefer conventional prefixes (`feat`, `fix`, `docs`, `test`, `refactor`, `chore`). The subject (and body if needed) states what changed. Specs do not keep a Changelog section.
@@ -52,4 +55,4 @@ When a production hunk must exist so a later AC can run (Worker `name` so assets
 
 ## Red flags
 
-Empty or "WIP" messages on a PR. Default-branch commits for a feature. Code committed without the spec hunk that describes it. Dedicated tests in a follow-up commit after the production that needed them. Production that landed early as a dependency, then a later test-only commit for that criterion. One commit that ships several independent ACs together. A commit subject that names two new ACs with "and". Spec-only then one feat. Grouped by screen.
+Empty or "WIP" messages on a PR. Default-branch commits for a feature. Code committed without the spec hunk that describes it. Dedicated tests in a follow-up commit after the production that needed them. Production that landed early as a dependency, then a later test-only commit for that criterion. One commit that ships several independent ACs together. One commit that batches several review-thread fixes. A commit subject that names two new ACs or two review threads with "and". Spec-only then one feat. Grouped by screen. A follow-up cannot un-do tests-after or a review-thread batch — rebase so each AC (and each thread) is one commit.

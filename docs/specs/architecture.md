@@ -22,7 +22,7 @@ A Cloudflare Worker serves the SPA and `/api` for Event Model SaaS at `event-mod
 | Domain | Custom domain `event-model.lonnylot.com` on zone `lonnylot.com` |
 | Metadata | D1 |
 | Document body | R2 object `models/{id}.eventmodel` (current JSON only) |
-| Mail | Cloudflare Email binding. From `auth@event-model.lonnylot.com`. Admin notify to `SITE_ADMIN_EMAIL`. |
+| Mail | Cloudflare Email binding. From `auth@event-model.lonnylot.com` (display name `Event Model`). Admin notify to `SITE_ADMIN_EMAIL`. |
 | Front end | TypeScript SPA (no xyflow/React Flow). Custom timeline matching the Mac layout. |
 | Document language | `.eventmodel` schema v1, same as the Mac app |
 | Tests | Vitest (unit) + Playwright (flows) + GitHub Actions |

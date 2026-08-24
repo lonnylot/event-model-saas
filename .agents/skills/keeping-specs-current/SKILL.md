@@ -4,14 +4,20 @@ description: >
   Use when adding a feature, changing behavior, fixing a bug, writing or
   reviewing a pull request, when two spec bullets can conflict, when an
   AC bullet contains "and" or independent env/branch cases, when
+  packing status and content-type and body, when
   restating an AC while UI/Events/Assumptions still describe the old
-  behavior, when Restates omits a released spec that still describes
+  behavior, leftover product.md locked words a slice did not implement,
+  when Restates omits a released spec that still describes
   deleted behavior, when Restates names leftover files whose bullets
   were not rewritten, when leftover action POST remains after a deleted
   control, when a leftover test title still quotes a restated AC, when
   a Domain terms line names a word CONTEXT.md does not define, when
   tightening a fake or test-double parse, when adding an operator CLI,
-  extra document title or host observability without an AC, when specs
+  extra document title or host observability without an AC, mail
+  subject or From display name without a spec sentence, an
+  architecture adapter constructed only under a test flag, a
+  `run_worker_first` path list that is longer than the architecture
+  Compute row, when specs
   or plans would land under docs/superpowers, or whenever CONTEXT.md,
   docs/specs, or docs/adr may be missing or stale.
 ---
@@ -41,9 +47,9 @@ Status on every spec: `draft` → `validated` → `released`.
 
 2. **Read before edit.** Read that spec, `CONTEXT.md` (terms), and any linked system spec. When the change adds a caller, npm script, or CLI that reuses a constructor, search other feature specs for exclusive "only X" / "constructed only" bullets the new caller would falsify. Completion: you can quote the criterion you are implementing and every exclusive bound the new caller touches.
 
-3. **Edit the spec first.** New or changed rules, events, primitives, seams, or terms go into the spec (and `CONTEXT.md` / other system specs they belong in). An AC bullet that contains "and" (any case) or independent env/branch cases is unfinished — split (`testing`). Do not copy a packed plan sentence into the spec. Extra visible chrome without an AC is a behavior change — add an AC first or omit it. Document title (`<title>`), extra nav, and extra headings are chrome. Extra production host config the spec and architecture do not name (Worker `observability`, unused bindings) is the same miss — add an AC (or architecture row) first or omit it. Scaffold (`$schema`, `compatibility_date`) and operator scripts that do not change persisted state (`dev`) are not chrome. A feature Domain terms line that names a word `CONTEXT.md` does not define is unfinished. When a spec forbids using a term as a visible title or field label, that term's `_Avoid_` lists title / field label. Do not add a Changelog section — the commit message is the history. If two bullets cannot both hold, write the resolution in the spec before `tdd-loop`. Silent drop is not a resolution.
+3. **Edit the spec first.** New or changed rules, events, primitives, seams, or terms go into the spec (and `CONTEXT.md` / other system specs they belong in). An AC bullet that contains "and" (any case) or independent env/branch cases is unfinished — split (`testing`). Status vs content-type vs body are independent even when they describe one JSON success. Do not copy a packed plan sentence into the spec. Extra visible chrome without an AC is a behavior change — add an AC first or omit it. Document title (`<title>`), extra nav, and extra headings are chrome. User-visible copy that tests or production pin (mail subject, From display name) without a spec sentence is the same miss. Extra production host config the spec and architecture do not name (Worker `observability`, unused bindings) is the same miss — add an AC (or architecture row) first or omit it. Architecture-named adapters (D1, Email) that production constructs only under a test flag contradict architecture — construct them on the production path or restate architecture in the same change. A `run_worker_first` list that includes a path architecture does not name is two bullets that cannot both hold — restate the Compute row in the same change. Proving the path at the host (`testing`) does not update architecture. Scaffold (`$schema`, `compatibility_date`) and operator scripts that do not change persisted state (`dev`) are not chrome. A feature Domain terms line that names a word `CONTEXT.md` does not define is unfinished. When a spec forbids using a term as a visible title or field label, that term's `_Avoid_` lists title / field label. Do not add a Changelog section — the commit message is the history. If two bullets cannot both hold, write the resolution in the spec before `tdd-loop`. Silent drop is not a resolution.
 
-   Restating or deleting an AC is unfinished until UI, Events, Assumptions, Used by, every spec that AC restates, and the `it` / `test()` titles that quoted the old words no longer describe the deleted behavior. Search `docs/specs/` and `it("` / `test("` titles for the deleted words. Add every spec hit to Restates and rewrite the leftover bullets. Rename leftover test titles (`testing`). A leftover title that now includes the restated words must prove those words or drop them (`testing`). Listing a path in Restates without rewriting that file is unfinished. Completion of that search: grep for the deleted phrase is empty except the restated sentences; every Restates path now uses the new words; no leftover `it` / `test()` still quotes the old words.
+   Restating or deleting an AC is unfinished until UI, Events, Assumptions, Used by, every spec that AC restates, and the `it` / `test()` titles that quoted the old words no longer describe the deleted behavior. Search `docs/specs/` and `it("` / `test("` titles for the deleted words. Add every spec hit to Restates and rewrite the leftover bullets. A feature that ships a `product.md` locked flow must add `docs/specs/product.md` to Restates and rewrite leftover words HEAD does not implement. Restating one phrase in a `product.md` bullet (for example `sliding on use`) is unfinished until you re-read the **entire** touched bullet and rewrite every other locked phrase that bullet still contains which HEAD does not implement (for example leftover heading copy). When flipping a slice to `released`, restate the product.md slice list and Next slice if they still name this slug as the work. Rename leftover test titles (`testing`). A leftover title that now includes the restated words must prove those words or drop them (`testing`). Listing a path in Restates without rewriting that file is unfinished. Completion of that search: grep for the deleted phrase is empty except the restated sentences; the restated `product.md` bullet has no leftover locked phrase HEAD does not implement; every Restates path now uses the new words; no leftover `it` / `test()` still quotes the old words.
 
    Deleting a visible control is unfinished until the action no longer accepts that POST, or Out of scope names the leftover branch. Restate an exclusive script-name bound as the constructor file (and the scripts allowed to run it) so both specs still hold. A shippable operator command or npm script that changes persisted state is an acceptance criterion — Assumptions are environment facts, not a place to park the command. A script AC that "includes the tokens" rather than **is** the exact command is a weaker criterion (`playwright-e2e`, `testing`). Completion: the spec describes the intended behavior, including clash cases; leftover sections of the same file agree; status is at least `draft`.
 
@@ -90,13 +96,17 @@ Status on every spec: `draft` → `validated` → `released`.
 - An AC is restated but UI / Events / Assumptions still describe the deleted behavior
 - Restates omits a released spec that still describes the deleted behavior
 - Restates names a leftover file whose bullets still use the deleted words
+- `product.md` leftover locked words the slice did not implement, including a sibling phrase left in a bullet after rewriting only the example (`sliding on use`) or a Next slice that still names a released slug
 - A deleted control still has an action POST the spec does not name
 - An AC is restated but a `test()` title still quotes the old words
 - An AC bullet contains "and" or two independent env/branch cases
 - Two numbered rules in the same spec cannot both hold
 - A fake / test-double parse tightened with a new unit test and no spec hunk
 - Extra visible chrome with no AC (`<title>`, extra nav)
+- Mail subject or From display name pinned in tests or production with no spec sentence
 - Extra host `observability` or unused binding with no AC and no architecture row
+- wrangler `run_worker_first` lists a path architecture still describes as `/api/*` only
+- Production composition root constructs architecture adapters only under a test flag
 - A spec or plan under `docs/superpowers/` (or any tree other than `docs/specs/` and `docs/adr/`)
 
 **All of these mean: stop coding. Update the spec.**
