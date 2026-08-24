@@ -58,6 +58,10 @@ _Avoid_: owner, superuser, operator (as the role name)
 An email asking a Person to join one Team. If that Person does not exist, the Invite creates them. It is not a login session.
 _Avoid_: invite link (the magic link is a separate login token), share
 
+**Magic link**:
+A one-time, time-limited token emailed to a Person so they can start a Session. It is not an Invite.
+_Avoid_: invite link, login link (as the type name)
+
 **Session**:
 The httpOnly cookie created when a Person consumes a magic link. It is not membership.
 _Avoid_: login, token (as the product word)
