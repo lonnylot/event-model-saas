@@ -34,7 +34,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Packed "and" AC / independent env/branch cases | `testing`, `keeping-specs-current` |
 | Assumption vs acceptance criterion | `keeping-specs-current` |
 | Restated AC with leftover sections / leftover test title / leftover Restates | `keeping-specs-current` |
-| product.md leftover locked words / Next slice still names a released slug | `keeping-specs-current` |
+| product.md leftover locked words / Next slice still names a released slug / removing product.md from Restates | `keeping-specs-current` |
 | Domain terms line without a `CONTEXT.md` entry | `keeping-specs-current`, `domain-modeling` |
 | Independently revertible ACs / grouping by screen / spec-only | `logical-commits` |
 | Tests-after / production that landed as a dependency | `logical-commits` |
