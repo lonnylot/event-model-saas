@@ -34,7 +34,7 @@ Do not trust a summary of the diff. Read the diff.
 
 **Spec.** Every acceptance criterion is present, correct, and tested. Flag missing criteria, extra behavior the spec did not ask for, and implementations that look done but contradict the spec. Quote the spec line.
 
-**Rules.** The change follows `AGENTS.md` and the skills: spec updated in the same commits as code; tests name criteria; commits are logical slices (one AC, even on one screen; not grouped by screen; independently revertible hunks; no spec-only commit that lists every AC); no secrets; product invariants in `AGENTS.md` hold.
+**Rules.** The change follows `AGENTS.md` and the skills: spec updated in the same commits as code; tests name criteria; commits are logical slices (one AC, even on one screen; not grouped by screen; independently revertible hunks; no spec-only commit that lists every AC; one review thread per commit; no subject that names two threads with "and"); no secrets; product invariants in `AGENTS.md` hold. Grouped independently revertible ACs, tests-after, or a commit that batches several review threads is blocking on this axis even when every AC is proven. Do not relabel those `note`.
 
 ## Comments
 

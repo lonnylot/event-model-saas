@@ -36,6 +36,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Domain terms line without a `CONTEXT.md` entry | `keeping-specs-current`, `domain-modeling` |
 | Independently revertible ACs / grouping by screen / spec-only | `logical-commits` |
 | Tests-after / production that landed as a dependency | `logical-commits` |
+| Review-thread batch / commit subject names two threads with "and" | `logical-commits` |
 | Extra visible chrome / document title / extra host observability without an AC | `keeping-specs-current` |
 | `run_worker_first` path list vs architecture Compute row | `keeping-specs-current`, `testing` |
 | How agents write docs | this skill |
