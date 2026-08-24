@@ -25,6 +25,7 @@ export async function createModel(
       JSON.stringify({
         format: "eventmodel",
         schemaVersion: 1,
+        id,
         slices: [],
       }),
     );

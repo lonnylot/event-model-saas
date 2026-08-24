@@ -323,4 +323,10 @@ describe("create model", () => {
     expect(JSON.parse(body ?? "").slices).toEqual([]);
   });
 
+  it("POST `/api/teams/{id}/models` as a member writes a document whose `id` is the Event Model id", async () => {
+    const { env } = await createdUntitled();
+    const body = await env.documents.get("models/model-1.eventmodel");
+    expect(JSON.parse(body ?? "").id).toBe("model-1");
+  });
+
 });
