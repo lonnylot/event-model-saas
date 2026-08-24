@@ -143,4 +143,16 @@ describe("create team", () => {
     expect(response.status).toBe(303);
     void auth;
   });
+
+  it("GET `/app` as site admin with one Team sets `Location` to `/app/teams/{id}`", async () => {
+    const { env } = await adminEnv();
+    await handleRequest(createTeamPost(), env);
+    const response = await handleRequest(
+      new Request("https://event-model.lonnylot.com/app", {
+        headers: { Cookie: "session=sess-admin" },
+      }),
+      env,
+    );
+    expect(response.headers.get("Location")).toBe("/app/teams/team-1");
+  });
 });
