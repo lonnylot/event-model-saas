@@ -306,4 +306,25 @@ describe("create team", () => {
     );
     expect(response.status).toBe(303);
   });
+
+  it("GET `/app/admin/teams` as a Person who is not site admin sets `Location` to `/app`", async () => {
+    const { env, auth } = await adminEnv();
+    await auth.store.insertPerson({
+      id: "p-user",
+      email: "teammate@example.com",
+      isSiteAdmin: false,
+    });
+    await auth.store.insertSession({
+      id: "sess-user",
+      personId: "p-user",
+      expiresAt: auth.now() + 60_000,
+    });
+    const response = await handleRequest(
+      new Request("https://event-model.lonnylot.com/app/admin/teams", {
+        headers: { Cookie: "session=sess-user" },
+      }),
+      env,
+    );
+    expect(response.headers.get("Location")).toBe("/app");
+  });
 });

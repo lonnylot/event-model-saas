@@ -147,7 +147,10 @@ export async function handleRequest(
     const teams = await env.auth.store.listTeamsForPerson(person.id);
     if (path === "/app/admin/teams") {
       if (!person.isSiteAdmin) {
-        return new Response(null, { status: 303 });
+        return new Response(null, {
+          status: 303,
+          headers: { Location: "/app" },
+        });
       }
     }
     const teamPage = path.match(/^\/app\/teams\/([^/]+)$/);
