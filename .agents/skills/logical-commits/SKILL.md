@@ -20,7 +20,7 @@ One commit is one finished thought: one spec criterion (or one review/CI fix) wi
 - A `tdd-loop` criterion is GREEN and the spec matches the code
 - A single review thread or a single CI cause is fixed and green
 - Spec status flip (`validated` / `released`) after the gate that allows it
-- One production change several named screens mount, plus the shell it left — splitting those routes is empty / tests-after
+- A dependency production hunk (Worker `name` so assets serve) with its test — see below. Not every AC on one HTML page: four independently revertible ACs on one GET `/app` (Team name, Create team, Sign out, Teams admin) are four commits
 
 ## When not to commit
 

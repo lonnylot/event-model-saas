@@ -58,7 +58,7 @@ Load the matching skill **before** the work. Do not re-derive the procedure from
 | `codebase-design` | Module shape, seam, adapter, depth; architecture adapter constructed only under a test flag |
 | `testing` | Test placement, seams, mapping criteria, weaker-reading fixtures, packed "and" (status vs content-type vs body); architecture adapter constructed only under a test flag; architecture-named store untested |
 | `tdd-loop` | Implementing or fixing; before production code; Playwright `name: X` without exact: true; extra `<title>` or heading |
-| `logical-commits` | A criterion is green; deciding whether / what to commit; tests-after; review-thread batch |
+| `logical-commits` | A criterion is green; deciding whether / what to commit; grouping by screen; independently revertible ACs; spec-only; subject with "and"; tests-after; review-thread batch |
 | `github-ci-loop` | Starting work; branching; opening a PR; waiting on CI; workflow `on:` events |
 | `spec-review-loop` | PR exists; merge/release |
 | `post-merge-improvement` | PR just merged; learn from review into skills/docs |
