@@ -20,7 +20,10 @@ export async function createModel(
     r2Key,
   });
   if (documents) {
-    await documents.put(r2Key, JSON.stringify({ format: "eventmodel" }));
+    await documents.put(
+      r2Key,
+      JSON.stringify({ format: "eventmodel", schemaVersion: 1 }),
+    );
   }
   return { status: 201 };
 }
