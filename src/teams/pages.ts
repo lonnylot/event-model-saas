@@ -50,7 +50,7 @@ export function modelPageHtml(
   title: string,
   modelId: string,
 ): string {
-  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"></head><body><main><h1>${title}</h1><form id="save-model" method="post" action="/api/models/${modelId}"><button type="submit">Save</button></form><p>${email}</p></main></body></html>`;
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"></head><body><main><h1>${title}</h1><form id="save-model" method="post" action="/api/models/${modelId}"><button type="submit">Save</button></form><form id="export-model" method="get" action="/api/models/${modelId}/export"><button type="submit">Export</button></form><p>${email}</p></main></body></html>`;
 }
 
 export function adminTeamsHtml(email: string, teams: Team[]): string {
