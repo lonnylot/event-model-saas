@@ -2,7 +2,7 @@ import type { Team } from "../auth/types";
 
 function emptyShell(email: string, inner: string): string {
   const admin = "";
-  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"></head><body><main>${inner}<p>${email}</p>${admin}</main><script src="/teams.js"></script></body></html>`;
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"></head><body><main>${inner}<p>${email}</p>${admin}<form method="post" action="/api/auth/sign-out"><button type="submit">Sign out</button></form></main><script src="/teams.js"></script></body></html>`;
 }
 
 function teamShell(email: string, isSiteAdmin: boolean, inner: string): string {
