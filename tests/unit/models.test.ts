@@ -194,4 +194,28 @@ describe("create model", () => {
     const model = await auth.store.getEventModel("model-1");
     expect(model?.version).toBe(1);
   });
+  it("GET `/app/teams/{id}` as a member shows a button whose accessible name is `Create model`", async () => {
+    const { env } = await memberEnv();
+    await handleRequest(
+      new Request("https://event-model.lonnylot.com/api/teams", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          Cookie: "session=sess-admin",
+        },
+        body: JSON.stringify({ name: "Library" }),
+      }),
+      env,
+    );
+    const response = await handleRequest(
+      new Request("https://event-model.lonnylot.com/app/teams/team-1", {
+        headers: { Cookie: "session=sess-admin" },
+      }),
+      env,
+    );
+    expect(await response.text()).toContain(
+      '<button type="submit">Create model</button>',
+    );
+  });
+
 });

@@ -24,3 +24,15 @@ document.querySelectorAll("form.invite").forEach((form) => {
     });
   });
 });
+
+document.querySelectorAll("#create-model").forEach((form) => {
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    await fetch(form.getAttribute("action") || "", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({}),
+    });
+    location.href = "/app";
+  });
+});

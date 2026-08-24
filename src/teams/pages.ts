@@ -31,7 +31,11 @@ export function teamPageHtml(
   isSiteAdmin: boolean,
   team: Team,
 ): string {
-  return shell(email, isSiteAdmin, `<h1>${team.name}</h1>`);
+  return shell(
+    email,
+    isSiteAdmin,
+    `<h1>${team.name}</h1><form id="create-model" method="post" action="/api/teams/${team.id}/models"><button type="submit">Create model</button></form>`,
+  );
 }
 
 export function adminTeamsHtml(email: string, teams: Team[]): string {

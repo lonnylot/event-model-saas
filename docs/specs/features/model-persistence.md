@@ -19,7 +19,7 @@ A Team has no Event Models. Members cannot create, open, import, export, or Save
 - [ ] POST `/api/teams/{id}/models` as a member writes a document whose `slices` is `[]`
 - [ ] POST `/api/teams/{id}/models` as a member writes a document whose `id` is the Event Model id
 - [ ] POST `/api/teams/{id}/models` as a member writes a document whose `title` is `Untitled`
-- [ ] GET `/app/teams/{id}` as a member shows a button whose accessible name is `Create model`
+- [x] GET `/app/teams/{id}` as a member shows a button whose accessible name is `Create model`
 - [ ] GET `/app/teams/{id}` as a member with an Event Model titled `Untitled` shows a link whose accessible name is `Untitled`
 - [ ] GET `/app/teams/{id}/models/{mid}` as a member shows a heading whose accessible name is `Untitled`
 - [ ] GET `/app/teams/{id}/models/{mid}` as a member shows the Person's email
