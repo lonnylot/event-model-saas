@@ -21,7 +21,7 @@ A signed-in Person has no Team. The site admin cannot create a Team or Invite an
 - [x] GET `/app/teams/{id}` as a member shows a heading whose accessible name is the Team name
 - [x] GET `/app/teams/{id}` as a member shows the Person's email
 - [x] GET `/app/teams/{id}` as a member shows a button whose accessible name is `Sign out`
-- [ ] GET `/app/teams/{id}` as site admin shows a link whose accessible name is `Teams admin`
+- [x] GET `/app/teams/{id}` as site admin shows a link whose accessible name is `Teams admin`
 - [ ] GET `/app/teams/{id}` as a Person who is not a member returns status 404
 - [ ] GET `/app` as a Person with two Teams shows a heading whose accessible name is `Your teams`
 - [ ] GET `/app` as a Person with two Teams shows a link whose accessible name is the first Team name
