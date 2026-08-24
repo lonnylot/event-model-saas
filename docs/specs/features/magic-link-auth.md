@@ -1,6 +1,6 @@
 # Magic-link auth
 
-Status: validated
+Status: released
 
 ## Problem
 
