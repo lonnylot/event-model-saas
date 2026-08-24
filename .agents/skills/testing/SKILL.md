@@ -8,7 +8,8 @@ description: >
   criterion (not a source grep), leftover test filename after a
   deleted SUT, leftover test title after a restated AC, host
   `run_worker_first` wiring, an architecture adapter constructed only
-  under a test flag, or updating a testing spec.
+  under a test flag, an architecture-named store never constructed in a
+  test, or updating a testing spec.
 ---
 
 # Testing
@@ -57,12 +58,13 @@ A criterion that names a screen, "shows", or "lists" is proven at the app or flo
    | "does not show a control named X" | Querying only `button` and `link` (checkbox/menuitem named X stays green) |
    | Host path (`run_worker_first`, assets routing) | Handler unit test that stays green if that host wiring is deleted |
    | Architecture-named production adapter (D1, Email) | Injected `env.auth` / handler unit test that stays green if production `fetch` never constructs that adapter |
+   | Architecture-named production store (D1) | Memory/fake store only; Playwright on `TEST_MAIL=1`; SQL never executed |
 
    When a production module is deleted, rename or delete its dedicated test file in the same change. When an AC is restated, rename the `it` / `test()` that quoted the old words. Renaming is unfinished until that leftover test's assertions fail a weaker reading of the new words, or the leftover title drops the new words. A restated "does not show X" inverts the assertion (`not.toContain`); dropping `toContain` is not the proof. Completion: deleting the feature, or swapping in the weaker algorithm, fails this test for that reason.
 
 2. **Pick the layer.** A `readFileSync` of source for an import string or class name is a parse test — it stays green if the mount is deleted and the string remains. A path criterion for a hosted Worker is unproven by a unit test of the exported handler when host wiring (`run_worker_first`) can be deleted without failing that test — prove GET at the host, or lock the wiring in the same AC. An "only this route" / "no other route shows X" criterion is proven by rendering every other page so a second mount fails. Proving the named route has X, or that one former second surface is gone, is not that proof. Rendering a leaf widget in isolation does not prove a screen "shows" bullet. A FormData/parser test proves a parse criterion only. If Playwright is out of scope, render the composed markup the route mounts, or narrow the spec bullet. Completion: the test does not mount the framework to prove a pure domain function. Deleting the named UI fails a "shows" test.
 
-3. **Confirm the seam.** Fake adapters at the seams the architecture spec (or `codebase-design`) names. If the criterion names a persistence behavior of a specific adapter, the test constructs that adapter — faking the port only proves the orchestrator called it. A `readFileSync` of wiring for a fake identifier is a parse test. Proof is a call under the test adapter, or a flow that fails if those constructors are unused. Architecture-named adapters are constructed on the production composition root (Worker `fetch`). A test-only flag (`TEST_MAIL=1`) as the only constructor leaves those adapters unproven — tests that inject the runtime stay green if that path is deleted (`codebase-design`). Completion: no mock of a domain collaborator that is not an adapter. No live third-party in tests.
+3. **Confirm the seam.** Fake adapters at the seams the architecture spec (or `codebase-design`) names. If the criterion names a persistence behavior of a specific adapter, the test constructs that adapter — faking the port only proves the orchestrator called it. A `readFileSync` of wiring for a fake identifier is a parse test. Proof is a call under the test adapter, or a flow that fails if those constructors are unused. Architecture-named adapters are constructed on the production composition root (Worker `fetch`). A test-only flag (`TEST_MAIL=1`) as the only constructor leaves those adapters unproven — tests that inject the runtime stay green if that path is deleted (`codebase-design`). Architecture naming D1 (or another production store) is a persistence adapter even when the feature spec names a fake-store seam for unit tests. Construct that adapter in a test so a broken SQL statement fails. Playwright on the memory fake is not that proof. Completion: no mock of a domain collaborator that is not an adapter. No live third-party in tests.
 
 4. **Independent expected values.** Pull numbers, event names, and catalog fields from the spec tree. Do not reimplement the unit under test inside the assertion.
 
