@@ -5,8 +5,9 @@ description: >
   script-existence guard, an exact `playwright test` script value, a
   browser user flow, an accessible-name locator, a does-not-show
   control assertion, the CI job that runs flow tests, Playwright
-  webServer env, blanking live API keys, or an already-mounted UI
-  re-open. Also when updating a Flow row in a testing spec.
+  webServer env, blanking live API keys, an already-mounted UI
+  re-open, or an async form fetch before reading last-mail. Also when
+  updating a Flow row in a testing spec.
 ---
 
 # Playwright e2e
@@ -27,7 +28,7 @@ Flow tests prove the catalogued user path through a real browser. Domain and app
 
 3. **Seams in the test server.** The documented test adapter constructs auth, persistence, and any model/HTTP fakes **once per Node process** so register, login, and later requests in the same worker still see that state (`codebase-design` composition root). Playwright's webServer env blanks live API keys so the suite cannot reach third-party hosts. Point any file database at a temp path. Flow tests use that documented test adapter; they do not prove a production store (`testing`). Completion: a second request in the same worker still sees the registered account; the spec does not call the live vendor. A leftover identifier in wiring source is not this proof (`testing`).
 
-4. **Drive the UI the user sees.** Prefer role + accessible name (the same label the screen already has). If the AC says the accessible name **is** `X`, the locator must fail a heading named `X` plus a suffix (`{ exact: true }` or `/^X$/`) — substring `name: "X"` is a weaker reading (`testing`). A "does not show a control named X" query that lists only `button` and `link` stays green for a checkbox or menuitem named X (`testing`) — query widget roles, or assert no accessible name X on any control. Add `data-testid` only when no accessible name exists, and only in the same change as the screen. One flow per test. A re-open after a panel is already mounted is close, then follow-up submit, then assert open without clicking the trigger — first-paint `data-state="open"` is not this proof (`testing`). Completion: the test fails if that button or heading is removed, and fails if the accessible name is `X` plus more characters.
+4. **Drive the UI the user sees.** Prefer role + accessible name (the same label the screen already has). If the AC says the accessible name **is** `X`, the locator must fail a heading named `X` plus a suffix (`{ exact: true }` or `/^X$/`) — substring `name: "X"` is a weaker reading (`testing`). A "does not show a control named X" query that lists only `button` and `link` stays green for a checkbox or menuitem named X (`testing`) — query widget roles, or assert no accessible name X on any control. Add `data-testid` only when no accessible name exists, and only in the same change as the screen. One flow per test. A re-open after a panel is already mounted is close, then follow-up submit, then assert open without clicking the trigger — first-paint `data-state="open"` is not this proof (`testing`). After click/submit on a control whose handler is async `fetch`, wait for that request (or the user-visible result) before reading `/api/test/last-mail` or any side effect the fetch produces — Playwright's click does not wait for that handler. Completion: the test fails if that button or heading is removed, and fails if the accessible name is `X` plus more characters.
 
 5. **Session.** Register (or login) through the UI in the test. Do not mint a session cookie in the spec unless a documented test-only helper exists. Completion: an unauthenticated visit still redirects to the login route (or the product's documented unauthenticated path).
 
