@@ -65,7 +65,7 @@ Person, Site admin, Team, Invite, Membership, Session, Magic link
 
 ## Out of scope
 
-Event Model create/import/save/export, editor canvas, per-model ACLs, non-admin team creation.
+Editor canvas, per-model ACLs, non-admin team creation. Event Model create/import/save/export and the team page model list are owned by model-persistence.
 
 ## Restates
 

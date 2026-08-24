@@ -1,0 +1,97 @@
+# Model persistence
+
+Status: validated
+
+## Problem
+
+A Team has no Event Models. Members cannot create, open, import, export, or Save a document, so they cannot work on one model together.
+
+## Acceptance criteria
+
+- [x] POST `/api/teams/{id}/models` as a member returns status 201
+- [ ] POST `/api/teams/{id}/models` as a member returns content-type `application/json; charset=utf-8`
+- [ ] POST `/api/teams/{id}/models` as a Person who is not a member returns status 404
+- [ ] POST `/api/teams/{id}/models` as a member creates an Event Model whose title is `Untitled`
+- [ ] POST `/api/teams/{id}/models` as a member creates an Event Model whose version is `1`
+- [ ] POST `/api/teams/{id}/models` as a member writes R2 object `models/{id}.eventmodel`
+- [ ] POST `/api/teams/{id}/models` as a member writes a document whose `format` is `eventmodel`
+- [ ] POST `/api/teams/{id}/models` as a member writes a document whose `schemaVersion` is `1`
+- [ ] POST `/api/teams/{id}/models` as a member writes a document whose `slices` is `[]`
+- [ ] POST `/api/teams/{id}/models` as a member writes a document whose `id` is the Event Model id
+- [ ] POST `/api/teams/{id}/models` as a member writes a document whose `title` is `Untitled`
+- [ ] GET `/app/teams/{id}` as a member shows a button whose accessible name is `Create model`
+- [ ] GET `/app/teams/{id}` as a member with an Event Model titled `Untitled` shows a link whose accessible name is `Untitled`
+- [ ] GET `/app/teams/{id}/models/{mid}` as a member shows a heading whose accessible name is `Untitled`
+- [ ] GET `/app/teams/{id}/models/{mid}` as a member shows the Person's email
+- [ ] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Save`
+- [ ] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Export`
+- [ ] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Sign out`
+- [ ] GET `/app/teams/{id}/models/{mid}` as a Person who is not a member returns status 404
+- [ ] PUT `/api/models/{id}` as a member with matching version returns status 200
+- [ ] PUT `/api/models/{id}` as a member with matching version returns the new version `2`
+- [ ] PUT `/api/models/{id}` as a member with matching version writes the submitted document to `models/{id}.eventmodel`
+- [ ] PUT `/api/models/{id}` as a member with a mismatched version returns status 409
+- [ ] PUT `/api/models/{id}` as a Person who is not a member returns status 404
+- [ ] PUT `/api/models/{id}` with a document whose `format` is not `eventmodel` returns status 400
+- [ ] PUT `/api/models/{id}` with a document whose `format` is not `eventmodel` leaves version `1`
+- [ ] PUT `/api/models/{id}` with a document that fails `schemas/eventmodel.schema.json` returns status 400
+- [ ] PUT `/api/models/{id}` with a document that fails `schemas/eventmodel.schema.json` leaves version `1`
+- [ ] PUT `/api/models/{id}` with a document that fails `schemas/eventmodel.schema.json` leaves the R2 object unchanged
+- [ ] GET `/api/models/{id}/export` as a member returns content-type `application/json`
+- [ ] GET `/api/models/{id}/export` as a member sets `Content-Disposition` to `attachment; filename="Untitled.eventmodel"`
+- [ ] GET `/api/models/{id}/export` as a Person who is not a member returns status 404
+- [ ] POST `/api/teams/{id}/imports` with a document whose `format` is not `eventmodel` returns status 400
+- [ ] POST `/api/teams/{id}/imports` with a document whose `format` is not `eventmodel` does not create an Event Model
+- [ ] POST `/api/teams/{id}/imports` with a document that fails `schemas/eventmodel.schema.json` returns status 400
+- [ ] POST `/api/teams/{id}/imports` with a document that fails `schemas/eventmodel.schema.json` does not create an Event Model
+- [ ] POST `/api/teams/{id}/imports` with a document that fails `schemas/eventmodel.schema.json` does not write an R2 object
+- [ ] POST `/api/teams/{id}/imports` as a member with a valid Event Model titled `Library` returns status 201
+- [ ] POST `/api/teams/{id}/imports` as a member with a valid Event Model titled `Library` creates an Event Model whose title is `Library`
+- [ ] After a member creates a model and a second session Saves with version `1` after the first Save, the second session shows the text `This Event Model was saved by someone else.`
+- [ ] `createD1Store` `insertEventModel` with title `Untitled` returns that row from `getEventModel`
+- [ ] `createD1Store` `listEventModelsForTeam` returns the Untitled model
+- [ ] `createR2Documents` `put` of `models/{id}.eventmodel` returns that body from `get`
+- [ ] Worker `fetch` when `TEST_MAIL` is not `1` puts `models/{id}.eventmodel` on `MODELS`
+- [ ] Worker `fetch` when `TEST_MAIL` is not `1` inserts the Event Model into `DB`
+
+- [ ] `createD1Store` `setEventModelVersion` sets version `2`
+
+- [ ] PUT `/api/models/{id}` as a member with matching version writes the submitted document to `models/{id}.eventmodel`
+- [ ] PUT `/api/models/{id}` with a document that fails `schemas/eventmodel.schema.json` returns status 400
+- [ ] PUT `/api/models/{id}` with a document that fails `schemas/eventmodel.schema.json` leaves version `1`
+- [ ] PUT `/api/models/{id}` with a document that fails `schemas/eventmodel.schema.json` leaves the R2 object unchanged
+- [ ] POST `/api/teams/{id}/imports` with a document that fails `schemas/eventmodel.schema.json` returns status 400
+- [ ] POST `/api/teams/{id}/imports` with a document that fails `schemas/eventmodel.schema.json` does not create an Event Model
+- [ ] POST `/api/teams/{id}/imports` with a document that fails `schemas/eventmodel.schema.json` does not write an R2 object
+- [ ] POST `/api/teams/{id}/imports` as a member with a valid Event Model titled `Library` writes the submitted document to `models/{id}.eventmodel`
+
+## Domain terms
+
+Event Model, Team, Person, Version, Slice
+
+## Seams
+
+- `isValidEventModelDocument` in `src/document/validate.ts` — save and import reject a body that fails `schemas/eventmodel.schema.json`
+- `createModel`, `saveModel`, `importModel`, and `exportModel` in `src/models/` — unit tests pass a fake store and fake R2
+- `createD1Store` in `src/auth/d1-store.ts` — unit tests construct it so a broken event-model statement fails
+- `createR2Documents` in `src/models/r2-documents.ts` — unit tests construct it so a broken object key fails
+- `handleRequest` — HTTP routing
+- Worker `fetch` — unit tests call the default export without injected `env.documents` or `env.auth`
+- Browser — Playwright against `wrangler dev` with `TEST_MAIL=1`
+
+## Assumptions
+
+- Create and import JSON fields are `title` (optional on create; default `Untitled`) and `document` (import only).
+- Save JSON fields are `version` and `document`.
+- Empty Event Model JSON is `{ "format": "eventmodel", "schemaVersion": 1, "id": "{uuid}", "title": "Untitled", "slices": [] }`.
+- Schema file is `schemas/eventmodel.schema.json`, copied from the Mac app and not diverged in this slice.
+- `run_worker_first` includes `/app` and `/app/*`.
+
+## Out of scope
+
+Editor canvas, New Slice, undo, zoom, connections, dirty indicator beyond Save/Export on the open page, document history.
+
+## Restates
+
+- [teams-and-invites.md](./teams-and-invites.md) — Out of scope no longer owns Event Model create/import/save/export; GET `/app/teams/{id}` as a member shows Create model and Event Model title links
+- [product.md](../product.md) — Playwright path “land on team list” is the team page model list in this slice; this slice’s Playwright flow is thin open/Save/Export and second-session 409, not “add a slice”

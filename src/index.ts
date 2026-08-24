@@ -10,6 +10,7 @@ import {
   readSessionId,
 } from "./auth/session";
 import type { AuthRuntime } from "./auth/types";
+import { createModel } from "./models/create-model";
 import { createTeam } from "./teams/create-team";
 import { inviteToTeam } from "./teams/invite";
 import {
@@ -114,6 +115,22 @@ export async function handleRequest(
       status: result.status,
       headers: { "content-type": "application/json; charset=utf-8" },
     });
+  }
+  const modelsMatch = path.match(/^\/api\/teams\/([^/]+)\/models$/);
+  if (modelsMatch && request.method === "POST") {
+    if (!env.auth) return jsonNotFound();
+    const person = await personFromRequest(env.auth, request);
+    if (!person) {
+      return new Response(null, {
+        status: 303,
+        headers: { Location: "/" },
+      });
+    }
+    const result = await createModel(env.auth, person.id, modelsMatch[1]);
+    if (result.status === 201) {
+      return new Response(JSON.stringify({ ok: true }), { status: 201 });
+    }
+    return jsonNotFound();
   }
   const inviteMatch = path.match(/^\/api\/teams\/([^/]+)\/invites$/);
   if (inviteMatch && request.method === "POST") {
