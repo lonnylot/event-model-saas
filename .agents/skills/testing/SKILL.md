@@ -53,6 +53,7 @@ A criterion that names a screen, "shows", or "lists" is proven at the app or flo
    | Accessible name **is** `X` | Playwright `name: "X"` without `exact: true` (matches `Xyz`) |
    | Exact script / command value | Unordered `toContain` of each token (`echo playwright test`) |
    | YAML key / workflow event | Prefix match (`/pull_request:/` also hits `pull_request_target:`) |
+   | "does not show a control named X" | Querying only `button` and `link` (checkbox/menuitem named X stays green) |
 
    When a production module is deleted, rename or delete its dedicated test file in the same change. When an AC is restated, rename the `it` / `test()` that quoted the old words. Renaming is unfinished until that leftover test's assertions fail a weaker reading of the new words, or the leftover title drops the new words. A restated "does not show X" inverts the assertion (`not.toContain`); dropping `toContain` is not the proof. Completion: deleting the feature, or swapping in the weaker algorithm, fails this test for that reason.
 
