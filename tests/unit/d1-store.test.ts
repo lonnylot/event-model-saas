@@ -76,4 +76,10 @@ describe("createD1Store", () => {
     });
   });
 
+  it("`createD1Store` `addMembership` then `isMember` returns true", async () => {
+    const store = createD1Store(fakeD1());
+    await store.insertTeam({ id: "team-1", name: "Library" });
+    await store.addMembership("team-1", "p-admin");
+    expect(await store.isMember("team-1", "p-admin")).toBe(true);
+  });
 });

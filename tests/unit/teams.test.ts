@@ -80,4 +80,10 @@ describe("create team", () => {
     const team = await auth.store.getTeam("team-1");
     expect(team?.name).toBe("Library");
   });
+
+  it("POST `/api/teams` as site admin adds a membership for that site admin on the new Team", async () => {
+    const { env, auth } = await adminEnv();
+    await handleRequest(createTeamPost(), env);
+    expect(await auth.store.isMember("team-1", "p-admin")).toBe(true);
+  });
 });

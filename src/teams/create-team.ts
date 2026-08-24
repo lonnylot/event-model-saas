@@ -11,5 +11,6 @@ export async function createTeam(
   if (!trimmed) return { status: 400 };
   const team: Team = { id: runtime.randomId(), name: trimmed };
   await runtime.store.insertTeam(team);
+  await runtime.store.addMembership(team.id, personId);
   return { status: 201, team };
 }
