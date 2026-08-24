@@ -280,4 +280,35 @@ describe("create model", () => {
     expect(await env.documents.get("models/model-1.eventmodel")).not.toBeNull();
   });
 
+  it("POST `/api/teams/{id}/models` as a member writes a document whose `format` is `eventmodel`", async () => {
+    const { env } = await memberEnv();
+    await handleRequest(
+      new Request("https://event-model.lonnylot.com/api/teams", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          Cookie: "session=sess-admin",
+        },
+        body: JSON.stringify({ name: "Library" }),
+      }),
+      env,
+    );
+    await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/api/teams/team-1/models",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            Cookie: "session=sess-admin",
+          },
+          body: JSON.stringify({}),
+        },
+      ),
+      env,
+    );
+    const body = await env.documents.get("models/model-1.eventmodel");
+    expect(JSON.parse(body ?? "").format).toBe("eventmodel");
+  });
+
 });
