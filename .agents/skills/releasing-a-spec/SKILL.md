@@ -32,7 +32,7 @@ ingest → completeness → iterate until validated
 
 ### 1. Ingest
 
-Read the spec (or write `docs/specs/features/<slug>.md` from `_TEMPLATE.md` and catalog it). Pull in `CONTEXT.md` and the system specs it touches. Completion: one path is the working spec. A second `features/<other>.md` or README catalog row on this `feat/` is another PR (`parallel-feature-work`).
+Read the spec (or write `docs/specs/features/<slug>.md` from `_TEMPLATE.md` and catalog it). Pull in `CONTEXT.md` and the system specs it touches. Do not write an implementation plan under `docs/superpowers/plans/` or any other vendor plan tree — the feature spec is the work list. Completion: one path is the working spec. A second `features/<other>.md` or README catalog row on this `feat/` is another PR (`parallel-feature-work`).
 
 ### 2. Completeness (block validate until each box is yes)
 

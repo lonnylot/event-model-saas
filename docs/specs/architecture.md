@@ -2,9 +2,13 @@
 
 Status: draft
 
-Product design (decisions, flows, editor parity, spec slices): [docs/superpowers/specs/2026-08-24-event-model-saas-design.md](../superpowers/specs/2026-08-24-event-model-saas-design.md).
+Product design (decisions, flows, editor parity, spec slices): [product.md](./product.md).
 
 This file owns stack, modules, and seams. It does not own feature acceptance criteria.
+
+## Spec tree
+
+Specs live in `docs/specs/` (this file, `product.md`, and other system specs at that root; features in `docs/specs/features/`). ADRs live in `docs/adr/`. The repo has no `docs/superpowers/` directory. Feature implementation is `releasing-a-spec` on a `feat/<slug>` or `fix/<slug>` branch. There is no parallel implementation-plan directory.
 
 ## Outcome
 

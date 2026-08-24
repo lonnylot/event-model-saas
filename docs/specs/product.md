@@ -1,10 +1,8 @@
 # Event Model SaaS — product design
 
-Date: 2026-08-24
-Status: draft (awaiting human review)
-Source conversation: convert [EventModel](https://github.com/lonnylot/EventModel) into a hosted product at event-model.lonnylot.com.
+Status: draft
 
-This document is the product design. Living system facts belong in `docs/specs/architecture.md`. Feature work is split into the spec slices listed below; each slice gets its own `docs/specs/features/<slug>.md` before implementation.
+Locked v1 decisions and spec slices. Living stack/module facts belong in `docs/specs/architecture.md`. Feature work is split into the spec slices listed below; each slice gets its own `docs/specs/features/<slug>.md` and is implemented with `releasing-a-spec`.
 
 ## Problem
 
@@ -101,7 +99,7 @@ The JSON Schema stays `format: "eventmodel"`, `schemaVersion: 1`, compatible wit
 
 Each slice is its own feature spec, branch, and PR. Do not implement a later slice on an earlier branch.
 
-1. **hosted-app** — Worker, static assets, `event-model.lonnylot.com`, CI. A reachable login (or placeholder) page.
+1. **hosted-app** — Worker, static assets, `event-model.lonnylot.com`, CI. A reachable login (or placeholder) page. **released**
 2. **magic-link-auth** — People, sessions, magic links, unknown-email notify, `SITE_ADMIN_EMAIL` bootstrap, rate limits.
 3. **teams-and-invites** — Site admin creates teams, invites emails, membership, team picker / team model list.
 4. **model-persistence** — Create / list / open / import / export / versioned Save. R2 current JSON + D1 metadata. Thin open/save UI is enough; the full canvas is the next slices.
@@ -110,7 +108,7 @@ Each slice is its own feature spec, branch, and PR. Do not implement a later sli
 7. **editor-connections** — Port drag, legal edges, snap-back, refusal reason.
 8. **editor-chrome** — Undo, zoom/pan, move slices and blocks, remaining keyboard shortcuts, dirty/Save/Export in the web shell.
 
-Slice 1 is the first implementation plan after this design is approved.
+Next slice: **magic-link-auth** via `releasing-a-spec`.
 
 ## Architecture sketch
 
@@ -127,4 +125,4 @@ Custom domain route: `event-model.lonnylot.com` on zone `lonnylot.com` (same Clo
 
 ## Open questions
 
-None that block slice 1. Feature specs will pin copy, exact API paths, and UI labels when those slices are written.
+None that block magic-link-auth. Feature specs pin copy, exact API paths, and UI labels when those slices are written.
