@@ -102,4 +102,35 @@ describe("create model", () => {
     );
     expect(response.status).toBe(404);
   });
+  it("POST `/api/teams/{id}/models` as a member returns content-type `application/json; charset=utf-8`", async () => {
+    const { env } = await memberEnv();
+    await handleRequest(
+      new Request("https://event-model.lonnylot.com/api/teams", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          Cookie: "session=sess-admin",
+        },
+        body: JSON.stringify({ name: "Library" }),
+      }),
+      env,
+    );
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/api/teams/team-1/models",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            Cookie: "session=sess-admin",
+          },
+          body: JSON.stringify({}),
+        },
+      ),
+      env,
+    );
+    expect(response.headers.get("content-type")).toBe(
+      "application/json; charset=utf-8",
+    );
+  });
 });

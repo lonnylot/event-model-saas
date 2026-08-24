@@ -128,7 +128,10 @@ export async function handleRequest(
     }
     const result = await createModel(env.auth, person.id, modelsMatch[1]);
     if (result.status === 201) {
-      return new Response(JSON.stringify({ ok: true }), { status: 201 });
+      return new Response(JSON.stringify({ ok: true }), {
+        status: 201,
+        headers: { "content-type": "application/json; charset=utf-8" },
+      });
     }
     return jsonNotFound();
   }
