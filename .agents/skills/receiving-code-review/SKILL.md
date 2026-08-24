@@ -16,7 +16,7 @@ This skill is for the **implementer**. The reviewer is `.agents/agents/spec-revi
 1. Read every comment before changing code.
 2. Restate each blocking item, or ask if it is unclear.
 3. Check the spec, `CONTEXT.md`, and the code.
-4. If it is right: `tdd-loop` + one `logical-commits` commit + push. A reply that names the grouping and does not split independently revertible ACs has not addressed a `logical-commits` thread.
+4. If it is right: `tdd-loop` + one `logical-commits` commit + push. A reply that names the grouping and does not split independently revertible ACs has not addressed a `logical-commits` thread. A reply that refuses to rebase tests-after because folding into a later AC would group two criteria has not addressed the thread — land the production+test slice *before* the dependent AC (`logical-commits`).
 5. If it is wrong: reply on the **thread** with spec/code evidence. Do not silently skip it.
 6. If it conflicts with a user decision or a locked spec: stop and ask the user.
 

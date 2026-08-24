@@ -4,8 +4,9 @@ description: >
   Use when a spec criterion goes green, when finishing a slice, before
   opening or updating a pull request, when deciding whether to commit,
   when grouping by screen, when independently revertible ACs share a
-  commit, when a spec-only commit lists every AC, or when a dedicated
-  test or Playwright flow would land after its production.
+  commit, when a spec-only commit lists every AC, when production
+  landed as a dependency of another AC, or when a dedicated test or
+  Playwright flow would land after its production.
 ---
 
 # Logical commits
@@ -37,6 +38,8 @@ One commit is one finished thought: one spec criterion (or one review/CI fix) wi
 
 Prefer conventional prefixes (`feat`, `fix`, `docs`, `test`, `refactor`, `chore`). The subject (and body if needed) states what changed. Specs do not keep a Changelog section.
 
+When a production hunk must exist so a later AC can run (Worker `name` so assets serve), that hunk is its own criterion: spec checkbox + test + production in one commit **before** the dependent AC. Do not wait and add the test later. If tests-after already landed, rebase so the test moves into that production commit; a follow-up commit on top cannot un-do tests-after. A lock that exists in the tree is not a logical slice.
+
 ## Rationalizations
 
 | Excuse | Reality |
@@ -49,4 +52,4 @@ Prefer conventional prefixes (`feat`, `fix`, `docs`, `test`, `refactor`, `chore`
 
 ## Red flags
 
-Empty or "WIP" messages on a PR. Default-branch commits for a feature. Code committed without the spec hunk that describes it. Dedicated tests in a follow-up commit after the production that needed them. One commit that ships several independent ACs together. A commit subject that names two new ACs with "and". Spec-only then one feat. Grouped by screen.
+Empty or "WIP" messages on a PR. Default-branch commits for a feature. Code committed without the spec hunk that describes it. Dedicated tests in a follow-up commit after the production that needed them. Production that landed early as a dependency, then a later test-only commit for that criterion. One commit that ships several independent ACs together. A commit subject that names two new ACs with "and". Spec-only then one feat. Grouped by screen.

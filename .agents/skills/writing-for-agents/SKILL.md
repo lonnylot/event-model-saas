@@ -21,16 +21,20 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Domain terms, CONTEXT.md, ADR | `domain-modeling` |
 | Test layers or seams | `testing`, `tdd-loop` |
 | Commit / branch / PR / CI | `logical-commits`, `github-ci-loop` |
+| YAML event prefix / `pull_request_target` | `testing`, `github-ci-loop` |
 | Review or release gate | `spec-review-loop`, `releasing-a-spec`, `spec-reviewer` |
 | After merge, learn from review | `post-merge-improvement`, `post-merge-improver` |
 | Two or more feat/ PRs at once | `parallel-feature-work`, `using-git-worktrees`, `releasing-a-spec` |
 | Playwright / flow CI | `playwright-e2e`, `testing` |
+| Accessible name **is** X / Playwright substring | `testing`, `playwright-e2e` |
 | Module / seam / adapter vocabulary | `codebase-design` |
+| Packed "and" AC / independent env/branch cases | `testing`, `keeping-specs-current` |
 | Assumption vs acceptance criterion | `keeping-specs-current` |
 | Restated AC with leftover sections / leftover test title / leftover Restates | `keeping-specs-current` |
 | Domain terms line without a `CONTEXT.md` entry | `keeping-specs-current`, `domain-modeling` |
 | Independently revertible ACs / grouping by screen / spec-only | `logical-commits` |
-| Extra visible chrome without an AC | `keeping-specs-current` |
+| Tests-after / production that landed as a dependency | `logical-commits` |
+| Extra visible chrome / document title / extra host observability without an AC | `keeping-specs-current` |
 | How agents write docs | this skill |
 | Product architecture / UI kit / telemetry / domain rules | the product skill that owns that fact — add a row here when you add that skill |
 
