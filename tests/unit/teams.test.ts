@@ -465,4 +465,27 @@ describe("create team", () => {
     const person = await auth.store.getPersonByEmail("teammate@example.com");
     expect(await auth.store.isMember("team-1", person!.id)).toBe(true);
   });
+
+  it("POST `/api/teams/{id}/invites` sends a magic-link mail to that email", async () => {
+    const sent: { to: string; subject: string }[] = [];
+    const { env, auth } = await adminEnv();
+    auth.mail = {
+      async send(message) {
+        sent.push(message);
+      },
+    };
+    await handleRequest(createTeamPost(), env);
+    await handleRequest(
+      new Request("https://event-model.lonnylot.com/api/teams/team-1/invites", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          Cookie: "session=sess-admin",
+        },
+        body: JSON.stringify({ email: "teammate@example.com" }),
+      }),
+      env,
+    );
+    expect(sent.some((m) => m.to === "teammate@example.com")).toBe(true);
+  });
 });

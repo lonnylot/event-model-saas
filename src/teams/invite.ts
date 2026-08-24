@@ -27,5 +27,19 @@ export async function inviteToTeam(
     await runtime.store.insertPerson(person);
   }
   await runtime.store.addMembership(teamId, person.id);
-  return { status: 201, sent: [] };
+  const token = runtime.randomId();
+  await runtime.store.insertMagicLink({
+    token,
+    personId: person.id,
+    expiresAt: runtime.now() + LINK_TTL_MS,
+    usedAt: null,
+  });
+  const mail: MailMessage = {
+    to: email,
+    from: runtime.authFrom,
+    subject: INVITE_SUBJECT,
+    text: `Sign in: ${origin}/api/auth/consume?token=${token}`,
+  };
+  await runtime.mail.send(mail);
+  return { status: 201, sent: [mail] };
 }
