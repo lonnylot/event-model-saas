@@ -55,8 +55,8 @@ Load the matching skill **before** the work. Do not re-derive the procedure from
 | `keeping-specs-current` | Any behavior change; suspected spec drift; leftover sections after restating an AC; packed "and" AC bullets; extra `<title>` or host config |
 | `writing-for-agents` | Editing AGENTS.md, skills, or agents; spec changed a procedure |
 | `domain-modeling` | New or conflicting domain term; CONTEXT.md; ADR |
-| `codebase-design` | Module shape, seam, adapter, depth |
-| `testing` | Test placement, seams, mapping criteria, weaker-reading fixtures, packed "and" |
+| `codebase-design` | Module shape, seam, adapter, depth; architecture adapter constructed only under a test flag |
+| `testing` | Test placement, seams, mapping criteria, weaker-reading fixtures, packed "and"; architecture adapter constructed only under a test flag |
 | `tdd-loop` | Implementing or fixing; before production code |
 | `logical-commits` | A criterion is green; deciding whether / what to commit; tests-after |
 | `github-ci-loop` | Starting work; branching; opening a PR; waiting on CI; workflow `on:` events |

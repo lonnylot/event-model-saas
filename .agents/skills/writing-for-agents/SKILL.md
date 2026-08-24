@@ -29,6 +29,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Playwright / flow CI | `playwright-e2e`, `testing` |
 | Accessible name **is** X / Playwright substring | `testing`, `playwright-e2e` |
 | Module / seam / adapter vocabulary | `codebase-design` |
+| Architecture adapter constructed only under a test flag | `testing`, `codebase-design`, `keeping-specs-current` |
 | Packed "and" AC / independent env/branch cases | `testing`, `keeping-specs-current` |
 | Assumption vs acceptance criterion | `keeping-specs-current` |
 | Restated AC with leftover sections / leftover test title / leftover Restates | `keeping-specs-current` |
