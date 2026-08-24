@@ -101,14 +101,14 @@ Each slice is its own feature spec, branch, and PR. Do not implement a later sli
 
 1. **hosted-app** — Worker, static assets, `event-model.lonnylot.com`, CI. A reachable login (or placeholder) page. **released**
 2. **magic-link-auth** — People, sessions, magic links, unknown-email notify, `SITE_ADMIN_EMAIL` bootstrap, rate limits. **released**
-3. **teams-and-invites** — Site admin creates teams, invites emails, membership, team picker / empty team page.
+3. **teams-and-invites** — Site admin creates teams, invites emails, membership, team picker / empty team page. **released**
 4. **model-persistence** — Create / list / open / import / export / versioned Save. R2 current JSON + D1 metadata. Thin open/save UI is enough; the full canvas is the next slices.
 5. **editor-shell** — Sidebar \| canvas \| inspector, empty timeline, New Slice.
 6. **editor-blocks** — Add/edit/delete actors, commands, events, read models, automations, fields.
 7. **editor-connections** — Port drag, legal edges, snap-back, refusal reason.
 8. **editor-chrome** — Undo, zoom/pan, move slices and blocks, remaining keyboard shortcuts, dirty/Save/Export in the web shell.
 
-Next slice: **teams-and-invites** via `releasing-a-spec`.
+Next slice: **model-persistence** via `releasing-a-spec`.
 
 ## Architecture sketch
 

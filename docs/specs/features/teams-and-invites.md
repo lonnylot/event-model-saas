@@ -1,6 +1,6 @@
 # Teams and invites
 
-Status: validated
+Status: released
 
 ## Problem
 
