@@ -11,7 +11,7 @@ The host is public and invite-only, but nobody can sign in. This slice lets a Pe
 - [ ] GET `/` shows a textbox whose accessible name is `Email`
 - [ ] GET `/` shows a button whose accessible name is `Email me a link`
 - [x] POST `/api/auth/request-link` returns status 200, content-type `application/json; charset=utf-8`, and body `{"ok":true,"message":"If you have access, check your inbox."}`
-- [ ] POST `/api/auth/request-link` with `SITE_ADMIN_EMAIL` when no Person exists creates the site admin Person
+- [x] POST `/api/auth/request-link` with `SITE_ADMIN_EMAIL` when no Person exists creates the site admin Person
 - [ ] POST `/api/auth/request-link` with `SITE_ADMIN_EMAIL` sends a magic-link mail to that address
 - [ ] POST `/api/auth/request-link` with an existing Person email sends a magic-link mail to that address
 - [ ] POST `/api/auth/request-link` with an unknown email does not send a magic-link mail to that address
