@@ -46,18 +46,28 @@ function requestLinkPost(email: string, ip = "203.0.113.1") {
 }
 
 describe("request-link", () => {
-  it("POST `/api/auth/request-link` returns status 200, content-type `application/json; charset=utf-8`, and body `{\"ok\":true,\"message\":\"If you have access, check your inbox.\"}`", async () => {
+  it("POST `/api/auth/request-link` returns status 200", async () => {
     const response = await handleRequest(
-      new Request("https://event-model.lonnylot.com/api/auth/request-link", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ email: "lonny@lonnylot.com" }),
-      }),
+      requestLinkPost("lonny@lonnylot.com"),
       envWithAssets(),
     );
     expect(response.status).toBe(200);
+  });
+
+  it("POST `/api/auth/request-link` returns content-type `application/json; charset=utf-8`", async () => {
+    const response = await handleRequest(
+      requestLinkPost("lonny@lonnylot.com"),
+      envWithAssets(),
+    );
     expect(response.headers.get("content-type")).toBe(
       "application/json; charset=utf-8",
+    );
+  });
+
+  it("POST `/api/auth/request-link` returns body `{\"ok\":true,\"message\":\"If you have access, check your inbox.\"}`", async () => {
+    const response = await handleRequest(
+      requestLinkPost("lonny@lonnylot.com"),
+      envWithAssets(),
     );
     expect(await response.text()).toBe(
       '{"ok":true,"message":"If you have access, check your inbox."}',

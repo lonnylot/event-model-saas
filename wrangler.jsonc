@@ -12,6 +12,15 @@
     "SITE_ADMIN_EMAIL": "lonny@lonnylot.com",
     "AUTH_FROM": "auth@event-model.lonnylot.com"
   },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "event-model-saas",
+      "database_id": "1ff26c5c-2c66-41e6-893b-92d610d021f1",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "send_email": [{ "name": "EMAIL" }],
   "routes": [
     { "pattern": "event-model.lonnylot.com", "custom_domain": true }
   ],

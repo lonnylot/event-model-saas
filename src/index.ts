@@ -1,4 +1,5 @@
 import { consumeLink } from "./auth/consume-link";
+import { createD1Store } from "./auth/d1-store";
 import { createMemoryStore } from "./auth/memory-store";
 import { requestLink, REQUEST_LINK_OK_BODY } from "./auth/request-link";
 import type { MailMessage } from "./auth/types";
@@ -114,6 +115,15 @@ export async function handleRequest(
 type WorkerEnv = AppEnv & {
   SITE_ADMIN_EMAIL?: string;
   AUTH_FROM?: string;
+  DB?: D1Database;
+  EMAIL?: {
+    send: (message: {
+      to: string;
+      from: { email: string; name?: string };
+      subject: string;
+      text: string;
+    }) => Promise<unknown>;
+  };
 };
 
 function testAuthRuntime(env: WorkerEnv): AuthRuntime {
@@ -140,10 +150,34 @@ function testAuthRuntime(env: WorkerEnv): AuthRuntime {
   return g.__emAuth;
 }
 
+function productionAuthRuntime(env: WorkerEnv): AuthRuntime | undefined {
+  if (!env.DB) return undefined;
+  return {
+    store: createD1Store(env.DB),
+    mail: {
+      async send(message) {
+        if (!env.EMAIL) return;
+        await env.EMAIL.send({
+          to: message.to,
+          from: { email: message.from, name: "Event Model" },
+          subject: message.subject,
+          text: message.text,
+        });
+      },
+    },
+    now: () => Date.now(),
+    randomId: () => crypto.randomUUID(),
+    siteAdminEmail: env.SITE_ADMIN_EMAIL ?? "lonny@lonnylot.com",
+    authFrom: env.AUTH_FROM ?? "auth@event-model.lonnylot.com",
+  };
+}
+
 export default {
   fetch(request: Request, env: WorkerEnv): Promise<Response> {
     const auth =
-      env.TEST_MAIL === "1" ? testAuthRuntime(env) : env.auth;
+      env.TEST_MAIL === "1"
+        ? testAuthRuntime(env)
+        : (env.auth ?? productionAuthRuntime(env));
     return handleRequest(request, { ...env, auth });
   },
 };
