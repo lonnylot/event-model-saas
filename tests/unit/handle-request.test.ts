@@ -21,4 +21,18 @@ describe("handleRequest", () => {
     expect(await response.text()).toBe('{"error":"not found"}');
     expect(assetsFetch).not.toHaveBeenCalled();
   });
+
+  it("GET `/api/anything` returns status 404, content-type `application/json; charset=utf-8`, and body `{\"error\":\"not found\"}`", async () => {
+    const assetsFetch = vi.fn();
+    const response = await handleRequest(
+      new Request("https://event-model.lonnylot.com/api/anything"),
+      envWithAssets(assetsFetch),
+    );
+    expect(response.status).toBe(404);
+    expect(response.headers.get("content-type")).toBe(
+      "application/json; charset=utf-8",
+    );
+    expect(await response.text()).toBe('{"error":"not found"}');
+    expect(assetsFetch).not.toHaveBeenCalled();
+  });
 });

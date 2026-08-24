@@ -16,7 +16,7 @@ export async function handleRequest(
   env: AssetEnv,
 ): Promise<Response> {
   const path = new URL(request.url).pathname;
-  if (path === "/api") {
+  if (path === "/api" || path.startsWith("/api/")) {
     return jsonNotFound();
   }
   return env.ASSETS.fetch(request);
