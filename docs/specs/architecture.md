@@ -18,7 +18,7 @@ A Cloudflare Worker serves the SPA and `/api` for Event Model SaaS at `event-mod
 
 | Piece | Choice |
 |-------|--------|
-| Compute | One Worker (`event-model-saas`), `nodejs_compat`, static assets + `run_worker_first` for `/api`, `/api/*`, and `/app` |
+| Compute | One Worker (`event-model-saas`), `nodejs_compat`, static assets + `run_worker_first` for `/api`, `/api/*`, `/app`, and `/app/*` |
 | Domain | Custom domain `event-model.lonnylot.com` on zone `lonnylot.com` |
 | Metadata | D1 |
 | Document body | R2 object `models/{id}.eventmodel` (current JSON only) |

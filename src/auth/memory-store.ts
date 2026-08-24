@@ -3,6 +3,7 @@ import type {
   MagicLink,
   Person,
   SessionRow,
+  Team,
 } from "./types";
 
 export function createMemoryStore(): AuthStore {
@@ -10,6 +11,8 @@ export function createMemoryStore(): AuthStore {
   const links: MagicLink[] = [];
   const sessions: SessionRow[] = [];
   const attempts: { key: string; at: number }[] = [];
+  const teams: Team[] = [];
+  const memberships: { teamId: string; personId: string }[] = [];
 
   return {
     async getPersonByEmail(email) {
@@ -47,6 +50,30 @@ export function createMemoryStore(): AuthStore {
     },
     async insertAttempt(key, at) {
       attempts.push({ key, at });
+    },
+    async insertTeam(team) {
+      teams.push(team);
+    },
+    async getTeam(id) {
+      return teams.find((t) => t.id === id) ?? null;
+    },
+    async listTeamsForPerson(personId) {
+      const ids = memberships
+        .filter((m) => m.personId === personId)
+        .map((m) => m.teamId);
+      return teams.filter((t) => ids.includes(t.id));
+    },
+    async addMembership(teamId, personId) {
+      if (
+        !memberships.some((m) => m.teamId === teamId && m.personId === personId)
+      ) {
+        memberships.push({ teamId, personId });
+      }
+    },
+    async isMember(teamId, personId) {
+      return memberships.some(
+        (m) => m.teamId === teamId && m.personId === personId,
+      );
     },
   };
 }

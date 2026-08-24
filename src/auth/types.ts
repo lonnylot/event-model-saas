@@ -17,6 +17,11 @@ export type SessionRow = {
   expiresAt: number;
 };
 
+export type Team = {
+  id: string;
+  name: string;
+};
+
 export type MailMessage = {
   to: string;
   from: string;
@@ -36,6 +41,11 @@ export type AuthStore = {
   deleteSession(id: string): Promise<void>;
   countAttempts(key: string, since: number): Promise<number>;
   insertAttempt(key: string, at: number): Promise<void>;
+  insertTeam(team: Team): Promise<void>;
+  getTeam(id: string): Promise<Team | null>;
+  listTeamsForPerson(personId: string): Promise<Team[]>;
+  addMembership(teamId: string, personId: string): Promise<void>;
+  isMember(teamId: string, personId: string): Promise<boolean>;
 };
 
 export type MailPort = {

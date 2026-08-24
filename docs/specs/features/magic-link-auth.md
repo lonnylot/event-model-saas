@@ -32,8 +32,8 @@ The host is public and invite-only, but nobody can sign in. This slice lets a Pe
 - [x] GET `/api/auth/consume` with a used magic-link token does not set a Session cookie
 - [x] GET `/app` without a Session returns status 303
 - [x] GET `/app` without a Session sets `Location` to `/`
-- [x] GET `/app` with a Session shows the Person's email
-- [x] GET `/app` with a Session shows a button whose accessible name is `Sign out`
+- [x] GET `/app` with a Session that is not redirected shows the Person's email
+- [x] GET `/app` with a Session that is not redirected shows a button whose accessible name is `Sign out`
 - [x] POST `/api/auth/sign-out` with a Session returns status 303
 - [x] POST `/api/auth/sign-out` with a Session sets `Location` to `/`
 - [x] POST `/api/auth/sign-out` clears the Session cookie
@@ -64,7 +64,7 @@ Person, Site admin, Session, Magic link
 
 ## Out of scope
 
-Teams, Invites, Event Model persistence, editor canvas. Signed-in `/app` shows the Person's email and Sign out only.
+Event Model persistence, editor canvas. Signed-in `/app` that is not redirected still shows the Person's email and Sign out. Team create, Invite, picker, and `/app/teams/{id}` are owned by teams-and-invites.
 
 ## Restates
 

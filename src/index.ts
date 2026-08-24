@@ -10,6 +10,14 @@ import {
   readSessionId,
 } from "./auth/session";
 import type { AuthRuntime } from "./auth/types";
+import { createTeam } from "./teams/create-team";
+import { inviteToTeam } from "./teams/invite";
+import {
+  adminTeamsHtml,
+  noTeamsAdminHtml,
+  pickerHtml,
+  teamPageHtml,
+} from "./teams/pages";
 
 export type AssetEnv = {
   ASSETS: { fetch: (request: Request) => Promise<Response> };
@@ -74,6 +82,73 @@ export async function handleRequest(
     const last = g.__emSent?.at(-1) ?? null;
     return jsonOk(JSON.stringify({ text: last?.text ?? "" }));
   }
+  if (path === "/api/teams" && request.method === "POST") {
+    if (!env.auth) return jsonNotFound();
+    const person = await personFromRequest(env.auth, request);
+    if (!person) {
+      return new Response(null, {
+        status: 303,
+        headers: { Location: "/" },
+      });
+    }
+    let name = "";
+    try {
+      const body = (await request.json()) as { name?: string };
+      name = typeof body.name === "string" ? body.name : "";
+    } catch {
+      name = "";
+    }
+    const result = await createTeam(
+      env.auth,
+      person.id,
+      person.isSiteAdmin,
+      name,
+    );
+    if (result.status === 201 && result.team) {
+      return new Response(JSON.stringify({ ok: true, id: result.team.id }), {
+        status: 201,
+        headers: { "content-type": "application/json; charset=utf-8" },
+      });
+    }
+    return new Response(JSON.stringify({ error: "forbidden" }), {
+      status: result.status,
+      headers: { "content-type": "application/json; charset=utf-8" },
+    });
+  }
+  const inviteMatch = path.match(/^\/api\/teams\/([^/]+)\/invites$/);
+  if (inviteMatch && request.method === "POST") {
+    if (!env.auth) return jsonNotFound();
+    const person = await personFromRequest(env.auth, request);
+    if (!person) {
+      return new Response(null, {
+        status: 303,
+        headers: { Location: "/" },
+      });
+    }
+    let email = "";
+    try {
+      const body = (await request.json()) as { email?: string };
+      email = typeof body.email === "string" ? body.email : "";
+    } catch {
+      email = "";
+    }
+    const result = await inviteToTeam(
+      env.auth,
+      person.isSiteAdmin,
+      inviteMatch[1],
+      email,
+      request.headers.get("Origin") ?? url.origin,
+    );
+    return new Response(
+      JSON.stringify(
+        result.status === 201 ? { ok: true } : { error: "forbidden" },
+      ),
+      {
+        status: result.status,
+        headers: { "content-type": "application/json; charset=utf-8" },
+      },
+    );
+  }
   if (path === "/api/auth/sign-out" && request.method === "POST") {
     if (env.auth) {
       const sid = readSessionId(request.headers.get("Cookie"));
@@ -90,7 +165,7 @@ export async function handleRequest(
   if (path === "/api" || path.startsWith("/api/")) {
     return jsonNotFound();
   }
-  if (path === "/app") {
+  if (path === "/app" || path.startsWith("/app/")) {
     if (!env.auth) {
       return new Response(null, {
         status: 303,
@@ -104,10 +179,62 @@ export async function handleRequest(
         headers: { Location: "/" },
       });
     }
-    return new Response(appPageHtml(person.email), {
-      status: 200,
-      headers: { "content-type": "text/html; charset=utf-8" },
-    });
+    const teams = await env.auth.store.listTeamsForPerson(person.id);
+    if (path === "/app/admin/teams") {
+      if (!person.isSiteAdmin) {
+        return new Response(null, {
+          status: 303,
+          headers: { Location: "/app" },
+        });
+      }
+      return new Response(adminTeamsHtml(person.email, teams), {
+        status: 200,
+        headers: { "content-type": "text/html; charset=utf-8" },
+      });
+    }
+    const teamPage = path.match(/^\/app\/teams\/([^/]+)$/);
+    if (teamPage) {
+      const member = await env.auth.store.isMember(teamPage[1], person.id);
+      if (!member) {
+        return jsonNotFound();
+      }
+      const team = await env.auth.store.getTeam(teamPage[1]);
+      if (!team) return jsonNotFound();
+      return new Response(
+        teamPageHtml(person.email, person.isSiteAdmin, team),
+        {
+          status: 200,
+          headers: { "content-type": "text/html; charset=utf-8" },
+        },
+      );
+    }
+    if (path === "/app") {
+      if (teams.length === 1) {
+        return new Response(null, {
+          status: 303,
+          headers: { Location: `/app/teams/${teams[0].id}` },
+        });
+      }
+      if (teams.length > 1) {
+        return new Response(
+          pickerHtml(person.email, person.isSiteAdmin, teams),
+          {
+            status: 200,
+            headers: { "content-type": "text/html; charset=utf-8" },
+          },
+        );
+      }
+      if (person.isSiteAdmin) {
+        return new Response(noTeamsAdminHtml(person.email), {
+          status: 200,
+          headers: { "content-type": "text/html; charset=utf-8" },
+        });
+      }
+      return new Response(appPageHtml(person.email), {
+        status: 200,
+        headers: { "content-type": "text/html; charset=utf-8" },
+      });
+    }
   }
   return env.ASSETS.fetch(request);
 }
