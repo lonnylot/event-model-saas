@@ -43,7 +43,7 @@ Status on every spec: `draft` → `validated` → `released`.
 
    Restating or deleting an AC is unfinished until UI, Events, Assumptions, Used by, every spec that AC restates, and the `it` / `test()` titles that quoted the old words no longer describe the deleted behavior. Search `docs/specs/` and `it("` / `test("` titles for the deleted words. Add every spec hit to Restates and rewrite the leftover bullets. Rename leftover test titles (`testing`). A leftover title that now includes the restated words must prove those words or drop them (`testing`). Listing a path in Restates without rewriting that file is unfinished. Completion of that search: grep for the deleted phrase is empty except the restated sentences; every Restates path now uses the new words; no leftover `it` / `test()` still quotes the old words.
 
-   Deleting a visible control is unfinished until the action no longer accepts that POST, or Out of scope names the leftover branch. Restate an exclusive script-name bound as the constructor file (and the scripts allowed to run it) so both specs still hold. A shippable operator command or npm script that changes persisted state is an acceptance criterion — Assumptions are environment facts, not a place to park the command. Completion: the spec describes the intended behavior, including clash cases; leftover sections of the same file agree; status is at least `draft`.
+   Deleting a visible control is unfinished until the action no longer accepts that POST, or Out of scope names the leftover branch. Restate an exclusive script-name bound as the constructor file (and the scripts allowed to run it) so both specs still hold. A shippable operator command or npm script that changes persisted state is an acceptance criterion — Assumptions are environment facts, not a place to park the command. A script AC that "includes the tokens" rather than **is** the exact command is a weaker criterion (`playwright-e2e`, `testing`). Completion: the spec describes the intended behavior, including clash cases; leftover sections of the same file agree; status is at least `draft`.
 
 4. **Implement via `tdd-loop`.** Do not start production code until step 3 is done and, for ship work, `releasing-a-spec` has marked the spec `validated`.
 
@@ -82,6 +82,7 @@ Status on every spec: `draft` → `validated` → `released`.
 - A Domain terms line names a word `CONTEXT.md` does not define
 - Catalog has no row for a new feature file
 - A new operator CLI or npm script lives only under Assumptions
+- A script AC "includes the tokens" instead of **is** the exact command
 - Exclusive "only script X" wording still stands after a second script calls the same constructor
 - An AC is restated but UI / Events / Assumptions still describe the deleted behavior
 - Restates omits a released spec that still describes the deleted behavior
