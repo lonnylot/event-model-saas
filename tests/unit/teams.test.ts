@@ -338,4 +338,15 @@ describe("create team", () => {
     );
     expect(await response.text()).toContain("lonny@lonnylot.com");
   });
+
+  it("GET `/app/admin/teams` as site admin shows a button whose accessible name is `Sign out`", async () => {
+    const { env } = await adminEnv();
+    const response = await handleRequest(
+      new Request("https://event-model.lonnylot.com/app/admin/teams", {
+        headers: { Cookie: "session=sess-admin" },
+      }),
+      env,
+    );
+    expect(await response.text()).toContain("<button type=\"submit\">Sign out</button>");
+  });
 });
