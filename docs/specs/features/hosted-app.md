@@ -17,7 +17,7 @@ Nothing is reachable at event-model.lonnylot.com. This slice puts a Worker and a
 - [x] `package.json` script `test:e2e` includes the tokens `playwright` and `test`
 - [ ] GitHub Actions workflow `.github/workflows/ci.yml` runs on `pull_request` and on `push` to `main` and has a step whose `run` is `npm test`
 - [x] `wrangler.jsonc` `name` is `event-model-saas`
-- [ ] `wrangler.jsonc` has a route `{ "pattern": "event-model.lonnylot.com", "custom_domain": true }`
+- [x] `wrangler.jsonc` has a route `{ "pattern": "event-model.lonnylot.com", "custom_domain": true }`
 - [ ] `package.json` script `deploy` is `wrangler deploy`
 
 ## Domain terms
