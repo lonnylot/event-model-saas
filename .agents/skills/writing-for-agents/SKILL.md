@@ -41,7 +41,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Assumption vs acceptance criterion | `keeping-specs-current` |
 | Restated AC with leftover sections / leftover Assumptions after Out of scope / leftover Seams after deleting a named module / leftover test title / leftover Restates | `keeping-specs-current` |
 | 303/redirect AC vs a shows bullet on the same path | `keeping-specs-current` |
-| product.md leftover locked words / later-slice Playwright `add a slice` / leftover Restates quoting old product.md Playwright / leftover Document flow schema-reject / copying a schema file instead of restating / Next slice still names a released slug / removing product.md from Restates | `keeping-specs-current` |
+| product.md leftover locked words / later-slice Playwright `add a slice` / leftover Restates quoting old product.md Playwright / leftover Document flow schema-reject / leftover Editor (Mac parity) after restating Testing highlighting / copying a schema file instead of restating / Next slice still names a released slug / removing product.md from Restates | `keeping-specs-current` |
 | Domain terms line without a `CONTEXT.md` entry | `keeping-specs-current`, `domain-modeling` |
 | Independently revertible ACs / grouping by screen / spec-only | `logical-commits` |
 | Tests-after / production that landed as a dependency / tests-only commit on top / folding tests-after into sibling production / click-path production after field tests / follow-up rewrite onto click path | `logical-commits` |
