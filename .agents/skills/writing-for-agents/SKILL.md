@@ -39,7 +39,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Packed "and" AC / independent env/branch cases | `testing`, `keeping-specs-current` |
 | Early-return 400 vs does not create / persist-then-400 | `logical-commits`, `testing` |
 | Assumption vs acceptance criterion | `keeping-specs-current` |
-| Restated AC with leftover sections / leftover Assumptions after Out of scope / leftover test title / leftover Restates | `keeping-specs-current` |
+| Restated AC with leftover sections / leftover Assumptions after Out of scope / leftover Seams after deleting a named module / leftover test title / leftover Restates | `keeping-specs-current` |
 | 303/redirect AC vs a shows bullet on the same path | `keeping-specs-current` |
 | product.md leftover locked words / later-slice Playwright `add a slice` / leftover Document flow schema-reject / copying a schema file instead of restating / Next slice still names a released slug / removing product.md from Restates | `keeping-specs-current` |
 | Domain terms line without a `CONTEXT.md` entry | `keeping-specs-current`, `domain-modeling` |
