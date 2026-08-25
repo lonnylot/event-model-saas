@@ -63,4 +63,43 @@ describe("create model", () => {
     );
     expect(response.status).toBe(201);
   });
+  it("POST `/api/teams/{id}/models` as a Person who is not a member returns status 404", async () => {
+    const { env, auth } = await memberEnv();
+    await handleRequest(
+      new Request("https://event-model.lonnylot.com/api/teams", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          Cookie: "session=sess-admin",
+        },
+        body: JSON.stringify({ name: "Library" }),
+      }),
+      env,
+    );
+    await auth.store.insertPerson({
+      id: "p-user",
+      email: "teammate@example.com",
+      isSiteAdmin: false,
+    });
+    await auth.store.insertSession({
+      id: "sess-user",
+      personId: "p-user",
+      expiresAt: auth.now() + 60_000,
+    });
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/api/teams/team-1/models",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            Cookie: "session=sess-user",
+          },
+          body: JSON.stringify({}),
+        },
+      ),
+      env,
+    );
+    expect(response.status).toBe(404);
+  });
 });

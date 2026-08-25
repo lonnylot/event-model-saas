@@ -5,5 +5,8 @@ export async function createModel(
   personId: string,
   teamId: string,
 ): Promise<{ status: number }> {
+  if (!(await runtime.store.isMember(teamId, personId))) {
+    return { status: 404 };
+  }
   return { status: 201 };
 }

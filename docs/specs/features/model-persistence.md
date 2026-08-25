@@ -10,7 +10,7 @@ A Team has no Event Models. Members cannot create, open, import, export, or Save
 
 - [x] POST `/api/teams/{id}/models` as a member returns status 201
 - [ ] POST `/api/teams/{id}/models` as a member returns content-type `application/json; charset=utf-8`
-- [ ] POST `/api/teams/{id}/models` as a Person who is not a member returns status 404
+- [x] POST `/api/teams/{id}/models` as a Person who is not a member returns status 404
 - [ ] POST `/api/teams/{id}/models` as a member creates an Event Model whose title is `Untitled`
 - [ ] POST `/api/teams/{id}/models` as a member creates an Event Model whose version is `1`
 - [ ] POST `/api/teams/{id}/models` as a member writes R2 object `models/{id}.eventmodel`
