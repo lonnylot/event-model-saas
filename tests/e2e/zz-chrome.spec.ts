@@ -197,3 +197,20 @@ test("After clicking `New Slice` then `Add Actor` on that page, clicking the Tim
   ).toBeVisible();
 });
 
+test("After clicking `New Slice` then `Add Actor` on that page, clicking the Timeline `Actor` listitem shows that `Name` textbox with the value `Actor`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "Add Actor", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Actor", exact: true })
+    .click();
+  await expect(
+    page
+      .getByRole("region", { name: "Inspector", exact: true })
+      .getByRole("textbox", { name: "Name", exact: true }),
+  ).toHaveValue("Actor");
+});
+
