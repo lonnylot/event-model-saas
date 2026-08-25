@@ -119,6 +119,21 @@ test("Filling the Inspector `Name` textbox with `Checkout` after selecting `New 
   expect(JSON.parse(json ?? "{}").slices[0].title).toBe("Checkout");
 });
 
+test("Filling the Inspector `Name` textbox with `Checkout` after selecting `New Slice` shows a listitem whose accessible name is `Checkout`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("listitem", { name: "New Slice", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Name", exact: true })
+    .fill("Checkout");
+  await expect(
+    page.getByRole("listitem", { name: "Checkout", exact: true }),
+  ).toBeVisible();
+});
+
 test("After a member creates a model, opens it, clicks `New Slice`, clicks the `New Slice` listitem, fills `Name` with `Checkout`, and Saves, a reload of that page shows a listitem whose accessible name is `Checkout`", async ({
   page,
 }) => {
