@@ -169,6 +169,15 @@ export function bindEditor(root) {
       button.addEventListener("click", () => onAddAutomationClick(root));
     }
   });
+  const slicesList = root.querySelector("ul");
+  slicesList?.addEventListener("click", (event) => {
+    const item = event.target?.closest?.("li");
+    if (!item || !slicesList.contains(item)) return;
+    const inspector = root.querySelector('[aria-label="Inspector"]');
+    if (inspector && !inspector.querySelector("input")) {
+      inspector.insertAdjacentHTML("beforeend", "<label>Name <input /></label>");
+    }
+  });
   let sourcePort = null;
   root.addEventListener("mousedown", (event) => {
     const port = event.target?.closest?.("[data-id]");

@@ -20,5 +20,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Editor shell | [features/editor-shell.md](./features/editor-shell.md) | released |
 | Blocks | [features/blocks.md](./features/blocks.md) | released |
 | Connections | [features/connections.md](./features/connections.md) | released |
+| Chrome | [features/chrome.md](./features/chrome.md) | validated |
 
 Status: `draft` → `validated` → `released`.
