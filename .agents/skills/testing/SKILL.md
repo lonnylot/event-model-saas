@@ -7,7 +7,8 @@ description: >
   copy pinned in tests but not the spec, splitting an "and" (any case) test name or
   AC bullet, status vs content-type vs body, independent env/branch cases, proving a screen/shows
   criterion (not a source grep), leftover test filename after a
-  deleted SUT, leftover test title after a restated AC, host
+  deleted SUT, leftover test title after a restated AC, empty stub it
+  for a checked AC, host
   `run_worker_first` wiring, an architecture adapter constructed only
   under a test flag, injected env.documents, construction parked in Assumptions,
   success status or 409 UI that never asserts a stored
@@ -63,9 +64,10 @@ A criterion that names a screen, "shows", or "lists" is proven at the app or flo
    | Host path (`run_worker_first`, assets routing) | Handler unit test that stays green if that host wiring is deleted |
    | Architecture-named production adapter (D1, Email, R2) | Injected `env.auth` / `env.documents` / handler unit test that stays green if production `fetch` never constructs that adapter |
    | Write R2 current object / stored document body | Success status, version bump, or 409 UI that injects a memory port and never asserts the saved body (deleting `documents.put` stays green) |
+   | Checked AC / `it` named as the criterion | Empty body (no assertion); deleting production leaves the test green |
    | Architecture-named production store (D1) | Memory/fake store only; Playwright on `TEST_MAIL=1`; SQL never executed; constructing `insertTeam` while `listTeamsForPerson` is never run |
 
-   When a production module is deleted, rename or delete its dedicated test file in the same change. When an AC is restated, rename the `it` / `test()` that quoted the old words. Renaming is unfinished until that leftover test's assertions fail a weaker reading of the new words, or the leftover title drops the new words. A restated "does not show X" inverts the assertion (`not.toContain`); dropping `toContain` is not the proof. Completion: deleting the feature, or swapping in the weaker algorithm, fails this test for that reason.
+   When a production module is deleted, rename or delete its dedicated test file in the same change. When an AC is restated, rename the `it` / `test()` that quoted the old words. Renaming is unfinished until that leftover test's assertions fail a weaker reading of the new words, or the leftover title drops the new words. A restated "does not show X" inverts the assertion (`not.toContain`); dropping `toContain` is not the proof. A checked AC whose `it` has no assertion is unproven — restore the assertion or uncheck the box. Completion: deleting the feature, or swapping in the weaker algorithm, fails this test for that reason.
 
 2. **Pick the layer.** A `readFileSync` of source for an import string or class name is a parse test — it stays green if the mount is deleted and the string remains. A path criterion for a hosted Worker is unproven by a unit test of the exported handler when host wiring (`run_worker_first`) can be deleted without failing that test — prove GET at the host, or lock the wiring in the same AC. An "only this route" / "no other route shows X" criterion is proven by rendering every other page so a second mount fails. Proving the named route has X, or that one former second surface is gone, is not that proof. Rendering a leaf widget in isolation does not prove a screen "shows" bullet. A FormData/parser test proves a parse criterion only. If Playwright is out of scope, render the composed markup the route mounts, or narrow the spec bullet. Completion: the test does not mount the framework to prove a pure domain function. Deleting the named UI fails a "shows" test.
 

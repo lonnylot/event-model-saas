@@ -56,8 +56,8 @@ Load the matching skill **before** the work. Do not re-derive the procedure from
 | `writing-for-agents` | Editing AGENTS.md, skills, or agents; spec changed a procedure |
 | `domain-modeling` | New or conflicting domain term; CONTEXT.md; ADR |
 | `codebase-design` | Module shape, seam, adapter, depth; architecture adapter constructed only under a test flag (R2 / `env.documents`); construction parked in Assumptions |
-| `testing` | Test placement, seams, mapping criteria, weaker-reading fixtures (unit `toContain(">X<")` for a named control); packed "and" (status vs content-type vs body); architecture adapter constructed only under a test flag (R2 / `env.documents`); construction parked in Assumptions; architecture-named store untested (each new SQL); success status that never asserts a stored R2 body |
-| `tdd-loop` | Implementing or fixing; before production code; Playwright `name: X` without exact: true; unit `toContain(">X<")` for a named control; extra `<title>` or heading |
+| `testing` | Test placement, seams, mapping criteria, weaker-reading fixtures (unit `toContain(">X<")` for a named control); packed "and" (status vs content-type vs body); architecture adapter constructed only under a test flag (R2 / `env.documents`); construction parked in Assumptions; architecture-named store untested (each new SQL); success status that never asserts a stored R2 body; empty stub `it` |
+| `tdd-loop` | Implementing or fixing; before production code; Playwright `name: X` without exact: true; unit `toContain(">X<")` for a named control; extra `<title>` or heading; empty stub `it` |
 | `logical-commits` | A criterion is green; deciding whether / what to commit; grouping by screen; independently revertible ACs; spec-only; subject with "and"; tests-after; review-thread batch |
 | `github-ci-loop` | Starting work; branching; opening a PR; waiting on CI; workflow `on:` events |
 | `spec-review-loop` | PR exists; merge/release |
