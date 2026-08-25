@@ -11,7 +11,7 @@ The editor shell has Slices, a Timeline, and Inspector, but members cannot put a
 - [x] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Add Actor`
 - [x] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Add Command`
 - [x] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Add Event`
-- [ ] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Add Read Model`
+- [x] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Add Read Model`
 - [ ] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Add Automation`
 - [ ] GET `/app/teams/{id}/models/{mid}` as a member with no Actors does not show a listitem whose accessible name is `Actor`
 - [ ] Clicking `Add Actor` on that page after `New Slice` appends an Actor whose `name` is `Actor`
