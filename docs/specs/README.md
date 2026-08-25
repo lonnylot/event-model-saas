@@ -17,5 +17,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Magic-link auth | [features/magic-link-auth.md](./features/magic-link-auth.md) | released |
 | Teams and invites | [features/teams-and-invites.md](./features/teams-and-invites.md) | released |
 | Model persistence | [features/model-persistence.md](./features/model-persistence.md) | released |
+| Editor shell | [features/editor-shell.md](./features/editor-shell.md) | validated |
 
 Status: `draft` → `validated` → `released`.

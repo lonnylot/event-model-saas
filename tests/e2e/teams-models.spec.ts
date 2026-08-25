@@ -45,7 +45,7 @@ test("After a member creates a model and a second session Saves with version `1`
     page.getByRole("button", { name: "Create model", exact: true }).click(),
   ]);
   await page.goto("/app");
-  await page.getByRole("link", { name: "Untitled", exact: true }).click();
+  await page.getByRole("link", { name: "Untitled", exact: true }).last().click();
   await expect(
     page.getByRole("heading", { name: "Untitled", exact: true }),
   ).toBeVisible();

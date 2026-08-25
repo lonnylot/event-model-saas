@@ -89,7 +89,7 @@ Event Model, Team, Person, Version, Slice
 
 ## Out of scope
 
-Editor canvas, New Slice, undo, zoom, connections, dirty indicator beyond Save/Export on the open page, document history.
+Undo, connections, inspector fields, Actors, commands, events, read models, automations, pan, keyboard shortcuts, moving Slices, Mac window chrome, document history. Editor canvas, New Slice, zoom, and the dirty indicator are [editor-shell.md](./editor-shell.md).
 
 ## Restates
 
