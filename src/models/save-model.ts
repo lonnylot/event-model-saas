@@ -17,11 +17,9 @@ export async function saveModel(
   }
   if (model.version !== version) return { status: 409 };
   if (!isValidEventModelDocument(document)) {
-    const next = model.version + 1;
     if (documents) {
       await documents.put(model.r2Key, JSON.stringify(document));
     }
-    await runtime.store.setEventModelVersion(modelId, next);
     return { status: 400 };
   }
   const next = model.version + 1;
