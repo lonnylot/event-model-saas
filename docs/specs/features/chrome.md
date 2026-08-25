@@ -10,13 +10,13 @@ The Inspector region is empty. Members can add a Slice and an Actor but cannot s
 
 - [x] After clicking `New Slice` on that page, clicking the `New Slice` listitem shows a textbox whose accessible name is `Name` in the Inspector region
 - [x] After clicking `New Slice` on that page, clicking the `New Slice` listitem shows that `Name` textbox with the value `New Slice`
-- [x] Filling the Inspector `Name` textbox with `Checkout` after selecting `New Slice` sets that Slice `title` to `Checkout`
+- [x] Filling the Inspector `Name` textbox with `Checkout` after selecting `New Slice` sets the last Slice `title` to `Checkout`
 - [x] Filling the Inspector `Name` textbox with `Checkout` after selecting `New Slice` shows a listitem whose accessible name is `Checkout`
 - [x] After clicking `New Slice`, Saving, then filling the Inspector `Name` textbox with `Checkout`, the page shows the text `Unsaved changes.`
 - [x] After a member creates a model, opens it, clicks `New Slice`, clicks the `New Slice` listitem, fills `Name` with `Checkout`, and Saves, a reload of that page shows a listitem whose accessible name is `Checkout`
 - [x] After clicking `New Slice` then `Add Actor` on that page, clicking the Timeline `Actor` listitem shows a textbox whose accessible name is `Name` in the Inspector region
 - [x] After clicking `New Slice` then `Add Actor` on that page, clicking the Timeline `Actor` listitem shows that `Name` textbox with the value `Actor`
-- [x] Filling the Inspector `Name` textbox with `Shopper` after selecting `Actor` sets that Actor `name` to `Shopper`
+- [x] Filling the Inspector `Name` textbox with `Shopper` after selecting `Actor` sets the last Actor `name` to `Shopper`
 - [x] Filling the Inspector `Name` textbox with `Shopper` after selecting `Actor` shows a Timeline listitem whose accessible name is `Shopper`
 - [x] After a member creates a model, opens it, clicks `New Slice`, clicks `Add Actor`, clicks the Timeline `Actor` listitem, fills `Name` with `Shopper`, and Saves, a reload of that page shows a listitem whose accessible name is `Shopper` in the Timeline region
 
@@ -32,13 +32,15 @@ Event Model, Slice, Actor, Team, Person, Version
 ## Assumptions
 
 - Slice selection is a click on the Slices listitem. Actor selection is a click on the Timeline Actor listitem.
+- This slice is one in-session `New Slice` and one in-session Timeline `Actor`. Name JSON mutates the last slice/actor. Multi-item binding is later.
+- Inspect is a click on a click-created listitem. GET-rendered Timeline actors omit `data-kind`; inspect after reload is later.
 - The Inspector `Name` textbox edits Slice `title` or Actor `name`. The JSON keys stay `title` and `name`.
 - Name edits are in-memory until Save. Save still uses the version check from model-persistence.
 - The `TEST_MAIL=1` memory adapter does not count login attempts, so Playwright files can share one Worker without the production 5-per-hour cap.
 
 ## Out of scope
 
-Description, fields, slice type picker, inspecting Command / Event / Read Model / Automation, inspecting a Connection, model-level Title, dashed Add on a lane, keyboard shortcuts, delete, drag blocks between Slices, undo, pan, moving Slices, Mac window chrome.
+Description, fields, slice type picker, inspecting Command / Event / Read Model / Automation, inspecting a Connection, inspect after reload, multi-item Name binding, Actor Name Unsaved changes, model-level Title, dashed Add on a lane, keyboard shortcuts, delete, drag blocks between Slices, undo, pan, moving Slices, Mac window chrome.
 
 ## Restates
 

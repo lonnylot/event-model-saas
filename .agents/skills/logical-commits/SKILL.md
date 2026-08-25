@@ -14,6 +14,8 @@ description: >
   when an early-return 400 and does not create share a commit,
   when fromKind and toKind share a commit,
   when a toKind commit already copies toKind for every target,
+  when a reload-lists AC would be green without new production,
+  when GET already hydrates that field,
   or when a dedicated test or
   Playwright flow would land after its production.
 ---
@@ -48,7 +50,7 @@ One commit is one finished thought: one spec criterion (or one review/CI fix) wi
 
 Prefer conventional prefixes (`feat`, `fix`, `docs`, `test`, `refactor`, `chore`). The subject (and body if needed) states what changed. Specs do not keep a Changelog section.
 
-When a production hunk must exist so a later AC can run (Worker `name` so assets serve), that hunk is its own criterion: spec checkbox + test + production in one commit **before** the dependent AC. Do not wait and add the test later. If tests-after already landed, rebase so the test moves into that production commit; a follow-up commit on top cannot un-do tests-after. A follow-up that rewrites those tests onto the click path is still a follow-up — rebase so each field AC's test and the production the click uses land together. Do not add another tests-only commit on top. Folding several tests-after into one sibling production commit is grouping, not one slice — each test moves into the production that made **that** bullet true. A lock that exists in the tree is not a logical slice.
+When a later checkbox's proof stays green with no new production (GET already hydrates Slice `title` as the Slices listitem from editor-shell; Actor `name` as the Timeline listitem from blocks), that checkbox is not independently revertible — fold the proof into the commit that wrote the field, or do not split the bullet. A dedicated reload commit is tests-after. When a production hunk must exist so a later AC can run (Worker `name` so assets serve), that hunk is its own criterion: spec checkbox + test + production in one commit **before** the dependent AC. Do not wait and add the test later. If tests-after already landed, rebase so the test moves into that production commit; a follow-up commit on top cannot un-do tests-after. A follow-up that rewrites those tests onto the click path is still a follow-up — rebase so each field AC's test and the production the click uses land together. Do not add another tests-only commit on top. Folding several tests-after into one sibling production commit is grouping, not one slice — each test moves into the production that made **that** bullet true. A lock that exists in the tree is not a logical slice.
 
 ## Rationalizations
 
@@ -62,8 +64,9 @@ When a production hunk must exist so a later AC can run (Worker `name` so assets
 | "One screen is one commit" | Grouping by screen is the miss. Split independently revertible ACs. |
 | "Early-return 400 is one commit" | Two checkboxes (400 vs does not create) are two commits. Persist-then-400, then skip the write. |
 | "One drag is one commit" | fromKind vs toKind are two checkboxes. Land EVENT toKind only, then READMODEL. |
+| "Reload is a second checkbox so a second commit" | GET already hydrates that field. Fold the proof or unsplit the bullet. |
 | "Spec first, then one feat" | Spec hunk lands with the first production that implements it. |
 
 ## Red flags
 
-Empty or "WIP" messages on a PR. Default-branch commits for a feature. Code committed without the spec hunk that describes it. Dedicated tests in a follow-up commit after the production that needed them. Production that landed early as a dependency, then a later test-only commit for that criterion. One commit that ships several independent ACs together. One commit that batches several review-thread fixes. A commit subject that names two new ACs or two review threads with "and". Spec-only then one feat. Grouped by screen. fromKind and toKind in one commit. A toKind commit that already copies toKind for every target, so the next toKind AC is test-only. A follow-up cannot un-do tests-after or a review-thread batch — rebase so each AC (and each thread) is one commit. A tests-only commit added after review is still tests-after. A follow-up that rewrites tests onto the click path is still a follow-up. Folding several tests-after into one production commit is still grouping.
+Empty or "WIP" messages on a PR. Default-branch commits for a feature. Code committed without the spec hunk that describes it. Dedicated tests in a follow-up commit after the production that needed them. Production that landed early as a dependency, then a later test-only commit for that criterion. One commit that ships several independent ACs together. One commit that batches several review-thread fixes. A commit subject that names two new ACs or two review threads with "and". Spec-only then one feat. Grouped by screen. fromKind and toKind in one commit. A toKind commit that already copies toKind for every target, so the next toKind AC is test-only. A tests-only reload commit when GET already hydrates that field. A follow-up cannot un-do tests-after or a review-thread batch — rebase so each AC (and each thread) is one commit. A tests-only commit added after review is still tests-after. A follow-up that rewrites tests onto the click path is still a follow-up. Folding several tests-after into one production commit is still grouping. Folding a no-unique-production proof into the commit that wrote the field is not grouping.
