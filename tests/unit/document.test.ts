@@ -183,4 +183,11 @@ describe("clicking Add Event", () => {
       "EVENT",
     );
   });
+
+  it("Clicking `Add Event` on that page after `New Slice` appends an Event whose `fields` is `[]`", () => {
+    expect(clickedEvent().fields).toEqual([]);
+    expect(
+      appendEvent(appendSlice(empty)).slices[0]?.events[0]?.fields,
+    ).toEqual([]);
+  });
 });
