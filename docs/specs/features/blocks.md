@@ -17,7 +17,7 @@ The editor shell has Slices, a Timeline, and Inspector, but members cannot put a
 - [x] Clicking `Add Actor` on that page after `New Slice` appends an Actor whose `name` is `Actor`
 - [x] Clicking `Add Command` on that page after `New Slice` appends a Command whose `title` is `Command`
 - [x] Clicking `Add Command` on that page after `New Slice` appends a Command whose `type` is `COMMAND`
-- [ ] Clicking `Add Command` on that page after `New Slice` appends a Command whose `fields` is `[]`
+- [x] Clicking `Add Command` on that page after `New Slice` appends a Command whose `fields` is `[]`
 - [ ] Clicking `Add Event` on that page after `New Slice` appends an Event whose `title` is `Event Happened`
 - [ ] Clicking `Add Event` on that page after `New Slice` appends an Event whose `type` is `EVENT`
 - [ ] Clicking `Add Event` on that page after `New Slice` appends an Event whose `fields` is `[]`

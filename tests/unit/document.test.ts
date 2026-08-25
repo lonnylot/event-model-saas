@@ -137,4 +137,11 @@ describe("clicking Add Command", () => {
       appendCommand(appendSlice(empty)).slices[0]?.commands[0]?.type,
     ).toBe("COMMAND");
   });
+
+  it("Clicking `Add Command` on that page after `New Slice` appends a Command whose `fields` is `[]`", () => {
+    expect(clickedCommand().fields).toEqual([]);
+    expect(
+      appendCommand(appendSlice(empty)).slices[0]?.commands[0]?.fields,
+    ).toEqual([]);
+  });
 });

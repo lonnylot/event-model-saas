@@ -6,7 +6,7 @@ export function appendCommand(model) {
     ...last,
     commands: [
       ...(last.commands ?? []),
-      { id: crypto.randomUUID(), title: "Command", type: "COMMAND" },
+      { id: crypto.randomUUID(), title: "Command", type: "COMMAND", fields: [] },
     ],
   };
   return { ...model, slices };
