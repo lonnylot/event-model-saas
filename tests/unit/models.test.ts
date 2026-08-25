@@ -543,4 +543,22 @@ describe("create model", () => {
     );
     expect(await response.json()).toEqual({ version: 2 });
   });
+  it("PUT `/api/models/{id}` with a document whose `format` is not `eventmodel` returns status 400", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request("https://event-model.lonnylot.com/api/models/model-1", {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          Cookie: "session=sess-admin",
+        },
+        body: JSON.stringify({
+          version: 1,
+          document: { format: "other" },
+        }),
+      }),
+      env,
+    );
+    expect(response.status).toBe(400);
+  });
 });

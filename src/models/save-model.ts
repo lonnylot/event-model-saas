@@ -5,6 +5,7 @@ export async function saveModel(
   personId: string,
   modelId: string,
   version: number,
+  document: { format?: string } | undefined,
 ): Promise<{ status: number; version?: number }> {
   const model = await runtime.store.getEventModel(modelId);
   if (!model) return { status: 404 };
@@ -12,6 +13,11 @@ export async function saveModel(
     return { status: 404 };
   }
   if (model.version !== version) return { status: 409 };
+  if (document?.format !== "eventmodel") {
+    const next = model.version + 1;
+    await runtime.store.setEventModelVersion(modelId, next);
+    return { status: 400 };
+  }
   const next = model.version + 1;
   await runtime.store.setEventModelVersion(modelId, next);
   return { status: 200, version: next };

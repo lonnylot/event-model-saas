@@ -155,13 +155,24 @@ export async function handleRequest(
       });
     }
     let version = -1;
+    let document: { format?: string } | undefined;
     try {
-      const body = (await request.json()) as { version?: number };
+      const body = (await request.json()) as {
+        version?: number;
+        document?: { format?: string };
+      };
       version = typeof body.version === "number" ? body.version : -1;
+      document = body.document;
     } catch {
       version = -1;
     }
-    const result = await saveModel(env.auth, person.id, saveMatch[1], version);
+    const result = await saveModel(
+      env.auth,
+      person.id,
+      saveMatch[1],
+      version,
+      document,
+    );
     if (result.status === 200 && result.version != null) {
       return new Response(JSON.stringify({ version: result.version }), {
         status: 200,
