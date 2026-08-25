@@ -170,6 +170,15 @@ export function bindEditor(root) {
       button.addEventListener("click", () => onAddAutomationClick(root));
     }
   });
+  const timelineList = root.querySelector('[aria-label="Timeline"] ul');
+  timelineList?.addEventListener("click", (event) => {
+    const item = event.target?.closest?.("li");
+    if (!item || !timelineList.contains(item)) return;
+    const inspector = root.querySelector('[aria-label="Inspector"]');
+    if (inspector && !inspector.querySelector("input")) {
+      inspector.insertAdjacentHTML("beforeend", "<label>Name <input /></label>");
+    }
+  });
   const slicesList = root.querySelector("ul");
   let selectedSliceItem = null;
   slicesList?.addEventListener("click", (event) => {
