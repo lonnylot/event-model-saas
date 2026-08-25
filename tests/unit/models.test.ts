@@ -335,4 +335,17 @@ describe("create model", () => {
     expect(JSON.parse(body ?? "").title).toBe("Untitled");
   });
 
+  it("GET `/app/teams/{id}` as a member with an Event Model titled `Untitled` shows a link whose accessible name is `Untitled`", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request("https://event-model.lonnylot.com/app/teams/team-1", {
+        headers: { Cookie: "session=sess-admin" },
+      }),
+      env,
+    );
+    expect(await response.text()).toContain(
+      '<a href="/app/teams/team-1/models/model-1">Untitled</a>',
+    );
+  });
+
 });

@@ -1,4 +1,4 @@
-import type { Team } from "../auth/types";
+import type { EventModelRow, Team } from "../auth/types";
 
 function shell(email: string, isSiteAdmin: boolean, inner: string): string {
   const admin = isSiteAdmin
@@ -30,11 +30,18 @@ export function teamPageHtml(
   email: string,
   isSiteAdmin: boolean,
   team: Team,
+  models: EventModelRow[] = [],
 ): string {
+  const links = models
+    .map(
+      (m) =>
+        `<p><a href="/app/teams/${team.id}/models/${m.id}">${m.title}</a></p>`,
+    )
+    .join("");
   return shell(
     email,
     isSiteAdmin,
-    `<h1>${team.name}</h1><form id="create-model" method="post" action="/api/teams/${team.id}/models"><button type="submit">Create model</button></form>`,
+    `<h1>${team.name}</h1><form id="create-model" method="post" action="/api/teams/${team.id}/models"><button type="submit">Create model</button></form>${links}`,
   );
 }
 

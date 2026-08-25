@@ -227,8 +227,9 @@ export async function handleRequest(
       }
       const team = await env.auth.store.getTeam(teamPage[1]);
       if (!team) return jsonNotFound();
+      const models = await env.auth.store.listEventModelsForTeam(team.id);
       return new Response(
-        teamPageHtml(person.email, person.isSiteAdmin, team),
+        teamPageHtml(person.email, person.isSiteAdmin, team, models),
         {
           status: 200,
           headers: { "content-type": "text/html; charset=utf-8" },
