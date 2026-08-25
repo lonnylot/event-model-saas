@@ -4,8 +4,10 @@ import { appendActor } from "../../src/document/append-actor.ts";
 import { appendCommand } from "../../src/document/append-command.ts";
 import { appendEvent } from "../../src/document/append-event.ts";
 import { appendReadModel } from "../../src/document/append-read-model.ts";
+import { appendAutomation } from "../../src/document/append-automation.ts";
 import {
   onAddActorClick,
+  onAddAutomationClick,
   onAddCommandClick,
   onAddEventClick,
   onAddReadModelClick,
@@ -235,5 +237,35 @@ describe("clicking Add Read Model", () => {
     expect(
       appendReadModel(appendSlice(empty)).slices[0]?.readModels[0]?.fields,
     ).toEqual([]);
+  });
+});
+
+function clickedAutomation() {
+  const holder = { textContent: JSON.stringify(empty) };
+  const root = {
+    querySelector(sel: string) {
+      if (sel === "ul") return { append() {} };
+      if (sel === "main") return { textContent: "", insertAdjacentHTML() {} };
+      if (sel === '[aria-label="Timeline"]') return { append() {} };
+      return null;
+    },
+    getElementById(id: string) {
+      return id === "event-model-document" ? holder : null;
+    },
+    createElement() {
+      return { textContent: "", setAttribute() {} };
+    },
+  };
+  onNewSliceClick(root);
+  onAddAutomationClick(root);
+  return JSON.parse(holder.textContent).slices[0].processors[0];
+}
+
+describe("clicking Add Automation", () => {
+  it("Clicking `Add Automation` on that page after `New Slice` appends an Automation whose `title` is `Automation`", () => {
+    expect(clickedAutomation().title).toBe("Automation");
+    expect(
+      appendAutomation(appendSlice(empty)).slices[0]?.processors[0]?.title,
+    ).toBe("Automation");
   });
 });

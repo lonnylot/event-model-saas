@@ -3,6 +3,7 @@ import { appendActor } from "./append-actor.js";
 import { appendCommand } from "./append-command.js";
 import { appendEvent } from "./append-event.js";
 import { appendReadModel } from "./append-read-model.js";
+import { appendAutomation } from "./append-automation.js";
 
 export function onNewSliceClick(root) {
   const list = root.querySelector("ul");
@@ -60,6 +61,15 @@ export function onAddReadModelClick(root) {
   }
 }
 
+export function onAddAutomationClick(root) {
+  const holder = root.getElementById("event-model-document");
+  if (holder) {
+    holder.textContent = JSON.stringify(
+      appendAutomation(JSON.parse(holder.textContent || "{}")),
+    );
+  }
+}
+
 export function bindEditor(root) {
   root.querySelectorAll("button").forEach((button) => {
     if (button.textContent === "Zoom in") {
@@ -100,6 +110,9 @@ export function bindEditor(root) {
     }
     if (button.textContent === "Add Read Model") {
       button.addEventListener("click", () => onAddReadModelClick(root));
+    }
+    if (button.textContent === "Add Automation") {
+      button.addEventListener("click", () => onAddAutomationClick(root));
     }
   });
 }

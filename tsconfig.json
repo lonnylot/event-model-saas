@@ -22,6 +22,7 @@
     "public/append-actor.js",
     "public/append-command.js",
     "public/append-event.js",
-    "public/append-read-model.js"
+    "public/append-read-model.js",
+    "public/append-automation.js"
   ]
 }

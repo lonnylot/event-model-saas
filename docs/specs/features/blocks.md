@@ -24,7 +24,7 @@ The editor shell has Slices, a Timeline, and Inspector, but members cannot put a
 - [x] Clicking `Add Read Model` on that page after `New Slice` appends a Read Model whose `title` is `Read Model`
 - [x] Clicking `Add Read Model` on that page after `New Slice` appends a Read Model whose `type` is `READMODEL`
 - [x] Clicking `Add Read Model` on that page after `New Slice` appends a Read Model whose `fields` is `[]`
-- [ ] Clicking `Add Automation` on that page after `New Slice` appends an Automation whose `title` is `Automation`
+- [x] Clicking `Add Automation` on that page after `New Slice` appends an Automation whose `title` is `Automation`
 - [ ] Clicking `Add Automation` on that page after `New Slice` appends an Automation whose `type` is `AUTOMATION`
 - [ ] Clicking `Add Automation` on that page after `New Slice` appends an Automation whose `fields` is `[]`
 - [ ] After clicking `New Slice` then `Add Actor` on that page, the Timeline region shows a listitem whose accessible name is `Actor`
