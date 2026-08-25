@@ -4,6 +4,7 @@ description: >
   Use when adding or placing tests, choosing seams, writing unit or
   Playwright tests, mapping acceptance criteria to tests, checking a
   weaker-reading fixture, unit `toContain(">X<")` for a named link or button,
+  unit `not.toContain("<li>X</li>")` for a does-not-show listitem,
   copy pinned in tests but not the spec, splitting an "and" (any case) test name or
   AC bullet, status vs content-type vs body, status vs row vs R2, early-return 400 vs does not create, independent env/branch cases, proving a screen/shows
   criterion (not a source grep), leftover test filename after a
@@ -61,6 +62,7 @@ A criterion that names a screen, "shows", or "lists" is proven at the app or flo
    | Exact script / command value | Unordered `toContain` of each token (`echo playwright test`) |
    | YAML key / workflow event | Prefix match (`/pull_request:/` also hits `pull_request_target:`) |
    | "does not show a control named X" | Querying only `button` and `link` (checkbox/menuitem named X stays green) |
+   | "does not show a listitem whose accessible name is X" (unit HTML) | `not.toContain("<li>X</li>")` (exact tag; `<li aria-label="X">` stays green) |
    | Host path (`run_worker_first`, assets routing) | Handler unit test that stays green if that host wiring is deleted |
    | Architecture-named production adapter (D1, Email, R2) | Injected `env.auth` / `env.documents` / handler unit test that stays green if production `fetch` never constructs that adapter |
    | Write R2 current object / stored document body | Success status, version bump, or 409 UI that injects a memory port and never asserts the saved body (deleting `documents.put` stays green) |
