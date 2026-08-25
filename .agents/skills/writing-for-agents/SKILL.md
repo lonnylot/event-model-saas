@@ -48,7 +48,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Independently revertible ACs / grouping by screen / spec-only / fromKind vs toKind | `logical-commits` |
 | Tests-after / production that landed as a dependency / tests-only commit on top / folding tests-after into sibling production / click-path production after field tests / follow-up rewrite onto click path | `logical-commits` |
 | Review-thread batch / commit subject names two threads with "and" | `logical-commits` |
-| Extra visible chrome / document title / extra form or link or extra nav on a route / extra host observability without an AC | `keeping-specs-current` |
+| Extra visible chrome / document title / extra form or link or extra nav on a route / extra inspect of Out of scope kinds / extra host observability without an AC | `keeping-specs-current` |
 | Extra R2 put / D1 insert without an AC that asserts the stored body | `keeping-specs-current`, `testing` |
 | Playwright workers / test-runner isolation without a spec sentence | `keeping-specs-current`, `playwright-e2e` |
 | Mail subject / From display name without a spec sentence | `keeping-specs-current`, `testing` |
