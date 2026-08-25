@@ -591,4 +591,26 @@ describe("create model", () => {
     );
     expect(response.headers.get("content-type")).toBe("application/json");
   });
+  it("GET `/api/models/{id}/export` as a Person who is not a member returns status 404", async () => {
+    const { env, auth } = await createdUntitled();
+    await auth.store.insertPerson({
+      id: "p-user",
+      email: "teammate@example.com",
+      isSiteAdmin: false,
+    });
+    await auth.store.insertSession({
+      id: "sess-user",
+      personId: "p-user",
+      expiresAt: auth.now() + 60_000,
+    });
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/api/models/model-1/export",
+        { headers: { Cookie: "session=sess-user" } },
+      ),
+      env,
+    );
+    expect(response.status).toBe(404);
+  });
+
 });

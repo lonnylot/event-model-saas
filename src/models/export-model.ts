@@ -9,6 +9,9 @@ export async function exportModel(
 ): Promise<{ status: number; body?: string }> {
   const model = await runtime.store.getEventModel(modelId);
   if (!model) return { status: 404 };
+  if (!(await runtime.store.isMember(model.teamId, personId))) {
+    return { status: 404 };
+  }
   const body = (await documents?.get(model.r2Key)) ?? "{}";
   return { status: 200, body };
 }
