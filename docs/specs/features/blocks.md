@@ -15,7 +15,7 @@ The editor shell has Slices, a Timeline, and Inspector, but members cannot put a
 - [x] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Add Automation`
 - [x] GET `/app/teams/{id}/models/{mid}` as a member with no Actors does not show a listitem whose accessible name is `Actor`
 - [x] Clicking `Add Actor` on that page after `New Slice` appends an Actor whose `name` is `Actor`
-- [ ] Clicking `Add Command` on that page after `New Slice` appends a Command whose `title` is `Command`
+- [x] Clicking `Add Command` on that page after `New Slice` appends a Command whose `title` is `Command`
 - [ ] Clicking `Add Command` on that page after `New Slice` appends a Command whose `type` is `COMMAND`
 - [ ] Clicking `Add Command` on that page after `New Slice` appends a Command whose `fields` is `[]`
 - [ ] Clicking `Add Event` on that page after `New Slice` appends an Event whose `title` is `Event Happened`

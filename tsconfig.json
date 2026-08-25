@@ -19,6 +19,7 @@
   "include": [
     "src/**/*.ts",
     "public/append-slice.js",
-    "public/append-actor.js"
+    "public/append-actor.js",
+    "public/append-command.js"
   ]
 }

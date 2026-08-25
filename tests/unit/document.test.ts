@@ -1,7 +1,12 @@
 import { describe, expect, it } from "vitest";
 import { appendSlice } from "../../src/document/append-slice.ts";
 import { appendActor } from "../../src/document/append-actor.ts";
-import { onAddActorClick, onNewSliceClick } from "../../public/editor.js";
+import { appendCommand } from "../../src/document/append-command.ts";
+import {
+  onAddActorClick,
+  onAddCommandClick,
+  onNewSliceClick,
+} from "../../public/editor.js";
 
 const empty = {
   format: "eventmodel" as const,
@@ -94,5 +99,35 @@ describe("clicking Add Actor", () => {
     expect(appendActor(appendSlice(empty)).slices[0]?.actors[0]?.name).toBe(
       "Actor",
     );
+  });
+});
+
+function clickedCommand() {
+  const holder = { textContent: JSON.stringify(empty) };
+  const root = {
+    querySelector(sel: string) {
+      if (sel === "ul") return { append() {} };
+      if (sel === "main") return { textContent: "", insertAdjacentHTML() {} };
+      if (sel === '[aria-label="Timeline"]') return { append() {} };
+      return null;
+    },
+    getElementById(id: string) {
+      return id === "event-model-document" ? holder : null;
+    },
+    createElement() {
+      return { textContent: "", setAttribute() {} };
+    },
+  };
+  onNewSliceClick(root);
+  onAddCommandClick(root);
+  return JSON.parse(holder.textContent).slices[0].commands[0];
+}
+
+describe("clicking Add Command", () => {
+  it("Clicking `Add Command` on that page after `New Slice` appends a Command whose `title` is `Command`", () => {
+    expect(clickedCommand().title).toBe("Command");
+    expect(
+      appendCommand(appendSlice(empty)).slices[0]?.commands[0]?.title,
+    ).toBe("Command");
   });
 });
