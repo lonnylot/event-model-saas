@@ -92,4 +92,4 @@ The JSON Schema stays `format: "eventmodel"`, `schemaVersion: 1`, compatible wit
 
 - **Unit** at the document module: schema validation, legal edges, mutations (add/move/delete slice and blocks). This is the web counterpart of `EventModelTests`.
 - **Unit** at API seams with fake D1, R2, and email: invite-only gate, `SITE_ADMIN_EMAIL` bootstrap, unknown-email notify, magic-link consume, version match vs 409, failed write does not bump version.
-- **Playwright**: request login (test email adapter, never live mail), land on the team page model list, open the Event Model, New Slice, `Unsaved changes.`, Save, reload still lists New Slice, second session Save → 409 UI. Playwright `workers` is `1` because the `TEST_MAIL` memory adapter is process-global.
+- **Playwright**: request login (test email adapter, never live mail), land on the team page model list, open the Event Model, New Slice, Add Actor, `Unsaved changes.`, Save, reload still lists Actor on the Timeline, second session Save → 409 UI. Playwright `workers` is `1` because the `TEST_MAIL` memory adapter is process-global. Dashed Add on a lane and keyboard ⌥⌘1–5 stay later.

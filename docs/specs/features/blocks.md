@@ -1,0 +1,67 @@
+# Blocks
+
+Status: validated
+
+## Problem
+
+The editor shell has Slices, a Timeline, and Inspector, but members cannot put an Actor, Command, Event, Read Model, or Automation on a Slice, so they still cannot model.
+
+## Acceptance criteria
+
+- [x] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Add Actor`
+- [ ] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Add Command`
+- [ ] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Add Event`
+- [ ] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Add Read Model`
+- [ ] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Add Automation`
+- [ ] GET `/app/teams/{id}/models/{mid}` as a member with no Actors does not show a listitem whose accessible name is `Actor`
+- [ ] Clicking `Add Actor` on that page after `New Slice` appends an Actor whose `name` is `Actor`
+- [ ] Clicking `Add Command` on that page after `New Slice` appends a Command whose `title` is `Command`
+- [ ] Clicking `Add Command` on that page after `New Slice` appends a Command whose `type` is `COMMAND`
+- [ ] Clicking `Add Command` on that page after `New Slice` appends a Command whose `fields` is `[]`
+- [ ] Clicking `Add Event` on that page after `New Slice` appends an Event whose `title` is `Event Happened`
+- [ ] Clicking `Add Event` on that page after `New Slice` appends an Event whose `type` is `EVENT`
+- [ ] Clicking `Add Event` on that page after `New Slice` appends an Event whose `fields` is `[]`
+- [ ] Clicking `Add Read Model` on that page after `New Slice` appends a Read Model whose `title` is `Read Model`
+- [ ] Clicking `Add Read Model` on that page after `New Slice` appends a Read Model whose `type` is `READMODEL`
+- [ ] Clicking `Add Read Model` on that page after `New Slice` appends a Read Model whose `fields` is `[]`
+- [ ] Clicking `Add Automation` on that page after `New Slice` appends an Automation whose `title` is `Automation`
+- [ ] Clicking `Add Automation` on that page after `New Slice` appends an Automation whose `type` is `AUTOMATION`
+- [ ] Clicking `Add Automation` on that page after `New Slice` appends an Automation whose `fields` is `[]`
+- [ ] After clicking `New Slice` then `Add Actor` on that page, the Timeline region shows a listitem whose accessible name is `Actor`
+- [ ] After clicking `New Slice` then `Add Command` on that page, the Timeline region shows a listitem whose accessible name is `Command`
+- [ ] After clicking `New Slice` then `Add Event` on that page, the Timeline region shows a listitem whose accessible name is `Event Happened`
+- [ ] After clicking `New Slice` then `Add Read Model` on that page, the Timeline region shows a listitem whose accessible name is `Read Model`
+- [ ] After clicking `New Slice` then `Add Automation` on that page, the Timeline region shows a listitem whose accessible name is `Automation`
+- [ ] After a member creates a model, opens it, clicks `New Slice`, clicks `Add Actor`, and Saves, a reload of that page shows a listitem whose accessible name is `Actor` in the Timeline region
+
+## Domain terms
+
+Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person, Version
+
+## Seams
+
+- `document` module — append Actor, Command, Event, Read Model, and Automation on an in-memory Event Model; the editor click path calls it
+- `handleRequest` — model page HTML
+- Browser — Playwright against `wrangler dev` with `TEST_MAIL=1`
+
+## Assumptions
+
+- Add targets the last Slice. There is no Slice selection in this slice.
+- Clicking an Add button with no Slices does not create a Slice.
+- Empty Actor JSON is `{ "id": "{uuid}", "name": "Actor" }`.
+- Empty Command JSON is `{ "id": "{uuid}", "title": "Command", "type": "COMMAND", "fields": [] }`.
+- Empty Event JSON is `{ "id": "{uuid}", "title": "Event Happened", "type": "EVENT", "fields": [] }`.
+- Empty Read Model JSON is `{ "id": "{uuid}", "title": "Read Model", "type": "READMODEL", "fields": [] }`.
+- Empty Automation JSON is `{ "id": "{uuid}", "title": "Automation", "type": "AUTOMATION", "fields": [] }` in the Slice `processors` array. The UI label is Automation.
+- New Slice still starts with empty `actors` / `commands` / `events` / `readModels` / `processors` (not a default Actor).
+- Add is in-memory until Save. Save still uses the version check from model-persistence.
+
+## Out of scope
+
+Connections, inspector fields, dashed Add on a lane, keyboard shortcuts, delete, drag between Slices, undo, pan, moving Slices, Mac window chrome, creating a Slice from Add when there are none.
+
+## Restates
+
+- [editor-shell.md](./editor-shell.md) — Out of scope no longer owns Actors, commands, events, read models, or automations; this slice owns adding those blocks. Connections, inspector fields, keyboard shortcuts, and moving Slices stay later.
+- [model-persistence.md](./model-persistence.md) — Out of scope no longer owns Actors, commands, events, read models, or automations; this slice owns adding those blocks.
+- [product.md](../product.md) — Playwright path for this slice is open Event Model, New Slice, Add Actor, Save, reload still lists Actor on the Timeline; dashed Add on a lane and keyboard ⌥⌘1–5 stay later

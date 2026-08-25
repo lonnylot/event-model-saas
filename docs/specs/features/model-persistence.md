@@ -89,9 +89,9 @@ Event Model, Team, Person, Version, Slice
 
 ## Out of scope
 
-Undo, connections, inspector fields, Actors, commands, events, read models, automations, pan, keyboard shortcuts, moving Slices, Mac window chrome, document history. Editor canvas, New Slice, zoom, and the dirty indicator are [editor-shell.md](./editor-shell.md).
+Undo, connections, inspector fields, pan, keyboard shortcuts, moving Slices, Mac window chrome, document history. Editor canvas, New Slice, zoom, and the dirty indicator are [editor-shell.md](./editor-shell.md). Actors, commands, events, read models, and automations are [blocks.md](./blocks.md).
 
 ## Restates
 
 - [teams-and-invites.md](./teams-and-invites.md) — Out of scope no longer owns Event Model create/import/save/export; GET `/app/teams/{id}` as a member shows Create model and Event Model title links
-- [product.md](../product.md) — Playwright path “land on team list” is the team page model list in this slice; this slice’s Playwright flow is thin open/Save/Export and second-session 409, not “add a slice”
+- [product.md](../product.md) — Playwright path “land on team list” is the team page model list in this slice; this slice’s Playwright flow is thin open/Save/Export and second-session 409. Add Actor is [blocks.md](./blocks.md).
