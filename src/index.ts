@@ -143,6 +143,7 @@ export async function handleRequest(
     }
     const result = await importModel(
       env.auth,
+      env.documents,
       person.id,
       importMatch[1],
       document,

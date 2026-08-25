@@ -723,4 +723,42 @@ describe("create model", () => {
     expect(await auth.store.listEventModelsForTeam("team-1")).toEqual([]);
   });
 
+  it("POST `/api/teams/{id}/imports` as a member with a valid Event Model titled `Library` creates an Event Model whose title is `Library`", async () => {
+    const { env, auth } = await memberEnv();
+    await handleRequest(
+      new Request("https://event-model.lonnylot.com/api/teams", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          Cookie: "session=sess-admin",
+        },
+        body: JSON.stringify({ name: "Library" }),
+      }),
+      env,
+    );
+    await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/api/teams/team-1/imports",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            Cookie: "session=sess-admin",
+          },
+          body: JSON.stringify({
+            document: {
+              format: "eventmodel",
+              schemaVersion: 1,
+              id: "imported-1",
+              title: "Library",
+              slices: [],
+            },
+          }),
+        },
+      ),
+      env,
+    );
+    const model = await auth.store.getEventModel("model-1");
+    expect(model?.title).toBe("Library");
+  });
 });
