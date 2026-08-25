@@ -275,4 +275,11 @@ describe("clicking Add Automation", () => {
       appendAutomation(appendSlice(empty)).slices[0]?.processors[0]?.type,
     ).toBe("AUTOMATION");
   });
+
+  it("Clicking `Add Automation` on that page after `New Slice` appends an Automation whose `fields` is `[]`", () => {
+    expect(clickedAutomation().fields).toEqual([]);
+    expect(
+      appendAutomation(appendSlice(empty)).slices[0]?.processors[0]?.fields,
+    ).toEqual([]);
+  });
 });
