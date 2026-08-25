@@ -229,4 +229,11 @@ describe("clicking Add Read Model", () => {
       appendReadModel(appendSlice(empty)).slices[0]?.readModels[0]?.type,
     ).toBe("READMODEL");
   });
+
+  it("Clicking `Add Read Model` on that page after `New Slice` appends a Read Model whose `fields` is `[]`", () => {
+    expect(clickedReadModel().fields).toEqual([]);
+    expect(
+      appendReadModel(appendSlice(empty)).slices[0]?.readModels[0]?.fields,
+    ).toEqual([]);
+  });
 });

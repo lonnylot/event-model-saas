@@ -23,7 +23,7 @@ The editor shell has Slices, a Timeline, and Inspector, but members cannot put a
 - [x] Clicking `Add Event` on that page after `New Slice` appends an Event whose `fields` is `[]`
 - [x] Clicking `Add Read Model` on that page after `New Slice` appends a Read Model whose `title` is `Read Model`
 - [x] Clicking `Add Read Model` on that page after `New Slice` appends a Read Model whose `type` is `READMODEL`
-- [ ] Clicking `Add Read Model` on that page after `New Slice` appends a Read Model whose `fields` is `[]`
+- [x] Clicking `Add Read Model` on that page after `New Slice` appends a Read Model whose `fields` is `[]`
 - [ ] Clicking `Add Automation` on that page after `New Slice` appends an Automation whose `title` is `Automation`
 - [ ] Clicking `Add Automation` on that page after `New Slice` appends an Automation whose `type` is `AUTOMATION`
 - [ ] Clicking `Add Automation` on that page after `New Slice` appends an Automation whose `fields` is `[]`

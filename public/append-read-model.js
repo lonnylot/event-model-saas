@@ -6,7 +6,7 @@ export function appendReadModel(model) {
     ...last,
     readModels: [
       ...(last.readModels ?? []),
-      { id: crypto.randomUUID(), title: "Read Model", type: "READMODEL" },
+      { id: crypto.randomUUID(), title: "Read Model", type: "READMODEL", fields: [] },
     ],
   };
   return { ...model, slices };
