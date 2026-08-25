@@ -13,7 +13,7 @@ export async function createModel(
     id,
     teamId,
     title: "Untitled",
-    version: 0,
+    version: 1,
     r2Key: `models/${id}.eventmodel`,
   });
   return { status: 201 };
