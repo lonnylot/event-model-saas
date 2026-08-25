@@ -32,13 +32,15 @@ Event Model, Slice, Actor, Team, Person, Version
 ## Assumptions
 
 - Slice selection is a click on the Slices listitem. Actor selection is a click on the Timeline Actor listitem.
+- This slice is one in-session `New Slice` and one in-session Timeline `Actor`. Name JSON mutates the last slice/actor. Multi-item binding is later.
+- Inspect is a click on a click-created listitem. GET-rendered Timeline actors omit `data-kind`; inspect after reload is later.
 - The Inspector `Name` textbox edits Slice `title` or Actor `name`. The JSON keys stay `title` and `name`.
 - Name edits are in-memory until Save. Save still uses the version check from model-persistence.
 - The `TEST_MAIL=1` memory adapter does not count login attempts, so Playwright files can share one Worker without the production 5-per-hour cap.
 
 ## Out of scope
 
-Description, fields, slice type picker, inspecting Command / Event / Read Model / Automation, inspecting a Connection, model-level Title, dashed Add on a lane, keyboard shortcuts, delete, drag blocks between Slices, undo, pan, moving Slices, Mac window chrome.
+Description, fields, slice type picker, inspecting Command / Event / Read Model / Automation, inspecting a Connection, inspect after reload, multi-item Name binding, Actor Name Unsaved changes, model-level Title, dashed Add on a lane, keyboard shortcuts, delete, drag blocks between Slices, undo, pan, moving Slices, Mac window chrome.
 
 ## Restates
 
