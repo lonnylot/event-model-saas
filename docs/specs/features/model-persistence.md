@@ -26,7 +26,7 @@ A Team has no Event Models. Members cannot create, open, import, export, or Save
 - [ ] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Save`
 - [ ] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Export`
 - [ ] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Sign out`
-- [ ] GET `/app/teams/{id}/models/{mid}` as a Person who is not a member returns status 404
+- [x] GET `/app/teams/{id}/models/{mid}` as a Person who is not a member returns status 404
 - [ ] PUT `/api/models/{id}` as a member with matching version returns status 200
 - [ ] PUT `/api/models/{id}` as a member with matching version returns the new version `2`
 - [ ] PUT `/api/models/{id}` as a member with matching version writes the submitted document to `models/{id}.eventmodel`

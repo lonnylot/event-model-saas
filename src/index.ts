@@ -224,6 +224,10 @@ export async function handleRequest(
       /^\/app\/teams\/([^/]+)\/models\/([^/]+)$/,
     );
     if (modelPage) {
+      const member = await env.auth.store.isMember(modelPage[1], person.id);
+      if (!member) {
+        return jsonNotFound();
+      }
       const model = await env.auth.store.getEventModel(modelPage[2]);
       if (!model || model.teamId !== modelPage[1]) {
         return jsonNotFound();
