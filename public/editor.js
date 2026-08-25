@@ -6,6 +6,7 @@ import { appendReadModel } from "./append-read-model.js";
 import { appendAutomation } from "./append-automation.js";
 import { appendConnection } from "./append-connection.js";
 import { setSliceTitle } from "./set-slice-title.js";
+import { setActorName } from "./set-actor-name.js";
 
 export function onNewSliceClick(root) {
   const list = root.querySelector("ul");
@@ -180,6 +181,15 @@ export function bindEditor(root) {
         "beforeend",
         '<label>Name <input value="Actor" /></label>',
       );
+      const input = inspector.querySelector("input");
+      input?.addEventListener("input", () => {
+        const holder = root.getElementById("event-model-document");
+        if (holder) {
+          holder.textContent = JSON.stringify(
+            setActorName(JSON.parse(holder.textContent || "{}"), input.value),
+          );
+        }
+      });
     }
   });
   const slicesList = root.querySelector("ul");
