@@ -51,7 +51,7 @@ A Team has no Event Models. Members cannot create, open, import, export, or Save
 - [x] `createD1Store` `insertEventModel` with title `Untitled` returns that row from `getEventModel`
 - [x] `createD1Store` `listEventModelsForTeam` returns the Untitled model
 - [x] `createR2Documents` `put` of `models/{id}.eventmodel` returns that body from `get`
-- [ ] Worker `fetch` when `TEST_MAIL` is not `1` puts `models/{id}.eventmodel` on `MODELS`
+- [x] Worker `fetch` when `TEST_MAIL` is not `1` puts `models/{id}.eventmodel` on `MODELS`
 - [ ] Worker `fetch` when `TEST_MAIL` is not `1` inserts the Event Model into `DB`
 
 - [x] `createD1Store` `setEventModelVersion` sets version `2`

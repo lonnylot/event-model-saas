@@ -14,7 +14,11 @@ import { createModel } from "./models/create-model";
 import { importModel } from "./models/import-model";
 import { exportModel } from "./models/export-model";
 import { saveModel } from "./models/save-model";
-import { type DocumentsPort } from "./models/documents";
+import {
+  createMemoryDocuments,
+  type DocumentsPort,
+} from "./models/documents";
+import { createR2Documents } from "./models/r2-documents";
 import { createTeam } from "./teams/create-team";
 import { inviteToTeam } from "./teams/invite";
 import {
@@ -384,6 +388,7 @@ type WorkerEnv = AppEnv & {
   SITE_ADMIN_EMAIL?: string;
   AUTH_FROM?: string;
   DB?: D1Database;
+  MODELS?: R2Bucket;
   EMAIL?: {
     send: (message: {
       to: string;
@@ -398,10 +403,12 @@ function testAuthRuntime(env: WorkerEnv): AuthRuntime {
   const g = globalThis as unknown as {
     __emAuth?: AuthRuntime;
     __emSent?: MailMessage[];
+    __emDocuments?: DocumentsPort;
   };
   if (!g.__emAuth) {
     const sent: MailMessage[] = [];
     g.__emSent = sent;
+    g.__emDocuments = createMemoryDocuments();
     g.__emAuth = {
       store: createMemoryStore(),
       mail: {
@@ -416,6 +423,12 @@ function testAuthRuntime(env: WorkerEnv): AuthRuntime {
     };
   }
   return g.__emAuth;
+}
+
+function testDocuments(): DocumentsPort {
+  const g = globalThis as unknown as { __emDocuments?: DocumentsPort };
+  if (!g.__emDocuments) g.__emDocuments = createMemoryDocuments();
+  return g.__emDocuments;
 }
 
 function productionAuthRuntime(env: WorkerEnv): AuthRuntime | undefined {
@@ -445,7 +458,12 @@ export default {
     const auth =
       env.TEST_MAIL === "1"
         ? testAuthRuntime(env)
-        : (env.auth ?? productionAuthRuntime(env));
-    return handleRequest(request, { ...env, auth });
+        : env.auth;
+    const documents =
+      env.TEST_MAIL === "1"
+        ? testDocuments()
+        : (env.documents ??
+          (env.MODELS ? createR2Documents(env.MODELS) : undefined));
+    return handleRequest(request, { ...env, auth, documents });
   },
 };
