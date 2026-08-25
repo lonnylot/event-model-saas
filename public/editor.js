@@ -101,6 +101,7 @@ export function onAddReadModelClick(root) {
     port.textContent = "Read Model port";
     if (readModel) {
       port.dataset.id = readModel.id;
+      port.dataset.kind = "READMODEL";
     }
     item.append(port);
     list.append(item);
@@ -184,7 +185,10 @@ export function bindEditor(root) {
             fromKind: sourcePort.dataset.kind,
             toID: target.dataset.id,
             toKind:
-              target.dataset.kind === "EVENT" ? target.dataset.kind : undefined,
+              target.dataset.kind === "EVENT" ||
+              target.dataset.kind === "READMODEL"
+                ? target.dataset.kind
+                : undefined,
           }),
         );
       }
