@@ -117,3 +117,16 @@ test("After clicking `New Slice` then `Add Read Model` on that page, the Read Mo
       .getByRole("button", { name: "Read Model port", exact: true }),
   ).toBeVisible();
 });
+
+test("After clicking `New Slice` then `Add Actor` on that page, the Actor listitem does not show a button whose accessible name is `Actor port`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "Add Actor", exact: true }).click();
+  await expect(
+    page
+      .getByRole("listitem", { name: "Actor", exact: true })
+      .getByRole("button", { name: "Actor port", exact: true }),
+  ).toHaveCount(0);
+});
