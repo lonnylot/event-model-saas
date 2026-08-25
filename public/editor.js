@@ -58,6 +58,13 @@ export function onAddCommandClick(root) {
 }
 
 export function onAddEventClick(root) {
+  const list = root.querySelector('[aria-label="Timeline"] ul');
+  if (list) {
+    const item = root.createElement("li");
+    item.textContent = "Event Happened";
+    item.setAttribute("aria-label", "Event Happened");
+    list.append(item);
+  }
   const holder = root.getElementById("event-model-document");
   if (holder) {
     holder.textContent = JSON.stringify(
