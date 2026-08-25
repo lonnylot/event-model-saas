@@ -94,4 +94,4 @@ Undo, connections, inspector fields, pan, keyboard shortcuts, moving Slices, Mac
 ## Restates
 
 - [teams-and-invites.md](./teams-and-invites.md) — Out of scope no longer owns Event Model create/import/save/export; GET `/app/teams/{id}` as a member shows Create model and Event Model title links
-- [product.md](../product.md) — Playwright path “land on team list” is the team page model list in this slice; this slice’s Playwright flow is thin open/Save/Export and second-session 409. Add Actor is [blocks.md](./blocks.md).
+- [product.md](../product.md) — Playwright path “land on team list” is the team page model list in this slice; this slice’s Playwright flow is open Event Model, Save, and second-session 409. New Slice, dirty copy, and reload still lists New Slice are [editor-shell.md](./editor-shell.md). Add Actor is [blocks.md](./blocks.md).
