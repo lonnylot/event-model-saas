@@ -1,6 +1,6 @@
 # Blocks
 
-Status: validated
+Status: released
 
 ## Problem
 
