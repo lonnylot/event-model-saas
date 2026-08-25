@@ -245,3 +245,29 @@ test("After dragging from `Command port` onto `Event Happened port`, the Timelin
       .getByText("Command → Event Happened"),
   ).toBeVisible();
 });
+
+test("After a member creates a model, opens it, clicks `New Slice`, adds a Command and an Event, drags `Command port` onto `Event Happened port`, and Saves, a reload of that page shows the text `Command → Event Happened` in the Timeline region", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Command port", exact: true })
+    .dragTo(page.getByRole("button", { name: "Event Happened port", exact: true }));
+  await Promise.all([
+    page.waitForResponse(
+      (response) =>
+        response.url().includes("/api/models/") &&
+        response.request().method() === "PUT",
+    ),
+    page.getByRole("button", { name: "Save", exact: true }).click(),
+  ]);
+  await page.reload();
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByText("Command → Event Happened"),
+  ).toBeVisible();
+});
