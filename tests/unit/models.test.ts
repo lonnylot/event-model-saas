@@ -442,6 +442,20 @@ describe("create model", () => {
     );
   });
 
+  it("GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Zoom out`", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/app/teams/team-1/models/model-1",
+        { headers: { Cookie: "session=sess-admin" } },
+      ),
+      env,
+    );
+    expect(await response.text()).toContain(
+      '<button type="button">Zoom out</button>',
+    );
+  });
+
   it("GET `/app/teams/{id}/models/{mid}` as a member shows a heading whose accessible name is `Untitled`", async () => {
     const { env } = await createdUntitled();
     const response = await handleRequest(
