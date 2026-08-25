@@ -130,3 +130,16 @@ test("After clicking `New Slice` then `Add Actor` on that page, the Actor listit
       .getByRole("button", { name: "Actor port", exact: true }),
   ).toHaveCount(0);
 });
+
+test("After clicking `New Slice` then `Add Automation` on that page, the Automation listitem does not show a button whose accessible name is `Automation port`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "Add Automation", exact: true }).click();
+  await expect(
+    page
+      .getByRole("listitem", { name: "Automation", exact: true })
+      .getByRole("button", { name: "Automation port", exact: true }),
+  ).toHaveCount(0);
+});
