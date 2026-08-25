@@ -87,6 +87,10 @@ export function onAddEventClick(root) {
 }
 
 export function onAddReadModelClick(root) {
+  const holder = root.getElementById("event-model-document");
+  const next = appendReadModel(JSON.parse(holder?.textContent || "{}"));
+  if (holder) holder.textContent = JSON.stringify(next);
+  const readModel = next.slices?.at(-1)?.readModels?.at(-1);
   const list = root.querySelector('[aria-label="Timeline"] ul');
   if (list) {
     const item = root.createElement("li");
@@ -95,14 +99,11 @@ export function onAddReadModelClick(root) {
     const port = root.createElement("button");
     port.type = "button";
     port.textContent = "Read Model port";
+    if (readModel) {
+      port.dataset.id = readModel.id;
+    }
     item.append(port);
     list.append(item);
-  }
-  const holder = root.getElementById("event-model-document");
-  if (holder) {
-    holder.textContent = JSON.stringify(
-      appendReadModel(JSON.parse(holder.textContent || "{}")),
-    );
   }
 }
 
@@ -169,11 +170,11 @@ export function bindEditor(root) {
   });
   let sourcePort = null;
   root.addEventListener("mousedown", (event) => {
-    const port = event.target?.closest?.("[data-kind]");
+    const port = event.target?.closest?.("[data-id]");
     if (port) sourcePort = port;
   });
   root.addEventListener("mouseup", (event) => {
-    const target = event.target?.closest?.("[data-kind]");
+    const target = event.target?.closest?.("[data-id]");
     if (sourcePort && target && sourcePort !== target) {
       const holder = root.getElementById("event-model-document");
       if (holder) {

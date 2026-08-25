@@ -171,3 +171,17 @@ test("Dragging from `Command port` onto `Event Happened port` appends a Connecti
   const json = await page.locator("#event-model-document").textContent();
   expect(JSON.parse(json ?? "{}").connections[0]?.toKind).toBe("EVENT");
 });
+
+test("Dragging from `Event Happened port` onto `Read Model port` appends a Connection whose `fromKind` is `EVENT`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Event Happened port", exact: true })
+    .dragTo(page.getByRole("button", { name: "Read Model port", exact: true }));
+  const json = await page.locator("#event-model-document").textContent();
+  expect(JSON.parse(json ?? "{}").connections[0]?.fromKind).toBe("EVENT");
+});
