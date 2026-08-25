@@ -48,4 +48,4 @@ Inspector fields, dashed Add on a lane, keyboard shortcuts, delete, drag blocks 
 - [blocks.md](./blocks.md) — Out of scope no longer owns connections; this slice owns Command → Event and Event → Read Model. Inspector fields, dashed Add, and keyboard stay later.
 - [editor-shell.md](./editor-shell.md) — Out of scope no longer owns connections; this slice owns those.
 - [model-persistence.md](./model-persistence.md) — Out of scope no longer owns connections; this slice owns those.
-- [product.md](../product.md) — Playwright path for this slice is open Event Model, New Slice, Add Command, Add Event, drag Command port onto Event Happened port, Save, reload still shows `Command → Event Happened`; highlighting legal targets and the other illegal-pair copy stay later
+- [product.md](../product.md) — Playwright path for this slice is open Event Model, New Slice, Add Command, Add Event, drag Command port onto Event Happened port, Save, reload still shows `Command → Event Happened`. Highlighting legal targets, snap-back, reason on the source, undo, and other illegal pairs stay later.
