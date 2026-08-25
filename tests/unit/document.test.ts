@@ -130,4 +130,11 @@ describe("clicking Add Command", () => {
       appendCommand(appendSlice(empty)).slices[0]?.commands[0]?.title,
     ).toBe("Command");
   });
+
+  it("Clicking `Add Command` on that page after `New Slice` appends a Command whose `type` is `COMMAND`", () => {
+    expect(clickedCommand().type).toBe("COMMAND");
+    expect(
+      appendCommand(appendSlice(empty)).slices[0]?.commands[0]?.type,
+    ).toBe("COMMAND");
+  });
 });
