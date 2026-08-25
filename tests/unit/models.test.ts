@@ -916,4 +916,34 @@ describe("create model", () => {
     expect(response.status).toBe(400);
   });
 
+  it("POST `/api/teams/{id}/imports` with a document that fails `schemas/eventmodel.schema.json` does not create an Event Model", async () => {
+    const { env, auth } = await memberEnv();
+    await handleRequest(
+      new Request("https://event-model.lonnylot.com/api/teams", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          Cookie: "session=sess-admin",
+        },
+        body: JSON.stringify({ name: "Library" }),
+      }),
+      env,
+    );
+    await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/api/teams/team-1/imports",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            Cookie: "session=sess-admin",
+          },
+          body: JSON.stringify({ document: { format: "eventmodel" } }),
+        },
+      ),
+      env,
+    );
+    expect(await auth.store.listEventModelsForTeam("team-1")).toEqual([]);
+  });
+
 });

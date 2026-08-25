@@ -16,13 +16,6 @@ export async function importModel(
   if (!isValidEventModelDocument(document)) {
     const id = runtime.randomId();
     const r2Key = `models/${id}.eventmodel`;
-    await runtime.store.insertEventModel({
-      id,
-      teamId,
-      title: "Untitled",
-      version: 1,
-      r2Key,
-    });
     if (documents) {
       await documents.put(r2Key, JSON.stringify(document));
     }
