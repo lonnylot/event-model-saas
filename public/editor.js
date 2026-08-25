@@ -26,6 +26,13 @@ export function onNewSliceClick(root) {
 }
 
 export function onAddActorClick(root) {
+  const list = root.querySelector('[aria-label="Timeline"] ul');
+  if (list) {
+    const item = root.createElement("li");
+    item.textContent = "Actor";
+    item.setAttribute("aria-label", "Actor");
+    list.append(item);
+  }
   const holder = root.getElementById("event-model-document");
   if (holder) {
     holder.textContent = JSON.stringify(

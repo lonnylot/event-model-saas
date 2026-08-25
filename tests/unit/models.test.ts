@@ -492,7 +492,7 @@ describe("create model", () => {
       env,
     );
     expect(await response.text()).toContain(
-      '<section aria-label="Timeline"></section>',
+      '<section aria-label="Timeline"><ul></ul></section>',
     );
   });
 
