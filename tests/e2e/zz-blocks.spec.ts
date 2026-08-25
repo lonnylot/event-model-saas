@@ -143,3 +143,25 @@ test("After clicking `New Slice` then `Add Automation` on that page, the Timelin
       .getByRole("listitem", { name: "Automation", exact: true }),
   ).toBeVisible();
 });
+
+test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add Actor`, and Saves, a reload of that page shows a listitem whose accessible name is `Actor` in the Timeline region", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "Add Actor", exact: true }).click();
+  await Promise.all([
+    page.waitForResponse(
+      (response) =>
+        response.url().includes("/api/models/") &&
+        response.request().method() === "PUT",
+    ),
+    page.getByRole("button", { name: "Save", exact: true }).click(),
+  ]);
+  await page.reload();
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Actor", exact: true }),
+  ).toBeVisible();
+});
