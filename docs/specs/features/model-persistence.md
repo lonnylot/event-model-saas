@@ -47,7 +47,7 @@ A Team has no Event Models. Members cannot create, open, import, export, or Save
 - [ ] POST `/api/teams/{id}/imports` with a document that fails `schemas/eventmodel.schema.json` does not write an R2 object
 - [x] POST `/api/teams/{id}/imports` as a member with a valid Event Model titled `Library` returns status 201
 - [x] POST `/api/teams/{id}/imports` as a member with a valid Event Model titled `Library` creates an Event Model whose title is `Library`
-- [ ] After a member creates a model and a second session Saves with version `1` after the first Save, the second session shows the text `This Event Model was saved by someone else.`
+- [x] After a member creates a model and a second session Saves with version `1` after the first Save, the second session shows the text `This Event Model was saved by someone else.`
 - [x] `createD1Store` `insertEventModel` with title `Untitled` returns that row from `getEventModel`
 - [x] `createD1Store` `listEventModelsForTeam` returns the Untitled model
 - [x] `createR2Documents` `put` of `models/{id}.eventmodel` returns that body from `get`
