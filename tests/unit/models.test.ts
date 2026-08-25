@@ -348,6 +348,20 @@ describe("create model", () => {
     );
   });
 
+  it("GET `/app/teams/{id}/models/{mid}` as a member shows the Team name", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/app/teams/team-1/models/model-1",
+        { headers: { Cookie: "session=sess-admin" } },
+      ),
+      env,
+    );
+    const html = await response.text();
+    expect(html).toContain("<p>Library</p>");
+    expect(html).not.toContain("<nav>");
+  });
+
   it("GET `/app/teams/{id}/models/{mid}` as a member shows a heading whose accessible name is `Untitled`", async () => {
     const { env } = await createdUntitled();
     const response = await handleRequest(

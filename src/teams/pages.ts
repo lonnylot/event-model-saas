@@ -50,8 +50,9 @@ export function modelPageHtml(
   title: string,
   modelId: string,
   version: number,
+  teamName: string,
 ): string {
-  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"></head><body><main><h1>${title}</h1><form id="save-model" method="post" action="/api/models/${modelId}"><input type="hidden" name="version" value="${version}" /><button type="submit">Save</button></form><form id="export-model" method="get" action="/api/models/${modelId}/export"><button type="submit">Export</button></form><p>${email}</p><form method="post" action="/api/auth/sign-out"><button type="submit">Sign out</button></form></main><script src="/teams.js"></script></body></html>`;
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"></head><body><main><p>${teamName}</p><h1>${title}</h1><form id="save-model" method="post" action="/api/models/${modelId}"><input type="hidden" name="version" value="${version}" /><button type="submit">Save</button></form><form id="export-model" method="get" action="/api/models/${modelId}/export"><button type="submit">Export</button></form><p>${email}</p><form method="post" action="/api/auth/sign-out"><button type="submit">Sign out</button></form></main><script src="/teams.js"></script></body></html>`;
 }
 
 export function adminTeamsHtml(email: string, teams: Team[]): string {

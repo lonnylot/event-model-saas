@@ -332,8 +332,16 @@ export async function handleRequest(
       if (!model || model.teamId !== modelPage[1]) {
         return jsonNotFound();
       }
+      const team = await env.auth.store.getTeam(modelPage[1]);
+      if (!team) return jsonNotFound();
       return new Response(
-        modelPageHtml(person.email, model.title, model.id, model.version),
+        modelPageHtml(
+          person.email,
+          model.title,
+          model.id,
+          model.version,
+          team.name,
+        ),
         {
         status: 200,
         headers: { "content-type": "text/html; charset=utf-8" },
