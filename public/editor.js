@@ -194,6 +194,10 @@ export function bindEditor(root) {
           selectedSliceItem.textContent = input.value;
           selectedSliceItem.setAttribute("aria-label", input.value);
         }
+        const main = root.querySelector("main");
+        if (main && !main.textContent?.includes("Unsaved changes.")) {
+          main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
+        }
       });
     }
   });
