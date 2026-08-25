@@ -13,7 +13,7 @@ The open Event Model page is Save, Export, and Sign out. Members cannot see a Sl
 - [x] GET `/app/teams/{id}/models/{mid}` as a member shows a heading whose accessible name is `Slices`
 - [x] GET `/app/teams/{id}/models/{mid}` as a member with no Slices does not show a listitem whose accessible name is `New Slice`
 - [ ] Clicking `New Slice` on that page shows a listitem whose accessible name is `New Slice`
-- [ ] Clicking `New Slice` on that page appends a Slice whose `title` is `New Slice`
+- [x] Clicking `New Slice` on that page appends a Slice whose `title` is `New Slice`
 - [ ] Clicking `New Slice` on that page appends a Slice whose `sliceType` is `STATE_CHANGE`
 - [ ] Clicking `New Slice` on that page appends a Slice whose `actors` is `[]`
 - [ ] Clicking `New Slice` on that page appends a Slice whose `commands` is `[]`
@@ -39,7 +39,7 @@ Event Model, Slice, Team, Person, Version
 
 ## Seams
 
-- `document` module — append Slice on an in-memory Event Model
+- `document` module — append Slice on an in-memory Event Model; the editor click path calls it
 - `handleRequest` — model page HTML
 - Browser — Playwright against `wrangler dev` with `TEST_MAIL=1`
 
