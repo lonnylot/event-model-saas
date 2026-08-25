@@ -37,7 +37,7 @@ A Team has no Event Models. Members cannot create, open, import, export, or Save
 - [ ] PUT `/api/models/{id}` with a document that fails `schemas/eventmodel.schema.json` returns status 400
 - [ ] PUT `/api/models/{id}` with a document that fails `schemas/eventmodel.schema.json` leaves version `1`
 - [ ] PUT `/api/models/{id}` with a document that fails `schemas/eventmodel.schema.json` leaves the R2 object unchanged
-- [ ] GET `/api/models/{id}/export` as a member returns content-type `application/json`
+- [x] GET `/api/models/{id}/export` as a member returns content-type `application/json`
 - [ ] GET `/api/models/{id}/export` as a member sets `Content-Disposition` to `attachment; filename="Untitled.eventmodel"`
 - [ ] GET `/api/models/{id}/export` as a Person who is not a member returns status 404
 - [ ] POST `/api/teams/{id}/imports` with a document whose `format` is not `eventmodel` returns status 400

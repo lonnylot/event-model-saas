@@ -11,6 +11,7 @@ import {
 } from "./auth/session";
 import type { AuthRuntime } from "./auth/types";
 import { createModel } from "./models/create-model";
+import { exportModel } from "./models/export-model";
 import { saveModel } from "./models/save-model";
 import { type DocumentsPort } from "./models/documents";
 import { createTeam } from "./teams/create-team";
@@ -140,6 +141,30 @@ export async function handleRequest(
       return new Response(JSON.stringify({ ok: true }), {
         status: 201,
         headers: { "content-type": "application/json; charset=utf-8" },
+      });
+    }
+    return jsonNotFound();
+  }
+  const exportMatch = path.match(/^\/api\/models\/([^/]+)\/export$/);
+  if (exportMatch && request.method === "GET") {
+    if (!env.auth) return jsonNotFound();
+    const person = await personFromRequest(env.auth, request);
+    if (!person) {
+      return new Response(null, {
+        status: 303,
+        headers: { Location: "/" },
+      });
+    }
+    const result = await exportModel(
+      env.auth,
+      env.documents,
+      person.id,
+      exportMatch[1],
+    );
+    if (result.status === 200) {
+      return new Response(result.body ?? "{}", {
+        status: 200,
+        headers: { "content-type": "application/json" },
       });
     }
     return jsonNotFound();

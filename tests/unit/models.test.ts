@@ -580,4 +580,15 @@ describe("create model", () => {
     expect((await auth.store.getEventModel("model-1"))?.version).toBe(1);
   });
 
+  it("GET `/api/models/{id}/export` as a member returns content-type `application/json`", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/api/models/model-1/export",
+        { headers: { Cookie: "session=sess-admin" } },
+      ),
+      env,
+    );
+    expect(response.headers.get("content-type")).toBe("application/json");
+  });
 });
