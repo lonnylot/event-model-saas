@@ -42,7 +42,7 @@ async function openUntitledModel(page: Page, request: APIRequestContext) {
     page.getByRole("button", { name: "Create model", exact: true }).click(),
   ]);
   await page.goto("/app");
-  await page.getByRole("link", { name: "Untitled", exact: true }).click();
+  await page.getByRole("link", { name: "Untitled", exact: true }).last().click();
   await expect(
     page.getByRole("heading", { name: "Untitled", exact: true }),
   ).toBeVisible();
@@ -57,4 +57,12 @@ test("Clicking `New Slice` on that page shows a listitem whose accessible name i
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }),
   ).toBeVisible();
+});
+
+test("GET `/app/teams/{id}/models/{mid}` as a member with no local edits does not show the text `Unsaved changes.`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await expect(page.getByText("Unsaved changes.")).toHaveCount(0);
 });
