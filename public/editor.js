@@ -5,6 +5,7 @@ import { appendEvent } from "./append-event.js";
 import { appendReadModel } from "./append-read-model.js";
 import { appendAutomation } from "./append-automation.js";
 import { appendConnection } from "./append-connection.js";
+import { setSliceTitle } from "./set-slice-title.js";
 
 export function onNewSliceClick(root) {
   const list = root.querySelector("ul");
@@ -179,6 +180,15 @@ export function bindEditor(root) {
         "beforeend",
         '<label>Name <input value="New Slice" /></label>',
       );
+      const input = inspector.querySelector("input");
+      input?.addEventListener("input", () => {
+        const holder = root.getElementById("event-model-document");
+        if (holder) {
+          holder.textContent = JSON.stringify(
+            setSliceTitle(JSON.parse(holder.textContent || "{}"), input.value),
+          );
+        }
+      });
     }
   });
   let sourcePort = null;

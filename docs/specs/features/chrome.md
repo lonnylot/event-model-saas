@@ -10,10 +10,10 @@ The Inspector region is empty. Members can add a Slice and an Actor but cannot s
 
 - [x] After clicking `New Slice` on that page, clicking the `New Slice` listitem shows a textbox whose accessible name is `Name` in the Inspector region
 - [x] After clicking `New Slice` on that page, clicking the `New Slice` listitem shows that `Name` textbox with the value `New Slice`
-- [ ] Filling the Inspector `Name` textbox with `Checkout` after selecting `New Slice` sets that Slice `title` to `Checkout`
+- [x] Filling the Inspector `Name` textbox with `Checkout` after selecting `New Slice` sets that Slice `title` to `Checkout`
 - [ ] Filling the Inspector `Name` textbox with `Checkout` after selecting `New Slice` shows a listitem whose accessible name is `Checkout`
 - [ ] After clicking `New Slice`, Saving, then filling the Inspector `Name` textbox with `Checkout`, the page shows the text `Unsaved changes.`
-- [ ] After a member creates a model, opens it, clicks `New Slice`, clicks the `New Slice` listitem, fills `Name` with `Checkout`, and Saves, a reload of that page shows a listitem whose accessible name is `Checkout`
+- [x] After a member creates a model, opens it, clicks `New Slice`, clicks the `New Slice` listitem, fills `Name` with `Checkout`, and Saves, a reload of that page shows a listitem whose accessible name is `Checkout`
 - [ ] After clicking `New Slice` then `Add Actor` on that page, clicking the Timeline `Actor` listitem shows a textbox whose accessible name is `Name` in the Inspector region
 - [ ] After clicking `New Slice` then `Add Actor` on that page, clicking the Timeline `Actor` listitem shows that `Name` textbox with the value `Actor`
 - [ ] Filling the Inspector `Name` textbox with `Shopper` after selecting `Actor` sets that Actor `name` to `Shopper`

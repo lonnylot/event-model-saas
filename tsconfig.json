@@ -24,6 +24,7 @@
     "public/append-event.js",
     "public/append-read-model.js",
     "public/append-automation.js",
-    "public/append-connection.js"
+    "public/append-connection.js",
+    "public/set-slice-title.js"
   ]
 }
