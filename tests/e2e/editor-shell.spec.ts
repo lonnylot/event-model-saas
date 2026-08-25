@@ -104,3 +104,14 @@ test("Clicking `Zoom in` on that page sets the Timeline `style.transform` to `sc
     page.getByRole("region", { name: "Timeline", exact: true }),
   ).toHaveJSProperty("style.transform", "scale(1.25)");
 });
+
+test("Clicking `Zoom out` on that page sets the Timeline `style.transform` to `scale(0.8)`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await page.getByRole("button", { name: "Zoom out", exact: true }).click();
+  await expect(
+    page.getByRole("region", { name: "Timeline", exact: true }),
+  ).toHaveJSProperty("style.transform", "scale(0.8)");
+});

@@ -30,6 +30,14 @@ export function bindEditor(root) {
         }
       });
     }
+    if (button.textContent === "Zoom out") {
+      button.addEventListener("click", () => {
+        const timeline = root.querySelector('[aria-label="Timeline"]');
+        if (timeline instanceof HTMLElement) {
+          timeline.style.transform = "scale(0.8)";
+        }
+      });
+    }
     if (button.textContent === "New Slice") {
       button.addEventListener("click", () => onNewSliceClick(root));
     }
