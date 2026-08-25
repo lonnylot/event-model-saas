@@ -1,6 +1,6 @@
 # Connections
 
-Status: validated
+Status: released
 
 ## Problem
 
