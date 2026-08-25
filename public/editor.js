@@ -1,4 +1,5 @@
 import { appendSlice } from "./append-slice.js";
+import { appendActor } from "./append-actor.js";
 
 export function onNewSliceClick(root) {
   const list = root.querySelector("ul");
@@ -16,6 +17,15 @@ export function onNewSliceClick(root) {
   if (holder) {
     holder.textContent = JSON.stringify(
       appendSlice(JSON.parse(holder.textContent || "{}")),
+    );
+  }
+}
+
+export function onAddActorClick(root) {
+  const holder = root.getElementById("event-model-document");
+  if (holder) {
+    holder.textContent = JSON.stringify(
+      appendActor(JSON.parse(holder.textContent || "{}")),
     );
   }
 }
@@ -48,6 +58,9 @@ export function bindEditor(root) {
     }
     if (button.textContent === "New Slice") {
       button.addEventListener("click", () => onNewSliceClick(root));
+    }
+    if (button.textContent === "Add Actor") {
+      button.addEventListener("click", () => onAddActorClick(root));
     }
   });
 }
