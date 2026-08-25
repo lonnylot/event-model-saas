@@ -181,5 +181,20 @@ export function createD1Store(db: D1Database): AuthStore {
         r2Key: String(row.r2_key),
       };
     },
+    async listEventModelsForTeam(teamId) {
+      const result = await db
+        .prepare(
+          "SELECT id, team_id, title, version, r2_key FROM event_models WHERE team_id = ?",
+        )
+        .bind(teamId)
+        .all();
+      return (result.results ?? []).map((row) => ({
+        id: String(row.id),
+        teamId: String(row.team_id),
+        title: String(row.title),
+        version: Number(row.version),
+        r2Key: String(row.r2_key),
+      }));
+    },
   };
 }

@@ -83,5 +83,8 @@ export function createMemoryStore(): AuthStore {
     async getEventModel(id) {
       return models.find((m) => m.id === id) ?? null;
     },
+    async listEventModelsForTeam(teamId) {
+      return models.filter((m) => m.teamId === teamId);
+    },
   };
 }

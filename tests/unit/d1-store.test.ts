@@ -75,6 +75,17 @@ function fakeD1() {
               throw new Error(`unexpected first SQL: ${sql}`);
             },
             async all() {
+              if (
+                sql ===
+                "SELECT id, team_id, title, version, r2_key FROM event_models WHERE team_id = ?"
+              ) {
+                const teamId = String(args[0]);
+                return {
+                  results: [...eventModels.values()].filter(
+                    (row) => row.team_id === teamId,
+                  ),
+                };
+              }
               throw new Error(`unexpected all SQL: ${sql}`);
             },
           };
@@ -121,4 +132,26 @@ describe("createD1Store", () => {
       r2Key: "models/model-1.eventmodel",
     });
   });
+
+  it("`createD1Store` `listEventModelsForTeam` returns the Untitled model", async () => {
+    const store = createD1Store(fakeD1());
+    await store.insertTeam({ id: "team-1", name: "Library" });
+    await store.insertEventModel({
+      id: "model-1",
+      teamId: "team-1",
+      title: "Untitled",
+      version: 1,
+      r2Key: "models/model-1.eventmodel",
+    });
+    expect(await store.listEventModelsForTeam("team-1")).toEqual([
+      {
+        id: "model-1",
+        teamId: "team-1",
+        title: "Untitled",
+        version: 1,
+        r2Key: "models/model-1.eventmodel",
+      },
+    ]);
+  });
+
 });
