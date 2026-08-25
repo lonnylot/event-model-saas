@@ -9,7 +9,7 @@ The editor shell has Slices, a Timeline, and Inspector, but members cannot put a
 ## Acceptance criteria
 
 - [x] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Add Actor`
-- [ ] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Add Command`
+- [x] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Add Command`
 - [ ] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Add Event`
 - [ ] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Add Read Model`
 - [ ] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Add Automation`
