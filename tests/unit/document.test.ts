@@ -59,4 +59,9 @@ describe("clicking New Slice", () => {
     expect(clickedSlice().readModels).toEqual([]);
     expect(appendSlice(empty).slices[0]?.readModels).toEqual([]);
   });
+
+  it("Clicking `New Slice` on that page appends a Slice whose `processors` is `[]`", () => {
+    expect(clickedSlice().processors).toEqual([]);
+    expect(appendSlice(empty).slices[0]?.processors).toEqual([]);
+  });
 });
