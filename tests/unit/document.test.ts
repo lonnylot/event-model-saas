@@ -34,4 +34,9 @@ describe("clicking New Slice", () => {
     expect(clickedSlice().title).toBe("New Slice");
     expect(appendSlice(empty).slices[0]?.title).toBe("New Slice");
   });
+
+  it("Clicking `New Slice` on that page appends a Slice whose `sliceType` is `STATE_CHANGE`", () => {
+    expect(clickedSlice().sliceType).toBe("STATE_CHANGE");
+    expect(appendSlice(empty).slices[0]?.sliceType).toBe("STATE_CHANGE");
+  });
 });
