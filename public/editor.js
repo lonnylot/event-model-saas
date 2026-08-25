@@ -22,6 +22,14 @@ export function onNewSliceClick(root) {
 
 export function bindEditor(root) {
   root.querySelectorAll("button").forEach((button) => {
+    if (button.textContent === "Zoom in") {
+      button.addEventListener("click", () => {
+        const timeline = root.querySelector('[aria-label="Timeline"]');
+        if (timeline instanceof HTMLElement) {
+          timeline.style.transform = "scale(1.25)";
+        }
+      });
+    }
     if (button.textContent === "New Slice") {
       button.addEventListener("click", () => onNewSliceClick(root));
     }

@@ -93,3 +93,14 @@ test("After clicking `New Slice` then `Save` on that page, the page does not sho
   ]);
   await expect(page.getByText("Unsaved changes.")).toHaveCount(0);
 });
+
+test("Clicking `Zoom in` on that page sets the Timeline `style.transform` to `scale(1.25)`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await page.getByRole("button", { name: "Zoom in", exact: true }).click();
+  await expect(
+    page.getByRole("region", { name: "Timeline", exact: true }),
+  ).toHaveJSProperty("style.transform", "scale(1.25)");
+});
