@@ -222,4 +222,11 @@ describe("clicking Add Read Model", () => {
       appendReadModel(appendSlice(empty)).slices[0]?.readModels[0]?.title,
     ).toBe("Read Model");
   });
+
+  it("Clicking `Add Read Model` on that page after `New Slice` appends a Read Model whose `type` is `READMODEL`", () => {
+    expect(clickedReadModel().type).toBe("READMODEL");
+    expect(
+      appendReadModel(appendSlice(empty)).slices[0]?.readModels[0]?.type,
+    ).toBe("READMODEL");
+  });
 });
