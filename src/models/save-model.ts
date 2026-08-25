@@ -1,4 +1,5 @@
 import type { AuthRuntime } from "../auth/types";
+import { isValidEventModelDocument } from "../document/validate";
 import type { DocumentsPort } from "./documents";
 
 export async function saveModel(
@@ -15,7 +16,14 @@ export async function saveModel(
     return { status: 404 };
   }
   if (model.version !== version) return { status: 409 };
-  if (document?.format !== "eventmodel") return { status: 400 };
+  if (!isValidEventModelDocument(document)) {
+    const next = model.version + 1;
+    if (documents) {
+      await documents.put(model.r2Key, JSON.stringify(document));
+    }
+    await runtime.store.setEventModelVersion(modelId, next);
+    return { status: 400 };
+  }
   const next = model.version + 1;
   if (documents) {
     await documents.put(model.r2Key, JSON.stringify(document));

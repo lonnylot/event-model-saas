@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://eventmodel.app/schema/eventmodel.schema.json",
+  "title": "EventModel document",
+  "description": "Pretty-printed JSON saved by the EventModel Mac app (.eventmodel).",
+  "type": "object",
+  "required": ["format", "schemaVersion", "id", "title", "slices"],
+  "additionalProperties": false,
+  "properties": {
+    "format": { "const": "eventmodel" },
+    "schemaVersion": { "type": "integer", "minimum": 1 },
+    "id": { "type": "string", "format": "uuid" },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "slices": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Slice" }
+    },
+    "connections": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Connection" }
+    }
+  },
+  "$defs": {
+    "Slice": {
+      "type": "object",
+      "required": ["id", "title", "sliceType", "actors", "commands", "events", "readModels", "processors"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "format": "uuid" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "sliceType": {
+          "type": "string",
+          "enum": ["STATE_CHANGE", "STATE_VIEW", "AUTOMATION"]
+        },
+        "actors": { "type": "array", "items": { "$ref": "#/$defs/Actor" } },
+        "commands": { "type": "array", "items": { "$ref": "#/$defs/Element" } },
+        "events": { "type": "array", "items": { "$ref": "#/$defs/Element" } },
+        "readModels": { "type": "array", "items": { "$ref": "#/$defs/Element" } },
+        "processors": { "type": "array", "items": { "$ref": "#/$defs/Element" } }
+      }
+    },
+    "Actor": {
+      "type": "object",
+      "required": ["id", "name"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "format": "uuid" },
+        "name": { "type": "string" },
+        "description": { "type": "string" }
+      }
+    },
+    "Element": {
+      "type": "object",
+      "required": ["id", "title", "type", "fields"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "format": "uuid" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "type": {
+          "type": "string",
+          "enum": ["COMMAND", "EVENT", "READMODEL", "AUTOMATION"]
+        },
+        "fields": { "type": "array", "items": { "$ref": "#/$defs/Field" } }
+      }
+    },
+    "Connection": {
+      "type": "object",
+      "required": ["id", "fromID", "fromKind", "toID", "toKind"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "format": "uuid" },
+        "fromID": { "type": "string", "format": "uuid" },
+        "fromKind": { "type": "string", "enum": ["COMMAND", "EVENT", "READMODEL"] },
+        "toID": { "type": "string", "format": "uuid" },
+        "toKind": { "type": "string", "enum": ["COMMAND", "EVENT", "READMODEL"] }
+      }
+    },
+    "Field": {
+      "type": "object",
+      "required": ["id", "name", "type"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "format": "uuid" },
+        "name": { "type": "string" },
+        "type": {
+          "type": "string",
+          "enum": ["String", "Boolean", "Int", "Long", "Double", "Decimal", "Date", "DateTime", "UUID", "Custom"]
+        },
+        "optional": { "type": "boolean" },
+        "example": { "type": "string" }
+      }
+    }
+  }
+}

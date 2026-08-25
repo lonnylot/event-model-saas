@@ -828,4 +828,23 @@ describe("create model", () => {
     );
   });
 
+  it("PUT `/api/models/{id}` with a document that fails `schemas/eventmodel.schema.json` returns status 400", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request("https://event-model.lonnylot.com/api/models/model-1", {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          Cookie: "session=sess-admin",
+        },
+        body: JSON.stringify({
+          version: 1,
+          document: { format: "eventmodel" },
+        }),
+      }),
+      env,
+    );
+    expect(response.status).toBe(400);
+  });
+
 });

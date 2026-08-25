@@ -229,6 +229,7 @@ export async function handleRequest(
     }
     const result = await saveModel(
       env.auth,
+      env.documents,
       person.id,
       saveMatch[1],
       version,
@@ -331,7 +332,9 @@ export async function handleRequest(
       if (!model || model.teamId !== modelPage[1]) {
         return jsonNotFound();
       }
-      return new Response(modelPageHtml(person.email, model.title, model.id, model.version), {
+      return new Response(
+        modelPageHtml(person.email, model.title, model.id, model.version),
+        {
         status: 200,
         headers: { "content-type": "text/html; charset=utf-8" },
       });
