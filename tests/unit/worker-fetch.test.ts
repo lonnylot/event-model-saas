@@ -143,4 +143,35 @@ describe("Worker fetch", () => {
     expect(models.objects.get("models/model-1.eventmodel")).toBeDefined();
   });
 
+  it("Worker `fetch` when `TEST_MAIL` is not `1` inserts the Event Model into `DB`", async () => {
+    const { db, people, sessions, memberships, eventModels } = fakeD1();
+    people.set("p-admin", {
+      id: "p-admin",
+      email: "lonny@lonnylot.com",
+      is_site_admin: 1,
+    });
+    sessions.set("sess-admin", {
+      id: "sess-admin",
+      person_id: "p-admin",
+      expires_at: Date.now() + 60_000,
+    });
+    memberships.push({ team_id: "team-1", person_id: "p-admin" });
+    await worker.fetch(
+      new Request("https://event-model.lonnylot.com/api/teams/team-1/models", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          Cookie: "session=sess-admin",
+        },
+        body: JSON.stringify({}),
+      }),
+      {
+        ASSETS: { fetch: vi.fn() },
+        DB: db,
+      },
+    );
+    expect([...eventModels.values()].some((row) => row.title === "Untitled")).toBe(
+      true,
+    );
+  });
 });

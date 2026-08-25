@@ -458,7 +458,7 @@ export default {
     const auth =
       env.TEST_MAIL === "1"
         ? testAuthRuntime(env)
-        : env.auth;
+        : (env.auth ?? productionAuthRuntime(env));
     const documents =
       env.TEST_MAIL === "1"
         ? testDocuments()
