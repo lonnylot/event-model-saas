@@ -75,3 +75,21 @@ test("After clicking `New Slice` on that page, the page shows the text `Unsaved 
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(page.getByText("Unsaved changes.")).toBeVisible();
 });
+
+test("After clicking `New Slice` then `Save` on that page, the page does not show the text `Unsaved changes.`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await expect(page.getByText("Unsaved changes.")).toBeVisible();
+  await Promise.all([
+    page.waitForResponse(
+      (response) =>
+        response.url().includes("/api/models/") &&
+        response.request().method() === "PUT",
+    ),
+    page.getByRole("button", { name: "Save", exact: true }).click(),
+  ]);
+  await expect(page.getByText("Unsaved changes.")).toHaveCount(0);
+});

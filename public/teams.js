@@ -60,6 +60,11 @@ document.querySelectorAll("#save-model").forEach((form) => {
         },
       }),
     });
+    if (response.status === 200) {
+      for (const node of document.querySelectorAll("main p")) {
+        if (node.textContent === "Unsaved changes.") node.remove();
+      }
+    }
     if (response.status === 409) {
       const main = document.querySelector("main");
       if (main && !main.textContent?.includes("This Event Model was saved by someone else.")) {
