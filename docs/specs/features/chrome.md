@@ -1,6 +1,6 @@
 # Chrome
 
-Status: validated
+Status: released
 
 ## Problem
 
