@@ -46,18 +46,22 @@ document.querySelectorAll("#save-model").forEach((form) => {
         ? Number(versionInput.value)
         : 0;
     const id = (form.getAttribute("action") || "").split("/").pop();
-    const response = await fetch(form.getAttribute("action") || "", {
-      method: "PUT",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        version,
-        document: {
+    const holder = document.getElementById("event-model-document");
+    const documentBody = holder
+      ? JSON.parse(holder.textContent || "{}")
+      : {
           format: "eventmodel",
           schemaVersion: 1,
           id,
           title: "Untitled",
           slices: [],
-        },
+        };
+    const response = await fetch(form.getAttribute("action") || "", {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        version,
+        document: documentBody,
       }),
     });
     if (response.status === 200) {

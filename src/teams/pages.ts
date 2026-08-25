@@ -51,8 +51,16 @@ export function modelPageHtml(
   modelId: string,
   version: number,
   teamName: string,
+  slices: Array<{ title: string }> = [],
+  documentJson = "",
 ): string {
-  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"></head><body><main><p>${teamName}</p><h1>${title}</h1><h2>Slices</h2><button type="button">New Slice</button><ul></ul><section aria-label="Timeline"></section><section aria-label="Inspector"></section><button type="button">Zoom in</button><button type="button">Zoom out</button><button type="button">Reset zoom</button><form id="save-model" method="post" action="/api/models/${modelId}"><input type="hidden" name="version" value="${version}" /><button type="submit">Save</button></form><form id="export-model" method="get" action="/api/models/${modelId}/export"><button type="submit">Export</button></form><p>${email}</p><form method="post" action="/api/auth/sign-out"><button type="submit">Sign out</button></form></main><script src="/teams.js"></script><script type="module" src="/editor.js"></script></body></html>`;
+  const items = slices
+    .map(
+      (slice) =>
+        `<li aria-label="${slice.title}">${slice.title}</li>`,
+    )
+    .join("");
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"></head><body><main><p>${teamName}</p><h1>${title}</h1><h2>Slices</h2><button type="button">New Slice</button><ul>${items}</ul><section aria-label="Timeline"></section><section aria-label="Inspector"></section><button type="button">Zoom in</button><button type="button">Zoom out</button><button type="button">Reset zoom</button><form id="save-model" method="post" action="/api/models/${modelId}"><input type="hidden" name="version" value="${version}" /><button type="submit">Save</button></form><form id="export-model" method="get" action="/api/models/${modelId}/export"><button type="submit">Export</button></form><p>${email}</p><form method="post" action="/api/auth/sign-out"><button type="submit">Sign out</button></form></main><script type="application/json" id="event-model-document">${documentJson}</script><script src="/teams.js"></script><script type="module" src="/editor.js"></script></body></html>`;
 }
 
 export function adminTeamsHtml(email: string, teams: Team[]): string {

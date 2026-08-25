@@ -334,6 +334,9 @@ export async function handleRequest(
       }
       const team = await env.auth.store.getTeam(modelPage[1]);
       if (!team) return jsonNotFound();
+      const stored = await env.documents?.get(model.r2Key);
+      const parsed = stored ? JSON.parse(stored) : { slices: [] };
+      const documentJson = JSON.stringify(parsed).replaceAll("<", "\\u003c");
       return new Response(
         modelPageHtml(
           person.email,
@@ -341,6 +344,8 @@ export async function handleRequest(
           model.id,
           model.version,
           team.name,
+          parsed.slices ?? [],
+          documentJson,
         ),
         {
         status: 200,
@@ -420,8 +425,13 @@ function testAuthRuntime(env: WorkerEnv): AuthRuntime {
     const sent: MailMessage[] = [];
     g.__emSent = sent;
     g.__emDocuments = createMemoryDocuments();
+    const store = createMemoryStore();
     g.__emAuth = {
-      store: createMemoryStore(),
+      store: {
+        ...store,
+        insertAttempt: async () => {},
+        countAttempts: async () => 0,
+      },
       mail: {
         async send(message) {
           sent.push(message);

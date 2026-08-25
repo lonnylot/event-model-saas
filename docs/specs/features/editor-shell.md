@@ -31,7 +31,7 @@ The open Event Model page is Save, Export, and Sign out. Members cannot see a Sl
 - [x] Clicking `Zoom in` on that page sets the Timeline `style.transform` to `scale(1.25)`
 - [x] Clicking `Zoom out` on that page sets the Timeline `style.transform` to `scale(0.8)`
 - [x] Clicking `Reset zoom` after `Zoom in` on that page sets the Timeline `style.transform` to `scale(1)`
-- [ ] After a member creates a model, opens it, clicks `New Slice`, and Saves, a reload of that page shows a listitem whose accessible name is `New Slice`
+- [x] After a member creates a model, opens it, clicks `New Slice`, and Saves, a reload of that page shows a listitem whose accessible name is `New Slice`
 
 ## Domain terms
 
@@ -49,6 +49,7 @@ Event Model, Slice, Team, Person, Version
 - Empty Slice JSON is `{ "id": "{uuid}", "title": "New Slice", "sliceType": "STATE_CHANGE", "actors": [], "commands": [], "events": [], "readModels": [], "processors": [] }`.
 - Zoom factors are `1.25` (in), `0.8` (out), `1` (reset). Pan is later.
 - Inspector in this slice is an empty named region; editing Slice or block fields is later.
+- The `TEST_MAIL=1` memory adapter does not count login attempts, so Playwright files can share one Worker without the production 5-per-hour cap.
 
 ## Out of scope
 
