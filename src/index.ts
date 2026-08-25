@@ -11,6 +11,7 @@ import {
 } from "./auth/session";
 import type { AuthRuntime } from "./auth/types";
 import { createModel } from "./models/create-model";
+import { saveModel } from "./models/save-model";
 import { type DocumentsPort } from "./models/documents";
 import { createTeam } from "./teams/create-team";
 import { inviteToTeam } from "./teams/invite";
@@ -142,6 +143,26 @@ export async function handleRequest(
       });
     }
     return jsonNotFound();
+  }
+  const saveMatch = path.match(/^\/api\/models\/([^/]+)$/);
+  if (saveMatch && request.method === "PUT") {
+    if (!env.auth) return jsonNotFound();
+    const person = await personFromRequest(env.auth, request);
+    if (!person) {
+      return new Response(null, {
+        status: 303,
+        headers: { Location: "/" },
+      });
+    }
+    let version = -1;
+    try {
+      const body = (await request.json()) as { version?: number };
+      version = typeof body.version === "number" ? body.version : -1;
+    } catch {
+      version = -1;
+    }
+    const result = await saveModel(env.auth, person.id, saveMatch[1], version);
+    return new Response(null, { status: result.status });
   }
   const inviteMatch = path.match(/^\/api\/teams\/([^/]+)\/invites$/);
   if (inviteMatch && request.method === "POST") {
