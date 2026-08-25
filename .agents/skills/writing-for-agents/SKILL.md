@@ -35,6 +35,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Architecture adapter constructed only under a test flag / injected `env.documents` / construction parked in Assumptions | `testing`, `codebase-design`, `keeping-specs-current` |
 | Architecture-named store never constructed in a test / each new SQL untested | `testing` |
 | Packed "and" AC / independent env/branch cases | `testing`, `keeping-specs-current` |
+| Early-return 400 vs does not create / persist-then-400 | `logical-commits`, `testing` |
 | Assumption vs acceptance criterion | `keeping-specs-current` |
 | Restated AC with leftover sections / leftover test title / leftover Restates | `keeping-specs-current` |
 | 303/redirect AC vs a shows bullet on the same path | `keeping-specs-current` |

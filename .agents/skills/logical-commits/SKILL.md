@@ -7,6 +7,7 @@ description: >
   commit, when a spec-only commit lists every AC, when production
   landed as a dependency of another AC, when several review threads
   share a commit, when a commit subject names two threads with "and",
+  when an early-return 400 and does not create share a commit,
   or when a dedicated test or
   Playwright flow would land after its production.
 ---
@@ -20,7 +21,7 @@ One commit is one finished thought: one spec criterion (or one review/CI fix) wi
 - A `tdd-loop` criterion is GREEN and the spec matches the code
 - A single review thread or a single CI cause is fixed and green
 - Spec status flip (`validated` / `released`) after the gate that allows it
-- A dependency production hunk (Worker `name` so assets serve) with its test — see below. Not every AC on one HTML page: four independently revertible ACs on one GET `/app` (Team name, Create team, Sign out, Teams admin) are four commits
+- A dependency production hunk (Worker `name` so assets serve) with its test — see below. Not every AC on one HTML page: four independently revertible ACs on one GET `/app` (Team name, Create team, Sign out, Teams admin) are four commits. Five ACs on GET `/app/teams/{id}/models/{mid}` (heading, email, Save, Export, Sign out) are five.
 
 ## When not to commit
 
@@ -37,7 +38,7 @@ One commit is one finished thought: one spec criterion (or one review/CI fix) wi
 
 1. `git status` and `git diff`. Stage only this slice.
 2. Message names the criterion or review thread: `feat(orders): total stays within ±5%`. A subject that names two new ACs or two review threads with "and" is two commits.
-3. Commit spec + tests + production code together. Completion: `git show --stat` lists all three when all three changed. A later test-only commit for a criterion whose production already landed is tests-after — not a logical slice. A Playwright flow (or any dedicated test) in a later commit than the production that implemented that criterion is the same miss, even after the PR is open. When splitting status vs content-type, the status commit must not already send that header — otherwise the content-type commit is test-only (land 201 without the header, then the content-type commit adds it with its test, same as 303 then Location). Client `fetch` in `public/*.js` that a Playwright flow needs is that flow's production; landing it under a mail-subject (or other sibling) commit makes the flow commit Playwright-only.
+3. Commit spec + tests + production code together. Completion: `git show --stat` lists all three when all three changed. A later test-only commit for a criterion whose production already landed is tests-after — not a logical slice. A Playwright flow (or any dedicated test) in a later commit than the production that implemented that criterion is the same miss, even after the PR is open. When splitting status vs content-type, the status commit must not already send that header — otherwise the content-type commit is test-only (land 201 without the header, then the content-type commit adds it with its test, same as 303 then Location). When splitting status vs side-effect (400 vs does not create, 400 vs leaves version `1`, 400 vs leaves R2 unchanged), the 400 commit must not already skip the write — persist-then-400 (insert, then return 400), then the side-effect commit skips the write. An early-return reject is not one commit when the spec has two checkboxes. Client `fetch` in `public/*.js` that a Playwright flow needs is that flow's production; landing it under a mail-subject (or other sibling) commit makes the flow commit Playwright-only.
 
 Prefer conventional prefixes (`feat`, `fix`, `docs`, `test`, `refactor`, `chore`). The subject (and body if needed) states what changed. Specs do not keep a Changelog section.
 
@@ -51,6 +52,7 @@ When a production hunk must exist so a later AC can run (Worker `name` so assets
 | "Checkpoint before I forget" | Unfinished slices are not logical. Finish GREEN, then commit. |
 | "Spec in a follow-up commit" | Same-commit spec update is the iron law. |
 | "One screen is one commit" | Grouping by screen is the miss. Split independently revertible ACs. |
+| "Early-return 400 is one commit" | Two checkboxes (400 vs does not create) are two commits. Persist-then-400, then skip the write. |
 | "Spec first, then one feat" | Spec hunk lands with the first production that implements it. |
 
 ## Red flags
