@@ -1,4 +1,9 @@
 import { appendSlice } from "./append-slice.js";
+import { appendActor } from "./append-actor.js";
+import { appendCommand } from "./append-command.js";
+import { appendEvent } from "./append-event.js";
+import { appendReadModel } from "./append-read-model.js";
+import { appendAutomation } from "./append-automation.js";
 
 export function onNewSliceClick(root) {
   const list = root.querySelector("ul");
@@ -16,6 +21,86 @@ export function onNewSliceClick(root) {
   if (holder) {
     holder.textContent = JSON.stringify(
       appendSlice(JSON.parse(holder.textContent || "{}")),
+    );
+  }
+}
+
+export function onAddActorClick(root) {
+  const list = root.querySelector('[aria-label="Timeline"] ul');
+  if (list) {
+    const item = root.createElement("li");
+    item.textContent = "Actor";
+    item.setAttribute("aria-label", "Actor");
+    list.append(item);
+  }
+  const holder = root.getElementById("event-model-document");
+  if (holder) {
+    holder.textContent = JSON.stringify(
+      appendActor(JSON.parse(holder.textContent || "{}")),
+    );
+  }
+}
+
+export function onAddCommandClick(root) {
+  const list = root.querySelector('[aria-label="Timeline"] ul');
+  if (list) {
+    const item = root.createElement("li");
+    item.textContent = "Command";
+    item.setAttribute("aria-label", "Command");
+    list.append(item);
+  }
+  const holder = root.getElementById("event-model-document");
+  if (holder) {
+    holder.textContent = JSON.stringify(
+      appendCommand(JSON.parse(holder.textContent || "{}")),
+    );
+  }
+}
+
+export function onAddEventClick(root) {
+  const list = root.querySelector('[aria-label="Timeline"] ul');
+  if (list) {
+    const item = root.createElement("li");
+    item.textContent = "Event Happened";
+    item.setAttribute("aria-label", "Event Happened");
+    list.append(item);
+  }
+  const holder = root.getElementById("event-model-document");
+  if (holder) {
+    holder.textContent = JSON.stringify(
+      appendEvent(JSON.parse(holder.textContent || "{}")),
+    );
+  }
+}
+
+export function onAddReadModelClick(root) {
+  const list = root.querySelector('[aria-label="Timeline"] ul');
+  if (list) {
+    const item = root.createElement("li");
+    item.textContent = "Read Model";
+    item.setAttribute("aria-label", "Read Model");
+    list.append(item);
+  }
+  const holder = root.getElementById("event-model-document");
+  if (holder) {
+    holder.textContent = JSON.stringify(
+      appendReadModel(JSON.parse(holder.textContent || "{}")),
+    );
+  }
+}
+
+export function onAddAutomationClick(root) {
+  const list = root.querySelector('[aria-label="Timeline"] ul');
+  if (list) {
+    const item = root.createElement("li");
+    item.textContent = "Automation";
+    item.setAttribute("aria-label", "Automation");
+    list.append(item);
+  }
+  const holder = root.getElementById("event-model-document");
+  if (holder) {
+    holder.textContent = JSON.stringify(
+      appendAutomation(JSON.parse(holder.textContent || "{}")),
     );
   }
 }
@@ -48,6 +133,21 @@ export function bindEditor(root) {
     }
     if (button.textContent === "New Slice") {
       button.addEventListener("click", () => onNewSliceClick(root));
+    }
+    if (button.textContent === "Add Actor") {
+      button.addEventListener("click", () => onAddActorClick(root));
+    }
+    if (button.textContent === "Add Command") {
+      button.addEventListener("click", () => onAddCommandClick(root));
+    }
+    if (button.textContent === "Add Event") {
+      button.addEventListener("click", () => onAddEventClick(root));
+    }
+    if (button.textContent === "Add Read Model") {
+      button.addEventListener("click", () => onAddReadModelClick(root));
+    }
+    if (button.textContent === "Add Automation") {
+      button.addEventListener("click", () => onAddAutomationClick(root));
     }
   });
 }

@@ -376,6 +376,76 @@ describe("create model", () => {
     );
   });
 
+  it("GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Add Actor`", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/app/teams/team-1/models/model-1",
+        { headers: { Cookie: "session=sess-admin" } },
+      ),
+      env,
+    );
+    expect(await response.text()).toContain(
+      '<button type="button">Add Actor</button>',
+    );
+  });
+
+  it("GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Add Command`", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/app/teams/team-1/models/model-1",
+        { headers: { Cookie: "session=sess-admin" } },
+      ),
+      env,
+    );
+    expect(await response.text()).toContain(
+      '<button type="button">Add Command</button>',
+    );
+  });
+
+  it("GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Add Event`", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/app/teams/team-1/models/model-1",
+        { headers: { Cookie: "session=sess-admin" } },
+      ),
+      env,
+    );
+    expect(await response.text()).toContain(
+      '<button type="button">Add Event</button>',
+    );
+  });
+
+  it("GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Add Read Model`", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/app/teams/team-1/models/model-1",
+        { headers: { Cookie: "session=sess-admin" } },
+      ),
+      env,
+    );
+    expect(await response.text()).toContain(
+      '<button type="button">Add Read Model</button>',
+    );
+  });
+
+  it("GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Add Automation`", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/app/teams/team-1/models/model-1",
+        { headers: { Cookie: "session=sess-admin" } },
+      ),
+      env,
+    );
+    expect(await response.text()).toContain(
+      '<button type="button">Add Automation</button>',
+    );
+  });
+
   it("GET `/app/teams/{id}/models/{mid}` as a member shows a heading whose accessible name is `Slices`", async () => {
     const { env } = await createdUntitled();
     const response = await handleRequest(
@@ -400,6 +470,18 @@ describe("create model", () => {
     expect(await response.text()).not.toMatch(/<li[^>]*>New Slice<\/li>/);
   });
 
+  it("GET `/app/teams/{id}/models/{mid}` as a member with no Actors does not show a listitem whose accessible name is `Actor`", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/app/teams/team-1/models/model-1",
+        { headers: { Cookie: "session=sess-admin" } },
+      ),
+      env,
+    );
+    expect(await response.text()).not.toMatch(/<li[^>]*>Actor<\/li>/);
+  });
+
   it("GET `/app/teams/{id}/models/{mid}` as a member shows a region whose accessible name is `Timeline`", async () => {
     const { env } = await createdUntitled();
     const response = await handleRequest(
@@ -410,7 +492,7 @@ describe("create model", () => {
       env,
     );
     expect(await response.text()).toContain(
-      '<section aria-label="Timeline"></section>',
+      '<section aria-label="Timeline"><ul></ul></section>',
     );
   });
 

@@ -18,6 +18,11 @@
   },
   "include": [
     "src/**/*.ts",
-    "public/append-slice.js"
+    "public/append-slice.js",
+    "public/append-actor.js",
+    "public/append-command.js",
+    "public/append-event.js",
+    "public/append-read-model.js",
+    "public/append-automation.js"
   ]
 }
