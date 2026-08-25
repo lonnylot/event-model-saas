@@ -32,18 +32,19 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Unit `toContain(">X<")` for a named link/button/textbox | `testing` |
 | Unit `not.toContain("<li>X</li>")` for a does-not-show listitem | `testing` |
 | Clicking-appends tested at a function production never calls | `testing` |
+| Dragging-appends unit that passes the kind already in the input | `testing` |
 | Empty stub `it` / checked AC with no assertion | `testing`, `tdd-loop` |
 | Module / seam / adapter vocabulary | `codebase-design` |
 | Architecture adapter constructed only under a test flag / injected `env.documents` / construction parked in Assumptions | `testing`, `codebase-design`, `keeping-specs-current` |
 | Architecture-named store never constructed in a test / each new SQL untested | `testing` |
 | Packed "and" AC / independent env/branch cases | `testing`, `keeping-specs-current` |
-| Early-return 400 vs does not create / persist-then-400 | `logical-commits`, `testing` |
+| Early-return 400 vs does not create / persist-then-400 / copy toKind for every target | `logical-commits`, `testing` |
 | Assumption vs acceptance criterion | `keeping-specs-current` |
 | Restated AC with leftover sections / leftover Assumptions after Out of scope / leftover Seams after deleting a named module / leftover test title / leftover Restates | `keeping-specs-current` |
 | 303/redirect AC vs a shows bullet on the same path | `keeping-specs-current` |
-| product.md leftover locked words / later-slice Playwright `add a slice` / leftover Restates quoting old product.md Playwright / leftover Document flow schema-reject / copying a schema file instead of restating / Next slice still names a released slug / removing product.md from Restates | `keeping-specs-current` |
+| product.md leftover locked words / later-slice Playwright `add a slice` / leftover Restates quoting old product.md Playwright / leftover Document flow schema-reject / leftover Editor (Mac parity) after restating Testing highlighting / copying a schema file instead of restating / Next slice still names a released slug / removing product.md from Restates | `keeping-specs-current` |
 | Domain terms line without a `CONTEXT.md` entry | `keeping-specs-current`, `domain-modeling` |
-| Independently revertible ACs / grouping by screen / spec-only | `logical-commits` |
+| Independently revertible ACs / grouping by screen / spec-only / fromKind vs toKind | `logical-commits` |
 | Tests-after / production that landed as a dependency / tests-only commit on top / folding tests-after into sibling production / click-path production after field tests / follow-up rewrite onto click path | `logical-commits` |
 | Review-thread batch / commit subject names two threads with "and" | `logical-commits` |
 | Extra visible chrome / document title / extra form or link or extra nav on a route / extra host observability without an AC | `keeping-specs-current` |
