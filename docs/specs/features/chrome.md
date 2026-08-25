@@ -9,7 +9,7 @@ The Inspector region is empty. Members can add a Slice and an Actor but cannot s
 ## Acceptance criteria
 
 - [x] After clicking `New Slice` on that page, clicking the `New Slice` listitem shows a textbox whose accessible name is `Name` in the Inspector region
-- [ ] After clicking `New Slice` on that page, clicking the `New Slice` listitem shows that `Name` textbox with the value `New Slice`
+- [x] After clicking `New Slice` on that page, clicking the `New Slice` listitem shows that `Name` textbox with the value `New Slice`
 - [ ] Filling the Inspector `Name` textbox with `Checkout` after selecting `New Slice` sets that Slice `title` to `Checkout`
 - [ ] Filling the Inspector `Name` textbox with `Checkout` after selecting `New Slice` shows a listitem whose accessible name is `Checkout`
 - [ ] After clicking `New Slice`, Saving, then filling the Inspector `Name` textbox with `Checkout`, the page shows the text `Unsaved changes.`

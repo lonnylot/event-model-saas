@@ -175,7 +175,10 @@ export function bindEditor(root) {
     if (!item || !slicesList.contains(item)) return;
     const inspector = root.querySelector('[aria-label="Inspector"]');
     if (inspector && !inspector.querySelector("input")) {
-      inspector.insertAdjacentHTML("beforeend", "<label>Name <input /></label>");
+      inspector.insertAdjacentHTML(
+        "beforeend",
+        '<label>Name <input value="New Slice" /></label>',
+      );
     }
   });
   let sourcePort = null;

@@ -91,3 +91,16 @@ test("After clicking `New Slice` on that page, clicking the `New Slice` listitem
       .getByRole("textbox", { name: "Name", exact: true }),
   ).toBeVisible();
 });
+
+test("After clicking `New Slice` on that page, clicking the `New Slice` listitem shows that `Name` textbox with the value `New Slice`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("listitem", { name: "New Slice", exact: true }).click();
+  await expect(
+    page
+      .getByRole("region", { name: "Inspector", exact: true })
+      .getByRole("textbox", { name: "Name", exact: true }),
+  ).toHaveValue("New Slice");
+});
