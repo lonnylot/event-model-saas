@@ -362,6 +362,20 @@ describe("create model", () => {
     expect(html).not.toContain("<nav>");
   });
 
+  it("GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `New Slice`", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/app/teams/team-1/models/model-1",
+        { headers: { Cookie: "session=sess-admin" } },
+      ),
+      env,
+    );
+    expect(await response.text()).toContain(
+      '<button type="button">New Slice</button>',
+    );
+  });
+
   it("GET `/app/teams/{id}/models/{mid}` as a member shows a heading whose accessible name is `Untitled`", async () => {
     const { env } = await createdUntitled();
     const response = await handleRequest(
