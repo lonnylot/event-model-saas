@@ -105,7 +105,7 @@ test("After clicking `New Slice` on that page, clicking the `New Slice` listitem
   ).toHaveValue("New Slice");
 });
 
-test("Filling the Inspector `Name` textbox with `Checkout` after selecting `New Slice` sets that Slice `title` to `Checkout`", async ({
+test("Filling the Inspector `Name` textbox with `Checkout` after selecting `New Slice` sets the last Slice `title` to `Checkout`", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -214,7 +214,7 @@ test("After clicking `New Slice` then `Add Actor` on that page, clicking the Tim
   ).toHaveValue("Actor");
 });
 
-test("Filling the Inspector `Name` textbox with `Shopper` after selecting `Actor` sets that Actor `name` to `Shopper`", async ({
+test("Filling the Inspector `Name` textbox with `Shopper` after selecting `Actor` sets the last Actor `name` to `Shopper`", async ({
   page,
 }) => {
   await openUntitledModel(page);
