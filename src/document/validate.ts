@@ -1,6 +1,8 @@
 import schema from "../../schemas/eventmodel.schema.json";
 
-export function isValidEventModelDocument(document: unknown): boolean {
+export function isValidEventModelDocument(
+  document: unknown,
+): document is { title: string } {
   if (document === null || typeof document !== "object" || Array.isArray(document)) {
     return false;
   }
