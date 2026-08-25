@@ -9,16 +9,6 @@ export async function importModel(
   if (!(await runtime.store.isMember(teamId, personId))) {
     return { status: 404 };
   }
-  if (document?.format !== "eventmodel") {
-    const id = runtime.randomId();
-    await runtime.store.insertEventModel({
-      id,
-      teamId,
-      title: "Untitled",
-      version: 1,
-      r2Key: `models/${id}.eventmodel`,
-    });
-    return { status: 400 };
-  }
+  if (document?.format !== "eventmodel") return { status: 400 };
   return { status: 201 };
 }
