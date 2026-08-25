@@ -5,6 +5,7 @@ import { appendCommand } from "../../src/document/append-command.ts";
 import { appendEvent } from "../../src/document/append-event.ts";
 import { appendReadModel } from "../../src/document/append-read-model.ts";
 import { appendAutomation } from "../../src/document/append-automation.ts";
+import { appendConnection } from "../../src/document/append-connection.ts";
 import {
   onAddActorClick,
   onAddAutomationClick,
@@ -281,5 +282,19 @@ describe("clicking Add Automation", () => {
     expect(
       appendAutomation(appendSlice(empty)).slices[0]?.processors[0]?.fields,
     ).toEqual([]);
+  });
+});
+
+describe("dragging ports", () => {
+  it("Dragging from `Command port` onto `Event Happened port` appends a Connection whose `fromKind` is `COMMAND`", () => {
+    const withBlocks = appendEvent(appendCommand(appendSlice(empty)));
+    const command = withBlocks.slices[0].commands[0];
+    const event = withBlocks.slices[0].events[0];
+    const next = appendConnection(withBlocks, {
+      fromID: command.id,
+      fromKind: "COMMAND",
+      toID: event.id,
+    });
+    expect(next.connections[0]?.fromKind).toBe("COMMAND");
   });
 });

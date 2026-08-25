@@ -4,6 +4,7 @@ import { appendCommand } from "./append-command.js";
 import { appendEvent } from "./append-event.js";
 import { appendReadModel } from "./append-read-model.js";
 import { appendAutomation } from "./append-automation.js";
+import { appendConnection } from "./append-connection.js";
 
 export function onNewSliceClick(root) {
   const list = root.querySelector("ul");
@@ -42,6 +43,10 @@ export function onAddActorClick(root) {
 }
 
 export function onAddCommandClick(root) {
+  const holder = root.getElementById("event-model-document");
+  const next = appendCommand(JSON.parse(holder?.textContent || "{}"));
+  if (holder) holder.textContent = JSON.stringify(next);
+  const command = next.slices?.at(-1)?.commands?.at(-1);
   const list = root.querySelector('[aria-label="Timeline"] ul');
   if (list) {
     const item = root.createElement("li");
@@ -50,18 +55,20 @@ export function onAddCommandClick(root) {
     const port = root.createElement("button");
     port.type = "button";
     port.textContent = "Command port";
+    if (command) {
+      port.dataset.id = command.id;
+      port.dataset.kind = "COMMAND";
+    }
     item.append(port);
     list.append(item);
-  }
-  const holder = root.getElementById("event-model-document");
-  if (holder) {
-    holder.textContent = JSON.stringify(
-      appendCommand(JSON.parse(holder.textContent || "{}")),
-    );
   }
 }
 
 export function onAddEventClick(root) {
+  const holder = root.getElementById("event-model-document");
+  const next = appendEvent(JSON.parse(holder?.textContent || "{}"));
+  if (holder) holder.textContent = JSON.stringify(next);
+  const event = next.slices?.at(-1)?.events?.at(-1);
   const list = root.querySelector('[aria-label="Timeline"] ul');
   if (list) {
     const item = root.createElement("li");
@@ -70,14 +77,12 @@ export function onAddEventClick(root) {
     const port = root.createElement("button");
     port.type = "button";
     port.textContent = "Event Happened port";
+    if (event) {
+      port.dataset.id = event.id;
+      port.dataset.kind = "EVENT";
+    }
     item.append(port);
     list.append(item);
-  }
-  const holder = root.getElementById("event-model-document");
-  if (holder) {
-    holder.textContent = JSON.stringify(
-      appendEvent(JSON.parse(holder.textContent || "{}")),
-    );
   }
 }
 
@@ -161,6 +166,27 @@ export function bindEditor(root) {
     if (button.textContent === "Add Automation") {
       button.addEventListener("click", () => onAddAutomationClick(root));
     }
+  });
+  let sourcePort = null;
+  root.addEventListener("mousedown", (event) => {
+    const port = event.target?.closest?.("[data-kind]");
+    if (port) sourcePort = port;
+  });
+  root.addEventListener("mouseup", (event) => {
+    const target = event.target?.closest?.("[data-kind]");
+    if (sourcePort && target && sourcePort !== target) {
+      const holder = root.getElementById("event-model-document");
+      if (holder) {
+        holder.textContent = JSON.stringify(
+          appendConnection(JSON.parse(holder.textContent || "{}"), {
+            fromID: sourcePort.dataset.id,
+            fromKind: sourcePort.dataset.kind,
+            toID: target.dataset.id,
+          }),
+        );
+      }
+    }
+    sourcePort = null;
   });
 }
 
