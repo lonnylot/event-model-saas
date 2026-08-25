@@ -663,4 +663,34 @@ describe("create model", () => {
     );
     expect(response.status).toBe(201);
   });
+  it("POST `/api/teams/{id}/imports` with a document whose `format` is not `eventmodel` returns status 400", async () => {
+    const { env } = await memberEnv();
+    await handleRequest(
+      new Request("https://event-model.lonnylot.com/api/teams", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          Cookie: "session=sess-admin",
+        },
+        body: JSON.stringify({ name: "Library" }),
+      }),
+      env,
+    );
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/api/teams/team-1/imports",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            Cookie: "session=sess-admin",
+          },
+          body: JSON.stringify({ document: { format: "other" } }),
+        },
+      ),
+      env,
+    );
+    expect(response.status).toBe(400);
+  });
+
 });

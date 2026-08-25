@@ -40,7 +40,7 @@ A Team has no Event Models. Members cannot create, open, import, export, or Save
 - [x] GET `/api/models/{id}/export` as a member returns content-type `application/json`
 - [x] GET `/api/models/{id}/export` as a member sets `Content-Disposition` to `attachment; filename="Untitled.eventmodel"`
 - [x] GET `/api/models/{id}/export` as a Person who is not a member returns status 404
-- [ ] POST `/api/teams/{id}/imports` with a document whose `format` is not `eventmodel` returns status 400
+- [x] POST `/api/teams/{id}/imports` with a document whose `format` is not `eventmodel` returns status 400
 - [ ] POST `/api/teams/{id}/imports` with a document whose `format` is not `eventmodel` does not create an Event Model
 - [ ] POST `/api/teams/{id}/imports` with a document that fails `schemas/eventmodel.schema.json` returns status 400
 - [ ] POST `/api/teams/{id}/imports` with a document that fails `schemas/eventmodel.schema.json` does not create an Event Model
