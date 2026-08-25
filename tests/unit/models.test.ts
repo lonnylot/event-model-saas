@@ -800,4 +800,32 @@ describe("create model", () => {
     );
   });
 
+  it("PUT `/api/models/{id}` as a member with matching version writes the submitted document to `models/{id}.eventmodel`", async () => {
+    const { env } = await createdUntitled();
+    const document = {
+      format: "eventmodel",
+      schemaVersion: 1,
+      id: "model-1",
+      title: "Saved",
+      slices: [],
+    };
+    await handleRequest(
+      new Request("https://event-model.lonnylot.com/api/models/model-1", {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          Cookie: "session=sess-admin",
+        },
+        body: JSON.stringify({
+          version: 1,
+          document,
+        }),
+      }),
+      env,
+    );
+    expect(await env.documents.get("models/model-1.eventmodel")).toBe(
+      JSON.stringify(document),
+    );
+  });
+
 });
