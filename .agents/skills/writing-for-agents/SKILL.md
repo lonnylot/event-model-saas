@@ -31,6 +31,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Accessible name **is** X / Playwright substring | `testing`, `playwright-e2e` |
 | Unit `toContain(">X<")` for a named link/button/textbox | `testing` |
 | Unit `not.toContain("<li>X</li>")` for a does-not-show listitem | `testing` |
+| Clicking-appends tested at a function production never calls | `testing` |
 | Empty stub `it` / checked AC with no assertion | `testing`, `tdd-loop` |
 | Module / seam / adapter vocabulary | `codebase-design` |
 | Architecture adapter constructed only under a test flag / injected `env.documents` / construction parked in Assumptions | `testing`, `codebase-design`, `keeping-specs-current` |
