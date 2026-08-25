@@ -176,4 +176,11 @@ describe("clicking Add Event", () => {
       "Event Happened",
     );
   });
+
+  it("Clicking `Add Event` on that page after `New Slice` appends an Event whose `type` is `EVENT`", () => {
+    expect(clickedEvent().type).toBe("EVENT");
+    expect(appendEvent(appendSlice(empty)).slices[0]?.events[0]?.type).toBe(
+      "EVENT",
+    );
+  });
 });

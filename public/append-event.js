@@ -6,7 +6,7 @@ export function appendEvent(model) {
     ...last,
     events: [
       ...(last.events ?? []),
-      { id: crypto.randomUUID(), title: "Event Happened" },
+      { id: crypto.randomUUID(), title: "Event Happened", type: "EVENT" },
     ],
   };
   return { ...model, slices };
