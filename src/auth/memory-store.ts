@@ -1,5 +1,6 @@
 import type {
   AuthStore,
+  EventModelRow,
   MagicLink,
   Person,
   SessionRow,
@@ -13,6 +14,7 @@ export function createMemoryStore(): AuthStore {
   const attempts: { key: string; at: number }[] = [];
   const teams: Team[] = [];
   const memberships: { teamId: string; personId: string }[] = [];
+  const models: EventModelRow[] = [];
 
   return {
     async getPersonByEmail(email) {
@@ -74,6 +76,19 @@ export function createMemoryStore(): AuthStore {
       return memberships.some(
         (m) => m.teamId === teamId && m.personId === personId,
       );
+    },
+    async insertEventModel(model) {
+      models.push(model);
+    },
+    async getEventModel(id) {
+      return models.find((m) => m.id === id) ?? null;
+    },
+    async listEventModelsForTeam(teamId) {
+      return models.filter((m) => m.teamId === teamId);
+    },
+    async setEventModelVersion(id, version) {
+      const found = models.find((m) => m.id === id);
+      if (found) found.version = version;
     },
   };
 }

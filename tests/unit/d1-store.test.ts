@@ -6,6 +6,7 @@ type Row = Record<string, unknown>;
 function fakeD1() {
   const teams = new Map<string, Row>();
   const memberships: { team_id: string; person_id: string }[] = [];
+  const eventModels = new Map<string, Row>();
 
   const db = {
     prepare(sql: string) {
@@ -35,6 +36,24 @@ function fakeD1() {
                 }
                 return {};
               }
+              if (
+                sql ===
+                "INSERT INTO event_models (id, team_id, title, version, r2_key) VALUES (?, ?, ?, ?, ?)"
+              ) {
+                eventModels.set(String(args[0]), {
+                  id: String(args[0]),
+                  team_id: String(args[1]),
+                  title: String(args[2]),
+                  version: Number(args[3]),
+                  r2_key: String(args[4]),
+                });
+                return {};
+              }
+              if (sql === "UPDATE event_models SET version = ? WHERE id = ?") {
+                const row = eventModels.get(String(args[1]));
+                if (row) row.version = Number(args[0]);
+                return {};
+              }
               throw new Error(`unexpected run SQL: ${sql}`);
             },
             async first() {
@@ -52,9 +71,26 @@ function fakeD1() {
                 );
                 return hit ? { n: 1 } : null;
               }
+              if (
+                sql ===
+                "SELECT id, team_id, title, version, r2_key FROM event_models WHERE id = ?"
+              ) {
+                return eventModels.get(String(args[0])) ?? null;
+              }
               throw new Error(`unexpected first SQL: ${sql}`);
             },
             async all() {
+              if (
+                sql ===
+                "SELECT id, team_id, title, version, r2_key FROM event_models WHERE team_id = ?"
+              ) {
+                const teamId = String(args[0]);
+                return {
+                  results: [...eventModels.values()].filter(
+                    (row) => row.team_id === teamId,
+                  ),
+                };
+              }
               throw new Error(`unexpected all SQL: ${sql}`);
             },
           };
@@ -81,5 +117,59 @@ describe("createD1Store", () => {
     await store.insertTeam({ id: "team-1", name: "Library" });
     await store.addMembership("team-1", "p-admin");
     expect(await store.isMember("team-1", "p-admin")).toBe(true);
+  });
+
+  it("`createD1Store` `insertEventModel` with title `Untitled` returns that row from `getEventModel`", async () => {
+    const store = createD1Store(fakeD1());
+    await store.insertTeam({ id: "team-1", name: "Library" });
+    await store.insertEventModel({
+      id: "model-1",
+      teamId: "team-1",
+      title: "Untitled",
+      version: 1,
+      r2Key: "models/model-1.eventmodel",
+    });
+    expect(await store.getEventModel("model-1")).toEqual({
+      id: "model-1",
+      teamId: "team-1",
+      title: "Untitled",
+      version: 1,
+      r2Key: "models/model-1.eventmodel",
+    });
+  });
+
+  it("`createD1Store` `listEventModelsForTeam` returns the Untitled model", async () => {
+    const store = createD1Store(fakeD1());
+    await store.insertTeam({ id: "team-1", name: "Library" });
+    await store.insertEventModel({
+      id: "model-1",
+      teamId: "team-1",
+      title: "Untitled",
+      version: 1,
+      r2Key: "models/model-1.eventmodel",
+    });
+    expect(await store.listEventModelsForTeam("team-1")).toEqual([
+      {
+        id: "model-1",
+        teamId: "team-1",
+        title: "Untitled",
+        version: 1,
+        r2Key: "models/model-1.eventmodel",
+      },
+    ]);
+  });
+
+  it("`createD1Store` `setEventModelVersion` sets version `2`", async () => {
+    const store = createD1Store(fakeD1());
+    await store.insertTeam({ id: "team-1", name: "Library" });
+    await store.insertEventModel({
+      id: "model-1",
+      teamId: "team-1",
+      title: "Untitled",
+      version: 1,
+      r2Key: "models/model-1.eventmodel",
+    });
+    await store.setEventModelVersion("model-1", 2);
+    expect((await store.getEventModel("model-1"))?.version).toBe(2);
   });
 });

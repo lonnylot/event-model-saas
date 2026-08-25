@@ -24,3 +24,50 @@ document.querySelectorAll("form.invite").forEach((form) => {
     });
   });
 });
+
+document.querySelectorAll("#create-model").forEach((form) => {
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    await fetch(form.getAttribute("action") || "", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({}),
+    });
+    location.href = "/app";
+  });
+});
+
+document.querySelectorAll("#save-model").forEach((form) => {
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const versionInput = form.querySelector("[name=version]");
+    const version =
+      versionInput instanceof HTMLInputElement
+        ? Number(versionInput.value)
+        : 0;
+    const id = (form.getAttribute("action") || "").split("/").pop();
+    const response = await fetch(form.getAttribute("action") || "", {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        version,
+        document: {
+          format: "eventmodel",
+          schemaVersion: 1,
+          id,
+          title: "Untitled",
+          slices: [],
+        },
+      }),
+    });
+    if (response.status === 409) {
+      const main = document.querySelector("main");
+      if (main && !main.textContent?.includes("This Event Model was saved by someone else.")) {
+        main.insertAdjacentHTML(
+          "afterbegin",
+          "<p>This Event Model was saved by someone else.</p>",
+        );
+      }
+    }
+  });
+});

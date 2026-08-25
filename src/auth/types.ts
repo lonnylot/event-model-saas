@@ -22,6 +22,14 @@ export type Team = {
   name: string;
 };
 
+export type EventModelRow = {
+  id: string;
+  teamId: string;
+  title: string;
+  version: number;
+  r2Key: string;
+};
+
 export type MailMessage = {
   to: string;
   from: string;
@@ -46,6 +54,10 @@ export type AuthStore = {
   listTeamsForPerson(personId: string): Promise<Team[]>;
   addMembership(teamId: string, personId: string): Promise<void>;
   isMember(teamId: string, personId: string): Promise<boolean>;
+  insertEventModel(model: EventModelRow): Promise<void>;
+  getEventModel(id: string): Promise<EventModelRow | null>;
+  listEventModelsForTeam(teamId: string): Promise<EventModelRow[]>;
+  setEventModelVersion(id: string, version: number): Promise<void>;
 };
 
 export type MailPort = {

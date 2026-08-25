@@ -20,6 +20,12 @@
       "migrations_dir": "migrations"
     }
   ],
+  "r2_buckets": [
+    {
+      "binding": "MODELS",
+      "bucket_name": "event-model-saas-models"
+    }
+  ],
   "send_email": [{ "name": "EMAIL" }],
   "routes": [
     { "pattern": "event-model.lonnylot.com", "custom_domain": true }

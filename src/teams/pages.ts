@@ -1,4 +1,4 @@
-import type { Team } from "../auth/types";
+import type { EventModelRow, Team } from "../auth/types";
 
 function shell(email: string, isSiteAdmin: boolean, inner: string): string {
   const admin = isSiteAdmin
@@ -30,8 +30,28 @@ export function teamPageHtml(
   email: string,
   isSiteAdmin: boolean,
   team: Team,
+  models: EventModelRow[] = [],
 ): string {
-  return shell(email, isSiteAdmin, `<h1>${team.name}</h1>`);
+  const links = models
+    .map(
+      (m) =>
+        `<p><a href="/app/teams/${team.id}/models/${m.id}">${m.title}</a></p>`,
+    )
+    .join("");
+  return shell(
+    email,
+    isSiteAdmin,
+    `<h1>${team.name}</h1><form id="create-model" method="post" action="/api/teams/${team.id}/models"><button type="submit">Create model</button></form>${links}`,
+  );
+}
+
+export function modelPageHtml(
+  email: string,
+  title: string,
+  modelId: string,
+  version: number,
+): string {
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"></head><body><main><h1>${title}</h1><form id="save-model" method="post" action="/api/models/${modelId}"><input type="hidden" name="version" value="${version}" /><button type="submit">Save</button></form><form id="export-model" method="get" action="/api/models/${modelId}/export"><button type="submit">Export</button></form><p>${email}</p><form method="post" action="/api/auth/sign-out"><button type="submit">Sign out</button></form></main><script src="/teams.js"></script></body></html>`;
 }
 
 export function adminTeamsHtml(email: string, teams: Team[]): string {

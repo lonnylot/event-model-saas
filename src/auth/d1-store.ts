@@ -151,5 +151,56 @@ export function createD1Store(db: D1Database): AuthStore {
         .first();
       return row != null;
     },
+    async insertEventModel(model) {
+      await db
+        .prepare(
+          "INSERT INTO event_models (id, team_id, title, version, r2_key) VALUES (?, ?, ?, ?, ?)",
+        )
+        .bind(
+          model.id,
+          model.teamId,
+          model.title,
+          model.version,
+          model.r2Key,
+        )
+        .run();
+    },
+    async getEventModel(id) {
+      const row = await db
+        .prepare(
+          "SELECT id, team_id, title, version, r2_key FROM event_models WHERE id = ?",
+        )
+        .bind(id)
+        .first();
+      if (!row) return null;
+      return {
+        id: String(row.id),
+        teamId: String(row.team_id),
+        title: String(row.title),
+        version: Number(row.version),
+        r2Key: String(row.r2_key),
+      };
+    },
+    async listEventModelsForTeam(teamId) {
+      const result = await db
+        .prepare(
+          "SELECT id, team_id, title, version, r2_key FROM event_models WHERE team_id = ?",
+        )
+        .bind(teamId)
+        .all();
+      return (result.results ?? []).map((row) => ({
+        id: String(row.id),
+        teamId: String(row.team_id),
+        title: String(row.title),
+        version: Number(row.version),
+        r2Key: String(row.r2_key),
+      }));
+    },
+    async setEventModelVersion(id, version) {
+      await db
+        .prepare("UPDATE event_models SET version = ? WHERE id = ?")
+        .bind(version, id)
+        .run();
+    },
   };
 }

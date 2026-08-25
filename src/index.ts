@@ -10,11 +10,21 @@ import {
   readSessionId,
 } from "./auth/session";
 import type { AuthRuntime } from "./auth/types";
+import { createModel } from "./models/create-model";
+import { importModel } from "./models/import-model";
+import { exportModel } from "./models/export-model";
+import { saveModel } from "./models/save-model";
+import {
+  createMemoryDocuments,
+  type DocumentsPort,
+} from "./models/documents";
+import { createR2Documents } from "./models/r2-documents";
 import { createTeam } from "./teams/create-team";
 import { inviteToTeam } from "./teams/invite";
 import {
   adminTeamsHtml,
   noTeamsAdminHtml,
+  modelPageHtml,
   pickerHtml,
   teamPageHtml,
 } from "./teams/pages";
@@ -25,6 +35,7 @@ export type AssetEnv = {
 
 export type AppEnv = AssetEnv & {
   auth?: AuthRuntime;
+  documents?: DocumentsPort;
   TEST_MAIL?: string;
 };
 
@@ -115,6 +126,123 @@ export async function handleRequest(
       headers: { "content-type": "application/json; charset=utf-8" },
     });
   }
+  const importMatch = path.match(/^\/api\/teams\/([^/]+)\/imports$/);
+  if (importMatch && request.method === "POST") {
+    if (!env.auth) return jsonNotFound();
+    const person = await personFromRequest(env.auth, request);
+    if (!person) {
+      return new Response(null, {
+        status: 303,
+        headers: { Location: "/" },
+      });
+    }
+    let document: { format?: string; title?: string } | undefined;
+    try {
+      const body = (await request.json()) as {
+        document?: { format?: string; title?: string };
+      };
+      document = body.document;
+    } catch {
+      document = undefined;
+    }
+    const result = await importModel(
+      env.auth,
+      env.documents,
+      person.id,
+      importMatch[1],
+      document,
+    );
+    return new Response(null, { status: result.status });
+  }
+  const modelsMatch = path.match(/^\/api\/teams\/([^/]+)\/models$/);
+  if (modelsMatch && request.method === "POST") {
+    if (!env.auth) return jsonNotFound();
+    const person = await personFromRequest(env.auth, request);
+    if (!person) {
+      return new Response(null, {
+        status: 303,
+        headers: { Location: "/" },
+      });
+    }
+    const result = await createModel(
+      env.auth,
+      env.documents,
+      person.id,
+      modelsMatch[1],
+    );
+    if (result.status === 201) {
+      return new Response(JSON.stringify({ ok: true }), {
+        status: 201,
+        headers: { "content-type": "application/json; charset=utf-8" },
+      });
+    }
+    return jsonNotFound();
+  }
+  const exportMatch = path.match(/^\/api\/models\/([^/]+)\/export$/);
+  if (exportMatch && request.method === "GET") {
+    if (!env.auth) return jsonNotFound();
+    const person = await personFromRequest(env.auth, request);
+    if (!person) {
+      return new Response(null, {
+        status: 303,
+        headers: { Location: "/" },
+      });
+    }
+    const result = await exportModel(
+      env.auth,
+      env.documents,
+      person.id,
+      exportMatch[1],
+    );
+    if (result.status === 200) {
+      return new Response(result.body ?? "{}", {
+        status: 200,
+        headers: {
+          "content-type": "application/json",
+          "Content-Disposition": `attachment; filename="${result.title}.eventmodel"`,
+        },
+      });
+    }
+    return jsonNotFound();
+  }
+  const saveMatch = path.match(/^\/api\/models\/([^/]+)$/);
+  if (saveMatch && request.method === "PUT") {
+    if (!env.auth) return jsonNotFound();
+    const person = await personFromRequest(env.auth, request);
+    if (!person) {
+      return new Response(null, {
+        status: 303,
+        headers: { Location: "/" },
+      });
+    }
+    let version = -1;
+    let document: { format?: string } | undefined;
+    try {
+      const body = (await request.json()) as {
+        version?: number;
+        document?: { format?: string };
+      };
+      version = typeof body.version === "number" ? body.version : -1;
+      document = body.document;
+    } catch {
+      version = -1;
+    }
+    const result = await saveModel(
+      env.auth,
+      env.documents,
+      person.id,
+      saveMatch[1],
+      version,
+      document,
+    );
+    if (result.status === 200 && result.version != null) {
+      return new Response(JSON.stringify({ version: result.version }), {
+        status: 200,
+        headers: { "content-type": "application/json; charset=utf-8" },
+      });
+    }
+    return new Response(null, { status: result.status });
+  }
   const inviteMatch = path.match(/^\/api\/teams\/([^/]+)\/invites$/);
   if (inviteMatch && request.method === "POST") {
     if (!env.auth) return jsonNotFound();
@@ -192,6 +320,25 @@ export async function handleRequest(
         headers: { "content-type": "text/html; charset=utf-8" },
       });
     }
+    const modelPage = path.match(
+      /^\/app\/teams\/([^/]+)\/models\/([^/]+)$/,
+    );
+    if (modelPage) {
+      const member = await env.auth.store.isMember(modelPage[1], person.id);
+      if (!member) {
+        return jsonNotFound();
+      }
+      const model = await env.auth.store.getEventModel(modelPage[2]);
+      if (!model || model.teamId !== modelPage[1]) {
+        return jsonNotFound();
+      }
+      return new Response(
+        modelPageHtml(person.email, model.title, model.id, model.version),
+        {
+        status: 200,
+        headers: { "content-type": "text/html; charset=utf-8" },
+      });
+    }
     const teamPage = path.match(/^\/app\/teams\/([^/]+)$/);
     if (teamPage) {
       const member = await env.auth.store.isMember(teamPage[1], person.id);
@@ -200,8 +347,9 @@ export async function handleRequest(
       }
       const team = await env.auth.store.getTeam(teamPage[1]);
       if (!team) return jsonNotFound();
+      const models = await env.auth.store.listEventModelsForTeam(team.id);
       return new Response(
-        teamPageHtml(person.email, person.isSiteAdmin, team),
+        teamPageHtml(person.email, person.isSiteAdmin, team, models),
         {
           status: 200,
           headers: { "content-type": "text/html; charset=utf-8" },
@@ -243,6 +391,7 @@ type WorkerEnv = AppEnv & {
   SITE_ADMIN_EMAIL?: string;
   AUTH_FROM?: string;
   DB?: D1Database;
+  MODELS?: R2Bucket;
   EMAIL?: {
     send: (message: {
       to: string;
@@ -257,10 +406,12 @@ function testAuthRuntime(env: WorkerEnv): AuthRuntime {
   const g = globalThis as unknown as {
     __emAuth?: AuthRuntime;
     __emSent?: MailMessage[];
+    __emDocuments?: DocumentsPort;
   };
   if (!g.__emAuth) {
     const sent: MailMessage[] = [];
     g.__emSent = sent;
+    g.__emDocuments = createMemoryDocuments();
     g.__emAuth = {
       store: createMemoryStore(),
       mail: {
@@ -275,6 +426,12 @@ function testAuthRuntime(env: WorkerEnv): AuthRuntime {
     };
   }
   return g.__emAuth;
+}
+
+function testDocuments(): DocumentsPort {
+  const g = globalThis as unknown as { __emDocuments?: DocumentsPort };
+  if (!g.__emDocuments) g.__emDocuments = createMemoryDocuments();
+  return g.__emDocuments;
 }
 
 function productionAuthRuntime(env: WorkerEnv): AuthRuntime | undefined {
@@ -305,6 +462,11 @@ export default {
       env.TEST_MAIL === "1"
         ? testAuthRuntime(env)
         : (env.auth ?? productionAuthRuntime(env));
-    return handleRequest(request, { ...env, auth });
+    const documents =
+      env.TEST_MAIL === "1"
+        ? testDocuments()
+        : (env.documents ??
+          (env.MODELS ? createR2Documents(env.MODELS) : undefined));
+    return handleRequest(request, { ...env, auth, documents });
   },
 };
