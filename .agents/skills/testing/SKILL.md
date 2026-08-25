@@ -9,7 +9,8 @@ description: >
   criterion (not a source grep), leftover test filename after a
   deleted SUT, leftover test title after a restated AC, host
   `run_worker_first` wiring, an architecture adapter constructed only
-  under a test flag, an architecture-named store never constructed in a
+  under a test flag, success status or 409 UI that never asserts a stored
+  R2 body, an architecture-named store never constructed in a
   test, each new SQL this slice adds untested, or updating a testing spec.
 ---
 
@@ -60,6 +61,7 @@ A criterion that names a screen, "shows", or "lists" is proven at the app or flo
    | "does not show a control named X" | Querying only `button` and `link` (checkbox/menuitem named X stays green) |
    | Host path (`run_worker_first`, assets routing) | Handler unit test that stays green if that host wiring is deleted |
    | Architecture-named production adapter (D1, Email) | Injected `env.auth` / handler unit test that stays green if production `fetch` never constructs that adapter |
+   | Write R2 current object / stored document body | Success status, version bump, or 409 UI that injects a memory port and never asserts the saved body (deleting `documents.put` stays green) |
    | Architecture-named production store (D1) | Memory/fake store only; Playwright on `TEST_MAIL=1`; SQL never executed; constructing `insertTeam` while `listTeamsForPerson` is never run |
 
    When a production module is deleted, rename or delete its dedicated test file in the same change. When an AC is restated, rename the `it` / `test()` that quoted the old words. Renaming is unfinished until that leftover test's assertions fail a weaker reading of the new words, or the leftover title drops the new words. A restated "does not show X" inverts the assertion (`not.toContain`); dropping `toContain` is not the proof. Completion: deleting the feature, or swapping in the weaker algorithm, fails this test for that reason.
