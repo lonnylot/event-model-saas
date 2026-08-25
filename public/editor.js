@@ -182,6 +182,8 @@ export function bindEditor(root) {
             fromID: sourcePort.dataset.id,
             fromKind: sourcePort.dataset.kind,
             toID: target.dataset.id,
+            toKind:
+              target.dataset.kind === "EVENT" ? target.dataset.kind : undefined,
           }),
         );
       }

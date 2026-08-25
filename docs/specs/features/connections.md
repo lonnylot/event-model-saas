@@ -14,7 +14,7 @@ Members can put Commands, Events, and Read Models on a Slice, but they cannot co
 - [x] After clicking `New Slice` then `Add Actor` on that page, the Actor listitem does not show a button whose accessible name is `Actor port`
 - [x] After clicking `New Slice` then `Add Automation` on that page, the Automation listitem does not show a button whose accessible name is `Automation port`
 - [x] Dragging from `Command port` onto `Event Happened port` appends a Connection whose `fromKind` is `COMMAND`
-- [ ] Dragging from `Command port` onto `Event Happened port` appends a Connection whose `toKind` is `EVENT`
+- [x] Dragging from `Command port` onto `Event Happened port` appends a Connection whose `toKind` is `EVENT`
 - [ ] Dragging from `Event Happened port` onto `Read Model port` appends a Connection whose `fromKind` is `EVENT`
 - [ ] Dragging from `Event Happened port` onto `Read Model port` appends a Connection whose `toKind` is `READMODEL`
 - [ ] Dragging from `Command port` onto `Read Model port` does not append a Connection

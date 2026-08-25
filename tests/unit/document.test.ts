@@ -297,4 +297,17 @@ describe("dragging ports", () => {
     });
     expect(next.connections[0]?.fromKind).toBe("COMMAND");
   });
+
+  it("Dragging from `Command port` onto `Event Happened port` appends a Connection whose `toKind` is `EVENT`", () => {
+    const withBlocks = appendEvent(appendCommand(appendSlice(empty)));
+    const command = withBlocks.slices[0].commands[0];
+    const event = withBlocks.slices[0].events[0];
+    const next = appendConnection(withBlocks, {
+      fromID: command.id,
+      fromKind: "COMMAND",
+      toID: event.id,
+      toKind: "EVENT",
+    });
+    expect(next.connections[0]?.toKind).toBe("EVENT");
+  });
 });

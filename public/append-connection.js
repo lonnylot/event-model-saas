@@ -8,6 +8,7 @@ export function appendConnection(model, edge) {
         fromID: edge.fromID,
         fromKind: edge.fromKind,
         toID: edge.toID,
+        toKind: edge.toKind,
       },
     ],
   };
