@@ -133,4 +133,35 @@ describe("create model", () => {
       "application/json; charset=utf-8",
     );
   });
+  it("POST `/api/teams/{id}/models` as a member creates an Event Model whose title is `Untitled`", async () => {
+    const { env, auth } = await memberEnv();
+    await handleRequest(
+      new Request("https://event-model.lonnylot.com/api/teams", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          Cookie: "session=sess-admin",
+        },
+        body: JSON.stringify({ name: "Library" }),
+      }),
+      env,
+    );
+    await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/api/teams/team-1/models",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            Cookie: "session=sess-admin",
+          },
+          body: JSON.stringify({}),
+        },
+      ),
+      env,
+    );
+    const model = await auth.store.getEventModel("model-1");
+    expect(model?.title).toBe("Untitled");
+  });
+
 });
