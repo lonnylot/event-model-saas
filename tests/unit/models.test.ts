@@ -458,4 +458,31 @@ describe("create model", () => {
     );
     expect(response.status).toBe(200);
   });
+  it("PUT `/api/models/{id}` as a member with a mismatched version returns status 409", async () => {
+    const { env } = await createdUntitled();
+    const put = () =>
+      handleRequest(
+        new Request("https://event-model.lonnylot.com/api/models/model-1", {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+            Cookie: "session=sess-admin",
+          },
+          body: JSON.stringify({
+            version: 1,
+            document: {
+              format: "eventmodel",
+              schemaVersion: 1,
+              id: "model-1",
+              title: "Untitled",
+              slices: [],
+            },
+          }),
+        }),
+        env,
+      );
+    await put();
+    const response = await put();
+    expect(response.status).toBe(409);
+  });
 });
