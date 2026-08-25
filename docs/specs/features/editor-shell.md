@@ -21,7 +21,7 @@ The open Event Model page is Save, Export, and Sign out. Members cannot see a Sl
 - [ ] Clicking `New Slice` on that page appends a Slice whose `readModels` is `[]`
 - [ ] Clicking `New Slice` on that page appends a Slice whose `processors` is `[]`
 - [x] GET `/app/teams/{id}/models/{mid}` as a member shows a region whose accessible name is `Timeline`
-- [ ] GET `/app/teams/{id}/models/{mid}` as a member shows a region whose accessible name is `Inspector`
+- [x] GET `/app/teams/{id}/models/{mid}` as a member shows a region whose accessible name is `Inspector`
 - [ ] GET `/app/teams/{id}/models/{mid}` as a member with no local edits does not show the text `Unsaved changes.`
 - [ ] After clicking `New Slice` on that page, the page shows the text `Unsaved changes.`
 - [ ] After clicking `New Slice` then `Save` on that page, the page does not show the text `Unsaved changes.`
