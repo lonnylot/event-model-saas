@@ -36,7 +36,7 @@ A Team has no Event Models. Members cannot create, open, import, export, or Save
 - [x] PUT `/api/models/{id}` with a document whose `format` is not `eventmodel` leaves version `1`
 - [x] PUT `/api/models/{id}` with a document that fails `schemas/eventmodel.schema.json` returns status 400
 - [x] PUT `/api/models/{id}` with a document that fails `schemas/eventmodel.schema.json` leaves version `1`
-- [ ] PUT `/api/models/{id}` with a document that fails `schemas/eventmodel.schema.json` leaves the R2 object unchanged
+- [x] PUT `/api/models/{id}` with a document that fails `schemas/eventmodel.schema.json` leaves the R2 object unchanged
 - [x] GET `/api/models/{id}/export` as a member returns content-type `application/json`
 - [x] GET `/api/models/{id}/export` as a member sets `Content-Disposition` to `attachment; filename="Untitled.eventmodel"`
 - [x] GET `/api/models/{id}/export` as a Person who is not a member returns status 404
@@ -59,7 +59,7 @@ A Team has no Event Models. Members cannot create, open, import, export, or Save
 - [x] PUT `/api/models/{id}` as a member with matching version writes the submitted document to `models/{id}.eventmodel`
 - [x] PUT `/api/models/{id}` with a document that fails `schemas/eventmodel.schema.json` returns status 400
 - [x] PUT `/api/models/{id}` with a document that fails `schemas/eventmodel.schema.json` leaves version `1`
-- [ ] PUT `/api/models/{id}` with a document that fails `schemas/eventmodel.schema.json` leaves the R2 object unchanged
+- [x] PUT `/api/models/{id}` with a document that fails `schemas/eventmodel.schema.json` leaves the R2 object unchanged
 - [ ] POST `/api/teams/{id}/imports` with a document that fails `schemas/eventmodel.schema.json` returns status 400
 - [ ] POST `/api/teams/{id}/imports` with a document that fails `schemas/eventmodel.schema.json` does not create an Event Model
 - [ ] POST `/api/teams/{id}/imports` with a document that fails `schemas/eventmodel.schema.json` does not write an R2 object

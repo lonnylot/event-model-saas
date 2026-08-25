@@ -866,4 +866,24 @@ describe("create model", () => {
     expect((await auth.store.getEventModel("model-1"))?.version).toBe(1);
   });
 
+  it("PUT `/api/models/{id}` with a document that fails `schemas/eventmodel.schema.json` leaves the R2 object unchanged", async () => {
+    const { env } = await createdUntitled();
+    const before = await env.documents.get("models/model-1.eventmodel");
+    await handleRequest(
+      new Request("https://event-model.lonnylot.com/api/models/model-1", {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          Cookie: "session=sess-admin",
+        },
+        body: JSON.stringify({
+          version: 1,
+          document: { format: "eventmodel" },
+        }),
+      }),
+      env,
+    );
+    expect(await env.documents.get("models/model-1.eventmodel")).toBe(before);
+  });
+
 });

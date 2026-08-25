@@ -16,12 +16,7 @@ export async function saveModel(
     return { status: 404 };
   }
   if (model.version !== version) return { status: 409 };
-  if (!isValidEventModelDocument(document)) {
-    if (documents) {
-      await documents.put(model.r2Key, JSON.stringify(document));
-    }
-    return { status: 400 };
-  }
+  if (!isValidEventModelDocument(document)) return { status: 400 };
   const next = model.version + 1;
   if (documents) {
     await documents.put(model.r2Key, JSON.stringify(document));
