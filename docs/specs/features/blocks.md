@@ -58,10 +58,10 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person,
 
 ## Out of scope
 
-Connections, inspector fields, dashed Add on a lane, keyboard shortcuts, delete, drag between Slices, undo, pan, moving Slices, Mac window chrome, creating a Slice from Add when there are none.
+Inspector fields, dashed Add on a lane, keyboard shortcuts, delete, drag between Slices, undo, pan, moving Slices, Mac window chrome, creating a Slice from Add when there are none. Connections are [connections.md](./connections.md).
 
 ## Restates
 
-- [editor-shell.md](./editor-shell.md) — Out of scope no longer owns Actors, commands, events, read models, or automations; this slice owns adding those blocks. Connections, inspector fields, keyboard shortcuts, and moving Slices stay later.
+- [editor-shell.md](./editor-shell.md) — Out of scope no longer owns Actors, commands, events, read models, or automations; this slice owns adding those blocks. Inspector fields, keyboard shortcuts, and moving Slices stay later. Connections are [connections.md](./connections.md).
 - [model-persistence.md](./model-persistence.md) — Out of scope no longer owns Actors, commands, events, read models, or automations; this slice owns adding those blocks.
-- [product.md](../product.md) — Playwright path for this slice is open Event Model, New Slice, Add Actor, Save, reload still lists Actor on the Timeline; dashed Add on a lane and keyboard ⌥⌘1–5 stay later
+- [product.md](../product.md) — Playwright path for this slice is open Event Model, New Slice, Add Actor, Save, reload still lists Actor on the Timeline. Command port drag is [connections.md](./connections.md). Dashed Add on a lane and keyboard ⌥⌘1–5 stay later.

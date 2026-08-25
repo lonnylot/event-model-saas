@@ -346,6 +346,7 @@ export async function handleRequest(
           team.name,
           parsed.slices ?? [],
           documentJson,
+          parsed.connections ?? [],
         ),
         {
         status: 200,
