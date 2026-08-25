@@ -162,6 +162,12 @@ export async function handleRequest(
       version = -1;
     }
     const result = await saveModel(env.auth, person.id, saveMatch[1], version);
+    if (result.status === 200 && result.version != null) {
+      return new Response(JSON.stringify({ version: result.version }), {
+        status: 200,
+        headers: { "content-type": "application/json; charset=utf-8" },
+      });
+    }
     return new Response(null, { status: result.status });
   }
   const inviteMatch = path.match(/^\/api\/teams\/([^/]+)\/invites$/);

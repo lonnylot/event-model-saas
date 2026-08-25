@@ -519,4 +519,28 @@ describe("create model", () => {
     );
     expect(response.status).toBe(404);
   });
+  it("PUT `/api/models/{id}` as a member with matching version returns the new version `2`", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request("https://event-model.lonnylot.com/api/models/model-1", {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          Cookie: "session=sess-admin",
+        },
+        body: JSON.stringify({
+          version: 1,
+          document: {
+            format: "eventmodel",
+            schemaVersion: 1,
+            id: "model-1",
+            title: "Untitled",
+            slices: [],
+          },
+        }),
+      }),
+      env,
+    );
+    expect(await response.json()).toEqual({ version: 2 });
+  });
 });
