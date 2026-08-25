@@ -192,6 +192,21 @@ export function bindEditor(root) {
           }),
         );
       }
+      if (
+        sourcePort.dataset.kind === "COMMAND" &&
+        target.dataset.kind === "READMODEL"
+      ) {
+        const main = root.querySelector("main");
+        if (
+          main &&
+          !main.textContent?.includes("A command can't write a read model.")
+        ) {
+          main.insertAdjacentHTML(
+            "afterbegin",
+            "<p>A command can't write a read model.</p>",
+          );
+        }
+      }
     }
     sourcePort = null;
   });
