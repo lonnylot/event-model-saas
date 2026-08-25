@@ -194,6 +194,21 @@ export function bindEditor(root) {
       }
       if (
         sourcePort.dataset.kind === "COMMAND" &&
+        target.dataset.kind === "EVENT"
+      ) {
+        const timeline = root.querySelector('[aria-label="Timeline"]');
+        if (
+          timeline &&
+          !timeline.textContent?.includes("Command → Event Happened")
+        ) {
+          timeline.insertAdjacentHTML(
+            "beforeend",
+            "<p>Command → Event Happened</p>",
+          );
+        }
+      }
+      if (
+        sourcePort.dataset.kind === "COMMAND" &&
         target.dataset.kind === "READMODEL"
       ) {
         const main = root.querySelector("main");

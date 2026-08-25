@@ -19,7 +19,7 @@ Members can put Commands, Events, and Read Models on a Slice, but they cannot co
 - [x] Dragging from `Event Happened port` onto `Read Model port` appends a Connection whose `toKind` is `READMODEL`
 - [x] Dragging from `Command port` onto `Read Model port` does not append a Connection
 - [x] Dragging from `Command port` onto `Read Model port` shows the text `A command can't write a read model.`
-- [ ] After dragging from `Command port` onto `Event Happened port`, the Timeline region shows the text `Command → Event Happened`
+- [x] After dragging from `Command port` onto `Event Happened port`, the Timeline region shows the text `Command → Event Happened`
 - [ ] After a member creates a model, opens it, clicks `New Slice`, adds a Command and an Event, drags `Command port` onto `Event Happened port`, and Saves, a reload of that page shows the text `Command → Event Happened` in the Timeline region
 
 ## Domain terms

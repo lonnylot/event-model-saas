@@ -228,3 +228,20 @@ test("Dragging from `Command port` onto `Read Model port` shows the text `A comm
     page.getByText("A command can't write a read model."),
   ).toBeVisible();
 });
+
+test("After dragging from `Command port` onto `Event Happened port`, the Timeline region shows the text `Command → Event Happened`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Command port", exact: true })
+    .dragTo(page.getByRole("button", { name: "Event Happened port", exact: true }));
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByText("Command → Event Happened"),
+  ).toBeVisible();
+});
