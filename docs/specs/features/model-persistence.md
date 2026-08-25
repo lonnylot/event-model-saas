@@ -89,9 +89,9 @@ Event Model, Team, Person, Version, Slice
 
 ## Out of scope
 
-Undo, inspector fields, pan, keyboard shortcuts, moving Slices, Mac window chrome, document history. Editor canvas, New Slice, zoom, and the dirty indicator are [editor-shell.md](./editor-shell.md). Actors, commands, events, read models, and automations are [blocks.md](./blocks.md). Connections are [connections.md](./connections.md).
+Undo, pan, keyboard shortcuts, moving Slices, Mac window chrome, document history. Editor canvas, New Slice, zoom, and the dirty indicator are [editor-shell.md](./editor-shell.md). Actors, commands, events, read models, and automations are [blocks.md](./blocks.md). Connections are [connections.md](./connections.md). Slice and Actor Name are [chrome.md](./chrome.md). Description, fields, and type picker stay later.
 
 ## Restates
 
 - [teams-and-invites.md](./teams-and-invites.md) — Out of scope no longer owns Event Model create/import/save/export; GET `/app/teams/{id}` as a member shows Create model and Event Model title links
-- [product.md](../product.md) — Playwright path “land on team list” is the team page model list in this slice; this slice’s Playwright flow is open Event Model, Save, and second-session 409. New Slice, dirty copy, and reload still lists New Slice are [editor-shell.md](./editor-shell.md). Add Actor is [blocks.md](./blocks.md). Command port drag is [connections.md](./connections.md).
+- [product.md](../product.md) — Playwright path “land on team list” is the team page model list in this slice; this slice’s Playwright flow is open Event Model, Save, and second-session 409. New Slice, dirty copy, and reload still lists New Slice are [editor-shell.md](./editor-shell.md). Add Actor is [blocks.md](./blocks.md). Command port drag is [connections.md](./connections.md). Slice Name is [chrome.md](./chrome.md).

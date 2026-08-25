@@ -5,6 +5,8 @@ import { appendEvent } from "./append-event.js";
 import { appendReadModel } from "./append-read-model.js";
 import { appendAutomation } from "./append-automation.js";
 import { appendConnection } from "./append-connection.js";
+import { setSliceTitle } from "./set-slice-title.js";
+import { setActorName } from "./set-actor-name.js";
 
 export function onNewSliceClick(root) {
   const list = root.querySelector("ul");
@@ -32,6 +34,7 @@ export function onAddActorClick(root) {
     const item = root.createElement("li");
     item.textContent = "Actor";
     item.setAttribute("aria-label", "Actor");
+    item.dataset.kind = "actor";
     list.append(item);
   }
   const holder = root.getElementById("event-model-document");
@@ -168,6 +171,64 @@ export function bindEditor(root) {
     if (button.textContent === "Add Automation") {
       button.addEventListener("click", () => onAddAutomationClick(root));
     }
+  });
+  const timelineList = root.querySelector('[aria-label="Timeline"] ul');
+  const slicesList = root.querySelector("ul");
+  let selected = null;
+  let selectedSliceItem = null;
+  let selectedActorItem = null;
+  const inspector = root.querySelector('[aria-label="Inspector"]');
+  const nameInput = () => inspector?.querySelector("input");
+  const bindName = (value) => {
+    if (!inspector) return;
+    let input = nameInput();
+    if (!input) {
+      inspector.insertAdjacentHTML("beforeend", "<label>Name <input /></label>");
+      input = nameInput();
+      input?.addEventListener("input", () => {
+        const holder = root.getElementById("event-model-document");
+        if (holder && selected === "slice") {
+          holder.textContent = JSON.stringify(
+            setSliceTitle(JSON.parse(holder.textContent || "{}"), input.value),
+          );
+        }
+        if (holder && selected === "actor") {
+          holder.textContent = JSON.stringify(
+            setActorName(JSON.parse(holder.textContent || "{}"), input.value),
+          );
+        }
+        if (selected === "slice" && selectedSliceItem) {
+          selectedSliceItem.textContent = input.value;
+          selectedSliceItem.setAttribute("aria-label", input.value);
+        }
+        if (selected === "actor" && selectedActorItem) {
+          selectedActorItem.textContent = input.value;
+          selectedActorItem.setAttribute("aria-label", input.value);
+        }
+        if (selected === "slice") {
+          const main = root.querySelector("main");
+          if (main && !main.textContent?.includes("Unsaved changes.")) {
+            main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
+          }
+        }
+      });
+    }
+    if (input) input.value = value;
+  };
+  timelineList?.addEventListener("click", (event) => {
+    const item = event.target?.closest?.("li");
+    if (!item || !timelineList.contains(item)) return;
+    if (item.dataset.kind !== "actor") return;
+    selected = "actor";
+    selectedActorItem = item;
+    bindName("Actor");
+  });
+  slicesList?.addEventListener("click", (event) => {
+    const item = event.target?.closest?.("li");
+    if (!item || !slicesList.contains(item)) return;
+    selected = "slice";
+    selectedSliceItem = item;
+    bindName("New Slice");
   });
   let sourcePort = null;
   root.addEventListener("mousedown", (event) => {

@@ -41,11 +41,11 @@ Event Model, Slice, Command, Event, Read Model, Actor, Automation, Connection, T
 
 ## Out of scope
 
-Inspector fields, dashed Add on a lane, keyboard shortcuts, delete, drag blocks between Slices, undo, pan, moving Slices, highlighting legal targets, Mac window chrome, Actor or Automation as connection endpoints, duplicate-connection refusal, self-connection refusal, the other illegal-pair copy from the Mac app.
+Dashed Add on a lane, keyboard shortcuts, delete, drag blocks between Slices, undo, pan, moving Slices, highlighting legal targets, Mac window chrome, Actor or Automation as connection endpoints, duplicate-connection refusal, self-connection refusal, the other illegal-pair copy from the Mac app. Slice and Actor Name are [chrome.md](./chrome.md). Description, fields, and type picker stay later.
 
 ## Restates
 
-- [blocks.md](./blocks.md) — Out of scope no longer owns connections; this slice owns Command → Event and Event → Read Model. Inspector fields, dashed Add, and keyboard stay later.
+- [blocks.md](./blocks.md) — Out of scope no longer owns connections; this slice owns Command → Event and Event → Read Model. Dashed Add and keyboard stay later. Slice and Actor Name are [chrome.md](./chrome.md).
 - [editor-shell.md](./editor-shell.md) — Out of scope no longer owns connections; this slice owns those.
 - [model-persistence.md](./model-persistence.md) — Out of scope no longer owns connections; this slice owns those.
 - [product.md](../product.md) — Playwright path for this slice is open Event Model, New Slice, Add Command, Add Event, drag Command port onto Event Happened port, Save, reload still shows `Command → Event Happened`. Highlighting legal targets, snap-back, reason on the source, undo, and other illegal pairs stay later.
