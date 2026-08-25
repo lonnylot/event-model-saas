@@ -11,6 +11,7 @@ import {
 } from "./auth/session";
 import type { AuthRuntime } from "./auth/types";
 import { createModel } from "./models/create-model";
+import { importModel } from "./models/import-model";
 import { exportModel } from "./models/export-model";
 import { saveModel } from "./models/save-model";
 import { type DocumentsPort } from "./models/documents";
@@ -120,6 +121,33 @@ export async function handleRequest(
       status: result.status,
       headers: { "content-type": "application/json; charset=utf-8" },
     });
+  }
+  const importMatch = path.match(/^\/api\/teams\/([^/]+)\/imports$/);
+  if (importMatch && request.method === "POST") {
+    if (!env.auth) return jsonNotFound();
+    const person = await personFromRequest(env.auth, request);
+    if (!person) {
+      return new Response(null, {
+        status: 303,
+        headers: { Location: "/" },
+      });
+    }
+    let document: { format?: string; title?: string } | undefined;
+    try {
+      const body = (await request.json()) as {
+        document?: { format?: string; title?: string };
+      };
+      document = body.document;
+    } catch {
+      document = undefined;
+    }
+    const result = await importModel(
+      env.auth,
+      person.id,
+      importMatch[1],
+      document,
+    );
+    return new Response(null, { status: result.status });
   }
   const modelsMatch = path.match(/^\/api\/teams\/([^/]+)\/models$/);
   if (modelsMatch && request.method === "POST") {
