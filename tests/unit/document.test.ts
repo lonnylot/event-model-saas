@@ -49,4 +49,9 @@ describe("clicking New Slice", () => {
     expect(clickedSlice().commands).toEqual([]);
     expect(appendSlice(empty).slices[0]?.commands).toEqual([]);
   });
+
+  it("Clicking `New Slice` on that page appends a Slice whose `events` is `[]`", () => {
+    expect(clickedSlice().events).toEqual([]);
+    expect(appendSlice(empty).slices[0]?.events).toEqual([]);
+  });
 });

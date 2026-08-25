@@ -9,6 +9,7 @@ export function appendSlice(model) {
         sliceType: "STATE_CHANGE",
         actors: [],
         commands: [],
+        events: [],
       },
     ],
   };
