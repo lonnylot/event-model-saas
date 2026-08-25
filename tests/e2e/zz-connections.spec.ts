@@ -91,3 +91,16 @@ test("After clicking `New Slice` then `Add Command` on that page, the Command li
       .getByRole("button", { name: "Command port", exact: true }),
   ).toBeVisible();
 });
+
+test("After clicking `New Slice` then `Add Event` on that page, the Event Happened listitem shows a button whose accessible name is `Event Happened port`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await expect(
+    page
+      .getByRole("listitem", { name: "Event Happened", exact: true })
+      .getByRole("button", { name: "Event Happened port", exact: true }),
+  ).toBeVisible();
+});
