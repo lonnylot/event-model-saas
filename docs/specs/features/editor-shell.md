@@ -53,9 +53,9 @@ Event Model, Slice, Team, Person, Version
 
 ## Out of scope
 
-Connections, undo, pan, keyboard shortcuts, inspector fields, moving Slices, Mac window chrome. Actors, commands, events, read models, and automations are [blocks.md](./blocks.md).
+Undo, pan, keyboard shortcuts, inspector fields, moving Slices, Mac window chrome. Actors, commands, events, read models, and automations are [blocks.md](./blocks.md). Connections are [connections.md](./connections.md).
 
 ## Restates
 
-- [model-persistence.md](./model-persistence.md) — Out of scope no longer owns editor canvas, New Slice, zoom, or the dirty indicator; this slice owns those. Undo, connections, and inspector fields stay later.
+- [model-persistence.md](./model-persistence.md) — Out of scope no longer owns editor canvas, New Slice, zoom, or the dirty indicator; this slice owns those. Undo and inspector fields stay later. Connections are [connections.md](./connections.md).
 - [product.md](../product.md) — Playwright path for this slice is open Event Model, New Slice, dirty copy, Save, reload still lists New Slice. Add Actor is [blocks.md](./blocks.md).

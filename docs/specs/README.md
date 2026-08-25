@@ -19,5 +19,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Model persistence | [features/model-persistence.md](./features/model-persistence.md) | released |
 | Editor shell | [features/editor-shell.md](./features/editor-shell.md) | released |
 | Blocks | [features/blocks.md](./features/blocks.md) | released |
+| Connections | [features/connections.md](./features/connections.md) | validated |
 
 Status: `draft` → `validated` → `released`.

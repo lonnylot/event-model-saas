@@ -47,6 +47,10 @@ export function onAddCommandClick(root) {
     const item = root.createElement("li");
     item.textContent = "Command";
     item.setAttribute("aria-label", "Command");
+    const port = root.createElement("button");
+    port.type = "button";
+    port.textContent = "Command port";
+    item.append(port);
     list.append(item);
   }
   const holder = root.getElementById("event-model-document");
