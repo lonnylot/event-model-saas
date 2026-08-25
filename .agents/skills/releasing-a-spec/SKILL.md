@@ -38,7 +38,7 @@ Read the spec (or write `docs/specs/features/<slug>.md` from `_TEMPLATE.md` and 
 
 - [ ] Problem and out-of-scope are explicit
 - [ ] Acceptance criteria are testable, one behavior per bullet (packed "and" or independent env/branch cases split — `testing`), and use `CONTEXT.md` terms. Every Domain terms word has a `CONTEXT.md` entry.
-- [ ] Operator commands / npm scripts that change persisted state are acceptance criteria, not Assumptions
+- [ ] Operator commands / npm scripts that change persisted state are acceptance criteria, not Assumptions. A shippable Worker `fetch` constructor path is the same.
 - [ ] Seams named (architecture spec if the product has one; otherwise the module interface tests will call)
 - [ ] Events named or added if the product catalogs actions
 - [ ] UI screens/primitives named or added if the product inventories them

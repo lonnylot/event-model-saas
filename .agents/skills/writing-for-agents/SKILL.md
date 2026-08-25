@@ -30,19 +30,22 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Async form fetch / last-mail before the invite POST | `playwright-e2e` |
 | Accessible name **is** X / Playwright substring | `testing`, `playwright-e2e` |
 | Unit `toContain(">X<")` for a named link/button/textbox | `testing` |
+| Empty stub `it` / checked AC with no assertion | `testing`, `tdd-loop` |
 | Module / seam / adapter vocabulary | `codebase-design` |
-| Architecture adapter constructed only under a test flag | `testing`, `codebase-design`, `keeping-specs-current` |
+| Architecture adapter constructed only under a test flag / injected `env.documents` / construction parked in Assumptions | `testing`, `codebase-design`, `keeping-specs-current` |
 | Architecture-named store never constructed in a test / each new SQL untested | `testing` |
 | Packed "and" AC / independent env/branch cases | `testing`, `keeping-specs-current` |
+| Early-return 400 vs does not create / persist-then-400 | `logical-commits`, `testing` |
 | Assumption vs acceptance criterion | `keeping-specs-current` |
-| Restated AC with leftover sections / leftover test title / leftover Restates | `keeping-specs-current` |
+| Restated AC with leftover sections / leftover Assumptions after Out of scope / leftover test title / leftover Restates | `keeping-specs-current` |
 | 303/redirect AC vs a shows bullet on the same path | `keeping-specs-current` |
-| product.md leftover locked words / Next slice still names a released slug / removing product.md from Restates | `keeping-specs-current` |
+| product.md leftover locked words / later-slice Playwright `add a slice` / leftover Document flow schema-reject / copying a schema file instead of restating / Next slice still names a released slug / removing product.md from Restates | `keeping-specs-current` |
 | Domain terms line without a `CONTEXT.md` entry | `keeping-specs-current`, `domain-modeling` |
 | Independently revertible ACs / grouping by screen / spec-only | `logical-commits` |
-| Tests-after / production that landed as a dependency | `logical-commits` |
+| Tests-after / production that landed as a dependency / tests-only commit on top / folding tests-after into sibling production | `logical-commits` |
 | Review-thread batch / commit subject names two threads with "and" | `logical-commits` |
 | Extra visible chrome / document title / extra form or link on a route / extra host observability without an AC | `keeping-specs-current` |
+| Extra R2 put / D1 insert without an AC that asserts the stored body | `keeping-specs-current`, `testing` |
 | Playwright workers / test-runner isolation without a spec sentence | `keeping-specs-current`, `playwright-e2e` |
 | Mail subject / From display name without a spec sentence | `keeping-specs-current`, `testing` |
 | `run_worker_first` path list vs architecture Compute row | `keeping-specs-current`, `testing` |
