@@ -8,6 +8,7 @@ export function appendSlice(model) {
         title: "New Slice",
         sliceType: "STATE_CHANGE",
         actors: [],
+        commands: [],
       },
     ],
   };

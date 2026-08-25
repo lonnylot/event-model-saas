@@ -16,7 +16,7 @@ The open Event Model page is Save, Export, and Sign out. Members cannot see a Sl
 - [x] Clicking `New Slice` on that page appends a Slice whose `title` is `New Slice`
 - [x] Clicking `New Slice` on that page appends a Slice whose `sliceType` is `STATE_CHANGE`
 - [x] Clicking `New Slice` on that page appends a Slice whose `actors` is `[]`
-- [ ] Clicking `New Slice` on that page appends a Slice whose `commands` is `[]`
+- [x] Clicking `New Slice` on that page appends a Slice whose `commands` is `[]`
 - [ ] Clicking `New Slice` on that page appends a Slice whose `events` is `[]`
 - [ ] Clicking `New Slice` on that page appends a Slice whose `readModels` is `[]`
 - [ ] Clicking `New Slice` on that page appends a Slice whose `processors` is `[]`
