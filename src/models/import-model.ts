@@ -21,5 +21,8 @@ export async function importModel(
     version: 1,
     r2Key,
   });
+  if (documents) {
+    await documents.put(r2Key, JSON.stringify(document));
+  }
   return { status: 201 };
 }

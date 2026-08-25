@@ -63,7 +63,7 @@ A Team has no Event Models. Members cannot create, open, import, export, or Save
 - [ ] POST `/api/teams/{id}/imports` with a document that fails `schemas/eventmodel.schema.json` returns status 400
 - [ ] POST `/api/teams/{id}/imports` with a document that fails `schemas/eventmodel.schema.json` does not create an Event Model
 - [ ] POST `/api/teams/{id}/imports` with a document that fails `schemas/eventmodel.schema.json` does not write an R2 object
-- [ ] POST `/api/teams/{id}/imports` as a member with a valid Event Model titled `Library` writes the submitted document to `models/{id}.eventmodel`
+- [x] POST `/api/teams/{id}/imports` as a member with a valid Event Model titled `Library` writes the submitted document to `models/{id}.eventmodel`
 
 ## Domain terms
 
