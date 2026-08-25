@@ -17,6 +17,7 @@ import { inviteToTeam } from "./teams/invite";
 import {
   adminTeamsHtml,
   noTeamsAdminHtml,
+  modelPageHtml,
   pickerHtml,
   teamPageHtml,
 } from "./teams/pages";
@@ -215,6 +216,19 @@ export async function handleRequest(
         });
       }
       return new Response(adminTeamsHtml(person.email, teams), {
+        status: 200,
+        headers: { "content-type": "text/html; charset=utf-8" },
+      });
+    }
+    const modelPage = path.match(
+      /^\/app\/teams\/([^/]+)\/models\/([^/]+)$/,
+    );
+    if (modelPage) {
+      const model = await env.auth.store.getEventModel(modelPage[2]);
+      if (!model || model.teamId !== modelPage[1]) {
+        return jsonNotFound();
+      }
+      return new Response(modelPageHtml(model.title), {
         status: 200,
         headers: { "content-type": "text/html; charset=utf-8" },
       });
