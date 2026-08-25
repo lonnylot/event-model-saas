@@ -400,6 +400,20 @@ describe("create model", () => {
     expect(await response.text()).not.toMatch(/<li[^>]*>New Slice<\/li>/);
   });
 
+  it("GET `/app/teams/{id}/models/{mid}` as a member shows a region whose accessible name is `Timeline`", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/app/teams/team-1/models/model-1",
+        { headers: { Cookie: "session=sess-admin" } },
+      ),
+      env,
+    );
+    expect(await response.text()).toContain(
+      '<section aria-label="Timeline"></section>',
+    );
+  });
+
   it("GET `/app/teams/{id}/models/{mid}` as a member shows a heading whose accessible name is `Untitled`", async () => {
     const { env } = await createdUntitled();
     const response = await handleRequest(
