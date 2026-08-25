@@ -7,6 +7,8 @@ description: >
   commit, when a spec-only commit lists every AC, when production
   landed as a dependency of another AC, when several review threads
   share a commit, when a commit subject names two threads with "and",
+  when folding tests-after into a sibling production commit,
+  when adding a tests-only commit on top after review,
   when an early-return 400 and does not create share a commit,
   or when a dedicated test or
   Playwright flow would land after its production.
@@ -42,13 +44,14 @@ One commit is one finished thought: one spec criterion (or one review/CI fix) wi
 
 Prefer conventional prefixes (`feat`, `fix`, `docs`, `test`, `refactor`, `chore`). The subject (and body if needed) states what changed. Specs do not keep a Changelog section.
 
-When a production hunk must exist so a later AC can run (Worker `name` so assets serve), that hunk is its own criterion: spec checkbox + test + production in one commit **before** the dependent AC. Do not wait and add the test later. If tests-after already landed, rebase so the test moves into that production commit; a follow-up commit on top cannot un-do tests-after. A lock that exists in the tree is not a logical slice.
+When a production hunk must exist so a later AC can run (Worker `name` so assets serve), that hunk is its own criterion: spec checkbox + test + production in one commit **before** the dependent AC. Do not wait and add the test later. If tests-after already landed, rebase so the test moves into that production commit; a follow-up commit on top cannot un-do tests-after. Do not add another tests-only commit on top. Folding several tests-after into one sibling production commit is grouping, not one slice — each test moves into the production that made **that** bullet true. A lock that exists in the tree is not a logical slice.
 
 ## Rationalizations
 
 | Excuse | Reality |
 |--------|---------|
 | "I'll commit once at the end" | One blob cannot be reviewed or reverted per criterion. |
+| "I'll add the test now, rebase later" | A tests-only commit on top is still tests-after. Rebase now. |
 | "Checkpoint before I forget" | Unfinished slices are not logical. Finish GREEN, then commit. |
 | "Spec in a follow-up commit" | Same-commit spec update is the iron law. |
 | "One screen is one commit" | Grouping by screen is the miss. Split independently revertible ACs. |
@@ -57,4 +60,4 @@ When a production hunk must exist so a later AC can run (Worker `name` so assets
 
 ## Red flags
 
-Empty or "WIP" messages on a PR. Default-branch commits for a feature. Code committed without the spec hunk that describes it. Dedicated tests in a follow-up commit after the production that needed them. Production that landed early as a dependency, then a later test-only commit for that criterion. One commit that ships several independent ACs together. One commit that batches several review-thread fixes. A commit subject that names two new ACs or two review threads with "and". Spec-only then one feat. Grouped by screen. A follow-up cannot un-do tests-after or a review-thread batch — rebase so each AC (and each thread) is one commit.
+Empty or "WIP" messages on a PR. Default-branch commits for a feature. Code committed without the spec hunk that describes it. Dedicated tests in a follow-up commit after the production that needed them. Production that landed early as a dependency, then a later test-only commit for that criterion. One commit that ships several independent ACs together. One commit that batches several review-thread fixes. A commit subject that names two new ACs or two review threads with "and". Spec-only then one feat. Grouped by screen. A follow-up cannot un-do tests-after or a review-thread batch — rebase so each AC (and each thread) is one commit. A tests-only commit added after review is still tests-after. Folding several tests-after into one production commit is still grouping.

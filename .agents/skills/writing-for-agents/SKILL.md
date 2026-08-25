@@ -42,7 +42,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | product.md leftover locked words / later-slice Playwright `add a slice` / leftover Document flow schema-reject / copying a schema file instead of restating / Next slice still names a released slug / removing product.md from Restates | `keeping-specs-current` |
 | Domain terms line without a `CONTEXT.md` entry | `keeping-specs-current`, `domain-modeling` |
 | Independently revertible ACs / grouping by screen / spec-only | `logical-commits` |
-| Tests-after / production that landed as a dependency | `logical-commits` |
+| Tests-after / production that landed as a dependency / tests-only commit on top / folding tests-after into sibling production | `logical-commits` |
 | Review-thread batch / commit subject names two threads with "and" | `logical-commits` |
 | Extra visible chrome / document title / extra form or link on a route / extra host observability without an AC | `keeping-specs-current` |
 | Extra R2 put / D1 insert without an AC that asserts the stored body | `keeping-specs-current`, `testing` |
