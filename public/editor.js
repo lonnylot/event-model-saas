@@ -42,6 +42,13 @@ export function onAddActorClick(root) {
 }
 
 export function onAddCommandClick(root) {
+  const list = root.querySelector('[aria-label="Timeline"] ul');
+  if (list) {
+    const item = root.createElement("li");
+    item.textContent = "Command";
+    item.setAttribute("aria-label", "Command");
+    list.append(item);
+  }
   const holder = root.getElementById("event-model-document");
   if (holder) {
     holder.textContent = JSON.stringify(
