@@ -485,4 +485,38 @@ describe("create model", () => {
     const response = await put();
     expect(response.status).toBe(409);
   });
+  it("PUT `/api/models/{id}` as a Person who is not a member returns status 404", async () => {
+    const { env, auth } = await createdUntitled();
+    await auth.store.insertPerson({
+      id: "p-user",
+      email: "teammate@example.com",
+      isSiteAdmin: false,
+    });
+    await auth.store.insertSession({
+      id: "sess-user",
+      personId: "p-user",
+      expiresAt: auth.now() + 60_000,
+    });
+    const response = await handleRequest(
+      new Request("https://event-model.lonnylot.com/api/models/model-1", {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          Cookie: "session=sess-user",
+        },
+        body: JSON.stringify({
+          version: 1,
+          document: {
+            format: "eventmodel",
+            schemaVersion: 1,
+            id: "model-1",
+            title: "Untitled",
+            slices: [],
+          },
+        }),
+      }),
+      env,
+    );
+    expect(response.status).toBe(404);
+  });
 });

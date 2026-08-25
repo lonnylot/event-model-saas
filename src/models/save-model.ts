@@ -8,6 +8,9 @@ export async function saveModel(
 ): Promise<{ status: number }> {
   const model = await runtime.store.getEventModel(modelId);
   if (!model) return { status: 404 };
+  if (!(await runtime.store.isMember(model.teamId, personId))) {
+    return { status: 404 };
+  }
   if (model.version !== version) return { status: 409 };
   return { status: 200 };
 }
