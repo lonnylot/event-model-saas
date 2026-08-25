@@ -38,6 +38,14 @@ export function bindEditor(root) {
         }
       });
     }
+    if (button.textContent === "Reset zoom") {
+      button.addEventListener("click", () => {
+        const timeline = root.querySelector('[aria-label="Timeline"]');
+        if (timeline instanceof HTMLElement) {
+          timeline.style.transform = "scale(1)";
+        }
+      });
+    }
     if (button.textContent === "New Slice") {
       button.addEventListener("click", () => onNewSliceClick(root));
     }

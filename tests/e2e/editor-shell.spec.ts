@@ -115,3 +115,15 @@ test("Clicking `Zoom out` on that page sets the Timeline `style.transform` to `s
     page.getByRole("region", { name: "Timeline", exact: true }),
   ).toHaveJSProperty("style.transform", "scale(0.8)");
 });
+
+test("Clicking `Reset zoom` after `Zoom in` on that page sets the Timeline `style.transform` to `scale(1)`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await page.getByRole("button", { name: "Zoom in", exact: true }).click();
+  await page.getByRole("button", { name: "Reset zoom", exact: true }).click();
+  await expect(
+    page.getByRole("region", { name: "Timeline", exact: true }),
+  ).toHaveJSProperty("style.transform", "scale(1)");
+});

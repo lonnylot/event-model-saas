@@ -30,7 +30,7 @@ The open Event Model page is Save, Export, and Sign out. Members cannot see a Sl
 - [x] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Reset zoom`
 - [x] Clicking `Zoom in` on that page sets the Timeline `style.transform` to `scale(1.25)`
 - [x] Clicking `Zoom out` on that page sets the Timeline `style.transform` to `scale(0.8)`
-- [ ] Clicking `Reset zoom` after `Zoom in` on that page sets the Timeline `style.transform` to `scale(1)`
+- [x] Clicking `Reset zoom` after `Zoom in` on that page sets the Timeline `style.transform` to `scale(1)`
 - [ ] After a member creates a model, opens it, clicks `New Slice`, and Saves, a reload of that page shows a listitem whose accessible name is `New Slice`
 
 ## Domain terms
