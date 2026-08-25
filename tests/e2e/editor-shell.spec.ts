@@ -66,3 +66,12 @@ test("GET `/app/teams/{id}/models/{mid}` as a member with no local edits does no
   await openUntitledModel(page, request);
   await expect(page.getByText("Unsaved changes.")).toHaveCount(0);
 });
+
+test("After clicking `New Slice` on that page, the page shows the text `Unsaved changes.`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await expect(page.getByText("Unsaved changes.")).toBeVisible();
+});

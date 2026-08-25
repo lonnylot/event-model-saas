@@ -8,6 +8,10 @@ export function onNewSliceClick(root) {
     item.setAttribute("aria-label", "New Slice");
     list.append(item);
   }
+  const main = root.querySelector("main");
+  if (main && !main.textContent?.includes("Unsaved changes.")) {
+    main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
+  }
   const holder = root.getElementById("event-model-document");
   if (holder) {
     holder.textContent = JSON.stringify(
