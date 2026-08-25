@@ -30,7 +30,7 @@ The editor shell has Slices, a Timeline, and Inspector, but members cannot put a
 - [x] After clicking `New Slice` then `Add Actor` on that page, the Timeline region shows a listitem whose accessible name is `Actor`
 - [x] After clicking `New Slice` then `Add Command` on that page, the Timeline region shows a listitem whose accessible name is `Command`
 - [x] After clicking `New Slice` then `Add Event` on that page, the Timeline region shows a listitem whose accessible name is `Event Happened`
-- [ ] After clicking `New Slice` then `Add Read Model` on that page, the Timeline region shows a listitem whose accessible name is `Read Model`
+- [x] After clicking `New Slice` then `Add Read Model` on that page, the Timeline region shows a listitem whose accessible name is `Read Model`
 - [ ] After clicking `New Slice` then `Add Automation` on that page, the Timeline region shows a listitem whose accessible name is `Automation`
 - [ ] After a member creates a model, opens it, clicks `New Slice`, clicks `Add Actor`, and Saves, a reload of that page shows a listitem whose accessible name is `Actor` in the Timeline region
 

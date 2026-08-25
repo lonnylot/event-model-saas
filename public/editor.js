@@ -74,6 +74,13 @@ export function onAddEventClick(root) {
 }
 
 export function onAddReadModelClick(root) {
+  const list = root.querySelector('[aria-label="Timeline"] ul');
+  if (list) {
+    const item = root.createElement("li");
+    item.textContent = "Read Model";
+    item.setAttribute("aria-label", "Read Model");
+    list.append(item);
+  }
   const holder = root.getElementById("event-model-document");
   if (holder) {
     holder.textContent = JSON.stringify(
