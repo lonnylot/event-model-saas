@@ -13,11 +13,7 @@ export async function saveModel(
     return { status: 404 };
   }
   if (model.version !== version) return { status: 409 };
-  if (document?.format !== "eventmodel") {
-    const next = model.version + 1;
-    await runtime.store.setEventModelVersion(modelId, next);
-    return { status: 400 };
-  }
+  if (document?.format !== "eventmodel") return { status: 400 };
   const next = model.version + 1;
   await runtime.store.setEventModelVersion(modelId, next);
   return { status: 200, version: next };

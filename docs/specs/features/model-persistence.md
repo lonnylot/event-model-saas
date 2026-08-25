@@ -33,7 +33,7 @@ A Team has no Event Models. Members cannot create, open, import, export, or Save
 - [x] PUT `/api/models/{id}` as a member with a mismatched version returns status 409
 - [x] PUT `/api/models/{id}` as a Person who is not a member returns status 404
 - [x] PUT `/api/models/{id}` with a document whose `format` is not `eventmodel` returns status 400
-- [ ] PUT `/api/models/{id}` with a document whose `format` is not `eventmodel` leaves version `1`
+- [x] PUT `/api/models/{id}` with a document whose `format` is not `eventmodel` leaves version `1`
 - [ ] PUT `/api/models/{id}` with a document that fails `schemas/eventmodel.schema.json` returns status 400
 - [ ] PUT `/api/models/{id}` with a document that fails `schemas/eventmodel.schema.json` leaves version `1`
 - [ ] PUT `/api/models/{id}` with a document that fails `schemas/eventmodel.schema.json` leaves the R2 object unchanged
