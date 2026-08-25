@@ -54,4 +54,9 @@ describe("clicking New Slice", () => {
     expect(clickedSlice().events).toEqual([]);
     expect(appendSlice(empty).slices[0]?.events).toEqual([]);
   });
+
+  it("Clicking `New Slice` on that page appends a Slice whose `readModels` is `[]`", () => {
+    expect(clickedSlice().readModels).toEqual([]);
+    expect(appendSlice(empty).slices[0]?.readModels).toEqual([]);
+  });
 });

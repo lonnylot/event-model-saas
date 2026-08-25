@@ -10,6 +10,7 @@ export function appendSlice(model) {
         actors: [],
         commands: [],
         events: [],
+        readModels: [],
       },
     ],
   };
