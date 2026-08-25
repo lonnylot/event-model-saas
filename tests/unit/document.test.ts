@@ -2,9 +2,11 @@ import { describe, expect, it } from "vitest";
 import { appendSlice } from "../../src/document/append-slice.ts";
 import { appendActor } from "../../src/document/append-actor.ts";
 import { appendCommand } from "../../src/document/append-command.ts";
+import { appendEvent } from "../../src/document/append-event.ts";
 import {
   onAddActorClick,
   onAddCommandClick,
+  onAddEventClick,
   onNewSliceClick,
 } from "../../public/editor.js";
 
@@ -143,5 +145,35 @@ describe("clicking Add Command", () => {
     expect(
       appendCommand(appendSlice(empty)).slices[0]?.commands[0]?.fields,
     ).toEqual([]);
+  });
+});
+
+function clickedEvent() {
+  const holder = { textContent: JSON.stringify(empty) };
+  const root = {
+    querySelector(sel: string) {
+      if (sel === "ul") return { append() {} };
+      if (sel === "main") return { textContent: "", insertAdjacentHTML() {} };
+      if (sel === '[aria-label="Timeline"]') return { append() {} };
+      return null;
+    },
+    getElementById(id: string) {
+      return id === "event-model-document" ? holder : null;
+    },
+    createElement() {
+      return { textContent: "", setAttribute() {} };
+    },
+  };
+  onNewSliceClick(root);
+  onAddEventClick(root);
+  return JSON.parse(holder.textContent).slices[0].events[0];
+}
+
+describe("clicking Add Event", () => {
+  it("Clicking `Add Event` on that page after `New Slice` appends an Event whose `title` is `Event Happened`", () => {
+    expect(clickedEvent().title).toBe("Event Happened");
+    expect(appendEvent(appendSlice(empty)).slices[0]?.events[0]?.title).toBe(
+      "Event Happened",
+    );
   });
 });

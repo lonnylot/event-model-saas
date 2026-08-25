@@ -1,6 +1,7 @@
 import { appendSlice } from "./append-slice.js";
 import { appendActor } from "./append-actor.js";
 import { appendCommand } from "./append-command.js";
+import { appendEvent } from "./append-event.js";
 
 export function onNewSliceClick(root) {
   const list = root.querySelector("ul");
@@ -40,6 +41,15 @@ export function onAddCommandClick(root) {
   }
 }
 
+export function onAddEventClick(root) {
+  const holder = root.getElementById("event-model-document");
+  if (holder) {
+    holder.textContent = JSON.stringify(
+      appendEvent(JSON.parse(holder.textContent || "{}")),
+    );
+  }
+}
+
 export function bindEditor(root) {
   root.querySelectorAll("button").forEach((button) => {
     if (button.textContent === "Zoom in") {
@@ -74,6 +84,9 @@ export function bindEditor(root) {
     }
     if (button.textContent === "Add Command") {
       button.addEventListener("click", () => onAddCommandClick(root));
+    }
+    if (button.textContent === "Add Event") {
+      button.addEventListener("click", () => onAddEventClick(root));
     }
   });
 }
