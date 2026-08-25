@@ -50,7 +50,7 @@ A Team has no Event Models. Members cannot create, open, import, export, or Save
 - [ ] After a member creates a model and a second session Saves with version `1` after the first Save, the second session shows the text `This Event Model was saved by someone else.`
 - [x] `createD1Store` `insertEventModel` with title `Untitled` returns that row from `getEventModel`
 - [x] `createD1Store` `listEventModelsForTeam` returns the Untitled model
-- [ ] `createR2Documents` `put` of `models/{id}.eventmodel` returns that body from `get`
+- [x] `createR2Documents` `put` of `models/{id}.eventmodel` returns that body from `get`
 - [ ] Worker `fetch` when `TEST_MAIL` is not `1` puts `models/{id}.eventmodel` on `MODELS`
 - [ ] Worker `fetch` when `TEST_MAIL` is not `1` inserts the Event Model into `DB`
 
