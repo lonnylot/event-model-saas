@@ -2,6 +2,7 @@ import { appendSlice } from "./append-slice.js";
 import { appendActor } from "./append-actor.js";
 import { appendCommand } from "./append-command.js";
 import { appendEvent } from "./append-event.js";
+import { appendReadModel } from "./append-read-model.js";
 
 export function onNewSliceClick(root) {
   const list = root.querySelector("ul");
@@ -50,6 +51,15 @@ export function onAddEventClick(root) {
   }
 }
 
+export function onAddReadModelClick(root) {
+  const holder = root.getElementById("event-model-document");
+  if (holder) {
+    holder.textContent = JSON.stringify(
+      appendReadModel(JSON.parse(holder.textContent || "{}")),
+    );
+  }
+}
+
 export function bindEditor(root) {
   root.querySelectorAll("button").forEach((button) => {
     if (button.textContent === "Zoom in") {
@@ -87,6 +97,9 @@ export function bindEditor(root) {
     }
     if (button.textContent === "Add Event") {
       button.addEventListener("click", () => onAddEventClick(root));
+    }
+    if (button.textContent === "Add Read Model") {
+      button.addEventListener("click", () => onAddReadModelClick(root));
     }
   });
 }
