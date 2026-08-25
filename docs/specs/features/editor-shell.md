@@ -25,7 +25,7 @@ The open Event Model page is Save, Export, and Sign out. Members cannot see a Sl
 - [ ] GET `/app/teams/{id}/models/{mid}` as a member with no local edits does not show the text `Unsaved changes.`
 - [ ] After clicking `New Slice` on that page, the page shows the text `Unsaved changes.`
 - [ ] After clicking `New Slice` then `Save` on that page, the page does not show the text `Unsaved changes.`
-- [ ] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Zoom in`
+- [x] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Zoom in`
 - [ ] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Zoom out`
 - [ ] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Reset zoom`
 - [ ] Clicking `Zoom in` on that page sets the Timeline `style.transform` to `scale(1.25)`
