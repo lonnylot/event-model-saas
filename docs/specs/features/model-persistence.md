@@ -1,6 +1,6 @@
 # Model persistence
 
-Status: validated
+Status: released
 
 ## Problem
 
