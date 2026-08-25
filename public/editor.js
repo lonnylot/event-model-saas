@@ -172,9 +172,11 @@ export function bindEditor(root) {
     }
   });
   const timelineList = root.querySelector('[aria-label="Timeline"] ul');
+  let selectedActorItem = null;
   timelineList?.addEventListener("click", (event) => {
     const item = event.target?.closest?.("li");
     if (!item || !timelineList.contains(item)) return;
+    selectedActorItem = item;
     const inspector = root.querySelector('[aria-label="Inspector"]');
     if (inspector && !inspector.querySelector("input")) {
       inspector.insertAdjacentHTML(
@@ -188,6 +190,10 @@ export function bindEditor(root) {
           holder.textContent = JSON.stringify(
             setActorName(JSON.parse(holder.textContent || "{}"), input.value),
           );
+        }
+        if (selectedActorItem) {
+          selectedActorItem.textContent = input.value;
+          selectedActorItem.setAttribute("aria-label", input.value);
         }
       });
     }

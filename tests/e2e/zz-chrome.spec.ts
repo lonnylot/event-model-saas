@@ -232,6 +232,27 @@ test("Filling the Inspector `Name` textbox with `Shopper` after selecting `Actor
   expect(JSON.parse(json ?? "{}").slices[0].actors[0].name).toBe("Shopper");
 });
 
+test("Filling the Inspector `Name` textbox with `Shopper` after selecting `Actor` shows a Timeline listitem whose accessible name is `Shopper`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "Add Actor", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Actor", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Name", exact: true })
+    .fill("Shopper");
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Shopper", exact: true }),
+  ).toBeVisible();
+});
+
 test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add Actor`, clicks the Timeline `Actor` listitem, fills `Name` with `Shopper`, and Saves, a reload of that page shows a listitem whose accessible name is `Shopper` in the Timeline region", async ({
   page,
 }) => {
