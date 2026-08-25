@@ -268,4 +268,11 @@ describe("clicking Add Automation", () => {
       appendAutomation(appendSlice(empty)).slices[0]?.processors[0]?.title,
     ).toBe("Automation");
   });
+
+  it("Clicking `Add Automation` on that page after `New Slice` appends an Automation whose `type` is `AUTOMATION`", () => {
+    expect(clickedAutomation().type).toBe("AUTOMATION");
+    expect(
+      appendAutomation(appendSlice(empty)).slices[0]?.processors[0]?.type,
+    ).toBe("AUTOMATION");
+  });
 });

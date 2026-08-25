@@ -6,7 +6,7 @@ export function appendAutomation(model) {
     ...last,
     processors: [
       ...(last.processors ?? []),
-      { id: crypto.randomUUID(), title: "Automation" },
+      { id: crypto.randomUUID(), title: "Automation", type: "AUTOMATION" },
     ],
   };
   return { ...model, slices };
