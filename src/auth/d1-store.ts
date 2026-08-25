@@ -196,5 +196,11 @@ export function createD1Store(db: D1Database): AuthStore {
         r2Key: String(row.r2_key),
       }));
     },
+    async setEventModelVersion(id, version) {
+      await db
+        .prepare("UPDATE event_models SET version = ? WHERE id = ?")
+        .bind(version, id)
+        .run();
+    },
   };
 }

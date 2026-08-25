@@ -54,7 +54,7 @@ A Team has no Event Models. Members cannot create, open, import, export, or Save
 - [ ] Worker `fetch` when `TEST_MAIL` is not `1` puts `models/{id}.eventmodel` on `MODELS`
 - [ ] Worker `fetch` when `TEST_MAIL` is not `1` inserts the Event Model into `DB`
 
-- [ ] `createD1Store` `setEventModelVersion` sets version `2`
+- [x] `createD1Store` `setEventModelVersion` sets version `2`
 
 - [ ] PUT `/api/models/{id}` as a member with matching version writes the submitted document to `models/{id}.eventmodel`
 - [ ] PUT `/api/models/{id}` with a document that fails `schemas/eventmodel.schema.json` returns status 400

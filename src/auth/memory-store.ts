@@ -86,5 +86,9 @@ export function createMemoryStore(): AuthStore {
     async listEventModelsForTeam(teamId) {
       return models.filter((m) => m.teamId === teamId);
     },
+    async setEventModelVersion(id, version) {
+      const found = models.find((m) => m.id === id);
+      if (found) found.version = version;
+    },
   };
 }

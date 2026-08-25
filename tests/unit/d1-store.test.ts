@@ -49,6 +49,11 @@ function fakeD1() {
                 });
                 return {};
               }
+              if (sql === "UPDATE event_models SET version = ? WHERE id = ?") {
+                const row = eventModels.get(String(args[1]));
+                if (row) row.version = Number(args[0]);
+                return {};
+              }
               throw new Error(`unexpected run SQL: ${sql}`);
             },
             async first() {
@@ -154,4 +159,17 @@ describe("createD1Store", () => {
     ]);
   });
 
+  it("`createD1Store` `setEventModelVersion` sets version `2`", async () => {
+    const store = createD1Store(fakeD1());
+    await store.insertTeam({ id: "team-1", name: "Library" });
+    await store.insertEventModel({
+      id: "model-1",
+      teamId: "team-1",
+      title: "Untitled",
+      version: 1,
+      r2Key: "models/model-1.eventmodel",
+    });
+    await store.setEventModelVersion("model-1", 2);
+    expect((await store.getEventModel("model-1"))?.version).toBe(2);
+  });
 });

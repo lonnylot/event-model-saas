@@ -57,6 +57,7 @@ export type AuthStore = {
   insertEventModel(model: EventModelRow): Promise<void>;
   getEventModel(id: string): Promise<EventModelRow | null>;
   listEventModelsForTeam(teamId: string): Promise<EventModelRow[]>;
+  setEventModelVersion(id: string, version: number): Promise<void>;
 };
 
 export type MailPort = {
