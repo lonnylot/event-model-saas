@@ -7,6 +7,7 @@ export function appendSlice(model) {
         id: crypto.randomUUID(),
         title: "New Slice",
         sliceType: "STATE_CHANGE",
+        actors: [],
       },
     ],
   };
