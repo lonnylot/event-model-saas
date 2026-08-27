@@ -223,3 +223,15 @@ test("After clicking `New Slice`, pressing ⌥⌘4 appends a Read Model whose `t
     "Read Model",
   );
 });
+
+test("After clicking `New Slice`, pressing ⌥⌘5 appends an Automation whose `title` is `Automation`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.keyboard.press("Alt+ControlOrMeta+Digit5");
+  const json = await page.locator("#event-model-document").textContent();
+  expect(JSON.parse(json ?? "{}").slices[0].processors[0].title).toBe(
+    "Automation",
+  );
+});
