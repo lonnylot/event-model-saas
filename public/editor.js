@@ -596,6 +596,11 @@ export function bindEditor(root) {
     unbindAddField();
     unbindFieldName();
   });
+  root.querySelector("h1")?.addEventListener("click", () => {
+    if (inspector && !nameInput()) {
+      inspector.insertAdjacentHTML("beforeend", "<label>Name <input /></label>");
+    }
+  });
   root.addEventListener("keydown", (event) => {
     if (
       event.altKey &&

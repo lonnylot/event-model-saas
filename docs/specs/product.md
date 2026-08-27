@@ -63,7 +63,7 @@ Must match the Mac app’s editing behavior:
 
 - New Slice (⇧⌘N / toolbar)
 - Add actors, commands, events, read models, automations (toolbar, dashed Add on a lane, keyboard equivalents of ⌥⌘1–5). Click-append from `Add Actor on lane` / `Add Event on lane` / `Add Read Model on lane` / `Add Automation on lane` and selected-Slice ⌥⌘1 / ⌥⌘3–5 are [features/add-on-lane-rest.md](./features/add-on-lane-rest.md).
-- Inspect a Slice, Actor, Command, Event, Read Model, or Automation; edit Name and Description. After Save and reload, clicking the GET-rendered Command, Event, Read Model, Automation, or Actor opens Inspector Name. Inspect a Command; Add Field; edit Field name. Inspect a Slice; edit Slice type. Inspect a Connection; show From and To. Delete of a Connection stays later.
+- Inspect a Slice, Actor, Command, Event, Read Model, Automation, or the Event Model heading; edit Name and Description. After Save and reload, clicking the GET-rendered Command, Event, Read Model, Automation, or Actor opens Inspector Name. Inspect a Command; Add Field; edit Field name. Inspect a Slice; edit Slice type. Inspect a Connection; show From and To. Delete of a Connection stays later.
 - Move slices (⌥⌘←). ⌥⌘→ and sidebar drag-reorder stay later
 - Drag Actor between slices on the same lane. Drag of Command / Event / Read Model / Automation between slices stays later
 - Connect by dragging a **Port** (command → event, event → read model). Highlighting legal targets, snap-back, reason on the source, and Event → Command are [features/connection-feedback.md](./features/connection-feedback.md). Other illegal pairs stay later
@@ -71,7 +71,7 @@ Must match the Mac app’s editing behavior:
 - Zoom / pan (toolbar zoom, scroll to pan, pinch zoom). Pinch pan and ⌘+/⌘-/⌘0 stay later
 - Undo New Slice and undo Command → Event. Undo of move, delete, and Add stays later
 
-Mac-only chrome is not ported: `NSDocument`, native menus as macOS menus, AppKit welcome window. The web shell is: team name, model title, dirty indicator, Save, Export, sign out.
+Mac-only chrome is not ported: `NSDocument`, native menus as macOS menus, AppKit welcome window. The web shell is: team name, selectable model title, dirty indicator, Save, Export, sign out.
 
 The JSON Schema stays `format: "eventmodel"`, `schemaVersion: 1`, compatible with the Mac app. The schema file is copied into this repo when persistence is implemented; it does not diverge without a spec change.
 
