@@ -226,3 +226,20 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add 
     JSON.parse(json ?? "{}").slices.at(-1).commands.at(-1).description,
   ).toBe("Customer submits cart");
 });
+
+test("After clicking `New Slice` then `Add Event` on that page, clicking the Timeline `Event Happened` listitem shows a textbox whose accessible name is `Description` in the Inspector region", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Event Happened", exact: true })
+    .click();
+  await expect(
+    page
+      .getByRole("region", { name: "Inspector", exact: true })
+      .getByRole("textbox", { name: "Description", exact: true }),
+  ).toBeVisible();
+});

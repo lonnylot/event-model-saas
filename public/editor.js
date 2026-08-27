@@ -388,6 +388,7 @@ export function bindEditor(root) {
       selected = "event";
       selectedEventItem = item;
       bindName("Event Happened");
+      bindDescription();
       return;
     }
     if (item.dataset.kind === "readmodel") {
