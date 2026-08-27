@@ -18,7 +18,8 @@ Command → Read Model and Event → Command are refused with copy on the source
 - [x] Dragging from `Read Model port` onto `Event Happened port` shows the text `A read model can't write an event.` in the Read Model listitem
 - [x] After clicking `New Slice` then `Add Read Model` twice, dragging from the first `Read Model port` onto the last `Read Model port` does not append a Connection
 - [x] After clicking `New Slice` then `Add Read Model` twice, dragging from the first `Read Model port` onto the last `Read Model port` shows the text `A read model can't feed a read model.` in the first Read Model listitem
-- [ ] After dragging from `Command port` onto `Event Happened port`, dragging from `Command port` onto `Event Happened port` again does not append a second Connection
+- [x] After dragging from `Command port` onto `Event Happened port`, dragging from `Command port` onto `Event Happened port` again does not append a second Connection
+- [x] After dragging from `Event Happened port` onto `Read Model port`, dragging from `Event Happened port` onto `Read Model port` again does not append a second Connection
 - [ ] After dragging from `Command port` onto `Event Happened port`, dragging from `Command port` onto `Event Happened port` again shows the text `That connection already exists.` in the Command listitem
 - [ ] Dragging from `Command port` onto the same `Command port` does not append a Connection
 - [ ] Dragging from `Command port` onto the same `Command port` shows the text `A block can't connect to itself.` in the Command listitem
@@ -40,7 +41,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Connection, T
 
 ## Assumptions
 
-- Legal v1 edges stay Command → Event and Event → Read Model ([connections.md](./connections.md)). Command → Read Model and Event → Command stay [connection-feedback.md](./connection-feedback.md).
+- Legal v1 edges stay Command → Event and Event → Read Model ([connections.md](./connections.md)). Command → Read Model and Event → Command stay [connection-feedback.md](./connection-feedback.md). Duplicate is the same `fromID`/`toID`; Command → Event and Event → Read Model share that refuse.
 - Two default-named Commands / Events / Read Models are first vs last Ports (`Command port`, `Event Happened port`, `Read Model port`).
 - Reason on the source is the refusal copy inside the source listitem, same as [connection-feedback.md](./connection-feedback.md). Refusal strings match the Mac `ConnectionRules` copy except Event → Command, which already uses `trigger` on that spec.
 - Add still targets the last Slice. Tests add the blocks they need on that Slice.
@@ -57,4 +58,4 @@ Highlight of remaining illegal targets. Dashed Add leftovers. Keyboard leftovers
 - [connections.md](./connections.md) — Out of scope no longer owns duplicate-connection, self-connection, or the other illegal-pair copy from the Mac app; this slice owns those. Legal edges stay this file. Command → Read Model stays [connection-feedback.md](./connection-feedback.md).
 - [blocks.md](./blocks.md) — Actor and Automation as connection endpoints (refusal) are this slice.
 - [canvas.md](./canvas.md) — Out of scope no longer owns other illegal pairs; this slice owns those leftover Mac pairs’ reason-on-the-source copy. Highlighting legal targets, snap-back, reason on the source, and Event → Command are [connection-feedback.md](./connection-feedback.md).
-- [product.md](../product.md) — Other illegal pairs, duplicate, self-connection, and Slice drop are this slice. Illegal connection: leftover Mac pairs refuse with copy on the source. Playwright path for this slice adds: Command → Command, Event → Event, Read Model → Command / Event / Read Model, second Command → Event, Command onto itself, Command onto Actor, Command onto Automation, Command onto New Slice. Highlighting legal targets, snap-back, Command → Read Model copy, and Event → Command stay [connection-feedback.md](./connection-feedback.md).
+- [product.md](../product.md) — Other illegal pairs, duplicate, self-connection, and Slice drop are this slice. Illegal connection: leftover Mac pairs refuse with copy on the source. Playwright path for this slice adds: Command → Command, Event → Event, Read Model → Command / Event / Read Model, second Command → Event, second Event → Read Model, Command onto itself, Command onto Actor, Command onto Automation, Command onto New Slice. Highlighting legal targets, snap-back, Command → Read Model copy, and Event → Command stay [connection-feedback.md](./connection-feedback.md).

@@ -273,3 +273,53 @@ test("After clicking `New Slice` then `Add Read Model` twice, dragging from the 
     page.getByRole("listitem", { name: "Read Model", exact: true }).first(),
   ).toContainText("A read model can't feed a read model.");
 });
+
+test("After dragging from `Command port` onto `Event Happened port`, dragging from `Command port` onto `Event Happened port` again does not append a second Connection", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await expect(
+    page.getByRole("button", { name: "Command port", exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Event Happened port", exact: true }),
+  ).toBeVisible();
+  await page
+    .getByRole("button", { name: "Command port", exact: true })
+    .dragTo(
+      page.getByRole("button", { name: "Event Happened port", exact: true }),
+    );
+  await page
+    .getByRole("button", { name: "Command port", exact: true })
+    .dragTo(
+      page.getByRole("button", { name: "Event Happened port", exact: true }),
+    );
+  const json = await page.locator("#event-model-document").textContent();
+  expect(JSON.parse(json ?? "{}").connections ?? []).toHaveLength(1);
+});
+
+test("After dragging from `Event Happened port` onto `Read Model port`, dragging from `Event Happened port` onto `Read Model port` again does not append a second Connection", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  const eventPort = page.getByRole("button", {
+    name: "Event Happened port",
+    exact: true,
+  });
+  const readModelPort = page.getByRole("button", {
+    name: "Read Model port",
+    exact: true,
+  });
+  await expect(eventPort).toBeVisible();
+  await expect(readModelPort).toBeVisible();
+  await eventPort.dragTo(readModelPort);
+  await eventPort.dragTo(readModelPort);
+  const json = await page.locator("#event-model-document").textContent();
+  expect(JSON.parse(json ?? "{}").connections ?? []).toHaveLength(1);
+});

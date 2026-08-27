@@ -20,6 +20,14 @@ export function appendConnection(model, edge) {
   if (edge.fromKind === "READMODEL" && edge.toKind === "READMODEL") {
     return model;
   }
+  if (
+    (model.connections ?? []).some(
+      (connection) =>
+        connection.fromID === edge.fromID && connection.toID === edge.toID,
+    )
+  ) {
+    return model;
+  }
   return {
     ...model,
     connections: [
