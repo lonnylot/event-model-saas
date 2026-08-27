@@ -55,4 +55,15 @@ describe("spec tree", () => {
       "GET-rendered inspect of Description on Slice / Actor / Event / Read Model / Automation stays later",
     );
   });
+
+  it("inspect-fields does not leave GET-rendered Fields stays later or hand in-session Field work to inspect-rest", () => {
+    const text = readFileSync("docs/specs/features/inspect-fields.md", "utf8");
+    expect(text).not.toContain("GET-rendered inspect of Fields stays later");
+    expect(text).not.toContain(
+      "Field `type` picker after Add, Command `optional` / `example`, Add Field that appends on Event / Read Model / Automation, Field after reload",
+    );
+    expect(text).not.toContain(
+      "Field after reload, inspect after reload, and Add Field that appends",
+    );
+  });
 });
