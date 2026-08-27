@@ -58,7 +58,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Independently revertible ACs / grouping by screen / spec-only / fromKind vs toKind / reconstruct after tests-after | `logical-commits` |
 | Tests-after / production that landed as a dependency / tests-only commit on top / review-strengthened tests after production landed / one-item Backspace tests-only follow-up / unique assertion after weaker `includes scale(` production / folding tests-after into sibling production / click-path production after field tests / follow-up rewrite onto click path / fold reload when GET already hydrates / tests-only wait-after-open helper | `logical-commits`, `receiving-code-review` |
 | Review-thread batch / commit subject names two threads with "and" | `logical-commits` |
-| Extra visible chrome / document title / extra form or link or extra nav on a route / extra inspect of Out of scope kinds / extra host observability without an AC | `keeping-specs-current` |
+| Extra visible chrome / document title / extra form or link or extra nav on a route / extra inspect of Out of scope kinds / leftover inspect chrome after insert-if-missing switch (Add Field / Field name on Actor) / extra host observability without an AC | `keeping-specs-current` |
 | Playwright wait after open (editor bound / networkidle) / New Slice / named Ports / force hover flagged as extra chrome | `keeping-specs-current`, `playwright-e2e` |
 | Omitted sibling kinds (Event reload-lists) | `keeping-specs-current` |
 | In-session visible text when the AC is accessible name | `keeping-specs-current` |
