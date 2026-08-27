@@ -94,6 +94,28 @@ export async function handleRequest(
     return jsonOk(JSON.stringify({ text: last?.text ?? "" }));
   }
 
+  if (path === "/api/test/non-admin-session" && request.method === "POST") {
+    if (env.TEST_MAIL !== "1" || !env.auth) return jsonNotFound();
+    const personId = env.auth.randomId();
+    await env.auth.store.insertPerson({
+      id: personId,
+      email: "teammate@example.com",
+      isSiteAdmin: false,
+    });
+    const sessionId = env.auth.randomId();
+    await env.auth.store.insertSession({
+      id: sessionId,
+      personId,
+      expiresAt: env.auth.now() + 7 * 24 * 60 * 60 * 1000,
+    });
+    return new Response(null, {
+      status: 204,
+      headers: {
+        "Set-Cookie": `session=${sessionId}; Path=/; HttpOnly; SameSite=Lax`,
+      },
+    });
+  }
+
   if (request.method === "GET" && (path === "/favicon.png" || path === "/og.png" || path === "/shell.css")) {
     const asset = await env.ASSETS.fetch(request);
     const headers = new Headers();

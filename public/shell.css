@@ -15,3 +15,6 @@ body.expired {
 body.app-none {
   background-color: #F7F4EE;
 }
+body.app-guest {
+  background-color: #F7F4EE;
+}

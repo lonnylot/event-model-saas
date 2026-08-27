@@ -88,3 +88,15 @@ test("GET `/app` as site admin with no teams, the link `Event Model` has `href` 
     page.getByRole("link", { name: "Event Model", exact: true }),
   ).toHaveAttribute("href", "/app");
 });
+
+
+test("GET `/app` as a Person who is not site admin with no teams `body` computed `background-color` is `rgb(247, 244, 238)`", async ({
+  page,
+}) => {
+  await page.request.post("/api/test/non-admin-session");
+  await page.goto("/app");
+  await expect(page.locator("body")).toHaveCSS(
+    "background-color",
+    "rgb(247, 244, 238)",
+  );
+});
