@@ -396,6 +396,11 @@ export function bindEditor(root) {
           .querySelector('[data-kind="EVENT"]')
           ?.setAttribute("aria-current", "true");
       }
+      if (port.dataset.kind === "EVENT") {
+        root
+          .querySelector('[data-kind="READMODEL"]')
+          ?.setAttribute("aria-current", "true");
+      }
     }
   });
   root.addEventListener("mouseup", (event) => {

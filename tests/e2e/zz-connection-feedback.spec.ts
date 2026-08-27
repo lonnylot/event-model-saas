@@ -109,3 +109,31 @@ test("After pointer-down on `Command port`, the `Read Model port` does not have 
     page.getByRole("button", { name: "Read Model port", exact: true }),
   ).not.toHaveAttribute("aria-current", "true");
 });
+
+test("After pointer-down on `Event Happened port`, the `Read Model port` has `aria-current` `true`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await addCommandEventAndReadModel(page);
+  await page
+    .getByRole("button", { name: "Event Happened port", exact: true })
+    .hover();
+  await page.mouse.down();
+  await expect(
+    page.getByRole("button", { name: "Read Model port", exact: true }),
+  ).toHaveAttribute("aria-current", "true");
+});
+
+test("After pointer-down on `Event Happened port`, the `Command port` does not have `aria-current` `true`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await addCommandEventAndReadModel(page);
+  await page
+    .getByRole("button", { name: "Event Happened port", exact: true })
+    .hover();
+  await page.mouse.down();
+  await expect(
+    page.getByRole("button", { name: "Command port", exact: true }),
+  ).not.toHaveAttribute("aria-current", "true");
+});
