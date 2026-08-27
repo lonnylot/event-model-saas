@@ -630,6 +630,10 @@ export function bindEditor(root) {
               selectedSliceItem?.dataset?.id,
             ),
           );
+          const main = root.querySelector("main");
+          if (main && !main.textContent?.includes("Unsaved changes.")) {
+            main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
+          }
         }
       });
     }
