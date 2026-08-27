@@ -25,4 +25,19 @@ describe("spec tree", () => {
       "GET heading, team-list, and Export `{title}` stay the D1 create title until later",
     );
   });
+
+  it("inspect-fields-rest does not leave GET-rendered inspect of Fields stays later", () => {
+    const rest = readFileSync("docs/specs/features/inspect-rest.md", "utf8");
+    const fieldsRest = readFileSync(
+      "docs/specs/features/inspect-fields-rest.md",
+      "utf8",
+    );
+    expect(rest).toContain("inspect-fields-rest.md");
+    expect(fieldsRest).not.toContain(
+      "GET-rendered inspect of Fields stays later",
+    );
+    expect(rest).not.toContain(
+      "Out of scope no longer owns Field `type` picker after Add, Command `optional` / `example`, Add Field that appends on Event / Read Model / Automation, Field after reload",
+    );
+  });
 });
