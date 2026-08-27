@@ -623,4 +623,32 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add 
   ).toBeVisible();
 });
 
+test("After a member creates a model, opens it, clicks the `Untitled` heading, fills `Name` with `Library Checkout`, and Saves, a reload of that page, clicking the heading whose accessible name is `Library Checkout` shows the Inspector `Name` textbox with the value `Library Checkout`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("heading", { name: "Untitled", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Name", exact: true })
+    .fill("Library Checkout");
+  await Promise.all([
+    page.waitForResponse(
+      (response) =>
+        response.url().includes("/api/models/") &&
+        response.request().method() === "PUT",
+    ),
+    page.getByRole("button", { name: "Save", exact: true }).click(),
+  ]);
+  await page.reload();
+  await page
+    .getByRole("heading", { name: "Library Checkout", exact: true })
+    .click();
+  await expect(
+    page
+      .getByRole("region", { name: "Inspector", exact: true })
+      .getByRole("textbox", { name: "Name", exact: true }),
+  ).toHaveValue("Library Checkout");
+});
+
 

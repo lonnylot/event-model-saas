@@ -340,7 +340,7 @@ export async function handleRequest(
       return new Response(
         modelPageHtml(
           person.email,
-          model.title,
+          parsed.title ?? model.title,
           model.id,
           model.version,
           team.name,

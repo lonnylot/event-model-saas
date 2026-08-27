@@ -1128,12 +1128,14 @@ export function bindEditor(root) {
     unbindAddField();
     unbindFieldName();
   });
-  timeline?.addEventListener("click", (event) => {
-    const line = event.target?.closest?.("p");
-    if (!line || !timeline.contains(line)) return;
-    if (line.textContent !== "Command → Event Happened") return;
-    selected = "connection";
-    selectedConnectionItem = line;
+ root.querySelector("h1")?.addEventListener("click", () => {
+ selected = "model";
+ const heading = root.querySelector("h1");
+ bindName(heading?.textContent ?? "Untitled");
+ unbindDescription();
+ unbindType();
+ unbindAddField();
+ unbindFieldName();
   });
   slicesList?.addEventListener("click", (event) => {
     const item = event.target?.closest?.("li");
