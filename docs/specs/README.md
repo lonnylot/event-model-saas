@@ -33,5 +33,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Inspect after reload | [features/inspect-after-reload.md](./features/inspect-after-reload.md) | released |
 | Inspect connection | [features/inspect-connection.md](./features/inspect-connection.md) | released |
 | Model inspector | [features/model-inspector.md](./features/model-inspector.md) | released |
+| Connection refusals | [features/connection-refusals.md](./features/connection-refusals.md) | validated |
 
 Status: `draft` → `validated` → `released`.
