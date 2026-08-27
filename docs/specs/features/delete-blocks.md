@@ -26,23 +26,23 @@ Event Model, Slice, Command, Event, Read Model, Connection, Team, Person, Versio
 - Command selection is a click on the Timeline listitem. Connection selection is a click on the Timeline text `Command → Event Happened`. After that click, Inspector `Name` may have focus, so delete is Backspace after clicking the Timeline region (not while typing in `Name`).
 - Add still targets the last Slice. Add Command twice then Add Event and Add Read Model for the two Connections.
 - Remaining Connection after deleting `Command → Event Happened` is Event → Read Model (`fromKind` `EVENT`).
-- Slice Backspace stays [canvas.md](./canvas.md). Delete of Actor / Event / Read Model / Automation stays later.
+- Slice Backspace stays [canvas.md](./canvas.md). Delete of Actor is [delete-rest.md](./delete-rest.md). Delete of Event / Read Model / Automation stays later.
 - Delete is in-memory until Save. Save still uses the version check from model-persistence.
 - The `TEST_MAIL=1` memory adapter does not count login attempts, so Playwright files can share one Worker without the production 5-per-hour cap.
 
 ## Out of scope
 
-Delete Actor, Event, Read Model, or Automation. Undo of delete. Inspecting a Connection is [inspect-connection.md](./inspect-connection.md). Description is [inspect-description.md](./inspect-description.md). Add Field and Field name on Command are [inspect-fields.md](./inspect-fields.md). Slice type picker is [slice-type.md](./slice-type.md). Inspect after reload is [inspect-after-reload.md](./inspect-after-reload.md). Event Model title and Description are [model-inspector.md](./model-inspector.md). Mac window chrome. Slice delete stays [canvas.md](./canvas.md).
+Delete Event, Read Model, or Automation. Delete of Actor is [delete-rest.md](./delete-rest.md). Undo of delete. Inspecting a Connection is [inspect-connection.md](./inspect-connection.md). Description is [inspect-description.md](./inspect-description.md). Add Field and Field name on Command are [inspect-fields.md](./inspect-fields.md). Slice type picker is [slice-type.md](./slice-type.md). Inspect after reload is [inspect-after-reload.md](./inspect-after-reload.md). Event Model title and Description are [model-inspector.md](./model-inspector.md). Mac window chrome. Slice delete stays [canvas.md](./canvas.md).
 
 ## Restates
 
-- [canvas.md](./canvas.md) — Out of scope no longer owns delete of a Command or Connection; this slice owns those. Delete of Actor / Event / Read Model / Automation and undo of delete stay later. Slice Backspace stays this file.
+- [canvas.md](./canvas.md) — Out of scope no longer owns delete of a Command or Connection; this slice owns those. Delete of Actor is [delete-rest.md](./delete-rest.md). Delete of Event / Read Model / Automation and undo of delete stay later. Slice Backspace stays this file.
 - [connections.md](./connections.md) — Delete Connection is this slice.
 - [inspect-connection.md](./inspect-connection.md) — Delete Connection is this slice.
-- [blocks.md](./blocks.md) — Delete Command is this slice. Delete of other blocks stays later.
+- [blocks.md](./blocks.md) — Delete Command is this slice. Delete of Actor is [delete-rest.md](./delete-rest.md). Delete of Event / Read Model / Automation stays later.
 - [inspect-blocks.md](./inspect-blocks.md) — Delete Command is this slice.
 - [chrome.md](./chrome.md) — Delete Command is this slice.
-- [inspect-description.md](./inspect-description.md) — Delete Command and Delete Connection are this slice. Slice Backspace stays [canvas.md](./canvas.md). Delete of Actor / Event / Read Model / Automation stays later.
-- [add-on-lane.md](./add-on-lane.md) — Delete Command and Delete Connection are this slice. Slice Backspace stays [canvas.md](./canvas.md). Delete of Actor / Event / Read Model / Automation stays later.
-- [connection-feedback.md](./connection-feedback.md) — Delete Command and Delete Connection are this slice. Slice Backspace stays [canvas.md](./canvas.md). Delete of Actor / Event / Read Model / Automation stays later.
-- [product.md](../product.md) — Delete the selected Command (Backspace) and the selected Connection (Backspace). Delete of Actor / Event / Read Model / Automation stays later. Playwright path for this slice adds: two Add Command, Backspace deletes the first; two Connections, Backspace deletes `Command → Event Happened`.
+- [inspect-description.md](./inspect-description.md) — Delete Command and Delete Connection are this slice. Slice Backspace stays [canvas.md](./canvas.md). Delete of Actor is [delete-rest.md](./delete-rest.md). Delete of Event / Read Model / Automation stays later.
+- [add-on-lane.md](./add-on-lane.md) — Delete Command and Delete Connection are this slice. Slice Backspace stays [canvas.md](./canvas.md). Delete of Actor is [delete-rest.md](./delete-rest.md). Delete of Event / Read Model / Automation stays later.
+- [connection-feedback.md](./connection-feedback.md) — Delete Command and Delete Connection are this slice. Slice Backspace stays [canvas.md](./canvas.md). Delete of Actor is [delete-rest.md](./delete-rest.md). Delete of Event / Read Model / Automation stays later.
+- [product.md](../product.md) — Delete the selected Command (Backspace) and the selected Connection (Backspace). Delete of Actor is [delete-rest.md](./delete-rest.md). Delete of Event / Read Model / Automation stays later. Playwright path for this slice adds: two Add Command, Backspace deletes the first; two Connections, Backspace deletes `Command → Event Happened`.

@@ -27,6 +27,7 @@ import { moveActorToSlice } from "./move-actor-to-slice.js";
 import { deleteSlice } from "./delete-slice.js";
 import { deleteCommand } from "./delete-command.js";
 import { deleteConnection } from "./delete-connection.js";
+import { deleteActor } from "./delete-actor.js";
 import { undoConnection } from "./undo-connection.js";
 
 const undoStack = [];
@@ -723,6 +724,15 @@ export function bindEditor(root) {
       );
       selectedConnectionItem.remove();
       selectedConnectionItem = null;
+      selected = null;
+    }
+    const actorId = selectedActorItem?.dataset?.id;
+    if (holder && selected === "actor" && actorId && selectedActorItem) {
+      holder.textContent = JSON.stringify(
+        deleteActor(JSON.parse(holder.textContent || "{}"), actorId),
+      );
+      selectedActorItem.remove();
+      selectedActorItem = null;
       selected = null;
     }
   });
