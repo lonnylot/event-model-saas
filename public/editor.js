@@ -684,6 +684,18 @@ export function bindEditor(root) {
       }
     });
   };
+
+  const lastSliceDescription = () => {
+    const holder = root.getElementById("event-model-document");
+    const model = JSON.parse(holder?.textContent || "{}");
+    return model.slices?.at(-1)?.description ?? "";
+  };
+  const lastActorDescription = () => {
+    const holder = root.getElementById("event-model-document");
+    const model = JSON.parse(holder?.textContent || "{}");
+    return model.slices?.at(-1)?.actors?.at(-1)?.description ?? "";
+  };
+
   const lastSliceTypeLabel = () => {
     const holder = root.getElementById("event-model-document");
     const model = JSON.parse(holder?.textContent || "{}");
@@ -985,6 +997,11 @@ export function bindEditor(root) {
     unbindFieldChrome();
     unbindAddField();
     unbindFieldName();
+    if (omitGetRenderedInspectChrome(item)) {
+      bindDescription(lastActorDescription());
+      return;
+    }
+    bindDescription(lastActorDescription());
     unbindType();
     unbindAddField();
     unbindFieldName();
