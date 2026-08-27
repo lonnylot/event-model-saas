@@ -258,3 +258,18 @@ test("After clicking `New Slice` then `Add Read Model` twice, dragging from the 
   const json = await page.locator("#event-model-document").textContent();
   expect(JSON.parse(json ?? "{}").connections ?? []).toEqual([]);
 });
+
+test("After clicking `New Slice` then `Add Read Model` twice, dragging from the first `Read Model port` onto the last `Read Model port` shows the text `A read model can't feed a read model.` in the first Read Model listitem", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  const ports = page.getByRole("button", { name: "Read Model port", exact: true });
+  await expect(ports).toHaveCount(2);
+  await ports.first().dragTo(ports.last());
+  await expect(
+    page.getByRole("listitem", { name: "Read Model", exact: true }).first(),
+  ).toContainText("A read model can't feed a read model.");
+});
