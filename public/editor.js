@@ -17,6 +17,8 @@ import { setReadModelTitle } from "./set-read-model-title.js";
 import { setReadModelDescription } from "./set-read-model-description.js";
 import { setAutomationTitle } from "./set-automation-title.js";
 import { setAutomationDescription } from "./set-automation-description.js";
+import { appendField } from "./append-field.js";
+import { setFieldName } from "./set-field-name.js";
 import { moveSliceLeft } from "./move-slice-left.js";
 import { moveActorToSlice } from "./move-actor-to-slice.js";
 import { deleteSlice } from "./delete-slice.js";
@@ -350,6 +352,50 @@ export function bindEditor(root) {
       });
     }
   };
+  const addFieldButton = () =>
+    [...(inspector?.querySelectorAll("button") ?? [])].find(
+      (button) => button.textContent === "Add Field",
+    );
+  const fieldNameLabel = () =>
+    [...(inspector?.querySelectorAll("label") ?? [])].find((label) =>
+      label.textContent?.includes("Field name"),
+    );
+  const unbindAddField = () => addFieldButton()?.remove();
+  const unbindFieldName = () => fieldNameLabel()?.remove();
+  const bindAddField = () => {
+    if (!inspector || addFieldButton()) return;
+    inspector.insertAdjacentHTML(
+      "beforeend",
+      '<button type="button">Add Field</button>',
+    );
+    addFieldButton()?.addEventListener("click", () => {
+      if (selected !== "command") return;
+      const holder = root.getElementById("event-model-document");
+      if (holder) {
+        holder.textContent = JSON.stringify(
+          appendField(JSON.parse(holder.textContent || "{}")),
+        );
+      }
+      if (inspector && !fieldNameLabel()) {
+        inspector.insertAdjacentHTML(
+          "beforeend",
+          "<label>Field name <input /></label>",
+        );
+        const fieldNameInput = fieldNameLabel()?.querySelector("input");
+        fieldNameInput?.addEventListener("input", () => {
+          const documentHolder = root.getElementById("event-model-document");
+          if (documentHolder) {
+            documentHolder.textContent = JSON.stringify(
+              setFieldName(
+                JSON.parse(documentHolder.textContent || "{}"),
+                fieldNameInput.value,
+              ),
+            );
+          }
+        });
+      }
+    });
+  };
   const bindName = (value) => {
     if (!inspector) return;
     let input = nameInput();
@@ -431,6 +477,7 @@ export function bindEditor(root) {
       selected = "command";
       selectedCommandItem = item;
       bindName("Command");
+      bindAddField();
       bindDescription();
       return;
     }
@@ -438,21 +485,27 @@ export function bindEditor(root) {
       selected = "event";
       selectedEventItem = item;
       bindName("Event Happened");
+      bindAddField();
       bindDescription();
+      unbindFieldName();
       return;
     }
     if (item.dataset.kind === "readmodel") {
       selected = "readmodel";
       selectedReadModelItem = item;
       bindName("Read Model");
+      bindAddField();
       bindDescription();
+      unbindFieldName();
       return;
     }
     if (item.dataset.kind === "automation") {
       selected = "automation";
       selectedAutomationItem = item;
       bindName("Automation");
+      bindAddField();
       bindDescription();
+      unbindFieldName();
       return;
     }
     if (item.dataset.kind !== "actor") return;
@@ -460,6 +513,8 @@ export function bindEditor(root) {
     selectedActorItem = item;
     bindName("Actor");
     bindDescription();
+    unbindAddField();
+    unbindFieldName();
   });
   slicesList?.addEventListener("click", (event) => {
     const item = event.target?.closest?.("li");
@@ -470,6 +525,8 @@ export function bindEditor(root) {
     selectedSliceIndex = indexAttr === null ? null : Number(indexAttr);
     bindName("New Slice");
     bindDescription();
+    unbindAddField();
+    unbindFieldName();
   });
   root.addEventListener("keydown", (event) => {
     if (
