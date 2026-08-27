@@ -832,13 +832,18 @@ export function bindEditor(root) {
     const model = JSON.parse(holder?.textContent || "{}");
     return model.slices?.at(-1)?.commands?.at(-1)?.fields?.[0]?.type;
   };
+  const lastEventFieldType = () => {
+    const holder = root.getElementById("event-model-document");
+    const model = JSON.parse(holder?.textContent || "{}");
+    return model.slices?.at(-1)?.events?.at(-1)?.fields?.[0]?.type;
+  };
   const fieldTypeSelect = () =>
     [...(inspector?.querySelectorAll("select") ?? [])].find((select) =>
       select.closest("label")?.textContent?.includes("Field type"),
     );
   const unbindFieldType = () => fieldTypeSelect()?.closest("label")?.remove();
   const bindFieldType = (value) => {
-    if (!inspector || selected !== "command") {
+    if (!inspector || (selected !== "command" && selected !== "event")) {
       unbindFieldType();
       return;
     }
@@ -854,6 +859,15 @@ export function bindEditor(root) {
         if (holder && selected === "command") {
           holder.textContent = JSON.stringify(
             setFieldType(JSON.parse(holder.textContent || "{}"), select.value),
+          );
+        }
+        if (holder && selected === "event") {
+          holder.textContent = JSON.stringify(
+            setFieldType(
+              JSON.parse(holder.textContent || "{}"),
+              select.value,
+              "event",
+            ),
           );
         }
       });
@@ -1039,6 +1053,9 @@ export function bindEditor(root) {
         bindOptional(lastCommandFieldOptional());
         bindExample(lastCommandFieldExample());
       }
+      if (selected === "event") {
+        bindFieldType(lastEventFieldType() ?? "String");
+      }
     });
   };
   const getRenderedTimelineItems = new Set(
@@ -1215,12 +1232,16 @@ export function bindEditor(root) {
       unbindFieldName();
       unbindType();
       bindAddField();
-      unbindFieldType();
       unbindOptional();
       unbindExample();
       const eventFieldName = lastEventFieldName();
-      if (eventFieldName) bindFieldName(eventFieldName);
-      else unbindFieldName();
+      if (eventFieldName) {
+        bindFieldName(eventFieldName);
+        bindFieldType(lastEventFieldType());
+      } else {
+        unbindFieldName();
+        unbindFieldType();
+      }
       return;
     }
     if (item.dataset.kind === "readmodel") {
