@@ -123,6 +123,7 @@ export function onAddAutomationClick(root) {
     const item = root.createElement("li");
     item.textContent = "Automation";
     item.setAttribute("aria-label", "Automation");
+    item.dataset.kind = "automation";
     list.append(item);
   }
   const holder = root.getElementById("event-model-document");
@@ -270,6 +271,12 @@ export function bindEditor(root) {
       selected = "readmodel";
       selectedReadModelItem = item;
       bindName("Read Model");
+      return;
+    }
+    if (item.dataset.kind === "automation") {
+      if (inspector && !nameInput()) {
+        inspector.insertAdjacentHTML("beforeend", "<label>Name <input /></label>");
+      }
       return;
     }
     if (item.dataset.kind !== "actor") return;
