@@ -37,12 +37,12 @@ ingest → completeness → iterate until validated
 
 ### 1. Ingest
 
-Read the spec (or write `docs/specs/features/<slug>.md` from `_TEMPLATE.md` and catalog it). Pull in `CONTEXT.md` and the system specs it touches. Completion: one path is the working spec. A second `features/<other>.md` or README catalog row on this `feat/` is another PR (`parallel-feature-work`).
+Read the spec (or write `docs/specs/features/<slug>.md` from `_TEMPLATE.md` and catalog it). Pull in `CONTEXT.md` and the system specs it touches. Do not write an implementation plan under `docs/superpowers/plans/` or any other vendor plan tree — the feature spec is the work list. Completion: one path is the working spec. A second `features/<other>.md` or README catalog row on this `feat/` is another PR (`parallel-feature-work`).
 
 ### 2. Completeness (block validate until each box is yes)
 
 - [ ] Problem and out-of-scope are explicit
-- [ ] Acceptance criteria are testable and use `CONTEXT.md` terms. Every Domain terms word has a `CONTEXT.md` entry.
+- [ ] Acceptance criteria are testable, one behavior per bullet (packed "and" or independent env/branch cases split unless they share one early return — `testing`), and use `CONTEXT.md` terms. Every Domain terms word has a `CONTEXT.md` entry.
 - [ ] Operator commands / npm scripts that change persisted state, and host-path construction of an architecture-named adapter, are acceptance criteria, not Assumptions
 - [ ] Seams named (architecture spec if the product has one; otherwise the module interface tests will call)
 - [ ] Events named or added if the product catalogs actions
@@ -80,7 +80,7 @@ Add product gate rows (observability, design system) when those specs exist. Any
 
 ### 5. Release
 
-`verification-before-completion` applies to every row: quote fresh command output, not an earlier run. Only when the table is green: dispatch `release-manager`. After it returns a merge SHA, run `post-merge-improvement`. Completion: merge SHA exists; catalog says `released`; review-cycle count is on the PR body. No merge → not released.
+`verification-before-completion` applies to every row: quote fresh command output, not an earlier run. Only when the table is green: dispatch `release-manager`. After it returns a merge SHA, run `post-merge-improvement`. Completion: merge SHA exists; catalog says `released`; `product.md` Next slice is the next unreleased slug; review-cycle count is on the PR body. No merge → not released.
 
 ## Rationalizations
 

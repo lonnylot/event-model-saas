@@ -40,7 +40,7 @@ HEAD must equal the expected SHA. A newer SHA voids a prior Approve.
 Only when all four holds:
 
 1. Merge the PR with the repository's default merge method (`github-ci-loop`).
-2. On default: set the spec status to `released` and update `docs/specs/README.md`. Commit that catalog flip.
+2. On default: set the spec status to `released` and update `docs/specs/README.md`. Restate `docs/specs/product.md` slice list and Next slice if they still name this slug as the work. Commit that catalog flip.
 3. Append (do not replace) review-cycle count on the PR body:
 
 ```
@@ -60,7 +60,7 @@ N (X Changes requested, Y Approve)
 - review cycles: N (X Changes requested, Y Approve)
 ```
 
-Completion: merge SHA exists; catalog says `released`; review-cycle count is on the PR body. No merge → not released.
+Completion: merge SHA exists; catalog says `released`; `product.md` Next slice is the next unreleased slug; review-cycle count is on the PR body. No merge → not released.
 
 ## You do not
 

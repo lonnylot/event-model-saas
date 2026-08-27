@@ -51,14 +51,14 @@ Load the matching skill **before** the work. Do not re-derive the procedure from
 
 | Skill | Reach for it when |
 |-------|-------------------|
-| `keeping-specs-current` | Any behavior change; suspected spec drift; leftover sections after restating an AC; leftover locked claims in a restated system spec; host-path construction parked in Assumptions |
+| `keeping-specs-current` | Any behavior change; suspected spec drift; leftover sections after restating an AC (Assumptions after Out of scope); leftover Seams after deleting a named module; Restates omits architecture.md; leftover locked claims in a restated system spec; 303 vs shows on the same path; packed "and" AC bullets; extra `<title>` or heading or form or link or extra nav or host config; extra inspect of Out of scope kinds (Name on Command / Event); a "that Slice" AC with only one item; extra R2 put without an AC; Playwright workers; `run_worker_first` vs architecture Compute row; leftover product.md locked words (later-slice `add a slice`, Document flow schema-reject, Restates quoting old Playwright, leftover Editor/Error handling after restating Testing); copying a schema file instead of restating; host-path construction parked in Assumptions; removing product.md from Restates |
 | `writing-for-agents` | Editing AGENTS.md, skills, or agents; spec changed a procedure |
 | `domain-modeling` | New or conflicting domain term; CONTEXT.md; ADR |
-| `codebase-design` | Module shape, seam, adapter, depth |
-| `testing` | Test placement, seams, mapping criteria, weaker-reading fixtures, early-return "and" that should stay one criterion |
-| `tdd-loop` | Implementing or fixing; before production code; host-path constructor; orchestrator about to write production code |
-| `logical-commits` | A criterion is green; deciding whether / what to commit; reconstruct after tests-after |
-| `github-ci-loop` | Starting work; branching; opening a PR; waiting on CI; checks never started; unmergeable PR; rebase onto default |
+| `codebase-design` | Module shape, seam, adapter, depth; architecture adapter constructed only under a test flag (R2 / `env.documents`); construction parked in Assumptions |
+| `testing` | Test placement, seams, mapping criteria, weaker-reading fixtures (unit `toContain(">X<")` for a named control; unit `not.toContain("<li>X</li>")` for a does-not-show listitem); clicking-appends at a function production never calls; dragging-appends unit that passes the kind already in the input; same-control Name values that never select the other entity; a "that Slice" AC with only one item; packed "and" (status vs content-type vs body vs row vs R2); an early-return "and" that should stay one criterion; architecture adapter constructed only under a test flag (R2 / `env.documents`); construction parked in Assumptions; architecture-named store untested (each new SQL); success status that never asserts a stored R2 body; empty stub `it` |
+| `tdd-loop` | Implementing or fixing; before production code; host-path constructor; orchestrator about to write production code; Playwright `name: X` without exact: true; unit `toContain(">X<")` for a named control; unit `not.toContain("<li>X</li>")` for a does-not-show listitem; clicking-appends at a function production never calls; dragging-appends unit that passes the kind already in the input; two Name-value ACs that never select the other entity; a "that Slice" AC with only one item; extra `<title>` or heading or extra nav; Inspector Name on Command / Event; empty stub `it` |
+| `logical-commits` | A criterion is green; deciding whether / what to commit; grouping by screen; independently revertible ACs; spec-only; subject with "and"; reconstruct after tests-after; tests-only commit on top; folding tests-after into sibling production; click-path production after field tests; follow-up rewrite onto click path; review-thread batch; fromKind vs toKind; copy toKind for every target; fold reload when GET already hydrates |
+| `github-ci-loop` | Starting work; branching; opening a PR; waiting on CI; workflow `on:` events; checks never started; unmergeable PR; rebase onto default |
 | `spec-review-loop` | PR exists; merge/release; resume after context compaction; rebase voids Approve |
 | `post-merge-improvement` | PR just merged; learn from review into skills/docs |
 | `receiving-code-review` | Implementing or pushing back on review comments |
@@ -66,7 +66,7 @@ Load the matching skill **before** the work. Do not re-derive the procedure from
 | `releasing-a-spec` | Given a spec to implement; iterating; validating; shipping; dispatch spec-implementer |
 | `parallel-feature-work` | Two or more feature specs at once; separate implementer agents |
 | `using-git-worktrees` | Dispatch spec-implementer; isolated checkout for a feat/ branch; parallel agents |
-| `playwright-e2e` | Browser user flows; flow CI job; test-server fakes; empty-state reset between files |
+| `playwright-e2e` | Browser user flows; flow CI job; test-server fakes; exact accessible name; exact `test:e2e` script; async fetch wait / last-mail race; empty-state reset between files |
 
 Handed a spec, or asked to implement/ship: `releasing-a-spec` (orchestrator). Two or more specs this session: `parallel-feature-work` first. Implementing any slice: dispatch `.agents/agents/spec-implementer/AGENT.md` (`tdd-loop` lives there). Isolated tree: `using-git-worktrees` for every implementer. Ready to review: `spec-review-loop` (fresh `spec-reviewer` every dispatch; resume the implementer on Changes requested). Ready to merge: dispatch `.agents/agents/release-manager/AGENT.md`. After merge: `post-merge-improvement`. Browser flow tests: `playwright-e2e`. Spec changed a procedure: `writing-for-agents`.
 

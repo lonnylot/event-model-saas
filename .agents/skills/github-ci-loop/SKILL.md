@@ -37,7 +37,7 @@ PR body names:
 4. If the PR has no check runs and `.github/workflows/` exists, read `on:` and permissions before an empty retrigger commit. Fix the workflow so checks start. Empty commit + close/reopen is last resort and is not a logical commit for a criterion. Completion: `gh pr checks` lists runs. If workflows are missing, the next paragraph applies.
 5. Red CI: resume `spec-implementer`. That agent treats the failure as a failing test (`tdd-loop`, `logical-commits`, push). The orchestrator does not run `tdd-loop`. Completion: the implementer's Return has a new HEAD SHA, or `need-user`. Re-watch the whole suite on that SHA.
 
-If `.github/workflows/` is missing, add a workflow that runs the product's typecheck, test, and build scripts on `pull_request` and on pushes to the default branch **before** you claim CI is a gate. Do not invent script names — read `package.json` (or the equivalent).
+If `.github/workflows/` is missing, add a workflow that runs the product's typecheck, test, and build scripts on `pull_request` and on pushes to the default branch **before** you claim CI is a gate. Do not invent script names — read `package.json` (or the equivalent). Do not use `pull_request_target` in place of `pull_request`. A test that matches `/pull_request:/` stays green for `pull_request_target:` (`testing`). Match the event as a full YAML key.
 
 ## Merge
 
