@@ -236,25 +236,40 @@ export function bindEditor(root) {
     timeline.addEventListener("click", (event) => {
       const button = event.target?.closest?.("button");
       const holder = root.getElementById("event-model-document");
-      if (!holder || !button) return;
-      const index = Number(button.getAttribute("data-slice-index"));
-      const model = JSON.parse(holder.textContent || "{}");
-      if (button.textContent === "Add Actor on lane") {
-        holder.textContent = JSON.stringify(appendActor(model, index));
+      if (holder && button) {
+        const index = Number(button.getAttribute("data-slice-index"));
+        const model = JSON.parse(holder.textContent || "{}");
+        if (button.textContent === "Add Actor on lane") {
+          holder.textContent = JSON.stringify(appendActor(model, index));
+        }
+        if (button.textContent === "Add Event on lane") {
+          holder.textContent = JSON.stringify(appendEvent(model, index));
+        }
+        if (button.textContent === "Add Read Model on lane") {
+          holder.textContent = JSON.stringify(appendReadModel(model, index));
+        }
+        if (button.textContent === "Add Automation on lane") {
+          holder.textContent = JSON.stringify(appendAutomation(model, index));
+        }
       }
-      if (button.textContent === "Add Event on lane") {
-        holder.textContent = JSON.stringify(appendEvent(model, index));
-      }
-      if (button.textContent === "Add Read Model on lane") {
-        holder.textContent = JSON.stringify(appendReadModel(model, index));
-      }
-      if (button.textContent === "Add Automation on lane") {
-        holder.textContent = JSON.stringify(appendAutomation(model, index));
+      const connection = event.target?.closest?.("[data-kind=connection]");
+      if (!connection || !timeline.contains(connection)) return;
+      if (connection.textContent !== "Event Happened → Read Model") return;
+      const inspectorEl = root.querySelector('[aria-label="Inspector"]');
+      if (
+        inspectorEl &&
+        !inspectorEl.textContent?.includes("From Event Happened")
+      ) {
+        inspectorEl.insertAdjacentHTML(
+          "beforeend",
+          "<p>From Event Happened</p>",
+        );
       }
     });
     timeline.addEventListener("click", (event) => {
       const connection = event.target?.closest?.("[data-kind=connection]");
       if (!connection || !timeline.contains(connection)) return;
+      if (connection.textContent !== "Command → Event Happened") return;
       const inspector = root.querySelector('[aria-label="Inspector"]');
       if (
         inspector &&
@@ -1107,6 +1122,21 @@ export function bindEditor(root) {
           timeline.append(line);
         }
         undoStack.push("connection");
+      }
+      if (
+        sourcePort.dataset.kind === "EVENT" &&
+        target.dataset.kind === "READMODEL"
+      ) {
+        const timelineRegion = root.querySelector('[aria-label="Timeline"]');
+        if (
+          timelineRegion &&
+          !timelineRegion.textContent?.includes("Event Happened → Read Model")
+        ) {
+          timelineRegion.insertAdjacentHTML(
+            "beforeend",
+            '<p data-kind="connection">Event Happened → Read Model</p>',
+          );
+        }
       }
       if (
         sourcePort.dataset.kind === "COMMAND" &&
