@@ -18,7 +18,7 @@ Status: validated
 - [x] After dragging from `Command port` onto `Event Happened port` twice, clicking the first Timeline text `Command → Event Happened` then the Timeline region, pressing Backspace, then pressing ⌘Z, the remaining connection `id` is the connection that was last and the first connection `id` is the connection that was first
 - [x] After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem then the Timeline region, pressing Backspace, then pressing ⌘Z, the remaining Actor `id` is the Actor that was last and the first Actor `id` is the Actor that was first
 - [x] After clicking `New Slice` then `Add Event` twice, clicking the first Timeline `Event Happened` listitem then the Timeline region, pressing Backspace, then pressing ⌘Z, the remaining Event `id` is the Event that was last and the first Event `id` is the Event that was first
-- [ ] After clicking `New Slice` then `Add Read Model` twice, clicking the first Timeline `Read Model` listitem then the Timeline region, pressing Backspace, then pressing ⌘Z, the Timeline region shows two listitems whose accessible name is `Read Model`
+- [x] After clicking `New Slice` then `Add Read Model` twice, clicking the first Timeline `Read Model` listitem then the Timeline region, pressing Backspace, then pressing ⌘Z, the remaining Read Model `id` is the Read Model that was last and the first Read Model `id` is the Read Model that was first
 - [ ] After clicking `New Slice` then `Add Automation` twice, clicking the first Timeline `Automation` listitem then the Timeline region, pressing Backspace, then pressing ⌘Z, the Timeline region shows two listitems whose accessible name is `Automation`
 - [x] After clicking `New Slice` then `Add Command`, pressing ⌘Z, then pressing ⇧⌘Z, the Timeline region shows a listitem whose accessible name is `Command`
 
@@ -36,7 +36,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person,
 - ⌘Z is `ControlOrMeta+z`. ⇧⌘Z is `Shift+ControlOrMeta+z`. ⌥⌘← stays [canvas.md](./canvas.md). Undo New Slice and undo Connection stay [canvas.md](./canvas.md). Undo Add Command stays [canvas-rest.md](./canvas-rest.md).
 - After ⌥⌘← on two Slices, the first Slice id became what was last; ⌘Z restores the order from before that key.
 - After Backspace on the first of two Slices, remaining JSON `id` is the last; ⌘Z restores the first `id`.
-- Two default-named Commands / Connections / Actors / Events are first vs last, not by renaming. After Backspace of the first, remaining JSON `id` is the last; ⌘Z restores the first `id`.
+- Two default-named Commands / Connections / Actors / Events / Read Models are first vs last, not by renaming. After Backspace of the first, remaining JSON `id` is the last; ⌘Z restores the first `id`.
 - After Add Command then ⌘Z, ⇧⌘Z restores the Command listitem.
 - Undo is in-memory.
 - The `TEST_MAIL=1` memory adapter does not count login attempts, so Playwright files can share one Worker without the production 5-per-hour cap.

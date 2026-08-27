@@ -59,6 +59,8 @@ import { deleteActor } from "./delete-actor.js";
 import { restoreActor } from "./restore-actor.js";
 import { deleteEvent } from "./delete-event.js";
 import { restoreEvent } from "./restore-event.js";
+import { deleteReadModel } from "./delete-read-model.js";
+import { restoreReadModel } from "./restore-read-model.js";
 
 const undoStack = [];
 const redoStack = [];
@@ -213,6 +215,7 @@ export function onAddReadModelClick(root) {
     item.setAttribute("aria-label", "Read Model");
     item.dataset.kind = "readmodel";
     item.setAttribute("data-id", readModel.id);
+    if (readModel) item.setAttribute("data-id", readModel.id);
     const port = root.createElement("button");
     port.type = "button";
     port.textContent = "Read Model port";
@@ -1472,6 +1475,34 @@ export function bindEditor(root) {
       const entry = undoStack.pop();
       const kind = typeof entry === "string" ? entry : entry?.kind;
 
+      if (kind === "deleteReadModel") {
+        holder.textContent = JSON.stringify(
+          restoreReadModel(
+            JSON.parse(holder.textContent || "{}"),
+            entry.readModel,
+            entry.sliceId,
+            entry.index,
+          ),
+        );
+        const list = root.querySelector('[aria-label="Timeline"] ul');
+        if (list && entry.readModel) {
+          const item = root.createElement("li");
+          item.textContent = "Read Model";
+          item.setAttribute("aria-label", "Read Model");
+          item.dataset.kind = "readmodel";
+          item.setAttribute("data-id", entry.readModel.id);
+          const port = root.createElement("button");
+          port.type = "button";
+          port.textContent = "Read Model port";
+          port.dataset.id = entry.readModel.id;
+          port.dataset.kind = "READMODEL";
+          item.append(port);
+          const before = list.children[entry.index];
+          if (before) list.insertBefore(item, before);
+          else list.append(item);
+        }
+        return;
+      }
       if (kind === "deleteEvent") {
         holder.textContent = JSON.stringify(
           restoreEvent(
@@ -1715,6 +1746,34 @@ export function bindEditor(root) {
     if (event.key !== "Backspace" && event.key !== "Delete") return;
     if (event.target instanceof HTMLInputElement) return;
     const holder = root.getElementById("event-model-document");
+    if (holder && selected === "readmodel" && selectedReadModelItem) {
+      const readModelId =
+        selectedReadModelItem.dataset.id ||
+        selectedReadModelItem.querySelector("[data-id]")?.dataset.id;
+      const model = JSON.parse(holder.textContent || "{}");
+      const slice = (model.slices ?? []).find((s) =>
+        (s.readModels ?? []).some((readModel) => readModel.id === readModelId),
+      );
+      const index = slice
+        ? (slice.readModels ?? []).findIndex(
+            (readModel) => readModel.id === readModelId,
+          )
+        : -1;
+      const readModel = index >= 0 ? slice.readModels[index] : undefined;
+      holder.textContent = JSON.stringify(deleteReadModel(model, readModelId));
+      selectedReadModelItem.remove();
+      if (readModel && slice && index >= 0) {
+        undoStack.push({
+          kind: "deleteReadModel",
+          readModel,
+          sliceId: slice.id,
+          index,
+        });
+      }
+      selectedReadModelItem = null;
+      selected = null;
+      return;
+    }
     if (holder && selected === "event" && selectedEventItem) {
       const eventId =
         selectedEventItem.dataset.id ||
