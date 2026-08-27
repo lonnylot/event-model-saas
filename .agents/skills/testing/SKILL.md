@@ -11,6 +11,7 @@ description: >
   (Command vs Event / Read Model / Automation),
   a "that Slice" or clicked-item AC with only one item,
   Backspace / selected Slice / one New Slice / always-delete-last,
+  restating a weaker fixture after production landed (tests-only follow-up),
   copy pinned in tests but not the spec, splitting an "and" (any case) test name,
   an early-return "and" that should stay one criterion,
   a host-path constructor weaker fixture,
@@ -49,7 +50,7 @@ A criterion that names a screen, "shows", or "lists" is proven at the app or flo
 
 ## Steps
 
-1. **Quote the criterion.** Open the spec. Write the test name as the criterion. If that name contains "and" (any case) or independent env/branch cases, split into one `it` each — only when the cases are independently revertible production (status vs content-type vs body; membership 404 vs happy path; status vs heading vs row vs R2; two workflow `on:` events and a `run` step). Do not split an early-return reject (returns 400 and does not insert / does not put / leaves version N) into separate ACs if they share one production path: those are one criterion. If the next AC would be green without new production, fold the proof into this commit or do not split the bullet (`logical-commits`). The assertion must fail a weaker implementation of those words.
+1. **Quote the criterion.** Open the spec. Write the test name as the criterion. If that name contains "and" (any case) or independent env/branch cases, split into one `it` each — only when the cases are independently revertible production (status vs content-type vs body; membership 404 vs happy path; status vs heading vs row vs R2; two workflow `on:` events and a `run` step). Do not split an early-return reject (returns 400 and does not insert / does not put / leaves version N) into separate ACs if they share one production path: those are one criterion. If the next AC would be green without new production, fold the proof into this commit or do not split the bullet (`logical-commits`). A restated weaker fixture (one-item clicked-item / Backspace) after that AC's production landed is reconstruct into that production commit (`logical-commits`, `receiving-code-review`) — a tests-only follow-up is tests-after even when always-delete-last now fails. The assertion must fail a weaker implementation of those words.
 
    Weaker readings this step exists to catch:
 

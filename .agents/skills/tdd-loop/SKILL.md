@@ -14,6 +14,7 @@ description: >
   (Command vs Event / Read Model / Automation),
   when a "that Slice" AC uses only one item,
   when Backspace / clicked-item uses one New Slice (always-delete-last),
+  when restating a weaker fixture after production landed,
   when a checked AC's it has no assertion,
   when adding a document title or heading or form or link or extra nav the AC does not name,
   when Inspector Name shows for Command or Event,
@@ -47,7 +48,7 @@ If this session is the orchestrator (`releasing-a-spec` dispatching agents), do 
 
 4. **Sync.** If the slice taught a tighter rule, update the spec in the same tree (`keeping-specs-current`). A tighter fake / test-double parse is a tighter rule.
 
-5. **Commit.** One logical commit for this criterion (`logical-commits`). Then the next criterion — do not batch. Grouping by screen is batching.
+5. **Commit.** One logical commit for this criterion (`logical-commits`). When restating a weaker fixture after production landed (one-item Backspace → two-item remaining JSON id), reconstruct into that production commit — do not commit tests-only on top (`receiving-code-review`). Then the next criterion — do not batch. Grouping by screen is batching.
 
 Bugs: write the failing reproduction first, then fix.
 
