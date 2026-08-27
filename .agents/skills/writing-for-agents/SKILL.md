@@ -30,7 +30,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Two or more feat/ PRs at once | `parallel-feature-work`, `using-git-worktrees`, `releasing-a-spec` |
 | Playwright / flow CI | `playwright-e2e`, `testing` |
 | Async form fetch / last-mail before the invite POST | `playwright-e2e` |
-| Wait for New Slice after click / named Ports before pointer-down / force hover vs Timeline pan | `playwright-e2e`, `tdd-loop` |
+| Wait after open (editor bound / networkidle) and after New Slice click / named Ports before pointer-down / force hover vs Timeline pan / lane Add or ⌥⌘1–5 | `playwright-e2e`, `tdd-loop` |
 | Accessible name **is** X / Playwright substring | `testing`, `playwright-e2e` |
 | Unit `toContain(">X<")` for a named link/button/textbox | `testing` |
 | `includes scale(` / `toContain("scale(")` when canvas pan already writes `scale(1)` | `testing`, `keeping-specs-current`, `tdd-loop` |

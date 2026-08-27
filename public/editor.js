@@ -36,6 +36,13 @@ export function onNewSliceClick(root) {
     main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
   }
   undoStack.push("slice");
+  const timeline = root.querySelector('[aria-label="Timeline"]');
+  if (timeline) {
+    const button = root.createElement("button");
+    button.type = "button";
+    button.textContent = "Add Actor on lane";
+    timeline.append(button);
+  }
 }
 
 export function onAddActorClick(root) {
