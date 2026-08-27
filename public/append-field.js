@@ -31,6 +31,9 @@ export function appendField(model, target = "command") {
     const readModel = readModels[index];
     if (!readModel) return model;
     readModels[index] = {
+    const readModel = readModels.at(-1);
+    if (!readModel) return model;
+    readModels[readModels.length - 1] = {
       ...readModel,
       fields: [...(readModel.fields ?? []), field],
     };

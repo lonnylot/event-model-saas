@@ -764,6 +764,11 @@ export function bindEditor(root) {
     const model = JSON.parse(holder?.textContent || "{}");
     return model.slices?.at(-1)?.events?.at(-1)?.fields?.[0]?.name;
   };
+  const lastReadModelFieldName = () => {
+    const holder = root.getElementById("event-model-document");
+    const model = JSON.parse(holder?.textContent || "{}");
+    return model.slices?.at(-1)?.readModels?.at(-1)?.fields?.[0]?.name;
+  };
   const addFieldButton = () =>
     [...(inspector?.querySelectorAll("button") ?? [])].find(
       (button) => button.textContent === "Add Field",
@@ -775,7 +780,12 @@ export function bindEditor(root) {
   const unbindAddField = () => addFieldButton()?.remove();
   const unbindFieldName = () => fieldNameInput()?.closest("label")?.remove();
   const bindFieldName = (value) => {
-    if (!inspector || (selected !== "command" && selected !== "event")) {
+    if (
+      !inspector ||
+      (selected !== "command" &&
+        selected !== "event" &&
+        selected !== "readmodel")
+    ) {
       unbindFieldName();
       return;
     }
@@ -802,12 +812,26 @@ export function bindEditor(root) {
             ),
           );
         }
+        if (holder && selected === "readmodel") {
+          holder.textContent = JSON.stringify(
+            setFieldName(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+              "readmodel",
+            ),
+          );
+        }
       });
     }
     if (input) input.value = value;
   };
   const bindAddField = () => {
-    if (!inspector || (selected !== "command" && selected !== "event")) {
+    if (
+      !inspector ||
+      (selected !== "command" &&
+        selected !== "event" &&
+        selected !== "readmodel")
+    ) {
       unbindAddField();
       unbindFieldName();
       return;
@@ -823,14 +847,20 @@ export function bindEditor(root) {
         holder.textContent = JSON.stringify(
           appendField(
             JSON.parse(holder.textContent || "{}"),
-            selected === "event" ? "event" : "command",
+            selected === "event"
+              ? "event"
+              : selected === "readmodel"
+                ? "readmodel"
+                : "command",
           ),
         );
       }
       bindFieldName(
         (selected === "event"
           ? lastEventFieldName()
-          : lastCommandFieldName()) ?? "newField",
+          : selected === "readmodel"
+            ? lastReadModelFieldName()
+            : lastCommandFieldName()) ?? "newField",
       );
     });
   };
@@ -1018,8 +1048,10 @@ export function bindEditor(root) {
       bindDescription(lastReadModelDescription());
       unbindFieldName();
       unbindType();
-      unbindAddField();
-      unbindFieldName();
+      bindAddField();
+      const readModelFieldName = lastReadModelFieldName();
+      if (readModelFieldName) bindFieldName(readModelFieldName);
+      else unbindFieldName();
       return;
     }
     if (item.dataset.kind === "automation") {

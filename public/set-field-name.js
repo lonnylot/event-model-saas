@@ -53,6 +53,17 @@ export function setFieldName(model, name, target = "command") {
     slices[slices.length - 1] = { ...slice, events };
     return { ...model, slices };
   }
+  if (target === "readmodel") {
+    const readModels = [...(slice.readModels ?? [])];
+    const readModel = readModels.at(-1);
+    if (!readModel) return model;
+    const fields = [...(readModel.fields ?? [])];
+    if (!fields.length) return model;
+    fields[0] = { ...fields[0], name };
+    readModels[readModels.length - 1] = { ...readModel, fields };
+    slices[slices.length - 1] = { ...slice, readModels };
+    return { ...model, slices };
+  }
   const commands = [...(slice.commands ?? [])];
   const index = id
     ? commands.findIndex((command) => command.id === id)
