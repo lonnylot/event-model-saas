@@ -33,7 +33,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Description, 
 
 ## Assumptions
 
-- Selection is the same click as Name ([chrome.md](./chrome.md), [inspect-blocks.md](./inspect-blocks.md)). The Inspector `Description` textbox is one control; selecting another of those kinds in the same session updates that `Description` value.
+- Selection is the same click as Name ([chrome.md](./chrome.md), [inspect-blocks.md](./inspect-blocks.md)). The Inspector `Description` textbox is one control. Show ACs prove it exists; fill ACs write the selected kind's JSON. Displayed `Description` value after select is not this slice.
 - Add still targets the last Slice. This slice is one in-session item of each kind. Description JSON mutates the last of that kind.
 - Inspect is a click on a click-created listitem. GET-rendered inspect of Description stays later with inspect after reload.
 - Empty JSON may omit `description`. Filling Description writes the `description` key. The JSON key stays `description`.
@@ -43,7 +43,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Description, 
 
 ## Out of scope
 
-Fields, Slice type picker, inspecting a Connection, inspect after reload, Event / Read Model / Automation reload-lists, in-session visible listitem text on Name fill, multi-item Name binding, Actor Name Unsaved changes, model-level Title, model-level Description, Mac window chrome. Dashed Add on a lane and keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane.md). Name stays [chrome.md](./chrome.md) and [inspect-blocks.md](./inspect-blocks.md). Delete, drag blocks between Slices, undo, pan, and moving Slices are [canvas.md](./canvas.md).
+Fields, Slice type picker, inspecting a Connection, inspect after reload, Event / Read Model / Automation reload-lists, in-session visible listitem text on Name fill, in-session Inspector Description textbox value after select, multi-item Name binding, Actor Name Unsaved changes, model-level Title, model-level Description, Mac window chrome. Dashed Add on a lane and keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane.md). Name stays [chrome.md](./chrome.md) and [inspect-blocks.md](./inspect-blocks.md). Delete, drag blocks between Slices, undo, pan, and moving Slices are [canvas.md](./canvas.md).
 
 ## Restates
 
