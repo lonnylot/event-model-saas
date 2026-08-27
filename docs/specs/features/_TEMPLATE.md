@@ -38,4 +38,4 @@ Explicit non-goals. When ACs cover some kinds of a shared family, name the omitt
 
 ## Restates
 
-Released specs whose bullets this change rewrites. Listing a path without rewriting that file is unfinished. When Restates names a system spec, leftover locked claims this HEAD does not implement are rewritten or given ACs (`keeping-specs-current`).
+Released specs whose bullets this change rewrites. Listing a path without rewriting that file is unfinished. When Restates names a path (system spec or sibling feature), leftover locked claims and leftover Out of scope still listing those words as unowned later are rewritten (`keeping-specs-current`). Rewriting only one sibling word (undo) is unfinished.
