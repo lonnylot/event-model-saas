@@ -22,7 +22,7 @@ Login, 404, expired magic link, and signed-in team pages are unstyled HTML: emai
 - [x] GET `/` `body` computed `background-color` is `rgb(247, 244, 238)`
 - [x] GET `/` `body` computed `color` is `rgb(28, 25, 23)`
 - [x] GET `/` button `Email me a link` computed `background-color` is `rgb(28, 25, 23)`
-- [ ] GET `/` button `Email me a link` computed `color` is `rgb(247, 244, 238)`
+- [x] GET `/` button `Email me a link` computed `color` is `rgb(247, 244, 238)`
 - [ ] GET an unknown document path has a `link[rel="stylesheet"]` whose `href` is `/shell.css`
 - [ ] GET an unknown document path `body` computed `background-color` is `rgb(247, 244, 238)`
 - [ ] GET `/api/auth/consume` with a used magic-link token has a `link[rel="stylesheet"]` whose `href` is `/shell.css`
