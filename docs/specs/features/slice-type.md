@@ -1,6 +1,6 @@
 # Slice type
 
-Status: validated
+Status: released
 
 ## Problem
 
