@@ -1536,6 +1536,31 @@ export function bindEditor(root) {
             undoStack.push({ kind: "deleteConnection", connection, index });
           }
         }
+        if (entry?.kind === "deleteActor") {
+          const actorId = entry.actor?.id;
+          const model = JSON.parse(holder.textContent || "{}");
+          const slice = (model.slices ?? []).find((s) =>
+            (s.actors ?? []).some((actor) => actor.id === actorId),
+          );
+          const index = slice
+            ? (slice.actors ?? []).findIndex((actor) => actor.id === actorId)
+            : -1;
+          const actor = index >= 0 ? slice.actors[index] : undefined;
+          holder.textContent = JSON.stringify(deleteActor(model, actorId));
+          const list = root.querySelector('[aria-label="Timeline"] ul');
+          const item = [...(list?.children ?? [])].find(
+            (node) => node.getAttribute?.("data-id") === actorId,
+          );
+          item?.remove();
+          if (actor && slice && index >= 0) {
+            undoStack.push({
+              kind: "deleteActor",
+              actor,
+              sliceId: slice.id,
+              index,
+            });
+          }
+        }
         return;
       }
       const entry = undoStack.pop();
@@ -1638,6 +1663,7 @@ export function bindEditor(root) {
           if (before) list.insertBefore(item, before);
           else list.append(item);
         }
+        redoStack.push(entry);
         return;
       }
       if (kind === "deleteConnection") {
