@@ -274,9 +274,7 @@ export function bindEditor(root) {
       return;
     }
     if (item.dataset.kind === "automation") {
-      if (inspector && !nameInput()) {
-        inspector.insertAdjacentHTML("beforeend", "<label>Name <input /></label>");
-      }
+      bindName("Automation");
       return;
     }
     if (item.dataset.kind !== "actor") return;
