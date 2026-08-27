@@ -1100,7 +1100,8 @@ export function bindEditor(root) {
           selected === "slice" ||
           selected === "actor" ||
           selected === "command" ||
-          selected === "event"
+          selected === "event" ||
+          selected === "readmodel"
         ) {
           const main = root.querySelector("main");
           if (main && !main.textContent?.includes("Unsaved changes.")) {
