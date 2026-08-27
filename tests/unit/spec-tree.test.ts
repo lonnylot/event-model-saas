@@ -66,4 +66,17 @@ describe("spec tree", () => {
       "Field after reload, inspect after reload, and Add Field that appends",
     );
   });
+
+  it("inspect-description does not leave GET-rendered inspect of Description stays later", () => {
+    const text = readFileSync(
+      "docs/specs/features/inspect-description.md",
+      "utf8",
+    );
+    expect(text).not.toContain(
+      "GET-rendered inspect of Description stays later",
+    );
+    expect(text).not.toContain(
+      "GET-rendered inspect of Description on Slice / Actor / Event / Read Model / Automation stays later",
+    );
+  });
 });
