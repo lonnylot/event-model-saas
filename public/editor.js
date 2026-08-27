@@ -542,6 +542,16 @@ export function bindEditor(root) {
     }
     sourcePort = null;
   });
+  root.addEventListener("keydown", (event) => {
+    if (!event.altKey || !(event.metaKey || event.ctrlKey)) return;
+    if (event.code !== "Digit1") return;
+    const holder = root.getElementById("event-model-document");
+    if (holder) {
+      holder.textContent = JSON.stringify(
+        appendActor(JSON.parse(holder.textContent || "{}")),
+      );
+    }
+  });
 }
 
 if (typeof document !== "undefined") {

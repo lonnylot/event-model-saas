@@ -179,3 +179,13 @@ test("After clicking `New Slice` twice, clicking the first `Add Command on lane`
   expect(slices[0].commands).toHaveLength(1);
   expect(slices.at(-1).commands).toEqual([]);
 });
+
+test("After clicking `New Slice`, pressing ⌥⌘1 appends an Actor whose `name` is `Actor`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.keyboard.press("Alt+ControlOrMeta+Digit1");
+  const json = await page.locator("#event-model-document").textContent();
+  expect(JSON.parse(json ?? "{}").slices[0].actors[0].name).toBe("Actor");
+});
