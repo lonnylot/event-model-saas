@@ -31,6 +31,7 @@ import { moveSliceRight } from "./move-slice-right.js";
 import { reorderSlices } from "./reorder-slices.js";
 import { moveActorToSlice } from "./move-actor-to-slice.js";
 import { moveCommandToSlice } from "./move-command-to-slice.js";
+import { moveEventToSlice } from "./move-event-to-slice.js";
 import { deleteSlice } from "./delete-slice.js";
 import { deleteCommand } from "./delete-command.js";
 import { deleteConnection } from "./delete-connection.js";
@@ -1553,6 +1554,7 @@ export function bindEditor(root) {
   let dragActorItem = null;
   let dragSliceItem = null;
   let dragCommandItem = null;
+  let dragEventItem = null;
   root.addEventListener("mousedown", (event) => {
     const actorItem = event.target?.closest?.("li");
     if (actorItem && slicesList?.contains(actorItem)) {
@@ -1574,6 +1576,14 @@ export function bindEditor(root) {
       !event.target?.closest?.("button[data-id]")
     ) {
       dragCommandItem = actorItem;
+    }
+    if (
+      actorItem &&
+      timelineList?.contains(actorItem) &&
+      actorItem.dataset.kind === "event" &&
+      !event.target?.closest?.("button[data-id]")
+    ) {
+      dragEventItem = actorItem;
     }
     const port = event.target?.closest?.("button[data-id]");
     if (port) {
@@ -1672,6 +1682,29 @@ export function bindEditor(root) {
         return;
       }
       dragCommandItem = null;
+    }
+    if (dragEventItem) {
+      const sliceItem = event.target?.closest?.("li");
+      const holder = root.getElementById("event-model-document");
+      if (
+        holder &&
+        sliceItem &&
+        slicesList?.contains(sliceItem) &&
+        dragEventItem.dataset.id &&
+        sliceItem.dataset.id
+      ) {
+        holder.textContent = JSON.stringify(
+          moveEventToSlice(
+            JSON.parse(holder.textContent || "{}"),
+            dragEventItem.dataset.id,
+            sliceItem.dataset.id,
+          ),
+        );
+        dragEventItem = null;
+        sourcePort = null;
+        return;
+      }
+      dragEventItem = null;
     }
     const target = event.target?.closest?.("button[data-id]");
     if (sourcePort && target && sourcePort === target) {
