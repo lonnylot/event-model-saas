@@ -759,6 +759,11 @@ export function bindEditor(root) {
     const model = JSON.parse(holder?.textContent || "{}");
     return model.slices?.at(-1)?.commands?.at(-1)?.fields?.[0]?.name;
   };
+  const lastEventFieldName = () => {
+    const holder = root.getElementById("event-model-document");
+    const model = JSON.parse(holder?.textContent || "{}");
+    return model.slices?.at(-1)?.events?.at(-1)?.fields?.[0]?.name;
+  };
   const addFieldButton = () =>
     [...(inspector?.querySelectorAll("button") ?? [])].find(
       (button) => button.textContent === "Add Field",
@@ -770,7 +775,7 @@ export function bindEditor(root) {
   const unbindAddField = () => addFieldButton()?.remove();
   const unbindFieldName = () => fieldNameInput()?.closest("label")?.remove();
   const bindFieldName = (value) => {
-    if (!inspector || selected !== "command") {
+    if (!inspector || (selected !== "command" && selected !== "event")) {
       unbindFieldName();
       return;
     }
@@ -788,12 +793,21 @@ export function bindEditor(root) {
             setFieldName(JSON.parse(holder.textContent || "{}"), input.value),
           );
         }
+        if (holder && selected === "event") {
+          holder.textContent = JSON.stringify(
+            setFieldName(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+              "event",
+            ),
+          );
+        }
       });
     }
     if (input) input.value = value;
   };
   const bindAddField = () => {
-    if (!inspector || selected !== "command") {
+    if (!inspector || (selected !== "command" && selected !== "event")) {
       unbindAddField();
       unbindFieldName();
       return;
@@ -807,10 +821,17 @@ export function bindEditor(root) {
       const holder = root.getElementById("event-model-document");
       if (holder) {
         holder.textContent = JSON.stringify(
-          appendField(JSON.parse(holder.textContent || "{}")),
+          appendField(
+            JSON.parse(holder.textContent || "{}"),
+            selected === "event" ? "event" : "command",
+          ),
         );
       }
-      bindFieldName(lastCommandFieldName() ?? "newField");
+      bindFieldName(
+        (selected === "event"
+          ? lastEventFieldName()
+          : lastCommandFieldName()) ?? "newField",
+      );
     });
   };
   const getRenderedTimelineItems = new Set(
@@ -977,8 +998,10 @@ export function bindEditor(root) {
       bindDescription(lastEventDescription());
       unbindFieldName();
       unbindType();
-      unbindAddField();
-      unbindFieldName();
+      bindAddField();
+      const eventFieldName = lastEventFieldName();
+      if (eventFieldName) bindFieldName(eventFieldName);
+      else unbindFieldName();
       return;
     }
     if (item.dataset.kind === "readmodel") {

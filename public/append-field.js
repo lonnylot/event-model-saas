@@ -1,4 +1,5 @@
 export function appendField(model, target = "command", id) {
+export function appendField(model, target = "command") {
   const slices = [...(model.slices ?? [])];
   const slice = slices.at(-1);
   if (!slice) return model;
@@ -12,6 +13,9 @@ export function appendField(model, target = "command", id) {
     const event = events[index];
     if (!event) return model;
     events[index] = {
+    const event = events.at(-1);
+    if (!event) return model;
+    events[events.length - 1] = {
       ...event,
       fields: [...(event.fields ?? []), field],
     };
