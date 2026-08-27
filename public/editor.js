@@ -21,6 +21,7 @@ import { setAutomationDescription } from "./set-automation-description.js";
 import { appendField } from "./append-field.js";
 import { setFieldName } from "./set-field-name.js";
 import { setFieldType } from "./set-field-type.js";
+import { setFieldOptional } from "./set-field-optional.js";
 import { setEventModelTitle } from "./set-event-model-title.js";
 import { setEventModelDescription } from "./set-event-model-description.js";
 import { moveSliceLeft } from "./move-slice-left.js";
@@ -465,6 +466,31 @@ export function bindEditor(root) {
               setFieldType(
                 JSON.parse(documentHolder.textContent || "{}"),
                 fieldTypeSelect.value,
+              ),
+            );
+          }
+        });
+      }
+      if (
+        inspector &&
+        ![...inspector.querySelectorAll("input")].some((input) =>
+          input.closest("label")?.textContent?.includes("Optional"),
+        )
+      ) {
+        inspector.insertAdjacentHTML(
+          "beforeend",
+          '<label>Optional <input type="checkbox" /></label>',
+        );
+        const optionalInput = [...inspector.querySelectorAll("input")].find(
+          (input) => input.closest("label")?.textContent?.includes("Optional"),
+        );
+        optionalInput?.addEventListener("change", () => {
+          const documentHolder = root.getElementById("event-model-document");
+          if (documentHolder) {
+            documentHolder.textContent = JSON.stringify(
+              setFieldOptional(
+                JSON.parse(documentHolder.textContent || "{}"),
+                optionalInput.checked,
               ),
             );
           }

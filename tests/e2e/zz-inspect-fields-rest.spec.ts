@@ -118,3 +118,30 @@ test("After clicking `Add Field` on `Command`, selecting `UUID` in Inspector `Fi
     JSON.parse(json ?? "{}").slices?.[0]?.commands?.at(-1)?.fields?.[0]?.type,
   ).toBe("UUID");
 });
+
+test("After clicking `Add Field` on `Command`, checking Inspector `Optional` sets the last Command `fields[0].optional` to `true`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Command", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("button", { name: "Add Field", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("checkbox", { name: "Optional", exact: true })
+    .check();
+  const json = await page
+    .locator("#event-model-document")
+    .evaluate((el) => el.textContent);
+  expect(
+    JSON.parse(json ?? "{}").slices?.[0]?.commands?.at(-1)?.fields?.[0]
+      ?.optional,
+  ).toBe(true);
+});
