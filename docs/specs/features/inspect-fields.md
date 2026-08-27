@@ -40,19 +40,19 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Field, Team, 
 
 ## Out of scope
 
-Slice type picker, inspecting a Connection, inspect after reload, Field `type` picker after Add, `optional`, `example`, delete Field, Add Field that appends on Event / Read Model / Automation (those kinds still show the button), leftover Add Field and Field name on Slice, leftover Field name on Event / Read Model / Automation after Add Field on Command, multi-item Field binding, model-level Title, Mac window chrome. Description is [inspect-description.md](./inspect-description.md). Dashed Add on a lane and keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane.md). Name stays [chrome.md](./chrome.md) and [inspect-blocks.md](./inspect-blocks.md).
+Slice type picker is [slice-type.md](./slice-type.md). Inspecting a Connection, inspect after reload, Field `type` picker after Add, `optional`, `example`, delete Field, Add Field that appends on Event / Read Model / Automation (those kinds still show the button), leftover Add Field and Field name on Slice, leftover Field name on Event / Read Model / Automation after Add Field on Command, multi-item Field binding, model-level Title, Mac window chrome. Description is [inspect-description.md](./inspect-description.md). Dashed Add on a lane and keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane.md). Name stays [chrome.md](./chrome.md) and [inspect-blocks.md](./inspect-blocks.md).
 
 ## Restates
 
-- [inspect-blocks.md](./inspect-blocks.md) — Out of scope no longer owns Fields; this slice owns Add Field and Field name on Command. Description is [inspect-description.md](./inspect-description.md). Slice type picker, Field type / optional / example / delete, and inspect after reload stay later.
-- [chrome.md](./chrome.md) — Out of scope no longer owns Fields; this slice owns those. Description is [inspect-description.md](./inspect-description.md). Slice type picker stay later.
-- [blocks.md](./blocks.md) — Fields is this slice. Description is [inspect-description.md](./inspect-description.md). Slice type picker stay later.
-- [editor-shell.md](./editor-shell.md) — Fields is this slice. Description is [inspect-description.md](./inspect-description.md). Slice type picker stay later.
-- [connections.md](./connections.md) — Fields is this slice. Description is [inspect-description.md](./inspect-description.md). Slice type picker stay later.
-- [model-persistence.md](./model-persistence.md) — Fields is this slice. Description is [inspect-description.md](./inspect-description.md). Slice type picker stay later.
-- [canvas.md](./canvas.md) — Out of scope no longer owns Inspector Fields; this slice owns those. Description is [inspect-description.md](./inspect-description.md). Slice type picker stay later.
-- [connection-feedback.md](./connection-feedback.md) — Out of scope no longer owns Inspector Fields; this slice owns those. Description is [inspect-description.md](./inspect-description.md). Slice type picker stay later.
-- [add-on-lane.md](./add-on-lane.md) — Out of scope no longer owns Inspector Fields; this slice owns those. Description is [inspect-description.md](./inspect-description.md). Slice type picker stay later.
-- [inspect-description.md](./inspect-description.md) — Out of scope no longer owns Fields; this slice owns those. Slice type picker stay later.
-- [add-on-lane-rest.md](./add-on-lane-rest.md) — Out of scope no longer owns Fields; this slice owns those. Slice type picker stay later.
-- [product.md](../product.md) — Inspect a Command; Add Field; edit Field name. Description is [inspect-description.md](./inspect-description.md). Slice type picker stay later. Playwright path for this slice adds: click Command, Add Field, fill Field name with orderId, Save, reload last Command `fields[0].name` is orderId.
+- [inspect-blocks.md](./inspect-blocks.md) — Out of scope no longer owns Fields; this slice owns Add Field and Field name on Command. Description is [inspect-description.md](./inspect-description.md). Slice type picker is [slice-type.md](./slice-type.md). Field type / optional / example / delete, and inspect after reload stay later.
+- [chrome.md](./chrome.md) — Out of scope no longer owns Fields; this slice owns those. Description is [inspect-description.md](./inspect-description.md). Slice type picker is [slice-type.md](./slice-type.md).
+- [blocks.md](./blocks.md) — Fields is this slice. Description is [inspect-description.md](./inspect-description.md). Slice type picker is [slice-type.md](./slice-type.md).
+- [editor-shell.md](./editor-shell.md) — Fields is this slice. Description is [inspect-description.md](./inspect-description.md). Slice type picker is [slice-type.md](./slice-type.md).
+- [connections.md](./connections.md) — Fields is this slice. Description is [inspect-description.md](./inspect-description.md). Slice type picker is [slice-type.md](./slice-type.md).
+- [model-persistence.md](./model-persistence.md) — Fields is this slice. Description is [inspect-description.md](./inspect-description.md). Slice type picker is [slice-type.md](./slice-type.md).
+- [canvas.md](./canvas.md) — Out of scope no longer owns Inspector Fields; this slice owns those. Description is [inspect-description.md](./inspect-description.md). Slice type picker is [slice-type.md](./slice-type.md).
+- [connection-feedback.md](./connection-feedback.md) — Out of scope no longer owns Inspector Fields; this slice owns those. Description is [inspect-description.md](./inspect-description.md). Slice type picker is [slice-type.md](./slice-type.md).
+- [add-on-lane.md](./add-on-lane.md) — Out of scope no longer owns Inspector Fields; this slice owns those. Description is [inspect-description.md](./inspect-description.md). Slice type picker is [slice-type.md](./slice-type.md).
+- [inspect-description.md](./inspect-description.md) — Out of scope no longer owns Fields; this slice owns those. Slice type picker is [slice-type.md](./slice-type.md).
+- [add-on-lane-rest.md](./add-on-lane-rest.md) — Out of scope no longer owns Fields; this slice owns those. Slice type picker is [slice-type.md](./slice-type.md).
+- [product.md](../product.md) — Inspect a Command; Add Field; edit Field name. Description is [inspect-description.md](./inspect-description.md). Slice type picker is [slice-type.md](./slice-type.md). Playwright path for this slice adds: click Command, Add Field, fill Field name with orderId, Save, reload last Command `fields[0].name` is orderId.

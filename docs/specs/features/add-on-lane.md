@@ -43,7 +43,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person,
 
 ## Out of scope
 
-Creating a Slice from Add when there are none. Toolbar Add stays [blocks.md](./blocks.md). Click-append from `Add Actor on lane` / `Add Event on lane` / `Add Read Model on lane` / `Add Automation on lane`, and selected-Slice targeting for ⌥⌘1 / ⌥⌘3–5, are [add-on-lane-rest.md](./add-on-lane-rest.md). Canvas move / delete / pan / undo, connection highlight / snap-back / Event → Command, Inspector Description is [inspect-description.md](./inspect-description.md). Slice type picker, inspect after reload, Mac window chrome. Add Field and Field name on Command are [inspect-fields.md](./inspect-fields.md).
+Creating a Slice from Add when there are none. Toolbar Add stays [blocks.md](./blocks.md). Click-append from `Add Actor on lane` / `Add Event on lane` / `Add Read Model on lane` / `Add Automation on lane`, and selected-Slice targeting for ⌥⌘1 / ⌥⌘3–5, are [add-on-lane-rest.md](./add-on-lane-rest.md). Canvas move / delete / pan / undo, connection highlight / snap-back / Event → Command, Inspector Description is [inspect-description.md](./inspect-description.md). Slice type picker is [slice-type.md](./slice-type.md). Inspect after reload, Mac window chrome. Add Field and Field name on Command are [inspect-fields.md](./inspect-fields.md).
 
 ## Restates
 

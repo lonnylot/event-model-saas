@@ -39,7 +39,7 @@ Event Model, Slice, Command, Event, Read Model, Connection, Team, Person, Versio
 
 ## Out of scope
 
-Duplicate-connection refusal, self-connection refusal, Actor or Automation as connection endpoints, Command → Command, Event → Event, Read Model → Command, Read Model → Event, canvas move / delete / pan / undo, Inspector Description is [inspect-description.md](./inspect-description.md). Slice type picker, inspect after reload, Mac window chrome. Dashed Add on a lane and keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane.md). Add Field and Field name on Command are [inspect-fields.md](./inspect-fields.md).
+Duplicate-connection refusal, self-connection refusal, Actor or Automation as connection endpoints, Command → Command, Event → Event, Read Model → Command, Read Model → Event, canvas move / delete / pan / undo, Inspector Description is [inspect-description.md](./inspect-description.md). Slice type picker is [slice-type.md](./slice-type.md). Inspect after reload, Mac window chrome. Dashed Add on a lane and keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane.md). Add Field and Field name on Command are [inspect-fields.md](./inspect-fields.md).
 
 ## Restates
 
