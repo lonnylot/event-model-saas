@@ -66,3 +66,14 @@ test("GET `/app` as site admin with no teams `body` computed `background-color` 
     "rgb(247, 244, 238)",
   );
 });
+
+
+test("GET `/app` as site admin with no teams shows a link whose accessible name is `Event Model`", async ({
+  page,
+  request,
+}) => {
+  await consumeAdmin(page, request);
+  await expect(
+    page.getByRole("link", { name: "Event Model", exact: true }),
+  ).toBeVisible();
+});

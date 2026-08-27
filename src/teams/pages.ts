@@ -20,7 +20,7 @@ export function noTeamsAdminHtml(email: string): string {
     email,
     true,
     `<form method="post" action="/api/teams" id="create-team"><label for="team-name">Team name</label><input id="team-name" name="name" required /><button type="submit">Create team</button></form>`,
-    { head: `<link rel="stylesheet" href="/shell.css">`, bodyClass: "app-none" },
+    { head: `<link rel="stylesheet" href="/shell.css">`, bodyClass: "app-none", lead: `<p><a>Event Model</a></p>` },
   );
 }
 
