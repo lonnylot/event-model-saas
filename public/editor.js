@@ -440,8 +440,11 @@ export function bindEditor(root) {
           ),
         );
       }
-      if (selected !== "command") return;
-      if (inspector && !fieldNameLabel()) {
+      if (
+        inspector &&
+        (selected === "command" || selected === "event") &&
+        !fieldNameLabel()
+      ) {
         inspector.insertAdjacentHTML(
           "beforeend",
           "<label>Field name <input /></label>",
@@ -454,12 +457,16 @@ export function bindEditor(root) {
               setFieldName(
                 JSON.parse(documentHolder.textContent || "{}"),
                 fieldNameInput.value,
-                selectedCommandItem?.dataset?.id,
+                selected === "command"
+                  ? selectedCommandItem?.dataset?.id
+                  : undefined,
+                selected,
               ),
             );
           }
         });
       }
+      if (selected !== "command") return;
       if (
         inspector &&
         ![...inspector.querySelectorAll("select")].some((select) =>
