@@ -28,7 +28,8 @@ description: >
   `run_worker_first` wiring, an architecture adapter constructed only
   under a test flag, injected env.documents, construction parked in Assumptions,
   success status or 409 UI that never asserts a stored
-  R2 body, an architecture-named store never constructed in a
+  R2 body, extra store write after a refuse,
+  an architecture-named store never constructed in a
   test, each new SQL this slice adds untested, or updating a testing spec.
 ---
 

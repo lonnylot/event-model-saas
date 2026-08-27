@@ -63,7 +63,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Playwright wait after open (editor bound / networkidle) / New Slice / named Ports / force hover flagged as extra chrome | `keeping-specs-current`, `playwright-e2e` |
 | Omitted sibling kinds (Event reload-lists; Event / Read Model same-port copy; Event / Read Model onto Actor / Automation / Slice; Event → Read Model duplicate of a kind-agnostic refuse) | `keeping-specs-current` |
 | In-session visible text when the AC is accessible name | `keeping-specs-current` |
-| Extra R2 put / D1 insert without an AC that asserts the stored body | `keeping-specs-current`, `testing` |
+| Extra R2 put / D1 insert / store write after a refuse without an AC that asserts the stored body | `keeping-specs-current`, `testing` |
 | Playwright workers / test-runner isolation without a spec sentence | `keeping-specs-current`, `playwright-e2e` |
 | Mail subject / From display name without a spec sentence | `keeping-specs-current`, `testing` |
 | `run_worker_first` path list vs architecture Compute row | `keeping-specs-current`, `testing` |
