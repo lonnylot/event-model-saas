@@ -32,7 +32,7 @@ Event Model, Slice, Actor, Team, Person, Version
 ## Assumptions
 
 - Slice selection is a click on the Slices listitem. Actor selection is a click on the Timeline Actor listitem.
-- This slice is one in-session Timeline `Actor`. Name JSON mutates the last actor. Slice Name binds to the clicked Slice ([name-binding-rest.md](./name-binding-rest.md)). Actor multi-item Name is [name-binding-rest.md](./name-binding-rest.md). Command multi-item Name is [name-binding.md](./name-binding.md).
+- Slice and Actor Name bind to the clicked Slice or Actor ([name-binding-rest.md](./name-binding-rest.md)). Command multi-item Name is [name-binding.md](./name-binding.md).
 - Inspect is a click on a click-created listitem. Inspect after reload is [inspect-after-reload.md](./inspect-after-reload.md).
 - The Inspector `Name` textbox edits Slice `title` or Actor `name`. The JSON keys stay `title` and `name`.
 - Name edits are in-memory until Save. Save still uses the version check from model-persistence.

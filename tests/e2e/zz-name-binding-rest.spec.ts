@@ -131,3 +131,47 @@ test("Filling the Inspector `Name` textbox with `Checkout` after selecting the f
     page.getByRole("listitem", { name: "Checkout", exact: true }),
   ).toHaveText("Checkout");
 });
+
+async function addTwoActorsClickFirstFillShopper(page: Page) {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "Add Actor", exact: true }).click();
+  await page.getByRole("button", { name: "Add Actor", exact: true }).click();
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Actor", exact: true }),
+  ).toHaveCount(2);
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Actor", exact: true })
+    .first()
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Name", exact: true })
+    .fill("Shopper");
+}
+
+test("After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem, filling Inspector `Name` with `Shopper` sets the first Actor `name` to `Shopper`", async ({
+  page,
+}) => {
+  await addTwoActorsClickFirstFillShopper(page);
+  const json = await page
+    .locator("#event-model-document")
+    .evaluate((el) => el.textContent);
+  expect(JSON.parse(json ?? "{}").slices?.[0]?.actors?.[0]?.name).toBe(
+    "Shopper",
+  );
+});
+
+test("Filling the Inspector `Name` textbox with `Shopper` after selecting the first Timeline `Actor` sets that listitem visible text to `Shopper`", async ({
+  page,
+}) => {
+  await addTwoActorsClickFirstFillShopper(page);
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Shopper", exact: true }),
+  ).toHaveText("Shopper");
+});

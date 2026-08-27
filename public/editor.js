@@ -1013,7 +1013,11 @@ export function bindEditor(root) {
         }
         if (holder && selected === "actor") {
           holder.textContent = JSON.stringify(
-            setActorName(JSON.parse(holder.textContent || "{}"), input.value),
+            setActorName(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+              selectedActorItem?.dataset?.id,
+            ),
           );
         }
         if (holder && selected === "command") {
