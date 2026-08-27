@@ -505,6 +505,10 @@ export function bindEditor(root) {
         if (selected === "automation" && selectedAutomationItem) {
           selectedAutomationItem.setAttribute("aria-label", input.value);
         }
+        if (selected === "model") {
+          const heading = root.querySelector("h1");
+          if (heading) heading.textContent = input.value;
+        }
         if (selected === "slice") {
           const main = root.querySelector("main");
           if (main && !main.textContent?.includes("Unsaved changes.")) {

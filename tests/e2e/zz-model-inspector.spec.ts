@@ -123,6 +123,20 @@ test("Filling the Inspector `Name` textbox with `Library Checkout` after clickin
   expect(JSON.parse(json ?? "{}").title).toBe("Library Checkout");
 });
 
+test("Filling the Inspector `Name` textbox with `Library Checkout` after clicking the `Untitled` heading shows a heading whose accessible name is `Library Checkout`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("heading", { name: "Untitled", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Name", exact: true })
+    .fill("Library Checkout");
+  await expect(
+    page.getByRole("heading", { name: "Library Checkout", exact: true }),
+  ).toBeVisible();
+});
+
 test("After a member creates a model, opens it, clicks the `Untitled` heading, fills `Name` with `Library Checkout`, and Saves, a reload of that page sets the Event Model `title` to `Library Checkout`", async ({
   page,
 }) => {
