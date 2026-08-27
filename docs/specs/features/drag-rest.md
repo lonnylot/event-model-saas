@@ -4,7 +4,7 @@ Status: validated
 
 ## Problem
 
-Members can drag an Actor or Command onto another Slice, and drag Slices in the sidebar. They cannot drag an Event, Read Model, or Automation between Slices, or drag a Slice on the Timeline, so Mac same-lane and canvas-slice move is incomplete.
+Members can drag an Actor onto another Slice. They cannot drag an Event, Read Model, or Automation between Slices, or drag a Slice on the Timeline, so Mac same-lane and canvas-slice move is incomplete.
 
 ## Acceptance criteria
 
