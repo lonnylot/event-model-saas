@@ -57,6 +57,8 @@ import { restoreConnection } from "./restore-connection.js";
 import { deleteConnection } from "./delete-connection.js";
 import { deleteActor } from "./delete-actor.js";
 import { restoreActor } from "./restore-actor.js";
+import { deleteEvent } from "./delete-event.js";
+import { restoreEvent } from "./restore-event.js";
 
 const undoStack = [];
 const redoStack = [];
@@ -185,6 +187,7 @@ export function onAddEventClick(root) {
     item.setAttribute("aria-label", "Event Happened");
     item.dataset.kind = "event";
     item.setAttribute("data-id", event.id);
+    if (event) item.setAttribute("data-id", event.id);
     const port = root.createElement("button");
     port.type = "button";
     port.textContent = "Event Happened port";
@@ -1469,6 +1472,34 @@ export function bindEditor(root) {
       const entry = undoStack.pop();
       const kind = typeof entry === "string" ? entry : entry?.kind;
 
+      if (kind === "deleteEvent") {
+        holder.textContent = JSON.stringify(
+          restoreEvent(
+            JSON.parse(holder.textContent || "{}"),
+            entry.event,
+            entry.sliceId,
+            entry.index,
+          ),
+        );
+        const list = root.querySelector('[aria-label="Timeline"] ul');
+        if (list && entry.event) {
+          const item = root.createElement("li");
+          item.textContent = "Event Happened";
+          item.setAttribute("aria-label", "Event Happened");
+          item.dataset.kind = "event";
+          item.setAttribute("data-id", entry.event.id);
+          const port = root.createElement("button");
+          port.type = "button";
+          port.textContent = "Event Happened port";
+          port.dataset.id = entry.event.id;
+          port.dataset.kind = "EVENT";
+          item.append(port);
+          const before = list.children[entry.index];
+          if (before) list.insertBefore(item, before);
+          else list.append(item);
+        }
+        return;
+      }
       if (kind === "deleteActor") {
         holder.textContent = JSON.stringify(
           restoreActor(
@@ -1684,6 +1715,32 @@ export function bindEditor(root) {
     if (event.key !== "Backspace" && event.key !== "Delete") return;
     if (event.target instanceof HTMLInputElement) return;
     const holder = root.getElementById("event-model-document");
+    if (holder && selected === "event" && selectedEventItem) {
+      const eventId =
+        selectedEventItem.dataset.id ||
+        selectedEventItem.querySelector("[data-id]")?.dataset.id;
+      const model = JSON.parse(holder.textContent || "{}");
+      const slice = (model.slices ?? []).find((s) =>
+        (s.events ?? []).some((event) => event.id === eventId),
+      );
+      const index = slice
+        ? (slice.events ?? []).findIndex((event) => event.id === eventId)
+        : -1;
+      const eventBlock = index >= 0 ? slice.events[index] : undefined;
+      holder.textContent = JSON.stringify(deleteEvent(model, eventId));
+      selectedEventItem.remove();
+      if (eventBlock && slice && index >= 0) {
+        undoStack.push({
+          kind: "deleteEvent",
+          event: eventBlock,
+          sliceId: slice.id,
+          index,
+        });
+      }
+      selectedEventItem = null;
+      selected = null;
+      return;
+    }
     if (holder && selected === "actor" && selectedActorItem) {
       const actorId = selectedActorItem.dataset.id;
       const model = JSON.parse(holder.textContent || "{}");
