@@ -556,6 +556,9 @@ export function bindEditor(root) {
     if (event.code === "Digit3") {
       holder.textContent = JSON.stringify(appendEvent(model));
     }
+    if (event.code === "Digit4") {
+      holder.textContent = JSON.stringify(appendReadModel(model));
+    }
   });
 }
 
