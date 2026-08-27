@@ -372,6 +372,7 @@ export function bindEditor(root) {
       selected = "command";
       selectedCommandItem = item;
       bindName("Command");
+      bindDescription();
       return;
     }
     if (item.dataset.kind === "event") {
