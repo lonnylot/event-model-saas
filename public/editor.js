@@ -28,6 +28,7 @@ import { setEventModelTitle } from "./set-event-model-title.js";
 import { setEventModelDescription } from "./set-event-model-description.js";
 import { moveSliceLeft } from "./move-slice-left.js";
 import { moveSliceRight } from "./move-slice-right.js";
+import { reorderSlices } from "./reorder-slices.js";
 import { moveActorToSlice } from "./move-actor-to-slice.js";
 import { deleteSlice } from "./delete-slice.js";
 import { deleteCommand } from "./delete-command.js";
@@ -1415,8 +1416,13 @@ export function bindEditor(root) {
   });
   let sourcePort = null;
   let dragActorItem = null;
+  let dragSliceItem = null;
   root.addEventListener("mousedown", (event) => {
     const actorItem = event.target?.closest?.("li");
+    if (actorItem && slicesList?.contains(actorItem)) {
+      dragSliceItem = actorItem;
+      return;
+    }
     if (
       actorItem &&
       timelineList?.contains(actorItem) &&
@@ -1457,6 +1463,28 @@ export function bindEditor(root) {
     }
   });
   root.addEventListener("mouseup", (event) => {
+    if (dragSliceItem) {
+      const sliceItem = event.target?.closest?.("li");
+      const holder = root.getElementById("event-model-document");
+      if (
+        holder &&
+        sliceItem &&
+        slicesList?.contains(sliceItem) &&
+        dragSliceItem !== sliceItem &&
+        dragSliceItem.dataset.id &&
+        sliceItem.dataset.id
+      ) {
+        holder.textContent = JSON.stringify(
+          reorderSlices(
+            JSON.parse(holder.textContent || "{}"),
+            dragSliceItem.dataset.id,
+            sliceItem.dataset.id,
+          ),
+        );
+      }
+      dragSliceItem = null;
+      return;
+    }
     if (dragActorItem) {
       const sliceItem = event.target?.closest?.("li");
       const holder = root.getElementById("event-model-document");

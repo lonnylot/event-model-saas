@@ -4,7 +4,7 @@ Status: released
 
 ## Problem
 
-Toolbar zoom changes Timeline scale. Ctrl+wheel (trackpad pinch-zoom stand-in) does not, so Mac pinch zoom has no web counterpart. Keyboard zoom (⌘+/⌘-/⌘0) stays product.md later.
+Toolbar zoom changes Timeline scale. Ctrl+wheel (trackpad pinch-zoom stand-in) does not, so Mac pinch zoom has no web counterpart. Keyboard zoom (⌘+/⌘-/⌘0) is [canvas-rest.md](./canvas-rest.md).
 
 ## Acceptance criteria
 
@@ -20,14 +20,14 @@ Event Model, Team, Person, Version
 
 ## Assumptions
 
-- Playwright `mouse.wheel({ deltaY: 80 })` with `ControlOrMeta` held on the Timeline is the pinch-zoom stand-in. Horizontal wheel pan stays [canvas.md](./canvas.md). Vertical scroll pan stays [canvas.md](./canvas.md). Toolbar zoom stays [editor-shell.md](./editor-shell.md). Keyboard zoom stays [product.md](../product.md) later.
+- Playwright `mouse.wheel({ deltaY: 80 })` with `ControlOrMeta` held on the Timeline is the pinch-zoom stand-in. Horizontal wheel pan is [canvas-rest.md](./canvas-rest.md). Vertical scroll pan stays [canvas.md](./canvas.md). Toolbar zoom stays [editor-shell.md](./editor-shell.md). Keyboard zoom is [canvas-rest.md](./canvas-rest.md).
 - After this wheel, exact factor is not asserted (Mac pinch is continuous).
 - Extra Mac zoom menu stops (50% / 75% / 150%) are not ported; toolbar and ⌘ zoom factors stay 1.25 / 0.8 / 1.
 - The `TEST_MAIL=1` memory adapter does not count login attempts, so Playwright files can share one Worker without the production 5-per-hour cap.
 
 ## Out of scope
 
-Extra zoom percentages. Mac window chrome. Toolbar zoom, keyboard zoom, scroll pan, and pinch pan stay those specs.
+Extra zoom percentages. Mac window chrome. Toolbar zoom stays [editor-shell.md](./editor-shell.md). Keyboard zoom and pinch pan are [canvas-rest.md](./canvas-rest.md). Scroll pan stays [canvas.md](./canvas.md).
 
 ## Restates
 
