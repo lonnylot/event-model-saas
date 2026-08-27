@@ -30,17 +30,22 @@ Event Model, Description, Team, Person, Version
 
 - The page heading is the Event Model `title` (create still uses `Untitled`). Clicking that heading selects the Event Model, not a Slice.
 - Inspector `Name` is one control. Selecting a Slice after the Event Model updates that `Name` to the Slice title ([chrome.md](./chrome.md)).
-- Description on the Event Model is this slice. Description on Slice / Actor / blocks is [inspect-description.md](./inspect-description.md) when that spec is present; until it is released those words stay later.
+- Description on the Event Model is this slice. Description on Slice / Actor / blocks is [inspect-description.md](./inspect-description.md).
 - Title and Description edits are in-memory until Save. Save still uses the version check from model-persistence. Reload proof reads `#event-model-document`.
 - Mac ⇧⌘I Model Info is not ported as a menu. Clicking the heading is the web path.
 - The `TEST_MAIL=1` memory adapter does not count login attempts, so Playwright files can share one Worker without the production 5-per-hour cap.
 
 ## Out of scope
 
-⇧⌘I, Slice / Actor / block Description, Fields, Slice type picker, inspecting a Connection, inspect after reload of the heading, Actor Name Unsaved changes, dashed Add on a lane, keyboard shortcuts, Mac window chrome.
+⇧⌘I, Slice / Actor / block Description is [inspect-description.md](./inspect-description.md). Add Field and Field name on Command are [inspect-fields.md](./inspect-fields.md). Slice type picker is [slice-type.md](./slice-type.md). Inspecting a Connection is [inspect-connection.md](./inspect-connection.md). Inspect after reload of the heading, Actor Name Unsaved changes, dashed Add on a lane, keyboard shortcuts, Mac window chrome. Name inspect after reload is [inspect-after-reload.md](./inspect-after-reload.md).
 
 ## Restates
 
-- [inspect-blocks.md](./inspect-blocks.md) — Out of scope no longer owns model-level Title; this slice owns Event Model title and Description. Slice / block Description stays later unless [inspect-description.md](./inspect-description.md) is present.
+- [inspect-blocks.md](./inspect-blocks.md) — Out of scope no longer owns model-level Title; this slice owns Event Model title and Description. Slice / Actor / block Description is [inspect-description.md](./inspect-description.md).
 - [chrome.md](./chrome.md) — Out of scope no longer owns model-level Title; this slice owns those.
-- [product.md](../product.md) — The web shell model title is selectable; Inspector edits Event Model `title` and `description`. Playwright path for this slice adds: click Untitled, fill Name with Library Checkout, fill Description with Library checkout blueprint, Save, reload JSON title and description match.
+- [inspect-description.md](./inspect-description.md) — Out of scope no longer owns model-level Title or model-level Description; this slice owns those. Slice / Actor / block Description stays that slice.
+- [inspect-fields.md](./inspect-fields.md) — Out of scope no longer owns model-level Title; this slice owns Event Model title and Description.
+- [slice-type.md](./slice-type.md) — Out of scope no longer owns model-level Title; this slice owns Event Model title and Description.
+- [inspect-after-reload.md](./inspect-after-reload.md) — Out of scope no longer owns model-level Title; this slice owns Event Model title and Description. Inspect after reload of the heading stays later.
+- [inspect-connection.md](./inspect-connection.md) — Out of scope no longer owns model-level Title; this slice owns Event Model title and Description.
+- [product.md](../product.md) — The web shell model title is selectable; Inspector edits Event Model `title` and `description`. Playwright path for this slice adds: click Untitled, fill Name with Library Checkout, fill Description with Library checkout blueprint, Save, reload JSON title and description match. Slice / Actor / block Description is [inspect-description.md](./inspect-description.md).
