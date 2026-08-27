@@ -1003,7 +1003,7 @@ export function bindEditor(root) {
     selectedSliceItem = item;
     const indexAttr = item.getAttribute("data-slice-index");
     selectedSliceIndex = indexAttr === null ? null : Number(indexAttr);
-    bindName("New Slice");
+    bindName(item.getAttribute("aria-label") ?? "New Slice");
     bindDescription();
     unbindFieldChrome();
     unbindAddField();
