@@ -1008,6 +1008,7 @@ export function bindEditor(root) {
     unbindFieldChrome();
     unbindAddField();
     unbindFieldName();
+    bindDescription(lastSliceDescription());
     bindType(lastSliceTypeLabel());
     unbindAddField();
     unbindFieldName();

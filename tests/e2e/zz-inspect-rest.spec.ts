@@ -280,4 +280,31 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks the `
   ).toHaveValue("Checkout");
 });
 
+test("After a member creates a model, opens it, clicks `New Slice`, clicks the `New Slice` listitem, fills `Description` with `First column`, and Saves, a reload of that page, clicking the `New Slice` listitem shows the Inspector `Description` textbox with the value `First column`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("listitem", { name: "New Slice", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Description", exact: true })
+    .fill("First column");
+  await Promise.all([
+    page.waitForResponse(
+      (response) =>
+        response.url().includes("/api/models/") &&
+        response.request().method() === "PUT",
+    ),
+    page.getByRole("button", { name: "Save", exact: true }).click(),
+  ]);
+  await page.reload();
+  await page.getByRole("listitem", { name: "New Slice", exact: true }).click();
+  await expect(
+    page
+      .getByRole("region", { name: "Inspector", exact: true })
+      .getByRole("textbox", { name: "Description", exact: true }),
+  ).toHaveValue("First column");
+});
+
 
