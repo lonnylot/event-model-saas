@@ -1,6 +1,6 @@
 # Add on lane
 
-Status: validated
+Status: released
 
 ## Problem
 
