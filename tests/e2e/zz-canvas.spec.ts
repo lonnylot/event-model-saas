@@ -144,3 +144,15 @@ test("After clicking `New Slice` twice, clicking the first `New Slice` listitem 
   expect(after.slices).toHaveLength(1);
   expect(after.slices[0].id).toBe(lastId);
 });
+
+test("Scrolling the Timeline region sets the Timeline `style.transform` to a value that includes `translate(`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  await timeline.hover();
+  await page.mouse.wheel(0, 80);
+  await expect.poll(async () => timeline.evaluate((el) => el.style.transform)).toContain(
+    "translate(",
+  );
+});

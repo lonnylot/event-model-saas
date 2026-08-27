@@ -138,6 +138,13 @@ export function bindEditor(root) {
   const timeline = root.querySelector('[aria-label="Timeline"]');
   if (timeline instanceof HTMLElement) {
     timeline.style.minHeight = "48px";
+    let panX = 0;
+    let panY = 0;
+    timeline.addEventListener("wheel", (event) => {
+      panX -= event.deltaX;
+      panY -= event.deltaY;
+      timeline.style.transform = `translate(${panX}px, ${panY}px)`;
+    });
   }
   root.querySelectorAll("button").forEach((button) => {
     if (button.textContent === "Zoom in") {
