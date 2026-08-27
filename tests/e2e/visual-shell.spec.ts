@@ -93,3 +93,14 @@ test('GET `/` has a `link[rel="icon"]` whose `href` is `/favicon.png`', async ({
     "/favicon.png",
   );
 });
+
+
+test('GET `/` has a `link[rel="stylesheet"]` whose `href` is `/shell.css`', async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator('link[rel="stylesheet"]')).toHaveAttribute(
+    "href",
+    "/shell.css",
+  );
+});
