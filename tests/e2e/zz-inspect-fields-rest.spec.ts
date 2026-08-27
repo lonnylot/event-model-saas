@@ -344,3 +344,29 @@ test("After clicking `Add Field` on `Read Model`, filling Inspector `Field name`
     JSON.parse(json ?? "{}").slices?.[0]?.readModels?.at(-1)?.fields?.[0]?.name,
   ).toBe("viewId");
 });
+
+test("After clicking `Add Field` on `Automation`, filling Inspector `Field name` with `jobId` sets the last Automation `fields[0].name` to `jobId`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Automation", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Automation", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("button", { name: "Add Field", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Field name", exact: true })
+    .fill("jobId");
+  const json = await page
+    .locator("#event-model-document")
+    .evaluate((el) => el.textContent);
+  expect(
+    JSON.parse(json ?? "{}").slices?.[0]?.processors?.at(-1)?.fields?.[0]?.name,
+  ).toBe("jobId");
+});
