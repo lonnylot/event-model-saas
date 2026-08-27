@@ -34,12 +34,16 @@ export function setFieldName(model, name, id, target = "command") {
   }
   if (target === "automation") {
     const processors = [...(slice.processors ?? [])];
-    const automation = processors.at(-1);
+    const index = id
+      ? processors.findIndex((automation) => automation.id === id)
+      : processors.length - 1;
+    if (index < 0) return model;
+    const automation = processors[index];
     if (!automation) return model;
     const fields = [...(automation.fields ?? [])];
     if (!fields.length) return model;
     fields[0] = { ...fields[0], name };
-    processors[processors.length - 1] = { ...automation, fields };
+    processors[index] = { ...automation, fields };
     slices[slices.length - 1] = { ...slice, processors };
     return { ...model, slices };
   }

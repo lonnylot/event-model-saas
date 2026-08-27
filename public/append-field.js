@@ -35,9 +35,13 @@ export function appendField(model, target = "command", id) {
   }
   if (target === "automation") {
     const processors = [...(slice.processors ?? [])];
-    const automation = processors.at(-1);
+    const index = id
+      ? processors.findIndex((automation) => automation.id === id)
+      : processors.length - 1;
+    if (index < 0) return model;
+    const automation = processors[index];
     if (!automation) return model;
-    processors[processors.length - 1] = {
+    processors[index] = {
       ...automation,
       fields: [...(automation.fields ?? []), field],
     };
