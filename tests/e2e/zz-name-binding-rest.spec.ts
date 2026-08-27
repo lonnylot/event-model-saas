@@ -896,3 +896,24 @@ test("After clicking `New Slice` then `Add Command` then `Save` on that page, cl
     .click();
   await expect(page.getByText("Unsaved changes.")).toBeVisible();
 });
+
+test("After a member creates a model, opens it, clicks the `Untitled` heading, clicks `Save`, then fills the Inspector `Name` textbox with `Library Checkout`, the page shows the text `Unsaved changes.`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("heading", { name: "Untitled", exact: true }).click();
+  await Promise.all([
+    page.waitForResponse(
+      (response) =>
+        response.url().includes("/api/models/") &&
+        response.request().method() === "PUT",
+    ),
+    page.getByRole("button", { name: "Save", exact: true }).click(),
+  ]);
+  await expect(page.getByText("Unsaved changes.")).toHaveCount(0);
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Name", exact: true })
+    .fill("Library Checkout");
+  await expect(page.getByText("Unsaved changes.")).toBeVisible();
+});
