@@ -100,3 +100,14 @@ test("GET `/app` as a Person who is not site admin with no teams `body` computed
     "rgb(247, 244, 238)",
   );
 });
+
+
+test("GET `/app` as a Person who is not site admin with no teams shows a link whose accessible name is `Event Model`", async ({
+  page,
+}) => {
+  await page.request.post("/api/test/non-admin-session");
+  await page.goto("/app");
+  await expect(
+    page.getByRole("link", { name: "Event Model", exact: true }),
+  ).toBeVisible();
+});
