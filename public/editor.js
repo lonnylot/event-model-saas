@@ -103,6 +103,7 @@ export function onAddReadModelClick(root) {
     const item = root.createElement("li");
     item.textContent = "Read Model";
     item.setAttribute("aria-label", "Read Model");
+    item.dataset.kind = "readmodel";
     const port = root.createElement("button");
     port.type = "button";
     port.textContent = "Read Model port";
@@ -250,6 +251,12 @@ export function bindEditor(root) {
       selected = "event";
       selectedEventItem = item;
       bindName("Event Happened");
+      return;
+    }
+    if (item.dataset.kind === "readmodel") {
+      if (inspector && !nameInput()) {
+        inspector.insertAdjacentHTML("beforeend", "<label>Name <input /></label>");
+      }
       return;
     }
     if (item.dataset.kind !== "actor") return;
