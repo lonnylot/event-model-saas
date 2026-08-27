@@ -10,11 +10,11 @@ The editor heading shows the Event Model title, but clicking it does not open In
 
 - [x] GET `/app/teams/{id}/models/{mid}` as a member, clicking the heading whose accessible name is `Untitled` shows a textbox whose accessible name is `Name` in the Inspector region
 - [x] GET `/app/teams/{id}/models/{mid}` as a member, clicking the heading whose accessible name is `Untitled` shows that `Name` textbox with the value `Untitled`
-- [ ] Filling the Inspector `Name` textbox with `Library Checkout` after clicking the `Untitled` heading sets the Event Model `title` to `Library Checkout`
+- [x] Filling the Inspector `Name` textbox with `Library Checkout` after clicking the `Untitled` heading sets the Event Model `title` to `Library Checkout`
 - [ ] Filling the Inspector `Name` textbox with `Library Checkout` after clicking the `Untitled` heading shows a heading whose accessible name is `Library Checkout`
 - [ ] GET `/app/teams/{id}/models/{mid}` as a member, clicking the heading whose accessible name is `Untitled` shows a textbox whose accessible name is `Description` in the Inspector region
 - [ ] Filling the Inspector `Description` textbox with `Library checkout blueprint` after clicking the `Untitled` heading sets the Event Model `description` to `Library checkout blueprint`
-- [ ] After a member creates a model, opens it, clicks the `Untitled` heading, fills `Name` with `Library Checkout`, and Saves, a reload of that page sets the Event Model `title` to `Library Checkout`
+- [x] After a member creates a model, opens it, clicks the `Untitled` heading, fills `Name` with `Library Checkout`, and Saves, a reload of that page sets the Event Model `title` to `Library Checkout`
 - [ ] After a member creates a model, opens it, clicks the `Untitled` heading, fills `Description` with `Library checkout blueprint`, and Saves, a reload of that page sets the Event Model `description` to `Library checkout blueprint`
 
 ## Domain terms

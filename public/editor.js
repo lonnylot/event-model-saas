@@ -20,6 +20,7 @@ import { setAutomationTitle } from "./set-automation-title.js";
 import { setAutomationDescription } from "./set-automation-description.js";
 import { appendField } from "./append-field.js";
 import { setFieldName } from "./set-field-name.js";
+import { setEventModelTitle } from "./set-event-model-title.js";
 import { moveSliceLeft } from "./move-slice-left.js";
 import { moveActorToSlice } from "./move-actor-to-slice.js";
 import { deleteSlice } from "./delete-slice.js";
@@ -476,6 +477,14 @@ export function bindEditor(root) {
             ),
           );
         }
+        if (holder && selected === "model") {
+          holder.textContent = JSON.stringify(
+            setEventModelTitle(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+            ),
+          );
+        }
         if (selected === "slice" && selectedSliceItem) {
           selectedSliceItem.textContent = input.value;
           selectedSliceItem.setAttribute("aria-label", input.value);
@@ -597,12 +606,8 @@ export function bindEditor(root) {
     unbindFieldName();
   });
   root.querySelector("h1")?.addEventListener("click", () => {
-    if (inspector && !nameInput()) {
-      inspector.insertAdjacentHTML(
-        "beforeend",
-        '<label>Name <input value="Untitled" /></label>',
-      );
-    }
+    selected = "model";
+    bindName("Untitled");
   });
   root.addEventListener("keydown", (event) => {
     if (

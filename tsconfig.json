@@ -39,6 +39,7 @@
     "public/set-read-model-description.js",
     "public/set-automation-title.js",
     "public/set-automation-description.js",
-    "public/set-field-name.js"
+    "public/set-field-name.js",
+    "public/set-event-model-title.js"
   ]
 }
