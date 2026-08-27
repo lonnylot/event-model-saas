@@ -19,7 +19,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 
 | Spec change | Skill that must move with it |
 |-------------|------------------------------|
-| Domain terms, CONTEXT.md, ADR | `domain-modeling` |
+| Domain terms, CONTEXT.md, ADR, duplicate CONTEXT.md heading | `domain-modeling` |
 | Test layers or seams | `testing`, `tdd-loop` |
 | Commit / branch / PR / CI / fetch current default before branching | `logical-commits`, `github-ci-loop` |
 | YAML event prefix / `pull_request_target` | `testing`, `github-ci-loop` |
