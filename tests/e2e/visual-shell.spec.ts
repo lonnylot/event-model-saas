@@ -115,3 +115,14 @@ test('GET `/` has a `meta[property="og:image"]` whose `content` ends with `/og.p
     /\/og\.png$/,
   );
 });
+
+
+test('GET `/` has a `meta[property="og:title"]` whose `content` is `Event Model`', async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute(
+    "content",
+    "Event Model",
+  );
+});
