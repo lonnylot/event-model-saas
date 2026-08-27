@@ -253,6 +253,17 @@ test("After clicking `New Slice` then `Add Read Model` twice, clicking the first
   );
 });
 
+test("Filling the Inspector `Name` textbox with `Orders` after selecting `Read Model` sets the Timeline `Orders` listitem visible text to `Orders`", async ({
+  page,
+}) => {
+  await addTwoReadModelsClickFirstFillOrders(page);
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Orders", exact: true }),
+  ).toHaveText(/^Orders/);
+});
+
 async function addTwoAutomationsClickFirstFillSendEmail(page: Page) {
   await openUntitledModel(page);
   await page.getByRole("button", { name: "New Slice", exact: true }).click();

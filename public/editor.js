@@ -1093,6 +1093,10 @@ export function bindEditor(root) {
           selectedEventItem.setAttribute("aria-label", input.value);
         }
         if (selected === "readmodel" && selectedReadModelItem) {
+          const text = [...selectedReadModelItem.childNodes].find(
+            (node) => node.nodeType === 3,
+          );
+          if (text) text.textContent = input.value;
           selectedReadModelItem.setAttribute("aria-label", input.value);
         }
         if (selected === "automation" && selectedAutomationItem) {
