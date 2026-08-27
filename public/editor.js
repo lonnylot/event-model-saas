@@ -839,6 +839,23 @@ export function bindEditor(root) {
           );
         }
       }
+      if (
+        sourcePort.dataset.kind === "READMODEL" &&
+        target.dataset.kind === "COMMAND"
+      ) {
+        const readModelItem = sourcePort.closest("li");
+        if (
+          readModelItem &&
+          !readModelItem.textContent?.includes(
+            "A read model can't issue a command.",
+          )
+        ) {
+          readModelItem.insertAdjacentHTML(
+            "beforeend",
+            "<p>A read model can't issue a command.</p>",
+          );
+        }
+      }
     }
     for (const highlighted of root.querySelectorAll("[aria-current]")) {
       highlighted.removeAttribute("aria-current");

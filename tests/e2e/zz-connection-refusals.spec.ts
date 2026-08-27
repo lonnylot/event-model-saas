@@ -178,3 +178,24 @@ test("Dragging from `Read Model port` onto `Command port` does not append a Conn
   const json = await page.locator("#event-model-document").textContent();
   expect(JSON.parse(json ?? "{}").connections ?? []).toEqual([]);
 });
+
+test("Dragging from `Read Model port` onto `Command port` shows the text `A read model can't issue a command.` in the Read Model listitem", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await expect(
+    page.getByRole("button", { name: "Read Model port", exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Command port", exact: true }),
+  ).toBeVisible();
+  await page
+    .getByRole("button", { name: "Read Model port", exact: true })
+    .dragTo(page.getByRole("button", { name: "Command port", exact: true }));
+  await expect(
+    page.getByRole("listitem", { name: "Read Model", exact: true }),
+  ).toContainText("A read model can't issue a command.");
+});
