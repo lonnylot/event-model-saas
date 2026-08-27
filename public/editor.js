@@ -545,6 +545,11 @@ export function bindEditor(root) {
     } else {
       typeSelect?.closest("label")?.remove();
     }
+    if (selected !== "model") {
+      inspector.querySelector("textarea")?.closest("label")?.remove();
+    } else {
+      unbindDescription();
+    }
   };
   timelineList?.addEventListener("click", (event) => {
     const item = event.target?.closest?.("li");
@@ -612,6 +617,12 @@ export function bindEditor(root) {
   root.querySelector("h1")?.addEventListener("click", () => {
     selected = "model";
     bindName("Untitled");
+    if (inspector && !inspector.querySelector("textarea")) {
+      inspector.insertAdjacentHTML(
+        "beforeend",
+        "<label>Description <textarea></textarea></label>",
+      );
+    }
   });
   root.addEventListener("keydown", (event) => {
     if (

@@ -158,3 +158,15 @@ test("After a member creates a model, opens it, clicks the `Untitled` heading, f
   const json = await page.locator("#event-model-document").textContent();
   expect(JSON.parse(json ?? "{}").title).toBe("Library Checkout");
 });
+
+test("GET `/app/teams/{id}/models/{mid}` as a member, clicking the heading whose accessible name is `Untitled` shows a textbox whose accessible name is `Description` in the Inspector region", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("heading", { name: "Untitled", exact: true }).click();
+  await expect(
+    page
+      .getByRole("region", { name: "Inspector", exact: true })
+      .getByRole("textbox", { name: "Description", exact: true }),
+  ).toBeVisible();
+});
