@@ -46,6 +46,10 @@ export function onNewSliceClick(root) {
     command.type = "button";
     command.textContent = "Add Command on lane";
     timeline.append(command);
+    const event = root.createElement("button");
+    event.type = "button";
+    event.textContent = "Add Event on lane";
+    timeline.append(event);
   }
 }
 

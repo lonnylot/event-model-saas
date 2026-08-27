@@ -30,7 +30,7 @@ const test = base.extend<object, { adminState: string }>({
   adminState: [
     async ({ browser }, use, workerInfo) => {
       const page = await browser.newPage({
-        baseURL: "http://127.0.0.1:8787",
+        baseURL: `http://127.0.0.1:${process.env.E2E_PORT ?? 8787}`,
       });
       const request = page.context().request;
       await consumeAdmin(page, request);
@@ -124,5 +124,17 @@ test("After clicking `New Slice` on that page, the Timeline region shows a butto
     page
       .getByRole("region", { name: "Timeline", exact: true })
       .getByRole("button", { name: "Add Command on lane", exact: true }),
+  ).toBeVisible();
+});
+
+test("After clicking `New Slice` on that page, the Timeline region shows a button whose accessible name is `Add Event on lane`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("button", { name: "Add Event on lane", exact: true }),
   ).toBeVisible();
 });

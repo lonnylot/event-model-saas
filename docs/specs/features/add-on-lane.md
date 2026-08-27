@@ -10,7 +10,7 @@ Members can Add from the toolbar onto the last Slice only. They cannot Add on a 
 
 - [x] After clicking `New Slice` on that page, the Timeline region shows a button whose accessible name is `Add Actor on lane`
 - [x] After clicking `New Slice` on that page, the Timeline region shows a button whose accessible name is `Add Command on lane`
-- [ ] After clicking `New Slice` on that page, the Timeline region shows a button whose accessible name is `Add Event on lane`
+- [x] After clicking `New Slice` on that page, the Timeline region shows a button whose accessible name is `Add Event on lane`
 - [ ] After clicking `New Slice` on that page, the Timeline region shows a button whose accessible name is `Add Read Model on lane`
 - [ ] After clicking `New Slice` on that page, the Timeline region shows a button whose accessible name is `Add Automation on lane`
 - [ ] After clicking `New Slice` twice, clicking the first `Add Command on lane` sets the first Slice `commands` to one Command and the last Slice `commands` to `[]`
@@ -36,7 +36,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person,
 - Two `New Slice` listitems are first vs last. Chrome Name still mutates the last Slice.
 - The first `Add Command on lane` is the first matching button in the Timeline (the first Slice's command lane).
 - Empty JSON for lane Add and ⌥⌘1–5 is the same as toolbar Add in [blocks.md](./blocks.md).
-- ⌥⌘1 Actor, ⌥⌘2 Command, ⌥⌘3 Event, ⌥⌘4 Read Model, ⌥⌘5 Automation. Playwright `Alt+Meta+Digit1` … `Digit5` (CI: `ControlOrMeta` for ⌘). Playwright waits for `networkidle` after open so `bindEditor` is attached, then for the New Slice listitem after click and for the named lane buttons, before asserting lane Add or pressing ⌥⌘1–5. Playwright waits for `networkidle` after open so `bindEditor` is attached, then for the New Slice listitem after click and for the named lane buttons, before asserting lane Add or pressing ⌥⌘1–5.
+- ⌥⌘1 Actor, ⌥⌘2 Command, ⌥⌘3 Event, ⌥⌘4 Read Model, ⌥⌘5 Automation. Playwright `Alt+Meta+Digit1` … `Digit5` (CI: `ControlOrMeta` for ⌘). Playwright waits for `networkidle` after open so `bindEditor` is attached, then for the New Slice listitem after click and for the named lane buttons, before asserting lane Add or pressing ⌥⌘1–5. Playwright waits for `networkidle` after open so `bindEditor` is attached, then for the New Slice listitem after click and for the named lane buttons, before asserting lane Add or pressing ⌥⌘1–5. Playwright waits for `networkidle` after open so `bindEditor` is attached, then for the New Slice listitem after click and for the named lane buttons, before asserting lane Add or pressing ⌥⌘1–5.
 - After selecting a Slice, Inspector `Name` may have focus, so ⌥⌘1–5 that target the selected Slice run after clicking the Timeline region (not while typing in `Name`). With no Slice selected, ⌥⌘1–5 target the last Slice.
 - Lane Add and keyboard Add are in-memory until Save. Save still uses the version check from model-persistence.
 - The `TEST_MAIL=1` memory adapter does not count login attempts, so Playwright files can share one Worker without the production 5-per-hour cap.
