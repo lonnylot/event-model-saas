@@ -272,3 +272,23 @@ test("After clicking `New Slice` then `Add Read Model` on that page, clicking th
       .getByRole("textbox", { name: "Name", exact: true }),
   ).toHaveValue("Read Model");
 });
+
+test("Filling the Inspector `Name` textbox with `Orders` after selecting `Read Model` sets the last Read Model `title` to `Orders`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Read Model", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Name", exact: true })
+    .fill("Orders");
+  const json = await page.locator("#event-model-document").textContent();
+  expect(JSON.parse(json ?? "{}").slices[0].readModels.at(-1).title).toBe(
+    "Orders",
+  );
+});

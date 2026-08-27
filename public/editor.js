@@ -9,6 +9,7 @@ import { setSliceTitle } from "./set-slice-title.js";
 import { setActorName } from "./set-actor-name.js";
 import { setCommandTitle } from "./set-command-title.js";
 import { setEventTitle } from "./set-event-title.js";
+import { setReadModelTitle } from "./set-read-model-title.js";
 
 export function onNewSliceClick(root) {
   const list = root.querySelector("ul");
@@ -214,6 +215,14 @@ export function bindEditor(root) {
             setEventTitle(JSON.parse(holder.textContent || "{}"), input.value),
           );
         }
+        if (holder && selected === "readmodel") {
+          holder.textContent = JSON.stringify(
+            setReadModelTitle(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+            ),
+          );
+        }
         if (selected === "slice" && selectedSliceItem) {
           selectedSliceItem.textContent = input.value;
           selectedSliceItem.setAttribute("aria-label", input.value);
@@ -254,6 +263,7 @@ export function bindEditor(root) {
       return;
     }
     if (item.dataset.kind === "readmodel") {
+      selected = "readmodel";
       bindName("Read Model");
       return;
     }
