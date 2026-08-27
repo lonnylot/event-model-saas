@@ -553,6 +553,9 @@ export function bindEditor(root) {
     if (event.code === "Digit2") {
       holder.textContent = JSON.stringify(appendCommand(model));
     }
+    if (event.code === "Digit3") {
+      holder.textContent = JSON.stringify(appendEvent(model));
+    }
   });
 }
 

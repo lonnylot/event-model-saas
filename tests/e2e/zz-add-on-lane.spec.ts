@@ -199,3 +199,15 @@ test("After clicking `New Slice`, pressing ⌥⌘2 appends a Command whose `titl
   const json = await page.locator("#event-model-document").textContent();
   expect(JSON.parse(json ?? "{}").slices[0].commands[0].title).toBe("Command");
 });
+
+test("After clicking `New Slice`, pressing ⌥⌘3 appends an Event whose `title` is `Event Happened`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.keyboard.press("Alt+ControlOrMeta+Digit3");
+  const json = await page.locator("#event-model-document").textContent();
+  expect(JSON.parse(json ?? "{}").slices[0].events[0].title).toBe(
+    "Event Happened",
+  );
+});
