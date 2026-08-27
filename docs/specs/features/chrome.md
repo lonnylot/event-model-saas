@@ -45,6 +45,7 @@ Description is [inspect-description.md](./inspect-description.md). Last-Command 
 ## Restates
 
 ## Restates
+## Restates
 - [editor-shell.md](./editor-shell.md) — Out of scope no longer owns inspector fields for Slice and Actor Name; this slice owns those. Description is [inspect-description.md](./inspect-description.md). Slice type picker is [slice-type.md](./slice-type.md). Field name / type / optional / example / delete on Event / Read Model / Automation, Field name on the clicked Command / Event / Read Model / Automation of two, and Field type / optional / example / delete on the clicked Command of two are [inspect-fields-rest.md](./inspect-fields-rest.md). Last-Command Add Field and last-Command Field name stay [inspect-fields.md](./inspect-fields.md).
 - [blocks.md](./blocks.md) — Out of scope no longer owns Slice or Actor selection; this slice owns those. Description is [inspect-description.md](./inspect-description.md). Field name / type / optional / example / delete on Event / Read Model / Automation, Field name on the clicked Command / Event / Read Model / Automation of two, and Field type / optional / example / delete on the clicked Command of two are [inspect-fields-rest.md](./inspect-fields-rest.md). Slice type picker is [slice-type.md](./slice-type.md). Last-Command Add Field and last-Command Field name stay [inspect-fields.md](./inspect-fields.md).
 - [connections.md](./connections.md) — Out of scope no longer owns Inspector Name for Slice and Actor; this slice owns those.

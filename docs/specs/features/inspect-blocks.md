@@ -52,6 +52,7 @@ Description is [inspect-description.md](./inspect-description.md). Slice type pi
 ## Restates
 
 ## Restates
+## Restates
 - [chrome.md](./chrome.md) — Out of scope no longer owns inspecting Command / Event / Read Model / Automation; this slice owns those. Description is [inspect-description.md](./inspect-description.md). Add Field is [inspect-fields.md](./inspect-fields.md). Slice type picker is [slice-type.md](./slice-type.md). Field type / optional / example / delete are [inspect-fields-rest.md](./inspect-fields-rest.md).
 - [blocks.md](./blocks.md) — Out of scope no longer owns Inspector Name for Command, Event, Read Model, or Automation; this slice owns those. Description is [inspect-description.md](./inspect-description.md). Add Field is [inspect-fields.md](./inspect-fields.md). Slice type picker is [slice-type.md](./slice-type.md). Field type / optional / example / delete are [inspect-fields-rest.md](./inspect-fields-rest.md).
 - [editor-shell.md](./editor-shell.md) — Description is [inspect-description.md](./inspect-description.md). Slice type picker is [slice-type.md](./slice-type.md). Inspector Name for Command, Event, Read Model, and Automation is this slice. Add Field is [inspect-fields.md](./inspect-fields.md). Field type / optional / example / delete are [inspect-fields-rest.md](./inspect-fields-rest.md).
