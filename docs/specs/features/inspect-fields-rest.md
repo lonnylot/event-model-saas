@@ -20,7 +20,7 @@ Inspector can Add Field on a Command and rename it. Members cannot set Field typ
 - [x] After clicking `Add Field` on `Read Model`, filling Inspector `Field name` with `viewId` sets the last Read Model `fields[0].name` to `viewId`
 - [x] After clicking `Add Field` on `Automation`, filling Inspector `Field name` with `jobId` sets the last Automation `fields[0].name` to `jobId`
 - [x] After clicking `Add Field` on `Event Happened`, selecting `UUID` in Inspector `Field type` sets the last Event `fields[0].type` to `UUID`
-- [ ] After clicking `Add Field` on `Read Model`, selecting `UUID` in Inspector `Field type` sets the last Read Model `fields[0].type` to `UUID`
+- [x] After clicking `Add Field` on `Read Model`, selecting `UUID` in Inspector `Field type` sets the last Read Model `fields[0].type` to `UUID`
 - [ ] After clicking `Add Field` on `Automation`, selecting `UUID` in Inspector `Field type` sets the last Automation `fields[0].type` to `UUID`
 - [ ] After clicking `Add Field` on `Event Happened`, checking Inspector `Optional` sets the last Event `fields[0].optional` to `true`
 - [ ] After clicking `Add Field` on `Read Model`, checking Inspector `Optional` sets the last Read Model `fields[0].optional` to `true`

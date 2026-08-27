@@ -471,7 +471,9 @@ export function bindEditor(root) {
       }
       if (
         inspector &&
-        (selected === "command" || selected === "event") &&
+        (selected === "command" ||
+          selected === "event" ||
+          selected === "readmodel") &&
         ![...inspector.querySelectorAll("select")].some((select) =>
           select.closest("label")?.textContent?.includes("Field type"),
         )

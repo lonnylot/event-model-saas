@@ -396,3 +396,29 @@ test("After clicking `Add Field` on `Event Happened`, selecting `UUID` in Inspec
     JSON.parse(json ?? "{}").slices?.[0]?.events?.at(-1)?.fields?.[0]?.type,
   ).toBe("UUID");
 });
+
+test("After clicking `Add Field` on `Read Model`, selecting `UUID` in Inspector `Field type` sets the last Read Model `fields[0].type` to `UUID`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Read Model", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("button", { name: "Add Field", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("combobox", { name: "Field type", exact: true })
+    .selectOption("UUID");
+  const json = await page
+    .locator("#event-model-document")
+    .evaluate((el) => el.textContent);
+  expect(
+    JSON.parse(json ?? "{}").slices?.[0]?.readModels?.at(-1)?.fields?.[0]?.type,
+  ).toBe("UUID");
+});
