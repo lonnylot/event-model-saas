@@ -20,6 +20,10 @@ import { setAutomationTitle } from "./set-automation-title.js";
 import { setAutomationDescription } from "./set-automation-description.js";
 import { appendField } from "./append-field.js";
 import { setFieldName } from "./set-field-name.js";
+import { setFieldType } from "./set-field-type.js";
+import { setFieldOptional } from "./set-field-optional.js";
+import { setFieldExample } from "./set-field-example.js";
+import { deleteField } from "./delete-field.js";
 import { setEventModelTitle } from "./set-event-model-title.js";
 import { setEventModelDescription } from "./set-event-model-description.js";
 import { moveSliceLeft } from "./move-slice-left.js";
@@ -397,8 +401,31 @@ export function bindEditor(root) {
     [...(inspector?.querySelectorAll("label") ?? [])].find((label) =>
       label.textContent?.includes("Field name"),
     );
+  const fieldTypeLabel = () =>
+    [...(inspector?.querySelectorAll("label") ?? [])].find((label) =>
+      label.textContent?.includes("Field type"),
+    );
+  const optionalLabel = () =>
+    [...(inspector?.querySelectorAll("label") ?? [])].find((label) =>
+      label.textContent?.includes("Optional"),
+    );
+  const exampleLabel = () =>
+    [...(inspector?.querySelectorAll("label") ?? [])].find((label) =>
+      label.textContent?.includes("Example"),
+    );
+  const deleteFieldButton = () =>
+    [...(inspector?.querySelectorAll("button") ?? [])].find(
+      (button) => button.textContent === "Delete Field",
+    );
   const unbindAddField = () => addFieldButton()?.remove();
   const unbindFieldName = () => fieldNameLabel()?.remove();
+  const unbindFieldRow = () => {
+    unbindFieldName();
+    fieldTypeLabel()?.remove();
+    optionalLabel()?.remove();
+    exampleLabel()?.remove();
+    deleteFieldButton()?.remove();
+  };
   const unbindDescription = () =>
     descriptionInput()?.closest("label")?.remove();
   const getRenderedTimelineItems = new Set(
@@ -407,9 +434,13 @@ export function bindEditor(root) {
   const omitGetRenderedInspectChrome = (item) => {
     if (!getRenderedTimelineItems.has(item)) return false;
     unbindAddField();
-    unbindFieldName();
+    unbindFieldRow();
     unbindDescription();
     return true;
+  };
+  const unbindFieldChrome = () => {
+    unbindAddField();
+    unbindFieldRow();
   };
   const bindAddField = () => {
     if (!inspector || addFieldButton()) return;
@@ -418,14 +449,38 @@ export function bindEditor(root) {
       '<button type="button">Add Field</button>',
     );
     addFieldButton()?.addEventListener("click", () => {
-      if (selected !== "command") return;
+      if (
+        selected !== "command" &&
+        selected !== "event" &&
+        selected !== "readmodel" &&
+        selected !== "automation"
+      ) {
+        return;
+      }
       const holder = root.getElementById("event-model-document");
       if (holder) {
         holder.textContent = JSON.stringify(
-          appendField(JSON.parse(holder.textContent || "{}")),
+          appendField(
+            JSON.parse(holder.textContent || "{}"),
+            selected,
+            selected === "command"
+              ? selectedCommandItem?.dataset?.id
+              : selected === "event"
+                ? selectedEventItem?.dataset?.id
+                : selected === "readmodel"
+                  ? selectedReadModelItem?.dataset?.id
+                  : selectedAutomationItem?.dataset?.id,
+          ),
         );
       }
-      if (inspector && !fieldNameLabel()) {
+      if (
+        inspector &&
+        (selected === "command" ||
+          selected === "event" ||
+          selected === "readmodel" ||
+          selected === "automation") &&
+        !fieldNameLabel()
+      ) {
         inspector.insertAdjacentHTML(
           "beforeend",
           "<label>Field name <input /></label>",
@@ -438,6 +493,146 @@ export function bindEditor(root) {
               setFieldName(
                 JSON.parse(documentHolder.textContent || "{}"),
                 fieldNameInput.value,
+                selected === "command"
+                  ? selectedCommandItem?.dataset?.id
+                  : selected === "event"
+                    ? selectedEventItem?.dataset?.id
+                    : selected === "readmodel"
+                      ? selectedReadModelItem?.dataset?.id
+                      : selectedAutomationItem?.dataset?.id,
+                selected,
+              ),
+            );
+          }
+        });
+      }
+      if (
+        inspector &&
+        (selected === "command" ||
+          selected === "event" ||
+          selected === "readmodel" ||
+          selected === "automation") &&
+        ![...inspector.querySelectorAll("select")].some((select) =>
+          select.closest("label")?.textContent?.includes("Field type"),
+        )
+      ) {
+        inspector.insertAdjacentHTML(
+          "beforeend",
+          "<label>Field type <select><option>String</option><option>Boolean</option><option>Int</option><option>Long</option><option>Double</option><option>Decimal</option><option>Date</option><option>DateTime</option><option>UUID</option><option>Custom</option></select></label>",
+        );
+        const fieldTypeSelect = [...inspector.querySelectorAll("select")].find(
+          (select) =>
+            select.closest("label")?.textContent?.includes("Field type"),
+        );
+        fieldTypeSelect?.addEventListener("change", () => {
+          const documentHolder = root.getElementById("event-model-document");
+          if (documentHolder) {
+            documentHolder.textContent = JSON.stringify(
+              setFieldType(
+                JSON.parse(documentHolder.textContent || "{}"),
+                fieldTypeSelect.value,
+                selected,
+                selected === "command"
+                  ? selectedCommandItem?.dataset?.id
+                  : undefined,
+              ),
+            );
+          }
+        });
+      }
+      if (
+        inspector &&
+        (selected === "command" ||
+          selected === "event" ||
+          selected === "readmodel" ||
+          selected === "automation") &&
+        ![...inspector.querySelectorAll("input")].some((input) =>
+          input.closest("label")?.textContent?.includes("Optional"),
+        )
+      ) {
+        inspector.insertAdjacentHTML(
+          "beforeend",
+          '<label>Optional <input type="checkbox" /></label>',
+        );
+        const optionalInput = [...inspector.querySelectorAll("input")].find(
+          (input) => input.closest("label")?.textContent?.includes("Optional"),
+        );
+        optionalInput?.addEventListener("change", () => {
+          const documentHolder = root.getElementById("event-model-document");
+          if (documentHolder) {
+            documentHolder.textContent = JSON.stringify(
+              setFieldOptional(
+                JSON.parse(documentHolder.textContent || "{}"),
+                optionalInput.checked,
+                selected,
+                selected === "command"
+                  ? selectedCommandItem?.dataset?.id
+                  : undefined,
+              ),
+            );
+          }
+        });
+      }
+      if (
+        inspector &&
+        (selected === "command" ||
+          selected === "event" ||
+          selected === "readmodel" ||
+          selected === "automation") &&
+        ![...inspector.querySelectorAll("input")].some((input) =>
+          input.closest("label")?.textContent?.includes("Example"),
+        )
+      ) {
+        inspector.insertAdjacentHTML(
+          "beforeend",
+          "<label>Example <input /></label>",
+        );
+        const exampleInput = [...inspector.querySelectorAll("input")].find(
+          (input) => input.closest("label")?.textContent?.includes("Example"),
+        );
+        exampleInput?.addEventListener("input", () => {
+          const documentHolder = root.getElementById("event-model-document");
+          if (documentHolder) {
+            documentHolder.textContent = JSON.stringify(
+              setFieldExample(
+                JSON.parse(documentHolder.textContent || "{}"),
+                exampleInput.value,
+                selected,
+                selected === "command"
+                  ? selectedCommandItem?.dataset?.id
+                  : undefined,
+              ),
+            );
+          }
+        });
+      }
+      if (
+        inspector &&
+        (selected === "command" ||
+          selected === "event" ||
+          selected === "readmodel" ||
+          selected === "automation") &&
+        ![...inspector.querySelectorAll("button")].some(
+          (item) => item.textContent === "Delete Field",
+        )
+      ) {
+        inspector.insertAdjacentHTML(
+          "beforeend",
+          '<button type="button">Delete Field</button>',
+        );
+        const deleteButton = [...inspector.querySelectorAll("button")].find(
+          (item) => item.textContent === "Delete Field",
+        );
+        deleteButton?.addEventListener("click", () => {
+          const documentHolder = root.getElementById("event-model-document");
+          if (documentHolder) {
+            documentHolder.textContent = JSON.stringify(
+              deleteField(
+                JSON.parse(documentHolder.textContent || "{}"),
+                selected,
+                selected === "command"
+                  ? selectedCommandItem?.dataset?.id
+                  : undefined,
               ),
             );
           }
@@ -582,7 +777,7 @@ export function bindEditor(root) {
       if (omitGetRenderedInspectChrome(item)) return;
       bindAddField();
       bindDescription();
-      unbindFieldName();
+      unbindFieldRow();
       return;
     }
     if (item.dataset.kind === "readmodel") {
@@ -592,7 +787,7 @@ export function bindEditor(root) {
       if (omitGetRenderedInspectChrome(item)) return;
       bindAddField();
       bindDescription();
-      unbindFieldName();
+      unbindFieldRow();
       return;
     }
     if (item.dataset.kind === "automation") {
@@ -602,7 +797,7 @@ export function bindEditor(root) {
       if (omitGetRenderedInspectChrome(item)) return;
       bindAddField();
       bindDescription();
-      unbindFieldName();
+      unbindFieldRow();
       return;
     }
     if (item.dataset.kind !== "actor") return;
@@ -611,8 +806,7 @@ export function bindEditor(root) {
     bindName(item.getAttribute("aria-label") ?? "Actor");
     if (omitGetRenderedInspectChrome(item)) return;
     bindDescription();
-    unbindAddField();
-    unbindFieldName();
+    unbindFieldChrome();
   });
   timeline?.addEventListener("click", (event) => {
     const line = event.target?.closest?.("p");
@@ -630,8 +824,7 @@ export function bindEditor(root) {
     selectedSliceIndex = indexAttr === null ? null : Number(indexAttr);
     bindName("New Slice");
     bindDescription();
-    unbindAddField();
-    unbindFieldName();
+    unbindFieldChrome();
   });
   root.querySelector("h1")?.addEventListener("click", () => {
     selected = "model";
