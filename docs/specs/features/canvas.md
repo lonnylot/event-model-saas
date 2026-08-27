@@ -12,7 +12,7 @@ Members can add Slices and blocks and zoom, but cannot reorder Slices, drag a bl
 - [x] After clicking `New Slice` twice then `Add Actor`, dragging the Timeline `Actor` listitem onto the first Slices `New Slice` listitem sets the first Slice `actors` to one Actor and the last Slice `actors` to `[]`
 - [x] After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing Backspace sets the remaining Slice `id` to the Slice that was last
 - [x] Scrolling the Timeline region sets the Timeline `style.transform` to a value that includes `translate(`
-- [ ] After clicking `Zoom in` then scrolling the Timeline region, the Timeline `style.transform` includes `scale(1.25)` and `translate(`
+- [x] After clicking `Zoom in` then scrolling the Timeline region, the Timeline `style.transform` includes `scale(1.25)` and `translate(`
 - [ ] After clicking `New Slice`, pressing ⌘Z does not show a listitem whose accessible name is `New Slice`
 - [ ] After dragging `Command port` onto `Event Happened port`, pressing ⌘Z does not show the text `Command → Event Happened`
 

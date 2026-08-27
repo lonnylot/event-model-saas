@@ -136,39 +136,42 @@ export function onAddAutomationClick(root) {
 
 export function bindEditor(root) {
   const timeline = root.querySelector('[aria-label="Timeline"]');
+  let scale = 1;
+  let panX = 0;
+  let panY = 0;
+  const applyTimelineTransform = () => {
+    if (!(timeline instanceof HTMLElement)) return;
+    const parts = [`scale(${scale})`];
+    if (panX !== 0 || panY !== 0) {
+      parts.push(`translate(${panX}px, ${panY}px)`);
+    }
+    timeline.style.transform = parts.join(" ");
+  };
   if (timeline instanceof HTMLElement) {
     timeline.style.minHeight = "48px";
-    let panX = 0;
-    let panY = 0;
     timeline.addEventListener("wheel", (event) => {
       panX -= event.deltaX;
       panY -= event.deltaY;
-      timeline.style.transform = `translate(${panX}px, ${panY}px)`;
+      applyTimelineTransform();
     });
   }
   root.querySelectorAll("button").forEach((button) => {
     if (button.textContent === "Zoom in") {
       button.addEventListener("click", () => {
-        const timeline = root.querySelector('[aria-label="Timeline"]');
-        if (timeline instanceof HTMLElement) {
-          timeline.style.transform = "scale(1.25)";
-        }
+        scale = 1.25;
+        applyTimelineTransform();
       });
     }
     if (button.textContent === "Zoom out") {
       button.addEventListener("click", () => {
-        const timeline = root.querySelector('[aria-label="Timeline"]');
-        if (timeline instanceof HTMLElement) {
-          timeline.style.transform = "scale(0.8)";
-        }
+        scale = 0.8;
+        applyTimelineTransform();
       });
     }
     if (button.textContent === "Reset zoom") {
       button.addEventListener("click", () => {
-        const timeline = root.querySelector('[aria-label="Timeline"]');
-        if (timeline instanceof HTMLElement) {
-          timeline.style.transform = "scale(1)";
-        }
+        scale = 1;
+        applyTimelineTransform();
       });
     }
     if (button.textContent === "New Slice") {

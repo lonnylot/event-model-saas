@@ -156,3 +156,17 @@ test("Scrolling the Timeline region sets the Timeline `style.transform` to a val
     "translate(",
   );
 });
+
+test("After clicking `Zoom in` then scrolling the Timeline region, the Timeline `style.transform` includes `scale(1.25)` and `translate(`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "Zoom in", exact: true }).click();
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  await timeline.evaluate((el) => {
+    el.dispatchEvent(new WheelEvent("wheel", { deltaY: 80, bubbles: true }));
+  });
+  const transform = await timeline.evaluate((el) => el.style.transform);
+  expect(transform).toContain("scale(1.25)");
+  expect(transform).toContain("translate(");
+});
