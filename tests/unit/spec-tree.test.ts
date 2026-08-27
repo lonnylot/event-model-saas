@@ -111,4 +111,16 @@ describe("spec tree", () => {
       );
     }
   });
+
+  it("does not leave Inspect after reload of a Connection stays later", () => {
+    for (const path of [
+      "docs/specs/features/inspect-connection.md",
+      "docs/specs/features/inspect-fields-rest.md",
+    ]) {
+      const text = readFileSync(path, "utf8");
+      expect(text, path).not.toContain(
+        "Inspect after reload of a Connection stays later",
+      );
+    }
+  });
 });
