@@ -603,3 +603,42 @@ test("After clicking `New Slice` then `Add Automation` twice, clicking the first
     JSON.parse(json ?? "{}").slices?.[0]?.processors?.[0]?.description,
   ).toBe("When paid");
 });
+
+async function addTwoSlicesClickFirstSelectStateView(page: Page) {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await expect(
+    page.getByRole("listitem", { name: "New Slice", exact: true }),
+  ).toHaveCount(2);
+  await page
+    .getByRole("listitem", { name: "New Slice", exact: true })
+    .first()
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("combobox", { name: "Type", exact: true })
+    .selectOption({ label: "State View" });
+}
+
+test("After clicking `New Slice` twice, clicking the first `New Slice` listitem, selecting `State View` in Inspector `Type` sets the first Slice `sliceType` to `STATE_VIEW`", async ({
+  page,
+}) => {
+  await addTwoSlicesClickFirstSelectStateView(page);
+  const json = await page
+    .locator("#event-model-document")
+    .evaluate((el) => el.textContent);
+  expect(JSON.parse(json ?? "{}").slices?.[0]?.sliceType).toBe("STATE_VIEW");
+});
+
+test("After clicking `New Slice` twice, clicking the first `New Slice` listitem, selecting `State View` in Inspector `Type` sets the last Slice `sliceType` to `STATE_CHANGE`", async ({
+  page,
+}) => {
+  await addTwoSlicesClickFirstSelectStateView(page);
+  const json = await page
+    .locator("#event-model-document")
+    .evaluate((el) => el.textContent);
+  expect(JSON.parse(json ?? "{}").slices?.at(-1)?.sliceType).toBe(
+    "STATE_CHANGE",
+  );
+});

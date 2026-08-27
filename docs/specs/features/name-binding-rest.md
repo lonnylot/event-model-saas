@@ -4,7 +4,7 @@ Status: validated
 
 ## Problem
 
-Command Name binds by id, shows visible text, and Actor Name dirties after Save. Slice, Actor, Event, Read Model, and Automation Name still mutate the last item or skip dirty and visible text, so inspector binding is not Mac-complete.
+Command Name binds by id, shows visible text, and Actor Name dirties after Save. Slice, Actor, Event, Read Model, and Automation Name still mutate the last item or skip dirty and visible text, and Slice type still mutates the last Slice, so inspector binding is not Mac-complete.
 
 ## Acceptance criteria
 
@@ -29,14 +29,16 @@ Command Name binds by id, shows visible text, and Actor Name dirties after Save.
 - [x] After clicking `New Slice` then `Add Event` twice, clicking the first Timeline `Event Happened` listitem, filling Inspector `Description` with `It happened` sets the first Event `description` to `It happened`
 - [x] After clicking `New Slice` then `Add Read Model` twice, clicking the first Timeline `Read Model` listitem, filling Inspector `Description` with `List view` sets the first Read Model `description` to `List view`
 - [x] After clicking `New Slice` then `Add Automation` twice, clicking the first Timeline `Automation` listitem, filling Inspector `Description` with `When paid` sets the first Automation `description` to `When paid`
+- [x] After clicking `New Slice` twice, clicking the first `New Slice` listitem, selecting `State View` in Inspector `Type` sets the first Slice `sliceType` to `STATE_VIEW`
+- [x] After clicking `New Slice` twice, clicking the first `New Slice` listitem, selecting `State View` in Inspector `Type` sets the last Slice `sliceType` to `STATE_CHANGE`
 
 ## Domain terms
 
-Event Model, Slice, Actor, Command, Event, Read Model, Automation, Description, Team, Person, Version
+Event Model, Slice, Slice type, Actor, Command, Event, Read Model, Automation, Description, Team, Person, Version
 
 ## Seams
 
-- `document` module — set Slice / Actor / Event / Read Model / Automation `title` or `name` and Slice / Actor / Command / Event / Read Model / Automation `description` by id; the editor fill path calls it
+- `document` module — set Slice / Actor / Event / Read Model / Automation `title` or `name`, Slice / Actor / Command / Event / Read Model / Automation `description`, and Slice `sliceType` by id; the editor fill and select path calls it
 - Browser — Playwright against `wrangler dev` with `TEST_MAIL=1`
 
 ## Assumptions
@@ -44,19 +46,21 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Description, 
 - Command Name-by-id, Command visible text, and Actor Name dirty stay [name-binding.md](./name-binding.md).
 - Two default-named items are first vs last. Last-item titles stay the Add defaults when the first is renamed.
 - Description-by-id for Slice, Actor, Command, Event, Read Model, and Automation is this slice.
+- Slice type-by-id: two `New Slice` listitems are first vs last. Last Slice stays `STATE_CHANGE` when the first is set to `STATE_VIEW`. Type picker labels stay [slice-type.md](./slice-type.md) when that spec is present.
 - Edits are in-memory until Save.
 - The `TEST_MAIL=1` memory adapter does not count login attempts, so Playwright files can share one Worker without the production 5-per-hour cap.
 
 ## Out of scope
 
-Mac window chrome. Command Name-by-id, Command visible text, and Actor dirty stay [name-binding.md](./name-binding.md).
+Mac window chrome. Command Name-by-id, Command visible text, and Actor dirty stay [name-binding.md](./name-binding.md). Last-Slice Type picker stays [slice-type.md](./slice-type.md).
 
 ## Restates
 
 - [name-binding.md](./name-binding.md) — Out of scope no longer owns multi-item Name for Slice / Actor / Event / Read Model / Automation, visible text for those kinds, or Command / Event Name dirty; this slice owns those. Command Name-by-id, Command visible text, and Actor dirty stay that file.
+- [slice-type.md](./slice-type.md) — Out of scope no longer owns Type on the clicked Slice of two; this slice owns that. Last-Slice Type picker stays that file.
 - [chrome.md](./chrome.md) — Slice / Actor multi-item Name is this slice. Slice Name dirty stays this file.
 - [canvas.md](./canvas.md) — Slice Name binds to the clicked Slice; this slice owns that. Actor / Event / Read Model / Automation multi-item Name is this slice. Command is [name-binding.md](./name-binding.md). Slice / Actor / Command / Event / Read Model / Automation Description-by-id is this slice.
 - [inspect-blocks.md](./inspect-blocks.md) — Multi-item Name and Name dirty for Event / Read Model / Automation is this slice.
 - [inspect-description.md](./inspect-description.md) — Last-item Description stays that file. Description-by-id of two items is this slice. Slice / Actor / Event / Read Model / Automation multi-item Name is this slice.
 - [inspect-after-reload.md](./inspect-after-reload.md) — Slice / Actor / Event / Read Model / Automation multi-item Name of two in-session items is this slice. Inspect after reload stays that file.
-- [product.md](../product.md) — Name binds to the clicked Slice / Actor / Event / Read Model / Automation. Visible text follows Name. Command / Event / Read Model / Automation Name after Save shows Unsaved changes. Playwright path for this slice adds: two of each kind, rename the first; visible text Checkout / Shopper / Order Placed / Orders / Send Email; Name dirty after Save; Description-by-id on Slice / Actor / Command / Event / Read Model / Automation.
+- [product.md](../product.md) — Name binds to the clicked Slice / Actor / Event / Read Model / Automation. Visible text follows Name. Command / Event / Read Model / Automation Name after Save shows Unsaved changes. Slice type binds to the clicked Slice. Playwright path for this slice adds: two of each kind, rename the first; visible text Checkout / Shopper / Order Placed / Orders / Send Email; Name dirty after Save; Description-by-id on Slice / Actor / Command / Event / Read Model / Automation; two New Slice, click the first, Type State View, first `sliceType` is `STATE_VIEW`, last stays `STATE_CHANGE`.

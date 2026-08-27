@@ -6,8 +6,8 @@ import { appendReadModel } from "./append-read-model.js";
 import { appendAutomation } from "./append-automation.js";
 import { appendConnection } from "./append-connection.js";
 import { setSliceTitle } from "./set-slice-title.js";
-import { setSliceDescription } from "./set-slice-description.js";
 import { setSliceType } from "./set-slice-type.js";
+import { setSliceDescription } from "./set-slice-description.js";
 import { setActorName } from "./set-actor-name.js";
 import { setActorDescription } from "./set-actor-description.js";
 import { setCommandTitle } from "./set-command-title.js";
@@ -599,7 +599,11 @@ export function bindEditor(root) {
         const holder = root.getElementById("event-model-document");
         if (holder) {
           holder.textContent = JSON.stringify(
-            setSliceType(JSON.parse(holder.textContent || "{}"), sliceType),
+            setSliceType(
+              JSON.parse(holder.textContent || "{}"),
+              sliceType,
+              selectedSliceItem?.dataset?.id,
+            ),
           );
         }
       });
@@ -1142,7 +1146,11 @@ export function bindEditor(root) {
           const holder = root.getElementById("event-model-document");
           if (holder) {
             holder.textContent = JSON.stringify(
-              setSliceType(JSON.parse(holder.textContent || "{}"), sliceType),
+              setSliceType(
+              JSON.parse(holder.textContent || "{}"),
+              sliceType,
+              selectedSliceItem?.dataset?.id,
+            ),
             );
           }
         });

@@ -1,6 +1,6 @@
-export function setSliceType(model, sliceType) {
-  const slices = [...(model.slices ?? [])];
-  if (!slices.length) return model;
-  slices[slices.length - 1] = { ...slices[slices.length - 1], sliceType };
+export function setSliceType(model, sliceType, id) {
+  const slices = (model.slices ?? []).map((slice) =>
+    slice.id === id ? { ...slice, sliceType } : slice,
+  );
   return { ...model, slices };
 }
