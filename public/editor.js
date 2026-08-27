@@ -1464,6 +1464,7 @@ export function bindEditor(root) {
       if (event.shiftKey) {
         const entry = redoStack.pop();
         if (entry === "command") onAddCommandClick(root);
+        if (entry === "actor") onAddActorClick(root);
         return;
       }
       const entry = undoStack.pop();
@@ -1713,6 +1714,7 @@ export function bindEditor(root) {
           .filter((item) => item.getAttribute("aria-label") === "Actor")
           .at(-1)
           ?.remove();
+        redoStack.push("actor");
         return;
       }
       if (kind === "connection") {
