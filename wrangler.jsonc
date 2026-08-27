@@ -39,7 +39,8 @@
       "/api/*",
       "/app",
       "/app/*",
-      "/favicon.png"
+      "/favicon.png",
+      "/og.png"
     ]
   }
 }

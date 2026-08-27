@@ -94,7 +94,7 @@ export async function handleRequest(
     return jsonOk(JSON.stringify({ text: last?.text ?? "" }));
   }
 
-  if (request.method === "GET" && (path === "/favicon.png")) {
+  if (request.method === "GET" && (path === "/favicon.png" || path === "/og.png")) {
     const asset = await env.ASSETS.fetch(request);
     const headers = new Headers();
     if (path === "/favicon.png") headers.set("content-type", "image/png");
