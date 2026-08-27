@@ -92,4 +92,23 @@ describe("spec tree", () => {
       "GET heading, team-list, and Export filename after JSON `title` change stay the D1 create title until later",
     );
   });
+
+  it("Restates paths do not leave Event → Read Model Connection after reload stays later", () => {
+    const paths = [
+      "docs/specs/features/inspect-blocks.md",
+      "docs/specs/features/canvas.md",
+      "docs/specs/features/chrome.md",
+      "docs/specs/features/connections.md",
+      "docs/specs/features/editor-shell.md",
+      "docs/specs/features/model-persistence.md",
+      "docs/specs/features/connection-feedback.md",
+      "docs/specs/features/blocks.md",
+    ];
+    for (const path of paths) {
+      const text = readFileSync(path, "utf8");
+      expect(text, path).not.toContain(
+        "Event → Read Model Connection after reload stays later",
+      );
+    }
+  });
 });
