@@ -1467,6 +1467,7 @@ export function bindEditor(root) {
         if (entry === "actor") onAddActorClick(root);
         if (entry === "event") onAddEventClick(root);
         if (entry === "readmodel") onAddReadModelClick(root);
+        if (entry === "automation") onAddAutomationClick(root);
         return;
       }
       const entry = undoStack.pop();
@@ -1674,6 +1675,7 @@ export function bindEditor(root) {
           .filter((item) => item.getAttribute("aria-label") === "Automation")
           .at(-1)
           ?.remove();
+        redoStack.push("automation");
         return;
       }
       if (kind === "readmodel") {

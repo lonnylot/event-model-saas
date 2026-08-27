@@ -231,6 +231,31 @@ test("After clicking `New Slice` then `Add Automation`, pressing ⌘Z does not s
   ).toHaveCount(0);
 });
 
+test("After clicking `New Slice` then `Add Automation`, pressing ⌘Z, then pressing ⇧⌘Z, the Timeline region shows a listitem whose accessible name is `Automation`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Automation", exact: true }).click();
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Automation", exact: true }),
+  ).toBeVisible();
+  await page.keyboard.press("ControlOrMeta+z");
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Automation", exact: true }),
+  ).toHaveCount(0);
+  await page.keyboard.press("Shift+ControlOrMeta+z");
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Automation", exact: true }),
+  ).toBeVisible();
+});
+
 test("After clicking `New Slice` twice, clicking the last `New Slice` listitem, pressing ⌥⌘←, then pressing ⌘Z, the first Slice `id` is the Slice that was first before the move", async ({
   page,
 }) => {

@@ -24,6 +24,7 @@ Status: validated
 - [x] After clicking `New Slice` then `Add Actor`, pressing ⌘Z, then pressing ⇧⌘Z, the Timeline region shows a listitem whose accessible name is `Actor`
 - [x] After clicking `New Slice` then `Add Event`, pressing ⌘Z, then pressing ⇧⌘Z, the Timeline region shows a listitem whose accessible name is `Event Happened`
 - [x] After clicking `New Slice` then `Add Read Model`, pressing ⌘Z, then pressing ⇧⌘Z, the Timeline region shows a listitem whose accessible name is `Read Model`
+- [x] After clicking `New Slice` then `Add Automation`, pressing ⌘Z, then pressing ⇧⌘Z, the Timeline region shows a listitem whose accessible name is `Automation`
 
 ## Domain terms
 
@@ -40,7 +41,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person,
 - After ⌥⌘← on two Slices, the first Slice id became what was last; ⌘Z restores the order from before that key.
 - After Backspace on the first of two Slices, remaining JSON `id` is the last; ⌘Z restores the first `id`.
 - Two default-named Commands / Connections / Actors / Events / Read Models / Automations are first vs last, not by renaming. After Backspace of the first, remaining JSON `id` is the last; ⌘Z restores the first `id`.
-- After Add Command then ⌘Z, ⇧⌘Z restores the Command listitem. After Add Actor then ⌘Z, ⇧⌘Z restores the Actor listitem. After Add Event then ⌘Z, ⇧⌘Z restores the Event Happened listitem. After Add Read Model then ⌘Z, ⇧⌘Z restores the Read Model listitem.
+- After Add Command then ⌘Z, ⇧⌘Z restores the Command listitem. After Add Actor then ⌘Z, ⇧⌘Z restores the Actor listitem. After Add Event then ⌘Z, ⇧⌘Z restores the Event Happened listitem. After Add Read Model then ⌘Z, ⇧⌘Z restores the Read Model listitem. After Add Automation then ⌘Z, ⇧⌘Z restores the Automation listitem.
 - Undo is in-memory.
 - The `TEST_MAIL=1` memory adapter does not count login attempts, so Playwright files can share one Worker without the production 5-per-hour cap.
 
@@ -58,4 +59,4 @@ Extra undo toolbar. Mac window chrome. Undo New Slice, undo Connection (without 
 - [inspect-blocks.md](./inspect-blocks.md) — Undo of remaining Adds, move, delete, and redo are this slice. Undo New Slice stays [canvas.md](./canvas.md). Undo Add Command stays [canvas-rest.md](./canvas-rest.md).
 - [editor-shell.md](./editor-shell.md) — Undo of remaining Adds, move, delete, and redo are this slice. Undo New Slice stays [canvas.md](./canvas.md). Undo Add Command stays [canvas-rest.md](./canvas-rest.md).
 - [model-persistence.md](./model-persistence.md) — Undo of remaining Adds, move, delete, and redo are this slice. Undo New Slice stays [canvas.md](./canvas.md). Undo Add Command stays [canvas-rest.md](./canvas-rest.md).
-- [product.md](../product.md) — Undo of move, delete of Slice / Command / Connection / Actor / Event / Read Model / Automation, remaining Adds, and redo (⇧⌘Z). Undo Add Command stays [canvas-rest.md](./canvas-rest.md). Playwright path for this slice adds: ⌘Z after Add Actor / Event / Read Model / Automation; ⌘Z after ⌥⌘←; ⌘Z after Slice / Command / Connection / Actor / Event / Read Model / Automation Backspace; ⇧⌘Z after undo Add Command, ⇧⌘Z after undo Add Actor, ⇧⌘Z after undo Add Event, ⇧⌘Z after undo Add Read Model.
+- [product.md](../product.md) — Undo of move, delete of Slice / Command / Connection / Actor / Event / Read Model / Automation, remaining Adds, and redo (⇧⌘Z). Undo Add Command stays [canvas-rest.md](./canvas-rest.md). Playwright path for this slice adds: ⌘Z after Add Actor / Event / Read Model / Automation; ⌘Z after ⌥⌘←; ⌘Z after Slice / Command / Connection / Actor / Event / Read Model / Automation Backspace; ⇧⌘Z after undo Add Command, ⇧⌘Z after undo Add Actor, ⇧⌘Z after undo Add Event, ⇧⌘Z after undo Add Read Model, ⇧⌘Z after undo Add Automation.
