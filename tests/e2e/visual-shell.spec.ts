@@ -244,3 +244,15 @@ test("GET `/app` as a Person with two Teams shows a link whose accessible name i
     page.getByRole("link", { name: "Event Model", exact: true }),
   ).toBeVisible();
 });
+
+
+test("GET `/app/teams/{id}` as a member `body` computed `background-color` is `rgb(247, 244, 238)`", async ({
+  page,
+  request,
+}) => {
+  await consumeAdminOnTeam(page, request);
+  await expect(page.locator("body")).toHaveCSS(
+    "background-color",
+    "rgb(247, 244, 238)",
+  );
+});
