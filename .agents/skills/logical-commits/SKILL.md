@@ -7,8 +7,7 @@ description: >
   commit, when a spec-only commit lists every AC, reconstruct after
   tests-after already landed, when production
   landed as a dependency of another AC, when several review threads
-  share a commit, when leftover-hide of two controls share a commit
-  (unbindAddField vs unbindFieldName),
+  share a commit (leftover-hide unbindAddField vs unbindFieldName),
   when a commit subject names two threads with "and",
   when folding tests-after into a sibling production commit,
   when adding a tests-only commit on top after review,
@@ -29,7 +28,7 @@ description: >
 
 # Logical commits
 
-One commit is one finished thought: one spec criterion (or one review/CI fix) with its spec, tests, and code together. Independently revertible production hunks are separate commits even on one screen. Leftover-hide of two controls (`unbindAddField` vs `unbindFieldName` on Actor) revert independently — two commits, even on one Command-then-Actor path. A spec-only commit that lists every AC is not a slice.
+One commit is one finished thought: one spec criterion (or one review/CI fix) with its spec, tests, and code together. Independently revertible production hunks are separate commits even on one screen. A spec-only commit that lists every AC is not a slice.
 
 ## When to commit
 
@@ -46,7 +45,6 @@ One commit is one finished thought: one spec criterion (or one review/CI fix) wi
 - One screen commit that lands multiple independent ACs
 - Grouping by screen
 - Several review threads in one tree
-- Leftover-hide of two controls (`unbindAddField` vs `unbindFieldName`) in one tree
 - A spec-only commit that lists every AC
 - Secrets, `.env`, or credentials
 - On the default branch for feature work — branch first (`github-ci-loop`)
@@ -73,8 +71,7 @@ When a later checkbox's proof stays green with no new production (GET already hy
 | "Checkpoint before I forget" | Unfinished slices are not logical. Finish GREEN, then commit. |
 | "Spec in a follow-up commit" | Same-commit spec update is the iron law. |
 | "One screen is one commit" | Grouping by screen is the miss. Split independently revertible ACs. |
-| "One leftover-hide commit on Actor" | `unbindAddField` vs `unbindFieldName` are two threads. Split. |
-| "One drag is one commit" | fromKind vs toKind are two checkboxes. Land EVENT toKind only, then READMODEL. |
+| "One drag is one commit" | fromKind vs toKind are two checkboxes. Land EVENT toKind only, then READMODEL. Leftover-hide `unbindAddField` vs `unbindFieldName` is the same split. |
 | "Reload is a second checkbox so a second commit" | GET already hydrates that field. Fold the proof or unsplit the bullet. |
 | "Spec first, then one feat" | Spec hunk lands with the first production that implements it. |
 | "I'll fold tests-after in a follow-up on top of HEAD" | Reconstruct into the production commit. A follow-up cannot un-do tests-after. |
@@ -82,4 +79,4 @@ When a later checkbox's proof stays green with no new production (GET already hy
 
 ## Red flags
 
-Empty or "WIP" messages on a PR. Default-branch commits for a feature. Code committed without the spec hunk that describes it. Dedicated tests in a follow-up commit after the production that needed them. A follow-up on top of HEAD to "fold" tests-after. Production that landed early as a dependency, then a later test-only commit for that criterion. One commit that ships several independent ACs together. One commit that batches several review-thread fixes. Leftover-hide of two controls (`unbindAddField` vs `unbindFieldName`) in one commit. A commit subject that names two new ACs or two review threads with "and". Spec-only then one feat. Grouped by screen. fromKind and toKind in one commit. A toKind commit that already copies toKind for every target, so the next toKind AC is test-only. A tests-only reload commit when GET already hydrates that field. A tests-only commit added after review is still tests-after. A tests-only wait-after-open helper on HEAD is tests-after. Folding that helper onto HEAD does not reconstruct it. A follow-up that rewrites tests onto the click path is still a follow-up. Folding several tests-after into one production commit is still grouping. Folding a no-unique-production proof into the commit that wrote the field is not grouping.
+Empty or "WIP" messages on a PR. Default-branch commits for a feature. Code committed without the spec hunk that describes it. Dedicated tests in a follow-up commit after the production that needed them. A follow-up on top of HEAD to "fold" tests-after. Production that landed early as a dependency, then a later test-only commit for that criterion. One commit that ships several independent ACs together. One commit that batches several review-thread fixes (leftover-hide `unbindAddField` vs `unbindFieldName`). A commit subject that names two new ACs or two review threads with "and". Spec-only then one feat. Grouped by screen. fromKind and toKind in one commit. A toKind commit that already copies toKind for every target, so the next toKind AC is test-only. A tests-only reload commit when GET already hydrates that field. A tests-only commit added after review is still tests-after. A tests-only wait-after-open helper on HEAD is tests-after. Folding that helper onto HEAD does not reconstruct it. A follow-up that rewrites tests onto the click path is still a follow-up. Folding several tests-after into one production commit is still grouping. Folding a no-unique-production proof into the commit that wrote the field is not grouping.
