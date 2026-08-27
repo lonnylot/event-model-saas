@@ -419,6 +419,18 @@ export function bindEditor(root) {
     );
   const unbindAddField = () => addFieldButton()?.remove();
   const unbindFieldName = () => fieldNameLabel()?.remove();
+  const unbindDescription = () =>
+    descriptionInput()?.closest("label")?.remove();
+  const getRenderedTimelineItems = new Set(
+    timelineList ? [...timelineList.querySelectorAll("li")] : [],
+  );
+  const omitGetRenderedInspectChrome = (item) => {
+    if (!getRenderedTimelineItems.has(item)) return false;
+    unbindAddField();
+    unbindFieldName();
+    unbindDescription();
+    return true;
+  };
   const unbindFieldChrome = () => {
     unbindAddField();
     unbindFieldName();
