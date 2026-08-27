@@ -267,3 +267,16 @@ test("GET `/app/teams/{id}` as a member shows a link whose accessible name is `E
     page.getByRole("link", { name: "Event Model", exact: true }),
   ).toBeVisible();
 });
+
+
+test("GET `/app/admin/teams` as site admin `body` computed `background-color` is `rgb(247, 244, 238)`", async ({
+  page,
+  request,
+}) => {
+  await consumeAdminOnTeam(page, request);
+  await page.goto("/app/admin/teams");
+  await expect(page.locator("body")).toHaveCSS(
+    "background-color",
+    "rgb(247, 244, 238)",
+  );
+});
