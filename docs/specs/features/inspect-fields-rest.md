@@ -25,7 +25,7 @@ Inspector can Add Field on a Command and rename it. Members cannot set Field typ
 - [x] After clicking `Add Field` on `Event Happened`, checking Inspector `Optional` sets the last Event `fields[0].optional` to `true`
 - [x] After clicking `Add Field` on `Read Model`, checking Inspector `Optional` sets the last Read Model `fields[0].optional` to `true`
 - [x] After clicking `Add Field` on `Automation`, checking Inspector `Optional` sets the last Automation `fields[0].optional` to `true`
-- [ ] After clicking `Add Field` on `Event Happened`, filling Inspector `Example` with `abc` sets the last Event `fields[0].example` to `abc`
+- [x] After clicking `Add Field` on `Event Happened`, filling Inspector `Example` with `abc` sets the last Event `fields[0].example` to `abc`
 - [ ] After clicking `Add Field` on `Read Model`, filling Inspector `Example` with `abc` sets the last Read Model `fields[0].example` to `abc`
 - [ ] After clicking `Add Field` on `Automation`, filling Inspector `Example` with `abc` sets the last Automation `fields[0].example` to `abc`
 - [ ] After clicking `Add Field` on `Event Happened`, clicking `Delete Field` sets the last Event `fields` to `[]`

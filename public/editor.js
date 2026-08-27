@@ -530,9 +530,9 @@ export function bindEditor(root) {
           }
         });
       }
-      if (selected !== "command") return;
       if (
         inspector &&
+        (selected === "command" || selected === "event") &&
         ![...inspector.querySelectorAll("input")].some((input) =>
           input.closest("label")?.textContent?.includes("Example"),
         )
@@ -551,11 +551,13 @@ export function bindEditor(root) {
               setFieldExample(
                 JSON.parse(documentHolder.textContent || "{}"),
                 exampleInput.value,
+                selected,
               ),
             );
           }
         });
       }
+      if (selected !== "command") return;
       if (
         inspector &&
         ![...inspector.querySelectorAll("button")].some(
