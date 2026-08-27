@@ -15,8 +15,8 @@ Members can inspect Name on a Command, Event, Read Model, or Automation, but Ins
 - [x] After clicking `New Slice` then `Add Actor` on that page, clicking the Timeline `Actor` listitem does not show a button whose accessible name is `Add Field`
 - [x] Clicking `Add Field` after selecting `Command` appends a Field whose `name` is `newField` on the last Command
 - [x] Clicking `Add Field` after selecting `Command` appends a Field whose `type` is `String` on the last Command
-- [ ] Filling the Inspector `Field name` textbox with `orderId` after clicking `Add Field` on `Command` sets the last Command `fields[0].name` to `orderId`
-- [ ] After a member creates a model, opens it, clicks `New Slice`, clicks `Add Command`, clicks the Timeline `Command` listitem, clicks `Add Field`, fills `Field name` with `orderId`, and Saves, a reload of that page sets the last Command `fields[0].name` to `orderId`
+- [x] Filling the Inspector `Field name` textbox with `orderId` after clicking `Add Field` on `Command` sets the last Command `fields[0].name` to `orderId`
+- [x] After a member creates a model, opens it, clicks `New Slice`, clicks `Add Command`, clicks the Timeline `Command` listitem, clicks `Add Field`, fills `Field name` with `orderId`, and Saves, a reload of that page sets the last Command `fields[0].name` to `orderId`
 
 ## Domain terms
 

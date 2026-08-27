@@ -18,6 +18,7 @@ import { setReadModelDescription } from "./set-read-model-description.js";
 import { setAutomationTitle } from "./set-automation-title.js";
 import { setAutomationDescription } from "./set-automation-description.js";
 import { appendField } from "./append-field.js";
+import { setFieldName } from "./set-field-name.js";
 import { moveSliceLeft } from "./move-slice-left.js";
 import { moveActorToSlice } from "./move-actor-to-slice.js";
 import { deleteSlice } from "./delete-slice.js";
@@ -374,6 +375,31 @@ export function bindEditor(root) {
         holder.textContent = JSON.stringify(
           appendField(JSON.parse(holder.textContent || "{}")),
         );
+      }
+      if (
+        inspector &&
+        ![...inspector.querySelectorAll("input")].some((input) =>
+          input.closest("label")?.textContent?.includes("Field name"),
+        )
+      ) {
+        inspector.insertAdjacentHTML(
+          "beforeend",
+          "<label>Field name <input /></label>",
+        );
+        const fieldNameInput = [...inspector.querySelectorAll("input")].find(
+          (input) => input.closest("label")?.textContent?.includes("Field name"),
+        );
+        fieldNameInput?.addEventListener("input", () => {
+          const documentHolder = root.getElementById("event-model-document");
+          if (documentHolder) {
+            documentHolder.textContent = JSON.stringify(
+              setFieldName(
+                JSON.parse(documentHolder.textContent || "{}"),
+                fieldNameInput.value,
+              ),
+            );
+          }
+        });
       }
     });
   };
