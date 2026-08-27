@@ -1475,6 +1475,23 @@ export function bindEditor(root) {
           holder.textContent = JSON.stringify(next);
           if (next !== model) undoStack.push({ kind: "move", sliceId });
         }
+        if (entry?.kind === "deleteSlice") {
+          const sliceId = entry.slice?.id;
+          const model = JSON.parse(holder.textContent || "{}");
+          const index = (model.slices ?? []).findIndex(
+            (slice) => slice.id === sliceId,
+          );
+          const slice = index >= 0 ? model.slices[index] : undefined;
+          holder.textContent = JSON.stringify(deleteSlice(model, sliceId));
+          const list = root.querySelector("ul");
+          const item = [...(list?.children ?? [])].find(
+            (node) => node.getAttribute?.("data-id") === sliceId,
+          );
+          item?.remove();
+          if (slice && index >= 0) {
+            undoStack.push({ kind: "deleteSlice", slice, index });
+          }
+        }
         return;
       }
       const entry = undoStack.pop();
@@ -1659,6 +1676,7 @@ export function bindEditor(root) {
           if (before) list.insertBefore(item, before);
           else list.append(item);
         }
+        redoStack.push(entry);
         return;
       }
       if (kind === "move") {

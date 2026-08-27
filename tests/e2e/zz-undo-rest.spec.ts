@@ -338,6 +338,49 @@ test("After clicking `New Slice` twice, clicking the first `New Slice` listitem 
   expect(afterUndo.slices[0].id).toBe(firstId);
 });
 
+test("After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing Backspace, pressing ⌘Z, then pressing ⇧⌘Z, the remaining Slice `id` is the Slice that was last", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await clickNewSlice(page);
+  const before = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  const lastId = before.slices[1].id;
+  await page
+    .getByRole("listitem", { name: "New Slice", exact: true })
+    .first()
+    .click();
+  await page.getByRole("region", { name: "Timeline", exact: true }).click();
+  await page.keyboard.press("Backspace");
+  await page.keyboard.press("ControlOrMeta+z");
+  await page.keyboard.press("Shift+ControlOrMeta+z");
+  const afterRedo = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  expect(afterRedo.slices).toHaveLength(1);
+  expect(afterRedo.slices[0].id).toBe(lastId);
+});
+
+test("After clicking `New Slice` then `Add Command`, pressing ⌘Z does not show a listitem whose accessible name is `Command`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Command", exact: true }),
+  ).toBeVisible();
+  await page.keyboard.press("ControlOrMeta+z");
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Command", exact: true }),
+  ).toHaveCount(0);
+});
 test("After clicking `New Slice` then `Add Command`, pressing ⌘Z, then pressing ⇧⌘Z, the Timeline region shows a listitem whose accessible name is `Command`", async ({
   page,
 }) => {
