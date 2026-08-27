@@ -33,6 +33,7 @@ import { moveActorToSlice } from "./move-actor-to-slice.js";
 import { moveCommandToSlice } from "./move-command-to-slice.js";
 import { moveEventToSlice } from "./move-event-to-slice.js";
 import { moveReadModelToSlice } from "./move-read-model-to-slice.js";
+import { moveAutomationToSlice } from "./move-automation-to-slice.js";
 import { deleteSlice } from "./delete-slice.js";
 import { deleteCommand } from "./delete-command.js";
 import { deleteConnection } from "./delete-connection.js";
@@ -1557,6 +1558,7 @@ export function bindEditor(root) {
   let dragCommandItem = null;
   let dragEventItem = null;
   let dragReadModelItem = null;
+  let dragAutomationItem = null;
   root.addEventListener("mousedown", (event) => {
     const actorItem = event.target?.closest?.("li");
     if (actorItem && slicesList?.contains(actorItem)) {
@@ -1594,6 +1596,14 @@ export function bindEditor(root) {
       !event.target?.closest?.("button[data-id]")
     ) {
       dragReadModelItem = actorItem;
+    }
+    if (
+      actorItem &&
+      timelineList?.contains(actorItem) &&
+      actorItem.dataset.kind === "automation" &&
+      !event.target?.closest?.("button[data-id]")
+    ) {
+      dragAutomationItem = actorItem;
     }
     const port = event.target?.closest?.("button[data-id]");
     if (port) {
@@ -1738,6 +1748,29 @@ export function bindEditor(root) {
         return;
       }
       dragReadModelItem = null;
+    }
+    if (dragAutomationItem) {
+      const sliceItem = event.target?.closest?.("li");
+      const holder = root.getElementById("event-model-document");
+      if (
+        holder &&
+        sliceItem &&
+        slicesList?.contains(sliceItem) &&
+        dragAutomationItem.dataset.id &&
+        sliceItem.dataset.id
+      ) {
+        holder.textContent = JSON.stringify(
+          moveAutomationToSlice(
+            JSON.parse(holder.textContent || "{}"),
+            dragAutomationItem.dataset.id,
+            sliceItem.dataset.id,
+          ),
+        );
+        dragAutomationItem = null;
+        sourcePort = null;
+        return;
+      }
+      dragAutomationItem = null;
     }
     const target = event.target?.closest?.("button[data-id]");
     if (sourcePort && target && sourcePort === target) {

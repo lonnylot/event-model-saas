@@ -141,3 +141,26 @@ test("After clicking `New Slice` twice then `Add Read Model`, dragging the Timel
   ]);
   expect(after.slices.at(-1).readModels).toEqual([]);
 });
+
+test("After clicking `New Slice` twice then `Add Automation`, dragging the Timeline `Automation` listitem onto the first Slices `New Slice` listitem sets the first Slice `processors` to one Automation and the last Slice `processors` to `[]`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Automation", exact: true }).click();
+  const automation = page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Automation", exact: true });
+  await expect(automation).toBeVisible();
+  await automation.dragTo(
+    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
+  );
+  const after = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  expect(after.slices[0].processors).toEqual([
+    expect.objectContaining({ title: "Automation" }),
+  ]);
+  expect(after.slices.at(-1).processors).toEqual([]);
+});
