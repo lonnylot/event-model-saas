@@ -256,3 +256,14 @@ test("GET `/app/teams/{id}` as a member `body` computed `background-color` is `r
     "rgb(247, 244, 238)",
   );
 });
+
+
+test("GET `/app/teams/{id}` as a member shows a link whose accessible name is `Event Model`", async ({
+  page,
+  request,
+}) => {
+  await consumeAdminOnTeam(page, request);
+  await expect(
+    page.getByRole("link", { name: "Event Model", exact: true }),
+  ).toBeVisible();
+});
