@@ -46,5 +46,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Name binding | [features/name-binding.md](./features/name-binding.md) | released |
 | Name binding rest | [features/name-binding-rest.md](./features/name-binding-rest.md) | released |
 | Drag rest | [features/drag-rest.md](./features/drag-rest.md) | released |
+| Undo rest | [features/undo-rest.md](./features/undo-rest.md) | validated |
 
 Status: `draft` → `validated` → `released`.

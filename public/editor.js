@@ -43,6 +43,7 @@ import { deleteReadModel } from "./delete-read-model.js";
 import { deleteAutomation } from "./delete-automation.js";
 import { undoConnection } from "./undo-connection.js";
 import { undoAddCommand } from "./undo-add-command.js";
+import { undoActor } from "./undo-actor.js";
 
 const undoStack = [];
 
@@ -128,6 +129,7 @@ export function onAddActorClick(root) {
     if (actor) item.setAttribute("data-id", actor.id);
     list.append(item);
   }
+  undoStack.push("actor");
 }
 
 export function onAddCommandClick(root) {
@@ -1428,6 +1430,20 @@ export function bindEditor(root) {
       const holder = root.getElementById("event-model-document");
       if (!holder) return;
       const kind = undoStack.pop();
+      if (kind === "actor") {
+        holder.textContent = JSON.stringify(
+          undoActor(JSON.parse(holder.textContent || "{}")),
+        );
+        const items = [
+          ...(root.querySelector('[aria-label="Timeline"] ul')?.querySelectorAll("li") ??
+            []),
+        ];
+        items
+          .filter((item) => item.getAttribute("aria-label") === "Actor")
+          .at(-1)
+          ?.remove();
+        return;
+      }
       if (kind === "connection") {
         holder.textContent = JSON.stringify(
           undoConnection(JSON.parse(holder.textContent || "{}")),
