@@ -83,7 +83,7 @@ export function modelPageHtml(
       ),
       ...(slice.readModels ?? []).map(
         (readModel) =>
-          `<li aria-label="${readModel.title}">${readModel.title}</li>`,
+          `<li aria-label="${readModel.title}" data-kind="readmodel">${readModel.title}</li>`,
       ),
     ])
     .join("");

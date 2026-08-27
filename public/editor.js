@@ -521,7 +521,7 @@ export function bindEditor(root) {
     if (item.dataset.kind === "readmodel") {
       selected = "readmodel";
       selectedReadModelItem = item;
-      bindName("Read Model");
+      bindName(item.getAttribute("aria-label") ?? "Read Model");
       bindAddField();
       bindDescription();
       unbindFieldName();
