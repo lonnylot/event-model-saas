@@ -209,6 +209,17 @@ test("After clicking `New Slice` then `Add Event` twice, clicking the first Time
   );
 });
 
+test("Filling the Inspector `Name` textbox with `Order Placed` after selecting `Event Happened` sets the Timeline `Order Placed` listitem visible text to `Order Placed`", async ({
+  page,
+}) => {
+  await addTwoEventsClickFirstFillOrderPlaced(page);
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Order Placed", exact: true }),
+  ).toHaveText(/^Order Placed/);
+});
+
 async function addTwoReadModelsClickFirstFillOrders(page: Page) {
   await openUntitledModel(page);
   await page.getByRole("button", { name: "New Slice", exact: true }).click();

@@ -1080,6 +1080,10 @@ export function bindEditor(root) {
           selectedCommandItem.setAttribute("aria-label", input.value);
         }
         if (selected === "event" && selectedEventItem) {
+          const text = [...selectedEventItem.childNodes].find(
+            (node) => node.nodeType === 3,
+          );
+          if (text) text.textContent = input.value;
           selectedEventItem.setAttribute("aria-label", input.value);
         }
         if (selected === "readmodel" && selectedReadModelItem) {
