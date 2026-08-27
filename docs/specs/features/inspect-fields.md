@@ -11,7 +11,7 @@ Members can inspect Name on a Command, Event, Read Model, or Automation, but Ins
 - [x] After clicking `New Slice` then `Add Command` on that page, clicking the Timeline `Command` listitem shows a button whose accessible name is `Add Field` in the Inspector region
 - [x] After clicking `New Slice` then `Add Event` on that page, clicking the Timeline `Event Happened` listitem shows a button whose accessible name is `Add Field` in the Inspector region
 - [x] After clicking `New Slice` then `Add Read Model` on that page, clicking the Timeline `Read Model` listitem shows a button whose accessible name is `Add Field` in the Inspector region
-- [ ] After clicking `New Slice` then `Add Automation` on that page, clicking the Timeline `Automation` listitem shows a button whose accessible name is `Add Field` in the Inspector region
+- [x] After clicking `New Slice` then `Add Automation` on that page, clicking the Timeline `Automation` listitem shows a button whose accessible name is `Add Field` in the Inspector region
 - [x] After clicking `New Slice` then `Add Actor` on that page, clicking the Timeline `Actor` listitem does not show a button whose accessible name is `Add Field`
 - [ ] Clicking `Add Field` after selecting `Command` appends a Field whose `name` is `newField` on the last Command
 - [ ] Clicking `Add Field` after selecting `Command` appends a Field whose `type` is `String` on the last Command

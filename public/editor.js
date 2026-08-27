@@ -468,6 +468,7 @@ export function bindEditor(root) {
       selected = "automation";
       selectedAutomationItem = item;
       bindName("Automation");
+      bindAddField();
       bindDescription();
       return;
     }
