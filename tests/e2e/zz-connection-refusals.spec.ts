@@ -140,3 +140,21 @@ test("After clicking `New Slice` then `Add Event` twice, dragging from the first
   const json = await page.locator("#event-model-document").textContent();
   expect(JSON.parse(json ?? "{}").connections ?? []).toEqual([]);
 });
+
+test("After clicking `New Slice` then `Add Event` twice, dragging from the first `Event Happened port` onto the last `Event Happened port` shows the text `An event can't feed an event.` in the first Event Happened listitem", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  const ports = page.getByRole("button", {
+    name: "Event Happened port",
+    exact: true,
+  });
+  await expect(ports).toHaveCount(2);
+  await ports.first().dragTo(ports.last());
+  await expect(
+    page.getByRole("listitem", { name: "Event Happened", exact: true }).first(),
+  ).toContainText("An event can't feed an event.");
+});

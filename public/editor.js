@@ -824,6 +824,21 @@ export function bindEditor(root) {
           );
         }
       }
+      if (
+        sourcePort.dataset.kind === "EVENT" &&
+        target.dataset.kind === "EVENT"
+      ) {
+        const eventItem = sourcePort.closest("li");
+        if (
+          eventItem &&
+          !eventItem.textContent?.includes("An event can't feed an event.")
+        ) {
+          eventItem.insertAdjacentHTML(
+            "beforeend",
+            "<p>An event can't feed an event.</p>",
+          );
+        }
+      }
     }
     for (const highlighted of root.querySelectorAll("[aria-current]")) {
       highlighted.removeAttribute("aria-current");
