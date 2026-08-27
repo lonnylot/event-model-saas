@@ -40,6 +40,7 @@
     "public/set-automation-title.js",
     "public/set-automation-description.js",
     "public/set-field-name.js",
+    "public/set-field-type.js",
     "public/set-event-model-title.js",
     "public/set-event-model-description.js"
   ]

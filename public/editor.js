@@ -20,6 +20,7 @@ import { setAutomationTitle } from "./set-automation-title.js";
 import { setAutomationDescription } from "./set-automation-description.js";
 import { appendField } from "./append-field.js";
 import { setFieldName } from "./set-field-name.js";
+import { setFieldType } from "./set-field-type.js";
 import { setEventModelTitle } from "./set-event-model-title.js";
 import { setEventModelDescription } from "./set-event-model-description.js";
 import { moveSliceLeft } from "./move-slice-left.js";
@@ -438,6 +439,32 @@ export function bindEditor(root) {
               setFieldName(
                 JSON.parse(documentHolder.textContent || "{}"),
                 fieldNameInput.value,
+              ),
+            );
+          }
+        });
+      }
+      if (
+        inspector &&
+        ![...inspector.querySelectorAll("select")].some((select) =>
+          select.closest("label")?.textContent?.includes("Field type"),
+        )
+      ) {
+        inspector.insertAdjacentHTML(
+          "beforeend",
+          "<label>Field type <select><option>String</option><option>Boolean</option><option>Int</option><option>Long</option><option>Double</option><option>Decimal</option><option>Date</option><option>DateTime</option><option>UUID</option><option>Custom</option></select></label>",
+        );
+        const fieldTypeSelect = [...inspector.querySelectorAll("select")].find(
+          (select) =>
+            select.closest("label")?.textContent?.includes("Field type"),
+        );
+        fieldTypeSelect?.addEventListener("change", () => {
+          const documentHolder = root.getElementById("event-model-document");
+          if (documentHolder) {
+            documentHolder.textContent = JSON.stringify(
+              setFieldType(
+                JSON.parse(documentHolder.textContent || "{}"),
+                fieldTypeSelect.value,
               ),
             );
           }

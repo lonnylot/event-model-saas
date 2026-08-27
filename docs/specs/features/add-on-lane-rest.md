@@ -37,7 +37,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person,
 
 ## Out of scope
 
-Creating a Slice from Add when there are none: Mac disables Add when there are no Slices; [blocks.md](./blocks.md) already does not create a Slice from toolbar Add. Toolbar Add stays [blocks.md](./blocks.md). `Add Command on lane` and selected-Slice ⌥⌘2 stay [add-on-lane.md](./add-on-lane.md). Connection refusals, Inspector Description is [inspect-description.md](./inspect-description.md). Slice type picker is [slice-type.md](./slice-type.md). Mac window chrome. Add Field and Field name on Command are [inspect-fields.md](./inspect-fields.md).
+Creating a Slice from Add when there are none: Mac disables Add when there are no Slices; [blocks.md](./blocks.md) already does not create a Slice from toolbar Add. Toolbar Add stays [blocks.md](./blocks.md). `Add Command on lane` and selected-Slice ⌥⌘2 stay [add-on-lane.md](./add-on-lane.md). Connection refusals, Inspector Description is [inspect-description.md](./inspect-description.md). Slice type picker is [slice-type.md](./slice-type.md). Mac window chrome. Add Field and Field name on Command are [inspect-fields.md](./inspect-fields.md). Field type / optional / example / delete and Add Field that appends on Event / Read Model / Automation are [inspect-fields-rest.md](./inspect-fields-rest.md).
 
 ## Restates
 
