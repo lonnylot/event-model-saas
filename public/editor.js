@@ -265,6 +265,12 @@ export function bindEditor(root) {
           "<p>From Event Happened</p>",
         );
       }
+      if (
+        inspectorEl &&
+        !inspectorEl.textContent?.includes("To Read Model")
+      ) {
+        inspectorEl.insertAdjacentHTML("beforeend", "<p>To Read Model</p>");
+      }
     });
     timeline.addEventListener("click", (event) => {
       const connection = event.target?.closest?.("[data-kind=connection]");

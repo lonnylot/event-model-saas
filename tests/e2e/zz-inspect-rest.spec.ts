@@ -30,7 +30,7 @@ const test = base.extend<object, { adminState: string }>({
   adminState: [
     async ({ browser }, use, workerInfo) => {
       const page = await browser.newPage({
-        baseURL: "http://127.0.0.1:8787",
+        baseURL: String(workerInfo.project.use.baseURL ?? "http://127.0.0.1:8787"),
       });
       const request = page.context().request;
       await consumeAdmin(page, request);
@@ -132,3 +132,25 @@ test("After dragging from `Event Happened port` onto `Read Model port`, clicking
     inspector.getByText("From Event Happened", { exact: true }),
   ).toBeVisible();
 });
+
+test("After dragging from `Event Happened port` onto `Read Model port`, clicking the Timeline text `Event Happened → Read Model` shows the text `To Read Model` in the Inspector region", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await dragEventToReadModel(page);
+  const inspector = page.getByRole("region", {
+    name: "Inspector",
+    exact: true,
+  });
+  await expect(
+    inspector.getByText("To Read Model", { exact: true }),
+  ).toHaveCount(0);
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByText("Event Happened → Read Model", { exact: true })
+    .click();
+  await expect(
+    inspector.getByText("To Read Model", { exact: true }),
+  ).toBeVisible();
+});
+

@@ -9,7 +9,7 @@ Inspector inspects Command → Event and Name after reload. Members cannot inspe
 ## Acceptance criteria
 
 - [x] After dragging from `Event Happened port` onto `Read Model port`, clicking the Timeline text `Event Happened → Read Model` shows the text `From Event Happened` in the Inspector region
-- [ ] After dragging from `Event Happened port` onto `Read Model port`, clicking the Timeline text `Event Happened → Read Model` shows the text `To Read Model` in the Inspector region
+- [x] After dragging from `Event Happened port` onto `Read Model port`, clicking the Timeline text `Event Happened → Read Model` shows the text `To Read Model` in the Inspector region
 - [ ] After a member creates a model, opens it, clicks `New Slice`, clicks `Add Command`, clicks the Timeline `Command` listitem, fills `Description` with `Customer submits cart`, and Saves, a reload of that page, clicking the Timeline `Command` listitem shows the Inspector `Description` textbox with the value `Customer submits cart`
 - [ ] After a member creates a model, opens it, clicks `New Slice`, clicks the `New Slice` listitem, selects `State View` in `Type`, and Saves, a reload of that page, clicking the `New Slice` listitem shows Inspector `Type` with the value `State View`
 - [ ] After a member creates a model, opens it, clicks `New Slice`, clicks `Add Command`, clicks the Timeline `Command` listitem, clicks `Add Field`, fills `Field name` with `orderId`, and Saves, a reload of that page, clicking the Timeline `Command` listitem shows Inspector `Field name` with the value `orderId`
