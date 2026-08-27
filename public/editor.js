@@ -153,11 +153,21 @@ export function bindEditor(root) {
   };
   if (timeline instanceof HTMLElement) {
     timeline.style.minHeight = "48px";
-    timeline.addEventListener("wheel", (event) => {
-      panX -= event.deltaX;
-      panY -= event.deltaY;
-      applyTimelineTransform();
-    });
+    timeline.addEventListener(
+      "wheel",
+      (event) => {
+        if (event.ctrlKey || event.metaKey) {
+          event.preventDefault();
+          scale *= Math.exp(-event.deltaY * 0.01);
+          applyTimelineTransform();
+          return;
+        }
+        panX -= event.deltaX;
+        panY -= event.deltaY;
+        applyTimelineTransform();
+      },
+      { passive: false },
+    );
   }
   root.querySelectorAll("button").forEach((button) => {
     if (button.textContent === "Zoom in") {
