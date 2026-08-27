@@ -43,4 +43,9 @@ Description, Fields, inspecting a Connection, in-session visible listitem text o
 - [chrome.md](./chrome.md) — Out of scope no longer owns inspect after reload; this slice owns those. Multi-item Name binding stays later.
 - [blocks.md](./blocks.md) — Event / Read Model / Automation reload-lists are this slice. Actor reload-list stays [chrome.md](./chrome.md).
 - [canvas.md](./canvas.md) — Out of scope no longer owns inspect after reload; this slice owns those.
+- [add-on-lane.md](./add-on-lane.md) — Out of scope no longer owns inspect after reload; this slice owns those.
+- [connection-feedback.md](./connection-feedback.md) — Out of scope no longer owns inspect after reload; this slice owns those.
+- [inspect-description.md](./inspect-description.md) — Out of scope no longer owns Name inspect after reload or Event / Read Model / Automation reload-lists; this slice owns those. GET-rendered inspect of Description stays later.
+- [inspect-fields.md](./inspect-fields.md) — Out of scope no longer owns Name inspect after reload; this slice owns those. GET-rendered inspect of Fields stays later.
+- [slice-type.md](./slice-type.md) — Out of scope no longer owns inspect after reload; this slice owns those.
 - [product.md](../product.md) — After Save and reload, clicking the GET-rendered Command, Event, Read Model, Automation, or Actor opens Inspector Name. Playwright path for this slice adds: Save Place Order, reload, click Place Order, Name is Place Order; same for Shopper, Order Placed, Orders, Send Email; Event / Read Model / Automation reload-lists.

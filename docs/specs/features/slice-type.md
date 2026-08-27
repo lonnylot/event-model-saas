@@ -35,7 +35,7 @@ Event Model, Slice, Slice type, Automation, Team, Person, Version
 
 ## Out of scope
 
-Description is [inspect-description.md](./inspect-description.md). Add Field and Field name on Command are [inspect-fields.md](./inspect-fields.md). Inspecting a Connection, inspect after reload, Slice type help copy, creating a Slice as State View from New Slice, multi-item Slice type binding, model-level Title, dashed Add on a lane, keyboard shortcuts, Mac window chrome. Name stays [chrome.md](./chrome.md).
+Description is [inspect-description.md](./inspect-description.md). Add Field and Field name on Command are [inspect-fields.md](./inspect-fields.md). Inspecting a Connection, Slice type help copy, creating a Slice as State View from New Slice, multi-item Slice type binding, model-level Title, dashed Add on a lane, keyboard shortcuts, Mac window chrome. Name stays [chrome.md](./chrome.md). Inspect after reload is [inspect-after-reload.md](./inspect-after-reload.md).
 
 ## Restates
 
