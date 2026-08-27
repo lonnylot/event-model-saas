@@ -136,3 +136,14 @@ test('GET `/` has a `meta[property="og:description"]` whose `content` is `Access
     page.locator('meta[property="og:description"]'),
   ).toHaveAttribute("content", "Access is by invite.");
 });
+
+
+test("GET `/` `body` computed `background-color` is `rgb(247, 244, 238)`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator("body")).toHaveCSS(
+    "background-color",
+    "rgb(247, 244, 238)",
+  );
+});
