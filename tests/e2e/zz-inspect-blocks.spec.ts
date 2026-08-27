@@ -132,3 +132,24 @@ test("Filling the Inspector `Name` textbox with `Place Order` after selecting `C
     "Place Order",
   );
 });
+
+test("Filling the Inspector `Name` textbox with `Place Order` after selecting `Command` shows a Timeline listitem whose accessible name is `Place Order`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Command", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Name", exact: true })
+    .fill("Place Order");
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Place Order", exact: true }),
+  ).toBeVisible();
+});

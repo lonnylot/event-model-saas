@@ -179,6 +179,7 @@ export function bindEditor(root) {
   let selected = null;
   let selectedSliceItem = null;
   let selectedActorItem = null;
+  let selectedCommandItem = null;
   const inspector = root.querySelector('[aria-label="Inspector"]');
   const nameInput = () => inspector?.querySelector("input");
   const bindName = (value) => {
@@ -212,6 +213,9 @@ export function bindEditor(root) {
           selectedActorItem.textContent = input.value;
           selectedActorItem.setAttribute("aria-label", input.value);
         }
+        if (selected === "command" && selectedCommandItem) {
+          selectedCommandItem.setAttribute("aria-label", input.value);
+        }
         if (selected === "slice") {
           const main = root.querySelector("main");
           if (main && !main.textContent?.includes("Unsaved changes.")) {
@@ -227,6 +231,7 @@ export function bindEditor(root) {
     if (!item || !timelineList.contains(item)) return;
     if (item.dataset.kind === "command") {
       selected = "command";
+      selectedCommandItem = item;
       bindName("Command");
       return;
     }
