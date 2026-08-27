@@ -39,6 +39,7 @@ import { deleteEvent } from "./delete-event.js";
 import { deleteReadModel } from "./delete-read-model.js";
 import { deleteAutomation } from "./delete-automation.js";
 import { undoConnection } from "./undo-connection.js";
+import { undoAddCommand } from "./undo-add-command.js";
 
 const undoStack = [];
 
@@ -140,6 +141,7 @@ export function onAddCommandClick(root) {
     item.append(port);
     list.append(item);
   }
+  if (command) undoStack.push("command");
 }
 
 export function onAddEventClick(root) {
@@ -1322,6 +1324,16 @@ export function bindEditor(root) {
         const timeline = root.querySelector('[aria-label="Timeline"]');
         for (const node of [...(timeline?.querySelectorAll("p") ?? [])]) {
           if (node.textContent === "Command → Event Happened") node.remove();
+        }
+        return;
+      }
+      if (kind === "command") {
+        holder.textContent = JSON.stringify(
+          undoAddCommand(JSON.parse(holder.textContent || "{}")),
+        );
+        const timelineList = root.querySelector('[aria-label="Timeline"] ul');
+        for (const node of [...(timelineList?.querySelectorAll("li") ?? [])]) {
+          if (node.getAttribute("aria-label") === "Command") node.remove();
         }
         return;
       }

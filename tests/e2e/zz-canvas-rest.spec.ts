@@ -159,3 +159,30 @@ test("After clicking `New Slice` twice then `Add Command`, dragging the Timeline
   );
   expect(after.slices.at(-1).commands).toEqual([]);
 });
+
+test("After clicking `New Slice` then `Add Command`, pressing ⌘Z does not show a listitem whose accessible name is `Command`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await expect(
+    page.getByRole("listitem", { name: "Command", exact: true }),
+  ).toBeVisible();
+  await page.keyboard.press("ControlOrMeta+z");
+  await expect(
+    page.getByRole("listitem", { name: "Command", exact: true }),
+  ).toHaveCount(0);
+});
+
+test("After clicking `New Slice` then `Add Command`, pressing ⌘Z shows a listitem whose accessible name is `New Slice`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page.keyboard.press("ControlOrMeta+z");
+  await expect(
+    page.getByRole("listitem", { name: "New Slice", exact: true }),
+  ).toBeVisible();
+});
