@@ -389,7 +389,19 @@ export function bindEditor(root) {
       return;
     }
     const port = event.target?.closest?.("button[data-id]");
-    if (port) sourcePort = port;
+    if (port) {
+      sourcePort = port;
+      if (port.dataset.kind === "COMMAND") {
+        root
+          .querySelector('[data-kind="EVENT"]')
+          ?.setAttribute("aria-current", "true");
+      }
+      if (port.dataset.kind === "EVENT") {
+        root
+          .querySelector('[data-kind="READMODEL"]')
+          ?.setAttribute("aria-current", "true");
+      }
+    }
   });
   root.addEventListener("mouseup", (event) => {
     if (dragActorItem) {
@@ -424,7 +436,8 @@ export function bindEditor(root) {
             toID: target.dataset.id,
             toKind:
               target.dataset.kind === "EVENT" ||
-              target.dataset.kind === "READMODEL"
+              target.dataset.kind === "READMODEL" ||
+              target.dataset.kind === "COMMAND"
                 ? target.dataset.kind
                 : undefined,
           }),
@@ -450,17 +463,37 @@ export function bindEditor(root) {
         sourcePort.dataset.kind === "COMMAND" &&
         target.dataset.kind === "READMODEL"
       ) {
-        const main = root.querySelector("main");
+        const commandItem = sourcePort.closest("li");
         if (
-          main &&
-          !main.textContent?.includes("A command can't write a read model.")
+          commandItem &&
+          !commandItem.textContent?.includes(
+            "A command can't write a read model.",
+          )
         ) {
-          main.insertAdjacentHTML(
-            "afterbegin",
+          commandItem.insertAdjacentHTML(
+            "beforeend",
             "<p>A command can't write a read model.</p>",
           );
         }
       }
+      if (
+        sourcePort.dataset.kind === "EVENT" &&
+        target.dataset.kind === "COMMAND"
+      ) {
+        const eventItem = sourcePort.closest("li");
+        if (
+          eventItem &&
+          !eventItem.textContent?.includes("An event can't trigger a command.")
+        ) {
+          eventItem.insertAdjacentHTML(
+            "beforeend",
+            "<p>An event can't trigger a command.</p>",
+          );
+        }
+      }
+    }
+    for (const highlighted of root.querySelectorAll("[aria-current]")) {
+      highlighted.removeAttribute("aria-current");
     }
     sourcePort = null;
   });

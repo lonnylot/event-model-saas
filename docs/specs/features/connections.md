@@ -18,7 +18,7 @@ Members can put Commands, Events, and Read Models on a Slice, but they cannot co
 - [x] Dragging from `Event Happened port` onto `Read Model port` appends a Connection whose `fromKind` is `EVENT`
 - [x] Dragging from `Event Happened port` onto `Read Model port` appends a Connection whose `toKind` is `READMODEL`
 - [x] Dragging from `Command port` onto `Read Model port` does not append a Connection
-- [x] Dragging from `Command port` onto `Read Model port` shows the text `A command can't write a read model.`
+- [x] Dragging from `Command port` onto `Read Model port` shows the text `A command can't write a read model.` in the Command listitem
 - [x] After dragging from `Command port` onto `Event Happened port`, the Timeline region shows the text `Command → Event Happened`
 - [x] After a member creates a model, opens it, clicks `New Slice`, adds a Command and an Event, drags `Command port` onto `Event Happened port`, and Saves, a reload of that page shows the text `Command → Event Happened` in the Timeline region
 
@@ -41,11 +41,11 @@ Event Model, Slice, Command, Event, Read Model, Actor, Automation, Connection, T
 
 ## Out of scope
 
-Dashed Add on a lane, keyboard shortcuts, highlighting legal targets, Mac window chrome, Actor or Automation as connection endpoints, duplicate-connection refusal, self-connection refusal, the other illegal-pair copy from the Mac app. Delete, drag blocks between Slices, pan, moving Slices, and undo are [canvas.md](./canvas.md). Slice and Actor Name are [chrome.md](./chrome.md). Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md). Description, Fields, and Slice type picker stay later.
+Dashed Add on a lane, keyboard shortcuts, Mac window chrome, Actor or Automation as connection endpoints, duplicate-connection refusal, self-connection refusal, the other illegal-pair copy from the Mac app. Highlighting legal targets, snap-back, reason on the source, and Event → Command are [connection-feedback.md](./connection-feedback.md). Delete, drag blocks between Slices, pan, moving Slices, and undo are [canvas.md](./canvas.md). Slice and Actor Name are [chrome.md](./chrome.md). Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md). Description, Fields, and Slice type picker stay later.
 
 ## Restates
 
 - [blocks.md](./blocks.md) — Out of scope no longer owns connections; this slice owns Command → Event and Event → Read Model. Dashed Add and keyboard stay later. Slice and Actor Name are [chrome.md](./chrome.md).
 - [editor-shell.md](./editor-shell.md) — Out of scope no longer owns connections; this slice owns those.
 - [model-persistence.md](./model-persistence.md) — Out of scope no longer owns connections; this slice owns those.
-- [product.md](../product.md) — Playwright path for this slice is open Event Model, New Slice, Add Command, Add Event, drag Command port onto Event Happened port, Save, reload still shows `Command → Event Happened`. Highlighting legal targets, snap-back, reason on the source, and other illegal pairs stay later. Delete, drag blocks between Slices, pan, moving Slices, and undo are [canvas.md](./canvas.md).
+- [product.md](../product.md) — Playwright path for this slice is open Event Model, New Slice, Add Command, Add Event, drag Command port onto Event Happened port, Save, reload still shows `Command → Event Happened`. Highlighting legal targets, snap-back, reason on the source, and Event → Command are [connection-feedback.md](./connection-feedback.md). Delete, drag blocks between Slices, pan, moving Slices, and undo are [canvas.md](./canvas.md). Duplicate-connection, self-connection, and other illegal-pair copy stay later.
