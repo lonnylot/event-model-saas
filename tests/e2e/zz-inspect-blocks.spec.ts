@@ -372,3 +372,24 @@ test("Filling the Inspector `Name` textbox with `Send Email` after selecting `Au
     "Send Email",
   );
 });
+
+test("Filling the Inspector `Name` textbox with `Send Email` after selecting `Automation` shows a Timeline listitem whose accessible name is `Send Email`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "Add Automation", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Automation", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Name", exact: true })
+    .fill("Send Email");
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Send Email", exact: true }),
+  ).toBeVisible();
+});

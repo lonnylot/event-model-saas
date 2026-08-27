@@ -188,6 +188,7 @@ export function bindEditor(root) {
   let selectedCommandItem = null;
   let selectedEventItem = null;
   let selectedReadModelItem = null;
+  let selectedAutomationItem = null;
   const inspector = root.querySelector('[aria-label="Inspector"]');
   const nameInput = () => inspector?.querySelector("input");
   const bindName = (value) => {
@@ -251,6 +252,9 @@ export function bindEditor(root) {
         if (selected === "readmodel" && selectedReadModelItem) {
           selectedReadModelItem.setAttribute("aria-label", input.value);
         }
+        if (selected === "automation" && selectedAutomationItem) {
+          selectedAutomationItem.setAttribute("aria-label", input.value);
+        }
         if (selected === "slice") {
           const main = root.querySelector("main");
           if (main && !main.textContent?.includes("Unsaved changes.")) {
@@ -284,6 +288,7 @@ export function bindEditor(root) {
     }
     if (item.dataset.kind === "automation") {
       selected = "automation";
+      selectedAutomationItem = item;
       bindName("Automation");
       return;
     }
