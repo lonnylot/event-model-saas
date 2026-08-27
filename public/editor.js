@@ -27,6 +27,7 @@ import { deleteField } from "./delete-field.js";
 import { setEventModelTitle } from "./set-event-model-title.js";
 import { setEventModelDescription } from "./set-event-model-description.js";
 import { moveSliceLeft } from "./move-slice-left.js";
+import { moveSliceRight } from "./move-slice-right.js";
 import { moveActorToSlice } from "./move-actor-to-slice.js";
 import { deleteSlice } from "./delete-slice.js";
 import { deleteCommand } from "./delete-command.js";
@@ -1285,6 +1286,20 @@ export function bindEditor(root) {
       if (holder && sliceId) {
         holder.textContent = JSON.stringify(
           moveSliceLeft(JSON.parse(holder.textContent || "{}"), sliceId),
+        );
+      }
+      return;
+    }
+    if (
+      event.altKey &&
+      (event.metaKey || event.ctrlKey) &&
+      event.key === "ArrowRight"
+    ) {
+      const holder = root.getElementById("event-model-document");
+      const sliceId = selectedSliceItem?.dataset?.id;
+      if (holder && sliceId) {
+        holder.textContent = JSON.stringify(
+          moveSliceRight(JSON.parse(holder.textContent || "{}"), sliceId),
         );
       }
       return;
