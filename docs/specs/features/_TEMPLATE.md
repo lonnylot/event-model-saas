@@ -4,7 +4,7 @@ Status: draft
 
 ## Problem
 
-One paragraph: who, what, why.
+One paragraph: who, what, why. Do not name later-slice behavior as current (⌘+/⌘-/⌘0 while product.md keeps keyboard zoom later).
 
 ## Acceptance criteria
 

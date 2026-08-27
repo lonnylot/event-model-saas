@@ -4,7 +4,7 @@ Status: released
 
 ## Problem
 
-Toolbar zoom and ⌘+/⌘-/⌘0 change Timeline scale. Ctrl+wheel (trackpad pinch-zoom stand-in) does not, so Mac pinch zoom has no web counterpart.
+Toolbar zoom changes Timeline scale. Ctrl+wheel (trackpad pinch-zoom stand-in) does not, so Mac pinch zoom has no web counterpart. Keyboard zoom (⌘+/⌘-/⌘0) stays product.md later.
 
 ## Acceptance criteria
 
