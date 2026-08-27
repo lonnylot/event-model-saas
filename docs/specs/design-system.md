@@ -1,6 +1,6 @@
 # Design system
 
-Status: validated
+Status: released
 
 Tokens and primitives for Event Model SaaS HTML that is not the editor canvas. [features/visual-shell.md](./features/visual-shell.md) applies them. This file does not own feature acceptance criteria.
 

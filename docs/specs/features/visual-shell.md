@@ -1,6 +1,6 @@
 # Visual shell
 
-Status: validated
+Status: released
 
 ## Problem
 
