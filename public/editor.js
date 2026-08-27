@@ -460,6 +460,7 @@ export function bindEditor(root) {
       selected = "readmodel";
       selectedReadModelItem = item;
       bindName("Read Model");
+      bindAddField();
       bindDescription();
       return;
     }
