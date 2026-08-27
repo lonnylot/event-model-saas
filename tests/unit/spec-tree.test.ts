@@ -40,4 +40,19 @@ describe("spec tree", () => {
       "Out of scope no longer owns Field `type` picker after Add, Command `optional` / `example`, Add Field that appends on Event / Read Model / Automation, Field after reload",
     );
   });
+
+  it("inspect-after-reload does not leave Fields or Connection after reload as unowned later", () => {
+    const text = readFileSync(
+      "docs/specs/features/inspect-after-reload.md",
+      "utf8",
+    );
+    expect(text).not.toContain("GET-rendered inspect of Fields stays later");
+    expect(text).not.toContain("GET-rendered inspect of Fields stay later");
+    expect(text).not.toContain(
+      "Inspect after reload of a Connection stays later",
+    );
+    expect(text).not.toContain(
+      "GET-rendered inspect of Description on Slice / Actor / Event / Read Model / Automation stays later",
+    );
+  });
 });
