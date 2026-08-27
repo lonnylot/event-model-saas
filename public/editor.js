@@ -51,6 +51,7 @@ import { undoMoveSliceLeft } from "./undo-move-slice-left.js";
 import { restoreSlice } from "./restore-slice.js";
 
 const undoStack = [];
+const redoStack = [];
 
 export function onNewSliceClick(root) {
   const holder = root.getElementById("event-model-document");
@@ -160,6 +161,7 @@ export function onAddCommandClick(root) {
     list.append(item);
   }
   if (command) undoStack.push("command");
+  redoStack.length = 0;
 }
 
 export function onAddEventClick(root) {
@@ -1438,8 +1440,29 @@ export function bindEditor(root) {
       event.preventDefault();
       const holder = root.getElementById("event-model-document");
       if (!holder) return;
+      if (event.shiftKey) {
+        const entry = redoStack.pop();
+        if (entry === "command") onAddCommandClick(root);
+        return;
+      }
       const entry = undoStack.pop();
       const kind = typeof entry === "string" ? entry : entry?.kind;
+
+      if (kind === "command") {
+        holder.textContent = JSON.stringify(
+          undoAddCommand(JSON.parse(holder.textContent || "{}")),
+        );
+        const items = [
+          ...(root.querySelector('[aria-label="Timeline"] ul')?.querySelectorAll("li") ??
+            []),
+        ];
+        items
+          .filter((item) => item.getAttribute("aria-label") === "Command")
+          .at(-1)
+          ?.remove();
+        redoStack.push("command");
+        return;
+      }
       if (kind === "deleteSlice") {
         holder.textContent = JSON.stringify(
           restoreSlice(
@@ -1532,16 +1555,6 @@ export function bindEditor(root) {
         const timeline = root.querySelector('[aria-label="Timeline"]');
         for (const node of [...(timeline?.querySelectorAll("p") ?? [])]) {
           if (node.textContent === "Command → Event Happened") node.remove();
-        }
-        return;
-      }
-      if (kind === "command") {
-        holder.textContent = JSON.stringify(
-          undoAddCommand(JSON.parse(holder.textContent || "{}")),
-        );
-        const timelineList = root.querySelector('[aria-label="Timeline"] ul');
-        for (const node of [...(timelineList?.querySelectorAll("li") ?? [])]) {
-          if (node.getAttribute("aria-label") === "Command") node.remove();
         }
         return;
       }

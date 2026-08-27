@@ -20,7 +20,7 @@ Status: validated
 - [ ] After clicking `New Slice` then `Add Event` twice, clicking the first Timeline `Event Happened` listitem then the Timeline region, pressing Backspace, then pressing ⌘Z, the Timeline region shows two listitems whose accessible name is `Event Happened`
 - [ ] After clicking `New Slice` then `Add Read Model` twice, clicking the first Timeline `Read Model` listitem then the Timeline region, pressing Backspace, then pressing ⌘Z, the Timeline region shows two listitems whose accessible name is `Read Model`
 - [ ] After clicking `New Slice` then `Add Automation` twice, clicking the first Timeline `Automation` listitem then the Timeline region, pressing Backspace, then pressing ⌘Z, the Timeline region shows two listitems whose accessible name is `Automation`
-- [ ] After clicking `New Slice` then `Add Command`, pressing ⌘Z, then pressing ⇧⌘Z, the Timeline region shows a listitem whose accessible name is `Command`
+- [x] After clicking `New Slice` then `Add Command`, pressing ⌘Z, then pressing ⇧⌘Z, the Timeline region shows a listitem whose accessible name is `Command`
 
 ## Domain terms
 
