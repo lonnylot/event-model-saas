@@ -530,7 +530,7 @@ export function bindEditor(root) {
     if (item.dataset.kind === "automation") {
       selected = "automation";
       selectedAutomationItem = item;
-      bindName("Automation");
+      bindName(item.getAttribute("aria-label") ?? "Automation");
       bindAddField();
       bindDescription();
       unbindFieldName();

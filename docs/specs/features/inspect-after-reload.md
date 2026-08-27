@@ -15,7 +15,7 @@ Name edits Save and the Timeline lists the new title after reload, but clicking 
 - [x] After a member creates a model, opens it, clicks `New Slice`, clicks `Add Read Model`, clicks the Timeline `Read Model` listitem, fills `Name` with `Orders`, and Saves, a reload of that page shows a listitem whose accessible name is `Orders` in the Timeline region
 - [x] After a member creates a model, opens it, clicks `New Slice`, clicks `Add Read Model`, clicks the Timeline `Read Model` listitem, fills `Name` with `Orders`, and Saves, a reload of that page, clicking the Timeline `Orders` listitem shows the Inspector `Name` textbox with the value `Orders`
 - [x] After a member creates a model, opens it, clicks `New Slice`, clicks `Add Automation`, clicks the Timeline `Automation` listitem, fills `Name` with `Send Email`, and Saves, a reload of that page shows a listitem whose accessible name is `Send Email` in the Timeline region
-- [ ] After a member creates a model, opens it, clicks `New Slice`, clicks `Add Automation`, clicks the Timeline `Automation` listitem, fills `Name` with `Send Email`, and Saves, a reload of that page, clicking the Timeline `Send Email` listitem shows the Inspector `Name` textbox with the value `Send Email`
+- [x] After a member creates a model, opens it, clicks `New Slice`, clicks `Add Automation`, clicks the Timeline `Automation` listitem, fills `Name` with `Send Email`, and Saves, a reload of that page, clicking the Timeline `Send Email` listitem shows the Inspector `Name` textbox with the value `Send Email`
 
 ## Domain terms
 
@@ -43,4 +43,4 @@ Description, Fields, inspecting a Connection, in-session visible listitem text o
 - [chrome.md](./chrome.md) — Out of scope no longer owns inspect after reload; this slice owns those. Multi-item Name binding stays later.
 - [blocks.md](./blocks.md) — Event / Read Model / Automation reload-lists are this slice. Actor reload-list stays [chrome.md](./chrome.md).
 - [canvas.md](./canvas.md) — Out of scope no longer owns inspect after reload; this slice owns those.
-- [product.md](../product.md) — After Save and reload, clicking the GET-rendered Command, Event, Read Model, or Actor opens Inspector Name. Playwright path for this slice adds: Save Place Order, reload, click Place Order, Name is Place Order; same for Shopper, Order Placed, and Orders; Event / Read Model / Automation reload-lists.
+- [product.md](../product.md) — After Save and reload, clicking the GET-rendered Command, Event, Read Model, Automation, or Actor opens Inspector Name. Playwright path for this slice adds: Save Place Order, reload, click Place Order, Name is Place Order; same for Shopper, Order Placed, Orders, Send Email; Event / Read Model / Automation reload-lists.

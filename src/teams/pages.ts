@@ -88,7 +88,7 @@ export function modelPageHtml(
       ),
       ...(slice.processors ?? []).map(
         (automation) =>
-          `<li aria-label="${automation.title}">${automation.title}</li>`,
+          `<li aria-label="${automation.title}" data-kind="automation">${automation.title}</li>`,
       ),
     ])
     .join("");
