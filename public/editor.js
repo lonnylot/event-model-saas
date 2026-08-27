@@ -1266,6 +1266,21 @@ export function bindEditor(root) {
   });
   root.addEventListener("keydown", (event) => {
     if (
+      event.shiftKey &&
+      (event.metaKey || event.ctrlKey) &&
+      !event.altKey &&
+      (event.key === "n" || event.key === "N")
+    ) {
+      event.preventDefault();
+      const holder = root.getElementById("event-model-document");
+      if (holder) {
+        holder.textContent = JSON.stringify(
+          appendSlice(JSON.parse(holder.textContent || "{}")),
+        );
+      }
+      return;
+    }
+    if (
       event.altKey &&
       (event.metaKey || event.ctrlKey) &&
       event.key === "ArrowLeft"
