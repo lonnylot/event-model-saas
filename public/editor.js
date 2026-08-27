@@ -46,6 +46,7 @@ import { undoAddCommand } from "./undo-add-command.js";
 import { undoActor } from "./undo-actor.js";
 import { undoEvent } from "./undo-event.js";
 import { undoReadModel } from "./undo-read-model.js";
+import { undoAutomation } from "./undo-automation.js";
 
 const undoStack = [];
 
@@ -223,6 +224,7 @@ export function onAddAutomationClick(root) {
     item.setAttribute("data-id", automation.id);
     list.append(item);
   }
+  undoStack.push("automation");
 }
 
 export function bindEditor(root) {
@@ -1434,6 +1436,20 @@ export function bindEditor(root) {
       const holder = root.getElementById("event-model-document");
       if (!holder) return;
       const kind = undoStack.pop();
+      if (kind === "automation") {
+        holder.textContent = JSON.stringify(
+          undoAutomation(JSON.parse(holder.textContent || "{}")),
+        );
+        const items = [
+          ...(root.querySelector('[aria-label="Timeline"] ul')?.querySelectorAll("li") ??
+            []),
+        ];
+        items
+          .filter((item) => item.getAttribute("aria-label") === "Automation")
+          .at(-1)
+          ?.remove();
+        return;
+      }
       if (kind === "readmodel") {
         holder.textContent = JSON.stringify(
           undoReadModel(JSON.parse(holder.textContent || "{}")),

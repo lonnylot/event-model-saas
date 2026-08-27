@@ -140,3 +140,18 @@ test("After clicking `New Slice` then `Add Read Model`, pressing ⌘Z does not s
     page.getByRole("listitem", { name: "Read Model", exact: true }),
   ).toHaveCount(0);
 });
+
+test("After clicking `New Slice` then `Add Automation`, pressing ⌘Z does not show a listitem whose accessible name is `Automation`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Automation", exact: true }).click();
+  await expect(
+    page.getByRole("listitem", { name: "Automation", exact: true }),
+  ).toBeVisible();
+  await page.keyboard.press("ControlOrMeta+z");
+  await expect(
+    page.getByRole("listitem", { name: "Automation", exact: true }),
+  ).toHaveCount(0);
+});
