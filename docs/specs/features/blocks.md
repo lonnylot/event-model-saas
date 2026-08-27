@@ -58,7 +58,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person,
 
 ## Out of scope
 
-Dashed Add on a lane and keyboard ⌥⌘1–5 stay later. Delete, drag between Slices, undo, pan, and moving Slices are [canvas.md](./canvas.md). Mac window chrome, creating a Slice from Add when there are none. Connections are [connections.md](./connections.md). Slice and Actor Name are [chrome.md](./chrome.md). Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md). Description, Fields, and Slice type picker stay later.
+Dashed Add on a lane and keyboard ⌥⌘1–5 stay later. Delete, drag between Slices, undo, pan, and moving Slices are [canvas.md](./canvas.md). Mac window chrome, creating a Slice from Add when there are none. Connections are [connections.md](./connections.md). Event → Command refusal is [connection-feedback.md](./connection-feedback.md). Slice and Actor Name are [chrome.md](./chrome.md). Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md). Description, Fields, and Slice type picker stay later.
 
 ## Restates
 

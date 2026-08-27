@@ -40,7 +40,7 @@ Event Model, Slice, Actor, Team, Person, Version
 
 ## Out of scope
 
-Description, Fields, and Slice type picker stay later. Inspecting a Connection, inspect after reload, multi-item Name binding, Actor Name Unsaved changes, model-level Title, dashed Add on a lane, keyboard ⌥⌘1–5, Mac window chrome. Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md). Keyboard shortcuts for this slice's keys, delete, drag blocks between Slices, undo, pan, and moving Slices are [canvas.md](./canvas.md).
+Description, Fields, and Slice type picker stay later. Inspecting a Connection, inspect after reload, multi-item Name binding, Actor Name Unsaved changes, model-level Title, dashed Add on a lane, keyboard ⌥⌘1–5, Mac window chrome. Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md). Keyboard shortcuts for this slice's keys, delete, drag blocks between Slices, undo, pan, and moving Slices are [canvas.md](./canvas.md). Highlighting legal targets is [connection-feedback.md](./connection-feedback.md).
 
 ## Restates
 

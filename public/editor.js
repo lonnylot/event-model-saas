@@ -389,7 +389,14 @@ export function bindEditor(root) {
       return;
     }
     const port = event.target?.closest?.("button[data-id]");
-    if (port) sourcePort = port;
+    if (port) {
+      sourcePort = port;
+      if (port.dataset.kind === "COMMAND") {
+        root
+          .querySelector('[data-kind="EVENT"]')
+          ?.setAttribute("aria-current", "true");
+      }
+    }
   });
   root.addEventListener("mouseup", (event) => {
     if (dragActorItem) {
