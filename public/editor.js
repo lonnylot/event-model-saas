@@ -363,6 +363,18 @@ export function bindEditor(root) {
     );
   const unbindAddField = () => addFieldButton()?.remove();
   const unbindFieldName = () => fieldNameLabel()?.remove();
+  const unbindDescription = () =>
+    descriptionInput()?.closest("label")?.remove();
+  const getRenderedTimelineItems = new Set(
+    timelineList ? [...timelineList.querySelectorAll("li")] : [],
+  );
+  const omitGetRenderedInspectChrome = (item) => {
+    if (!getRenderedTimelineItems.has(item)) return false;
+    unbindAddField();
+    unbindFieldName();
+    unbindDescription();
+    return true;
+  };
   const bindAddField = () => {
     if (!inspector || addFieldButton()) return;
     inspector.insertAdjacentHTML(
@@ -505,6 +517,7 @@ export function bindEditor(root) {
       selected = "command";
       selectedCommandItem = item;
       bindName(item.getAttribute("aria-label") ?? "Command");
+      if (omitGetRenderedInspectChrome(item)) return;
       bindAddField();
       bindDescription();
       return;
@@ -513,6 +526,7 @@ export function bindEditor(root) {
       selected = "event";
       selectedEventItem = item;
       bindName(item.getAttribute("aria-label") ?? "Event Happened");
+      if (omitGetRenderedInspectChrome(item)) return;
       bindAddField();
       bindDescription();
       unbindFieldName();
@@ -522,6 +536,7 @@ export function bindEditor(root) {
       selected = "readmodel";
       selectedReadModelItem = item;
       bindName(item.getAttribute("aria-label") ?? "Read Model");
+      if (omitGetRenderedInspectChrome(item)) return;
       bindAddField();
       bindDescription();
       unbindFieldName();
@@ -531,6 +546,7 @@ export function bindEditor(root) {
       selected = "automation";
       selectedAutomationItem = item;
       bindName(item.getAttribute("aria-label") ?? "Automation");
+      if (omitGetRenderedInspectChrome(item)) return;
       bindAddField();
       bindDescription();
       unbindFieldName();
@@ -540,6 +556,7 @@ export function bindEditor(root) {
     selected = "actor";
     selectedActorItem = item;
     bindName(item.getAttribute("aria-label") ?? "Actor");
+    if (omitGetRenderedInspectChrome(item)) return;
     bindDescription();
     unbindAddField();
     unbindFieldName();

@@ -30,6 +30,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person,
 
 - Command Place Order already lists after reload ([inspect-blocks.md](./inspect-blocks.md)). Actor Shopper already lists after reload ([chrome.md](./chrome.md)). This slice owns the click after reload and Event / Read Model / Automation reload-lists.
 - Inspect after reload is a click on the GET-rendered Timeline listitem. Name JSON still mutates by id, not only the last of that kind for this click; multi-item Name binding of two in-session items stays later.
+- GET-rendered inspect binds Inspector Name only. Description and Add Field stay on click-created inspect ([inspect-description.md](./inspect-description.md), [inspect-fields.md](./inspect-fields.md)).
 - Name edits are in-memory until Save. Save still uses the version check from model-persistence.
 - The `TEST_MAIL=1` memory adapter does not count login attempts, so Playwright files can share one Worker without the production 5-per-hour cap.
 

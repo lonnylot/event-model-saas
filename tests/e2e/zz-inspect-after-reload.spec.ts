@@ -93,6 +93,16 @@ async function clickNewSlice(page: Page) {
   ).toBeVisible();
 }
 
+async function expectGetRenderedInspectOmitsDescriptionAndAddField(page: Page) {
+  const inspector = page.getByRole("region", { name: "Inspector", exact: true });
+  await expect(
+    inspector.getByRole("textbox", { name: "Description", exact: true }),
+  ).toHaveCount(0);
+  await expect(
+    inspector.getByRole("button", { name: "Add Field", exact: true }),
+  ).toHaveCount(0);
+}
+
 test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add Command`, clicks the Timeline `Command` listitem, fills `Name` with `Place Order`, and Saves, a reload of that page, clicking the Timeline `Place Order` listitem shows the Inspector `Name` textbox with the value `Place Order`", async ({
   page,
 }) => {
@@ -125,6 +135,7 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add 
       .getByRole("region", { name: "Inspector", exact: true })
       .getByRole("textbox", { name: "Name", exact: true }),
   ).toHaveValue("Place Order");
+  await expectGetRenderedInspectOmitsDescriptionAndAddField(page);
 });
 
 test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add Actor`, clicks the Timeline `Actor` listitem, fills `Name` with `Shopper`, and Saves, a reload of that page, clicking the Timeline `Shopper` listitem shows the Inspector `Name` textbox with the value `Shopper`", async ({
@@ -159,6 +170,7 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add 
       .getByRole("region", { name: "Inspector", exact: true })
       .getByRole("textbox", { name: "Name", exact: true }),
   ).toHaveValue("Shopper");
+  await expectGetRenderedInspectOmitsDescriptionAndAddField(page);
 });
 
 test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add Event`, clicks the Timeline `Event Happened` listitem, fills `Name` with `Order Placed`, and Saves, a reload of that page shows a listitem whose accessible name is `Order Placed` in the Timeline region", async ({
@@ -223,6 +235,7 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add 
       .getByRole("region", { name: "Inspector", exact: true })
       .getByRole("textbox", { name: "Name", exact: true }),
   ).toHaveValue("Order Placed");
+  await expectGetRenderedInspectOmitsDescriptionAndAddField(page);
 });
 
 test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add Read Model`, clicks the Timeline `Read Model` listitem, fills `Name` with `Orders`, and Saves, a reload of that page shows a listitem whose accessible name is `Orders` in the Timeline region", async ({
@@ -287,6 +300,7 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add 
       .getByRole("region", { name: "Inspector", exact: true })
       .getByRole("textbox", { name: "Name", exact: true }),
   ).toHaveValue("Orders");
+  await expectGetRenderedInspectOmitsDescriptionAndAddField(page);
 });
 
 test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add Automation`, clicks the Timeline `Automation` listitem, fills `Name` with `Send Email`, and Saves, a reload of that page shows a listitem whose accessible name is `Send Email` in the Timeline region", async ({
@@ -351,4 +365,5 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add 
       .getByRole("region", { name: "Inspector", exact: true })
       .getByRole("textbox", { name: "Name", exact: true }),
   ).toHaveValue("Send Email");
+  await expectGetRenderedInspectOmitsDescriptionAndAddField(page);
 });
