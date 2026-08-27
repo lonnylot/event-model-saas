@@ -36,7 +36,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person,
 
 ## Out of scope
 
-Description, Fields stay later. Inspecting a Connection is [inspect-connection.md](./inspect-connection.md). In-session visible listitem text on Name fill, multi-item Name binding of two click-created items, Actor Name Unsaved changes, model-level Title, dashed Add on a lane, keyboard shortcuts, Mac window chrome. Slice type picker is [slice-type.md](./slice-type.md). Click-created inspect stays [chrome.md](./chrome.md) and [inspect-blocks.md](./inspect-blocks.md). Inspect after reload of a Connection stays later.
+Description is [inspect-description.md](./inspect-description.md). Add Field and Field name on Command are [inspect-fields.md](./inspect-fields.md). Inspecting a Connection is [inspect-connection.md](./inspect-connection.md). In-session visible listitem text on Name fill, multi-item Name binding of two click-created items, Actor Name Unsaved changes, dashed Add on a lane, keyboard shortcuts, Mac window chrome. Event Model title and Description are [model-inspector.md](./model-inspector.md). Inspect after reload of the heading stays later. Slice type picker is [slice-type.md](./slice-type.md). Click-created inspect stays [chrome.md](./chrome.md) and [inspect-blocks.md](./inspect-blocks.md). Inspect after reload of a Connection stays later.
 
 ## Restates
 

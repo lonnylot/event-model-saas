@@ -20,6 +20,8 @@ import { setAutomationTitle } from "./set-automation-title.js";
 import { setAutomationDescription } from "./set-automation-description.js";
 import { appendField } from "./append-field.js";
 import { setFieldName } from "./set-field-name.js";
+import { setEventModelTitle } from "./set-event-model-title.js";
+import { setEventModelDescription } from "./set-event-model-description.js";
 import { moveSliceLeft } from "./move-slice-left.js";
 import { moveActorToSlice } from "./move-actor-to-slice.js";
 import { deleteSlice } from "./delete-slice.js";
@@ -476,6 +478,14 @@ export function bindEditor(root) {
             ),
           );
         }
+        if (holder && selected === "model") {
+          holder.textContent = JSON.stringify(
+            setEventModelTitle(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+            ),
+          );
+        }
         if (selected === "slice" && selectedSliceItem) {
           selectedSliceItem.textContent = input.value;
           selectedSliceItem.setAttribute("aria-label", input.value);
@@ -495,6 +505,10 @@ export function bindEditor(root) {
         }
         if (selected === "automation" && selectedAutomationItem) {
           selectedAutomationItem.setAttribute("aria-label", input.value);
+        }
+        if (selected === "model") {
+          const heading = root.querySelector("h1");
+          if (heading) heading.textContent = input.value;
         }
         if (selected === "slice") {
           const main = root.querySelector("main");
@@ -531,6 +545,11 @@ export function bindEditor(root) {
       }
     } else {
       typeSelect?.closest("label")?.remove();
+    }
+    if (selected !== "model") {
+      inspector.querySelector("textarea")?.closest("label")?.remove();
+    } else {
+      unbindDescription();
     }
   };
   timelineList?.addEventListener("click", (event) => {
@@ -595,6 +614,28 @@ export function bindEditor(root) {
     bindDescription();
     unbindAddField();
     unbindFieldName();
+  });
+  root.querySelector("h1")?.addEventListener("click", () => {
+    selected = "model";
+    bindName("Untitled");
+    if (inspector && !inspector.querySelector("textarea")) {
+      inspector.insertAdjacentHTML(
+        "beforeend",
+        "<label>Description <textarea></textarea></label>",
+      );
+      inspector.querySelector("textarea")?.addEventListener("input", () => {
+        const holder = root.getElementById("event-model-document");
+        const textarea = inspector.querySelector("textarea");
+        if (holder && selected === "model" && textarea) {
+          holder.textContent = JSON.stringify(
+            setEventModelDescription(
+              JSON.parse(holder.textContent || "{}"),
+              textarea.value,
+            ),
+          );
+        }
+      });
+    }
   });
   root.addEventListener("keydown", (event) => {
     if (

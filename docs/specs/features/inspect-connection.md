@@ -30,7 +30,7 @@ Event Model, Slice, Command, Event, Connection, Team, Person, Version
 
 ## Out of scope
 
-Delete Connection, Event → Read Model inspect stay later. Description is [inspect-description.md](./inspect-description.md). Add Field and Field name on Command are [inspect-fields.md](./inspect-fields.md). Slice type picker is [slice-type.md](./slice-type.md). Name inspect after reload is [inspect-after-reload.md](./inspect-after-reload.md). Inspect after reload of a Connection, model-level Title, dashed Add on a lane, keyboard shortcuts, Mac window chrome. Legal edges stay [connections.md](./connections.md).
+Delete Connection, Event → Read Model inspect stay later. Description is [inspect-description.md](./inspect-description.md). Add Field and Field name on Command are [inspect-fields.md](./inspect-fields.md). Slice type picker is [slice-type.md](./slice-type.md). Name inspect after reload is [inspect-after-reload.md](./inspect-after-reload.md). Inspect after reload of a Connection, dashed Add on a lane, keyboard shortcuts, Mac window chrome. Event Model title and Description are [model-inspector.md](./model-inspector.md). Legal edges stay [connections.md](./connections.md).
 
 ## Restates
 
