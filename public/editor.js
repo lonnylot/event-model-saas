@@ -14,6 +14,7 @@ import { setCommandTitle } from "./set-command-title.js";
 import { setCommandDescription } from "./set-command-description.js";
 import { setEventDescription } from "./set-event-description.js";
 import { setEventModelTitle } from "./set-event-model-title.js";
+import { setEventModelDescription } from "./set-event-model-description.js";
 
 import { appendField } from "./append-field.js";
 import { setFieldName } from "./set-field-name.js";
@@ -1380,14 +1381,13 @@ export function bindEditor(root) {
     unbindAddField();
     unbindFieldName();
   });
- root.querySelector("h1")?.addEventListener("click", () => {
- selected = "model";
- const heading = root.querySelector("h1");
- bindName(heading?.textContent ?? "Untitled");
- unbindDescription();
- unbindType();
- unbindAddField();
- unbindFieldName();
+
+  timeline?.addEventListener("click", (event) => {
+    const line = event.target?.closest?.("p");
+    if (!line || !timeline.contains(line)) return;
+    if (line.textContent !== "Command → Event Happened") return;
+    selected = "connection";
+    selectedConnectionItem = line;
   });
   slicesList?.addEventListener("click", (event) => {
     const item = event.target?.closest?.("li");
@@ -1408,7 +1408,12 @@ export function bindEditor(root) {
   });
   root.querySelector("h1")?.addEventListener("click", () => {
     selected = "model";
-    bindName("Untitled");
+    const heading = root.querySelector("h1");
+    bindName(heading?.textContent ?? "Untitled");
+    unbindDescription();
+    unbindType();
+    unbindAddField();
+    unbindFieldName();
     if (inspector && !inspector.querySelector("textarea")) {
       inspector.insertAdjacentHTML(
         "beforeend",
