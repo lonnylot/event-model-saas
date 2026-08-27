@@ -79,4 +79,17 @@ describe("spec tree", () => {
       "GET-rendered inspect of Description on Slice / Actor / Event / Read Model / Automation stays later",
     );
   });
+
+  it("model-inspector Out of scope does not leave heading reload or GET heading as D1 until later", () => {
+    const text = readFileSync(
+      "docs/specs/features/model-inspector.md",
+      "utf8",
+    );
+    expect(text).not.toContain(
+      "Inspect after reload of the heading, Actor Name Unsaved changes",
+    );
+    expect(text).not.toContain(
+      "GET heading, team-list, and Export filename after JSON `title` change stay the D1 create title until later",
+    );
+  });
 });
