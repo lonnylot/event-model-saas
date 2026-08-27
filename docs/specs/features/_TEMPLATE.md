@@ -34,7 +34,7 @@ Environment facts (hostname, test adapter, platform flags). A shippable operator
 
 ## Out of scope
 
-Explicit non-goals. When ACs cover some kinds of a shared family, name the omitted kinds here.
+Explicit non-goals. When ACs cover some kinds of a shared family, name the omitted kinds here. Unnamed stay later for work a released spec already owns is unfinished — point at that spec (`keeping-specs-current`).
 
 ## Restates
 
