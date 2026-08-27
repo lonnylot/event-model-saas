@@ -4,8 +4,8 @@ description: >
   Use when starting feature work, creating a branch, opening or updating a
   GitHub pull request, waiting on CI, checks never started, an unmergeable
   PR, rebase onto default, a merge conflict on a feat/ branch, fetch
-  current default before branching, two-dot vs default deleting a released
-  spec, or when local tests are green and the change must run on GitHub.
+  current default before branching, or when local tests are green and the
+  change must run on GitHub.
 ---
 
 # GitHub CI loop
