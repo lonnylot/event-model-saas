@@ -500,9 +500,9 @@ export function bindEditor(root) {
           }
         });
       }
-      if (selected !== "command") return;
       if (
         inspector &&
+        (selected === "command" || selected === "event") &&
         ![...inspector.querySelectorAll("input")].some((input) =>
           input.closest("label")?.textContent?.includes("Optional"),
         )
@@ -521,11 +521,13 @@ export function bindEditor(root) {
               setFieldOptional(
                 JSON.parse(documentHolder.textContent || "{}"),
                 optionalInput.checked,
+                selected,
               ),
             );
           }
         });
       }
+      if (selected !== "command") return;
       if (
         inspector &&
         ![...inspector.querySelectorAll("input")].some((input) =>
