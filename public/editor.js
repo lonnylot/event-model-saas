@@ -363,6 +363,18 @@ export function bindEditor(root) {
     );
   const unbindAddField = () => addFieldButton()?.remove();
   const unbindFieldName = () => fieldNameLabel()?.remove();
+  const unbindDescription = () =>
+    descriptionInput()?.closest("label")?.remove();
+  const getRenderedTimelineItems = new Set(
+    timelineList ? [...timelineList.querySelectorAll("li")] : [],
+  );
+  const omitGetRenderedInspectChrome = (item) => {
+    if (!getRenderedTimelineItems.has(item)) return false;
+    unbindAddField();
+    unbindFieldName();
+    unbindDescription();
+    return true;
+  };
   const bindAddField = () => {
     if (!inspector || addFieldButton()) return;
     inspector.insertAdjacentHTML(
@@ -504,7 +516,8 @@ export function bindEditor(root) {
     if (item.dataset.kind === "command") {
       selected = "command";
       selectedCommandItem = item;
-      bindName("Command");
+      bindName(item.getAttribute("aria-label") ?? "Command");
+      if (omitGetRenderedInspectChrome(item)) return;
       bindAddField();
       bindDescription();
       return;
@@ -512,7 +525,8 @@ export function bindEditor(root) {
     if (item.dataset.kind === "event") {
       selected = "event";
       selectedEventItem = item;
-      bindName("Event Happened");
+      bindName(item.getAttribute("aria-label") ?? "Event Happened");
+      if (omitGetRenderedInspectChrome(item)) return;
       bindAddField();
       bindDescription();
       unbindFieldName();
@@ -521,7 +535,8 @@ export function bindEditor(root) {
     if (item.dataset.kind === "readmodel") {
       selected = "readmodel";
       selectedReadModelItem = item;
-      bindName("Read Model");
+      bindName(item.getAttribute("aria-label") ?? "Read Model");
+      if (omitGetRenderedInspectChrome(item)) return;
       bindAddField();
       bindDescription();
       unbindFieldName();
@@ -530,7 +545,8 @@ export function bindEditor(root) {
     if (item.dataset.kind === "automation") {
       selected = "automation";
       selectedAutomationItem = item;
-      bindName("Automation");
+      bindName(item.getAttribute("aria-label") ?? "Automation");
+      if (omitGetRenderedInspectChrome(item)) return;
       bindAddField();
       bindDescription();
       unbindFieldName();
@@ -539,7 +555,8 @@ export function bindEditor(root) {
     if (item.dataset.kind !== "actor") return;
     selected = "actor";
     selectedActorItem = item;
-    bindName("Actor");
+    bindName(item.getAttribute("aria-label") ?? "Actor");
+    if (omitGetRenderedInspectChrome(item)) return;
     bindDescription();
     unbindAddField();
     unbindFieldName();

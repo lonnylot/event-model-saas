@@ -55,6 +55,9 @@ export function modelPageHtml(
     title: string;
     actors?: Array<{ name: string }>;
     commands?: Array<{ title: string }>;
+    events?: Array<{ title: string }>;
+    readModels?: Array<{ title: string }>;
+    processors?: Array<{ title: string }>;
   }> = [],
   documentJson = "",
   connections: Array<{ fromKind: string; toKind: string }> = [],
@@ -68,11 +71,24 @@ export function modelPageHtml(
   const timelineItems = slices
     .flatMap((slice) => [
       ...(slice.actors ?? []).map(
-        (actor) => `<li aria-label="${actor.name}">${actor.name}</li>`,
+        (actor) =>
+          `<li aria-label="${actor.name}" data-kind="actor">${actor.name}</li>`,
       ),
       ...(slice.commands ?? []).map(
         (command) =>
-          `<li aria-label="${command.title}">${command.title}</li>`,
+          `<li aria-label="${command.title}" data-kind="command">${command.title}</li>`,
+      ),
+      ...(slice.events ?? []).map(
+        (event) =>
+          `<li aria-label="${event.title}" data-kind="event">${event.title}</li>`,
+      ),
+      ...(slice.readModels ?? []).map(
+        (readModel) =>
+          `<li aria-label="${readModel.title}" data-kind="readmodel">${readModel.title}</li>`,
+      ),
+      ...(slice.processors ?? []).map(
+        (automation) =>
+          `<li aria-label="${automation.title}" data-kind="automation">${automation.title}</li>`,
       ),
     ])
     .join("");
