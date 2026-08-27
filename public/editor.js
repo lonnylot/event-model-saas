@@ -12,6 +12,7 @@ import { setEventTitle } from "./set-event-title.js";
 import { setReadModelTitle } from "./set-read-model-title.js";
 import { setAutomationTitle } from "./set-automation-title.js";
 import { moveSliceLeft } from "./move-slice-left.js";
+import { moveActorToSlice } from "./move-actor-to-slice.js";
 
 export function onNewSliceClick(root) {
   const holder = root.getElementById("event-model-document");
@@ -33,19 +34,18 @@ export function onNewSliceClick(root) {
 }
 
 export function onAddActorClick(root) {
+  const holder = root.getElementById("event-model-document");
+  const next = appendActor(JSON.parse(holder?.textContent || "{}"));
+  if (holder) holder.textContent = JSON.stringify(next);
+  const actor = next.slices?.at(-1)?.actors?.at(-1);
   const list = root.querySelector('[aria-label="Timeline"] ul');
   if (list) {
     const item = root.createElement("li");
     item.textContent = "Actor";
     item.setAttribute("aria-label", "Actor");
     item.dataset.kind = "actor";
+    if (actor) item.setAttribute("data-id", actor.id);
     list.append(item);
-  }
-  const holder = root.getElementById("event-model-document");
-  if (holder) {
-    holder.textContent = JSON.stringify(
-      appendActor(JSON.parse(holder.textContent || "{}")),
-    );
   }
 }
 
@@ -321,12 +321,43 @@ export function bindEditor(root) {
     }
   });
   let sourcePort = null;
+  let dragActorItem = null;
   root.addEventListener("mousedown", (event) => {
-    const port = event.target?.closest?.("[data-id]");
+    const actorItem = event.target?.closest?.("li");
+    if (
+      actorItem &&
+      timelineList?.contains(actorItem) &&
+      actorItem.dataset.kind === "actor"
+    ) {
+      dragActorItem = actorItem;
+      return;
+    }
+    const port = event.target?.closest?.("button[data-id]");
     if (port) sourcePort = port;
   });
   root.addEventListener("mouseup", (event) => {
-    const target = event.target?.closest?.("[data-id]");
+    if (dragActorItem) {
+      const sliceItem = event.target?.closest?.("li");
+      const holder = root.getElementById("event-model-document");
+      if (
+        holder &&
+        sliceItem &&
+        slicesList?.contains(sliceItem) &&
+        dragActorItem.dataset.id &&
+        sliceItem.dataset.id
+      ) {
+        holder.textContent = JSON.stringify(
+          moveActorToSlice(
+            JSON.parse(holder.textContent || "{}"),
+            dragActorItem.dataset.id,
+            sliceItem.dataset.id,
+          ),
+        );
+      }
+      dragActorItem = null;
+      return;
+    }
+    const target = event.target?.closest?.("button[data-id]");
     if (sourcePort && target && sourcePort !== target) {
       const holder = root.getElementById("event-model-document");
       if (holder) {
