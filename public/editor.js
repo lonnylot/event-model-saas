@@ -512,7 +512,7 @@ export function bindEditor(root) {
     if (item.dataset.kind === "event") {
       selected = "event";
       selectedEventItem = item;
-      bindName("Event Happened");
+      bindName(item.getAttribute("aria-label") ?? "Event Happened");
       bindAddField();
       bindDescription();
       unbindFieldName();

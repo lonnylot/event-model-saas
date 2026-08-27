@@ -77,7 +77,8 @@ export function modelPageHtml(
           `<li aria-label="${command.title}" data-kind="command">${command.title}</li>`,
       ),
       ...(slice.events ?? []).map(
-        (event) => `<li aria-label="${event.title}">${event.title}</li>`,
+        (event) =>
+          `<li aria-label="${event.title}" data-kind="event">${event.title}</li>`,
       ),
     ])
     .join("");
