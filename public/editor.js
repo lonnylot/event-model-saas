@@ -562,7 +562,9 @@ export function bindEditor(root) {
       }
       if (
         inspector &&
-        (selected === "command" || selected === "event") &&
+        (selected === "command" ||
+          selected === "event" ||
+          selected === "readmodel") &&
         ![...inspector.querySelectorAll("button")].some(
           (item) => item.textContent === "Delete Field",
         )

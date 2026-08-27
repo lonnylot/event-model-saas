@@ -10,6 +10,14 @@ export function deleteField(model, target = "command") {
     slices[slices.length - 1] = { ...slice, events };
     return { ...model, slices };
   }
+  if (target === "readmodel") {
+    const readModels = [...(slice.readModels ?? [])];
+    const readModel = readModels.at(-1);
+    if (!readModel) return model;
+    readModels[readModels.length - 1] = { ...readModel, fields: [] };
+    slices[slices.length - 1] = { ...slice, readModels };
+    return { ...model, slices };
+  }
   const commands = [...(slice.commands ?? [])];
   const command = commands.at(-1);
   if (!command) return model;
