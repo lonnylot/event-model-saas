@@ -449,3 +449,36 @@ test("After clicking `New Slice` then `Add Command` twice, clicking the first Ti
     "Submit cart",
   );
 });
+
+async function addTwoActorsClickFirstFillDescription(page: Page) {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "Add Actor", exact: true }).click();
+  await page.getByRole("button", { name: "Add Actor", exact: true }).click();
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Actor", exact: true }),
+  ).toHaveCount(2);
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Actor", exact: true })
+    .first()
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Description", exact: true })
+    .fill("Librarian", { timeout: 5000 });
+}
+
+test("After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem, filling Inspector `Description` with `Librarian` sets the first Actor `description` to `Librarian`", async ({
+  page,
+}) => {
+  await addTwoActorsClickFirstFillDescription(page);
+  const json = await page
+    .locator("#event-model-document")
+    .evaluate((el) => el.textContent);
+  expect(JSON.parse(json ?? "{}").slices?.[0]?.actors?.[0]?.description).toBe(
+    "Librarian",
+  );
+});

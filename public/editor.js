@@ -392,6 +392,7 @@ export function bindEditor(root) {
             setActorDescription(
               JSON.parse(holder.textContent || "{}"),
               input.value,
+              selectedActorItem?.dataset?.id,
             ),
           );
         }
