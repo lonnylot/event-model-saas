@@ -50,6 +50,10 @@ import { undoAutomation } from "./undo-automation.js";
 import { undoMoveSliceLeft } from "./undo-move-slice-left.js";
 import { restoreSlice } from "./restore-slice.js";
 
+import { undoCommand } from "./undo-command.js";
+import { deleteCommand } from "./delete-command.js";
+import { restoreCommand } from "./restore-command.js";
+
 const undoStack = [];
 const redoStack = [];
 
@@ -150,6 +154,7 @@ export function onAddCommandClick(root) {
     item.setAttribute("aria-label", "Command");
     item.dataset.kind = "command";
     item.setAttribute("data-id", command.id);
+    if (command) item.setAttribute("data-id", command.id);
     const port = root.createElement("button");
     port.type = "button";
     port.textContent = "Command port";
@@ -1448,6 +1453,34 @@ export function bindEditor(root) {
       const entry = undoStack.pop();
       const kind = typeof entry === "string" ? entry : entry?.kind;
 
+      if (kind === "deleteCommand") {
+        holder.textContent = JSON.stringify(
+          restoreCommand(
+            JSON.parse(holder.textContent || "{}"),
+            entry.command,
+            entry.sliceId,
+            entry.index,
+          ),
+        );
+        const list = root.querySelector('[aria-label="Timeline"] ul');
+        if (list && entry.command) {
+          const item = root.createElement("li");
+          item.textContent = "Command";
+          item.setAttribute("aria-label", "Command");
+          item.dataset.kind = "command";
+          item.setAttribute("data-id", entry.command.id);
+          const port = root.createElement("button");
+          port.type = "button";
+          port.textContent = "Command port";
+          port.dataset.id = entry.command.id;
+          port.dataset.kind = "COMMAND";
+          item.append(port);
+          const before = list.children[entry.index];
+          if (before) list.insertBefore(item, before);
+          else list.append(item);
+        }
+        return;
+      }
       if (kind === "command") {
         holder.textContent = JSON.stringify(
           undoAddCommand(JSON.parse(holder.textContent || "{}")),
@@ -1594,6 +1627,30 @@ export function bindEditor(root) {
     if (event.key !== "Backspace" && event.key !== "Delete") return;
     if (event.target instanceof HTMLInputElement) return;
     const holder = root.getElementById("event-model-document");
+    if (holder && selected === "command" && selectedCommandItem) {
+      const commandId = selectedCommandItem.dataset.id;
+      const model = JSON.parse(holder.textContent || "{}");
+      const slice = (model.slices ?? []).find((s) =>
+        (s.commands ?? []).some((command) => command.id === commandId),
+      );
+      const index = slice
+        ? (slice.commands ?? []).findIndex((c) => c.id === commandId)
+        : -1;
+      const command = index >= 0 ? slice.commands[index] : undefined;
+      holder.textContent = JSON.stringify(deleteCommand(model, commandId));
+      selectedCommandItem.remove();
+      if (command && slice && index >= 0) {
+        undoStack.push({
+          kind: "deleteCommand",
+          command,
+          sliceId: slice.id,
+          index,
+        });
+      }
+      selectedCommandItem = null;
+      selected = null;
+      return;
+    }
     const sliceId = selectedSliceItem?.dataset?.id;
     if (holder && selected === "slice" && sliceId && selectedSliceItem) {
       const model = JSON.parse(holder.textContent || "{}");
