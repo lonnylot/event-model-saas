@@ -557,4 +557,37 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add 
   ).toHaveValue("jobId");
 });
 
+test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add Command`, clicks `Add Event`, drags from `Command port` onto `Event Happened port`, and Saves, a reload of that page, clicking the Timeline text `Command → Event Happened` shows the text `From Command` in the Inspector region", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await dragPort(page, "Command port", "Event Happened port");
+  await Promise.all([
+    page.waitForResponse(
+      (response) =>
+        response.url().includes("/api/models/") &&
+        response.request().method() === "PUT",
+    ),
+    page.getByRole("button", { name: "Save", exact: true }).click(),
+  ]);
+  await page.reload();
+  const inspector = page.getByRole("region", {
+    name: "Inspector",
+    exact: true,
+  });
+  await expect(
+    inspector.getByText("From Command", { exact: true }),
+  ).toHaveCount(0);
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByText("Command → Event Happened", { exact: true })
+    .click();
+  await expect(
+    inspector.getByText("From Command", { exact: true }),
+  ).toBeVisible();
+});
+
 

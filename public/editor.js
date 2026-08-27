@@ -258,8 +258,17 @@ export function bindEditor(root) {
       }
       const connection = event.target?.closest?.("[data-kind=connection]");
       if (!connection || !timeline.contains(connection)) return;
-      if (connection.textContent !== "Event Happened → Read Model") return;
       const inspectorEl = root.querySelector('[aria-label="Inspector"]');
+      if (connection.textContent === "Command → Event Happened") {
+        if (
+          inspectorEl &&
+          !inspectorEl.textContent?.includes("From Command")
+        ) {
+          inspectorEl.insertAdjacentHTML("beforeend", "<p>From Command</p>");
+        }
+        return;
+      }
+      if (connection.textContent !== "Event Happened → Read Model") return;
       if (
         inspectorEl &&
         !inspectorEl.textContent?.includes("From Event Happened")
