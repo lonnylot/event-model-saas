@@ -212,3 +212,24 @@ test("Filling the Inspector `Name` textbox with `Order Placed` after selecting `
     "Order Placed",
   );
 });
+
+test("Filling the Inspector `Name` textbox with `Order Placed` after selecting `Event Happened` shows a Timeline listitem whose accessible name is `Order Placed`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Event Happened", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Name", exact: true })
+    .fill("Order Placed");
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Order Placed", exact: true }),
+  ).toBeVisible();
+});
