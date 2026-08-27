@@ -39,7 +39,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person,
 
 - Command, Event, Read Model, and Automation selection is a click on the Timeline listitem. The Inspector `Name` textbox is one control; selecting another of those kinds in the same session updates that `Name` value.
 - Toolbar Add still targets the last Slice. Clicking Add Command, Add Event, Add Read Model, or Add Automation with no Slice does not append a Timeline listitem.
-- This slice is one in-session Command, Read Model, and Automation. Name JSON mutates the last Read Model or Automation of that kind. Command Name mutates the last Command only when that Command is selected. Command multi-item Name is [name-binding.md](./name-binding.md). Event Name binds to the clicked Event ([name-binding-rest.md](./name-binding-rest.md)).
+- This slice is one in-session Command and Automation. Name JSON mutates the last Automation of that kind. Command Name mutates the last Command only when that Command is selected. Command multi-item Name is [name-binding.md](./name-binding.md). Event / Read Model Name binds to the clicked Event or Read Model ([name-binding-rest.md](./name-binding-rest.md)).
 - Inspect is a click on a click-created listitem. Inspect after reload is [inspect-after-reload.md](./inspect-after-reload.md). Description after reload is [inspect-rest.md](./inspect-rest.md).
 - The Inspector `Name` textbox edits Command, Event, Read Model, or Automation `title`. The JSON key stays `title`.
 - Name edits are in-memory until Save. Save still uses the version check from model-persistence.

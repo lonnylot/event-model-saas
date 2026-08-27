@@ -208,3 +208,36 @@ test("After clicking `New Slice` then `Add Event` twice, clicking the first Time
     "Order Placed",
   );
 });
+
+async function addTwoReadModelsClickFirstFillOrders(page: Page) {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Read Model", exact: true }),
+  ).toHaveCount(2);
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Read Model", exact: true })
+    .first()
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Name", exact: true })
+    .fill("Orders");
+}
+
+test("After clicking `New Slice` then `Add Read Model` twice, clicking the first Timeline `Read Model` listitem, filling Inspector `Name` with `Orders` sets the first Read Model `title` to `Orders`", async ({
+  page,
+}) => {
+  await addTwoReadModelsClickFirstFillOrders(page);
+  const json = await page
+    .locator("#event-model-document")
+    .evaluate((el) => el.textContent);
+  expect(JSON.parse(json ?? "{}").slices?.[0]?.readModels?.[0]?.title).toBe(
+    "Orders",
+  );
+});

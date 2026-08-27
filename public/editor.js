@@ -1043,6 +1043,7 @@ export function bindEditor(root) {
             setReadModelTitle(
               JSON.parse(holder.textContent || "{}"),
               input.value,
+              selectedReadModelItem?.dataset?.id,
             ),
           );
         }
