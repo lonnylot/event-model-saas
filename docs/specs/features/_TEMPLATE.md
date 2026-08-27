@@ -26,7 +26,7 @@ If the product catalogs actions (observability spec): `action` names from that c
 
 ## UI
 
-If the product inventories screens and primitives (design-system spec): screens and primitives this feature uses. Starting or stopping compose of an existing primitive updates that inventory. Otherwise omit this section.
+If the product inventories screens and primitives (design-system spec): screens and primitives this feature uses. Starting or stopping compose of an existing primitive updates that inventory. Listing a primitive here without an AC that asserts it is leftover (`keeping-specs-current`). Otherwise omit this section.
 
 ## Assumptions
 
