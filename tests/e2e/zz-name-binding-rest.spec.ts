@@ -389,3 +389,30 @@ test("After clicking `New Slice` then `Add Automation` then `Save` on that page,
     .fill("Send Email");
   await expect(page.getByText("Unsaved changes.")).toBeVisible();
 });
+
+async function addTwoSlicesClickFirstFillDescription(page: Page) {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await expect(
+    page.getByRole("listitem", { name: "New Slice", exact: true }),
+  ).toHaveCount(2);
+  await page
+    .getByRole("listitem", { name: "New Slice", exact: true })
+    .first()
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Description", exact: true })
+    .fill("First column");
+}
+
+test("After clicking `New Slice` twice, clicking the first `New Slice` listitem, filling Inspector `Description` with `First column` sets the first Slice `description` to `First column`", async ({
+  page,
+}) => {
+  await addTwoSlicesClickFirstFillDescription(page);
+  const json = await page
+    .locator("#event-model-document")
+    .evaluate((el) => el.textContent);
+  expect(JSON.parse(json ?? "{}").slices?.[0]?.description).toBe("First column");
+});

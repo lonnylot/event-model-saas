@@ -23,7 +23,7 @@ Command Name binds by id, shows visible text, and Actor Name dirties after Save.
 - [x] After clicking `New Slice` then `Add Event` then `Save` on that page, filling the Inspector `Name` textbox with `Order Placed` after selecting `Event Happened` shows the text `Unsaved changes.`
 - [x] After clicking `New Slice` then `Add Read Model` then `Save` on that page, filling the Inspector `Name` textbox with `Orders` after selecting `Read Model` shows the text `Unsaved changes.`
 - [x] After clicking `New Slice` then `Add Automation` then `Save` on that page, filling the Inspector `Name` textbox with `Send Email` after selecting `Automation` shows the text `Unsaved changes.`
-- [ ] After clicking `New Slice` twice, clicking the first `New Slice` listitem, filling Inspector `Description` with `First column` sets the first Slice `description` to `First column`
+- [x] After clicking `New Slice` twice, clicking the first `New Slice` listitem, filling Inspector `Description` with `First column` sets the first Slice `description` to `First column`
 - [ ] After clicking `New Slice` then `Add Command` twice, clicking the first Timeline `Command` listitem, filling Inspector `Description` with `Submit cart` sets the first Command `description` to `Submit cart`
 - [ ] After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem, filling Inspector `Description` with `Librarian` sets the first Actor `description` to `Librarian`
 - [ ] After clicking `New Slice` then `Add Event` twice, clicking the first Timeline `Event Happened` listitem, filling Inspector `Description` with `It happened` sets the first Event `description` to `It happened`
@@ -55,8 +55,8 @@ Mac window chrome. Command Name-by-id, Command visible text, and Actor dirty sta
 
 - [name-binding.md](./name-binding.md) — Out of scope no longer owns multi-item Name for Slice / Actor / Event / Read Model / Automation, visible text for those kinds, or Command / Event Name dirty; this slice owns those. Command Name-by-id, Command visible text, and Actor dirty stay that file.
 - [chrome.md](./chrome.md) — Slice / Actor multi-item Name is this slice. Slice Name dirty stays this file.
-- [canvas.md](./canvas.md) — Slice Name binds to the clicked Slice; this slice owns that. Actor / Event / Read Model / Automation multi-item Name is this slice. Command is [name-binding.md](./name-binding.md).
+- [canvas.md](./canvas.md) — Slice Name binds to the clicked Slice; this slice owns that. Actor / Event / Read Model / Automation multi-item Name is this slice. Command is [name-binding.md](./name-binding.md). Slice Description-by-id is this slice.
 - [inspect-blocks.md](./inspect-blocks.md) — Multi-item Name and Name dirty for Event / Read Model / Automation is this slice.
-- [inspect-description.md](./inspect-description.md) — Slice Description-by-id is this slice. Slice / Actor / Event / Read Model / Automation multi-item Name is this slice.
+- [inspect-description.md](./inspect-description.md) — Last-item Description stays that file. Description-by-id of two items is this slice. Slice / Actor / Event / Read Model / Automation multi-item Name is this slice.
 - [inspect-after-reload.md](./inspect-after-reload.md) — Slice / Actor / Event / Read Model / Automation multi-item Name of two in-session items is this slice. Inspect after reload stays that file.
 - [product.md](../product.md) — Name binds to the clicked Slice / Actor / Event / Read Model / Automation. Visible text follows Name. Command / Event / Read Model / Automation Name after Save shows Unsaved changes. Playwright path for this slice adds: two of each kind, rename the first; visible text Checkout / Shopper / Order Placed / Orders / Send Email; Name dirty after Save; Description-by-id on Slice / Actor / Command / Event / Read Model / Automation.

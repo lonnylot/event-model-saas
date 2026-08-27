@@ -1145,6 +1145,33 @@ export function bindEditor(root) {
       unbindDescription();
     }
   };
+  const descriptionInput = () =>
+    [...(inspector?.querySelectorAll("input") ?? [])].find((el) =>
+      el.closest("label")?.textContent?.includes("Description"),
+    );
+  const bindDescription = () => {
+    if (!inspector) return;
+    let input = descriptionInput();
+    if (!input) {
+      inspector.insertAdjacentHTML(
+        "beforeend",
+        "<label>Description <input /></label>",
+      );
+      input = descriptionInput();
+      input?.addEventListener("input", () => {
+        const holder = root.getElementById("event-model-document");
+        if (holder && selected === "slice") {
+          holder.textContent = JSON.stringify(
+            setSliceDescription(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+              selectedSliceItem?.dataset?.id,
+            ),
+          );
+        }
+      });
+    }
+  };
   timelineList?.addEventListener("click", (event) => {
     const item = event.target?.closest?.("li");
     if (!item || !timelineList.contains(item)) return;
