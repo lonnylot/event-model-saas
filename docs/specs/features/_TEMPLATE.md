@@ -34,7 +34,7 @@ Environment facts (hostname, test adapter, platform flags). A shippable operator
 
 ## Out of scope
 
-Explicit non-goals. When ACs cover some kinds of a shared family, name the omitted kinds here (Event reload-lists; Event / Read Model same-port copy; Event / Read Model onto Actor / Automation / Slice; Event → Read Model duplicate of a kind-agnostic refuse; Event → Read Model Connection after reload when ACs only cover Command → Event). When ACs are in-session Backspace and GET listitems have no `data-id`, name delete-after-reload (inspect-after-reload family). Unnamed stay later for work a released spec already owns is unfinished — point at that spec (`keeping-specs-current`).
+Explicit non-goals. When ACs cover some kinds of a shared family, name the omitted kinds here (Event reload-lists; Event / Read Model same-port copy; Event / Read Model onto Actor / Automation / Slice; Event → Read Model duplicate of a kind-agnostic refuse; Event → Read Model Connection after reload when ACs only cover Command → Event). When ACs are in-session Backspace and GET listitems have no `data-id`, name delete-after-reload (inspect-after-reload family). Unnamed stay later for work a released spec already owns is unfinished — point at that spec (`keeping-specs-current`). Dropping that pointer when rewriting Out of scope is the same miss.
 
 ## Restates
 
