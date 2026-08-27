@@ -433,7 +433,11 @@ export function bindEditor(root) {
       const holder = root.getElementById("event-model-document");
       if (holder) {
         holder.textContent = JSON.stringify(
-          appendField(JSON.parse(holder.textContent || "{}"), selected),
+          appendField(
+            JSON.parse(holder.textContent || "{}"),
+            selected,
+            selected === "command" ? selectedCommandItem?.dataset?.id : undefined,
+          ),
         );
       }
       if (selected !== "command") return;
@@ -450,6 +454,7 @@ export function bindEditor(root) {
               setFieldName(
                 JSON.parse(documentHolder.textContent || "{}"),
                 fieldNameInput.value,
+                selectedCommandItem?.dataset?.id,
               ),
             );
           }
