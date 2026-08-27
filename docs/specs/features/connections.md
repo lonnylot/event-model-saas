@@ -41,7 +41,7 @@ Event Model, Slice, Command, Event, Read Model, Actor, Automation, Connection, T
 
 ## Out of scope
 
-Dashed Add on a lane and keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane.md). Mac window chrome, Actor or Automation as connection endpoints, duplicate-connection refusal, self-connection refusal, the other illegal-pair copy from the Mac app. Highlighting legal targets, snap-back, reason on the source, and Event → Command are [connection-feedback.md](./connection-feedback.md). Delete, drag blocks between Slices, pan, moving Slices, and undo are [canvas.md](./canvas.md). Slice and Actor Name are [chrome.md](./chrome.md). Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md). Description, Fields, and Slice type picker stay later.
+Dashed Add on a lane and keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane.md). Mac window chrome, Actor or Automation as connection endpoints, duplicate-connection refusal, self-connection refusal, the other illegal-pair copy from the Mac app. Highlighting legal targets, snap-back, reason on the source, and Event → Command are [connection-feedback.md](./connection-feedback.md). Delete, drag blocks between Slices, pan, moving Slices, and undo are [canvas.md](./canvas.md). Slice and Actor Name are [chrome.md](./chrome.md). Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md). Description is [inspect-description.md](./inspect-description.md). Fields and Slice type picker stay later.
 
 ## Restates
 

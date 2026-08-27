@@ -6,11 +6,17 @@ import { appendReadModel } from "./append-read-model.js";
 import { appendAutomation } from "./append-automation.js";
 import { appendConnection } from "./append-connection.js";
 import { setSliceTitle } from "./set-slice-title.js";
+import { setSliceDescription } from "./set-slice-description.js";
 import { setActorName } from "./set-actor-name.js";
+import { setActorDescription } from "./set-actor-description.js";
 import { setCommandTitle } from "./set-command-title.js";
+import { setCommandDescription } from "./set-command-description.js";
 import { setEventTitle } from "./set-event-title.js";
+import { setEventDescription } from "./set-event-description.js";
 import { setReadModelTitle } from "./set-read-model-title.js";
+import { setReadModelDescription } from "./set-read-model-description.js";
 import { setAutomationTitle } from "./set-automation-title.js";
+import { setAutomationDescription } from "./set-automation-description.js";
 import { moveSliceLeft } from "./move-slice-left.js";
 import { moveActorToSlice } from "./move-actor-to-slice.js";
 import { deleteSlice } from "./delete-slice.js";
@@ -255,6 +261,72 @@ export function bindEditor(root) {
   let selectedAutomationItem = null;
   const inspector = root.querySelector('[aria-label="Inspector"]');
   const nameInput = () => inspector?.querySelector("input");
+  const descriptionInput = () =>
+    [...(inspector?.querySelectorAll("input") ?? [])].find((el) =>
+      el.closest("label")?.textContent?.includes("Description"),
+    );
+  const bindDescription = () => {
+    if (!inspector) return;
+    let input = descriptionInput();
+    if (!input) {
+      inspector.insertAdjacentHTML(
+        "beforeend",
+        "<label>Description <input /></label>",
+      );
+      input = descriptionInput();
+      input?.addEventListener("input", () => {
+        const holder = root.getElementById("event-model-document");
+        if (holder && selected === "slice") {
+          holder.textContent = JSON.stringify(
+            setSliceDescription(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+            ),
+          );
+        }
+        if (holder && selected === "actor") {
+          holder.textContent = JSON.stringify(
+            setActorDescription(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+            ),
+          );
+        }
+        if (holder && selected === "command") {
+          holder.textContent = JSON.stringify(
+            setCommandDescription(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+            ),
+          );
+        }
+        if (holder && selected === "event") {
+          holder.textContent = JSON.stringify(
+            setEventDescription(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+            ),
+          );
+        }
+        if (holder && selected === "readmodel") {
+          holder.textContent = JSON.stringify(
+            setReadModelDescription(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+            ),
+          );
+        }
+        if (holder && selected === "automation") {
+          holder.textContent = JSON.stringify(
+            setAutomationDescription(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+            ),
+          );
+        }
+      });
+    }
+  };
   const bindName = (value) => {
     if (!inspector) return;
     let input = nameInput();
@@ -336,30 +408,35 @@ export function bindEditor(root) {
       selected = "command";
       selectedCommandItem = item;
       bindName("Command");
+      bindDescription();
       return;
     }
     if (item.dataset.kind === "event") {
       selected = "event";
       selectedEventItem = item;
       bindName("Event Happened");
+      bindDescription();
       return;
     }
     if (item.dataset.kind === "readmodel") {
       selected = "readmodel";
       selectedReadModelItem = item;
       bindName("Read Model");
+      bindDescription();
       return;
     }
     if (item.dataset.kind === "automation") {
       selected = "automation";
       selectedAutomationItem = item;
       bindName("Automation");
+      bindDescription();
       return;
     }
     if (item.dataset.kind !== "actor") return;
     selected = "actor";
     selectedActorItem = item;
     bindName("Actor");
+    bindDescription();
   });
   slicesList?.addEventListener("click", (event) => {
     const item = event.target?.closest?.("li");
@@ -369,6 +446,7 @@ export function bindEditor(root) {
     const indexAttr = item.getAttribute("data-slice-index");
     selectedSliceIndex = indexAttr === null ? null : Number(indexAttr);
     bindName("New Slice");
+    bindDescription();
   });
   root.addEventListener("keydown", (event) => {
     if (
