@@ -44,8 +44,8 @@ Description is [inspect-description.md](./inspect-description.md). Add Field and
 
 ## Restates
 
-- [editor-shell.md](./editor-shell.md) — Out of scope no longer owns inspector fields for Slice and Actor Name; this slice owns those. Description is [inspect-description.md](./inspect-description.md). Fields and Slice type picker stay later.
-- [blocks.md](./blocks.md) — Out of scope no longer owns Slice or Actor selection; this slice owns those. Description is [inspect-description.md](./inspect-description.md). Inspector fields other than Name stay later.
+- [editor-shell.md](./editor-shell.md) — Out of scope no longer owns inspector fields for Slice and Actor Name; this slice owns those. Description is [inspect-description.md](./inspect-description.md). Add Field is [inspect-fields.md](./inspect-fields.md). Slice type picker stay later.
+- [blocks.md](./blocks.md) — Out of scope no longer owns Slice or Actor selection; this slice owns those. Description is [inspect-description.md](./inspect-description.md). Inspector Name stays this slice. Add Field is [inspect-fields.md](./inspect-fields.md).
 - [connections.md](./connections.md) — Out of scope no longer owns Inspector Name for Slice and Actor; this slice owns those.
 - [model-persistence.md](./model-persistence.md) — Out of scope no longer owns inspector fields for Slice and Actor Name; this slice owns those.
 - [product.md](../product.md) — Playwright path for this slice is open Event Model, New Slice, click New Slice, fill Name with Checkout, Save, reload still lists Checkout. Description is [inspect-description.md](./inspect-description.md). Add Field is [inspect-fields.md](./inspect-fields.md). Slice type picker stay later. Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md).
