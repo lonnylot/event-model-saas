@@ -2,12 +2,11 @@
 name: playwright-e2e
 description: >
   Use when adding or changing Playwright tests, a test:e2e script, a
-  script-existence guard, an exact `playwright test` script value, a
-  browser user flow, an accessible-name locator, a does-not-show
-  control assertion, the CI job that runs flow tests, Playwright
-  webServer env, blanking live API keys, an already-mounted UI
-  re-open, an async form fetch before reading last-mail, or Playwright
-  `workers` isolation. Also when updating a Flow row in a testing spec.
+  script-existence guard, a browser user flow, the CI job that runs
+  flow tests, Playwright webServer env, blanking live API keys, an
+  empty-state flow after a mutating spec file, or an
+  already-mounted UI re-open. Also when updating a Flow row in a
+  testing spec.
 ---
 
 # Playwright e2e
@@ -24,11 +23,11 @@ Flow tests prove the catalogued user path through a real browser. Domain and app
 
 1. **Quote the criterion.** Open the feature spec and the Flow row in the testing spec if it exists. Test name is that criterion. The Playwright spec lands in the same commit as the production that implements that criterion (`logical-commits`). Completion: deleting the flow would fail this test for that reason.
 
-2. **Script and CI.** Read `package.json` (or the product's equivalent). If `test:e2e` is missing, add it (Playwright's documented runner) in the same change. Changing Playwright `workers` (or other runner isolation) needs a spec sentence first (`keeping-specs-current`) — do not silently set `workers: 1` always. If CI has no job that runs that script, add one on `pull_request` — unit tests + build do not prove a click path. A unit test that only checks `scripts["test:e2e"]` is a non-empty string stays green if the script is `true` or `echo`. Unordered `toContain("playwright")` plus `toContain("test")` stays green for `echo playwright test`. An AC that says the script "includes the tokens" is a weaker criterion — restate as the script **is** `playwright test` (`keeping-specs-current`). Completion: the manifest and the workflow name the same script; any script-existence test asserts the exact value `playwright test` (consecutive runner tokens), not `length > 0` and not unordered token inclusion.
+2. **Script and CI.** Read `package.json` (or the product's equivalent). If `test:e2e` is missing, add it (Playwright's documented runner) in the same change. If CI has no job that runs that script, add one on `pull_request` — unit tests + build do not prove a click path. A unit test that only checks `scripts["test:e2e"]` is a non-empty string stays green if the script is `true` or `echo`. Completion: the manifest and the workflow name the same script; any script-existence test asserts the runner token (`playwright test`), not `length > 0`.
 
-3. **Seams in the test server.** The documented test adapter constructs auth, persistence, and any model/HTTP fakes **once per Node process** so register, login, and later requests in the same worker still see that state (`codebase-design` composition root). Playwright's webServer env blanks live API keys so the suite cannot reach third-party hosts. Point any file database at a temp path. Flow tests use that documented test adapter; they do not prove a production store (`testing`). Completion: a second request in the same worker still sees the registered account; the spec does not call the live vendor. A leftover identifier in wiring source is not this proof (`testing`).
+3. **Seams in the test server.** The documented test adapter constructs auth, persistence, and any model/HTTP fakes **once per Node process** so register, login, and later requests in the same test still see that state (`codebase-design` composition root). Keep that process-global state **inside one test** so a multi-step flow still sees the account. Reset the fake store/mail **between files** so an empty-state spec still passes after a mutating file has run. Playwright's webServer env blanks live API keys so the suite cannot reach third-party hosts. Point any file database at a temp path. Completion: a second request in the same test still sees the registered account; empty-state still passes after a mutating file ran (file order does not matter); `workers: 1` is not that proof; the spec does not call the live vendor. A leftover identifier in wiring source is not this proof (`testing`).
 
-4. **Drive the UI the user sees.** Prefer role + accessible name (the same label the screen already has). If the AC says the accessible name **is** `X`, the locator must fail a heading named `X` plus a suffix (`{ exact: true }` or `/^X$/`) — substring `name: "X"` is a weaker reading (`testing`). A "does not show a control named X" query that lists only `button` and `link` stays green for a checkbox or menuitem named X (`testing`) — query widget roles, or assert no accessible name X on any control. Add `data-testid` only when no accessible name exists, and only in the same change as the screen. One flow per test. A re-open after a panel is already mounted is close, then follow-up submit, then assert open without clicking the trigger — first-paint `data-state="open"` is not this proof (`testing`). After click/submit on a control whose handler is async `fetch`, wait for that request (or the user-visible result) before reading `/api/test/last-mail` or any side effect the fetch produces — Playwright's click does not wait for that handler. Completion: the test fails if that button or heading is removed, and fails if the accessible name is `X` plus more characters.
+4. **Drive the UI the user sees.** Prefer role + accessible name (the same label the screen already has). Add `data-testid` only when no accessible name exists, and only in the same change as the screen. One flow per test. A re-open after a panel is already mounted is close, then follow-up submit, then assert open without clicking the trigger — first-paint `data-state="open"` is not this proof (`testing`). Completion: the test fails if that button or heading is removed.
 
 5. **Session.** Register (or login) through the UI in the test. Do not mint a session cookie in the spec unless a documented test-only helper exists. Completion: an unauthenticated visit still redirects to the login route (or the product's documented unauthenticated path).
 

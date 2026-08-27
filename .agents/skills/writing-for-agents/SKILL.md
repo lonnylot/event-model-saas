@@ -2,9 +2,8 @@
 name: writing-for-agents
 description: >
   Use when creating or editing AGENTS.md, a skill under .agents/skills,
-  an agent under .agents/agents, when a spec change requires updating
-  those procedures, or when specs or plans would land under docs/superpowers
-  or another vendor spec/plan tree.
+  an agent under .agents/agents, or when a spec change requires updating
+  those procedures.
 ---
 
 # Writing for agents
@@ -22,40 +21,19 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Domain terms, CONTEXT.md, ADR | `domain-modeling` |
 | Test layers or seams | `testing`, `tdd-loop` |
 | Commit / branch / PR / CI | `logical-commits`, `github-ci-loop` |
-| YAML event prefix / `pull_request_target` | `testing`, `github-ci-loop` |
-| Review or release gate | `spec-review-loop`, `releasing-a-spec`, `spec-reviewer` |
+| Review or release gate | `spec-review-loop`, `releasing-a-spec`, `spec-reviewer`, `release-manager` |
+| Orchestrator vs implementer / no production code in the main session | `releasing-a-spec`, `spec-implementer` |
+| Unmergeable PR / rebase onto default / merge conflict | `spec-implementer` (algorithm); `github-ci-loop` and `release-manager` fail closed |
 | After merge, learn from review | `post-merge-improvement`, `post-merge-improver` |
 | Two or more feat/ PRs at once | `parallel-feature-work`, `using-git-worktrees`, `releasing-a-spec` |
 | Playwright / flow CI | `playwright-e2e`, `testing` |
-| Async form fetch / last-mail before the invite POST | `playwright-e2e` |
-| Accessible name **is** X / Playwright substring | `testing`, `playwright-e2e` |
-| Unit `toContain(">X<")` for a named link/button/textbox | `testing` |
-| Unit `not.toContain("<li>X</li>")` for a does-not-show listitem | `testing` |
-| Clicking-appends tested at a function production never calls | `testing` |
-| Dragging-appends unit that passes the kind already in the input | `testing` |
-| Same-control Name values that never select the other entity | `testing` |
-| "that Slice" / clicked-item AC with only one item | `testing`, `keeping-specs-current` |
-| Empty stub `it` / checked AC with no assertion | `testing`, `tdd-loop` |
 | Module / seam / adapter vocabulary | `codebase-design` |
-| Architecture adapter constructed only under a test flag / injected `env.documents` / construction parked in Assumptions | `testing`, `codebase-design`, `keeping-specs-current` |
-| Architecture-named store never constructed in a test / each new SQL untested | `testing` |
-| Packed "and" AC / independent env/branch cases | `testing`, `keeping-specs-current` |
-| Early-return 400 vs does not create / persist-then-400 / copy toKind for every target | `logical-commits`, `testing` |
 | Assumption vs acceptance criterion | `keeping-specs-current` |
-| Restated AC with leftover sections / leftover Assumptions after Out of scope / leftover Seams after deleting a named module / leftover test title / leftover Restates | `keeping-specs-current` |
-| 303/redirect AC vs a shows bullet on the same path | `keeping-specs-current` |
-| product.md leftover locked words / later-slice Playwright `add a slice` / leftover Restates quoting old product.md Playwright / leftover Document flow schema-reject / leftover Editor (Mac parity) after restating Testing highlighting / copying a schema file instead of restating / Next slice still names a released slug / removing product.md from Restates | `keeping-specs-current` |
+| Restated AC with leftover sections / leftover test title / leftover Restates / leftover locked claims in a restated system spec | `keeping-specs-current` |
 | Domain terms line without a `CONTEXT.md` entry | `keeping-specs-current`, `domain-modeling` |
-| Independently revertible ACs / grouping by screen / spec-only / fromKind vs toKind | `logical-commits` |
-| Tests-after / production that landed as a dependency / tests-only commit on top / folding tests-after into sibling production / click-path production after field tests / follow-up rewrite onto click path / fold reload when GET already hydrates | `logical-commits` |
-| Review-thread batch / commit subject names two threads with "and" | `logical-commits` |
-| Extra visible chrome / document title / extra form or link or extra nav on a route / extra inspect of Out of scope kinds / extra host observability without an AC | `keeping-specs-current` |
-| Extra R2 put / D1 insert without an AC that asserts the stored body | `keeping-specs-current`, `testing` |
-| Playwright workers / test-runner isolation without a spec sentence | `keeping-specs-current`, `playwright-e2e` |
-| Mail subject / From display name without a spec sentence | `keeping-specs-current`, `testing` |
-| `run_worker_first` path list vs architecture Compute row | `keeping-specs-current`, `testing` |
+| Independently revertible ACs / grouping by screen / spec-only / reconstruct after tests-after | `logical-commits` |
+| Extra visible chrome without an AC | `keeping-specs-current` |
 | How agents write docs | this skill |
-| Spec tree location / vendor plan dirs / `docs/superpowers/` | this skill, `keeping-specs-current` |
 | Product architecture / UI kit / telemetry / domain rules | the product skill that owns that fact — add a row here when you add that skill |
 
 Completion: `git diff` shows spec + skill together when the procedure changed.
@@ -96,5 +74,4 @@ Inline what every branch needs. Disclose what only some branches need.
 - Skills: `.agents/skills/<name>/SKILL.md`
 - Named agents: `.agents/agents/<name>/AGENT.md`
 - Always-on: `AGENTS.md`
-- Specs: `docs/specs/` (system) and `docs/specs/features/` (slices). ADRs: `docs/adr/`
-- Do not add a parallel vendor directory (`docs/superpowers/` or any other spec/plan tree). Feature work is `releasing-a-spec`. The feature spec is the work list.
+- Do not add a parallel vendor directory.
