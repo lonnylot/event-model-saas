@@ -410,6 +410,7 @@ export function bindEditor(root) {
             setEventDescription(
               JSON.parse(holder.textContent || "{}"),
               input.value,
+              selectedEventItem?.dataset?.id,
             ),
           );
         }
