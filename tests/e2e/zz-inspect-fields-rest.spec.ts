@@ -716,3 +716,31 @@ test("After clicking `New Slice` then `Add Event` twice, clicking the first Time
     JSON.parse(json ?? "{}").slices?.[0]?.events?.[0]?.fields?.[0]?.name,
   ).toBe("eventId");
 });
+
+test("After clicking `New Slice` then `Add Read Model` twice, clicking the first Timeline `Read Model` listitem, clicking `Add Field`, filling `Field name` with `viewId` sets the first Read Model `fields[0].name` to `viewId`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  const readModels = page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Read Model", exact: true });
+  await expect(readModels).toHaveCount(2);
+  await readModels.first().click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("button", { name: "Add Field", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Field name", exact: true })
+    .fill("viewId");
+  const json = await page
+    .locator("#event-model-document")
+    .evaluate((el) => el.textContent);
+  expect(
+    JSON.parse(json ?? "{}").slices?.[0]?.readModels?.[0]?.fields?.[0]?.name,
+  ).toBe("viewId");
+});

@@ -440,7 +440,9 @@ export function bindEditor(root) {
               ? selectedCommandItem?.dataset?.id
               : selected === "event"
                 ? selectedEventItem?.dataset?.id
-                : undefined,
+                : selected === "readmodel"
+                  ? selectedReadModelItem?.dataset?.id
+                  : undefined,
           ),
         );
       }
@@ -468,7 +470,9 @@ export function bindEditor(root) {
                   ? selectedCommandItem?.dataset?.id
                   : selected === "event"
                     ? selectedEventItem?.dataset?.id
-                    : undefined,
+                    : selected === "readmodel"
+                      ? selectedReadModelItem?.dataset?.id
+                      : undefined,
                 selected,
               ),
             );

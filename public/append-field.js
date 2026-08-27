@@ -20,9 +20,13 @@ export function appendField(model, target = "command", id) {
   }
   if (target === "readmodel") {
     const readModels = [...(slice.readModels ?? [])];
-    const readModel = readModels.at(-1);
+    const index = id
+      ? readModels.findIndex((readModel) => readModel.id === id)
+      : readModels.length - 1;
+    if (index < 0) return model;
+    const readModel = readModels[index];
     if (!readModel) return model;
-    readModels[readModels.length - 1] = {
+    readModels[index] = {
       ...readModel,
       fields: [...(readModel.fields ?? []), field],
     };
