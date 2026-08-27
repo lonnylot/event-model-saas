@@ -64,7 +64,7 @@ Person, Site admin, Session, Magic link
 
 ## Out of scope
 
-Event Model persistence, editor canvas. Signed-in `/app` that is not redirected still shows the Person's email and Sign out. Team create, Invite, picker, and `/app/teams/{id}` are owned by teams-and-invites.
+Event Model persistence, editor canvas. Signed-in `/app` that is not redirected still shows the Person's email and Sign out. Paper Page on the expired document and AppBar on `/app` that is not redirected are [visual-shell.md](./visual-shell.md). Team create, Invite, picker, and `/app/teams/{id}` are owned by teams-and-invites.
 
 ## Restates
 

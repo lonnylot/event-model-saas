@@ -93,6 +93,13 @@ export async function handleRequest(
     const last = g.__emSent?.at(-1) ?? null;
     return jsonOk(JSON.stringify({ text: last?.text ?? "" }));
   }
+
+  if (request.method === "GET" && (path === "/favicon.png")) {
+    const asset = await env.ASSETS.fetch(request);
+    const headers = new Headers();
+
+    return new Response(asset.body, { status: asset.status, headers });
+  }
   if (path === "/api/teams" && request.method === "POST") {
     if (!env.auth) return jsonNotFound();
     const person = await personFromRequest(env.auth, request);

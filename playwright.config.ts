@@ -1,6 +1,15 @@
+import { createHash } from "node:crypto";
 import { defineConfig, devices } from "@playwright/test";
 
-const PORT = 8787;
+const PORT =
+  8787 +
+  (parseInt(
+    createHash("sha256").update(process.cwd()).digest("hex").slice(0, 8),
+    16,
+  ) %
+    1000);
+const INSPECTOR_PORT = PORT + 10000;
+process.env.E2E_PORT = String(PORT);
 const BASE = `http://127.0.0.1:${PORT}`;
 
 export default defineConfig({
@@ -23,7 +32,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: `npx wrangler dev --ip 127.0.0.1 --port ${PORT} --var TEST_MAIL:1`,
+    command: `npx wrangler dev --ip 127.0.0.1 --port ${PORT} --inspector-port ${INSPECTOR_PORT} --var TEST_MAIL:1`,
     url: BASE,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,

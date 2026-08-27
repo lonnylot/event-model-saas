@@ -35,4 +35,13 @@ describe("handleRequest", () => {
     expect(await response.text()).toBe('{"error":"not found"}');
     expect(assetsFetch).not.toHaveBeenCalled();
   });
+
+  it("GET `/favicon.png` returns status 200", async () => {
+    const assetsFetch = vi.fn(async () => new Response("x", { status: 200 }));
+    const response = await handleRequest(
+      new Request("https://event-model.lonnylot.com/favicon.png"),
+      envWithAssets(assetsFetch),
+    );
+    expect(response.status).toBe(200);
+  });
 });
