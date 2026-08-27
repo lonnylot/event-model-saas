@@ -150,3 +150,16 @@ test("After dragging from `Command port` onto `Read Model port`, the `Event Happ
     page.getByRole("button", { name: "Event Happened port", exact: true }),
   ).not.toHaveAttribute("aria-current", "true");
 });
+
+test("Dragging from `Command port` onto `Read Model port` shows the text `A command can't write a read model.` in the Command listitem", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await addCommandEventAndReadModel(page);
+  await page
+    .getByRole("button", { name: "Command port", exact: true })
+    .dragTo(page.getByRole("button", { name: "Read Model port", exact: true }));
+  await expect(
+    page.getByRole("listitem", { name: "Command", exact: true }),
+  ).toContainText("A command can't write a read model.");
+});

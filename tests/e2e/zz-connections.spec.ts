@@ -230,7 +230,7 @@ test("Dragging from `Command port` onto `Read Model port` does not append a Conn
   expect(JSON.parse(json ?? "{}").connections ?? []).toEqual([]);
 });
 
-test("Dragging from `Command port` onto `Read Model port` shows the text `A command can't write a read model.`", async ({
+test("Dragging from `Command port` onto `Read Model port` shows the text `A command can't write a read model.` in the Command listitem", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -239,8 +239,8 @@ test("Dragging from `Command port` onto `Read Model port` shows the text `A comm
   await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
   await dragPort(page, "Command port", "Read Model port");
   await expect(
-    page.getByText("A command can't write a read model."),
-  ).toBeVisible();
+    page.getByRole("listitem", { name: "Command", exact: true }),
+  ).toContainText("A command can't write a read model.");
 });
 
 test("After dragging from `Command port` onto `Event Happened port`, the Timeline region shows the text `Command → Event Happened`", async ({

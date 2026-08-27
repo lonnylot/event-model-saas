@@ -13,7 +13,7 @@ Members can drag a legal Port onto a Port, and Command → Read Model is rejecte
 - [x] After pointer-down on `Event Happened port`, the `Read Model port` has `aria-current` `true`
 - [x] After pointer-down on `Event Happened port`, the `Command port` does not have `aria-current` `true`
 - [x] After dragging from `Command port` onto `Read Model port`, the `Event Happened port` does not have `aria-current` `true`
-- [ ] Dragging from `Command port` onto `Read Model port` shows the text `A command can't write a read model.` in the Command listitem
+- [x] Dragging from `Command port` onto `Read Model port` shows the text `A command can't write a read model.` in the Command listitem
 - [ ] Dragging from `Event Happened port` onto `Command port` does not append a Connection
 - [ ] Dragging from `Event Happened port` onto `Command port` shows the text `An event can't trigger a command.` in the Event Happened listitem
 

@@ -462,13 +462,15 @@ export function bindEditor(root) {
         sourcePort.dataset.kind === "COMMAND" &&
         target.dataset.kind === "READMODEL"
       ) {
-        const main = root.querySelector("main");
+        const commandItem = sourcePort.closest("li");
         if (
-          main &&
-          !main.textContent?.includes("A command can't write a read model.")
+          commandItem &&
+          !commandItem.textContent?.includes(
+            "A command can't write a read model.",
+          )
         ) {
-          main.insertAdjacentHTML(
-            "afterbegin",
+          commandItem.insertAdjacentHTML(
+            "beforeend",
             "<p>A command can't write a read model.</p>",
           );
         }
