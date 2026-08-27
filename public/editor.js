@@ -7,8 +7,18 @@ import { appendAutomation } from "./append-automation.js";
 import { appendConnection } from "./append-connection.js";
 import { setSliceTitle } from "./set-slice-title.js";
 import { setActorName } from "./set-actor-name.js";
+import { setCommandTitle } from "./set-command-title.js";
+import { setEventTitle } from "./set-event-title.js";
+import { setReadModelTitle } from "./set-read-model-title.js";
+import { setAutomationTitle } from "./set-automation-title.js";
 
 export function onNewSliceClick(root) {
+  const holder = root.getElementById("event-model-document");
+  if (holder) {
+    holder.textContent = JSON.stringify(
+      appendSlice(JSON.parse(holder.textContent || "{}")),
+    );
+  }
   const list = root.querySelector("ul");
   if (list) {
     const item = root.createElement("li");
@@ -19,12 +29,6 @@ export function onNewSliceClick(root) {
   const main = root.querySelector("main");
   if (main && !main.textContent?.includes("Unsaved changes.")) {
     main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
-  }
-  const holder = root.getElementById("event-model-document");
-  if (holder) {
-    holder.textContent = JSON.stringify(
-      appendSlice(JSON.parse(holder.textContent || "{}")),
-    );
   }
 }
 
@@ -51,10 +55,11 @@ export function onAddCommandClick(root) {
   if (holder) holder.textContent = JSON.stringify(next);
   const command = next.slices?.at(-1)?.commands?.at(-1);
   const list = root.querySelector('[aria-label="Timeline"] ul');
-  if (list) {
+  if (list && command) {
     const item = root.createElement("li");
     item.textContent = "Command";
     item.setAttribute("aria-label", "Command");
+    item.dataset.kind = "command";
     const port = root.createElement("button");
     port.type = "button";
     port.textContent = "Command port";
@@ -73,10 +78,11 @@ export function onAddEventClick(root) {
   if (holder) holder.textContent = JSON.stringify(next);
   const event = next.slices?.at(-1)?.events?.at(-1);
   const list = root.querySelector('[aria-label="Timeline"] ul');
-  if (list) {
+  if (list && event) {
     const item = root.createElement("li");
     item.textContent = "Event Happened";
     item.setAttribute("aria-label", "Event Happened");
+    item.dataset.kind = "event";
     const port = root.createElement("button");
     port.type = "button";
     port.textContent = "Event Happened port";
@@ -95,10 +101,11 @@ export function onAddReadModelClick(root) {
   if (holder) holder.textContent = JSON.stringify(next);
   const readModel = next.slices?.at(-1)?.readModels?.at(-1);
   const list = root.querySelector('[aria-label="Timeline"] ul');
-  if (list) {
+  if (list && readModel) {
     const item = root.createElement("li");
     item.textContent = "Read Model";
     item.setAttribute("aria-label", "Read Model");
+    item.dataset.kind = "readmodel";
     const port = root.createElement("button");
     port.type = "button";
     port.textContent = "Read Model port";
@@ -112,18 +119,17 @@ export function onAddReadModelClick(root) {
 }
 
 export function onAddAutomationClick(root) {
+  const holder = root.getElementById("event-model-document");
+  const next = appendAutomation(JSON.parse(holder?.textContent || "{}"));
+  if (holder) holder.textContent = JSON.stringify(next);
+  const automation = next.slices?.at(-1)?.processors?.at(-1);
   const list = root.querySelector('[aria-label="Timeline"] ul');
-  if (list) {
+  if (list && automation) {
     const item = root.createElement("li");
     item.textContent = "Automation";
     item.setAttribute("aria-label", "Automation");
+    item.dataset.kind = "automation";
     list.append(item);
-  }
-  const holder = root.getElementById("event-model-document");
-  if (holder) {
-    holder.textContent = JSON.stringify(
-      appendAutomation(JSON.parse(holder.textContent || "{}")),
-    );
   }
 }
 
@@ -177,6 +183,10 @@ export function bindEditor(root) {
   let selected = null;
   let selectedSliceItem = null;
   let selectedActorItem = null;
+  let selectedCommandItem = null;
+  let selectedEventItem = null;
+  let selectedReadModelItem = null;
+  let selectedAutomationItem = null;
   const inspector = root.querySelector('[aria-label="Inspector"]');
   const nameInput = () => inspector?.querySelector("input");
   const bindName = (value) => {
@@ -197,6 +207,32 @@ export function bindEditor(root) {
             setActorName(JSON.parse(holder.textContent || "{}"), input.value),
           );
         }
+        if (holder && selected === "command") {
+          holder.textContent = JSON.stringify(
+            setCommandTitle(JSON.parse(holder.textContent || "{}"), input.value),
+          );
+        }
+        if (holder && selected === "event") {
+          holder.textContent = JSON.stringify(
+            setEventTitle(JSON.parse(holder.textContent || "{}"), input.value),
+          );
+        }
+        if (holder && selected === "readmodel") {
+          holder.textContent = JSON.stringify(
+            setReadModelTitle(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+            ),
+          );
+        }
+        if (holder && selected === "automation") {
+          holder.textContent = JSON.stringify(
+            setAutomationTitle(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+            ),
+          );
+        }
         if (selected === "slice" && selectedSliceItem) {
           selectedSliceItem.textContent = input.value;
           selectedSliceItem.setAttribute("aria-label", input.value);
@@ -204,6 +240,18 @@ export function bindEditor(root) {
         if (selected === "actor" && selectedActorItem) {
           selectedActorItem.textContent = input.value;
           selectedActorItem.setAttribute("aria-label", input.value);
+        }
+        if (selected === "command" && selectedCommandItem) {
+          selectedCommandItem.setAttribute("aria-label", input.value);
+        }
+        if (selected === "event" && selectedEventItem) {
+          selectedEventItem.setAttribute("aria-label", input.value);
+        }
+        if (selected === "readmodel" && selectedReadModelItem) {
+          selectedReadModelItem.setAttribute("aria-label", input.value);
+        }
+        if (selected === "automation" && selectedAutomationItem) {
+          selectedAutomationItem.setAttribute("aria-label", input.value);
         }
         if (selected === "slice") {
           const main = root.querySelector("main");
@@ -218,6 +266,30 @@ export function bindEditor(root) {
   timelineList?.addEventListener("click", (event) => {
     const item = event.target?.closest?.("li");
     if (!item || !timelineList.contains(item)) return;
+    if (item.dataset.kind === "command") {
+      selected = "command";
+      selectedCommandItem = item;
+      bindName("Command");
+      return;
+    }
+    if (item.dataset.kind === "event") {
+      selected = "event";
+      selectedEventItem = item;
+      bindName("Event Happened");
+      return;
+    }
+    if (item.dataset.kind === "readmodel") {
+      selected = "readmodel";
+      selectedReadModelItem = item;
+      bindName("Read Model");
+      return;
+    }
+    if (item.dataset.kind === "automation") {
+      selected = "automation";
+      selectedAutomationItem = item;
+      bindName("Automation");
+      return;
+    }
     if (item.dataset.kind !== "actor") return;
     selected = "actor";
     selectedActorItem = item;

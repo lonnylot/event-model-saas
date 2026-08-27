@@ -58,7 +58,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person,
 
 ## Out of scope
 
-Dashed Add on a lane, keyboard shortcuts, delete, drag between Slices, undo, pan, moving Slices, Mac window chrome, creating a Slice from Add when there are none. Connections are [connections.md](./connections.md). Slice and Actor Name are [chrome.md](./chrome.md). Description, fields, and type picker stay later.
+Dashed Add on a lane, keyboard shortcuts, delete, drag between Slices, undo, pan, moving Slices, Mac window chrome, creating a Slice from Add when there are none. Connections are [connections.md](./connections.md). Slice and Actor Name are [chrome.md](./chrome.md). Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md). Description, Fields, and Slice type picker stay later.
 
 ## Restates
 
