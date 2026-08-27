@@ -19,7 +19,7 @@ Members can Add from the toolbar onto the last Slice only. They cannot Add on a 
 - [x] After clicking `New Slice`, pressing ⌥⌘3 appends an Event whose `title` is `Event Happened`
 - [x] After clicking `New Slice`, pressing ⌥⌘4 appends a Read Model whose `title` is `Read Model`
 - [x] After clicking `New Slice`, pressing ⌥⌘5 appends an Automation whose `title` is `Automation`
-- [x] After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing ⌥⌘2 sets the first Slice `commands` to one Command and the last Slice `commands` to `[]`
+- [x] After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing ⌥⌘2 appends a Command only on the first Slice
 
 ## Domain terms
 

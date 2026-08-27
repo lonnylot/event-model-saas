@@ -236,7 +236,7 @@ test("After clicking `New Slice`, pressing ⌥⌘5 appends an Automation whose `
   );
 });
 
-test("After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing ⌥⌘2 sets the first Slice `commands` to one Command and the last Slice `commands` to `[]`", async ({
+test("After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing ⌥⌘2 appends a Command only on the first Slice", async ({
   page,
 }) => {
   await openUntitledModel(page);
