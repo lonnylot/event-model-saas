@@ -1,6 +1,6 @@
 # Inspect connection
 
-Status: validated
+Status: released
 
 ## Problem
 
