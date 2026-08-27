@@ -667,3 +667,37 @@ test("After clicking `New Slice` then `Save` on that page, filling the Inspector
     .fill("First column");
   await expect(page.getByText("Unsaved changes.")).toBeVisible();
 });
+
+test("After clicking `New Slice` then `Add Actor` then `Save` on that page, filling the Inspector `Description` textbox with `Librarian` after selecting `Actor` shows the text `Unsaved changes.`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await expect(
+    page.getByRole("listitem", { name: "New Slice", exact: true }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Add Actor", exact: true }).click();
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Actor", exact: true }),
+  ).toBeVisible();
+  await Promise.all([
+    page.waitForResponse(
+      (response) =>
+        response.url().includes("/api/models/") &&
+        response.request().method() === "PUT",
+    ),
+    page.getByRole("button", { name: "Save", exact: true }).click(),
+  ]);
+  await expect(page.getByText("Unsaved changes.")).toHaveCount(0);
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Actor", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Description", exact: true })
+    .fill("Librarian");
+  await expect(page.getByText("Unsaved changes.")).toBeVisible();
+});
