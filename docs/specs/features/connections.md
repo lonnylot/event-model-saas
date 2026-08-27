@@ -50,6 +50,7 @@ Dashed Add on a lane and keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane
 
 
 
+
 ## Restates
 - [blocks.md](./blocks.md) — Out of scope no longer owns connections; this slice owns Command → Event and Event → Read Model. Dashed Add on a lane and keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane.md). Click-append from `Add Actor on lane` / `Add Event on lane` / `Add Read Model on lane` / `Add Automation on lane` and selected-Slice ⌥⌘1 / ⌥⌘3–5 are [add-on-lane-rest.md](./add-on-lane-rest.md). Slice and Actor Name are [chrome.md](./chrome.md).
 - [editor-shell.md](./editor-shell.md) — Out of scope no longer owns connections; this slice owns those.
