@@ -44,6 +44,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Architecture adapter constructed only under a test flag / injected `env.documents` / construction parked in Assumptions | `testing`, `codebase-design`, `keeping-specs-current` |
 | Architecture-named store never constructed in a test / each new SQL untested | `testing` |
 | Packed "and" AC / independent env/branch cases | `testing`, `keeping-specs-current` |
+| Targeting packed "and" (first Slice has X and last is []) / only-on-the-first-Slice stays one criterion | `testing`, `keeping-specs-current`, `tdd-loop` |
 | Assumption vs acceptance criterion | `keeping-specs-current` |
 | Distinguishing factor parked in Assumptions (factor is not unzoomed pan `1`) | `keeping-specs-current` |
 | Restated AC with leftover sections / leftover Assumptions after Out of scope / leftover Seams after deleting a named module / leftover Seams that name a path or mutation production does not call (scroll path / undo those mutations) / leftover test title / leftover Restates / Restates names a path not in the tree (`canvas-rest.md` / do not edit if not on the branch) / leftover Out of scope still unowned later after Restates (delete, drag, pan, moving Slices) / leftover locked claims in a restated system spec | `keeping-specs-current` |
