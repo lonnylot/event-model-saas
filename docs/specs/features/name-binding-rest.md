@@ -31,6 +31,7 @@ Command Name binds by id, shows visible text, and Actor Name dirties after Save.
 - [x] After clicking `New Slice` then `Add Automation` twice, clicking the first Timeline `Automation` listitem, filling Inspector `Description` with `When paid` sets the first Automation `description` to `When paid`
 - [x] After clicking `New Slice` twice, clicking the first `New Slice` listitem, selecting `State View` in Inspector `Type` sets the first Slice `sliceType` to `STATE_VIEW`
 - [x] After clicking `New Slice` twice, clicking the first `New Slice` listitem, selecting `State View` in Inspector `Type` sets the last Slice `sliceType` to `STATE_CHANGE`
+- [x] After clicking `New Slice` then `Save` on that page, filling the Inspector `Description` textbox with `First column` after selecting `New Slice` shows the text `Unsaved changes.`
 
 ## Domain terms
 
@@ -58,7 +59,7 @@ Mac window chrome. Command Name-by-id, Command visible text, and Actor dirty sta
 
 - [name-binding.md](./name-binding.md) — Out of scope no longer owns multi-item Name for Slice / Actor / Event / Read Model / Automation, visible text for those kinds, or Command / Event Name dirty; this slice owns those. Command Name-by-id, Command visible text, and Actor dirty stay that file.
 - [slice-type.md](./slice-type.md) — Out of scope no longer owns Type on the clicked Slice of two; this slice owns that. Last-Slice Type picker stays that file.
-- [chrome.md](./chrome.md) — Slice / Actor multi-item Name is this slice. Slice Name dirty stays this file.
+- [chrome.md](./chrome.md) — Slice / Actor multi-item Name is this slice. Slice Name dirty stays this file. Slice Description dirty is this slice.
 - [canvas.md](./canvas.md) — Slice Name binds to the clicked Slice; this slice owns that. Actor / Event / Read Model / Automation multi-item Name is this slice. Command is [name-binding.md](./name-binding.md). Slice / Actor / Command / Event / Read Model / Automation Description-by-id is this slice.
 - [inspect-blocks.md](./inspect-blocks.md) — Multi-item Name and Name dirty for Event / Read Model / Automation is this slice.
 - [inspect-description.md](./inspect-description.md) — Last-item Description stays that file. Description-by-id of two items is this slice. Slice / Actor / Event / Read Model / Automation multi-item Name is this slice.
@@ -68,4 +69,4 @@ Mac window chrome. Command Name-by-id, Command visible text, and Actor dirty sta
 - [connections.md](./connections.md) — Description-by-id and Slice type-by-id are this slice. Remaining Field type / optional / example / delete stay later. Last-Slice Type picker is [slice-type.md](./slice-type.md).
 - [model-persistence.md](./model-persistence.md) — Description-by-id and Slice type-by-id are this slice. Remaining Field type / optional / example / delete stay later. Last-Slice Type picker is [slice-type.md](./slice-type.md).
 - [connection-feedback.md](./connection-feedback.md) — Description-by-id and Slice type-by-id are this slice. Remaining Field type / optional / example / delete stay later. Last-Slice Type picker is [slice-type.md](./slice-type.md).
-- [product.md](../product.md) — Name binds to the clicked Slice / Actor / Event / Read Model / Automation. Visible text follows Name. Command / Event / Read Model / Automation Name after Save shows Unsaved changes. Slice type binds to the clicked Slice. Playwright path for this slice adds: two of each kind, rename the first; visible text Checkout / Shopper / Order Placed / Orders / Send Email; Name dirty after Save; Description-by-id on Slice / Actor / Command / Event / Read Model / Automation; two New Slice, click the first, Type State View, first `sliceType` is `STATE_VIEW`, last stays `STATE_CHANGE`.
+- [product.md](../product.md) — Name binds to the clicked Slice / Actor / Event / Read Model / Automation. Visible text follows Name. Command / Event / Read Model / Automation Name after Save shows Unsaved changes. Slice Description after Save shows Unsaved changes. Slice type binds to the clicked Slice. Playwright path for this slice adds: two of each kind, rename the first; visible text Checkout / Shopper / Order Placed / Orders / Send Email; Name dirty after Save; Description-by-id on Slice / Actor / Command / Event / Read Model / Automation; two New Slice, click the first, Type State View, first `sliceType` is `STATE_VIEW`, last stays `STATE_CHANGE`.
