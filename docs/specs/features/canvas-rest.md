@@ -14,7 +14,7 @@ Canvas shipped ⌥⌘←, Actor drag, Slice Backspace, scroll pan, and undo of N
 - [x] After clicking `New Slice` then `Add Command`, pressing ⌘Z does not show a listitem whose accessible name is `Command`
 - [x] After clicking `New Slice` then `Add Command`, pressing ⌘Z shows a listitem whose accessible name is `New Slice`
 - [x] Pressing ⌘+ on the Event Model page sets the Timeline `style.transform` to a value that includes `scale(1.25)`
-- [ ] Pressing ⌘- on the Event Model page sets the Timeline `style.transform` to a value that includes `scale(0.8)`
+- [x] Pressing ⌘- on the Event Model page sets the Timeline `style.transform` to a value that includes `scale(0.8)`
 - [ ] Pressing ⌘0 after ⌘+ on the Event Model page sets the Timeline `style.transform` to a value that includes `scale(1)`
 - [ ] A horizontal wheel on the Timeline region sets the Timeline `style.transform` to a value that includes `translate(`
 

@@ -197,3 +197,14 @@ test("Pressing ⌘+ on the Event Model page sets the Timeline `style.transform` 
     "scale(1.25)",
   );
 });
+
+test("Pressing ⌘- on the Event Model page sets the Timeline `style.transform` to a value that includes `scale(0.8)`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.keyboard.press("ControlOrMeta+Minus");
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  await expect.poll(async () => timeline.evaluate((el) => el.style.transform)).toContain(
+    "scale(0.8)",
+  );
+});

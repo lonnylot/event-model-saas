@@ -1355,6 +1355,12 @@ export function bindEditor(root) {
       applyTimelineTransform();
       return;
     }
+    if ((event.metaKey || event.ctrlKey) && !event.altKey && event.key === "-") {
+      event.preventDefault();
+      scale = 0.8;
+      applyTimelineTransform();
+      return;
+    }
     if (event.key !== "Backspace" && event.key !== "Delete") return;
     if (event.target instanceof HTMLInputElement) return;
     const holder = root.getElementById("event-model-document");
