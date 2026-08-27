@@ -197,3 +197,25 @@ test("Clicking `Add Field` after selecting `Command` appends a Field whose `name
     JSON.parse(json ?? "{}").slices?.[0]?.commands?.at(-1)?.fields?.[0]?.name,
   ).toBe("newField");
 });
+
+test("Clicking `Add Field` after selecting `Command` appends a Field whose `type` is `String` on the last Command", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Command", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("button", { name: "Add Field", exact: true })
+    .click();
+  const json = await page
+    .locator("#event-model-document")
+    .evaluate((el) => el.textContent);
+  expect(
+    JSON.parse(json ?? "{}").slices?.[0]?.commands?.at(-1)?.fields?.[0]?.type,
+  ).toBe("String");
+});

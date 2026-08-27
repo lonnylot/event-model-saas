@@ -9,7 +9,7 @@ export function appendField(model) {
     ...command,
     fields: [
       ...(command.fields ?? []),
-      { id: crypto.randomUUID(), name: "newField" },
+      { id: crypto.randomUUID(), name: "newField", type: "String" },
     ],
   };
   slices[slices.length - 1] = { ...slice, commands };
