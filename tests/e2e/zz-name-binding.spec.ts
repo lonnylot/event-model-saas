@@ -178,9 +178,15 @@ test("Filling the Inspector `Name` textbox with `Place Order` after selecting `C
     .getByRole("region", { name: "Inspector", exact: true })
     .getByRole("textbox", { name: "Name", exact: true })
     .fill("Place Order");
+  const item = page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Place Order", exact: true });
+  const ownText = await item.evaluate((el) => {
+    const node = [...el.childNodes].find((n) => n.nodeType === Node.TEXT_NODE);
+    return node?.textContent ?? "";
+  });
+  expect(ownText).toBe("Place Order");
   await expect(
-    page
-      .getByRole("region", { name: "Timeline", exact: true })
-      .getByRole("listitem", { name: "Place Order", exact: true }),
-  ).toHaveText("Place Order");
+    item.getByRole("button", { name: "Command port", exact: true }),
+  ).toBeVisible();
 });

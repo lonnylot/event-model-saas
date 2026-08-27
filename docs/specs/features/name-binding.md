@@ -25,7 +25,7 @@ Event Model, Slice, Actor, Command, Team, Person, Version
 ## Assumptions
 
 - Two Timeline `Command` listitems are first vs last. Click the first. Slice / Event / Read Model / Automation multi-item Name stays later. Slice Name dirty after Save stays [chrome.md](./chrome.md).
-- Accessible name Place Order stays [inspect-blocks.md](./inspect-blocks.md). This slice owns visible text (`textContent` / Playwright `toHaveText`) on that Command listitem. Visible text for other kinds stays later.
+- Accessible name Place Order stays [inspect-blocks.md](./inspect-blocks.md). This slice owns the Command listitem's own visible text (the text node), not whole-listitem Playwright `toHaveText`. Name fill does not remove `Command port`. Visible text for other kinds stays later.
 - Name edits are in-memory until Save. Save still uses the version check from model-persistence.
 - The `TEST_MAIL=1` memory adapter does not count login attempts, so Playwright files can share one Worker without the production 5-per-hour cap.
 

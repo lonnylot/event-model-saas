@@ -1059,7 +1059,10 @@ export function bindEditor(root) {
           selectedActorItem.setAttribute("aria-label", input.value);
         }
         if (selected === "command" && selectedCommandItem) {
-          selectedCommandItem.textContent = input.value;
+          const textNode = [...selectedCommandItem.childNodes].find(
+            (node) => node.nodeType === Node.TEXT_NODE,
+          );
+          if (textNode) textNode.textContent = input.value;
           selectedCommandItem.setAttribute("aria-label", input.value);
         }
         if (selected === "event" && selectedEventItem) {
