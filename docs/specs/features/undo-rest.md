@@ -47,6 +47,12 @@ Extra undo toolbar. Mac window chrome. Undo New Slice, undo Connection (without 
 
 ## Restates
 
-- [canvas-rest.md](./canvas-rest.md) — Undo Add Command stays that file. Undo of move / delete / other Adds and redo are this slice.
-- [canvas.md](./canvas.md) — Undo of move and delete is this slice. Undo New Slice and undo Connection stay this file.
-- [product.md](../product.md) — Undo of move, delete of Slice / Command / Connection / Actor / Event / Read Model / Automation, and remaining Adds. Redo (⇧⌘Z). Playwright path for this slice adds: ⌘Z after Add Actor / Event / Read Model / Automation; ⌘Z after ⌥⌘←; ⌘Z after Slice / Command / Connection / Actor / Event / Read Model / Automation Backspace; ⇧⌘Z after undo Add Command.
+- [canvas-rest.md](./canvas-rest.md) — Undo Add Command stays that file. Undo of remaining Adds, move, delete, and redo are this slice.
+- [canvas.md](./canvas.md) — Undo of remaining Adds, move, delete, and redo are this slice. Undo New Slice and undo Connection without a prior delete stay that file.
+- [blocks.md](./blocks.md) — Undo of remaining Adds, move, delete, and redo are this slice. Undo New Slice stays [canvas.md](./canvas.md). Undo Add Command stays [canvas-rest.md](./canvas-rest.md).
+- [chrome.md](./chrome.md) — Undo of remaining Adds, move, delete, and redo are this slice. Undo New Slice stays [canvas.md](./canvas.md). Undo Add Command stays [canvas-rest.md](./canvas-rest.md).
+- [connections.md](./connections.md) — Undo of remaining Adds, move, delete, and redo are this slice. Undo New Slice and undo Connection without a prior delete stay [canvas.md](./canvas.md). Undo Add Command stays [canvas-rest.md](./canvas-rest.md).
+- [inspect-blocks.md](./inspect-blocks.md) — Undo of remaining Adds, move, delete, and redo are this slice. Undo New Slice stays [canvas.md](./canvas.md). Undo Add Command stays [canvas-rest.md](./canvas-rest.md).
+- [editor-shell.md](./editor-shell.md) — Undo of remaining Adds, move, delete, and redo are this slice. Undo New Slice stays [canvas.md](./canvas.md). Undo Add Command stays [canvas-rest.md](./canvas-rest.md).
+- [model-persistence.md](./model-persistence.md) — Undo of remaining Adds, move, delete, and redo are this slice. Undo New Slice stays [canvas.md](./canvas.md). Undo Add Command stays [canvas-rest.md](./canvas-rest.md).
+- [product.md](../product.md) — Undo of move, delete of Slice / Command / Connection / Actor / Event / Read Model / Automation, remaining Adds, and redo (⇧⌘Z). Undo Add Command stays [canvas-rest.md](./canvas-rest.md). Playwright path for this slice adds: ⌘Z after Add Actor / Event / Read Model / Automation; ⌘Z after ⌥⌘←; ⌘Z after Slice / Command / Connection / Actor / Event / Read Model / Automation Backspace; ⇧⌘Z after undo Add Command.
