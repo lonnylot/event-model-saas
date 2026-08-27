@@ -8,6 +8,7 @@ import { appendConnection } from "./append-connection.js";
 import { setSliceTitle } from "./set-slice-title.js";
 import { setSliceDescription } from "./set-slice-description.js";
 import { setActorName } from "./set-actor-name.js";
+import { setActorDescription } from "./set-actor-description.js";
 import { setCommandTitle } from "./set-command-title.js";
 import { setEventTitle } from "./set-event-title.js";
 import { setReadModelTitle } from "./set-read-model-title.js";
@@ -274,6 +275,14 @@ export function bindEditor(root) {
         if (holder && selected === "slice") {
           holder.textContent = JSON.stringify(
             setSliceDescription(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+            ),
+          );
+        }
+        if (holder && selected === "actor") {
+          holder.textContent = JSON.stringify(
+            setActorDescription(
               JSON.parse(holder.textContent || "{}"),
               input.value,
             ),

@@ -138,3 +138,24 @@ test("After clicking `New Slice` then `Add Actor` on that page, clicking the Tim
       .getByRole("textbox", { name: "Description", exact: true }),
   ).toBeVisible();
 });
+
+test("Filling the Inspector `Description` textbox with `Shopper persona` after selecting `Actor` sets the last Actor `description` to `Shopper persona`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("listitem", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "Add Actor", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Actor", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Description", exact: true })
+    .fill("Shopper persona");
+  const json = await page.locator("#event-model-document").textContent();
+  expect(JSON.parse(json ?? "{}").slices.at(-1).actors.at(-1).description).toBe(
+    "Shopper persona",
+  );
+});
