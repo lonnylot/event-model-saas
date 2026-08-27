@@ -285,3 +285,28 @@ test("After clicking `New Slice` then `Add Read Model` on that page, clicking th
       .getByRole("textbox", { name: "Description", exact: true }),
   ).toBeVisible();
 });
+
+test("Filling the Inspector `Description` textbox with `Orders the shopper can see` after selecting `Read Model` sets the last Read Model `description` to `Orders the shopper can see`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Command", exact: true })
+    .click();
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Read Model", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Description", exact: true })
+    .fill("Orders the shopper can see");
+  const json = await page.locator("#event-model-document").textContent();
+  expect(
+    JSON.parse(json ?? "{}").slices.at(-1).readModels.at(-1).description,
+  ).toBe("Orders the shopper can see");
+});
