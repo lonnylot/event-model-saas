@@ -100,14 +100,6 @@ async function expectGetRenderedInspectOmitsAddField(page: Page) {
   ).toHaveCount(0);
 }
 
-async function expectGetRenderedInspectOmitsDescriptionAndAddField(page: Page) {
-  const inspector = page.getByRole("region", { name: "Inspector", exact: true });
-  await expect(
-    inspector.getByRole("textbox", { name: "Description", exact: true }),
-  ).toHaveCount(0);
-  await expectGetRenderedInspectOmitsAddField(page);
-}
-
 test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add Command`, clicks the Timeline `Command` listitem, fills `Name` with `Place Order`, and Saves, a reload of that page, clicking the Timeline `Place Order` listitem shows the Inspector `Name` textbox with the value `Place Order`", async ({
   page,
 }) => {
@@ -370,5 +362,5 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add 
       .getByRole("region", { name: "Inspector", exact: true })
       .getByRole("textbox", { name: "Name", exact: true }),
   ).toHaveValue("Send Email");
-  await expectGetRenderedInspectOmitsDescriptionAndAddField(page);
+  await expectGetRenderedInspectOmitsAddField(page);
 });

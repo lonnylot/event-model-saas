@@ -1105,6 +1105,9 @@ export function bindEditor(root) {
     if (!getRenderedTimelineItems.has(item)) return false;
     unbindAddField();
     unbindFieldName();
+    unbindFieldType();
+    unbindOptional();
+    unbindExample();
     unbindDescription();
     return true;
   };
@@ -1236,7 +1239,12 @@ export function bindEditor(root) {
       if (omitGetRenderedInspectChrome(item)) {
         bindDescription(lastCommandDescription());
         const fieldName = lastCommandFieldName();
-        if (fieldName) bindFieldName(fieldName);
+        if (fieldName) {
+          bindFieldName(fieldName);
+          bindFieldType(lastCommandFieldType());
+          bindOptional(lastCommandFieldOptional());
+          bindExample(lastCommandFieldExample());
+        }
         return;
       }
       bindAddField();
@@ -1263,6 +1271,11 @@ export function bindEditor(root) {
       bindName(item.getAttribute("aria-label") ?? "Event Happened");
       if (omitGetRenderedInspectChrome(item)) {
         bindDescription(lastEventDescription());
+        const eventFieldName = lastEventFieldName();
+        if (eventFieldName) {
+          bindFieldName(eventFieldName);
+          bindFieldType(lastEventFieldType());
+        }
         return;
       }
       bindAddField();
@@ -1290,6 +1303,11 @@ export function bindEditor(root) {
       bindName(item.getAttribute("aria-label") ?? "Read Model");
       if (omitGetRenderedInspectChrome(item)) {
         bindDescription(lastReadModelDescription());
+        const readModelFieldName = lastReadModelFieldName();
+        if (readModelFieldName) {
+          bindFieldName(readModelFieldName);
+          bindFieldType(lastReadModelFieldType());
+        }
         return;
       }
       bindAddField();
@@ -1315,7 +1333,15 @@ export function bindEditor(root) {
       selected = "automation";
       selectedAutomationItem = item;
       bindName(item.getAttribute("aria-label") ?? "Automation");
-      if (omitGetRenderedInspectChrome(item)) return;
+      if (omitGetRenderedInspectChrome(item)) {
+        bindDescription(lastAutomationDescription());
+        const automationFieldName = lastAutomationFieldName();
+        if (automationFieldName) {
+          bindFieldName(automationFieldName);
+          bindFieldType(lastAutomationFieldType());
+        }
+        return;
+      }
       bindAddField();
       bindDescription();
       unbindFieldRow();
