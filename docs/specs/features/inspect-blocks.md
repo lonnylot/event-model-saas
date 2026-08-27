@@ -1,6 +1,6 @@
 # Inspect blocks
 
-Status: validated
+Status: released
 
 ## Problem
 
