@@ -310,3 +310,20 @@ test("Filling the Inspector `Description` textbox with `Orders the shopper can s
     JSON.parse(json ?? "{}").slices.at(-1).readModels.at(-1).description,
   ).toBe("Orders the shopper can see");
 });
+
+test("After clicking `New Slice` then `Add Automation` on that page, clicking the Timeline `Automation` listitem shows a textbox whose accessible name is `Description` in the Inspector region", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Automation", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Automation", exact: true })
+    .click();
+  await expect(
+    page
+      .getByRole("region", { name: "Inspector", exact: true })
+      .getByRole("textbox", { name: "Description", exact: true }),
+  ).toBeVisible();
+});

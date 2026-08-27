@@ -420,6 +420,7 @@ export function bindEditor(root) {
       selected = "automation";
       selectedAutomationItem = item;
       bindName("Automation");
+      bindDescription();
       return;
     }
     if (item.dataset.kind !== "actor") return;
