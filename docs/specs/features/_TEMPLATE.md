@@ -34,7 +34,7 @@ Environment facts (hostname, test adapter, platform flags). A shippable operator
 
 ## Out of scope
 
-Explicit non-goals.
+Explicit non-goals. When ACs cover some kinds of a shared family, name the omitted kinds here.
 
 ## Restates
 
