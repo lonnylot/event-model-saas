@@ -64,6 +64,9 @@ async function openUntitledModel(page: Page) {
       page.getByRole("heading", { name: "Library", exact: true }),
     ).toBeVisible();
   }
+  const untitledBefore = await page
+    .getByRole("link", { name: "Untitled", exact: true })
+    .count();
   await Promise.all([
     page.waitForResponse(
       (response) =>
@@ -72,6 +75,9 @@ async function openUntitledModel(page: Page) {
     ),
     page.getByRole("button", { name: "Create model", exact: true }).click(),
   ]);
+  await expect(
+    page.getByRole("link", { name: "Untitled", exact: true }),
+  ).toHaveCount(untitledBefore + 1);
   await page.goto("/app");
   await page.getByRole("link", { name: "Untitled", exact: true }).last().click();
   await expect(

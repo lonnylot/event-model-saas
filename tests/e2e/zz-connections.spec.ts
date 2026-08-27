@@ -64,6 +64,9 @@ async function openUntitledModel(page: Page) {
       page.getByRole("heading", { name: "Library", exact: true }),
     ).toBeVisible();
   }
+  const untitledBefore = await page
+    .getByRole("link", { name: "Untitled", exact: true })
+    .count();
   await Promise.all([
     page.waitForResponse(
       (response) =>
@@ -72,18 +75,41 @@ async function openUntitledModel(page: Page) {
     ),
     page.getByRole("button", { name: "Create model", exact: true }).click(),
   ]);
+  await expect(
+    page.getByRole("link", { name: "Untitled", exact: true }),
+  ).toHaveCount(untitledBefore + 1);
   await page.goto("/app");
   await page.getByRole("link", { name: "Untitled", exact: true }).last().click();
   await expect(
     page.getByRole("heading", { name: "Untitled", exact: true }),
   ).toBeVisible();
+  await page.waitForLoadState("networkidle");
+}
+
+async function clickNewSlice(page: Page) {
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await expect(
+    page.getByRole("listitem", { name: "New Slice", exact: true }),
+  ).toBeVisible();
+}
+
+async function dragPort(page: Page, fromName: string, toName: string) {
+  await expect(
+    page.getByRole("button", { name: fromName, exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: toName, exact: true }),
+  ).toBeVisible();
+  await page
+    .getByRole("button", { name: fromName, exact: true })
+    .dragTo(page.getByRole("button", { name: toName, exact: true }));
 }
 
 test("After clicking `New Slice` then `Add Command` on that page, the Command listitem shows a button whose accessible name is `Command port`", async ({
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   await expect(
     page
@@ -96,7 +122,7 @@ test("After clicking `New Slice` then `Add Event` on that page, the Event Happen
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Event", exact: true }).click();
   await expect(
     page
@@ -109,7 +135,7 @@ test("After clicking `New Slice` then `Add Read Model` on that page, the Read Mo
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
   await expect(
     page
@@ -122,7 +148,7 @@ test("After clicking `New Slice` then `Add Actor` on that page, the Actor listit
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Actor", exact: true }).click();
   await expect(
     page
@@ -135,7 +161,7 @@ test("After clicking `New Slice` then `Add Automation` on that page, the Automat
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Automation", exact: true }).click();
   await expect(
     page
@@ -148,12 +174,10 @@ test("Dragging from `Command port` onto `Event Happened port` appends a Connecti
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   await page.getByRole("button", { name: "Add Event", exact: true }).click();
-  await page
-    .getByRole("button", { name: "Command port", exact: true })
-    .dragTo(page.getByRole("button", { name: "Event Happened port", exact: true }));
+  await dragPort(page, "Command port", "Event Happened port");
   const json = await page.locator("#event-model-document").textContent();
   expect(JSON.parse(json ?? "{}").connections[0]?.fromKind).toBe("COMMAND");
 });
@@ -162,12 +186,10 @@ test("Dragging from `Command port` onto `Event Happened port` appends a Connecti
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   await page.getByRole("button", { name: "Add Event", exact: true }).click();
-  await page
-    .getByRole("button", { name: "Command port", exact: true })
-    .dragTo(page.getByRole("button", { name: "Event Happened port", exact: true }));
+  await dragPort(page, "Command port", "Event Happened port");
   const json = await page.locator("#event-model-document").textContent();
   expect(JSON.parse(json ?? "{}").connections[0]?.toKind).toBe("EVENT");
 });
@@ -176,12 +198,10 @@ test("Dragging from `Event Happened port` onto `Read Model port` appends a Conne
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Event", exact: true }).click();
   await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
-  await page
-    .getByRole("button", { name: "Event Happened port", exact: true })
-    .dragTo(page.getByRole("button", { name: "Read Model port", exact: true }));
+  await dragPort(page, "Event Happened port", "Read Model port");
   const json = await page.locator("#event-model-document").textContent();
   expect(JSON.parse(json ?? "{}").connections[0]?.fromKind).toBe("EVENT");
 });
@@ -190,12 +210,10 @@ test("Dragging from `Event Happened port` onto `Read Model port` appends a Conne
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Event", exact: true }).click();
   await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
-  await page
-    .getByRole("button", { name: "Event Happened port", exact: true })
-    .dragTo(page.getByRole("button", { name: "Read Model port", exact: true }));
+  await dragPort(page, "Event Happened port", "Read Model port");
   const json = await page.locator("#event-model-document").textContent();
   expect(JSON.parse(json ?? "{}").connections[0]?.toKind).toBe("READMODEL");
 });
@@ -204,12 +222,10 @@ test("Dragging from `Command port` onto `Read Model port` does not append a Conn
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
-  await page
-    .getByRole("button", { name: "Command port", exact: true })
-    .dragTo(page.getByRole("button", { name: "Read Model port", exact: true }));
+  await dragPort(page, "Command port", "Read Model port");
   const json = await page.locator("#event-model-document").textContent();
   expect(JSON.parse(json ?? "{}").connections ?? []).toEqual([]);
 });
@@ -218,12 +234,10 @@ test("Dragging from `Command port` onto `Read Model port` shows the text `A comm
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
-  await page
-    .getByRole("button", { name: "Command port", exact: true })
-    .dragTo(page.getByRole("button", { name: "Read Model port", exact: true }));
+  await dragPort(page, "Command port", "Read Model port");
   await expect(
     page.getByText("A command can't write a read model."),
   ).toBeVisible();
@@ -233,12 +247,10 @@ test("After dragging from `Command port` onto `Event Happened port`, the Timelin
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   await page.getByRole("button", { name: "Add Event", exact: true }).click();
-  await page
-    .getByRole("button", { name: "Command port", exact: true })
-    .dragTo(page.getByRole("button", { name: "Event Happened port", exact: true }));
+  await dragPort(page, "Command port", "Event Happened port");
   await expect(
     page
       .getByRole("region", { name: "Timeline", exact: true })
@@ -250,12 +262,10 @@ test("After a member creates a model, opens it, clicks `New Slice`, adds a Comma
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   await page.getByRole("button", { name: "Add Event", exact: true }).click();
-  await page
-    .getByRole("button", { name: "Command port", exact: true })
-    .dragTo(page.getByRole("button", { name: "Event Happened port", exact: true }));
+  await dragPort(page, "Command port", "Event Happened port");
   await Promise.all([
     page.waitForResponse(
       (response) =>

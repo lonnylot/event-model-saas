@@ -47,15 +47,15 @@ Event Model, Slice, Team, Person, Version
 
 - New Slice is in-memory until Save. Save still uses the version check from model-persistence.
 - Empty Slice JSON is `{ "id": "{uuid}", "title": "New Slice", "sliceType": "STATE_CHANGE", "actors": [], "commands": [], "events": [], "readModels": [], "processors": [] }`.
-- Zoom factors are `1.25` (in), `0.8` (out), `1` (reset). Pan is later.
+- Zoom factors are `1.25` (in), `0.8` (out), `1` (reset). Pan is [canvas.md](./canvas.md).
 - Inspector in this slice is an empty named region; Slice and Actor Name are [chrome.md](./chrome.md). Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md).
 - The `TEST_MAIL=1` memory adapter does not count login attempts, so Playwright files can share one Worker without the production 5-per-hour cap.
 
 ## Out of scope
 
-Undo, pan, keyboard shortcuts, moving Slices, Mac window chrome. Actors, commands, events, read models, and automations are [blocks.md](./blocks.md). Connections are [connections.md](./connections.md). Slice and Actor Name are [chrome.md](./chrome.md). Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md). Description, Fields, and Slice type picker stay later.
+Keyboard ⌥⌘1–5 stay later. Undo, pan, and moving Slices are [canvas.md](./canvas.md). Mac window chrome. Actors, commands, events, read models, and automations are [blocks.md](./blocks.md). Connections are [connections.md](./connections.md). Slice and Actor Name are [chrome.md](./chrome.md). Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md). Description, Fields, and Slice type picker stay later.
 
 ## Restates
 
-- [model-persistence.md](./model-persistence.md) — Out of scope no longer owns editor canvas, New Slice, zoom, or the dirty indicator; this slice owns those. Undo stays later. Connections are [connections.md](./connections.md). Slice and Actor Name are [chrome.md](./chrome.md).
+- [model-persistence.md](./model-persistence.md) — Out of scope no longer owns editor canvas, New Slice, zoom, or the dirty indicator; this slice owns those. Undo is [canvas.md](./canvas.md). Connections are [connections.md](./connections.md). Slice and Actor Name are [chrome.md](./chrome.md).
 - [product.md](../product.md) — Playwright path for this slice is open Event Model, New Slice, dirty copy, Save, reload still lists New Slice. Add Actor is [blocks.md](./blocks.md).

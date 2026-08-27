@@ -48,7 +48,7 @@ Outbound mail uses Cloudflare Email. Login links come from `auth@event-model.lon
 - Create: empty Event Model (valid schema, no slices) on the current team, then open the editor.
 - Import: upload `.eventmodel` JSON; reject if it fails the schema; store the body in R2; metadata in D1 at version 1.
 - Open: member-only. Non-members receive **404** (no existence leak). Body is the current R2 object.
-- Edit: in-memory document, Mac-like undo, dirty flag. Nothing is written until Save.
+- Edit: in-memory document, dirty flag. Undo of New Slice and of Command → Event is [features/canvas.md](./features/canvas.md). Undo of move, delete, and Add stays later. Nothing is written until Save.
 - Save: `PUT` with `{ version, document }`. If D1 version matches: validate schema, write R2 current object, increment version, return the new version. If not: **409** with the current version; client keeps local edits until the person reloads (discarding them) or copies them aside. A failed R2 or D1 write does not increment version.
 - Export: download the current R2 JSON as `{title}.eventmodel`.
 - R2 key for the current body: `models/{id}.eventmodel`. No `models/{id}/v/{n}` objects in v1.
@@ -62,14 +62,14 @@ Port the Mac `DocumentEditorView` structure: **slice sidebar | timeline canvas**
 Must match the Mac app’s editing behavior:
 
 - New Slice (⇧⌘N / toolbar)
-- Add actors, commands, events, read models, automations (toolbar, dashed Add on a lane, keyboard equivalents of ⌥⌘1–5)
+- Add actors, commands, events, read models, automations (toolbar). Dashed Add on a lane and keyboard ⌥⌘1–5 stay later
 - Inspect a Slice, Actor, Command, Event, Read Model, or Automation; edit Name. Description, Fields, and Slice type picker stay later
-- Move slices (sidebar or canvas; ⌥⌘← / ⌥⌘→)
-- Drag blocks between slices on the same lane
+- Move slices (⌥⌘←). ⌥⌘→ and sidebar drag-reorder stay later
+- Drag Actor between slices on the same lane. Drag of Command / Event / Read Model / Automation between slices stays later
 - Connect by dragging a **Port** (command → event, event → read model). Highlighting legal targets, snap-back, reason on the source, and other illegal pairs stay later
-- Delete selection (Backspace/Delete)
-- Zoom / pan (pinch, ⌘+/⌘-/⌘0, toolbar zoom, scroll to pan)
-- Undo structural edits, including connections
+- Delete the selected Slice (Backspace/Delete). Delete of a block or Connection stays later
+- Zoom / pan (toolbar zoom, scroll to pan). Pinch pan and ⌘+/⌘-/⌘0 stay later
+- Undo New Slice and undo Command → Event. Undo of move, delete, and Add stays later
 
 Mac-only chrome is not ported: `NSDocument`, native menus as macOS menus, AppKit welcome window. The web shell is: team name, model title, dirty indicator, Save, Export, sign out.
 
@@ -83,13 +83,13 @@ The JSON Schema stays `format: "eventmodel"`, `schemaVersion: 1`, compatible wit
 | Expired / used magic link | Message + path to request a new link. No session. |
 | Session missing / expired | Login page. In-memory editor state is lost (warn if dirty before navigating away; not across a dead session). |
 | Save version mismatch | 409. Keep local edits. Person must reload to get the latest, which discards local, or copy local aside. |
-| Illegal connection | Command → Read Model: no edge; the page shows `A command can't write a read model.` Other illegal pairs, reason on the source, snap-back, and undo stay later. |
+| Illegal connection | Command → Read Model: no edge; the page shows `A command can't write a read model.` Other illegal pairs, reason on the source, and snap-back stay later. Undo of a Connection is [features/canvas.md](./features/canvas.md). |
 | Import invalid JSON / schema | Reject; no D1 row; no R2 object. |
 | Not a team member | 404 on model routes. |
 | Write failure (R2 or D1) | 500. Version unchanged. Client keeps dirty document and may retry Save. |
 
 ## Testing
 
-- **Unit** at the document module: schema validation, legal edges, mutations (add/move/delete slice and blocks). This is the web counterpart of `EventModelTests`.
+- **Unit** at the document module: schema validation, legal edges, mutations (add slice and blocks). This is the web counterpart of `EventModelTests`. Move Slice, drag Actor between Slices, and delete Slice are Playwright in [features/canvas.md](./features/canvas.md).
 - **Unit** at API seams with fake D1, R2, and email: invite-only gate, `SITE_ADMIN_EMAIL` bootstrap, unknown-email notify, magic-link consume, version match vs 409, failed write does not bump version.
-- **Playwright**: request login (test email adapter, never live mail), land on the team page model list, open the Event Model, New Slice, click New Slice, fill Name with Checkout, Save, reload still lists Checkout, Add Command, click Command, fill Name with Place Order, Save, reload still lists Place Order, Add Event, drag Command port onto Event Happened port, Save, reload still shows `Command → Event Happened`, second session Save → 409 UI. Playwright `workers` is `1` because the `TEST_MAIL` memory adapter is process-global. Dashed Add on a lane, keyboard ⌥⌘1–5, highlighting legal targets, snap-back, reason on the source, other illegal pairs, Description, Fields, and Slice type picker stay later.
+- **Playwright**: request login (test email adapter, never live mail), land on the team page model list, open the Event Model, New Slice, click New Slice, fill Name with Checkout, Save, reload still lists Checkout, Add Command, click Command, fill Name with Place Order, Save, reload still lists Place Order, Add Event, drag Command port onto Event Happened port, Save, reload still shows `Command → Event Happened`, second session Save → 409 UI, two New Slice then ⌥⌘← reorders, drag Actor onto the first Slice, Backspace deletes the first Slice, scroll pans, ⌘Z undoes New Slice and undoes Command → Event. Playwright `workers` is `1` because the `TEST_MAIL` memory adapter is process-global. Pinch pan, ⌥⌘→, sidebar drag-reorder, dashed Add on a lane, keyboard ⌥⌘1–5, highlighting legal targets, snap-back, reason on the source, other illegal pairs, Description, Fields, and Slice type picker stay later.

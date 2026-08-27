@@ -11,41 +11,46 @@ import { setCommandTitle } from "./set-command-title.js";
 import { setEventTitle } from "./set-event-title.js";
 import { setReadModelTitle } from "./set-read-model-title.js";
 import { setAutomationTitle } from "./set-automation-title.js";
+import { moveSliceLeft } from "./move-slice-left.js";
+import { moveActorToSlice } from "./move-actor-to-slice.js";
+import { deleteSlice } from "./delete-slice.js";
+import { undoConnection } from "./undo-connection.js";
+
+const undoStack = [];
 
 export function onNewSliceClick(root) {
   const holder = root.getElementById("event-model-document");
-  if (holder) {
-    holder.textContent = JSON.stringify(
-      appendSlice(JSON.parse(holder.textContent || "{}")),
-    );
-  }
+  const next = appendSlice(JSON.parse(holder?.textContent || "{}"));
+  if (holder) holder.textContent = JSON.stringify(next);
+  const slice = next.slices?.at(-1);
   const list = root.querySelector("ul");
   if (list) {
     const item = root.createElement("li");
     item.textContent = "New Slice";
     item.setAttribute("aria-label", "New Slice");
+    if (slice) item.setAttribute("data-id", slice.id);
     list.append(item);
   }
   const main = root.querySelector("main");
   if (main && !main.textContent?.includes("Unsaved changes.")) {
     main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
   }
+  undoStack.push("slice");
 }
 
 export function onAddActorClick(root) {
+  const holder = root.getElementById("event-model-document");
+  const next = appendActor(JSON.parse(holder?.textContent || "{}"));
+  if (holder) holder.textContent = JSON.stringify(next);
+  const actor = next.slices?.at(-1)?.actors?.at(-1);
   const list = root.querySelector('[aria-label="Timeline"] ul');
   if (list) {
     const item = root.createElement("li");
     item.textContent = "Actor";
     item.setAttribute("aria-label", "Actor");
     item.dataset.kind = "actor";
+    if (actor) item.setAttribute("data-id", actor.id);
     list.append(item);
-  }
-  const holder = root.getElementById("event-model-document");
-  if (holder) {
-    holder.textContent = JSON.stringify(
-      appendActor(JSON.parse(holder.textContent || "{}")),
-    );
   }
 }
 
@@ -134,29 +139,43 @@ export function onAddAutomationClick(root) {
 }
 
 export function bindEditor(root) {
+  const timeline = root.querySelector('[aria-label="Timeline"]');
+  let scale = 1;
+  let panX = 0;
+  let panY = 0;
+  const applyTimelineTransform = () => {
+    if (!(timeline instanceof HTMLElement)) return;
+    const parts = [`scale(${scale})`];
+    if (panX !== 0 || panY !== 0) {
+      parts.push(`translate(${panX}px, ${panY}px)`);
+    }
+    timeline.style.transform = parts.join(" ");
+  };
+  if (timeline instanceof HTMLElement) {
+    timeline.style.minHeight = "48px";
+    timeline.addEventListener("wheel", (event) => {
+      panX -= event.deltaX;
+      panY -= event.deltaY;
+      applyTimelineTransform();
+    });
+  }
   root.querySelectorAll("button").forEach((button) => {
     if (button.textContent === "Zoom in") {
       button.addEventListener("click", () => {
-        const timeline = root.querySelector('[aria-label="Timeline"]');
-        if (timeline instanceof HTMLElement) {
-          timeline.style.transform = "scale(1.25)";
-        }
+        scale = 1.25;
+        applyTimelineTransform();
       });
     }
     if (button.textContent === "Zoom out") {
       button.addEventListener("click", () => {
-        const timeline = root.querySelector('[aria-label="Timeline"]');
-        if (timeline instanceof HTMLElement) {
-          timeline.style.transform = "scale(0.8)";
-        }
+        scale = 0.8;
+        applyTimelineTransform();
       });
     }
     if (button.textContent === "Reset zoom") {
       button.addEventListener("click", () => {
-        const timeline = root.querySelector('[aria-label="Timeline"]');
-        if (timeline instanceof HTMLElement) {
-          timeline.style.transform = "scale(1)";
-        }
+        scale = 1;
+        applyTimelineTransform();
       });
     }
     if (button.textContent === "New Slice") {
@@ -302,13 +321,99 @@ export function bindEditor(root) {
     selectedSliceItem = item;
     bindName("New Slice");
   });
+  root.addEventListener("keydown", (event) => {
+    if (
+      event.altKey &&
+      (event.metaKey || event.ctrlKey) &&
+      event.key === "ArrowLeft"
+    ) {
+      const holder = root.getElementById("event-model-document");
+      const sliceId = selectedSliceItem?.dataset?.id;
+      if (holder && sliceId) {
+        holder.textContent = JSON.stringify(
+          moveSliceLeft(JSON.parse(holder.textContent || "{}"), sliceId),
+        );
+      }
+      return;
+    }
+    if (
+      (event.metaKey || event.ctrlKey) &&
+      !event.altKey &&
+      (event.key === "z" || event.key === "Z")
+    ) {
+      event.preventDefault();
+      const holder = root.getElementById("event-model-document");
+      if (!holder) return;
+      const kind = undoStack.pop();
+      if (kind === "connection") {
+        holder.textContent = JSON.stringify(
+          undoConnection(JSON.parse(holder.textContent || "{}")),
+        );
+        const timeline = root.querySelector('[aria-label="Timeline"]');
+        for (const node of [...(timeline?.querySelectorAll("p") ?? [])]) {
+          if (node.textContent === "Command → Event Happened") node.remove();
+        }
+        return;
+      }
+      if (kind !== "slice") return;
+      const model = JSON.parse(holder.textContent || "{}");
+      const last = model.slices?.at(-1);
+      if (!last) return;
+      holder.textContent = JSON.stringify(deleteSlice(model, last.id));
+      root.querySelector("ul")?.lastElementChild?.remove();
+      return;
+    }
+    if (event.key !== "Backspace" && event.key !== "Delete") return;
+    if (event.target instanceof HTMLInputElement) return;
+    const holder = root.getElementById("event-model-document");
+    const sliceId = selectedSliceItem?.dataset?.id;
+    if (holder && selected === "slice" && sliceId && selectedSliceItem) {
+      holder.textContent = JSON.stringify(
+        deleteSlice(JSON.parse(holder.textContent || "{}"), sliceId),
+      );
+      selectedSliceItem.remove();
+      selectedSliceItem = null;
+      selected = null;
+    }
+  });
   let sourcePort = null;
+  let dragActorItem = null;
   root.addEventListener("mousedown", (event) => {
-    const port = event.target?.closest?.("[data-id]");
+    const actorItem = event.target?.closest?.("li");
+    if (
+      actorItem &&
+      timelineList?.contains(actorItem) &&
+      actorItem.dataset.kind === "actor"
+    ) {
+      dragActorItem = actorItem;
+      return;
+    }
+    const port = event.target?.closest?.("button[data-id]");
     if (port) sourcePort = port;
   });
   root.addEventListener("mouseup", (event) => {
-    const target = event.target?.closest?.("[data-id]");
+    if (dragActorItem) {
+      const sliceItem = event.target?.closest?.("li");
+      const holder = root.getElementById("event-model-document");
+      if (
+        holder &&
+        sliceItem &&
+        slicesList?.contains(sliceItem) &&
+        dragActorItem.dataset.id &&
+        sliceItem.dataset.id
+      ) {
+        holder.textContent = JSON.stringify(
+          moveActorToSlice(
+            JSON.parse(holder.textContent || "{}"),
+            dragActorItem.dataset.id,
+            sliceItem.dataset.id,
+          ),
+        );
+      }
+      dragActorItem = null;
+      return;
+    }
+    const target = event.target?.closest?.("button[data-id]");
     if (sourcePort && target && sourcePort !== target) {
       const holder = root.getElementById("event-model-document");
       if (holder) {
@@ -339,6 +444,7 @@ export function bindEditor(root) {
             "<p>Command → Event Happened</p>",
           );
         }
+        undoStack.push("connection");
       }
       if (
         sourcePort.dataset.kind === "COMMAND" &&
