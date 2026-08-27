@@ -82,3 +82,14 @@ test("GET `/shell.css` returns content-type `text/css`", async ({
   const response = await request.get("/shell.css");
   expect(response.headers()["content-type"]).toMatch(/^text\/css\b/);
 });
+
+
+test('GET `/` has a `link[rel="icon"]` whose `href` is `/favicon.png`', async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator('link[rel="icon"]')).toHaveAttribute(
+    "href",
+    "/favicon.png",
+  );
+});
