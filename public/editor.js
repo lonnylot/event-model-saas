@@ -25,6 +25,7 @@ import { setEventModelDescription } from "./set-event-model-description.js";
 import { moveSliceLeft } from "./move-slice-left.js";
 import { moveActorToSlice } from "./move-actor-to-slice.js";
 import { deleteSlice } from "./delete-slice.js";
+import { deleteCommand } from "./delete-command.js";
 import { undoConnection } from "./undo-connection.js";
 
 const undoStack = [];
@@ -116,6 +117,7 @@ export function onAddCommandClick(root) {
     item.textContent = "Command";
     item.setAttribute("aria-label", "Command");
     item.dataset.kind = "command";
+    item.setAttribute("data-id", command.id);
     const port = root.createElement("button");
     port.type = "button";
     port.textContent = "Command port";
@@ -689,6 +691,15 @@ export function bindEditor(root) {
       );
       selectedSliceItem.remove();
       selectedSliceItem = null;
+      selected = null;
+    }
+    const commandId = selectedCommandItem?.dataset?.id;
+    if (holder && selected === "command" && commandId && selectedCommandItem) {
+      holder.textContent = JSON.stringify(
+        deleteCommand(JSON.parse(holder.textContent || "{}"), commandId),
+      );
+      selectedCommandItem.remove();
+      selectedCommandItem = null;
       selected = null;
     }
   });
