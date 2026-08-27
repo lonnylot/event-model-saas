@@ -28,7 +28,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person,
 
 ## Seams
 
-- `document` module — undo stack records Add Actor / Event / Read Model / Automation, move Slice, delete Slice / Command / Connection / Actor / Event / Read Model / Automation, and redo; the editor ⌘Z / ⇧⌘Z path calls it
+- `document` module — undo stack records Add Actor / Event / Read Model / Automation / Command, move Slice, delete Slice / Command / Connection / Actor / Event / Read Model / Automation, and redo; the editor ⌘Z / ⇧⌘Z path calls it
 - Browser — Playwright against `wrangler dev` with `TEST_MAIL=1`
 
 ## Assumptions
@@ -36,7 +36,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person,
 - ⌘Z is `ControlOrMeta+z`. ⇧⌘Z is `Shift+ControlOrMeta+z`. ⌥⌘← stays [canvas.md](./canvas.md). Undo New Slice and undo Connection stay [canvas.md](./canvas.md). Undo Add Command stays [canvas-rest.md](./canvas-rest.md).
 - After ⌥⌘← on two Slices, the first Slice id became what was last; ⌘Z restores the order from before that key.
 - After Backspace on the first of two Slices, remaining JSON `id` is the last; ⌘Z restores the first `id`.
-- Two default-named Commands / Connections / Actors / Events / Read Models are first vs last, not by renaming. After Backspace of the first, remaining JSON `id` is the last; ⌘Z restores the first `id`.
+- Two default-named Commands / Connections / Actors / Events / Read Models / Automations are first vs last, not by renaming. After Backspace of the first, remaining JSON `id` is the last; ⌘Z restores the first `id`.
 - After Add Command then ⌘Z, ⇧⌘Z restores the Command listitem.
 - Undo is in-memory.
 - The `TEST_MAIL=1` memory adapter does not count login attempts, so Playwright files can share one Worker without the production 5-per-hour cap.

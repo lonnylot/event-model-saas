@@ -49,18 +49,12 @@ import { undoReadModel } from "./undo-read-model.js";
 import { undoAutomation } from "./undo-automation.js";
 import { undoMoveSliceLeft } from "./undo-move-slice-left.js";
 import { restoreSlice } from "./restore-slice.js";
-
-import { undoCommand } from "./undo-command.js";
-import { deleteCommand } from "./delete-command.js";
 import { restoreCommand } from "./restore-command.js";
 import { restoreConnection } from "./restore-connection.js";
-import { deleteConnection } from "./delete-connection.js";
-import { deleteActor } from "./delete-actor.js";
 import { restoreActor } from "./restore-actor.js";
-import { deleteEvent } from "./delete-event.js";
 import { restoreEvent } from "./restore-event.js";
-import { deleteReadModel } from "./delete-read-model.js";
 import { restoreReadModel } from "./restore-read-model.js";
+import { restoreAutomation } from "./restore-automation.js";
 
 const undoStack = [];
 const redoStack = [];
@@ -1474,7 +1468,28 @@ export function bindEditor(root) {
       }
       const entry = undoStack.pop();
       const kind = typeof entry === "string" ? entry : entry?.kind;
-
+      if (kind === "deleteAutomation") {
+        holder.textContent = JSON.stringify(
+          restoreAutomation(
+            JSON.parse(holder.textContent || "{}"),
+            entry.automation,
+            entry.sliceId,
+            entry.index,
+          ),
+        );
+        const list = root.querySelector('[aria-label="Timeline"] ul');
+        if (list && entry.automation) {
+          const item = root.createElement("li");
+          item.textContent = "Automation";
+          item.setAttribute("aria-label", "Automation");
+          item.dataset.kind = "automation";
+          item.setAttribute("data-id", entry.automation.id);
+          const before = list.children[entry.index];
+          if (before) list.insertBefore(item, before);
+          else list.append(item);
+        }
+        return;
+      }
       if (kind === "deleteReadModel") {
         holder.textContent = JSON.stringify(
           restoreReadModel(
@@ -1746,6 +1761,36 @@ export function bindEditor(root) {
     if (event.key !== "Backspace" && event.key !== "Delete") return;
     if (event.target instanceof HTMLInputElement) return;
     const holder = root.getElementById("event-model-document");
+    if (holder && selected === "automation" && selectedAutomationItem) {
+      const automationId = selectedAutomationItem.dataset.id;
+      const model = JSON.parse(holder.textContent || "{}");
+      const slice = (model.slices ?? []).find((s) =>
+        (s.processors ?? []).some(
+          (automation) => automation.id === automationId,
+        ),
+      );
+      const index = slice
+        ? (slice.processors ?? []).findIndex(
+            (automation) => automation.id === automationId,
+          )
+        : -1;
+      const automation = index >= 0 ? slice.processors[index] : undefined;
+      holder.textContent = JSON.stringify(
+        deleteAutomation(model, automationId),
+      );
+      selectedAutomationItem.remove();
+      if (automation && slice && index >= 0) {
+        undoStack.push({
+          kind: "deleteAutomation",
+          automation,
+          sliceId: slice.id,
+          index,
+        });
+      }
+      selectedAutomationItem = null;
+      selected = null;
+      return;
+    }
     if (holder && selected === "readmodel" && selectedReadModelItem) {
       const readModelId =
         selectedReadModelItem.dataset.id ||

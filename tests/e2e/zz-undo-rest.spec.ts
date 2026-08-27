@@ -429,3 +429,39 @@ test("After clicking `New Slice` then `Add Read Model` twice, clicking the first
       .getByRole("listitem", { name: "Read Model", exact: true }),
   ).toHaveCount(2);
 });
+
+test("After clicking `New Slice` then `Add Automation` twice, clicking the first Timeline `Automation` listitem then the Timeline region, pressing Backspace, then pressing ⌘Z, the remaining Automation `id` is the Automation that was last and the first Automation `id` is the Automation that was first", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Automation", exact: true }).click();
+  await page.getByRole("button", { name: "Add Automation", exact: true }).click();
+  const before = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  const firstId = before.slices[0].processors[0].id;
+  const lastId = before.slices[0].processors[1].id;
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Automation", exact: true })
+    .first()
+    .click();
+  await clickTimelineAwayFromItems(page);
+  await page.keyboard.press("Backspace");
+  const afterDelete = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  expect(afterDelete.slices[0].processors).toHaveLength(1);
+  expect(afterDelete.slices[0].processors[0].id).toBe(lastId);
+  await page.keyboard.press("ControlOrMeta+z");
+  const afterUndo = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  expect(afterUndo.slices[0].processors[0].id).toBe(firstId);
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Automation", exact: true }),
+  ).toHaveCount(2);
+});
