@@ -3,8 +3,9 @@ name: github-ci-loop
 description: >
   Use when starting feature work, creating a branch, opening or updating a
   GitHub pull request, waiting on CI, checks never started, an unmergeable
-  PR, rebase onto default, a merge conflict on a feat/ branch, or when
-  local tests are green and the change must run on GitHub.
+  PR, rebase onto default, a merge conflict on a feat/ branch, fetch
+  current default before branching, two-dot vs default deleting a released
+  spec, or when local tests are green and the change must run on GitHub.
 ---
 
 # GitHub CI loop
@@ -13,11 +14,11 @@ Feature work lives on a branch. A pull request is how CI validates it. Local gre
 
 ## When to branch
 
-Before the first file edit for a spec or bug, from the current default branch:
+Before the first file edit for a spec or bug, fetch the current default branch first, then branch from that tip:
 
 `feat/<spec-slug>` or `fix/<spec-slug>`
 
-One validated spec (or one bug) per branch. Do not implement on `main` / `master`. Every `spec-implementer` gets a worktree (`using-git-worktrees`). Two feat/ branches at once: one worktree per agent (`parallel-feature-work`). The orchestrator stays on the default branch and does not implement there.
+One validated spec (or one bug) per branch. Do not implement on `main` / `master`. Every `spec-implementer` gets a worktree (`using-git-worktrees`). Two feat/ branches at once: one worktree per agent (`parallel-feature-work`). The orchestrator stays on the default branch and does not implement there. Merge-before: that sibling's released files must be on the tip you branch from. Two-dot vs that tip deleting them is `keeping-specs-current`.
 
 ## When to open the PR
 
