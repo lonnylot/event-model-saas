@@ -186,6 +186,33 @@ test("After clicking `New Slice` then `Add Command` then `Add Actor` on that pag
   ).toHaveCount(0);
 });
 
+test("After clicking `New Slice` then `Add Command` then `Add Actor` on that page, clicking the Timeline `Command` listitem, clicking `Add Field`, then the Timeline `Actor` listitem does not show a textbox whose accessible name is `Field name`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Command", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("button", { name: "Add Field", exact: true })
+    .click();
+  await expect(
+    page.getByRole("textbox", { name: "Field name", exact: true }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Add Actor", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Actor", exact: true })
+    .click();
+  await expect(
+    page.getByRole("textbox", { name: "Field name", exact: true }),
+  ).toHaveCount(0);
+});
+
 test("Clicking `Add Field` after selecting `Command` appends a Field whose `name` is `newField` on the last Command", async ({
   page,
 }) => {

@@ -356,7 +356,12 @@ export function bindEditor(root) {
     [...(inspector?.querySelectorAll("button") ?? [])].find(
       (button) => button.textContent === "Add Field",
     );
+  const fieldNameLabel = () =>
+    [...(inspector?.querySelectorAll("label") ?? [])].find((label) =>
+      label.textContent?.includes("Field name"),
+    );
   const unbindAddField = () => addFieldButton()?.remove();
+  const unbindFieldName = () => fieldNameLabel()?.remove();
   const bindAddField = () => {
     if (!inspector || addFieldButton()) return;
     inspector.insertAdjacentHTML(
@@ -371,19 +376,12 @@ export function bindEditor(root) {
           appendField(JSON.parse(holder.textContent || "{}")),
         );
       }
-      if (
-        inspector &&
-        ![...inspector.querySelectorAll("input")].some((input) =>
-          input.closest("label")?.textContent?.includes("Field name"),
-        )
-      ) {
+      if (inspector && !fieldNameLabel()) {
         inspector.insertAdjacentHTML(
           "beforeend",
           "<label>Field name <input /></label>",
         );
-        const fieldNameInput = [...inspector.querySelectorAll("input")].find(
-          (input) => input.closest("label")?.textContent?.includes("Field name"),
-        );
+        const fieldNameInput = fieldNameLabel()?.querySelector("input");
         fieldNameInput?.addEventListener("input", () => {
           const documentHolder = root.getElementById("event-model-document");
           if (documentHolder) {
@@ -489,6 +487,7 @@ export function bindEditor(root) {
       bindName("Event Happened");
       bindAddField();
       bindDescription();
+      unbindFieldName();
       return;
     }
     if (item.dataset.kind === "readmodel") {
@@ -497,6 +496,7 @@ export function bindEditor(root) {
       bindName("Read Model");
       bindAddField();
       bindDescription();
+      unbindFieldName();
       return;
     }
     if (item.dataset.kind === "automation") {
@@ -505,6 +505,7 @@ export function bindEditor(root) {
       bindName("Automation");
       bindAddField();
       bindDescription();
+      unbindFieldName();
       return;
     }
     if (item.dataset.kind !== "actor") return;
@@ -513,6 +514,7 @@ export function bindEditor(root) {
     bindName("Actor");
     bindDescription();
     unbindAddField();
+    unbindFieldName();
   });
   slicesList?.addEventListener("click", (event) => {
     const item = event.target?.closest?.("li");
@@ -524,6 +526,7 @@ export function bindEditor(root) {
     bindName("New Slice");
     bindDescription();
     unbindAddField();
+    unbindFieldName();
   });
   root.addEventListener("keydown", (event) => {
     if (
