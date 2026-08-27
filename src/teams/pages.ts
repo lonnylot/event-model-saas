@@ -135,6 +135,6 @@ export function adminTeamsHtml(email: string, teams: Team[]): string {
     email,
     false,
     invites,
-    { head: `<link rel="stylesheet" href="/shell.css">`, bodyClass: "app-admin" },
+    { head: `<link rel="stylesheet" href="/shell.css">`, bodyClass: "app-admin", lead: `<p><a href="/app">Event Model</a></p>` },
   );
 }
