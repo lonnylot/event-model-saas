@@ -47,7 +47,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Connection, F
 
 ## Out of scope
 
-Mac inspector captions (naming hints, Slice type help). Mac Model Info ⇧⌘I. Inspector Delete Connection button. Model inspector counts, connection roster, and format line. Extra zoom percentages. Mac window chrome (`NSDocument`, native menus, welcome window). Click-created Command → Event inspect, in-session heading-click model inspect, Name after reload on Actor / Command / Event / Read Model / Automation, and Backspace delete Connection stay those specs.
+Mac inspector captions (naming hints, Slice type help). Mac Model Info ⇧⌘I. Inspector Delete Connection button. Model inspector counts, connection roster, and format line. Extra zoom percentages. Mac window chrome (`NSDocument`, native menus, welcome window). Click-created Command → Event inspect, in-session heading-click model inspect, Name after reload on Actor / Command / Event / Read Model / Automation, Event → Read Model Connection after reload, and Backspace delete Connection stay those specs.
 
 ## Restates
 
