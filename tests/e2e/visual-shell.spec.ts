@@ -186,3 +186,14 @@ test('GET an unknown document path has a `link[rel="stylesheet"]` whose `href` i
     "/shell.css",
   );
 });
+
+
+test("GET an unknown document path `body` computed `background-color` is `rgb(247, 244, 238)`", async ({
+  page,
+}) => {
+  await page.goto("/no-such-page");
+  await expect(page.locator("body")).toHaveCSS(
+    "background-color",
+    "rgb(247, 244, 238)",
+  );
+});
