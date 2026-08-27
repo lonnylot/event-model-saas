@@ -23,12 +23,14 @@ export function onNewSliceClick(root) {
   const next = appendSlice(JSON.parse(holder?.textContent || "{}"));
   if (holder) holder.textContent = JSON.stringify(next);
   const slice = next.slices?.at(-1);
+  const sliceIndex = (next.slices?.length ?? 1) - 1;
   const list = root.querySelector("ul");
   if (list) {
     const item = root.createElement("li");
     item.textContent = "New Slice";
     item.setAttribute("aria-label", "New Slice");
     if (slice) item.setAttribute("data-id", slice.id);
+    item.setAttribute("data-slice-index", String(sliceIndex));
     list.append(item);
   }
   const main = root.querySelector("main");
@@ -36,6 +38,40 @@ export function onNewSliceClick(root) {
     main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
   }
   undoStack.push("slice");
+  const timeline = root.querySelector('[aria-label="Timeline"]');
+  if (timeline) {
+    const actor = root.createElement("button");
+    actor.type = "button";
+    actor.textContent = "Add Actor on lane";
+    timeline.append(actor);
+    const command = root.createElement("button");
+    command.type = "button";
+    command.textContent = "Add Command on lane";
+    command.addEventListener("click", () => {
+      const documentHolder = root.getElementById("event-model-document");
+      if (documentHolder) {
+        documentHolder.textContent = JSON.stringify(
+          appendCommand(
+            JSON.parse(documentHolder.textContent || "{}"),
+            sliceIndex,
+          ),
+        );
+      }
+    });
+    timeline.append(command);
+    const event = root.createElement("button");
+    event.type = "button";
+    event.textContent = "Add Event on lane";
+    timeline.append(event);
+    const readModel = root.createElement("button");
+    readModel.type = "button";
+    readModel.textContent = "Add Read Model on lane";
+    timeline.append(readModel);
+    const automation = root.createElement("button");
+    automation.type = "button";
+    automation.textContent = "Add Automation on lane";
+    timeline.append(automation);
+  }
 }
 
 export function onAddActorClick(root) {
@@ -211,6 +247,7 @@ export function bindEditor(root) {
   const slicesList = root.querySelector("ul");
   let selected = null;
   let selectedSliceItem = null;
+  let selectedSliceIndex = null;
   let selectedActorItem = null;
   let selectedCommandItem = null;
   let selectedEventItem = null;
@@ -329,6 +366,8 @@ export function bindEditor(root) {
     if (!item || !slicesList.contains(item)) return;
     selected = "slice";
     selectedSliceItem = item;
+    const indexAttr = item.getAttribute("data-slice-index");
+    selectedSliceIndex = indexAttr === null ? null : Number(indexAttr);
     bindName("New Slice");
   });
   root.addEventListener("keydown", (event) => {
@@ -506,6 +545,29 @@ export function bindEditor(root) {
       highlighted.removeAttribute("aria-current");
     }
     sourcePort = null;
+  });
+  root.addEventListener("keydown", (event) => {
+    if (!event.altKey || !(event.metaKey || event.ctrlKey)) return;
+    const holder = root.getElementById("event-model-document");
+    if (!holder) return;
+    const model = JSON.parse(holder.textContent || "{}");
+    if (event.code === "Digit1") {
+      holder.textContent = JSON.stringify(appendActor(model));
+    }
+    if (event.code === "Digit2") {
+      const index =
+        selectedSliceIndex ?? (model.slices?.length ?? 1) - 1;
+      holder.textContent = JSON.stringify(appendCommand(model, index));
+    }
+    if (event.code === "Digit3") {
+      holder.textContent = JSON.stringify(appendEvent(model));
+    }
+    if (event.code === "Digit4") {
+      holder.textContent = JSON.stringify(appendReadModel(model));
+    }
+    if (event.code === "Digit5") {
+      holder.textContent = JSON.stringify(appendAutomation(model));
+    }
   });
 }
 

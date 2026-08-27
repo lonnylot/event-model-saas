@@ -35,7 +35,7 @@ function clickedSlice() {
       return id === "event-model-document" ? holder : null;
     },
     createElement() {
-      return { textContent: "", setAttribute() {} };
+      return { textContent: "", setAttribute() {}, addEventListener() {} };
     },
   };
   onNewSliceClick(root);
@@ -92,7 +92,7 @@ function clickedActor() {
       return id === "event-model-document" ? holder : null;
     },
     createElement() {
-      return { textContent: "", setAttribute() {} };
+      return { textContent: "", setAttribute() {}, addEventListener() {} };
     },
   };
   onNewSliceClick(root);
@@ -122,7 +122,7 @@ function clickedCommand() {
       return id === "event-model-document" ? holder : null;
     },
     createElement() {
-      return { textContent: "", setAttribute() {} };
+      return { textContent: "", setAttribute() {}, addEventListener() {} };
     },
   };
   onNewSliceClick(root);
@@ -166,7 +166,7 @@ function clickedEvent() {
       return id === "event-model-document" ? holder : null;
     },
     createElement() {
-      return { textContent: "", setAttribute() {} };
+      return { textContent: "", setAttribute() {}, addEventListener() {} };
     },
   };
   onNewSliceClick(root);
@@ -210,7 +210,7 @@ function clickedReadModel() {
       return id === "event-model-document" ? holder : null;
     },
     createElement() {
-      return { textContent: "", setAttribute() {} };
+      return { textContent: "", setAttribute() {}, addEventListener() {} };
     },
   };
   onNewSliceClick(root);
@@ -254,7 +254,7 @@ function clickedAutomation() {
       return id === "event-model-document" ? holder : null;
     },
     createElement() {
-      return { textContent: "", setAttribute() {} };
+      return { textContent: "", setAttribute() {}, addEventListener() {} };
     },
   };
   onNewSliceClick(root);
