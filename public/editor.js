@@ -22,6 +22,7 @@ import { appendField } from "./append-field.js";
 import { setFieldName } from "./set-field-name.js";
 import { setFieldType } from "./set-field-type.js";
 import { setFieldOptional } from "./set-field-optional.js";
+import { setFieldExample } from "./set-field-example.js";
 import { setEventModelTitle } from "./set-event-model-title.js";
 import { setEventModelDescription } from "./set-event-model-description.js";
 import { moveSliceLeft } from "./move-slice-left.js";
@@ -491,6 +492,31 @@ export function bindEditor(root) {
               setFieldOptional(
                 JSON.parse(documentHolder.textContent || "{}"),
                 optionalInput.checked,
+              ),
+            );
+          }
+        });
+      }
+      if (
+        inspector &&
+        ![...inspector.querySelectorAll("input")].some((input) =>
+          input.closest("label")?.textContent?.includes("Example"),
+        )
+      ) {
+        inspector.insertAdjacentHTML(
+          "beforeend",
+          "<label>Example <input /></label>",
+        );
+        const exampleInput = [...inspector.querySelectorAll("input")].find(
+          (input) => input.closest("label")?.textContent?.includes("Example"),
+        );
+        exampleInput?.addEventListener("input", () => {
+          const documentHolder = root.getElementById("event-model-document");
+          if (documentHolder) {
+            documentHolder.textContent = JSON.stringify(
+              setFieldExample(
+                JSON.parse(documentHolder.textContent || "{}"),
+                exampleInput.value,
               ),
             );
           }

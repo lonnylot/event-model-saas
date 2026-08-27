@@ -42,6 +42,7 @@
     "public/set-field-name.js",
     "public/set-field-type.js",
     "public/set-field-optional.js",
+    "public/set-field-example.js",
     "public/set-event-model-title.js",
     "public/set-event-model-description.js"
   ]
