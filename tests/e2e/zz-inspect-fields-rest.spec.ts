@@ -886,3 +886,136 @@ test("After clicking `New Slice` then `Add Command` twice, clicking the first Ti
     JSON.parse(json ?? "{}").slices?.[0]?.commands?.[0]?.fields,
   ).toEqual([]);
 });
+
+test("After clicking `Add Field` on `Command` then the Timeline `Actor` listitem, Inspector does not show a combobox whose accessible name is `Field type`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Command", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("button", { name: "Add Field", exact: true })
+    .click();
+  await expect(
+    page.getByRole("combobox", { name: "Field type", exact: true }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Add Actor", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Actor", exact: true })
+    .click();
+  await expect(
+    page.getByRole("combobox", { name: "Field type", exact: true }),
+  ).toHaveCount(0);
+});
+
+test("After clicking `Add Field` on `Command` then the Timeline `Actor` listitem, Inspector does not show a checkbox whose accessible name is `Optional`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Command", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("button", { name: "Add Field", exact: true })
+    .click();
+  await expect(
+    page.getByRole("checkbox", { name: "Optional", exact: true }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Add Actor", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Actor", exact: true })
+    .click();
+  await expect(
+    page.getByRole("checkbox", { name: "Optional", exact: true }),
+  ).toHaveCount(0);
+});
+
+test("After clicking `Add Field` on `Command` then the Timeline `Actor` listitem, Inspector does not show a textbox whose accessible name is `Example`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Command", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("button", { name: "Add Field", exact: true })
+    .click();
+  await expect(
+    page.getByRole("textbox", { name: "Example", exact: true }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Add Actor", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Actor", exact: true })
+    .click();
+  await expect(
+    page.getByRole("textbox", { name: "Example", exact: true }),
+  ).toHaveCount(0);
+});
+
+test("After clicking `Add Field` on `Command` then the Timeline `Actor` listitem, Inspector does not show a button whose accessible name is `Delete Field`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Command", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("button", { name: "Add Field", exact: true })
+    .click();
+  await expect(
+    page.getByRole("button", { name: "Delete Field", exact: true }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Add Actor", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Actor", exact: true })
+    .click();
+  await expect(
+    page.getByRole("button", { name: "Delete Field", exact: true }),
+  ).toHaveCount(0);
+});
+
+test("After clicking `Add Field` on `Command` then the `New Slice` listitem, Inspector does not show a combobox whose accessible name is `Field type`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Command", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("button", { name: "Add Field", exact: true })
+    .click();
+  await expect(
+    page.getByRole("combobox", { name: "Field type", exact: true }),
+  ).toBeVisible();
+  await page
+    .getByRole("listitem", { name: "New Slice", exact: true })
+    .click();
+  await expect(
+    page.getByRole("combobox", { name: "Field type", exact: true }),
+  ).toHaveCount(0);
+});

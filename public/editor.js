@@ -401,19 +401,31 @@ export function bindEditor(root) {
     [...(inspector?.querySelectorAll("label") ?? [])].find((label) =>
       label.textContent?.includes("Field name"),
     );
+  const fieldTypeLabel = () =>
+    [...(inspector?.querySelectorAll("label") ?? [])].find((label) =>
+      label.textContent?.includes("Field type"),
+    );
+  const optionalLabel = () =>
+    [...(inspector?.querySelectorAll("label") ?? [])].find((label) =>
+      label.textContent?.includes("Optional"),
+    );
+  const exampleLabel = () =>
+    [...(inspector?.querySelectorAll("label") ?? [])].find((label) =>
+      label.textContent?.includes("Example"),
+    );
+  const deleteFieldButton = () =>
+    [...(inspector?.querySelectorAll("button") ?? [])].find(
+      (button) => button.textContent === "Delete Field",
+    );
   const unbindAddField = () => addFieldButton()?.remove();
   const unbindFieldName = () => fieldNameLabel()?.remove();
-  const unbindDescription = () =>
-    descriptionInput()?.closest("label")?.remove();
-  const getRenderedTimelineItems = new Set(
-    timelineList ? [...timelineList.querySelectorAll("li")] : [],
-  );
-  const omitGetRenderedInspectChrome = (item) => {
-    if (!getRenderedTimelineItems.has(item)) return false;
+  const unbindFieldChrome = () => {
     unbindAddField();
     unbindFieldName();
-    unbindDescription();
-    return true;
+    fieldTypeLabel()?.remove();
+    optionalLabel()?.remove();
+    exampleLabel()?.remove();
+    deleteFieldButton()?.remove();
   };
   const bindAddField = () => {
     if (!inspector || addFieldButton()) return;
@@ -779,8 +791,7 @@ export function bindEditor(root) {
     bindName(item.getAttribute("aria-label") ?? "Actor");
     if (omitGetRenderedInspectChrome(item)) return;
     bindDescription();
-    unbindAddField();
-    unbindFieldName();
+    unbindFieldChrome();
   });
   timeline?.addEventListener("click", (event) => {
     const line = event.target?.closest?.("p");
@@ -798,8 +809,7 @@ export function bindEditor(root) {
     selectedSliceIndex = indexAttr === null ? null : Number(indexAttr);
     bindName("New Slice");
     bindDescription();
-    unbindAddField();
-    unbindFieldName();
+    unbindFieldChrome();
   });
   root.querySelector("h1")?.addEventListener("click", () => {
     selected = "model";

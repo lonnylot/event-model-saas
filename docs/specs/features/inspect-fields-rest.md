@@ -38,6 +38,11 @@ Inspector can Add Field on a Command and rename it. Members cannot set Field typ
 - [x] After clicking `New Slice` then `Add Command` twice, clicking the first Timeline `Command` listitem, clicking `Add Field`, checking Inspector `Optional` sets the first Command `fields[0].optional` to `true`
 - [x] After clicking `New Slice` then `Add Command` twice, clicking the first Timeline `Command` listitem, clicking `Add Field`, filling Inspector `Example` with `abc` sets the first Command `fields[0].example` to `abc`
 - [x] After clicking `New Slice` then `Add Command` twice, clicking the first Timeline `Command` listitem, clicking `Add Field`, clicking `Delete Field` sets the first Command `fields` to `[]`
+- [x] After clicking `Add Field` on `Command` then the Timeline `Actor` listitem, Inspector does not show a combobox whose accessible name is `Field type`
+- [x] After clicking `Add Field` on `Command` then the Timeline `Actor` listitem, Inspector does not show a checkbox whose accessible name is `Optional`
+- [x] After clicking `Add Field` on `Command` then the Timeline `Actor` listitem, Inspector does not show a textbox whose accessible name is `Example`
+- [x] After clicking `Add Field` on `Command` then the Timeline `Actor` listitem, Inspector does not show a button whose accessible name is `Delete Field`
+- [x] After clicking `Add Field` on `Command` then the `New Slice` listitem, Inspector does not show a combobox whose accessible name is `Field type`
 
 ## Domain terms
 
