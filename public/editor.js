@@ -1096,7 +1096,7 @@ export function bindEditor(root) {
           const heading = root.querySelector("h1");
           if (heading) heading.textContent = input.value;
         }
-        if (selected === "slice" || selected === "actor") {
+        if (selected === "slice" || selected === "actor" || selected === "command") {
           const main = root.querySelector("main");
           if (main && !main.textContent?.includes("Unsaved changes.")) {
             main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
