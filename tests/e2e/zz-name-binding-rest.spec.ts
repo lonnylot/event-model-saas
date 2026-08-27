@@ -175,3 +175,36 @@ test("Filling the Inspector `Name` textbox with `Shopper` after selecting the fi
       .getByRole("listitem", { name: "Shopper", exact: true }),
   ).toHaveText("Shopper");
 });
+
+async function addTwoEventsClickFirstFillOrderPlaced(page: Page) {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Event Happened", exact: true }),
+  ).toHaveCount(2);
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Event Happened", exact: true })
+    .first()
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Name", exact: true })
+    .fill("Order Placed");
+}
+
+test("After clicking `New Slice` then `Add Event` twice, clicking the first Timeline `Event Happened` listitem, filling Inspector `Name` with `Order Placed` sets the first Event `title` to `Order Placed`", async ({
+  page,
+}) => {
+  await addTwoEventsClickFirstFillOrderPlaced(page);
+  const json = await page
+    .locator("#event-model-document")
+    .evaluate((el) => el.textContent);
+  expect(JSON.parse(json ?? "{}").slices?.[0]?.events?.[0]?.title).toBe(
+    "Order Placed",
+  );
+});

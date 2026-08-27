@@ -1031,7 +1031,11 @@ export function bindEditor(root) {
         }
         if (holder && selected === "event") {
           holder.textContent = JSON.stringify(
-            setEventTitle(JSON.parse(holder.textContent || "{}"), input.value),
+            setEventTitle(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+              selectedEventItem?.dataset?.id,
+            ),
           );
         }
         if (holder && selected === "readmodel") {
