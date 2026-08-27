@@ -95,3 +95,20 @@ test("After clicking `New Slice` then `Add Command` on that page, clicking the T
       .getByRole("textbox", { name: "Name", exact: true }),
   ).toBeVisible();
 });
+
+test("After clicking `New Slice` then `Add Command` on that page, clicking the Timeline `Command` listitem shows that `Name` textbox with the value `Command`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Command", exact: true })
+    .click();
+  await expect(
+    page
+      .getByRole("region", { name: "Inspector", exact: true })
+      .getByRole("textbox", { name: "Name", exact: true }),
+  ).toHaveValue("Command");
+});

@@ -9,7 +9,7 @@ Members can inspect Slice and Actor Name, but clicking Command, Event Happened, 
 ## Acceptance criteria
 
 - [x] After clicking `New Slice` then `Add Command` on that page, clicking the Timeline `Command` listitem shows a textbox whose accessible name is `Name` in the Inspector region
-- [ ] After clicking `New Slice` then `Add Command` on that page, clicking the Timeline `Command` listitem shows that `Name` textbox with the value `Command`
+- [x] After clicking `New Slice` then `Add Command` on that page, clicking the Timeline `Command` listitem shows that `Name` textbox with the value `Command`
 - [ ] Filling the Inspector `Name` textbox with `Place Order` after selecting `Command` sets the last Command `title` to `Place Order`
 - [ ] Filling the Inspector `Name` textbox with `Place Order` after selecting `Command` shows a Timeline listitem whose accessible name is `Place Order`
 - [ ] After clicking `New Slice` then `Add Event` on that page, clicking the Timeline `Event Happened` listitem shows a textbox whose accessible name is `Name` in the Inspector region

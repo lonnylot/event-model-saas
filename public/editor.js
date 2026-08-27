@@ -221,7 +221,10 @@ export function bindEditor(root) {
     if (!item || !timelineList.contains(item)) return;
     if (item.dataset.kind === "command") {
       if (inspector && !nameInput()) {
-        inspector.insertAdjacentHTML("beforeend", "<label>Name <input /></label>");
+        inspector.insertAdjacentHTML(
+          "beforeend",
+          '<label>Name <input value="Command" /></label>',
+        );
       }
       return;
     }
