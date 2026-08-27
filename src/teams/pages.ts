@@ -68,7 +68,8 @@ export function modelPageHtml(
   const timelineItems = slices
     .flatMap((slice) => [
       ...(slice.actors ?? []).map(
-        (actor) => `<li aria-label="${actor.name}">${actor.name}</li>`,
+        (actor) =>
+          `<li aria-label="${actor.name}" data-kind="actor">${actor.name}</li>`,
       ),
       ...(slice.commands ?? []).map(
         (command) =>

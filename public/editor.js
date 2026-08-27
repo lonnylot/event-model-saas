@@ -539,7 +539,7 @@ export function bindEditor(root) {
     if (item.dataset.kind !== "actor") return;
     selected = "actor";
     selectedActorItem = item;
-    bindName("Actor");
+    bindName(item.getAttribute("aria-label") ?? "Actor");
     bindDescription();
     unbindAddField();
     unbindFieldName();
