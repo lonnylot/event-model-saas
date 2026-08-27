@@ -14,7 +14,7 @@ Command → Read Model and Event → Command are refused with copy on the source
 - [x] After clicking `New Slice` then `Add Event` twice, dragging from the first `Event Happened port` onto the last `Event Happened port` shows the text `An event can't feed an event.` in the first Event Happened listitem
 - [x] Dragging from `Read Model port` onto `Command port` does not append a Connection
 - [x] Dragging from `Read Model port` onto `Command port` shows the text `A read model can't issue a command.` in the Read Model listitem
-- [ ] Dragging from `Read Model port` onto `Event Happened port` does not append a Connection
+- [x] Dragging from `Read Model port` onto `Event Happened port` does not append a Connection
 - [ ] Dragging from `Read Model port` onto `Event Happened port` shows the text `A read model can't write an event.` in the Read Model listitem
 - [ ] After clicking `New Slice` then `Add Read Model` twice, dragging from the first `Read Model port` onto the last `Read Model port` does not append a Connection
 - [ ] After clicking `New Slice` then `Add Read Model` twice, dragging from the first `Read Model port` onto the last `Read Model port` shows the text `A read model can't feed a read model.` in the first Read Model listitem

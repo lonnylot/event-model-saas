@@ -14,6 +14,9 @@ export function appendConnection(model, edge) {
   if (edge.fromKind === "READMODEL" && edge.toKind === "COMMAND") {
     return model;
   }
+  if (edge.fromKind === "READMODEL" && edge.toKind === "EVENT") {
+    return model;
+  }
   return {
     ...model,
     connections: [
