@@ -36,7 +36,7 @@ Event Model, Slice, Command, Event, Read Model, Actor, Automation, Connection, T
 - Connect is a drag from a Port onto a Port. Legal v1 edges are Command → Event and Event → Read Model, matching the Mac app.
 - Empty Connection JSON is `{ "id": "{uuid}", "fromID": "{command or event uuid}", "fromKind": "COMMAND" | "EVENT", "toID": "{event or read model uuid}", "toKind": "EVENT" | "READMODEL" }`.
 - Connections live on the Event Model `connections` array, not on the Slice.
-- Add still targets the last Slice. There is no Slice selection in this slice.
+- Toolbar Add still targets the last Slice. There is no Slice selection in this slice. `Add Command on lane` on a non-last Slice is [add-on-lane.md](./add-on-lane.md).
 - Connect is in-memory until Save. Save still uses the version check from model-persistence.
 
 ## Out of scope
