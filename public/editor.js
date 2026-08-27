@@ -422,13 +422,14 @@ export function bindEditor(root) {
       '<button type="button">Add Field</button>',
     );
     addFieldButton()?.addEventListener("click", () => {
-      if (selected !== "command") return;
+      if (selected !== "command" && selected !== "event") return;
       const holder = root.getElementById("event-model-document");
       if (holder) {
         holder.textContent = JSON.stringify(
-          appendField(JSON.parse(holder.textContent || "{}")),
+          appendField(JSON.parse(holder.textContent || "{}"), selected),
         );
       }
+      if (selected !== "command") return;
       if (inspector && !fieldNameLabel()) {
         inspector.insertAdjacentHTML(
           "beforeend",

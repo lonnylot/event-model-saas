@@ -12,7 +12,7 @@ Inspector can Add Field on a Command and rename it. Members cannot set Field typ
 - [x] After clicking `Add Field` on `Command`, checking Inspector `Optional` sets the last Command `fields[0].optional` to `true`
 - [x] After clicking `Add Field` on `Command`, filling Inspector `Example` with `abc` sets the last Command `fields[0].example` to `abc`
 - [x] After clicking `Add Field` on `Command`, clicking `Delete Field` sets the last Command `fields` to `[]`
-- [ ] Clicking `Add Field` after selecting `Event Happened` appends a Field whose `name` is `newField` on the last Event
+- [x] Clicking `Add Field` after selecting `Event Happened` appends a Field whose `name` is `newField` on the last Event
 - [ ] Clicking `Add Field` after selecting `Read Model` appends a Field whose `name` is `newField` on the last Read Model
 - [ ] Clicking `Add Field` after selecting `Automation` appends a Field whose `name` is `newField` on the last Automation
 - [ ] After clicking `New Slice` then `Add Command` twice, clicking the first Timeline `Command` listitem, clicking `Add Field`, filling `Field name` with `orderId` sets the first Command `fields[0].name` to `orderId`
