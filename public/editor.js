@@ -29,6 +29,7 @@ import { deleteCommand } from "./delete-command.js";
 import { deleteConnection } from "./delete-connection.js";
 import { deleteActor } from "./delete-actor.js";
 import { deleteEvent } from "./delete-event.js";
+import { deleteReadModel } from "./delete-read-model.js";
 import { undoConnection } from "./undo-connection.js";
 
 const undoStack = [];
@@ -168,6 +169,7 @@ export function onAddReadModelClick(root) {
     item.textContent = "Read Model";
     item.setAttribute("aria-label", "Read Model");
     item.dataset.kind = "readmodel";
+    item.setAttribute("data-id", readModel.id);
     const port = root.createElement("button");
     port.type = "button";
     port.textContent = "Read Model port";
@@ -744,6 +746,20 @@ export function bindEditor(root) {
       );
       selectedEventItem.remove();
       selectedEventItem = null;
+      selected = null;
+    }
+    const readModelId = selectedReadModelItem?.dataset?.id;
+    if (
+      holder &&
+      selected === "readmodel" &&
+      readModelId &&
+      selectedReadModelItem
+    ) {
+      holder.textContent = JSON.stringify(
+        deleteReadModel(JSON.parse(holder.textContent || "{}"), readModelId),
+      );
+      selectedReadModelItem.remove();
+      selectedReadModelItem = null;
       selected = null;
     }
   });
