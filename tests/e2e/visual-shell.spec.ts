@@ -104,3 +104,14 @@ test('GET `/` has a `link[rel="stylesheet"]` whose `href` is `/shell.css`', asyn
     "/shell.css",
   );
 });
+
+
+test('GET `/` has a `meta[property="og:image"]` whose `content` ends with `/og.png`', async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
+    "content",
+    /\/og\.png$/,
+  );
+});
