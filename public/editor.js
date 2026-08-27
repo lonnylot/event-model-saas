@@ -436,7 +436,11 @@ export function bindEditor(root) {
           appendField(
             JSON.parse(holder.textContent || "{}"),
             selected,
-            selected === "command" ? selectedCommandItem?.dataset?.id : undefined,
+            selected === "command"
+              ? selectedCommandItem?.dataset?.id
+              : selected === "event"
+                ? selectedEventItem?.dataset?.id
+                : undefined,
           ),
         );
       }
@@ -462,7 +466,9 @@ export function bindEditor(root) {
                 fieldNameInput.value,
                 selected === "command"
                   ? selectedCommandItem?.dataset?.id
-                  : undefined,
+                  : selected === "event"
+                    ? selectedEventItem?.dataset?.id
+                    : undefined,
                 selected,
               ),
             );

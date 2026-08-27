@@ -688,3 +688,31 @@ test("After clicking `Add Field` on `Automation`, clicking `Delete Field` sets t
     JSON.parse(json ?? "{}").slices?.[0]?.processors?.at(-1)?.fields,
   ).toEqual([]);
 });
+
+test("After clicking `New Slice` then `Add Event` twice, clicking the first Timeline `Event Happened` listitem, clicking `Add Field`, filling `Field name` with `eventId` sets the first Event `fields[0].name` to `eventId`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  const events = page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Event Happened", exact: true });
+  await expect(events).toHaveCount(2);
+  await events.first().click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("button", { name: "Add Field", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Field name", exact: true })
+    .fill("eventId");
+  const json = await page
+    .locator("#event-model-document")
+    .evaluate((el) => el.textContent);
+  expect(
+    JSON.parse(json ?? "{}").slices?.[0]?.events?.[0]?.fields?.[0]?.name,
+  ).toBe("eventId");
+});
