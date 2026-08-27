@@ -158,3 +158,23 @@ test("After clicking `New Slice` then `Add Event` twice, dragging from the first
     page.getByRole("listitem", { name: "Event Happened", exact: true }).first(),
   ).toContainText("An event can't feed an event.");
 });
+
+test("Dragging from `Read Model port` onto `Command port` does not append a Connection", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await expect(
+    page.getByRole("button", { name: "Read Model port", exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Command port", exact: true }),
+  ).toBeVisible();
+  await page
+    .getByRole("button", { name: "Read Model port", exact: true })
+    .dragTo(page.getByRole("button", { name: "Command port", exact: true }));
+  const json = await page.locator("#event-model-document").textContent();
+  expect(JSON.parse(json ?? "{}").connections ?? []).toEqual([]);
+});
