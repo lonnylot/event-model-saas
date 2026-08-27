@@ -1,6 +1,6 @@
 # Inspect after reload
 
-Status: validated
+Status: released
 
 ## Problem
 
