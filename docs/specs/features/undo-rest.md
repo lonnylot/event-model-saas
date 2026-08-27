@@ -4,7 +4,7 @@ Status: validated
 
 ## Problem
 
-⌘Z undoes New Slice, Command → Event, and Add Command. It does not undo other Adds, a Slice move, or a delete, so Mac structural undo is incomplete. ⇧⌘Z does not redo.
+⌘Z undoes New Slice and Command → Event. It does not undo Add Command, other Adds, a Slice move, or a delete, so Mac structural undo is incomplete. ⇧⌘Z does not redo.
 
 ## Acceptance criteria
 
