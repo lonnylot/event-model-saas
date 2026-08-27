@@ -1517,6 +1517,25 @@ export function bindEditor(root) {
             });
           }
         }
+        if (entry?.kind === "deleteConnection") {
+          const connectionId = entry.connection?.id;
+          const model = JSON.parse(holder.textContent || "{}");
+          const index = (model.connections ?? []).findIndex(
+            (connection) => connection.id === connectionId,
+          );
+          const connection = index >= 0 ? model.connections[index] : undefined;
+          holder.textContent = JSON.stringify(
+            deleteConnection(model, connectionId),
+          );
+          const timelineEl = root.querySelector('[aria-label="Timeline"]');
+          const node = [...(timelineEl?.querySelectorAll("p") ?? [])].find(
+            (p) => p.dataset.id === connectionId,
+          );
+          node?.remove();
+          if (connection && index >= 0) {
+            undoStack.push({ kind: "deleteConnection", connection, index });
+          }
+        }
         return;
       }
       const entry = undoStack.pop();
@@ -1638,6 +1657,7 @@ export function bindEditor(root) {
           if (before) timelineEl.insertBefore(p, before);
           else timelineEl.append(p);
         }
+        redoStack.push(entry);
         return;
       }
       if (kind === "deleteCommand") {

@@ -518,6 +518,44 @@ test("After dragging from `Command port` onto `Event Happened port` twice, click
   ).toHaveCount(2);
 });
 
+test("After dragging from `Command port` onto `Event Happened port` twice, clicking the first Timeline text `Command → Event Happened` then the Timeline region, pressing Backspace, pressing ⌘Z, then pressing ⇧⌘Z, the remaining connection `id` is the connection that was last", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Command port", exact: true })
+    .first()
+    .dragTo(
+      page.getByRole("button", { name: "Event Happened port", exact: true }).first(),
+    );
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Command port", exact: true })
+    .last()
+    .dragTo(
+      page.getByRole("button", { name: "Event Happened port", exact: true }).last(),
+    );
+  const before = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  const lastId = before.connections[1].id;
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  await timeline.locator("p").filter({ hasText: "Command → Event Happened" }).first().click();
+  await timeline.click({ position: { x: 1, y: 1 } });
+  await page.keyboard.press("Backspace");
+  await page.keyboard.press("ControlOrMeta+z");
+  await page.keyboard.press("Shift+ControlOrMeta+z");
+  const afterRedo = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  expect(afterRedo.connections).toHaveLength(1);
+  expect(afterRedo.connections[0].id).toBe(lastId);
+});
+
 async function clickTimelineAwayFromItems(page: Page) {
   const timeline = page.getByRole("region", { name: "Timeline", exact: true });
   await timeline.click({ position: { x: 1, y: 1 } });
