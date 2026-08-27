@@ -170,3 +170,14 @@ test("After clicking `Zoom in` then scrolling the Timeline region, the Timeline 
   expect(transform).toContain("scale(1.25)");
   expect(transform).toContain("translate(");
 });
+
+test("After clicking `New Slice`, pressing ⌘Z does not show a listitem whose accessible name is `New Slice`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.keyboard.press("ControlOrMeta+z");
+  await expect(
+    page.getByRole("listitem", { name: "New Slice", exact: true }),
+  ).toHaveCount(0);
+});

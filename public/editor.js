@@ -332,6 +332,21 @@ export function bindEditor(root) {
       }
       return;
     }
+    if (
+      (event.metaKey || event.ctrlKey) &&
+      !event.altKey &&
+      (event.key === "z" || event.key === "Z")
+    ) {
+      event.preventDefault();
+      const holder = root.getElementById("event-model-document");
+      if (!holder) return;
+      const model = JSON.parse(holder.textContent || "{}");
+      const last = model.slices?.at(-1);
+      if (!last) return;
+      holder.textContent = JSON.stringify(deleteSlice(model, last.id));
+      root.querySelector("ul")?.lastElementChild?.remove();
+      return;
+    }
     if (event.key !== "Backspace" && event.key !== "Delete") return;
     if (event.target instanceof HTMLInputElement) return;
     const holder = root.getElementById("event-model-document");
