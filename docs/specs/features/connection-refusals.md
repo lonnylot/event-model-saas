@@ -9,7 +9,7 @@ Command → Read Model and Event → Command are refused with copy on the source
 ## Acceptance criteria
 
 - [x] After clicking `New Slice` then `Add Command` twice, dragging from the first `Command port` onto the last `Command port` does not append a Connection
-- [ ] After clicking `New Slice` then `Add Command` twice, dragging from the first `Command port` onto the last `Command port` shows the text `A command can't write a command.` in the first Command listitem
+- [x] After clicking `New Slice` then `Add Command` twice, dragging from the first `Command port` onto the last `Command port` shows the text `A command can't write a command.` in the first Command listitem
 - [ ] After clicking `New Slice` then `Add Event` twice, dragging from the first `Event Happened port` onto the last `Event Happened port` does not append a Connection
 - [ ] After clicking `New Slice` then `Add Event` twice, dragging from the first `Event Happened port` onto the last `Event Happened port` shows the text `An event can't feed an event.` in the first Event Happened listitem
 - [ ] Dragging from `Read Model port` onto `Command port` does not append a Connection

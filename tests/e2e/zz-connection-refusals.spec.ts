@@ -108,3 +108,18 @@ test("After clicking `New Slice` then `Add Command` twice, dragging from the fir
   const json = await page.locator("#event-model-document").textContent();
   expect(JSON.parse(json ?? "{}").connections ?? []).toEqual([]);
 });
+
+test("After clicking `New Slice` then `Add Command` twice, dragging from the first `Command port` onto the last `Command port` shows the text `A command can't write a command.` in the first Command listitem", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  const ports = page.getByRole("button", { name: "Command port", exact: true });
+  await expect(ports).toHaveCount(2);
+  await ports.first().dragTo(ports.last());
+  await expect(
+    page.getByRole("listitem", { name: "Command", exact: true }).first(),
+  ).toContainText("A command can't write a command.");
+});

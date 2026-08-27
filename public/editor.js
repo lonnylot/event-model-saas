@@ -807,6 +807,23 @@ export function bindEditor(root) {
           );
         }
       }
+      if (
+        sourcePort.dataset.kind === "COMMAND" &&
+        target.dataset.kind === "COMMAND"
+      ) {
+        const commandItem = sourcePort.closest("li");
+        if (
+          commandItem &&
+          !commandItem.textContent?.includes(
+            "A command can't write a command.",
+          )
+        ) {
+          commandItem.insertAdjacentHTML(
+            "beforeend",
+            "<p>A command can't write a command.</p>",
+          );
+        }
+      }
     }
     for (const highlighted of root.querySelectorAll("[aria-current]")) {
       highlighted.removeAttribute("aria-current");
