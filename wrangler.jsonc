@@ -40,7 +40,8 @@
       "/app",
       "/app/*",
       "/favicon.png",
-      "/og.png"
+      "/og.png",
+      "/shell.css"
     ]
   }
 }

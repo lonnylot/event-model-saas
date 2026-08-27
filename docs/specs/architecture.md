@@ -18,7 +18,7 @@ A Cloudflare Worker serves signed-out and team/admin HTML, the editor canvas pag
 
 | Piece | Choice |
 |-------|--------|
-| Compute | One Worker (`event-model-saas`), `nodejs_compat`, static assets + `run_worker_first` for `/api`, `/api/*`, `/app`, `/app/*`, `/favicon.png`, `/og.png` |
+| Compute | One Worker (`event-model-saas`), `nodejs_compat`, static assets + `run_worker_first` for `/api`, `/api/*`, `/app`, `/app/*`, `/favicon.png`, `/og.png`, `/shell.css` |
 | Domain | Custom domain `event-model.lonnylot.com` on zone `lonnylot.com` |
 | Metadata | D1 |
 | Document body | R2 object `models/{id}.eventmodel` (current JSON only) |

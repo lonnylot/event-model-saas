@@ -71,4 +71,13 @@ describe("handleRequest", () => {
     );
     expect(response.headers.get("content-type")).toBe("image/png");
   });
+
+  it("GET `/shell.css` returns status 200", async () => {
+    const assetsFetch = vi.fn(async () => new Response("x", { status: 200 }));
+    const response = await handleRequest(
+      new Request("https://event-model.lonnylot.com/shell.css"),
+      envWithAssets(assetsFetch),
+    );
+    expect(response.status).toBe(200);
+  });
 });
