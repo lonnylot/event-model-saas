@@ -17,6 +17,7 @@ import { setReadModelTitle } from "./set-read-model-title.js";
 import { setReadModelDescription } from "./set-read-model-description.js";
 import { setAutomationTitle } from "./set-automation-title.js";
 import { setAutomationDescription } from "./set-automation-description.js";
+import { appendField } from "./append-field.js";
 import { moveSliceLeft } from "./move-slice-left.js";
 import { moveActorToSlice } from "./move-actor-to-slice.js";
 import { deleteSlice } from "./delete-slice.js";
@@ -352,16 +353,29 @@ export function bindEditor(root) {
   };
   const bindAddField = () => {
     if (
-      inspector &&
-      ![...inspector.querySelectorAll("button")].some(
+      !inspector ||
+      [...inspector.querySelectorAll("button")].some(
         (button) => button.textContent === "Add Field",
       )
     ) {
-      inspector.insertAdjacentHTML(
-        "beforeend",
-        '<button type="button">Add Field</button>',
-      );
+      return;
     }
+    inspector.insertAdjacentHTML(
+      "beforeend",
+      '<button type="button">Add Field</button>',
+    );
+    const button = [...inspector.querySelectorAll("button")].find(
+      (item) => item.textContent === "Add Field",
+    );
+    button?.addEventListener("click", () => {
+      if (selected !== "command") return;
+      const holder = root.getElementById("event-model-document");
+      if (holder) {
+        holder.textContent = JSON.stringify(
+          appendField(JSON.parse(holder.textContent || "{}")),
+        );
+      }
+    });
   };
   const bindName = (value) => {
     if (!inspector) return;

@@ -25,6 +25,7 @@
     "public/append-read-model.js",
     "public/append-automation.js",
     "public/append-connection.js",
+    "public/append-field.js",
     "public/set-slice-title.js",
     "public/set-slice-description.js",
     "public/set-actor-name.js",
