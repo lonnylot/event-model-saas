@@ -17,7 +17,7 @@ Members can inspect Slice and Actor Name, but clicking Command, Event Happened, 
 - [x] Filling the Inspector `Name` textbox with `Order Placed` after selecting `Event Happened` sets the last Event `title` to `Order Placed`
 - [x] Filling the Inspector `Name` textbox with `Order Placed` after selecting `Event Happened` shows a Timeline listitem whose accessible name is `Order Placed`
 - [x] After clicking `New Slice` then `Add Read Model` on that page, clicking the Timeline `Read Model` listitem shows a textbox whose accessible name is `Name` in the Inspector region
-- [ ] After clicking `New Slice` then `Add Read Model` on that page, clicking the Timeline `Read Model` listitem shows that `Name` textbox with the value `Read Model`
+- [x] After clicking `New Slice` then `Add Read Model` on that page, clicking the Timeline `Read Model` listitem shows that `Name` textbox with the value `Read Model`
 - [ ] Filling the Inspector `Name` textbox with `Orders` after selecting `Read Model` sets the last Read Model `title` to `Orders`
 - [ ] Filling the Inspector `Name` textbox with `Orders` after selecting `Read Model` shows a Timeline listitem whose accessible name is `Orders`
 - [ ] After clicking `New Slice` then `Add Automation` on that page, clicking the Timeline `Automation` listitem shows a textbox whose accessible name is `Name` in the Inspector region
