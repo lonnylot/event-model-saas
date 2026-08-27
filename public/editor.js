@@ -505,6 +505,9 @@ export function bindEditor(root) {
                 JSON.parse(documentHolder.textContent || "{}"),
                 fieldTypeSelect.value,
                 selected,
+                selected === "command"
+                  ? selectedCommandItem?.dataset?.id
+                  : undefined,
               ),
             );
           }

@@ -1,4 +1,4 @@
-export function setFieldType(model, type, target = "command") {
+export function setFieldType(model, type, target = "command", id) {
   const slices = [...(model.slices ?? [])];
   const slice = slices.at(-1);
   if (!slice) return model;
@@ -36,12 +36,16 @@ export function setFieldType(model, type, target = "command") {
     return { ...model, slices };
   }
   const commands = [...(slice.commands ?? [])];
-  const command = commands.at(-1);
+  const index = id
+    ? commands.findIndex((command) => command.id === id)
+    : commands.length - 1;
+  if (index < 0) return model;
+  const command = commands[index];
   if (!command) return model;
   const fields = [...(command.fields ?? [])];
   if (!fields.length) return model;
   fields[0] = { ...fields[0], type };
-  commands[commands.length - 1] = { ...command, fields };
+  commands[index] = { ...command, fields };
   slices[slices.length - 1] = { ...slice, commands };
   return { ...model, slices };
 }
