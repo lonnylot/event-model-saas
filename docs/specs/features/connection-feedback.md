@@ -28,7 +28,7 @@ Event Model, Slice, Command, Event, Read Model, Connection, Team, Person, Versio
 
 ## Assumptions
 
-- Pointer-down is mousedown on the source Port and hold; highlight is visible before mouseup. Playwright `mouse.down` on the source Port.
+- Pointer-down is mousedown on the source Port and hold; highlight is visible before mouseup. Playwright `mouse.down` on the source Port (hover uses `force` so Timeline pan does not move the Port). Playwright waits for the New Slice listitem after click, and for the named Ports before pointer-down or drag.
 - Legal v1 edges stay Command → Event and Event → Read Model ([connections.md](./connections.md)).
 - Highlight is `aria-current="true"` on a legal target Port only while the pointer is down on a source Port.
 - Snap-back is: after mouseup on an illegal Port, no Port still has `aria-current` `true`, and no Connection is appended (Command → Read Model still does not append, [connections.md](./connections.md)).

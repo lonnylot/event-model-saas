@@ -64,6 +64,9 @@ async function openUntitledModel(page: Page) {
       page.getByRole("heading", { name: "Library", exact: true }),
     ).toBeVisible();
   }
+  const untitledBefore = await page
+    .getByRole("link", { name: "Untitled", exact: true })
+    .count();
   await Promise.all([
     page.waitForResponse(
       (response) =>
@@ -72,18 +75,45 @@ async function openUntitledModel(page: Page) {
     ),
     page.getByRole("button", { name: "Create model", exact: true }).click(),
   ]);
+  await expect(
+    page.getByRole("link", { name: "Untitled", exact: true }),
+  ).toHaveCount(untitledBefore + 1);
   await page.goto("/app");
   await page.getByRole("link", { name: "Untitled", exact: true }).last().click();
   await expect(
     page.getByRole("heading", { name: "Untitled", exact: true }),
   ).toBeVisible();
+  await page.waitForLoadState("networkidle");
+}
+
+async function clickNewSlice(page: Page) {
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await expect(
+    page.getByRole("listitem", { name: "New Slice", exact: true }),
+  ).toBeVisible();
 }
 
 async function addCommandEventAndReadModel(page: Page) {
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   await page.getByRole("button", { name: "Add Event", exact: true }).click();
   await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  await expect(
+    page.getByRole("button", { name: "Command port", exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Event Happened port", exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Read Model port", exact: true }),
+  ).toBeVisible();
+}
+
+async function pointerDownOnPort(page: Page, name: string) {
+  const port = page.getByRole("button", { name, exact: true });
+  await expect(port).toBeVisible();
+  await port.hover({ force: true });
+  await page.mouse.down();
 }
 
 test("After pointer-down on `Command port`, the `Event Happened port` has `aria-current` `true`", async ({
@@ -91,8 +121,7 @@ test("After pointer-down on `Command port`, the `Event Happened port` has `aria-
 }) => {
   await openUntitledModel(page);
   await addCommandEventAndReadModel(page);
-  await page.getByRole("button", { name: "Command port", exact: true }).hover();
-  await page.mouse.down();
+  await pointerDownOnPort(page, "Command port");
   await expect(
     page.getByRole("button", { name: "Event Happened port", exact: true }),
   ).toHaveAttribute("aria-current", "true");
@@ -103,8 +132,7 @@ test("After pointer-down on `Command port`, the `Read Model port` does not have 
 }) => {
   await openUntitledModel(page);
   await addCommandEventAndReadModel(page);
-  await page.getByRole("button", { name: "Command port", exact: true }).hover();
-  await page.mouse.down();
+  await pointerDownOnPort(page, "Command port");
   await expect(
     page.getByRole("button", { name: "Read Model port", exact: true }),
   ).not.toHaveAttribute("aria-current", "true");
@@ -115,10 +143,7 @@ test("After pointer-down on `Event Happened port`, the `Read Model port` has `ar
 }) => {
   await openUntitledModel(page);
   await addCommandEventAndReadModel(page);
-  await page
-    .getByRole("button", { name: "Event Happened port", exact: true })
-    .hover();
-  await page.mouse.down();
+  await pointerDownOnPort(page, "Event Happened port");
   await expect(
     page.getByRole("button", { name: "Read Model port", exact: true }),
   ).toHaveAttribute("aria-current", "true");
@@ -129,10 +154,7 @@ test("After pointer-down on `Event Happened port`, the `Command port` does not h
 }) => {
   await openUntitledModel(page);
   await addCommandEventAndReadModel(page);
-  await page
-    .getByRole("button", { name: "Event Happened port", exact: true })
-    .hover();
-  await page.mouse.down();
+  await pointerDownOnPort(page, "Event Happened port");
   await expect(
     page.getByRole("button", { name: "Command port", exact: true }),
   ).not.toHaveAttribute("aria-current", "true");
