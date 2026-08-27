@@ -43,12 +43,12 @@ export function onNewSliceClick(root) {
   if (main && !main.textContent?.includes("Unsaved changes.")) {
     main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
   }
-  undoStack.push("slice");
   const timeline = root.querySelector('[aria-label="Timeline"]');
   if (timeline) {
     const actor = root.createElement("button");
     actor.type = "button";
     actor.textContent = "Add Actor on lane";
+    actor.setAttribute("data-slice-index", String(sliceIndex));
     timeline.append(actor);
     const command = root.createElement("button");
     command.type = "button";
@@ -78,6 +78,7 @@ export function onNewSliceClick(root) {
     automation.textContent = "Add Automation on lane";
     timeline.append(automation);
   }
+  undoStack.push("slice");
 }
 
 export function onAddActorClick(root) {
@@ -210,6 +211,16 @@ export function bindEditor(root) {
       },
       { passive: false },
     );
+    timeline.addEventListener("click", (event) => {
+      const button = event.target?.closest?.("button");
+      if (button?.textContent !== "Add Actor on lane") return;
+      const holder = root.getElementById("event-model-document");
+      if (!holder) return;
+      const index = Number(button.getAttribute("data-slice-index"));
+      holder.textContent = JSON.stringify(
+        appendActor(JSON.parse(holder.textContent || "{}"), index),
+      );
+    });
   }
   root.querySelectorAll("button").forEach((button) => {
     if (button.textContent === "Zoom in") {
