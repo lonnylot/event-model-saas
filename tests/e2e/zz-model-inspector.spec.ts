@@ -137,7 +137,7 @@ test("Filling the Inspector `Name` textbox with `Library Checkout` after clickin
   ).toBeVisible();
 });
 
-test("After a member creates a model, opens it, clicks the `Untitled` heading, fills `Name` with `Library Checkout`, and Saves, a reload of that page sets the Event Model `title` to `Library Checkout`", async ({
+test("After a member creates a model, opens it, clicks the `Untitled` heading, fills `Name` with `Library Checkout`, and Saves, a reload of that page sets `#event-model-document` `title` to `Library Checkout`", async ({
   page,
 }) => {
   await openUntitledModel(page);

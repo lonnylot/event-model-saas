@@ -50,7 +50,7 @@ Outbound mail uses Cloudflare Email. Login links come from `auth@event-model.lon
 - Open: member-only. Non-members receive **404** (no existence leak). Body is the current R2 object.
 - Edit: in-memory document, dirty flag. Undo of New Slice and of Command → Event is [features/canvas.md](./features/canvas.md). Undo of move, delete, and Add stays later. Nothing is written until Save.
 - Save: `PUT` with `{ version, document }`. If D1 version matches: validate schema, write R2 current object, increment version, return the new version. If not: **409** with the current version; client keeps local edits until the person reloads (discarding them) or copies them aside. A failed R2 or D1 write does not increment version.
-- Export: download the current R2 JSON as `{title}.eventmodel`.
+- Export: download the current R2 JSON as `{title}.eventmodel`. `{title}` is the D1 create title. Filename from JSON `title` stays later.
 - R2 key for the current body: `models/{id}.eventmodel`. No `models/{id}/v/{n}` objects in v1.
 
 Two people (or two tabs) on the same model take turns via the version check. There is no lock, presence, or live overlay.
@@ -71,7 +71,7 @@ Must match the Mac app’s editing behavior:
 - Zoom / pan (toolbar zoom, scroll to pan, pinch zoom). Pinch pan and ⌘+/⌘-/⌘0 stay later
 - Undo New Slice and undo Command → Event. Undo of move, delete, and Add stays later
 
-Mac-only chrome is not ported: `NSDocument`, native menus as macOS menus, AppKit welcome window. The web shell is: team name, selectable model title, dirty indicator, Save, Export, sign out.
+Mac-only chrome is not ported: `NSDocument`, native menus as macOS menus, AppKit welcome window. The web shell is: team name, in-session selectable Event Model heading, dirty indicator, Save, Export, sign out. GET heading, team-list, and Export filename stay the D1 create title until later.
 
 The JSON Schema stays `format: "eventmodel"`, `schemaVersion: 1`, compatible with the Mac app. The schema file is copied into this repo when persistence is implemented; it does not diverge without a spec change.
 
