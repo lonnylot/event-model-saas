@@ -256,6 +256,32 @@ export function bindEditor(root) {
   let selectedAutomationItem = null;
   const inspector = root.querySelector('[aria-label="Inspector"]');
   const nameInput = () => inspector?.querySelector("input");
+  const descriptionInput = () =>
+    [...(inspector?.querySelectorAll("input") ?? [])].find((el) =>
+      el.closest("label")?.textContent?.includes("Description"),
+    );
+  const bindDescription = () => {
+    if (!inspector) return;
+    let input = descriptionInput();
+    if (!input) {
+      inspector.insertAdjacentHTML(
+        "beforeend",
+        "<label>Description <input /></label>",
+      );
+      input = descriptionInput();
+      input?.addEventListener("input", () => {
+        const holder = root.getElementById("event-model-document");
+        if (holder && selected === "slice") {
+          holder.textContent = JSON.stringify(
+            setSliceDescription(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+            ),
+          );
+        }
+      });
+    }
+  };
   const bindName = (value) => {
     if (!inspector) return;
     let input = nameInput();
@@ -361,6 +387,7 @@ export function bindEditor(root) {
     selected = "actor";
     selectedActorItem = item;
     bindName("Actor");
+    bindDescription();
   });
   slicesList?.addEventListener("click", (event) => {
     const item = event.target?.closest?.("li");
@@ -370,31 +397,7 @@ export function bindEditor(root) {
     const indexAttr = item.getAttribute("data-slice-index");
     selectedSliceIndex = indexAttr === null ? null : Number(indexAttr);
     bindName("New Slice");
-    if (
-      inspector &&
-      ![...inspector.querySelectorAll("label")].some((label) =>
-        label.textContent?.includes("Description"),
-      )
-    ) {
-      inspector.insertAdjacentHTML(
-        "beforeend",
-        "<label>Description <input /></label>",
-      );
-      const descriptionInput = [...inspector.querySelectorAll("input")].find(
-        (el) => el.closest("label")?.textContent?.includes("Description"),
-      );
-      descriptionInput?.addEventListener("input", () => {
-        const holder = root.getElementById("event-model-document");
-        if (holder && selected === "slice") {
-          holder.textContent = JSON.stringify(
-            setSliceDescription(
-              JSON.parse(holder.textContent || "{}"),
-              descriptionInput.value,
-            ),
-          );
-        }
-      });
-    }
+    bindDescription();
   });
   root.addEventListener("keydown", (event) => {
     if (
