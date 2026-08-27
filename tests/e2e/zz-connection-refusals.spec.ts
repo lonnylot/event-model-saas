@@ -91,7 +91,7 @@ async function openUntitledModel(page: Page) {
 async function clickNewSlice(page: Page) {
   const count =
     (await page.getByRole("listitem", { name: "New Slice", exact: true }).count()) +
-    1;
+    2;
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }),
@@ -673,7 +673,7 @@ test("Dragging from `Command port` onto the first `New Slice` listitem does not 
   await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   const slice = page.getByRole("listitem", { name: "New Slice", exact: true });
-  await expect(slice).toHaveCount(2);
+  await expect(slice).toHaveCount(4);
   await expect(
     page.getByRole("button", { name: "Command port", exact: true }),
   ).toBeVisible();
@@ -692,7 +692,7 @@ test("Dragging from `Command port` onto the first `New Slice` listitem shows the
   await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   const slice = page.getByRole("listitem", { name: "New Slice", exact: true });
-  await expect(slice).toHaveCount(2);
+  await expect(slice).toHaveCount(4);
   await expect(
     page.getByRole("button", { name: "Command port", exact: true }),
   ).toBeVisible();
@@ -712,7 +712,7 @@ test("Dragging from `Event Happened port` onto the first `New Slice` listitem sh
   await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Event", exact: true }).click();
   const slice = page.getByRole("listitem", { name: "New Slice", exact: true });
-  await expect(slice).toHaveCount(2);
+  await expect(slice).toHaveCount(4);
   await expect(
     page.getByRole("button", { name: "Event Happened port", exact: true }),
   ).toBeVisible();
@@ -732,7 +732,7 @@ test("Dragging from `Read Model port` onto the first `New Slice` listitem shows 
   await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
   const slice = page.getByRole("listitem", { name: "New Slice", exact: true });
-  await expect(slice).toHaveCount(2);
+  await expect(slice).toHaveCount(4);
   await expect(
     page.getByRole("button", { name: "Read Model port", exact: true }),
   ).toBeVisible();

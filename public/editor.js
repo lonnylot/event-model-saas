@@ -61,6 +61,14 @@ export function onNewSliceClick(root) {
     item.setAttribute("data-slice-index", String(sliceIndex));
     list.append(item);
   }
+  const timelineSlices = root.querySelector('[aria-label="Timeline"] ul');
+  if (timelineSlices) {
+    const item = root.createElement("li");
+    item.textContent = "New Slice";
+    item.setAttribute("aria-label", "New Slice");
+    if (slice) item.setAttribute("data-id", slice.id);
+    timelineSlices.append(item);
+  }
   const main = root.querySelector("main");
   if (main && !main.textContent?.includes("Unsaved changes.")) {
     main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
@@ -1446,6 +1454,9 @@ export function bindEditor(root) {
       if (!last) return;
       holder.textContent = JSON.stringify(deleteSlice(model, last.id));
       root.querySelector("ul")?.lastElementChild?.remove();
+      timelineList
+        ?.querySelector(`li[data-id="${last.id}"]:not([data-kind])`)
+        ?.remove();
       return;
     }
     if (
@@ -1479,6 +1490,9 @@ export function bindEditor(root) {
         deleteSlice(JSON.parse(holder.textContent || "{}"), sliceId),
       );
       selectedSliceItem.remove();
+      root
+        .querySelectorAll(`li[data-id="${sliceId}"]:not([data-kind])`)
+        .forEach((item) => item.remove());
       selectedSliceItem = null;
       selected = null;
     }
@@ -1559,10 +1573,19 @@ export function bindEditor(root) {
   let dragEventItem = null;
   let dragReadModelItem = null;
   let dragAutomationItem = null;
+  let dragTimelineSliceItem = null;
   root.addEventListener("mousedown", (event) => {
     const actorItem = event.target?.closest?.("li");
     if (actorItem && slicesList?.contains(actorItem)) {
       dragSliceItem = actorItem;
+      return;
+    }
+    if (
+      actorItem &&
+      timelineList?.contains(actorItem) &&
+      !actorItem.dataset.kind
+    ) {
+      dragTimelineSliceItem = actorItem;
       return;
     }
     if (
@@ -1657,6 +1680,29 @@ export function bindEditor(root) {
         );
       }
       dragSliceItem = null;
+      return;
+    }
+    if (dragTimelineSliceItem) {
+      const sliceItem = event.target?.closest?.("li");
+      const holder = root.getElementById("event-model-document");
+      if (
+        holder &&
+        sliceItem &&
+        timelineList?.contains(sliceItem) &&
+        !sliceItem.dataset.kind &&
+        dragTimelineSliceItem !== sliceItem &&
+        dragTimelineSliceItem.dataset.id &&
+        sliceItem.dataset.id
+      ) {
+        holder.textContent = JSON.stringify(
+          reorderSlices(
+            JSON.parse(holder.textContent || "{}"),
+            dragTimelineSliceItem.dataset.id,
+            sliceItem.dataset.id,
+          ),
+        );
+      }
+      dragTimelineSliceItem = null;
       return;
     }
     if (dragActorItem) {

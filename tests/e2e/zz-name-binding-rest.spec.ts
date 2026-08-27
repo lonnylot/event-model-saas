@@ -92,7 +92,7 @@ async function addTwoSlicesClickFirstFillCheckout(page: Page) {
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }),
-  ).toHaveCount(2);
+  ).toHaveCount(4);
   await page
     .getByRole("listitem", { name: "New Slice", exact: true })
     .first()
@@ -418,7 +418,7 @@ async function addTwoSlicesClickFirstFillDescription(page: Page) {
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }),
-  ).toHaveCount(2);
+  ).toHaveCount(4);
   await page
     .getByRole("listitem", { name: "New Slice", exact: true })
     .first()
@@ -610,7 +610,7 @@ async function addTwoSlicesClickFirstSelectStateView(page: Page) {
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }),
-  ).toHaveCount(2);
+  ).toHaveCount(4);
   await page
     .getByRole("listitem", { name: "New Slice", exact: true })
     .first()
@@ -649,7 +649,7 @@ test("After clicking `New Slice` then `Save` on that page, filling the Inspector
   await openUntitledModel(page);
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
-    page.getByRole("listitem", { name: "New Slice", exact: true }),
+    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
   ).toBeVisible();
   await Promise.all([
     page.waitForResponse(
@@ -660,7 +660,7 @@ test("After clicking `New Slice` then `Save` on that page, filling the Inspector
     page.getByRole("button", { name: "Save", exact: true }).click(),
   ]);
   await expect(page.getByText("Unsaved changes.")).toHaveCount(0);
-  await page.getByRole("listitem", { name: "New Slice", exact: true }).click();
+  await page.getByRole("listitem", { name: "New Slice", exact: true }).first().click();
   await page
     .getByRole("region", { name: "Inspector", exact: true })
     .getByRole("textbox", { name: "Description", exact: true })
@@ -674,7 +674,7 @@ test("After clicking `New Slice` then `Add Actor` then `Save` on that page, fill
   await openUntitledModel(page);
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
-    page.getByRole("listitem", { name: "New Slice", exact: true }),
+    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
   ).toBeVisible();
   await page.getByRole("button", { name: "Add Actor", exact: true }).click();
   await expect(
@@ -708,7 +708,7 @@ test("After clicking `New Slice` then `Add Command` then `Save` on that page, fi
   await openUntitledModel(page);
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
-    page.getByRole("listitem", { name: "New Slice", exact: true }),
+    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
   ).toBeVisible();
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   await expect(
@@ -742,7 +742,7 @@ test("After clicking `New Slice` then `Add Event` then `Save` on that page, fill
   await openUntitledModel(page);
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
-    page.getByRole("listitem", { name: "New Slice", exact: true }),
+    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
   ).toBeVisible();
   await page.getByRole("button", { name: "Add Event", exact: true }).click();
   await expect(
@@ -776,7 +776,7 @@ test("After clicking `New Slice` then `Add Read Model` then `Save` on that page,
   await openUntitledModel(page);
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
-    page.getByRole("listitem", { name: "New Slice", exact: true }),
+    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
   ).toBeVisible();
   await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
   await expect(
@@ -810,7 +810,7 @@ test("After clicking `New Slice` then `Add Automation` then `Save` on that page,
   await openUntitledModel(page);
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
-    page.getByRole("listitem", { name: "New Slice", exact: true }),
+    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
   ).toBeVisible();
   await page.getByRole("button", { name: "Add Automation", exact: true }).click();
   await expect(
@@ -844,7 +844,7 @@ test("After clicking `New Slice` then `Save` on that page, selecting `State View
   await openUntitledModel(page);
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
-    page.getByRole("listitem", { name: "New Slice", exact: true }),
+    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
   ).toBeVisible();
   await Promise.all([
     page.waitForResponse(
@@ -855,7 +855,7 @@ test("After clicking `New Slice` then `Save` on that page, selecting `State View
     page.getByRole("button", { name: "Save", exact: true }).click(),
   ]);
   await expect(page.getByText("Unsaved changes.")).toHaveCount(0);
-  await page.getByRole("listitem", { name: "New Slice", exact: true }).click();
+  await page.getByRole("listitem", { name: "New Slice", exact: true }).first().click();
   await page
     .getByRole("region", { name: "Inspector", exact: true })
     .getByRole("combobox", { name: "Type", exact: true })
@@ -869,7 +869,7 @@ test("After clicking `New Slice` then `Add Command` then `Save` on that page, cl
   await openUntitledModel(page);
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
-    page.getByRole("listitem", { name: "New Slice", exact: true }),
+    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
   ).toBeVisible();
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   await expect(

@@ -60,6 +60,7 @@ function pressedNewSliceShortcut() {
         return { style: {}, addEventListener() {}, append() {} };
       if (sel === '[aria-label="Timeline"] ul')
         return {
+          append() {},
           addEventListener() {},
           contains() {
             return false;

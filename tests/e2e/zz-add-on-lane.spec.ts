@@ -87,20 +87,25 @@ async function openUntitledModel(page: Page) {
 }
 
 async function clickNewSlice(page: Page) {
-  const count =
+  const slices =
     (await page.getByRole("listitem", { name: "New Slice", exact: true }).count()) +
-    1;
+    2;
+  const lanes =
+    (await page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("button", { name: "Add Actor on lane", exact: true })
+      .count()) + 1;
   await page
     .getByRole("button", { name: "New Slice", exact: true })
     .click();
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }),
-  ).toHaveCount(count);
+  ).toHaveCount(slices);
   await expect(
     page
       .getByRole("region", { name: "Timeline", exact: true })
       .getByRole("button", { name: "Add Actor on lane", exact: true }),
-  ).toHaveCount(count);
+  ).toHaveCount(lanes);
 }
 
 test("After clicking `New Slice` on that page, the Timeline region shows a button whose accessible name is `Add Actor on lane`", async ({

@@ -89,7 +89,7 @@ async function openUntitledModel(page: Page) {
 async function clickNewSlice(page: Page) {
   const count =
     (await page.getByRole("listitem", { name: "New Slice", exact: true }).count()) +
-    1;
+    2;
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }),
@@ -163,4 +163,25 @@ test("After clicking `New Slice` twice then `Add Automation`, dragging the Timel
     expect.objectContaining({ title: "Automation" }),
   ]);
   expect(after.slices.at(-1).processors).toEqual([]);
+});
+
+test("After clicking `New Slice` twice, dragging the first Timeline `New Slice` listitem onto the last Timeline `New Slice` listitem sets the first Slice `id` to the Slice that was last", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await clickNewSlice(page);
+  const timelineSlices = page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "New Slice", exact: true });
+  await expect(timelineSlices).toHaveCount(2);
+  const before = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  const lastId = before.slices[1].id;
+  await timelineSlices.first().dragTo(timelineSlices.last());
+  const after = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  expect(after.slices[0].id).toBe(lastId);
 });
