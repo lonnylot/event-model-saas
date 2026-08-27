@@ -53,6 +53,8 @@ import { restoreSlice } from "./restore-slice.js";
 import { undoCommand } from "./undo-command.js";
 import { deleteCommand } from "./delete-command.js";
 import { restoreCommand } from "./restore-command.js";
+import { restoreConnection } from "./restore-connection.js";
+import { deleteConnection } from "./delete-connection.js";
 
 const undoStack = [];
 const redoStack = [];
@@ -374,6 +376,18 @@ export function bindEditor(root) {
   let selectedReadModelItem = null;
   let selectedAutomationItem = null;
   let selectedConnectionItem = null;
+  let selectedConnectionNode = null;
+  timeline?.addEventListener("click", (event) => {
+    const p = event.target?.closest?.("p");
+    if (
+      p &&
+      timeline.contains(p) &&
+      p.textContent === "Command → Event Happened"
+    ) {
+      selected = "connection";
+      selectedConnectionNode = p;
+    }
+  });
   const inspector = root.querySelector('[aria-label="Inspector"]');
   const nameInput = () =>
     [...(inspector?.querySelectorAll("input") ?? [])].find(
@@ -1453,6 +1467,25 @@ export function bindEditor(root) {
       const entry = undoStack.pop();
       const kind = typeof entry === "string" ? entry : entry?.kind;
 
+      if (kind === "deleteConnection") {
+        holder.textContent = JSON.stringify(
+          restoreConnection(
+            JSON.parse(holder.textContent || "{}"),
+            entry.connection,
+            entry.index,
+          ),
+        );
+        const timelineEl = root.querySelector('[aria-label="Timeline"]');
+        if (timelineEl && entry.connection) {
+          const p = root.createElement("p");
+          p.textContent = "Command → Event Happened";
+          p.dataset.id = entry.connection.id;
+          const before = [...timelineEl.querySelectorAll("p")][entry.index];
+          if (before) timelineEl.insertBefore(p, before);
+          else timelineEl.append(p);
+        }
+        return;
+      }
       if (kind === "deleteCommand") {
         holder.textContent = JSON.stringify(
           restoreCommand(
@@ -1627,6 +1660,24 @@ export function bindEditor(root) {
     if (event.key !== "Backspace" && event.key !== "Delete") return;
     if (event.target instanceof HTMLInputElement) return;
     const holder = root.getElementById("event-model-document");
+    if (holder && selected === "connection" && selectedConnectionNode) {
+      const connectionId = selectedConnectionNode.dataset.id;
+      const model = JSON.parse(holder.textContent || "{}");
+      const index = (model.connections ?? []).findIndex(
+        (connection) => connection.id === connectionId,
+      );
+      const connection = index >= 0 ? model.connections[index] : undefined;
+      holder.textContent = JSON.stringify(
+        deleteConnection(model, connectionId),
+      );
+      selectedConnectionNode.remove();
+      if (connection && index >= 0) {
+        undoStack.push({ kind: "deleteConnection", connection, index });
+      }
+      selectedConnectionNode = null;
+      selected = null;
+      return;
+    }
     if (holder && selected === "command" && selectedCommandItem) {
       const commandId = selectedCommandItem.dataset.id;
       const model = JSON.parse(holder.textContent || "{}");
@@ -2059,6 +2110,13 @@ export function bindEditor(root) {
           ).connections?.at(-1);
           if (connection) line.setAttribute("data-id", connection.id);
           timeline.append(line);
+        if (timeline && holder) {
+          const stored = JSON.parse(holder.textContent || "{}");
+          const connection = (stored.connections ?? []).at(-1);
+          const p = root.createElement("p");
+          p.textContent = "Command → Event Happened";
+          if (connection) p.dataset.id = connection.id;
+          timeline.append(p);
         }
         undoStack.push("connection");
       }
