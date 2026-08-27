@@ -51,4 +51,5 @@ Description, Slice type picker, inspecting a Connection, inspect after reload, F
 - [connections.md](./connections.md) — Fields is this slice. Description and Slice type picker stay later.
 - [model-persistence.md](./model-persistence.md) — Fields is this slice. Description and Slice type picker stay later.
 - [canvas.md](./canvas.md) — Out of scope no longer owns Inspector Fields; this slice owns those. Description and Slice type picker stay later.
+- [connection-feedback.md](./connection-feedback.md) — Out of scope no longer owns Inspector Fields; this slice owns those. Description and Slice type picker stay later.
 - [product.md](../product.md) — Inspect a Command; Add Field; edit Field name. Description and Slice type picker stay later. Playwright path for this slice adds: click Command, Add Field, fill Field name with orderId, Save, reload last Command `fields[0].name` is orderId.
