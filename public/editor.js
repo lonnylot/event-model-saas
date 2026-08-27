@@ -419,6 +419,7 @@ export function bindEditor(root) {
             setReadModelDescription(
               JSON.parse(holder.textContent || "{}"),
               input.value,
+              selectedReadModelItem?.dataset?.id,
             ),
           );
         }

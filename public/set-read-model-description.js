@@ -1,13 +1,9 @@
-export function setReadModelDescription(model, description) {
-  const slices = [...(model.slices ?? [])];
-  const slice = slices.at(-1);
-  if (!slice) return model;
-  const readModels = [...(slice.readModels ?? [])];
-  if (!readModels.length) return model;
-  readModels[readModels.length - 1] = {
-    ...readModels[readModels.length - 1],
-    description,
-  };
-  slices[slices.length - 1] = { ...slice, readModels };
+export function setReadModelDescription(model, description, id) {
+  const slices = (model.slices ?? []).map((slice) => ({
+    ...slice,
+    readModels: (slice.readModels ?? []).map((readModel) =>
+      readModel.id === id ? { ...readModel, description } : readModel,
+    ),
+  }));
   return { ...model, slices };
 }
