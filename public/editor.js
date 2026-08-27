@@ -43,12 +43,12 @@ export function onNewSliceClick(root) {
   if (main && !main.textContent?.includes("Unsaved changes.")) {
     main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
   }
-  undoStack.push("slice");
   const timeline = root.querySelector('[aria-label="Timeline"]');
   if (timeline) {
     const actor = root.createElement("button");
     actor.type = "button";
     actor.textContent = "Add Actor on lane";
+    actor.setAttribute("data-slice-index", String(sliceIndex));
     timeline.append(actor);
     const command = root.createElement("button");
     command.type = "button";
@@ -68,16 +68,20 @@ export function onNewSliceClick(root) {
     const event = root.createElement("button");
     event.type = "button";
     event.textContent = "Add Event on lane";
+    event.setAttribute("data-slice-index", String(sliceIndex));
     timeline.append(event);
     const readModel = root.createElement("button");
     readModel.type = "button";
     readModel.textContent = "Add Read Model on lane";
+    readModel.setAttribute("data-slice-index", String(sliceIndex));
     timeline.append(readModel);
     const automation = root.createElement("button");
     automation.type = "button";
     automation.textContent = "Add Automation on lane";
+    automation.setAttribute("data-slice-index", String(sliceIndex));
     timeline.append(automation);
   }
+  undoStack.push("slice");
 }
 
 export function onAddActorClick(root) {
@@ -210,6 +214,25 @@ export function bindEditor(root) {
       },
       { passive: false },
     );
+    timeline.addEventListener("click", (event) => {
+      const button = event.target?.closest?.("button");
+      const holder = root.getElementById("event-model-document");
+      if (!holder || !button) return;
+      const index = Number(button.getAttribute("data-slice-index"));
+      const model = JSON.parse(holder.textContent || "{}");
+      if (button.textContent === "Add Actor on lane") {
+        holder.textContent = JSON.stringify(appendActor(model, index));
+      }
+      if (button.textContent === "Add Event on lane") {
+        holder.textContent = JSON.stringify(appendEvent(model, index));
+      }
+      if (button.textContent === "Add Read Model on lane") {
+        holder.textContent = JSON.stringify(appendReadModel(model, index));
+      }
+      if (button.textContent === "Add Automation on lane") {
+        holder.textContent = JSON.stringify(appendAutomation(model, index));
+      }
+    });
   }
   root.querySelectorAll("button").forEach((button) => {
     if (button.textContent === "Zoom in") {
@@ -630,7 +653,9 @@ export function bindEditor(root) {
     if (!holder) return;
     const model = JSON.parse(holder.textContent || "{}");
     if (event.code === "Digit1") {
-      holder.textContent = JSON.stringify(appendActor(model));
+      const index =
+        selectedSliceIndex ?? (model.slices?.length ?? 1) - 1;
+      holder.textContent = JSON.stringify(appendActor(model, index));
     }
     if (event.code === "Digit2") {
       const index =
@@ -638,13 +663,19 @@ export function bindEditor(root) {
       holder.textContent = JSON.stringify(appendCommand(model, index));
     }
     if (event.code === "Digit3") {
-      holder.textContent = JSON.stringify(appendEvent(model));
+      const index =
+        selectedSliceIndex ?? (model.slices?.length ?? 1) - 1;
+      holder.textContent = JSON.stringify(appendEvent(model, index));
     }
     if (event.code === "Digit4") {
-      holder.textContent = JSON.stringify(appendReadModel(model));
+      const index =
+        selectedSliceIndex ?? (model.slices?.length ?? 1) - 1;
+      holder.textContent = JSON.stringify(appendReadModel(model, index));
     }
     if (event.code === "Digit5") {
-      holder.textContent = JSON.stringify(appendAutomation(model));
+      const index =
+        selectedSliceIndex ?? (model.slices?.length ?? 1) - 1;
+      holder.textContent = JSON.stringify(appendAutomation(model, index));
     }
   });
 }

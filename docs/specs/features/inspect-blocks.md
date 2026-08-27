@@ -47,7 +47,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person,
 
 ## Out of scope
 
-Description is [inspect-description.md](./inspect-description.md). Fields, Slice type picker, inspecting a Connection, inspect after reload, Event / Read Model / Automation reload-lists, in-session visible listitem text on Name fill, multi-item Name binding, Actor Name Unsaved changes, model-level Title, Mac window chrome. Dashed Add on a lane and keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane.md). Slice and Actor Name are [chrome.md](./chrome.md). Delete, drag blocks between Slices, undo, pan, and moving Slices are [canvas.md](./canvas.md).
+Description is [inspect-description.md](./inspect-description.md). Fields, Slice type picker, inspecting a Connection, inspect after reload, Event / Read Model / Automation reload-lists, in-session visible listitem text on Name fill, multi-item Name binding, Actor Name Unsaved changes, model-level Title, Mac window chrome. Dashed Add on a lane and keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane.md). Click-append from `Add Actor on lane` / `Add Event on lane` / `Add Read Model on lane` / `Add Automation on lane` and selected-Slice ⌥⌘1 / ⌥⌘3–5 are [add-on-lane-rest.md](./add-on-lane-rest.md). Slice and Actor Name are [chrome.md](./chrome.md). Delete, drag blocks between Slices, undo, pan, and moving Slices are [canvas.md](./canvas.md).
 
 ## Restates
 
