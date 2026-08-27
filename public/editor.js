@@ -256,9 +256,27 @@ export function bindEditor(root) {
           holder.textContent = JSON.stringify(appendAutomation(model, index));
         }
       }
+      const inspectorEl = root.querySelector('[aria-label="Inspector"]');
+      const summary = event.target?.closest?.("p");
+      if (
+        summary &&
+        timeline.contains(summary) &&
+        summary.textContent === "Event Happened → Read Model" &&
+        summary.getAttribute("data-kind") !== "connection"
+      ) {
+        if (
+          inspectorEl &&
+          !inspectorEl.textContent?.includes("From Event Happened")
+        ) {
+          inspectorEl.insertAdjacentHTML(
+            "beforeend",
+            "<p>From Event Happened</p>",
+          );
+        }
+        return;
+      }
       const connection = event.target?.closest?.("[data-kind=connection]");
       if (!connection || !timeline.contains(connection)) return;
-      const inspectorEl = root.querySelector('[aria-label="Inspector"]');
       if (connection.textContent === "Command → Event Happened") {
         if (
           inspectorEl &&

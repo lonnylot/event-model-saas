@@ -651,4 +651,37 @@ test("After a member creates a model, opens it, clicks the `Untitled` heading, f
   ).toHaveValue("Library Checkout");
 });
 
+test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add Event`, clicks `Add Read Model`, drags from `Event Happened port` onto `Read Model port`, and Saves, a reload of that page, clicking the Timeline text `Event Happened → Read Model` shows the text `From Event Happened` in the Inspector region", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  await dragPort(page, "Event Happened port", "Read Model port");
+  await Promise.all([
+    page.waitForResponse(
+      (response) =>
+        response.url().includes("/api/models/") &&
+        response.request().method() === "PUT",
+    ),
+    page.getByRole("button", { name: "Save", exact: true }).click(),
+  ]);
+  await page.reload();
+  const inspector = page.getByRole("region", {
+    name: "Inspector",
+    exact: true,
+  });
+  await expect(
+    inspector.getByText("From Event Happened", { exact: true }),
+  ).toHaveCount(0);
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByText("Event Happened → Read Model", { exact: true })
+    .click();
+  await expect(
+    inspector.getByText("From Event Happened", { exact: true }),
+  ).toBeVisible();
+});
+
 
