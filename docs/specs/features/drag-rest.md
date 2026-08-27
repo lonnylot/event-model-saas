@@ -31,7 +31,7 @@ Event Model, Slice, Event, Read Model, Automation, Team, Person, Version
 
 ## Out of scope
 
-Undo of move. Pinch zoom. Mac window chrome. Actor / Command drag and sidebar drag stay those specs.
+Undo of move. Mac window chrome. Actor / Command drag and sidebar drag stay those specs. Pinch zoom is [pinch-zoom.md](./pinch-zoom.md).
 
 ## Restates
 
@@ -39,9 +39,11 @@ Undo of move. Pinch zoom. Mac window chrome. Actor / Command drag and sidebar dr
 - [canvas.md](./canvas.md) — Timeline Slice drag is this slice. Actor drag stays this file. Drag of Event, Read Model, and Automation between Slices, and Timeline Slice drag, is this slice.
 - [editor-shell.md](./editor-shell.md) — Timeline Slice drag is this slice. Undo, pan, and moving Slices (⌥⌘←) stay [canvas.md](./canvas.md). Drag of Event, Read Model, and Automation between Slices is this slice.
 - [model-persistence.md](./model-persistence.md) — Timeline Slice drag is this slice. Undo, pan, and moving Slices (⌥⌘←) stay [canvas.md](./canvas.md). Drag of Event, Read Model, and Automation between Slices is this slice.
+- [connection-feedback.md](./connection-feedback.md) — Timeline Slice drag is this slice. Undo, pan, and moving Slices (⌥⌘←) stay [canvas.md](./canvas.md). Drag of Event, Read Model, and Automation between Slices is this slice.
 - [blocks.md](./blocks.md) — Drag of Event, Read Model, and Automation between Slices, and Timeline Slice drag, is this slice. Actor drag stays [canvas.md](./canvas.md).
 - [chrome.md](./chrome.md) — Drag of Event, Read Model, and Automation between Slices, and Timeline Slice drag, is this slice. Actor drag stays [canvas.md](./canvas.md).
 - [connections.md](./connections.md) — Drag of Event, Read Model, and Automation between Slices, and Timeline Slice drag, is this slice. Actor drag stays [canvas.md](./canvas.md).
 - [inspect-blocks.md](./inspect-blocks.md) — Drag of Event, Read Model, and Automation between Slices, and Timeline Slice drag, is this slice. Actor drag stays [canvas.md](./canvas.md).
 - [product.md](../product.md) — Drag Event, Read Model, and Automation between slices on the same lane. Move slices on the canvas. Playwright path for this slice adds: two New Slice, drag Event onto the first Slice; drag Read Model onto the first Slice; drag Automation onto the first Slice; drag first Timeline New Slice onto last.
 - [move-slice-right.md](./move-slice-right.md) — Drag of Event, Read Model, and Automation between Slices, and Timeline Slice drag, is this slice. ⌥⌘→ stays that file.
+- [pinch-zoom.md](./pinch-zoom.md) — Pinch zoom stays that file.
