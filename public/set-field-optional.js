@@ -24,6 +24,17 @@ export function setFieldOptional(model, optional, target = "command") {
     slices[slices.length - 1] = { ...slice, readModels };
     return { ...model, slices };
   }
+  if (target === "automation") {
+    const processors = [...(slice.processors ?? [])];
+    const automation = processors.at(-1);
+    if (!automation) return model;
+    const fields = [...(automation.fields ?? [])];
+    if (!fields.length) return model;
+    fields[0] = { ...fields[0], optional };
+    processors[processors.length - 1] = { ...automation, fields };
+    slices[slices.length - 1] = { ...slice, processors };
+    return { ...model, slices };
+  }
   const commands = [...(slice.commands ?? [])];
   const command = commands.at(-1);
   if (!command) return model;
