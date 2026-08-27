@@ -44,6 +44,7 @@ import { deleteAutomation } from "./delete-automation.js";
 import { undoConnection } from "./undo-connection.js";
 import { undoAddCommand } from "./undo-add-command.js";
 import { undoActor } from "./undo-actor.js";
+import { undoEvent } from "./undo-event.js";
 
 const undoStack = [];
 
@@ -179,6 +180,7 @@ export function onAddEventClick(root) {
     item.append(port);
     list.append(item);
   }
+  undoStack.push("event");
 }
 
 export function onAddReadModelClick(root) {
@@ -1430,6 +1432,20 @@ export function bindEditor(root) {
       const holder = root.getElementById("event-model-document");
       if (!holder) return;
       const kind = undoStack.pop();
+      if (kind === "event") {
+        holder.textContent = JSON.stringify(
+          undoEvent(JSON.parse(holder.textContent || "{}")),
+        );
+        const items = [
+          ...(root.querySelector('[aria-label="Timeline"] ul')?.querySelectorAll("li") ??
+            []),
+        ];
+        items
+          .filter((item) => item.getAttribute("aria-label") === "Event Happened")
+          .at(-1)
+          ?.remove();
+        return;
+      }
       if (kind === "actor") {
         holder.textContent = JSON.stringify(
           undoActor(JSON.parse(holder.textContent || "{}")),

@@ -110,3 +110,18 @@ test("After clicking `New Slice` then `Add Actor`, pressing ⌘Z does not show a
     page.getByRole("listitem", { name: "Actor", exact: true }),
   ).toHaveCount(0);
 });
+
+test("After clicking `New Slice` then `Add Event`, pressing ⌘Z does not show a listitem whose accessible name is `Event Happened`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await expect(
+    page.getByRole("listitem", { name: "Event Happened", exact: true }),
+  ).toBeVisible();
+  await page.keyboard.press("ControlOrMeta+z");
+  await expect(
+    page.getByRole("listitem", { name: "Event Happened", exact: true }),
+  ).toHaveCount(0);
+});
