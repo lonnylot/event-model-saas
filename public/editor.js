@@ -23,6 +23,7 @@ import { setFieldName } from "./set-field-name.js";
 import { setFieldType } from "./set-field-type.js";
 import { setFieldOptional } from "./set-field-optional.js";
 import { setFieldExample } from "./set-field-example.js";
+import { deleteField } from "./delete-field.js";
 import { setEventModelTitle } from "./set-event-model-title.js";
 import { setEventModelDescription } from "./set-event-model-description.js";
 import { moveSliceLeft } from "./move-slice-left.js";
@@ -518,6 +519,28 @@ export function bindEditor(root) {
                 JSON.parse(documentHolder.textContent || "{}"),
                 exampleInput.value,
               ),
+            );
+          }
+        });
+      }
+      if (
+        inspector &&
+        ![...inspector.querySelectorAll("button")].some(
+          (item) => item.textContent === "Delete Field",
+        )
+      ) {
+        inspector.insertAdjacentHTML(
+          "beforeend",
+          '<button type="button">Delete Field</button>',
+        );
+        const deleteButton = [...inspector.querySelectorAll("button")].find(
+          (item) => item.textContent === "Delete Field",
+        );
+        deleteButton?.addEventListener("click", () => {
+          const documentHolder = root.getElementById("event-model-document");
+          if (documentHolder) {
+            documentHolder.textContent = JSON.stringify(
+              deleteField(JSON.parse(documentHolder.textContent || "{}")),
             );
           }
         });
