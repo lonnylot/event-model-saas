@@ -35,15 +35,20 @@ Event Model, Slice, Slice type, Automation, Team, Person, Version
 
 ## Out of scope
 
-Description, Fields, inspecting a Connection, inspect after reload, Slice type help copy, creating a Slice as State View from New Slice, multi-item Slice type binding, model-level Title, dashed Add on a lane, keyboard shortcuts, Mac window chrome. Name stays [chrome.md](./chrome.md).
+Description is [inspect-description.md](./inspect-description.md). Add Field and Field name on Command are [inspect-fields.md](./inspect-fields.md). Inspecting a Connection, inspect after reload, Slice type help copy, creating a Slice as State View from New Slice, multi-item Slice type binding, model-level Title, dashed Add on a lane, keyboard shortcuts, Mac window chrome. Name stays [chrome.md](./chrome.md).
 
 ## Restates
 
-- [inspect-blocks.md](./inspect-blocks.md) — Out of scope no longer owns Slice type picker; this slice owns those. Description and Fields stay later.
-- [chrome.md](./chrome.md) — Out of scope no longer owns Slice type picker; this slice owns those. Description and Fields stay later.
-- [editor-shell.md](./editor-shell.md) — Slice type picker is this slice. Empty New Slice stays `STATE_CHANGE`. Description and Fields stay later.
-- [blocks.md](./blocks.md) — Slice type picker is this slice. Description and Fields stay later.
-- [connections.md](./connections.md) — Slice type picker is this slice. Description and Fields stay later.
-- [model-persistence.md](./model-persistence.md) — Slice type picker is this slice. Description and Fields stay later.
-- [canvas.md](./canvas.md) — Out of scope no longer owns Slice type picker; this slice owns those. Description and Fields stay later.
-- [product.md](../product.md) — Inspect a Slice; edit Slice type. Description and Fields stay later. Playwright path for this slice adds: click New Slice, select State View in Type, Save, reload last Slice `sliceType` is `STATE_VIEW`.
+- [inspect-blocks.md](./inspect-blocks.md) — Out of scope no longer owns Slice type picker; this slice owns those. Description is [inspect-description.md](./inspect-description.md). Add Field is [inspect-fields.md](./inspect-fields.md).
+- [chrome.md](./chrome.md) — Out of scope no longer owns Slice type picker; this slice owns those. Description is [inspect-description.md](./inspect-description.md). Add Field is [inspect-fields.md](./inspect-fields.md).
+- [editor-shell.md](./editor-shell.md) — Slice type picker is this slice. Empty New Slice stays `STATE_CHANGE`. Description is [inspect-description.md](./inspect-description.md). Add Field is [inspect-fields.md](./inspect-fields.md).
+- [blocks.md](./blocks.md) — Slice type picker is this slice. Description is [inspect-description.md](./inspect-description.md). Add Field is [inspect-fields.md](./inspect-fields.md).
+- [connections.md](./connections.md) — Slice type picker is this slice. Description is [inspect-description.md](./inspect-description.md). Add Field is [inspect-fields.md](./inspect-fields.md).
+- [model-persistence.md](./model-persistence.md) — Slice type picker is this slice. Description is [inspect-description.md](./inspect-description.md). Add Field is [inspect-fields.md](./inspect-fields.md).
+- [canvas.md](./canvas.md) — Out of scope no longer owns Slice type picker; this slice owns those. Description is [inspect-description.md](./inspect-description.md). Add Field is [inspect-fields.md](./inspect-fields.md).
+- [inspect-fields.md](./inspect-fields.md) — Out of scope no longer owns Slice type picker; this slice owns those. Description is [inspect-description.md](./inspect-description.md). Add Field stays this file.
+- [inspect-description.md](./inspect-description.md) — Out of scope no longer owns Slice type picker; this slice owns those. Description stays this file. Add Field is [inspect-fields.md](./inspect-fields.md).
+- [add-on-lane.md](./add-on-lane.md) — Out of scope no longer owns Slice type picker; this slice owns those. Description is [inspect-description.md](./inspect-description.md). Add Field is [inspect-fields.md](./inspect-fields.md).
+- [add-on-lane-rest.md](./add-on-lane-rest.md) — Out of scope no longer owns Slice type picker; this slice owns those. Description is [inspect-description.md](./inspect-description.md). Add Field is [inspect-fields.md](./inspect-fields.md).
+- [connection-feedback.md](./connection-feedback.md) — Out of scope no longer owns Slice type picker; this slice owns those. Description is [inspect-description.md](./inspect-description.md). Add Field is [inspect-fields.md](./inspect-fields.md).
+- [product.md](../product.md) — Inspect a Slice; edit Slice type. Description is [inspect-description.md](./inspect-description.md). Add Field is [inspect-fields.md](./inspect-fields.md). Playwright path for this slice adds: click New Slice, select State View in Type, Save, reload last Slice `sliceType` is `STATE_VIEW`.
