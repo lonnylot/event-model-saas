@@ -17,7 +17,7 @@ Inspector can Add Field on a Command and rename it. Members cannot set Field typ
 - [x] Clicking `Add Field` after selecting `Automation` appends a Field whose `name` is `newField` on the last Automation
 - [x] After clicking `New Slice` then `Add Command` twice, clicking the first Timeline `Command` listitem, clicking `Add Field`, filling `Field name` with `orderId` sets the first Command `fields[0].name` to `orderId`
 - [x] After clicking `Add Field` on `Event Happened`, filling Inspector `Field name` with `eventId` sets the last Event `fields[0].name` to `eventId`
-- [ ] After clicking `Add Field` on `Read Model`, filling Inspector `Field name` with `viewId` sets the last Read Model `fields[0].name` to `viewId`
+- [x] After clicking `Add Field` on `Read Model`, filling Inspector `Field name` with `viewId` sets the last Read Model `fields[0].name` to `viewId`
 - [ ] After clicking `Add Field` on `Automation`, filling Inspector `Field name` with `jobId` sets the last Automation `fields[0].name` to `jobId`
 - [ ] After clicking `Add Field` on `Event Happened`, selecting `UUID` in Inspector `Field type` sets the last Event `fields[0].type` to `UUID`
 - [ ] After clicking `Add Field` on `Read Model`, selecting `UUID` in Inspector `Field type` sets the last Read Model `fields[0].type` to `UUID`

@@ -442,7 +442,9 @@ export function bindEditor(root) {
       }
       if (
         inspector &&
-        (selected === "command" || selected === "event") &&
+        (selected === "command" ||
+          selected === "event" ||
+          selected === "readmodel") &&
         !fieldNameLabel()
       ) {
         inspector.insertAdjacentHTML(
