@@ -47,6 +47,7 @@ import { undoActor } from "./undo-actor.js";
 import { undoEvent } from "./undo-event.js";
 import { undoReadModel } from "./undo-read-model.js";
 import { undoAutomation } from "./undo-automation.js";
+import { undoMoveSliceLeft } from "./undo-move-slice-left.js";
 
 const undoStack = [];
 
@@ -1407,9 +1408,10 @@ export function bindEditor(root) {
       const holder = root.getElementById("event-model-document");
       const sliceId = selectedSliceItem?.dataset?.id;
       if (holder && sliceId) {
-        holder.textContent = JSON.stringify(
-          moveSliceLeft(JSON.parse(holder.textContent || "{}"), sliceId),
-        );
+        const model = JSON.parse(holder.textContent || "{}");
+        const next = moveSliceLeft(model, sliceId);
+        holder.textContent = JSON.stringify(next);
+        if (next !== model) undoStack.push({ kind: "move", sliceId });
       }
       return;
     }
@@ -1435,7 +1437,17 @@ export function bindEditor(root) {
       event.preventDefault();
       const holder = root.getElementById("event-model-document");
       if (!holder) return;
-      const kind = undoStack.pop();
+      const entry = undoStack.pop();
+      const kind = typeof entry === "string" ? entry : entry?.kind;
+      if (kind === "move") {
+        holder.textContent = JSON.stringify(
+          undoMoveSliceLeft(
+            JSON.parse(holder.textContent || "{}"),
+            entry.sliceId,
+          ),
+        );
+        return;
+      }
       if (kind === "automation") {
         holder.textContent = JSON.stringify(
           undoAutomation(JSON.parse(holder.textContent || "{}")),

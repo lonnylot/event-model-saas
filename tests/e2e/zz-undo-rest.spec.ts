@@ -155,3 +155,27 @@ test("After clicking `New Slice` then `Add Automation`, pressing ⌘Z does not s
     page.getByRole("listitem", { name: "Automation", exact: true }),
   ).toHaveCount(0);
 });
+
+test("After clicking `New Slice` twice, clicking the last `New Slice` listitem, pressing ⌥⌘←, then pressing ⌘Z, the first Slice `id` is the Slice that was first before the move", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await clickNewSlice(page);
+  const before = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  const firstId = before.slices[0].id;
+  await page
+    .locator("ul")
+    .first()
+    .getByRole("listitem", { name: "New Slice", exact: true })
+    .last()
+    .click();
+  await page.keyboard.press("Alt+ControlOrMeta+ArrowLeft");
+  await page.keyboard.press("ControlOrMeta+z");
+  const after = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  expect(after.slices[0].id).toBe(firstId);
+});
