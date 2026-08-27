@@ -197,3 +197,15 @@ test("GET an unknown document path `body` computed `background-color` is `rgb(24
     "rgb(247, 244, 238)",
   );
 });
+
+
+test('GET `/api/auth/consume` with a used magic-link token has a `link[rel="stylesheet"]` whose `href` is `/shell.css`', async ({
+  page,
+  request,
+}) => {
+  await openUsedMagicLink(page, request);
+  await expect(page.locator('link[rel="stylesheet"]')).toHaveAttribute(
+    "href",
+    "/shell.css",
+  );
+});
