@@ -352,23 +352,18 @@ export function bindEditor(root) {
       });
     }
   };
+  const addFieldButton = () =>
+    [...(inspector?.querySelectorAll("button") ?? [])].find(
+      (button) => button.textContent === "Add Field",
+    );
+  const unbindAddField = () => addFieldButton()?.remove();
   const bindAddField = () => {
-    if (
-      !inspector ||
-      [...inspector.querySelectorAll("button")].some(
-        (button) => button.textContent === "Add Field",
-      )
-    ) {
-      return;
-    }
+    if (!inspector || addFieldButton()) return;
     inspector.insertAdjacentHTML(
       "beforeend",
       '<button type="button">Add Field</button>',
     );
-    const button = [...inspector.querySelectorAll("button")].find(
-      (item) => item.textContent === "Add Field",
-    );
-    button?.addEventListener("click", () => {
+    addFieldButton()?.addEventListener("click", () => {
       if (selected !== "command") return;
       const holder = root.getElementById("event-model-document");
       if (holder) {
@@ -517,6 +512,7 @@ export function bindEditor(root) {
     selectedActorItem = item;
     bindName("Actor");
     bindDescription();
+    unbindAddField();
   });
   slicesList?.addEventListener("click", (event) => {
     const item = event.target?.closest?.("li");
@@ -527,6 +523,7 @@ export function bindEditor(root) {
     selectedSliceIndex = indexAttr === null ? null : Number(indexAttr);
     bindName("New Slice");
     bindDescription();
+    unbindAddField();
   });
   root.addEventListener("keydown", (event) => {
     if (

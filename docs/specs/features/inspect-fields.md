@@ -12,7 +12,7 @@ Members can inspect Name on a Command, Event, Read Model, or Automation, but Ins
 - [x] After clicking `New Slice` then `Add Event` on that page, clicking the Timeline `Event Happened` listitem shows a button whose accessible name is `Add Field` in the Inspector region
 - [x] After clicking `New Slice` then `Add Read Model` on that page, clicking the Timeline `Read Model` listitem shows a button whose accessible name is `Add Field` in the Inspector region
 - [x] After clicking `New Slice` then `Add Automation` on that page, clicking the Timeline `Automation` listitem shows a button whose accessible name is `Add Field` in the Inspector region
-- [x] After clicking `New Slice` then `Add Actor` on that page, clicking the Timeline `Actor` listitem does not show a button whose accessible name is `Add Field`
+- [x] After clicking `New Slice` then `Add Command` then `Add Actor` on that page, clicking the Timeline `Command` listitem then the Timeline `Actor` listitem does not show a button whose accessible name is `Add Field`
 - [x] Clicking `Add Field` after selecting `Command` appends a Field whose `name` is `newField` on the last Command
 - [x] Clicking `Add Field` after selecting `Command` appends a Field whose `type` is `String` on the last Command
 - [x] Filling the Inspector `Field name` textbox with `orderId` after clicking `Add Field` on `Command` sets the last Command `fields[0].name` to `orderId`
@@ -39,7 +39,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Field, Team, 
 
 ## Out of scope
 
-Description, Slice type picker, inspecting a Connection, inspect after reload, Field `type` picker after Add, `optional`, `example`, delete Field, Add Field that appends on Event / Read Model / Automation (those kinds still show the button), multi-item Field binding, model-level Title, dashed Add on a lane, keyboard shortcuts, Mac window chrome. Name stays [chrome.md](./chrome.md) and [inspect-blocks.md](./inspect-blocks.md).
+Description, Slice type picker, inspecting a Connection, inspect after reload, Field `type` picker after Add, `optional`, `example`, delete Field, Add Field that appends on Event / Read Model / Automation (those kinds still show the button), leftover Add Field on Slice, multi-item Field binding, model-level Title, dashed Add on a lane, keyboard shortcuts, Mac window chrome. Name stays [chrome.md](./chrome.md) and [inspect-blocks.md](./inspect-blocks.md).
 
 ## Restates
 

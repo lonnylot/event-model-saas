@@ -161,11 +161,21 @@ test("After clicking `New Slice` then `Add Automation` on that page, clicking th
   ).toBeVisible();
 });
 
-test("After clicking `New Slice` then `Add Actor` on that page, clicking the Timeline `Actor` listitem does not show a button whose accessible name is `Add Field`", async ({
+test("After clicking `New Slice` then `Add Command` then `Add Actor` on that page, clicking the Timeline `Command` listitem then the Timeline `Actor` listitem does not show a button whose accessible name is `Add Field`", async ({
   page,
 }) => {
   await openUntitledModel(page);
   await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Command", exact: true })
+    .click();
+  await expect(
+    page
+      .getByRole("region", { name: "Inspector", exact: true })
+      .getByRole("button", { name: "Add Field", exact: true }),
+  ).toBeVisible();
   await page.getByRole("button", { name: "Add Actor", exact: true }).click();
   await page
     .getByRole("region", { name: "Timeline", exact: true })
