@@ -30,7 +30,7 @@ If the product inventories screens and primitives (design-system spec): screens 
 
 ## Assumptions
 
-Environment facts (hostname, test adapter, platform flags). A shippable operator command or npm script that changes persisted state, or host-path construction of an architecture-named adapter, is an acceptance criterion so `tdd-loop` can name it — do not park it here.
+Environment facts (hostname, test adapter, platform flags). A shippable operator command or npm script that changes persisted state, or host-path construction of an architecture-named adapter, is an acceptance criterion so `tdd-loop` can name it — do not park it here. Distinguishing behavior existing production does not already do (factor is not the unzoomed pan `1`) is an acceptance criterion — do not park it here.
 
 ## Out of scope
 
