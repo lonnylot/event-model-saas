@@ -11,7 +11,7 @@ Inspector Name mutates the last Command, Actor Name after Save does not show dir
 - [x] After clicking `New Slice` then `Add Actor` then `Save` on that page, filling the Inspector `Name` textbox with `Shopper` after selecting `Actor` shows the text `Unsaved changes.`
 - [x] After clicking `New Slice` then `Add Command` twice, clicking the first Timeline `Command` listitem, filling Inspector `Name` with `Place Order` sets the first Command `title` to `Place Order`
 - [x] After clicking `New Slice` then `Add Command` twice, clicking the first Timeline `Command` listitem, filling Inspector `Name` with `Place Order` sets the last Command `title` to `Command`
-- [ ] Filling the Inspector `Name` textbox with `Place Order` after selecting `Command` sets the Timeline `Place Order` listitem visible text to `Place Order`
+- [x] Filling the Inspector `Name` textbox with `Place Order` after selecting `Command` sets the Timeline `Place Order` listitem visible text to `Place Order`
 
 ## Domain terms
 

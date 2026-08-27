@@ -1059,6 +1059,7 @@ export function bindEditor(root) {
           selectedActorItem.setAttribute("aria-label", input.value);
         }
         if (selected === "command" && selectedCommandItem) {
+          selectedCommandItem.textContent = input.value;
           selectedCommandItem.setAttribute("aria-label", input.value);
         }
         if (selected === "event" && selectedEventItem) {

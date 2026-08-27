@@ -163,3 +163,24 @@ test("After clicking `New Slice` then `Add Command` twice, clicking the first Ti
     "Command",
   );
 });
+
+test("Filling the Inspector `Name` textbox with `Place Order` after selecting `Command` sets the Timeline `Place Order` listitem visible text to `Place Order`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Command", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Name", exact: true })
+    .fill("Place Order");
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Place Order", exact: true }),
+  ).toHaveText("Place Order");
+});
