@@ -1014,7 +1014,11 @@ export function bindEditor(root) {
         }
         if (holder && selected === "command") {
           holder.textContent = JSON.stringify(
-            setCommandTitle(JSON.parse(holder.textContent || "{}"), input.value),
+            setCommandTitle(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+              selectedCommandItem?.dataset?.id,
+            ),
           );
         }
         if (holder && selected === "event") {

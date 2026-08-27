@@ -118,3 +118,48 @@ test("After clicking `New Slice` then `Add Actor` then `Save` on that page, fill
     .fill("Shopper");
   await expect(page.getByText("Unsaved changes.")).toBeVisible();
 });
+
+async function addTwoCommandsClickFirstFillPlaceOrder(page: Page) {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Command", exact: true }),
+  ).toHaveCount(2);
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Command", exact: true })
+    .first()
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Name", exact: true })
+    .fill("Place Order");
+}
+
+test("After clicking `New Slice` then `Add Command` twice, clicking the first Timeline `Command` listitem, filling Inspector `Name` with `Place Order` sets the first Command `title` to `Place Order`", async ({
+  page,
+}) => {
+  await addTwoCommandsClickFirstFillPlaceOrder(page);
+  const json = await page
+    .locator("#event-model-document")
+    .evaluate((el) => el.textContent);
+  expect(JSON.parse(json ?? "{}").slices?.[0]?.commands?.[0]?.title).toBe(
+    "Place Order",
+  );
+});
+
+test("After clicking `New Slice` then `Add Command` twice, clicking the first Timeline `Command` listitem, filling Inspector `Name` with `Place Order` sets the last Command `title` to `Command`", async ({
+  page,
+}) => {
+  await addTwoCommandsClickFirstFillPlaceOrder(page);
+  const json = await page
+    .locator("#event-model-document")
+    .evaluate((el) => el.textContent);
+  expect(JSON.parse(json ?? "{}").slices?.[0]?.commands?.at(-1)?.title).toBe(
+    "Command",
+  );
+});

@@ -1,10 +1,9 @@
-export function setCommandTitle(model, title) {
-  const slices = [...(model.slices ?? [])];
-  const slice = slices.at(-1);
-  if (!slice) return model;
-  const commands = [...(slice.commands ?? [])];
-  if (!commands.length) return model;
-  commands[commands.length - 1] = { ...commands[commands.length - 1], title };
-  slices[slices.length - 1] = { ...slice, commands };
+export function setCommandTitle(model, title, id) {
+  const slices = (model.slices ?? []).map((slice) => ({
+    ...slice,
+    commands: (slice.commands ?? []).map((command) =>
+      command.id === id ? { ...command, title } : command,
+    ),
+  }));
   return { ...model, slices };
 }
