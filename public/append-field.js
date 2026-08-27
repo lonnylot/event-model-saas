@@ -49,6 +49,9 @@ export function appendField(model, target = "command") {
     const automation = processors[index];
     if (!automation) return model;
     processors[index] = {
+    const automation = processors.at(-1);
+    if (!automation) return model;
+    processors[processors.length - 1] = {
       ...automation,
       fields: [...(automation.fields ?? []), field],
     };

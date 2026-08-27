@@ -769,6 +769,11 @@ export function bindEditor(root) {
     const model = JSON.parse(holder?.textContent || "{}");
     return model.slices?.at(-1)?.readModels?.at(-1)?.fields?.[0]?.name;
   };
+  const lastAutomationFieldName = () => {
+    const holder = root.getElementById("event-model-document");
+    const model = JSON.parse(holder?.textContent || "{}");
+    return model.slices?.at(-1)?.processors?.at(-1)?.fields?.[0]?.name;
+  };
   const addFieldButton = () =>
     [...(inspector?.querySelectorAll("button") ?? [])].find(
       (button) => button.textContent === "Add Field",
@@ -784,7 +789,8 @@ export function bindEditor(root) {
       !inspector ||
       (selected !== "command" &&
         selected !== "event" &&
-        selected !== "readmodel")
+        selected !== "readmodel" &&
+        selected !== "automation")
     ) {
       unbindFieldName();
       return;
@@ -821,6 +827,15 @@ export function bindEditor(root) {
             ),
           );
         }
+        if (holder && selected === "automation") {
+          holder.textContent = JSON.stringify(
+            setFieldName(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+              "automation",
+            ),
+          );
+        }
       });
     }
     if (input) input.value = value;
@@ -830,7 +845,8 @@ export function bindEditor(root) {
       !inspector ||
       (selected !== "command" &&
         selected !== "event" &&
-        selected !== "readmodel")
+        selected !== "readmodel" &&
+        selected !== "automation")
     ) {
       unbindAddField();
       unbindFieldName();
@@ -851,7 +867,9 @@ export function bindEditor(root) {
               ? "event"
               : selected === "readmodel"
                 ? "readmodel"
-                : "command",
+                : selected === "automation"
+                  ? "automation"
+                  : "command",
           ),
         );
       }
@@ -860,7 +878,9 @@ export function bindEditor(root) {
           ? lastEventFieldName()
           : selected === "readmodel"
             ? lastReadModelFieldName()
-            : lastCommandFieldName()) ?? "newField",
+            : selected === "automation"
+              ? lastAutomationFieldName()
+              : lastCommandFieldName()) ?? "newField",
       );
     });
   };
@@ -1066,8 +1086,10 @@ export function bindEditor(root) {
       bindDescription(lastAutomationDescription());
 
       unbindType();
-      unbindAddField();
-      unbindFieldName();
+      bindAddField();
+      const automationFieldName = lastAutomationFieldName();
+      if (automationFieldName) bindFieldName(automationFieldName);
+      else unbindFieldName();
       return;
     }
     if (item.dataset.kind !== "actor") return;
