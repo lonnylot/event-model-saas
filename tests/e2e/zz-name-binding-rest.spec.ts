@@ -30,7 +30,7 @@ const test = base.extend<object, { adminState: string }>({
   adminState: [
     async ({ browser }, use, workerInfo) => {
       const page = await browser.newPage({
-        baseURL: "http://127.0.0.1:8787",
+        baseURL: `http://127.0.0.1:${process.env.E2E_PORT ?? 8787}`,
       });
       const request = page.context().request;
       await consumeAdmin(page, request);
@@ -239,5 +239,38 @@ test("After clicking `New Slice` then `Add Read Model` twice, clicking the first
     .evaluate((el) => el.textContent);
   expect(JSON.parse(json ?? "{}").slices?.[0]?.readModels?.[0]?.title).toBe(
     "Orders",
+  );
+});
+
+async function addTwoAutomationsClickFirstFillSendEmail(page: Page) {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "Add Automation", exact: true }).click();
+  await page.getByRole("button", { name: "Add Automation", exact: true }).click();
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Automation", exact: true }),
+  ).toHaveCount(2);
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Automation", exact: true })
+    .first()
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Name", exact: true })
+    .fill("Send Email");
+}
+
+test("After clicking `New Slice` then `Add Automation` twice, clicking the first Timeline `Automation` listitem, filling Inspector `Name` with `Send Email` sets the first Automation `title` to `Send Email`", async ({
+  page,
+}) => {
+  await addTwoAutomationsClickFirstFillSendEmail(page);
+  const json = await page
+    .locator("#event-model-document")
+    .evaluate((el) => el.textContent);
+  expect(JSON.parse(json ?? "{}").slices?.[0]?.processors?.[0]?.title).toBe(
+    "Send Email",
   );
 });

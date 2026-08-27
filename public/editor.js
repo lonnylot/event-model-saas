@@ -1052,6 +1052,7 @@ export function bindEditor(root) {
             setAutomationTitle(
               JSON.parse(holder.textContent || "{}"),
               input.value,
+              selectedAutomationItem?.dataset?.id,
             ),
           );
         }
