@@ -42,4 +42,7 @@ Delete Actor, Event, Read Model, or Automation. Undo of delete. Inspecting a Con
 - [blocks.md](./blocks.md) — Delete Command is this slice. Delete of other blocks stays later.
 - [inspect-blocks.md](./inspect-blocks.md) — Delete Command is this slice.
 - [chrome.md](./chrome.md) — Delete Command is this slice.
+- [inspect-description.md](./inspect-description.md) — Delete Command and Delete Connection are this slice. Slice Backspace stays [canvas.md](./canvas.md). Delete of Actor / Event / Read Model / Automation stays later.
+- [add-on-lane.md](./add-on-lane.md) — Delete Command and Delete Connection are this slice. Slice Backspace stays [canvas.md](./canvas.md). Delete of Actor / Event / Read Model / Automation stays later.
+- [connection-feedback.md](./connection-feedback.md) — Delete Command and Delete Connection are this slice. Slice Backspace stays [canvas.md](./canvas.md). Delete of Actor / Event / Read Model / Automation stays later.
 - [product.md](../product.md) — Delete the selected Command (Backspace) and the selected Connection (Backspace). Delete of Actor / Event / Read Model / Automation stays later. Playwright path for this slice adds: two Add Command, Backspace deletes the first; two Connections, Backspace deletes `Command → Event Happened`.
