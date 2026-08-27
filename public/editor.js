@@ -426,6 +426,10 @@ export function bindEditor(root) {
               selectedEventItem?.dataset?.id,
             ),
           );
+          const main = root.querySelector("main");
+          if (main && !main.textContent?.includes("Unsaved changes.")) {
+            main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
+          }
         }
         if (holder && selected === "readmodel") {
           holder.textContent = JSON.stringify(
