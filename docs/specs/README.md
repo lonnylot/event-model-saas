@@ -26,6 +26,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Connection feedback | [features/connection-feedback.md](./features/connection-feedback.md) | released |
 | Pinch zoom | [features/pinch-zoom.md](./features/pinch-zoom.md) | released |
 | Add on lane | [features/add-on-lane.md](./features/add-on-lane.md) | released |
-| Inspect description | [features/inspect-description.md](./features/inspect-description.md) | validated |
+| Inspect description | [features/inspect-description.md](./features/inspect-description.md) | released |
 
 Status: `draft` → `validated` → `released`.

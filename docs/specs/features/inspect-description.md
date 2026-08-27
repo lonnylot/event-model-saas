@@ -1,6 +1,6 @@
 # Inspect description
 
-Status: validated
+Status: released
 
 ## Problem
 
