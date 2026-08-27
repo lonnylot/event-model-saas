@@ -54,4 +54,5 @@ Slice type picker, inspecting a Connection, inspect after reload, Field `type` p
 - [connection-feedback.md](./connection-feedback.md) — Out of scope no longer owns Inspector Fields; this slice owns those. Description is [inspect-description.md](./inspect-description.md). Slice type picker stay later.
 - [add-on-lane.md](./add-on-lane.md) — Out of scope no longer owns Inspector Fields; this slice owns those. Description is [inspect-description.md](./inspect-description.md). Slice type picker stay later.
 - [inspect-description.md](./inspect-description.md) — Out of scope no longer owns Fields; this slice owns those. Slice type picker stay later.
+- [add-on-lane-rest.md](./add-on-lane-rest.md) — Out of scope no longer owns Fields; this slice owns those. Slice type picker stay later.
 - [product.md](../product.md) — Inspect a Command; Add Field; edit Field name. Description is [inspect-description.md](./inspect-description.md). Slice type picker stay later. Playwright path for this slice adds: click Command, Add Field, fill Field name with orderId, Save, reload last Command `fields[0].name` is orderId.
