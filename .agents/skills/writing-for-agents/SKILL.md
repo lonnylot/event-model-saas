@@ -36,19 +36,19 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Clicking-appends tested at a function production never calls | `testing` |
 | Dragging-appends unit that passes the kind already in the input | `testing` |
 | Same-control Name values that never select the other entity (Command vs Event / Read Model / Automation) | `testing` |
-| "that Slice" / clicked-item AC with only one item | `testing`, `keeping-specs-current` |
+| "that Slice" / clicked-item / Backspace AC with only one item / always-delete-last / one New Slice | `testing`, `keeping-specs-current`, `playwright-e2e` |
 | Empty stub `it` / checked AC with no assertion | `testing`, `tdd-loop` |
 | Module / seam / adapter vocabulary | `codebase-design` |
 | Architecture adapter constructed only under a test flag / injected `env.documents` / construction parked in Assumptions | `testing`, `codebase-design`, `keeping-specs-current` |
 | Architecture-named store never constructed in a test / each new SQL untested | `testing` |
 | Packed "and" AC / independent env/branch cases | `testing`, `keeping-specs-current` |
 | Assumption vs acceptance criterion | `keeping-specs-current` |
-| Restated AC with leftover sections / leftover Assumptions after Out of scope / leftover Seams after deleting a named module / leftover test title / leftover Restates / leftover locked claims in a restated system spec | `keeping-specs-current` |
+| Restated AC with leftover sections / leftover Assumptions after Out of scope / leftover Seams after deleting a named module / leftover Seams that name a path or mutation production does not call (scroll path / undo those mutations) / leftover test title / leftover Restates / leftover Out of scope still unowned later after Restates (delete, drag, pan, moving Slices) / leftover locked claims in a restated system spec | `keeping-specs-current` |
 | 303/redirect AC vs a shows bullet on the same path | `keeping-specs-current` |
-| product.md leftover locked words / later-slice Playwright `add a slice` / leftover Restates quoting old product.md Playwright / leftover Document flow schema-reject / leftover Editor (Mac parity) after restating Testing highlighting / copying a schema file instead of restating / Next slice still names a released slug / removing product.md from Restates | `keeping-specs-current` |
+| product.md leftover locked words / later-slice Playwright `add a slice` / leftover Restates quoting old product.md Playwright / leftover Document flow schema-reject / leftover Editor (Mac parity) after restating Testing highlighting / leftover Editor drag/delete/undo / leftover Document flow Mac-like undo / leftover Testing Unit mutations / copying a schema file instead of restating / Next slice still names a released slug / removing product.md from Restates | `keeping-specs-current` |
 | Domain terms line without a `CONTEXT.md` entry | `keeping-specs-current`, `domain-modeling` |
 | Independently revertible ACs / grouping by screen / spec-only / fromKind vs toKind / reconstruct after tests-after | `logical-commits` |
-| Tests-after / production that landed as a dependency / tests-only commit on top / review-strengthened tests after production landed / folding tests-after into sibling production / click-path production after field tests / follow-up rewrite onto click path / fold reload when GET already hydrates | `logical-commits` |
+| Tests-after / production that landed as a dependency / tests-only commit on top / review-strengthened tests after production landed / one-item Backspace tests-only follow-up / folding tests-after into sibling production / click-path production after field tests / follow-up rewrite onto click path / fold reload when GET already hydrates | `logical-commits`, `receiving-code-review` |
 | Review-thread batch / commit subject names two threads with "and" | `logical-commits` |
 | Extra visible chrome / document title / extra form or link or extra nav on a route / extra inspect of Out of scope kinds / extra host observability without an AC | `keeping-specs-current` |
 | Omitted sibling kinds (Event reload-lists) | `keeping-specs-current` |

@@ -47,7 +47,7 @@ If a completeness box is now no, or you need a user decision: stop and return. D
 
 Do not start a new conversation for this spec while this one exists.
 
-**Review comments:** load `receiving-code-review`. For each **blocking** comment: confirm it against the spec and the code. If it is right, fix with `tdd-loop`, one `logical-commits` commit, push. Reply on the thread with the fixing SHA. Do **not** resolve threads. If it is wrong, reply with spec/code evidence. Unclear comments: return the question to the orchestrator. Do not implement a batch while any blocking item is unclear.
+**Review comments:** load `receiving-code-review`. For each **blocking** comment: confirm it against the spec and the code. If it is right, fix with `tdd-loop`, one `logical-commits` commit, push. A weaker-fixture thread (one-item Backspace / always-delete-last) of an AC whose production already landed is reconstruct into that production commit — not a tests-only follow-up. Reply on the thread with the fixing SHA. Do **not** resolve threads. If it is wrong, reply with spec/code evidence. Unclear comments: return the question to the orchestrator. Do not implement a batch while any blocking item is unclear.
 
 **Unmergeable / sibling merged:** run **Rebase onto default**. Do not skip it because Approve already happened — that Approve is on the old SHA.
 

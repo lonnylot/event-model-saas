@@ -18,7 +18,7 @@ Terms from `CONTEXT.md` this feature uses. New terms are added to `CONTEXT.md` i
 
 ## Seams
 
-Which architecture seams this feature crosses. Name them when the product has an architecture spec; otherwise name the module interface the tests will call.
+Which architecture seams this feature crosses. Name them when the product has an architecture spec; otherwise name the module interface the tests will call. Seams that name a call path production does not take, or mutations the stack does not record, contradict the ACs (`keeping-specs-current`).
 
 ## Events
 
@@ -38,4 +38,4 @@ Explicit non-goals. When ACs cover some kinds of a shared family, name the omitt
 
 ## Restates
 
-Released specs whose bullets this change rewrites. Listing a path without rewriting that file is unfinished. When Restates names a system spec, leftover locked claims this HEAD does not implement are rewritten or given ACs (`keeping-specs-current`).
+Released specs whose bullets this change rewrites. Listing a path without rewriting that file is unfinished. When Restates names a path (system spec or sibling feature), leftover locked claims and leftover Out of scope still listing those words as unowned later are rewritten (`keeping-specs-current`). Rewriting only one sibling word (undo) is unfinished.
