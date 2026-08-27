@@ -42,6 +42,10 @@ _Avoid_: processor (as the visible label), saga, policy
 A directed edge `fromID`/`fromKind` → `toID`/`toKind`. Legal kinds are `COMMAND`, `EVENT`, `READMODEL`. Legal edges are command → event and event → read model.
 _Avoid_: arrow, link, wire
 
+**Description**:
+Free-text on an Event Model, Slice, Actor, Command, Event, Read Model, or Automation. It is not a Field.
+_Avoid_: notes, blurb, body (as the inspector label)
+
 **Field**:
 A named typed property on a command, event, read model, or automation (`String`, `Boolean`, `Int`, `Long`, `Double`, `Decimal`, `Date`, `DateTime`, `UUID`, `Custom`).
 _Avoid_: attribute, property (as the schema name)
