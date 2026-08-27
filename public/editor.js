@@ -422,7 +422,13 @@ export function bindEditor(root) {
       '<button type="button">Add Field</button>',
     );
     addFieldButton()?.addEventListener("click", () => {
-      if (selected !== "command" && selected !== "event") return;
+      if (
+        selected !== "command" &&
+        selected !== "event" &&
+        selected !== "readmodel"
+      ) {
+        return;
+      }
       const holder = root.getElementById("event-model-document");
       if (holder) {
         holder.textContent = JSON.stringify(
