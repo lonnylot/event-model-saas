@@ -57,6 +57,7 @@ export function modelPageHtml(
     commands?: Array<{ title: string }>;
     events?: Array<{ title: string }>;
     readModels?: Array<{ title: string }>;
+    processors?: Array<{ title: string }>;
   }> = [],
   documentJson = "",
   connections: Array<{ fromKind: string; toKind: string }> = [],
@@ -84,6 +85,10 @@ export function modelPageHtml(
       ...(slice.readModels ?? []).map(
         (readModel) =>
           `<li aria-label="${readModel.title}" data-kind="readmodel">${readModel.title}</li>`,
+      ),
+      ...(slice.processors ?? []).map(
+        (automation) =>
+          `<li aria-label="${automation.title}">${automation.title}</li>`,
       ),
     ])
     .join("");
