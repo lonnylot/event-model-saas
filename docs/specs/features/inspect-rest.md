@@ -28,7 +28,7 @@ Inspector inspects Command → Event and Name after reload. Members cannot inspe
 - [x] After a member creates a model, opens it, clicks `New Slice`, clicks `Add Event`, clicks `Add Read Model`, drags from `Event Happened port` onto `Read Model port`, and Saves, a reload of that page, clicking the Timeline text `Event Happened → Read Model` shows the text `From Event Happened` in the Inspector region
 - [x] After a member creates a model, opens it, clicks `New Slice`, clicks `Add Event`, clicks `Add Read Model`, drags from `Event Happened port` onto `Read Model port`, and Saves, a reload of that page, clicking the Timeline text `Event Happened → Read Model` shows the text `To Read Model` in the Inspector region
 - [x] After a member creates a model, opens it, clicks `New Slice`, clicks `Add Command`, clicks the Timeline `Command` listitem, clicks `Add Field`, selects `UUID` in `Field type`, and Saves, a reload of that page, clicking the Timeline `Command` listitem shows Inspector `Field type` with the value `UUID`
-- [ ] After a member creates a model, opens it, clicks `New Slice`, clicks `Add Command`, clicks the Timeline `Command` listitem, clicks `Add Field`, checks `Optional`, and Saves, a reload of that page, clicking the Timeline `Command` listitem shows Inspector `Optional` checked
+- [x] After a member creates a model, opens it, clicks `New Slice`, clicks `Add Command`, clicks the Timeline `Command` listitem, clicks `Add Field`, checks `Optional`, and Saves, a reload of that page, clicking the Timeline `Command` listitem shows Inspector `Optional` checked
 - [ ] After a member creates a model, opens it, clicks `New Slice`, clicks `Add Command`, clicks the Timeline `Command` listitem, clicks `Add Field`, fills `Example` with `abc`, and Saves, a reload of that page, clicking the Timeline `Command` listitem shows Inspector `Example` with the value `abc`
 - [ ] After a member creates a model, opens it, clicks `New Slice`, clicks `Add Event`, clicks the Timeline `Event Happened` listitem, clicks `Add Field`, selects `UUID` in `Field type`, and Saves, a reload of that page, clicking the Timeline `Event Happened` listitem shows Inspector `Field type` with the value `UUID`
 - [ ] After a member creates a model, opens it, clicks `New Slice`, clicks `Add Read Model`, clicks the Timeline `Read Model` listitem, clicks `Add Field`, selects `UUID` in `Field type`, and Saves, a reload of that page, clicking the Timeline `Read Model` listitem shows Inspector `Field type` with the value `UUID`
@@ -40,7 +40,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Connection, F
 
 ## Seams
 
-- `document` module — set Slice / Actor / Command / Event / Read Model / Automation `description`, Slice `sliceType` / `title`, Event Model `title`, append Field, set Field `name`, and set Field `type` on an in-memory Event Model; the editor click, fill, and select path calls it
+- `document` module — set Slice / Actor / Command / Event / Read Model / Automation `description`, Slice `sliceType` / `title`, Event Model `title`, append Field, set Field `name`, set Field `type`, and set Field `optional` on an in-memory Event Model; the editor click, fill, and select path calls it
 - `handleRequest` — model page HTML hydrates Timeline Connection text and Slice / heading listitems so Inspector binds after GET
 - Browser — Playwright against `wrangler dev` with `TEST_MAIL=1`
 

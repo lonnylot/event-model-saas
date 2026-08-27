@@ -18,6 +18,7 @@ import { setEventDescription } from "./set-event-description.js";
 import { appendField } from "./append-field.js";
 import { setFieldName } from "./set-field-name.js";
 import { setFieldType } from "./set-field-type.js";
+import { setFieldOptional } from "./set-field-optional.js";
 import { setEventTitle } from "./set-event-title.js";
 import { setReadModelTitle } from "./set-read-model-title.js";
 import { setReadModelDescription } from "./set-read-model-description.js";
@@ -858,6 +859,44 @@ export function bindEditor(root) {
     }
     if (select && value) select.value = value;
   };
+  const lastCommandFieldOptional = () => {
+    const holder = root.getElementById("event-model-document");
+    const model = JSON.parse(holder?.textContent || "{}");
+    return model.slices?.at(-1)?.commands?.at(-1)?.fields?.[0]?.optional === true;
+  };
+  const optionalInput = () =>
+    [...(inspector?.querySelectorAll("input") ?? [])].find(
+      (el) =>
+        el.type === "checkbox" &&
+        el.closest("label")?.textContent?.includes("Optional"),
+    );
+  const unbindOptional = () => optionalInput()?.closest("label")?.remove();
+  const bindOptional = (checked) => {
+    if (!inspector || selected !== "command") {
+      unbindOptional();
+      return;
+    }
+    let input = optionalInput();
+    if (!input) {
+      inspector.insertAdjacentHTML(
+        "beforeend",
+        '<label>Optional <input type="checkbox" /></label>',
+      );
+      input = optionalInput();
+      input?.addEventListener("change", () => {
+        const holder = root.getElementById("event-model-document");
+        if (holder && selected === "command") {
+          holder.textContent = JSON.stringify(
+            setFieldOptional(
+              JSON.parse(holder.textContent || "{}"),
+              input.checked,
+            ),
+          );
+        }
+      });
+    }
+    if (input) input.checked = !!checked;
+  };
   const bindFieldName = (value) => {
     if (
       !inspector ||
@@ -925,6 +964,7 @@ export function bindEditor(root) {
       unbindAddField();
       unbindFieldName();
       unbindFieldType();
+      unbindOptional();
       return;
     }
     if (addFieldButton()) return;
@@ -959,6 +999,7 @@ export function bindEditor(root) {
       );
       if (selected === "command") {
         bindFieldType(lastCommandFieldType() ?? "String");
+        bindOptional(lastCommandFieldOptional());
       }
     });
   };
@@ -1111,9 +1152,11 @@ export function bindEditor(root) {
       if (fieldName) {
         bindFieldName(fieldName);
         bindFieldType(lastCommandFieldType());
+        bindOptional(lastCommandFieldOptional());
       } else {
         unbindFieldName();
         unbindFieldType();
+        unbindOptional();
       }
       return;
     }
@@ -1133,6 +1176,7 @@ export function bindEditor(root) {
       unbindType();
       bindAddField();
       unbindFieldType();
+      unbindOptional();
       const eventFieldName = lastEventFieldName();
       if (eventFieldName) bindFieldName(eventFieldName);
       else unbindFieldName();
@@ -1154,6 +1198,7 @@ export function bindEditor(root) {
       unbindType();
       bindAddField();
       unbindFieldType();
+      unbindOptional();
       const readModelFieldName = lastReadModelFieldName();
       if (readModelFieldName) bindFieldName(readModelFieldName);
       else unbindFieldName();
@@ -1173,6 +1218,7 @@ export function bindEditor(root) {
       unbindType();
       bindAddField();
       unbindFieldType();
+      unbindOptional();
       const automationFieldName = lastAutomationFieldName();
       if (automationFieldName) bindFieldName(automationFieldName);
       else unbindFieldName();
