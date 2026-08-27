@@ -175,3 +175,14 @@ test("GET `/` button `Email me a link` computed `color` is `rgb(247, 244, 238)`"
     page.getByRole("button", { name: "Email me a link", exact: true }),
   ).toHaveCSS("color", "rgb(247, 244, 238)");
 });
+
+
+test('GET an unknown document path has a `link[rel="stylesheet"]` whose `href` is `/shell.css`', async ({
+  page,
+}) => {
+  await page.goto("/no-such-page");
+  await expect(page.locator('link[rel="stylesheet"]')).toHaveAttribute(
+    "href",
+    "/shell.css",
+  );
+});
