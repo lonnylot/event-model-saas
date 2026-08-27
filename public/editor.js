@@ -50,6 +50,10 @@ export function onNewSliceClick(root) {
     event.type = "button";
     event.textContent = "Add Event on lane";
     timeline.append(event);
+    const readModel = root.createElement("button");
+    readModel.type = "button";
+    readModel.textContent = "Add Read Model on lane";
+    timeline.append(readModel);
   }
 }
 
