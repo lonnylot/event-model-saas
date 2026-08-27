@@ -236,6 +236,29 @@ export function bindEditor(root) {
         holder.textContent = JSON.stringify(appendAutomation(model, index));
       }
     });
+    timeline.addEventListener("click", (event) => {
+      const connection = event.target?.closest?.("[data-kind=connection]");
+      if (!connection || !timeline.contains(connection)) return;
+      const inspector = root.querySelector('[aria-label="Inspector"]');
+      if (
+        inspector &&
+        !inspector.textContent?.includes("Connection")
+      ) {
+        inspector.insertAdjacentHTML("beforeend", "<p>Connection</p>");
+      }
+      if (
+        inspector &&
+        !inspector.textContent?.includes("From Command")
+      ) {
+        inspector.insertAdjacentHTML("beforeend", "<p>From Command</p>");
+      }
+      if (
+        inspector &&
+        !inspector.textContent?.includes("To Event Happened")
+      ) {
+        inspector.insertAdjacentHTML("beforeend", "<p>To Event Happened</p>");
+      }
+    });
   }
   root.querySelectorAll("button").forEach((button) => {
     if (button.textContent === "Zoom in") {
@@ -706,7 +729,7 @@ export function bindEditor(root) {
         ) {
           timeline.insertAdjacentHTML(
             "beforeend",
-            "<p>Command → Event Happened</p>",
+            '<p data-kind="connection">Command → Event Happened</p>',
           );
         }
         undoStack.push("connection");

@@ -40,7 +40,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Field, Team, 
 
 ## Out of scope
 
-Slice type picker is [slice-type.md](./slice-type.md). Inspecting a Connection, Field `type` picker after Add, `optional`, `example`, delete Field, Add Field that appends on Event / Read Model / Automation (those kinds still show the button), leftover Add Field and Field name on Slice, leftover Field name on Event / Read Model / Automation after Add Field on Command, multi-item Field binding, model-level Title, Mac window chrome. Description is [inspect-description.md](./inspect-description.md). Dashed Add on a lane and keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane.md). Name stays [chrome.md](./chrome.md) and [inspect-blocks.md](./inspect-blocks.md). Name inspect after reload is [inspect-after-reload.md](./inspect-after-reload.md). GET-rendered inspect of Fields stays later.
+Slice type picker is [slice-type.md](./slice-type.md). Inspecting a Connection is [inspect-connection.md](./inspect-connection.md). Field `type` picker after Add, `optional`, `example`, delete Field, Add Field that appends on Event / Read Model / Automation (those kinds still show the button), leftover Add Field and Field name on Slice, leftover Field name on Event / Read Model / Automation after Add Field on Command, multi-item Field binding, model-level Title, Mac window chrome. Description is [inspect-description.md](./inspect-description.md). Dashed Add on a lane and keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane.md). Name stays [chrome.md](./chrome.md) and [inspect-blocks.md](./inspect-blocks.md). Name inspect after reload is [inspect-after-reload.md](./inspect-after-reload.md). GET-rendered inspect of Fields stays later.
 
 ## Restates
 

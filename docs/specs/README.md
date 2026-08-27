@@ -31,5 +31,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Inspect fields | [features/inspect-fields.md](./features/inspect-fields.md) | released |
 | Slice type | [features/slice-type.md](./features/slice-type.md) | released |
 | Inspect after reload | [features/inspect-after-reload.md](./features/inspect-after-reload.md) | released |
+| Inspect connection | [features/inspect-connection.md](./features/inspect-connection.md) | validated |
 
 Status: `draft` → `validated` → `released`.
