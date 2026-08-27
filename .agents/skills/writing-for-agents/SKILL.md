@@ -35,7 +35,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Unit `not.toContain("<li>X</li>")` for a does-not-show listitem | `testing` |
 | Clicking-appends tested at a function production never calls | `testing` |
 | Dragging-appends unit that passes the kind already in the input | `testing` |
-| Same-control Name values that never select the other entity | `testing` |
+| Same-control Name values that never select the other entity (Command vs Event / Read Model / Automation) | `testing` |
 | "that Slice" / clicked-item AC with only one item | `testing`, `keeping-specs-current` |
 | Empty stub `it` / checked AC with no assertion | `testing`, `tdd-loop` |
 | Module / seam / adapter vocabulary | `codebase-design` |
