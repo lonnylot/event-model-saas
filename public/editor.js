@@ -13,6 +13,12 @@ import { setReadModelTitle } from "./set-read-model-title.js";
 import { setAutomationTitle } from "./set-automation-title.js";
 
 export function onNewSliceClick(root) {
+  const holder = root.getElementById("event-model-document");
+  if (holder) {
+    holder.textContent = JSON.stringify(
+      appendSlice(JSON.parse(holder.textContent || "{}")),
+    );
+  }
   const list = root.querySelector("ul");
   if (list) {
     const item = root.createElement("li");
@@ -23,12 +29,6 @@ export function onNewSliceClick(root) {
   const main = root.querySelector("main");
   if (main && !main.textContent?.includes("Unsaved changes.")) {
     main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
-  }
-  const holder = root.getElementById("event-model-document");
-  if (holder) {
-    holder.textContent = JSON.stringify(
-      appendSlice(JSON.parse(holder.textContent || "{}")),
-    );
   }
 }
 
@@ -55,7 +55,7 @@ export function onAddCommandClick(root) {
   if (holder) holder.textContent = JSON.stringify(next);
   const command = next.slices?.at(-1)?.commands?.at(-1);
   const list = root.querySelector('[aria-label="Timeline"] ul');
-  if (list) {
+  if (list && command) {
     const item = root.createElement("li");
     item.textContent = "Command";
     item.setAttribute("aria-label", "Command");
@@ -78,7 +78,7 @@ export function onAddEventClick(root) {
   if (holder) holder.textContent = JSON.stringify(next);
   const event = next.slices?.at(-1)?.events?.at(-1);
   const list = root.querySelector('[aria-label="Timeline"] ul');
-  if (list) {
+  if (list && event) {
     const item = root.createElement("li");
     item.textContent = "Event Happened";
     item.setAttribute("aria-label", "Event Happened");
@@ -101,7 +101,7 @@ export function onAddReadModelClick(root) {
   if (holder) holder.textContent = JSON.stringify(next);
   const readModel = next.slices?.at(-1)?.readModels?.at(-1);
   const list = root.querySelector('[aria-label="Timeline"] ul');
-  if (list) {
+  if (list && readModel) {
     const item = root.createElement("li");
     item.textContent = "Read Model";
     item.setAttribute("aria-label", "Read Model");
@@ -119,19 +119,17 @@ export function onAddReadModelClick(root) {
 }
 
 export function onAddAutomationClick(root) {
+  const holder = root.getElementById("event-model-document");
+  const next = appendAutomation(JSON.parse(holder?.textContent || "{}"));
+  if (holder) holder.textContent = JSON.stringify(next);
+  const automation = next.slices?.at(-1)?.processors?.at(-1);
   const list = root.querySelector('[aria-label="Timeline"] ul');
-  if (list) {
+  if (list && automation) {
     const item = root.createElement("li");
     item.textContent = "Automation";
     item.setAttribute("aria-label", "Automation");
     item.dataset.kind = "automation";
     list.append(item);
-  }
-  const holder = root.getElementById("event-model-document");
-  if (holder) {
-    holder.textContent = JSON.stringify(
-      appendAutomation(JSON.parse(holder.textContent || "{}")),
-    );
   }
 }
 

@@ -77,13 +77,21 @@ async function openUntitledModel(page: Page) {
   await expect(
     page.getByRole("heading", { name: "Untitled", exact: true }),
   ).toBeVisible();
+  await page.waitForLoadState("networkidle");
+}
+
+async function clickNewSlice(page: Page) {
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await expect(
+    page.getByRole("listitem", { name: "New Slice", exact: true }),
+  ).toBeVisible();
 }
 
 test("After clicking `New Slice` then `Add Command` on that page, clicking the Timeline `Command` listitem shows a textbox whose accessible name is `Name` in the Inspector region", async ({
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   await page
     .getByRole("region", { name: "Timeline", exact: true })
@@ -100,7 +108,7 @@ test("After clicking `New Slice` then `Add Command` on that page, clicking the T
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   await page
     .getByRole("region", { name: "Timeline", exact: true })
@@ -117,7 +125,7 @@ test("Filling the Inspector `Name` textbox with `Place Order` after selecting `C
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   await page
     .getByRole("region", { name: "Timeline", exact: true })
@@ -127,8 +135,10 @@ test("Filling the Inspector `Name` textbox with `Place Order` after selecting `C
     .getByRole("region", { name: "Inspector", exact: true })
     .getByRole("textbox", { name: "Name", exact: true })
     .fill("Place Order");
-  const json = await page.locator("#event-model-document").textContent();
-  expect(JSON.parse(json ?? "{}").slices[0].commands.at(-1).title).toBe(
+  const json = await page
+    .locator("#event-model-document")
+    .evaluate((el) => el.textContent);
+  expect(JSON.parse(json ?? "{}").slices?.[0]?.commands?.at(-1)?.title).toBe(
     "Place Order",
   );
 });
@@ -137,7 +147,7 @@ test("Filling the Inspector `Name` textbox with `Place Order` after selecting `C
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   await page
     .getByRole("region", { name: "Timeline", exact: true })
@@ -158,7 +168,7 @@ test("After clicking `New Slice` then `Add Event` on that page, clicking the Tim
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Event", exact: true }).click();
   await page
     .getByRole("region", { name: "Timeline", exact: true })
@@ -175,7 +185,7 @@ test("After clicking `New Slice` then `Add Event` on that page, clicking the Tim
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   await page
     .getByRole("region", { name: "Timeline", exact: true })
@@ -197,7 +207,7 @@ test("Filling the Inspector `Name` textbox with `Order Placed` after selecting `
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Event", exact: true }).click();
   await page
     .getByRole("region", { name: "Timeline", exact: true })
@@ -207,8 +217,10 @@ test("Filling the Inspector `Name` textbox with `Order Placed` after selecting `
     .getByRole("region", { name: "Inspector", exact: true })
     .getByRole("textbox", { name: "Name", exact: true })
     .fill("Order Placed");
-  const json = await page.locator("#event-model-document").textContent();
-  expect(JSON.parse(json ?? "{}").slices[0].events.at(-1).title).toBe(
+  const json = await page
+    .locator("#event-model-document")
+    .evaluate((el) => el.textContent);
+  expect(JSON.parse(json ?? "{}").slices?.[0]?.events?.at(-1)?.title).toBe(
     "Order Placed",
   );
 });
@@ -217,7 +229,7 @@ test("Filling the Inspector `Name` textbox with `Order Placed` after selecting `
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Event", exact: true }).click();
   await page
     .getByRole("region", { name: "Timeline", exact: true })
@@ -238,7 +250,7 @@ test("After clicking `New Slice` then `Add Read Model` on that page, clicking th
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
   await page
     .getByRole("region", { name: "Timeline", exact: true })
@@ -255,7 +267,7 @@ test("After clicking `New Slice` then `Add Read Model` on that page, clicking th
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   await page
     .getByRole("region", { name: "Timeline", exact: true })
@@ -277,7 +289,7 @@ test("Filling the Inspector `Name` textbox with `Orders` after selecting `Read M
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
   await page
     .getByRole("region", { name: "Timeline", exact: true })
@@ -287,8 +299,10 @@ test("Filling the Inspector `Name` textbox with `Orders` after selecting `Read M
     .getByRole("region", { name: "Inspector", exact: true })
     .getByRole("textbox", { name: "Name", exact: true })
     .fill("Orders");
-  const json = await page.locator("#event-model-document").textContent();
-  expect(JSON.parse(json ?? "{}").slices[0].readModels.at(-1).title).toBe(
+  const json = await page
+    .locator("#event-model-document")
+    .evaluate((el) => el.textContent);
+  expect(JSON.parse(json ?? "{}").slices?.[0]?.readModels?.at(-1)?.title).toBe(
     "Orders",
   );
 });
@@ -297,7 +311,7 @@ test("Filling the Inspector `Name` textbox with `Orders` after selecting `Read M
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
   await page
     .getByRole("region", { name: "Timeline", exact: true })
@@ -318,7 +332,7 @@ test("After clicking `New Slice` then `Add Automation` on that page, clicking th
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Automation", exact: true }).click();
   await page
     .getByRole("region", { name: "Timeline", exact: true })
@@ -335,7 +349,7 @@ test("After clicking `New Slice` then `Add Automation` on that page, clicking th
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   await page
     .getByRole("region", { name: "Timeline", exact: true })
@@ -357,7 +371,7 @@ test("Filling the Inspector `Name` textbox with `Send Email` after selecting `Au
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Automation", exact: true }).click();
   await page
     .getByRole("region", { name: "Timeline", exact: true })
@@ -367,8 +381,10 @@ test("Filling the Inspector `Name` textbox with `Send Email` after selecting `Au
     .getByRole("region", { name: "Inspector", exact: true })
     .getByRole("textbox", { name: "Name", exact: true })
     .fill("Send Email");
-  const json = await page.locator("#event-model-document").textContent();
-  expect(JSON.parse(json ?? "{}").slices[0].processors.at(-1).title).toBe(
+  const json = await page
+    .locator("#event-model-document")
+    .evaluate((el) => el.textContent);
+  expect(JSON.parse(json ?? "{}").slices?.[0]?.processors?.at(-1)?.title).toBe(
     "Send Email",
   );
 });
@@ -377,7 +393,7 @@ test("Filling the Inspector `Name` textbox with `Send Email` after selecting `Au
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Automation", exact: true }).click();
   await page
     .getByRole("region", { name: "Timeline", exact: true })
@@ -398,7 +414,7 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add 
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   await page
     .getByRole("region", { name: "Timeline", exact: true })

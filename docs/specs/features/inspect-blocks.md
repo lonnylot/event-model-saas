@@ -38,6 +38,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person,
 ## Assumptions
 
 - Command, Event, Read Model, and Automation selection is a click on the Timeline listitem. The Inspector `Name` textbox is one control; selecting another of those kinds in the same session updates that `Name` value.
+- Add still targets the last Slice. Clicking Add Command, Add Event, Add Read Model, or Add Automation with no Slice does not append a Timeline listitem.
 - This slice is one in-session Command, Event, Read Model, and Automation. Name JSON mutates the last of that kind.
 - Inspect is a click on a click-created listitem. GET-rendered Timeline blocks omit `data-kind`; inspect after reload is later.
 - The Inspector `Name` textbox edits Command, Event, Read Model, or Automation `title`. The JSON key stays `title`.
