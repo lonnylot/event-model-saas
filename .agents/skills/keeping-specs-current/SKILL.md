@@ -36,8 +36,7 @@ description: >
   leftover Restates that still says keyboard shortcuts stay later after Out of
   scope moved ⌥⌘1–5 or fields stay later after Out of scope moved Inspector Fields
   or leftover inspect-description GET-rendered inspect of Description stays later,
-  leftover Document flow or Error handling after Restates names product.md,
-  leftover GET heading / team-list / Export `{title}` as JSON title after persist is `#event-model-document` (D1 create title),
+  leftover Document flow or Error handling after Restates names product.md (Export `{title}` / GET heading / team-list as JSON title (D1 create title)),
   leftover Editor (Mac parity) or Error handling highlighting after restating Testing,
   leftover Editor drag blocks / delete selection / undo structural edits,
   leftover Document flow Mac-like undo, leftover Testing Unit mutations,
