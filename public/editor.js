@@ -48,6 +48,7 @@ import { undoEvent } from "./undo-event.js";
 import { undoReadModel } from "./undo-read-model.js";
 import { undoAutomation } from "./undo-automation.js";
 import { undoMoveSliceLeft } from "./undo-move-slice-left.js";
+import { restoreSlice } from "./restore-slice.js";
 
 const undoStack = [];
 
@@ -1439,6 +1440,26 @@ export function bindEditor(root) {
       if (!holder) return;
       const entry = undoStack.pop();
       const kind = typeof entry === "string" ? entry : entry?.kind;
+      if (kind === "deleteSlice") {
+        holder.textContent = JSON.stringify(
+          restoreSlice(
+            JSON.parse(holder.textContent || "{}"),
+            entry.slice,
+            entry.index,
+          ),
+        );
+        const list = root.querySelector("ul");
+        if (list) {
+          const item = root.createElement("li");
+          item.textContent = "New Slice";
+          item.setAttribute("aria-label", "New Slice");
+          if (entry.slice?.id) item.setAttribute("data-id", entry.slice.id);
+          const before = list.children[entry.index];
+          if (before) list.insertBefore(item, before);
+          else list.append(item);
+        }
+        return;
+      }
       if (kind === "move") {
         holder.textContent = JSON.stringify(
           undoMoveSliceLeft(
@@ -1562,13 +1583,19 @@ export function bindEditor(root) {
     const holder = root.getElementById("event-model-document");
     const sliceId = selectedSliceItem?.dataset?.id;
     if (holder && selected === "slice" && sliceId && selectedSliceItem) {
-      holder.textContent = JSON.stringify(
-        deleteSlice(JSON.parse(holder.textContent || "{}"), sliceId),
+      const model = JSON.parse(holder.textContent || "{}");
+      const index = (model.slices ?? []).findIndex(
+        (slice) => slice.id === sliceId,
       );
+      const slice = index >= 0 ? model.slices[index] : undefined;
+      holder.textContent = JSON.stringify(deleteSlice(model, sliceId));
       selectedSliceItem.remove();
       root
         .querySelectorAll(`li[data-id="${sliceId}"]:not([data-kind])`)
         .forEach((item) => item.remove());
+      if (slice && index >= 0) {
+        undoStack.push({ kind: "deleteSlice", slice, index });
+      }
       selectedSliceItem = null;
       selected = null;
     }

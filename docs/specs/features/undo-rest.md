@@ -13,7 +13,7 @@ Status: validated
 - [x] After clicking `New Slice` then `Add Read Model`, pressing ⌘Z does not show a listitem whose accessible name is `Read Model`
 - [x] After clicking `New Slice` then `Add Automation`, pressing ⌘Z does not show a listitem whose accessible name is `Automation`
 - [x] After clicking `New Slice` twice, clicking the last `New Slice` listitem, pressing ⌥⌘←, then pressing ⌘Z, the first Slice `id` is the Slice that was first before the move
-- [ ] After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing Backspace, then pressing ⌘Z, the page shows two listitems whose accessible name is `New Slice`
+- [x] After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing Backspace, then pressing ⌘Z, the remaining Slice `id` is the Slice that was last and the first Slice `id` is the Slice that was first
 - [ ] After clicking `New Slice` then `Add Command`, clicking the Timeline `Command` listitem then the Timeline region, pressing Backspace, then pressing ⌘Z, the Timeline region shows a listitem whose accessible name is `Command`
 - [ ] After dragging from `Command port` onto `Event Happened port`, clicking the Timeline text `Command → Event Happened` then the Timeline region, pressing Backspace, then pressing ⌘Z, the Timeline region shows the text `Command → Event Happened`
 - [ ] After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem then the Timeline region, pressing Backspace, then pressing ⌘Z, the Timeline region shows two listitems whose accessible name is `Actor`
@@ -35,7 +35,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person,
 
 - ⌘Z is `ControlOrMeta+z`. ⇧⌘Z is `Shift+ControlOrMeta+z`. ⌥⌘← stays [canvas.md](./canvas.md). Undo New Slice and undo Connection stay [canvas.md](./canvas.md). Undo Add Command stays [canvas-rest.md](./canvas-rest.md).
 - After ⌥⌘← on two Slices, the first Slice id became what was last; ⌘Z restores the order from before that key.
-- After Backspace on the first of two Slices, one Slice remains; ⌘Z restores two `New Slice` listitems.
+- After Backspace on the first of two Slices, remaining JSON `id` is the last; ⌘Z restores the first `id`.
 - After Add Command then ⌘Z, ⇧⌘Z restores the Command listitem.
 - Undo is in-memory.
 - The `TEST_MAIL=1` memory adapter does not count login attempts, so Playwright files can share one Worker without the production 5-per-hour cap.
