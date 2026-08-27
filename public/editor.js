@@ -6,6 +6,7 @@ import { appendReadModel } from "./append-read-model.js";
 import { appendAutomation } from "./append-automation.js";
 import { appendConnection } from "./append-connection.js";
 import { setSliceTitle } from "./set-slice-title.js";
+import { setSliceDescription } from "./set-slice-description.js";
 import { setActorName } from "./set-actor-name.js";
 import { setCommandTitle } from "./set-command-title.js";
 import { setEventTitle } from "./set-event-title.js";
@@ -379,6 +380,20 @@ export function bindEditor(root) {
         "beforeend",
         "<label>Description <input /></label>",
       );
+      const descriptionInput = [...inspector.querySelectorAll("input")].find(
+        (el) => el.closest("label")?.textContent?.includes("Description"),
+      );
+      descriptionInput?.addEventListener("input", () => {
+        const holder = root.getElementById("event-model-document");
+        if (holder && selected === "slice") {
+          holder.textContent = JSON.stringify(
+            setSliceDescription(
+              JSON.parse(holder.textContent || "{}"),
+              descriptionInput.value,
+            ),
+          );
+        }
+      });
     }
   });
   root.addEventListener("keydown", (event) => {

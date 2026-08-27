@@ -105,3 +105,19 @@ test("After clicking `New Slice` on that page, clicking the `New Slice` listitem
       .getByRole("textbox", { name: "Description", exact: true }),
   ).toBeVisible();
 });
+
+test("Filling the Inspector `Description` textbox with `Checkout flow` after selecting `New Slice` sets the last Slice `description` to `Checkout flow`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("listitem", { name: "New Slice", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Description", exact: true })
+    .fill("Checkout flow");
+  const json = await page.locator("#event-model-document").textContent();
+  expect(JSON.parse(json ?? "{}").slices.at(-1).description).toBe(
+    "Checkout flow",
+  );
+});

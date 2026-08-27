@@ -9,7 +9,7 @@ Members can inspect Name on a Slice, Actor, Command, Event, Read Model, or Autom
 ## Acceptance criteria
 
 - [x] After clicking `New Slice` on that page, clicking the `New Slice` listitem shows a textbox whose accessible name is `Description` in the Inspector region
-- [ ] Filling the Inspector `Description` textbox with `Checkout flow` after selecting `New Slice` sets the last Slice `description` to `Checkout flow`
+- [x] Filling the Inspector `Description` textbox with `Checkout flow` after selecting `New Slice` sets the last Slice `description` to `Checkout flow`
 - [ ] After clicking `New Slice` then `Add Actor` on that page, clicking the Timeline `Actor` listitem shows a textbox whose accessible name is `Description` in the Inspector region
 - [ ] Filling the Inspector `Description` textbox with `Shopper persona` after selecting `Actor` sets the last Actor `description` to `Shopper persona`
 - [ ] After clicking `New Slice` then `Add Command` on that page, clicking the Timeline `Command` listitem shows a textbox whose accessible name is `Description` in the Inspector region
