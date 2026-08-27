@@ -209,3 +209,15 @@ test('GET `/api/auth/consume` with a used magic-link token has a `link[rel="styl
     "/shell.css",
   );
 });
+
+
+test("GET `/api/auth/consume` with a used magic-link token `body` computed `background-color` is `rgb(247, 244, 238)`", async ({
+  page,
+  request,
+}) => {
+  await openUsedMagicLink(page, request);
+  await expect(page.locator("body")).toHaveCSS(
+    "background-color",
+    "rgb(247, 244, 238)",
+  );
+});
