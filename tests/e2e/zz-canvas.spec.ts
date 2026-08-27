@@ -121,3 +121,26 @@ test("After clicking `New Slice` twice then `Add Actor`, dragging the Timeline `
   ]);
   expect(after.slices.at(-1).actors).toEqual([]);
 });
+
+test("After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing Backspace sets the remaining Slice `id` to the Slice that was last", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  const before = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  const lastId = before.slices[1].id;
+  await page
+    .getByRole("listitem", { name: "New Slice", exact: true })
+    .first()
+    .click();
+  await page.getByRole("region", { name: "Timeline", exact: true }).click();
+  await page.keyboard.press("Backspace");
+  const after = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  expect(after.slices).toHaveLength(1);
+  expect(after.slices[0].id).toBe(lastId);
+});

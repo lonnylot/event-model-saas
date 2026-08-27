@@ -13,6 +13,7 @@ import { setReadModelTitle } from "./set-read-model-title.js";
 import { setAutomationTitle } from "./set-automation-title.js";
 import { moveSliceLeft } from "./move-slice-left.js";
 import { moveActorToSlice } from "./move-actor-to-slice.js";
+import { deleteSlice } from "./delete-slice.js";
 
 export function onNewSliceClick(root) {
   const holder = root.getElementById("event-model-document");
@@ -134,6 +135,10 @@ export function onAddAutomationClick(root) {
 }
 
 export function bindEditor(root) {
+  const timeline = root.querySelector('[aria-label="Timeline"]');
+  if (timeline instanceof HTMLElement) {
+    timeline.style.minHeight = "48px";
+  }
   root.querySelectorAll("button").forEach((button) => {
     if (button.textContent === "Zoom in") {
       button.addEventListener("click", () => {
@@ -304,20 +309,30 @@ export function bindEditor(root) {
   });
   root.addEventListener("keydown", (event) => {
     if (
-      !(
-        event.altKey &&
-        (event.metaKey || event.ctrlKey) &&
-        event.key === "ArrowLeft"
-      )
+      event.altKey &&
+      (event.metaKey || event.ctrlKey) &&
+      event.key === "ArrowLeft"
     ) {
+      const holder = root.getElementById("event-model-document");
+      const sliceId = selectedSliceItem?.dataset?.id;
+      if (holder && sliceId) {
+        holder.textContent = JSON.stringify(
+          moveSliceLeft(JSON.parse(holder.textContent || "{}"), sliceId),
+        );
+      }
       return;
     }
+    if (event.key !== "Backspace" && event.key !== "Delete") return;
+    if (event.target instanceof HTMLInputElement) return;
     const holder = root.getElementById("event-model-document");
     const sliceId = selectedSliceItem?.dataset?.id;
-    if (holder && sliceId) {
+    if (holder && selected === "slice" && sliceId && selectedSliceItem) {
       holder.textContent = JSON.stringify(
-        moveSliceLeft(JSON.parse(holder.textContent || "{}"), sliceId),
+        deleteSlice(JSON.parse(holder.textContent || "{}"), sliceId),
       );
+      selectedSliceItem.remove();
+      selectedSliceItem = null;
+      selected = null;
     }
   });
   let sourcePort = null;

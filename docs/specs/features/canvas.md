@@ -10,7 +10,7 @@ Members can add Slices and blocks and zoom, but cannot reorder Slices, drag a bl
 
 - [x] After clicking `New Slice` twice, clicking the last `New Slice` listitem and pressing ⌥⌘← sets the first Slice `id` to the Slice that was last
 - [x] After clicking `New Slice` twice then `Add Actor`, dragging the Timeline `Actor` listitem onto the first Slices `New Slice` listitem sets the first Slice `actors` to one Actor and the last Slice `actors` to `[]`
-- [ ] After clicking `New Slice` then the `New Slice` listitem then the Timeline region, pressing Backspace does not show a listitem whose accessible name is `New Slice`
+- [x] After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing Backspace sets the remaining Slice `id` to the Slice that was last
 - [ ] Scrolling the Timeline region sets the Timeline `style.transform` to a value that includes `translate(`
 - [ ] After clicking `Zoom in` then scrolling the Timeline region, the Timeline `style.transform` includes `scale(1.25)` and `translate(`
 - [ ] After clicking `New Slice`, pressing ⌘Z does not show a listitem whose accessible name is `New Slice`
@@ -32,7 +32,7 @@ Event Model, Slice, Actor, Command, Event, Connection, Team, Person, Version
 - Add Actor still targets the last Slice ([blocks.md](./blocks.md)).
 - Drag-between-Slices drop target is the first Slices listitem. Same lane on the canvas is that move.
 - ⌥⌘← is Playwright `Alt+Meta+ArrowLeft` (CI: `ControlOrMeta` for ⌘). ⌥⌘→ is later.
-- Backspace deletes the selected Slice. Delete is the same path.
+- Backspace deletes the selected Slice. Two `New Slice` listitems: the first is the clicked item. Delete is the same path.
 - ⌘Z is Playwright `Meta+z` (CI: `ControlOrMeta+z`).
 - Pan is scroll on the Timeline region. One scroll produces a `translate(` in `style.transform`. Pinch pan is later.
 - Zoom still uses `scale(1.25)` / `scale(0.8)` / `scale(1)` from [editor-shell.md](./editor-shell.md).
@@ -50,4 +50,4 @@ Pinch pan, sidebar drag-reorder, ⌥⌘→, extra move/delete/undo toolbar butto
 - [chrome.md](./chrome.md) — Out of scope no longer owns keyboard shortcuts for this slice's keys, delete, drag blocks between Slices, undo, pan, or moving Slices; this slice owns those. Multi-item Name binding stays later.
 - [connections.md](./connections.md) — Out of scope no longer owns undo; this slice owns undo of a Connection. Highlighting legal targets, snap-back, reason on the source, and other illegal pairs stay later.
 - [model-persistence.md](./model-persistence.md) — Out of scope no longer owns undo, pan, or moving Slices; this slice owns those.
-- [product.md](../product.md) — Move slices (⌥⌘←), drag blocks between slices on the same lane, delete selection (Backspace), pan (scroll), and undo structural edits including connections are this slice. Playwright path for this slice adds: two New Slice, ⌥⌘← reorders; drag Actor onto the first Slice; Backspace deletes a Slice; scroll pans; ⌘Z undoes New Slice and undoes Command → Event. Pinch pan, ⌥⌘→, sidebar drag-reorder, dashed Add, keyboard ⌥⌘1–5, highlighting legal targets, snap-back, reason on the source, and other illegal pairs stay later. Inspecting Command / Event / Read Model / Automation is [inspect-blocks.md](./inspect-blocks.md) when that spec is present; until it is released those words stay later.
+- [product.md](../product.md) — Move slices (⌥⌘←), drag blocks between slices on the same lane, delete selection (Backspace), pan (scroll), and undo structural edits including connections are this slice. Playwright path for this slice adds: two New Slice, ⌥⌘← reorders; drag Actor onto the first Slice; Backspace deletes the first Slice; scroll pans; ⌘Z undoes New Slice and undoes Command → Event. Pinch pan, ⌥⌘→, sidebar drag-reorder, dashed Add, keyboard ⌥⌘1–5, highlighting legal targets, snap-back, reason on the source, and other illegal pairs stay later. Inspecting Command / Event / Read Model / Automation is [inspect-blocks.md](./inspect-blocks.md) when that spec is present; until it is released those words stay later.
