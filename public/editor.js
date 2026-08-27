@@ -14,6 +14,9 @@ import { setAutomationTitle } from "./set-automation-title.js";
 import { moveSliceLeft } from "./move-slice-left.js";
 import { moveActorToSlice } from "./move-actor-to-slice.js";
 import { deleteSlice } from "./delete-slice.js";
+import { undoConnection } from "./undo-connection.js";
+
+const undoStack = [];
 
 export function onNewSliceClick(root) {
   const holder = root.getElementById("event-model-document");
@@ -32,6 +35,7 @@ export function onNewSliceClick(root) {
   if (main && !main.textContent?.includes("Unsaved changes.")) {
     main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
   }
+  undoStack.push("slice");
 }
 
 export function onAddActorClick(root) {
@@ -340,6 +344,18 @@ export function bindEditor(root) {
       event.preventDefault();
       const holder = root.getElementById("event-model-document");
       if (!holder) return;
+      const kind = undoStack.pop();
+      if (kind === "connection") {
+        holder.textContent = JSON.stringify(
+          undoConnection(JSON.parse(holder.textContent || "{}")),
+        );
+        const timeline = root.querySelector('[aria-label="Timeline"]');
+        for (const node of [...(timeline?.querySelectorAll("p") ?? [])]) {
+          if (node.textContent === "Command → Event Happened") node.remove();
+        }
+        return;
+      }
+      if (kind !== "slice") return;
       const model = JSON.parse(holder.textContent || "{}");
       const last = model.slices?.at(-1);
       if (!last) return;
@@ -428,6 +444,7 @@ export function bindEditor(root) {
             "<p>Command → Event Happened</p>",
           );
         }
+        undoStack.push("connection");
       }
       if (
         sourcePort.dataset.kind === "COMMAND" &&

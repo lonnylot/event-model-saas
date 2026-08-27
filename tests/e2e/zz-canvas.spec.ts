@@ -181,3 +181,23 @@ test("After clicking `New Slice`, pressing ⌘Z does not show a listitem whose a
     page.getByRole("listitem", { name: "New Slice", exact: true }),
   ).toHaveCount(0);
 });
+
+test("After dragging `Command port` onto `Event Happened port`, pressing ⌘Z does not show the text `Command → Event Happened`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Command port", exact: true })
+    .dragTo(
+      page.getByRole("button", { name: "Event Happened port", exact: true }),
+    );
+  await page.keyboard.press("ControlOrMeta+z");
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByText("Command → Event Happened"),
+  ).toHaveCount(0);
+});
