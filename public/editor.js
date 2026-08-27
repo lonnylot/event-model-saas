@@ -36,6 +36,7 @@ export function onNewSliceClick(root) {
     main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
   }
   undoStack.push("slice");
+  const sliceIndex = (next.slices?.length ?? 1) - 1;
   const timeline = root.querySelector('[aria-label="Timeline"]');
   if (timeline) {
     const actor = root.createElement("button");
@@ -45,6 +46,17 @@ export function onNewSliceClick(root) {
     const command = root.createElement("button");
     command.type = "button";
     command.textContent = "Add Command on lane";
+    command.addEventListener("click", () => {
+      const documentHolder = root.getElementById("event-model-document");
+      if (documentHolder) {
+        documentHolder.textContent = JSON.stringify(
+          appendCommand(
+            JSON.parse(documentHolder.textContent || "{}"),
+            sliceIndex,
+          ),
+        );
+      }
+    });
     timeline.append(command);
     const event = root.createElement("button");
     event.type = "button";

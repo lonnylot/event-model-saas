@@ -162,3 +162,20 @@ test("After clicking `New Slice` on that page, the Timeline region shows a butto
       .getByRole("button", { name: "Add Automation on lane", exact: true }),
   ).toBeVisible();
 });
+
+test("After clicking `New Slice` twice, clicking the first `Add Command on lane` sets the first Slice `commands` to one Command and the last Slice `commands` to `[]`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await clickNewSlice(page);
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("button", { name: "Add Command on lane", exact: true })
+    .first()
+    .click();
+  const json = await page.locator("#event-model-document").textContent();
+  const slices = JSON.parse(json ?? "{}").slices;
+  expect(slices[0].commands).toHaveLength(1);
+  expect(slices.at(-1).commands).toEqual([]);
+});
