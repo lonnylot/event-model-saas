@@ -170,3 +170,42 @@ test("GET `/app/teams/{id}/models/{mid}` as a member, clicking the heading whose
       .getByRole("textbox", { name: "Description", exact: true }),
   ).toBeVisible();
 });
+
+test("Filling the Inspector `Description` textbox with `Library checkout blueprint` after clicking the `Untitled` heading sets the Event Model `description` to `Library checkout blueprint`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("heading", { name: "Untitled", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Description", exact: true })
+    .fill("Library checkout blueprint");
+  const json = await page.locator("#event-model-document").textContent();
+  expect(JSON.parse(json ?? "{}").description).toBe(
+    "Library checkout blueprint",
+  );
+});
+
+test("After a member creates a model, opens it, clicks the `Untitled` heading, fills `Description` with `Library checkout blueprint`, and Saves, a reload of that page sets the Event Model `description` to `Library checkout blueprint`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("heading", { name: "Untitled", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Description", exact: true })
+    .fill("Library checkout blueprint");
+  await Promise.all([
+    page.waitForResponse(
+      (response) =>
+        response.url().includes("/api/models/") &&
+        response.request().method() === "PUT",
+    ),
+    page.getByRole("button", { name: "Save", exact: true }).click(),
+  ]);
+  await page.reload();
+  const json = await page.locator("#event-model-document").textContent();
+  expect(JSON.parse(json ?? "{}").description).toBe(
+    "Library checkout blueprint",
+  );
+});

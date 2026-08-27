@@ -21,6 +21,7 @@ import { setAutomationDescription } from "./set-automation-description.js";
 import { appendField } from "./append-field.js";
 import { setFieldName } from "./set-field-name.js";
 import { setEventModelTitle } from "./set-event-model-title.js";
+import { setEventModelDescription } from "./set-event-model-description.js";
 import { moveSliceLeft } from "./move-slice-left.js";
 import { moveActorToSlice } from "./move-actor-to-slice.js";
 import { deleteSlice } from "./delete-slice.js";
@@ -622,6 +623,18 @@ export function bindEditor(root) {
         "beforeend",
         "<label>Description <textarea></textarea></label>",
       );
+      inspector.querySelector("textarea")?.addEventListener("input", () => {
+        const holder = root.getElementById("event-model-document");
+        const textarea = inspector.querySelector("textarea");
+        if (holder && selected === "model" && textarea) {
+          holder.textContent = JSON.stringify(
+            setEventModelDescription(
+              JSON.parse(holder.textContent || "{}"),
+              textarea.value,
+            ),
+          );
+        }
+      });
     }
   });
   root.addEventListener("keydown", (event) => {
