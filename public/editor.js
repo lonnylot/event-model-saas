@@ -246,6 +246,12 @@ export function bindEditor(root) {
       ) {
         inspector.insertAdjacentHTML("beforeend", "<p>Connection</p>");
       }
+      if (
+        inspector &&
+        !inspector.textContent?.includes("From Command")
+      ) {
+        inspector.insertAdjacentHTML("beforeend", "<p>From Command</p>");
+      }
     });
   }
   root.querySelectorAll("button").forEach((button) => {
