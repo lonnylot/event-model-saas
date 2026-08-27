@@ -153,3 +153,24 @@ test("After dragging from `Command port` onto `Event Happened port`, clicking th
     inspector.getByText("From Command", { exact: true }),
   ).toBeVisible();
 });
+
+test("After dragging from `Command port` onto `Event Happened port`, clicking the Timeline text `Command → Event Happened` shows the text `To Event Happened` in the Inspector region", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await dragCommandToEvent(page);
+  const inspector = page.getByRole("region", {
+    name: "Inspector",
+    exact: true,
+  });
+  await expect(
+    inspector.getByText("To Event Happened", { exact: true }),
+  ).toHaveCount(0);
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByText("Command → Event Happened", { exact: true })
+    .click();
+  await expect(
+    inspector.getByText("To Event Happened", { exact: true }),
+  ).toBeVisible();
+});

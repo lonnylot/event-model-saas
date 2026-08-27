@@ -252,6 +252,12 @@ export function bindEditor(root) {
       ) {
         inspector.insertAdjacentHTML("beforeend", "<p>From Command</p>");
       }
+      if (
+        inspector &&
+        !inspector.textContent?.includes("To Event Happened")
+      ) {
+        inspector.insertAdjacentHTML("beforeend", "<p>To Event Happened</p>");
+      }
     });
   }
   root.querySelectorAll("button").forEach((button) => {

@@ -10,7 +10,7 @@ Members can drag a legal Port onto a Port and see `Command → Event Happened` o
 
 - [x] After dragging from `Command port` onto `Event Happened port`, clicking the Timeline text `Command → Event Happened` shows the text `Connection` in the Inspector region
 - [x] After dragging from `Command port` onto `Event Happened port`, clicking the Timeline text `Command → Event Happened` shows the text `From Command` in the Inspector region
-- [ ] After dragging from `Command port` onto `Event Happened port`, clicking the Timeline text `Command → Event Happened` shows the text `To Event Happened` in the Inspector region
+- [x] After dragging from `Command port` onto `Event Happened port`, clicking the Timeline text `Command → Event Happened` shows the text `To Event Happened` in the Inspector region
 
 ## Domain terms
 
