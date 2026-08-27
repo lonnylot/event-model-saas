@@ -10,6 +10,7 @@ import { setActorName } from "./set-actor-name.js";
 import { setCommandTitle } from "./set-command-title.js";
 import { setEventTitle } from "./set-event-title.js";
 import { setReadModelTitle } from "./set-read-model-title.js";
+import { setAutomationTitle } from "./set-automation-title.js";
 
 export function onNewSliceClick(root) {
   const list = root.querySelector("ul");
@@ -225,6 +226,14 @@ export function bindEditor(root) {
             ),
           );
         }
+        if (holder && selected === "automation") {
+          holder.textContent = JSON.stringify(
+            setAutomationTitle(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+            ),
+          );
+        }
         if (selected === "slice" && selectedSliceItem) {
           selectedSliceItem.textContent = input.value;
           selectedSliceItem.setAttribute("aria-label", input.value);
@@ -274,6 +283,7 @@ export function bindEditor(root) {
       return;
     }
     if (item.dataset.kind === "automation") {
+      selected = "automation";
       bindName("Automation");
       return;
     }

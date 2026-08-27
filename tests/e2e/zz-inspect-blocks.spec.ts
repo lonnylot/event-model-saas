@@ -352,3 +352,23 @@ test("After clicking `New Slice` then `Add Automation` on that page, clicking th
       .getByRole("textbox", { name: "Name", exact: true }),
   ).toHaveValue("Automation");
 });
+
+test("Filling the Inspector `Name` textbox with `Send Email` after selecting `Automation` sets the last Automation `title` to `Send Email`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "Add Automation", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Automation", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Name", exact: true })
+    .fill("Send Email");
+  const json = await page.locator("#event-model-document").textContent();
+  expect(JSON.parse(json ?? "{}").slices[0].processors.at(-1).title).toBe(
+    "Send Email",
+  );
+});

@@ -29,6 +29,7 @@
     "public/set-actor-name.js",
     "public/set-command-title.js",
     "public/set-event-title.js",
-    "public/set-read-model-title.js"
+    "public/set-read-model-title.js",
+    "public/set-automation-title.js"
   ]
 }
