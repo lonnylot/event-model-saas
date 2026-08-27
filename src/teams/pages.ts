@@ -56,6 +56,7 @@ export function modelPageHtml(
     actors?: Array<{ name: string }>;
     commands?: Array<{ title: string }>;
     events?: Array<{ title: string }>;
+    readModels?: Array<{ title: string }>;
   }> = [],
   documentJson = "",
   connections: Array<{ fromKind: string; toKind: string }> = [],
@@ -79,6 +80,10 @@ export function modelPageHtml(
       ...(slice.events ?? []).map(
         (event) =>
           `<li aria-label="${event.title}" data-kind="event">${event.title}</li>`,
+      ),
+      ...(slice.readModels ?? []).map(
+        (readModel) =>
+          `<li aria-label="${readModel.title}">${readModel.title}</li>`,
       ),
     ])
     .join("");
