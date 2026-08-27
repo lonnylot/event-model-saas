@@ -126,3 +126,13 @@ test('GET `/` has a `meta[property="og:title"]` whose `content` is `Event Model`
     "Event Model",
   );
 });
+
+
+test('GET `/` has a `meta[property="og:description"]` whose `content` is `Access is by invite.`', async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.locator('meta[property="og:description"]'),
+  ).toHaveAttribute("content", "Access is by invite.");
+});
