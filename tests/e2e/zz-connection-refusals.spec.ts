@@ -771,3 +771,32 @@ test("After dragging from `Command port` onto `Event Happened port`, pointer-dow
   await expect(eventPort).not.toHaveAttribute("aria-current", "true");
 });
 
+test("After dragging from `Event Happened port` onto `Read Model port`, pointer-down on `Event Happened port`, the `Read Model port` does not have `aria-current` `true`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  const eventPort = page.getByRole("button", {
+    name: "Event Happened port",
+    exact: true,
+  });
+  const readModelPort = page.getByRole("button", {
+    name: "Read Model port",
+    exact: true,
+  });
+  await expect(eventPort).toBeVisible();
+  await expect(readModelPort).toBeVisible();
+  await eventPort.dragTo(readModelPort);
+  await expect
+    .poll(async () => {
+      const json = await page.locator("#event-model-document").textContent();
+      return (JSON.parse(json ?? "{}").connections ?? []).length;
+    })
+    .toBe(1);
+  await eventPort.hover({ force: true });
+  await page.mouse.down();
+  await expect(readModelPort).not.toHaveAttribute("aria-current", "true");
+});
+

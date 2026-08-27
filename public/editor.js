@@ -721,9 +721,17 @@ export function bindEditor(root) {
         }
       }
       if (port.dataset.kind === "EVENT") {
-        root
-          .querySelector('[data-kind="READMODEL"]')
-          ?.setAttribute("aria-current", "true");
+        const readModelPort = root.querySelector('[data-kind="READMODEL"]');
+        const holder = root.getElementById("event-model-document");
+        const model = JSON.parse(holder?.textContent || "{}");
+        const alreadyConnected = (model.connections ?? []).some(
+          (connection) =>
+            connection.fromID === port.dataset.id &&
+            connection.toID === readModelPort?.dataset.id,
+        );
+        if (readModelPort && !alreadyConnected) {
+          readModelPort.setAttribute("aria-current", "true");
+        }
       }
     }
   });
