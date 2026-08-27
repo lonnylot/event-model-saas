@@ -26,6 +26,7 @@ import { moveSliceLeft } from "./move-slice-left.js";
 import { moveActorToSlice } from "./move-actor-to-slice.js";
 import { deleteSlice } from "./delete-slice.js";
 import { deleteCommand } from "./delete-command.js";
+import { deleteConnection } from "./delete-connection.js";
 import { undoConnection } from "./undo-connection.js";
 
 const undoStack = [];
@@ -312,6 +313,7 @@ export function bindEditor(root) {
   let selectedEventItem = null;
   let selectedReadModelItem = null;
   let selectedAutomationItem = null;
+  let selectedConnectionItem = null;
   const inspector = root.querySelector('[aria-label="Inspector"]');
   const nameInput = () => inspector?.querySelector("input");
   const descriptionInput = () =>
@@ -605,6 +607,13 @@ export function bindEditor(root) {
     unbindAddField();
     unbindFieldName();
   });
+  timeline?.addEventListener("click", (event) => {
+    const line = event.target?.closest?.("p");
+    if (!line || !timeline.contains(line)) return;
+    if (line.textContent !== "Command → Event Happened") return;
+    selected = "connection";
+    selectedConnectionItem = line;
+  });
   slicesList?.addEventListener("click", (event) => {
     const item = event.target?.closest?.("li");
     if (!item || !slicesList.contains(item)) return;
@@ -700,6 +709,20 @@ export function bindEditor(root) {
       );
       selectedCommandItem.remove();
       selectedCommandItem = null;
+      selected = null;
+    }
+    const connectionId = selectedConnectionItem?.dataset?.id;
+    if (
+      holder &&
+      selected === "connection" &&
+      connectionId &&
+      selectedConnectionItem
+    ) {
+      holder.textContent = JSON.stringify(
+        deleteConnection(JSON.parse(holder.textContent || "{}"), connectionId),
+      );
+      selectedConnectionItem.remove();
+      selectedConnectionItem = null;
       selected = null;
     }
   });
@@ -828,10 +851,14 @@ export function bindEditor(root) {
           timeline &&
           !timeline.textContent?.includes("Command → Event Happened")
         ) {
-          timeline.insertAdjacentHTML(
-            "beforeend",
-            '<p data-kind="connection">Command → Event Happened</p>',
-          );
+          const line = root.createElement("p");
+          line.textContent = "Command → Event Happened";
+          line.setAttribute("data-kind", "connection");
+          const connection = JSON.parse(
+            holder?.textContent || "{}",
+          ).connections?.at(-1);
+          if (connection) line.setAttribute("data-id", connection.id);
+          timeline.append(line);
         }
         undoStack.push("connection");
       }

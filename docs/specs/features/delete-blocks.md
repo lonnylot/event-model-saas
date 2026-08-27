@@ -9,7 +9,7 @@ Backspace deletes the selected Slice. Members cannot delete a selected Command o
 ## Acceptance criteria
 
 - [x] After clicking `New Slice` then `Add Command` twice, clicking the first Timeline `Command` listitem then the Timeline region, pressing Backspace sets the remaining Command `id` to the Command that was last
-- [ ] After dragging from `Command port` onto `Event Happened port` then from `Event Happened port` onto `Read Model port`, clicking the Timeline text `Command → Event Happened` then the Timeline region, pressing Backspace sets the remaining Connection `fromKind` to `EVENT`
+- [x] After dragging from `Command port` onto `Event Happened port` then from `Event Happened port` onto `Read Model port`, clicking the Timeline text `Command → Event Happened` then the Timeline region, pressing Backspace sets the remaining Connection `fromKind` to `EVENT`
 
 ## Domain terms
 
@@ -38,6 +38,7 @@ Delete Actor, Event, Read Model, or Automation. Undo of delete. Inspecting a Con
 
 - [canvas.md](./canvas.md) — Out of scope no longer owns delete of a Command or Connection; this slice owns those. Delete of Actor / Event / Read Model / Automation and undo of delete stay later. Slice Backspace stays this file.
 - [connections.md](./connections.md) — Delete Connection is this slice.
+- [inspect-connection.md](./inspect-connection.md) — Delete Connection is this slice.
 - [blocks.md](./blocks.md) — Delete Command is this slice. Delete of other blocks stays later.
 - [inspect-blocks.md](./inspect-blocks.md) — Delete Command is this slice.
 - [chrome.md](./chrome.md) — Delete Command is this slice.

@@ -115,3 +115,42 @@ test("After clicking `New Slice` then `Add Command` twice, clicking the first Ti
   expect(after.slices[0].commands).toHaveLength(1);
   expect(after.slices[0].commands[0].id).toBe(lastId);
 });
+
+async function dragPort(page: Page, fromName: string, toName: string) {
+  await expect(
+    page.getByRole("button", { name: fromName, exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: toName, exact: true }),
+  ).toBeVisible();
+  await page
+    .getByRole("button", { name: fromName, exact: true })
+    .dragTo(page.getByRole("button", { name: toName, exact: true }));
+}
+
+test("After dragging from `Command port` onto `Event Happened port` then from `Event Happened port` onto `Read Model port`, clicking the Timeline text `Command → Event Happened` then the Timeline region, pressing Backspace sets the remaining Connection `fromKind` to `EVENT`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await expect(
+    page.getByRole("listitem", { name: "New Slice", exact: true }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  await dragPort(page, "Command port", "Event Happened port");
+  await dragPort(page, "Event Happened port", "Read Model port");
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  await expect(
+    timeline.getByText("Command → Event Happened", { exact: true }),
+  ).toBeVisible();
+  await timeline.getByText("Command → Event Happened", { exact: true }).click();
+  await timeline.click({ position: { x: 1, y: 1 } });
+  await page.keyboard.press("Backspace");
+  const after = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  expect(after.connections).toHaveLength(1);
+  expect(after.connections[0].fromKind).toBe("EVENT");
+});
