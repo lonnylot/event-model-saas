@@ -4,7 +4,7 @@ Status: validated
 
 ## Problem
 
-⌘Z undoes New Slice and Command → Event. It does not undo Add Command, other Adds, a Slice move, or a delete, so Mac structural undo is incomplete. ⇧⌘Z does not redo.
+⌘Z undoes New Slice, Command → Event, and Add Command. It does not undo other Adds, a Slice move, or a delete, so Mac structural undo is incomplete. ⇧⌘Z does not redo.
 
 ## Acceptance criteria
 
@@ -69,4 +69,7 @@ Extra undo toolbar. Mac window chrome. Undo New Slice, undo Connection (without 
 - [inspect-blocks.md](./inspect-blocks.md) — Undo of remaining Adds, move, delete, and redo are this slice. Undo New Slice stays [canvas.md](./canvas.md). Undo Add Command stays [canvas-rest.md](./canvas-rest.md).
 - [editor-shell.md](./editor-shell.md) — Undo of remaining Adds, move, delete, and redo are this slice. Undo New Slice stays [canvas.md](./canvas.md). Undo Add Command stays [canvas-rest.md](./canvas-rest.md).
 - [model-persistence.md](./model-persistence.md) — Undo of remaining Adds, move, delete, and redo are this slice. Undo New Slice stays [canvas.md](./canvas.md). Undo Add Command stays [canvas-rest.md](./canvas-rest.md).
+- [inspect-description.md](./inspect-description.md) — Undo of remaining Adds, move, delete, and redo are this slice. Undo New Slice stays [canvas.md](./canvas.md). Undo Add Command stays [canvas-rest.md](./canvas-rest.md).
+- [connection-feedback.md](./connection-feedback.md) — Undo of remaining Adds, move, delete, and redo are this slice. Undo New Slice and undo Connection without a prior delete stay [canvas.md](./canvas.md). Undo Add Command stays [canvas-rest.md](./canvas-rest.md).
+- [add-on-lane.md](./add-on-lane.md) — Undo of remaining Adds, move, delete, and redo are this slice. Undo New Slice stays [canvas.md](./canvas.md). Undo Add Command stays [canvas-rest.md](./canvas-rest.md).
 - [product.md](../product.md) — Undo of move, delete of Slice / Command / Connection / Actor / Event / Read Model / Automation, remaining Adds, and redo (⇧⌘Z). Undo Add Command stays [canvas-rest.md](./canvas-rest.md). Playwright path for this slice adds: ⌘Z after Add Actor / Event / Read Model / Automation; ⌘Z after ⌥⌘←; ⌘Z after Slice / Command / Connection / Actor / Event / Read Model / Automation Backspace; ⇧⌘Z after undo Add Command, ⇧⌘Z after undo Add Actor, ⇧⌘Z after undo Add Event, ⇧⌘Z after undo Add Read Model, ⇧⌘Z after undo Add Automation, ⇧⌘Z after undo of ⌥⌘←, ⇧⌘Z after undo Slice Backspace, ⇧⌘Z after undo Command Backspace, ⇧⌘Z after undo Connection Backspace, ⇧⌘Z after undo Actor Backspace, ⇧⌘Z after undo Event Backspace, ⇧⌘Z after undo Read Model Backspace, ⇧⌘Z after undo Automation Backspace, ⇧⌘Z after undo New Slice, ⇧⌘Z after undo Connection.
