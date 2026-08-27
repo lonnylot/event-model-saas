@@ -653,7 +653,9 @@ export function bindEditor(root) {
     if (!holder) return;
     const model = JSON.parse(holder.textContent || "{}");
     if (event.code === "Digit1") {
-      holder.textContent = JSON.stringify(appendActor(model));
+      const index =
+        selectedSliceIndex ?? (model.slices?.length ?? 1) - 1;
+      holder.textContent = JSON.stringify(appendActor(model, index));
     }
     if (event.code === "Digit2") {
       const index =

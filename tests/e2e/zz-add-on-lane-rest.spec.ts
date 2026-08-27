@@ -163,3 +163,21 @@ test("After clicking `New Slice` twice, clicking the first `Add Automation on la
   expect(slices[0].processors).toHaveLength(1);
   expect(slices.at(-1).processors).toEqual([]);
 });
+
+test("After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing ⌥⌘1 appends an Actor only on the first Slice", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await clickNewSlice(page);
+  await page
+    .getByRole("listitem", { name: "New Slice", exact: true })
+    .first()
+    .click();
+  await page.getByRole("region", { name: "Timeline", exact: true }).click();
+  await page.keyboard.press("Alt+ControlOrMeta+Digit1");
+  const json = await page.locator("#event-model-document").textContent();
+  const slices = JSON.parse(json ?? "{}").slices;
+  expect(slices[0].actors).toHaveLength(1);
+  expect(slices.at(-1).actors).toEqual([]);
+});
