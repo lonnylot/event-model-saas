@@ -12,9 +12,10 @@ import { setActorName } from "./set-actor-name.js";
 import { setActorDescription } from "./set-actor-description.js";
 import { setCommandTitle } from "./set-command-title.js";
 import { setCommandDescription } from "./set-command-description.js";
-
-import { setEventTitle } from "./set-event-title.js";
 import { setEventDescription } from "./set-event-description.js";
+import { appendField } from "./append-field.js";
+import { setFieldName } from "./set-field-name.js";
+import { setEventTitle } from "./set-event-title.js";
 import { setReadModelTitle } from "./set-read-model-title.js";
 import { setReadModelDescription } from "./set-read-model-description.js";
 import { setAutomationTitle } from "./set-automation-title.js";
@@ -695,7 +696,11 @@ export function bindEditor(root) {
     const model = JSON.parse(holder?.textContent || "{}");
     return model.slices?.at(-1)?.actors?.at(-1)?.description ?? "";
   };
-
+  const lastEventDescription = () => {
+    const holder = root.getElementById("event-model-document");
+    const model = JSON.parse(holder?.textContent || "{}");
+    return model.slices?.at(-1)?.events?.at(-1)?.description ?? "";
+  };
   const lastSliceTypeLabel = () => {
     const holder = root.getElementById("event-model-document");
     const model = JSON.parse(holder?.textContent || "{}");
@@ -950,10 +955,14 @@ export function bindEditor(root) {
       selected = "event";
       selectedEventItem = item;
       bindName(item.getAttribute("aria-label") ?? "Event Happened");
-      if (omitGetRenderedInspectChrome(item)) return;
+      if (omitGetRenderedInspectChrome(item)) {
+        bindDescription(lastEventDescription());
+        return;
+      }
       bindAddField();
       bindDescription();
       unbindFieldRow();
+      bindDescription(lastEventDescription());
       unbindFieldName();
       unbindType();
       unbindAddField();
