@@ -4,7 +4,7 @@ Status: released
 
 ## Problem
 
-Dashed lane buttons exist for every kind, and `Add Command on lane` plus selected-Slice ⌥⌘1 target the first Slice. Clicking the other lane buttons, and ⌥⌘1 / ⌥⌘3–5 after selecting a Slice, still hit the last Slice, so Add on a chosen column is incomplete.
+Dashed lane buttons exist for every kind, and `Add Command on lane` plus selected-Slice ⌥⌘2 target the first Slice. Clicking the other lane buttons, and ⌥⌘1 / ⌥⌘3–5 after selecting a Slice, still hit the last Slice, so Add on a chosen column is incomplete.
 
 ## Acceptance criteria
 
