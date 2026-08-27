@@ -436,7 +436,8 @@ export function bindEditor(root) {
             toID: target.dataset.id,
             toKind:
               target.dataset.kind === "EVENT" ||
-              target.dataset.kind === "READMODEL"
+              target.dataset.kind === "READMODEL" ||
+              target.dataset.kind === "COMMAND"
                 ? target.dataset.kind
                 : undefined,
           }),

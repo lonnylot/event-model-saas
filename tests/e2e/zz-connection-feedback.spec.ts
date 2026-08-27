@@ -163,3 +163,15 @@ test("Dragging from `Command port` onto `Read Model port` shows the text `A comm
     page.getByRole("listitem", { name: "Command", exact: true }),
   ).toContainText("A command can't write a read model.");
 });
+
+test("Dragging from `Event Happened port` onto `Command port` does not append a Connection", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await addCommandEventAndReadModel(page);
+  await page
+    .getByRole("button", { name: "Event Happened port", exact: true })
+    .dragTo(page.getByRole("button", { name: "Command port", exact: true }));
+  const json = await page.locator("#event-model-document").textContent();
+  expect(JSON.parse(json ?? "{}").connections ?? []).toEqual([]);
+});
