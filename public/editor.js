@@ -538,6 +538,9 @@ export function bindEditor(root) {
                 JSON.parse(documentHolder.textContent || "{}"),
                 optionalInput.checked,
                 selected,
+                selected === "command"
+                  ? selectedCommandItem?.dataset?.id
+                  : undefined,
               ),
             );
           }
