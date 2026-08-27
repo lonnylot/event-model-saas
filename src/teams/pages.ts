@@ -51,7 +51,11 @@ export function modelPageHtml(
   modelId: string,
   version: number,
   teamName: string,
-  slices: Array<{ title: string; actors?: Array<{ name: string }> }> = [],
+  slices: Array<{
+    title: string;
+    actors?: Array<{ name: string }>;
+    commands?: Array<{ title: string }>;
+  }> = [],
   documentJson = "",
   connections: Array<{ fromKind: string; toKind: string }> = [],
 ): string {
@@ -62,11 +66,15 @@ export function modelPageHtml(
     )
     .join("");
   const timelineItems = slices
-    .flatMap((slice) => slice.actors ?? [])
-    .map(
-      (actor) =>
-        `<li aria-label="${actor.name}">${actor.name}</li>`,
-    )
+    .flatMap((slice) => [
+      ...(slice.actors ?? []).map(
+        (actor) => `<li aria-label="${actor.name}">${actor.name}</li>`,
+      ),
+      ...(slice.commands ?? []).map(
+        (command) =>
+          `<li aria-label="${command.title}">${command.title}</li>`,
+      ),
+    ])
     .join("");
   const connectionCopy = connections
     .filter(

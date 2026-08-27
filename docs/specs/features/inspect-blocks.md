@@ -24,7 +24,7 @@ Members can inspect Slice and Actor Name, but clicking Command, Event Happened, 
 - [x] After clicking `New Slice` then `Add Automation` on that page, clicking the Timeline `Automation` listitem shows that `Name` textbox with the value `Automation`
 - [x] Filling the Inspector `Name` textbox with `Send Email` after selecting `Automation` sets the last Automation `title` to `Send Email`
 - [x] Filling the Inspector `Name` textbox with `Send Email` after selecting `Automation` shows a Timeline listitem whose accessible name is `Send Email`
-- [ ] After a member creates a model, opens it, clicks `New Slice`, clicks `Add Command`, clicks the Timeline `Command` listitem, fills `Name` with `Place Order`, and Saves, a reload of that page shows a listitem whose accessible name is `Place Order` in the Timeline region
+- [x] After a member creates a model, opens it, clicks `New Slice`, clicks `Add Command`, clicks the Timeline `Command` listitem, fills `Name` with `Place Order`, and Saves, a reload of that page shows a listitem whose accessible name is `Place Order` in the Timeline region
 
 ## Domain terms
 
