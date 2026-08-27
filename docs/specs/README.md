@@ -44,5 +44,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Move slice right | [features/move-slice-right.md](./features/move-slice-right.md) | released |
 | Canvas rest | [features/canvas-rest.md](./features/canvas-rest.md) | released |
 | Name binding | [features/name-binding.md](./features/name-binding.md) | released |
+| Name binding rest | [features/name-binding-rest.md](./features/name-binding-rest.md) | validated |
 
 Status: `draft` → `validated` → `released`.

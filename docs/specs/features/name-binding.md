@@ -24,22 +24,22 @@ Event Model, Slice, Actor, Command, Team, Person, Version
 
 ## Assumptions
 
-- Two Timeline `Command` listitems are first vs last. Click the first. Slice / Event / Read Model / Automation multi-item Name stays later. Slice Name dirty after Save stays [chrome.md](./chrome.md).
-- Accessible name Place Order stays [inspect-blocks.md](./inspect-blocks.md). This slice owns the Command listitem's own visible text (the text node), not whole-listitem Playwright `toHaveText`. Name fill does not remove `Command port`. Visible text for other kinds stays later.
+- Two Timeline `Command` listitems are first vs last. Click the first. Slice / Event / Read Model / Automation multi-item Name is [name-binding-rest.md](./name-binding-rest.md). Slice Name dirty after Save stays [chrome.md](./chrome.md).
+- Accessible name Place Order stays [inspect-blocks.md](./inspect-blocks.md). This slice owns the Command listitem's own visible text (the text node), not whole-listitem Playwright `toHaveText`. Name fill does not remove `Command port`. Visible text for other kinds is [name-binding-rest.md](./name-binding-rest.md).
 - Name edits are in-memory until Save. Save still uses the version check from model-persistence.
 - The `TEST_MAIL=1` memory adapter does not count login attempts, so Playwright files can share one Worker without the production 5-per-hour cap.
 
 ## Out of scope
 
-Multi-item Name for Slice, Actor, Event, Read Model, or Automation. Visible text for those kinds. Command / Event / Read Model / Automation Name dirty. Inspect after reload. Description, Fields, Slice type picker, Mac window chrome.
+Multi-item Name for Slice, Actor, Event, Read Model, or Automation is [name-binding-rest.md](./name-binding-rest.md). Visible text for those kinds is [name-binding-rest.md](./name-binding-rest.md). Command / Event / Read Model / Automation Name dirty is [name-binding-rest.md](./name-binding-rest.md). Inspect after reload. Description, Fields, Slice type picker, Mac window chrome.
 
 ## Restates
 
-- [chrome.md](./chrome.md) — Out of scope no longer owns Actor Name Unsaved changes or Command multi-item Name; this slice owns those. Slice Name dirty stays this file. Slice / Actor multi-item stays later.
-- [canvas.md](./canvas.md) — Out of scope no longer owns Command multi-item Name; this slice owns that. Slice / Actor multi-item stays later.
-- [inspect-blocks.md](./inspect-blocks.md) — Out of scope no longer owns Actor Name Unsaved changes, multi-item Name binding for Command, or in-session visible listitem text on Command Name fill; this slice owns those. Other kinds stay later. Accessible name Place Order stays this file. Name still mutates the last Command only when that Command is selected.
+- [chrome.md](./chrome.md) — Out of scope no longer owns Actor Name Unsaved changes or Command multi-item Name; this slice owns those. Slice Name dirty stays this file. Slice / Actor multi-item is [name-binding-rest.md](./name-binding-rest.md).
+- [canvas.md](./canvas.md) — Out of scope no longer owns Command multi-item Name; this slice owns that. Slice / Actor multi-item is [name-binding-rest.md](./name-binding-rest.md).
+- [inspect-blocks.md](./inspect-blocks.md) — Out of scope no longer owns Actor Name Unsaved changes, multi-item Name binding for Command, or in-session visible listitem text on Command Name fill; this slice owns those. Other kinds are [name-binding-rest.md](./name-binding-rest.md). Accessible name Place Order stays this file. Name still mutates the last Command only when that Command is selected.
 - [delete-blocks.md](./delete-blocks.md) — Assumptions no longer owns Chrome Name still mutates the last Command; Command Name mutates the last Command only when that Command is selected. Command multi-item Name is this slice. Two Timeline Command listitems first vs last stays this file.
-- [inspect-after-reload.md](./inspect-after-reload.md) — Out of scope no longer owns Actor Name Unsaved changes, Command multi-item Name, or in-session visible listitem text on Command Name fill; this slice owns those. Slice / Actor / Event / Read Model / Automation multi-item and visible text for those kinds stay later. Inspect after reload stays this file.
-- [inspect-description.md](./inspect-description.md) — Out of scope no longer owns Actor Name Unsaved changes, Command multi-item Name, or in-session visible listitem text on Command Name fill; this slice owns those. Description stays this file. Other kinds stay later.
+- [inspect-after-reload.md](./inspect-after-reload.md) — Out of scope no longer owns Actor Name Unsaved changes, Command multi-item Name, or in-session visible listitem text on Command Name fill; this slice owns those. Slice / Actor / Event / Read Model / Automation multi-item and visible text for those kinds are [name-binding-rest.md](./name-binding-rest.md). Inspect after reload stays this file.
+- [inspect-description.md](./inspect-description.md) — Out of scope no longer owns Actor Name Unsaved changes, Command multi-item Name, or in-session visible listitem text on Command Name fill; this slice owns those. Description stays this file. Other kinds are [name-binding-rest.md](./name-binding-rest.md).
 - [model-inspector.md](./model-inspector.md) — Out of scope no longer owns Actor Name Unsaved changes; this slice owns that. Event Model title and Description stay this file.
 - [product.md](../product.md) — Inspect the clicked Command Name, not only the last. Actor Name after Save shows Unsaved changes. Filling Command Name updates visible Timeline text. Playwright path for this slice adds: Add Actor, Save, fill Name Shopper, Unsaved changes; two Add Command, click the first, fill Place Order, first title is Place Order, last stays Command, listitem visible text is Place Order.

@@ -1004,7 +1004,11 @@ export function bindEditor(root) {
         const holder = root.getElementById("event-model-document");
         if (holder && selected === "slice") {
           holder.textContent = JSON.stringify(
-            setSliceTitle(JSON.parse(holder.textContent || "{}"), input.value),
+            setSliceTitle(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+              selectedSliceItem?.dataset?.id,
+            ),
           );
         }
         if (holder && selected === "actor") {
