@@ -7,6 +7,7 @@ import { appendAutomation } from "./append-automation.js";
 import { appendConnection } from "./append-connection.js";
 import { setSliceTitle } from "./set-slice-title.js";
 import { setSliceDescription } from "./set-slice-description.js";
+import { setSliceType } from "./set-slice-type.js";
 import { setActorName } from "./set-actor-name.js";
 import { setActorDescription } from "./set-actor-description.js";
 import { setCommandTitle } from "./set-command-title.js";
@@ -474,8 +475,21 @@ export function bindEditor(root) {
       if (inspector && !typeSelect) {
         inspector.insertAdjacentHTML(
           "beforeend",
-          "<label>Type <select><option>State Change</option></select></label>",
+          "<label>Type <select><option>State Change</option><option>State View</option></select></label>",
         );
+        const select = inspector.querySelector("select");
+        select?.addEventListener("change", () => {
+          if (select.value !== "State View") return;
+          const holder = root.getElementById("event-model-document");
+          if (holder) {
+            holder.textContent = JSON.stringify(
+              setSliceType(
+                JSON.parse(holder.textContent || "{}"),
+                "STATE_VIEW",
+              ),
+            );
+          }
+        });
       }
     } else {
       typeSelect?.closest("label")?.remove();

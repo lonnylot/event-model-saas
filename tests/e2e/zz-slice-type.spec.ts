@@ -118,3 +118,40 @@ test("After clicking `New Slice` on that page, clicking the `New Slice` listitem
       .getByRole("combobox", { name: "Type", exact: true }),
   ).toHaveValue("State Change");
 });
+
+test("Selecting `State View` in Inspector `Type` after selecting `New Slice` sets the last Slice `sliceType` to `STATE_VIEW`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("listitem", { name: "New Slice", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("combobox", { name: "Type", exact: true })
+    .selectOption("State View");
+  const json = await page.locator("#event-model-document").textContent();
+  expect(JSON.parse(json ?? "{}").slices.at(-1).sliceType).toBe("STATE_VIEW");
+});
+
+test("After a member creates a model, opens it, clicks `New Slice`, clicks the `New Slice` listitem, selects `State View` in `Type`, and Saves, a reload of that page sets the last Slice `sliceType` to `STATE_VIEW`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("listitem", { name: "New Slice", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("combobox", { name: "Type", exact: true })
+    .selectOption("State View");
+  await Promise.all([
+    page.waitForResponse(
+      (response) =>
+        response.url().includes("/api/models/") &&
+        response.request().method() === "PUT",
+    ),
+    page.getByRole("button", { name: "Save", exact: true }).click(),
+  ]);
+  await page.reload();
+  const json = await page.locator("#event-model-document").textContent();
+  expect(JSON.parse(json ?? "{}").slices.at(-1).sliceType).toBe("STATE_VIEW");
+});

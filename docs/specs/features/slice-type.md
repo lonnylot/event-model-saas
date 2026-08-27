@@ -10,9 +10,9 @@ Every new Slice is `STATE_CHANGE`. Members cannot pick Slice type in Inspector, 
 
 - [x] After clicking `New Slice` on that page, clicking the `New Slice` listitem shows a combobox whose accessible name is `Type` in the Inspector region
 - [x] After clicking `New Slice` on that page, clicking the `New Slice` listitem shows that `Type` combobox with the value `State Change`
-- [ ] Selecting `State View` in Inspector `Type` after selecting `New Slice` sets the last Slice `sliceType` to `STATE_VIEW`
+- [x] Selecting `State View` in Inspector `Type` after selecting `New Slice` sets the last Slice `sliceType` to `STATE_VIEW`
 - [ ] Selecting `Automation` in Inspector `Type` after selecting `New Slice` sets the last Slice `sliceType` to `AUTOMATION`
-- [ ] After a member creates a model, opens it, clicks `New Slice`, clicks the `New Slice` listitem, selects `State View` in `Type`, and Saves, a reload of that page sets the last Slice `sliceType` to `STATE_VIEW`
+- [x] After a member creates a model, opens it, clicks `New Slice`, clicks the `New Slice` listitem, selects `State View` in `Type`, and Saves, a reload of that page sets the last Slice `sliceType` to `STATE_VIEW`
 
 ## Domain terms
 

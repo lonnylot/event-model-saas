@@ -28,6 +28,7 @@
     "public/append-field.js",
     "public/set-slice-title.js",
     "public/set-slice-description.js",
+    "public/set-slice-type.js",
     "public/set-actor-name.js",
     "public/set-actor-description.js",
     "public/set-command-title.js",
