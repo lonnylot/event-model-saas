@@ -30,6 +30,7 @@ import { deleteConnection } from "./delete-connection.js";
 import { deleteActor } from "./delete-actor.js";
 import { deleteEvent } from "./delete-event.js";
 import { deleteReadModel } from "./delete-read-model.js";
+import { deleteAutomation } from "./delete-automation.js";
 import { undoConnection } from "./undo-connection.js";
 
 const undoStack = [];
@@ -193,6 +194,7 @@ export function onAddAutomationClick(root) {
     item.textContent = "Automation";
     item.setAttribute("aria-label", "Automation");
     item.dataset.kind = "automation";
+    item.setAttribute("data-id", automation.id);
     list.append(item);
   }
 }
@@ -760,6 +762,20 @@ export function bindEditor(root) {
       );
       selectedReadModelItem.remove();
       selectedReadModelItem = null;
+      selected = null;
+    }
+    const automationId = selectedAutomationItem?.dataset?.id;
+    if (
+      holder &&
+      selected === "automation" &&
+      automationId &&
+      selectedAutomationItem
+    ) {
+      holder.textContent = JSON.stringify(
+        deleteAutomation(JSON.parse(holder.textContent || "{}"), automationId),
+      );
+      selectedAutomationItem.remove();
+      selectedAutomationItem = null;
       selected = null;
     }
   });

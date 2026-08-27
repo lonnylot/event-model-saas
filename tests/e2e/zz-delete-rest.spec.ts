@@ -201,3 +201,28 @@ test("After clicking `New Slice` then `Add Read Model` twice, clicking the first
   expect(after.slices[0].readModels).toHaveLength(1);
   expect(after.slices[0].readModels[0].id).toBe(lastId);
 });
+
+test("After clicking `New Slice` then `Add Automation` twice, clicking the first Timeline `Automation` listitem then the Timeline region, pressing Backspace sets the remaining Automation `id` to the Automation that was last", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Automation", exact: true }).click();
+  await page.getByRole("button", { name: "Add Automation", exact: true }).click();
+  const automations = page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Automation", exact: true });
+  await expect(automations).toHaveCount(2);
+  const before = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  const lastId = before.slices[0].processors[1].id;
+  await automations.first().click();
+  await clickTimelineRegion(page);
+  await page.keyboard.press("Backspace");
+  const after = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  expect(after.slices[0].processors).toHaveLength(1);
+  expect(after.slices[0].processors[0].id).toBe(lastId);
+});
