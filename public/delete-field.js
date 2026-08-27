@@ -1,7 +1,15 @@
-export function deleteField(model) {
+export function deleteField(model, target = "command") {
   const slices = [...(model.slices ?? [])];
   const slice = slices.at(-1);
   if (!slice) return model;
+  if (target === "event") {
+    const events = [...(slice.events ?? [])];
+    const event = events.at(-1);
+    if (!event) return model;
+    events[events.length - 1] = { ...event, fields: [] };
+    slices[slices.length - 1] = { ...slice, events };
+    return { ...model, slices };
+  }
   const commands = [...(slice.commands ?? [])];
   const command = commands.at(-1);
   if (!command) return model;

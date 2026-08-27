@@ -560,9 +560,9 @@ export function bindEditor(root) {
           }
         });
       }
-      if (selected !== "command") return;
       if (
         inspector &&
+        (selected === "command" || selected === "event") &&
         ![...inspector.querySelectorAll("button")].some(
           (item) => item.textContent === "Delete Field",
         )
@@ -578,7 +578,10 @@ export function bindEditor(root) {
           const documentHolder = root.getElementById("event-model-document");
           if (documentHolder) {
             documentHolder.textContent = JSON.stringify(
-              deleteField(JSON.parse(documentHolder.textContent || "{}")),
+              deleteField(
+                JSON.parse(documentHolder.textContent || "{}"),
+                selected,
+              ),
             );
           }
         });
