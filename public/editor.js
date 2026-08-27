@@ -27,6 +27,10 @@ import { moveActorToSlice } from "./move-actor-to-slice.js";
 import { deleteSlice } from "./delete-slice.js";
 import { deleteCommand } from "./delete-command.js";
 import { deleteConnection } from "./delete-connection.js";
+import { deleteActor } from "./delete-actor.js";
+import { deleteEvent } from "./delete-event.js";
+import { deleteReadModel } from "./delete-read-model.js";
+import { deleteAutomation } from "./delete-automation.js";
 import { undoConnection } from "./undo-connection.js";
 
 const undoStack = [];
@@ -142,6 +146,7 @@ export function onAddEventClick(root) {
     item.textContent = "Event Happened";
     item.setAttribute("aria-label", "Event Happened");
     item.dataset.kind = "event";
+    item.setAttribute("data-id", event.id);
     const port = root.createElement("button");
     port.type = "button";
     port.textContent = "Event Happened port";
@@ -165,6 +170,7 @@ export function onAddReadModelClick(root) {
     item.textContent = "Read Model";
     item.setAttribute("aria-label", "Read Model");
     item.dataset.kind = "readmodel";
+    item.setAttribute("data-id", readModel.id);
     const port = root.createElement("button");
     port.type = "button";
     port.textContent = "Read Model port";
@@ -188,6 +194,7 @@ export function onAddAutomationClick(root) {
     item.textContent = "Automation";
     item.setAttribute("aria-label", "Automation");
     item.dataset.kind = "automation";
+    item.setAttribute("data-id", automation.id);
     list.append(item);
   }
 }
@@ -723,6 +730,52 @@ export function bindEditor(root) {
       );
       selectedConnectionItem.remove();
       selectedConnectionItem = null;
+      selected = null;
+    }
+    const actorId = selectedActorItem?.dataset?.id;
+    if (holder && selected === "actor" && actorId && selectedActorItem) {
+      holder.textContent = JSON.stringify(
+        deleteActor(JSON.parse(holder.textContent || "{}"), actorId),
+      );
+      selectedActorItem.remove();
+      selectedActorItem = null;
+      selected = null;
+    }
+    const eventId = selectedEventItem?.dataset?.id;
+    if (holder && selected === "event" && eventId && selectedEventItem) {
+      holder.textContent = JSON.stringify(
+        deleteEvent(JSON.parse(holder.textContent || "{}"), eventId),
+      );
+      selectedEventItem.remove();
+      selectedEventItem = null;
+      selected = null;
+    }
+    const readModelId = selectedReadModelItem?.dataset?.id;
+    if (
+      holder &&
+      selected === "readmodel" &&
+      readModelId &&
+      selectedReadModelItem
+    ) {
+      holder.textContent = JSON.stringify(
+        deleteReadModel(JSON.parse(holder.textContent || "{}"), readModelId),
+      );
+      selectedReadModelItem.remove();
+      selectedReadModelItem = null;
+      selected = null;
+    }
+    const automationId = selectedAutomationItem?.dataset?.id;
+    if (
+      holder &&
+      selected === "automation" &&
+      automationId &&
+      selectedAutomationItem
+    ) {
+      holder.textContent = JSON.stringify(
+        deleteAutomation(JSON.parse(holder.textContent || "{}"), automationId),
+      );
+      selectedAutomationItem.remove();
+      selectedAutomationItem = null;
       selected = null;
     }
   });
