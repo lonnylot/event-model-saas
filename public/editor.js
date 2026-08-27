@@ -663,7 +663,9 @@ export function bindEditor(root) {
       holder.textContent = JSON.stringify(appendCommand(model, index));
     }
     if (event.code === "Digit3") {
-      holder.textContent = JSON.stringify(appendEvent(model));
+      const index =
+        selectedSliceIndex ?? (model.slices?.length ?? 1) - 1;
+      holder.textContent = JSON.stringify(appendEvent(model, index));
     }
     if (event.code === "Digit4") {
       holder.textContent = JSON.stringify(appendReadModel(model));

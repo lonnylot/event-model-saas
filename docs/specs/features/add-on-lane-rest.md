@@ -13,7 +13,7 @@ Dashed lane buttons exist for every kind, and `Add Command on lane` plus selecte
 - [x] After clicking `New Slice` twice, clicking the first `Add Read Model on lane` appends a Read Model only on the first Slice
 - [x] After clicking `New Slice` twice, clicking the first `Add Automation on lane` appends an Automation only on the first Slice
 - [x] After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing ⌥⌘1 appends an Actor only on the first Slice
-- [ ] After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing ⌥⌘3 appends an Event only on the first Slice
+- [x] After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing ⌥⌘3 appends an Event only on the first Slice
 - [ ] After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing ⌥⌘4 appends a Read Model only on the first Slice
 - [ ] After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing ⌥⌘5 appends an Automation only on the first Slice
 

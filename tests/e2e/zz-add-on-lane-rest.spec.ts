@@ -181,3 +181,21 @@ test("After clicking `New Slice` twice, clicking the first `New Slice` listitem 
   expect(slices[0].actors).toHaveLength(1);
   expect(slices.at(-1).actors).toEqual([]);
 });
+
+test("After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing ⌥⌘3 appends an Event only on the first Slice", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await clickNewSlice(page);
+  await page
+    .getByRole("listitem", { name: "New Slice", exact: true })
+    .first()
+    .click();
+  await page.getByRole("region", { name: "Timeline", exact: true }).click();
+  await page.keyboard.press("Alt+ControlOrMeta+Digit3");
+  const json = await page.locator("#event-model-document").textContent();
+  const slices = JSON.parse(json ?? "{}").slices;
+  expect(slices[0].events).toHaveLength(1);
+  expect(slices.at(-1).events).toEqual([]);
+});
