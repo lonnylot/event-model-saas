@@ -79,6 +79,7 @@ export function onAddEventClick(root) {
     const item = root.createElement("li");
     item.textContent = "Event Happened";
     item.setAttribute("aria-label", "Event Happened");
+    item.dataset.kind = "event";
     const port = root.createElement("button");
     port.type = "button";
     port.textContent = "Event Happened port";
@@ -233,6 +234,12 @@ export function bindEditor(root) {
       selected = "command";
       selectedCommandItem = item;
       bindName("Command");
+      return;
+    }
+    if (item.dataset.kind === "event") {
+      if (inspector && !nameInput()) {
+        inspector.insertAdjacentHTML("beforeend", "<label>Name <input /></label>");
+      }
       return;
     }
     if (item.dataset.kind !== "actor") return;
