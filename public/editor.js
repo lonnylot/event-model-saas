@@ -682,6 +682,47 @@ export function bindEditor(root) {
       }
     });
   };
+  const lastSliceTypeLabel = () => {
+    const holder = root.getElementById("event-model-document");
+    const model = JSON.parse(holder?.textContent || "{}");
+    const sliceType = model.slices?.at(-1)?.sliceType;
+    if (sliceType === "STATE_VIEW") return "State View";
+    if (sliceType === "AUTOMATION") return "Automation";
+    return "State Change";
+  };
+  const typeSelect = () => inspector?.querySelector("select");
+  const unbindType = () => {
+    typeSelect()?.closest("label")?.remove();
+  };
+  const bindType = (value) => {
+    if (!inspector || selected !== "slice") {
+      unbindType();
+      return;
+    }
+    let select = typeSelect();
+    if (!select) {
+      inspector.insertAdjacentHTML(
+        "beforeend",
+        "<label>Type <select><option>State Change</option><option>State View</option><option>Automation</option></select></label>",
+      );
+      select = typeSelect();
+      select?.addEventListener("change", () => {
+        const sliceType =
+          select.value === "State View"
+            ? "STATE_VIEW"
+            : select.value === "Automation"
+              ? "AUTOMATION"
+              : "STATE_CHANGE";
+        const holder = root.getElementById("event-model-document");
+        if (holder) {
+          holder.textContent = JSON.stringify(
+            setSliceType(JSON.parse(holder.textContent || "{}"), sliceType),
+          );
+        }
+      });
+    }
+    if (select) select.value = value;
+  };
   const bindName = (value) => {
     if (!inspector) return;
     let input = nameInput();
@@ -813,6 +854,7 @@ export function bindEditor(root) {
       }
       bindAddField();
       bindDescription(lastCommandDescription());
+      unbindType();
       return;
     }
     if (item.dataset.kind === "event") {
@@ -823,6 +865,8 @@ export function bindEditor(root) {
       bindAddField();
       bindDescription();
       unbindFieldRow();
+      unbindFieldName();
+      unbindType();
       return;
     }
     if (item.dataset.kind === "readmodel") {
@@ -833,6 +877,8 @@ export function bindEditor(root) {
       bindAddField();
       bindDescription();
       unbindFieldRow();
+      unbindFieldName();
+      unbindType();
       return;
     }
     if (item.dataset.kind === "automation") {
@@ -843,6 +889,8 @@ export function bindEditor(root) {
       bindAddField();
       bindDescription();
       unbindFieldRow();
+      unbindFieldName();
+      unbindType();
       return;
     }
     if (item.dataset.kind !== "actor") return;
@@ -852,6 +900,9 @@ export function bindEditor(root) {
     if (omitGetRenderedInspectChrome(item)) return;
     bindDescription();
     unbindFieldChrome();
+    unbindAddField();
+    unbindFieldName();
+    unbindType();
   });
   timeline?.addEventListener("click", (event) => {
     const line = event.target?.closest?.("p");
@@ -870,6 +921,9 @@ export function bindEditor(root) {
     bindName("New Slice");
     bindDescription();
     unbindFieldChrome();
+    unbindAddField();
+    unbindFieldName();
+    bindType(lastSliceTypeLabel());
   });
   root.querySelector("h1")?.addEventListener("click", () => {
     selected = "model";
