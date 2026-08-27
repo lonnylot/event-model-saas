@@ -369,6 +369,17 @@ export function bindEditor(root) {
     const indexAttr = item.getAttribute("data-slice-index");
     selectedSliceIndex = indexAttr === null ? null : Number(indexAttr);
     bindName("New Slice");
+    if (
+      inspector &&
+      ![...inspector.querySelectorAll("label")].some((label) =>
+        label.textContent?.includes("Description"),
+      )
+    ) {
+      inspector.insertAdjacentHTML(
+        "beforeend",
+        "<label>Description <input /></label>",
+      );
+    }
   });
   root.addEventListener("keydown", (event) => {
     if (

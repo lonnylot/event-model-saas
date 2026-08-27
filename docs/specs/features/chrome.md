@@ -40,12 +40,12 @@ Event Model, Slice, Actor, Team, Person, Version
 
 ## Out of scope
 
-Description, Fields, and Slice type picker stay later. Inspecting a Connection, inspect after reload, multi-item Name binding, Actor Name Unsaved changes, model-level Title, Mac window chrome. Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md). Keyboard shortcuts for this slice's keys, delete, drag blocks between Slices, undo, pan, and moving Slices are [canvas.md](./canvas.md). Highlighting legal targets is [connection-feedback.md](./connection-feedback.md). Dashed Add on a lane and keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane.md).
+Description is [inspect-description.md](./inspect-description.md). Fields and Slice type picker stay later. Inspecting a Connection, inspect after reload, multi-item Name binding, Actor Name Unsaved changes, model-level Title, Mac window chrome. Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md). Keyboard shortcuts for this slice's keys, delete, drag blocks between Slices, undo, pan, and moving Slices are [canvas.md](./canvas.md). Highlighting legal targets is [connection-feedback.md](./connection-feedback.md). Dashed Add on a lane and keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane.md).
 
 ## Restates
 
-- [editor-shell.md](./editor-shell.md) — Out of scope no longer owns inspector fields for Slice and Actor Name; this slice owns those. Description, fields, and type picker stay later.
-- [blocks.md](./blocks.md) — Out of scope no longer owns Slice or Actor selection; this slice owns those. Inspector fields other than Name stay later.
+- [editor-shell.md](./editor-shell.md) — Out of scope no longer owns inspector fields for Slice and Actor Name; this slice owns those. Description is [inspect-description.md](./inspect-description.md). Fields and Slice type picker stay later.
+- [blocks.md](./blocks.md) — Out of scope no longer owns Slice or Actor selection; this slice owns those. Description is [inspect-description.md](./inspect-description.md). Inspector fields other than Name stay later.
 - [connections.md](./connections.md) — Out of scope no longer owns Inspector Name for Slice and Actor; this slice owns those.
 - [model-persistence.md](./model-persistence.md) — Out of scope no longer owns inspector fields for Slice and Actor Name; this slice owns those.
-- [product.md](../product.md) — Playwright path for this slice is open Event Model, New Slice, click New Slice, fill Name with Checkout, Save, reload still lists Checkout. Description, Fields, and Slice type picker stay later. Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md).
+- [product.md](../product.md) — Playwright path for this slice is open Event Model, New Slice, click New Slice, fill Name with Checkout, Save, reload still lists Checkout. Description is [inspect-description.md](./inspect-description.md). Fields and Slice type picker stay later. Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md).

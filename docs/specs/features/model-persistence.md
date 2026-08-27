@@ -89,7 +89,7 @@ Event Model, Team, Person, Version, Slice
 
 ## Out of scope
 
-Mac window chrome, document history. Keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane.md). Undo, pan, and moving Slices are [canvas.md](./canvas.md). Editor canvas, New Slice, zoom, and the dirty indicator are [editor-shell.md](./editor-shell.md). Actors, commands, events, read models, and automations are [blocks.md](./blocks.md). Connections are [connections.md](./connections.md). Slice and Actor Name are [chrome.md](./chrome.md). Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md). Description, Fields, and Slice type picker stay later.
+Mac window chrome, document history. Keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane.md). Undo, pan, and moving Slices are [canvas.md](./canvas.md). Editor canvas, New Slice, zoom, and the dirty indicator are [editor-shell.md](./editor-shell.md). Actors, commands, events, read models, and automations are [blocks.md](./blocks.md). Connections are [connections.md](./connections.md). Slice and Actor Name are [chrome.md](./chrome.md). Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md). Description is [inspect-description.md](./inspect-description.md). Fields and Slice type picker stay later.
 
 ## Restates
 

@@ -42,6 +42,10 @@ _Avoid_: arrow, link, wire
 A named typed property on a command, event, read model, or automation (`String`, `Boolean`, `Int`, `Long`, `Double`, `Decimal`, `Date`, `DateTime`, `UUID`, `Custom`).
 _Avoid_: attribute, property (as the schema name)
 
+**Description**:
+Free-text on an Event Model, Slice, Actor, Command, Event, Read Model, or Automation. It is not a Field.
+_Avoid_: notes, blurb, body (as the inspector label)
+
 **Team**:
 A named group created only by the site admin. Every Event Model belongs to exactly one Team. Every Person on the Team may edit every Event Model on that Team.
 _Avoid_: org, organization, workspace, account

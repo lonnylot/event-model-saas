@@ -41,7 +41,7 @@ Event Model, Slice, Actor, Command, Event, Connection, Team, Person, Version
 
 ## Out of scope
 
-Pinch pan, sidebar drag-reorder, ⌥⌘→, extra move/delete/undo toolbar buttons, drag of Command / Event / Read Model / Automation between Slices, delete of a block or Connection except undo of a Connection, undo of move / delete / Add, Inspector Description / Fields / Slice type picker, inspect after reload, multi-item Name binding, Mac window chrome. Dashed Add on a lane and keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane.md). Highlighting legal targets, snap-back, reason on the source, and Event → Command are [connection-feedback.md](./connection-feedback.md). Other illegal pairs stay later.
+Pinch pan, sidebar drag-reorder, ⌥⌘→, extra move/delete/undo toolbar buttons, drag of Command / Event / Read Model / Automation between Slices, delete of a block or Connection except undo of a Connection, undo of move / delete / Add, Inspector Description is [inspect-description.md](./inspect-description.md). Fields, Slice type picker, inspect after reload, multi-item Name binding, Mac window chrome. Dashed Add on a lane and keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane.md). Highlighting legal targets, snap-back, reason on the source, and Event → Command are [connection-feedback.md](./connection-feedback.md). Other illegal pairs stay later.
 
 ## Restates
 
