@@ -474,6 +474,9 @@ export function bindEditor(root) {
         }
       }
     }
+    for (const highlighted of root.querySelectorAll("[aria-current]")) {
+      highlighted.removeAttribute("aria-current");
+    }
     sourcePort = null;
   });
 }
