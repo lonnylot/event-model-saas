@@ -1469,6 +1469,35 @@ export function bindEditor(root) {
         if (entry === "readmodel") onAddReadModelClick(root);
         if (entry === "automation") onAddAutomationClick(root);
         if (entry === "slice") onNewSliceClick(root);
+        if (entry === "connection") {
+          const model = JSON.parse(holder.textContent || "{}");
+          const command = (model.slices ?? [])
+            .flatMap((slice) => slice.commands ?? [])
+            .at(-1);
+          const eventBlock = (model.slices ?? [])
+            .flatMap((slice) => slice.events ?? [])
+            .at(-1);
+          if (command && eventBlock) {
+            holder.textContent = JSON.stringify(
+              appendConnection(model, {
+                fromID: command.id,
+                fromKind: "COMMAND",
+                toID: eventBlock.id,
+                toKind: "EVENT",
+              }),
+            );
+            const timelineEl = root.querySelector('[aria-label="Timeline"]');
+            if (timelineEl) {
+              const stored = JSON.parse(holder.textContent || "{}");
+              const connection = (stored.connections ?? []).at(-1);
+              const p = root.createElement("p");
+              p.textContent = "Command → Event Happened";
+              if (connection) p.dataset.id = connection.id;
+              timelineEl.append(p);
+            }
+            undoStack.push("connection");
+          }
+        }
         if (entry?.kind === "move") {
           const sliceId = entry.sliceId;
           const model = JSON.parse(holder.textContent || "{}");
@@ -1916,6 +1945,7 @@ export function bindEditor(root) {
         for (const node of [...(timeline?.querySelectorAll("p") ?? [])]) {
           if (node.textContent === "Command → Event Happened") node.remove();
         }
+        redoStack.push("connection");
         return;
       }
       if (kind !== "slice") return;

@@ -827,3 +827,21 @@ test("After clicking `New Slice`, pressing ⌘Z, then pressing ⇧⌘Z, a listit
   await page.keyboard.press("Shift+ControlOrMeta+z");
   await expect(timelineSlice).toBeVisible();
 });
+
+test("After dragging from `Command port` onto `Event Happened port`, pressing ⌘Z, then pressing ⇧⌘Z, the Timeline region shows the text `Command → Event Happened`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Command port", exact: true })
+    .dragTo(page.getByRole("button", { name: "Event Happened port", exact: true }));
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  await expect(timeline.getByText("Command → Event Happened", { exact: true })).toBeVisible();
+  await page.keyboard.press("ControlOrMeta+z");
+  await expect(timeline.getByText("Command → Event Happened", { exact: true })).toHaveCount(0);
+  await page.keyboard.press("Shift+ControlOrMeta+z");
+  await expect(timeline.getByText("Command → Event Happened", { exact: true })).toBeVisible();
+});
