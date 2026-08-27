@@ -18,7 +18,7 @@ Terms from `CONTEXT.md` this feature uses. New terms are added to `CONTEXT.md` i
 
 ## Seams
 
-Which architecture seams this feature crosses. Name them when the product has an architecture spec; otherwise name the module interface the tests will call.
+Which architecture seams this feature crosses. Name them when the product has an architecture spec; otherwise name the module interface the tests will call. Seams that name a call path production does not take, or mutations the stack does not record, contradict the ACs (`keeping-specs-current`).
 
 ## Events
 
