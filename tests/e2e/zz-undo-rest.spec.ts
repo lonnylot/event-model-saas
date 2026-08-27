@@ -812,3 +812,18 @@ test("After clicking `New Slice` then `Add Automation` twice, clicking the first
   expect(afterRedo.slices[0].processors).toHaveLength(1);
   expect(afterRedo.slices[0].processors[0].id).toBe(lastId);
 });
+
+test("After clicking `New Slice`, pressing ⌘Z, then pressing ⇧⌘Z, a listitem whose accessible name is `New Slice` is shown", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  const timelineSlice = page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "New Slice", exact: true });
+  await expect(timelineSlice).toBeVisible();
+  await page.keyboard.press("ControlOrMeta+z");
+  await expect(timelineSlice).toHaveCount(0);
+  await page.keyboard.press("Shift+ControlOrMeta+z");
+  await expect(timelineSlice).toBeVisible();
+});

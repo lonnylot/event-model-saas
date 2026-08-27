@@ -1468,6 +1468,7 @@ export function bindEditor(root) {
         if (entry === "event") onAddEventClick(root);
         if (entry === "readmodel") onAddReadModelClick(root);
         if (entry === "automation") onAddAutomationClick(root);
+        if (entry === "slice") onNewSliceClick(root);
         if (entry?.kind === "move") {
           const sliceId = entry.sliceId;
           const model = JSON.parse(holder.textContent || "{}");
@@ -1926,6 +1927,7 @@ export function bindEditor(root) {
       timelineList
         ?.querySelector(`li[data-id="${last.id}"]:not([data-kind])`)
         ?.remove();
+      redoStack.push("slice");
       return;
     }
     if (
