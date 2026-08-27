@@ -13,6 +13,7 @@ import { setActorDescription } from "./set-actor-description.js";
 import { setCommandTitle } from "./set-command-title.js";
 import { setCommandDescription } from "./set-command-description.js";
 import { setEventDescription } from "./set-event-description.js";
+
 import { appendField } from "./append-field.js";
 import { setFieldName } from "./set-field-name.js";
 import { setEventTitle } from "./set-event-title.js";
@@ -701,6 +702,11 @@ export function bindEditor(root) {
     const model = JSON.parse(holder?.textContent || "{}");
     return model.slices?.at(-1)?.events?.at(-1)?.description ?? "";
   };
+  const lastReadModelDescription = () => {
+    const holder = root.getElementById("event-model-document");
+    const model = JSON.parse(holder?.textContent || "{}");
+    return model.slices?.at(-1)?.readModels?.at(-1)?.description ?? "";
+  };
   const lastSliceTypeLabel = () => {
     const holder = root.getElementById("event-model-document");
     const model = JSON.parse(holder?.textContent || "{}");
@@ -973,10 +979,14 @@ export function bindEditor(root) {
       selected = "readmodel";
       selectedReadModelItem = item;
       bindName(item.getAttribute("aria-label") ?? "Read Model");
-      if (omitGetRenderedInspectChrome(item)) return;
+      if (omitGetRenderedInspectChrome(item)) {
+        bindDescription(lastReadModelDescription());
+        return;
+      }
       bindAddField();
       bindDescription();
       unbindFieldRow();
+      bindDescription(lastReadModelDescription());
       unbindFieldName();
       unbindType();
       unbindAddField();
