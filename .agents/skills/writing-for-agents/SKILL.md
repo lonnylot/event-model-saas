@@ -37,8 +37,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Unit `not.toContain("<li>X</li>")` for a does-not-show listitem | `testing` |
 | Clicking-appends tested at a function production never calls | `testing` |
 | Dragging-appends unit that passes the kind already in the input | `testing` |
-| Same-control Name values that never select the other entity (Command vs Event / Read Model / Automation) | `testing` |
-| Does-not-show after insert-if-missing leftover chrome (Add Field / Field name after Command then Actor) | `testing`, `tdd-loop`, `playwright-e2e` |
+| Same-control Name values that never select the other entity (Command vs Event / Read Model / Automation; first-click-wins / insert-if-missing) | `testing` |
 | "that Slice" / clicked-item / Backspace AC with only one item / always-delete-last / one New Slice | `testing`, `keeping-specs-current`, `playwright-e2e` |
 | Empty stub `it` / checked AC with no assertion | `testing`, `tdd-loop` |
 | Module / seam / adapter vocabulary | `codebase-design` |
