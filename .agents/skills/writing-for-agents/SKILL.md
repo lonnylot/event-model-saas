@@ -23,7 +23,9 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Test layers or seams | `testing`, `tdd-loop` |
 | Commit / branch / PR / CI | `logical-commits`, `github-ci-loop` |
 | YAML event prefix / `pull_request_target` | `testing`, `github-ci-loop` |
-| Review or release gate | `spec-review-loop`, `releasing-a-spec`, `spec-reviewer` |
+| Review or release gate | `spec-review-loop`, `releasing-a-spec`, `spec-reviewer`, `release-manager` |
+| Orchestrator vs implementer / no production code in the main session | `releasing-a-spec`, `spec-implementer` |
+| Unmergeable PR / rebase onto default / merge conflict | `spec-implementer` (algorithm); `github-ci-loop` and `release-manager` fail closed |
 | After merge, learn from review | `post-merge-improvement`, `post-merge-improver` |
 | Two or more feat/ PRs at once | `parallel-feature-work`, `using-git-worktrees`, `releasing-a-spec` |
 | Playwright / flow CI | `playwright-e2e`, `testing` |
@@ -40,13 +42,12 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Architecture adapter constructed only under a test flag / injected `env.documents` / construction parked in Assumptions | `testing`, `codebase-design`, `keeping-specs-current` |
 | Architecture-named store never constructed in a test / each new SQL untested | `testing` |
 | Packed "and" AC / independent env/branch cases | `testing`, `keeping-specs-current` |
-| Early-return 400 vs does not create / persist-then-400 / copy toKind for every target | `logical-commits`, `testing` |
 | Assumption vs acceptance criterion | `keeping-specs-current` |
-| Restated AC with leftover sections / leftover Assumptions after Out of scope / leftover Seams after deleting a named module / leftover test title / leftover Restates | `keeping-specs-current` |
+| Restated AC with leftover sections / leftover Assumptions after Out of scope / leftover Seams after deleting a named module / leftover test title / leftover Restates / leftover locked claims in a restated system spec | `keeping-specs-current` |
 | 303/redirect AC vs a shows bullet on the same path | `keeping-specs-current` |
 | product.md leftover locked words / later-slice Playwright `add a slice` / leftover Restates quoting old product.md Playwright / leftover Document flow schema-reject / leftover Editor (Mac parity) after restating Testing highlighting / copying a schema file instead of restating / Next slice still names a released slug / removing product.md from Restates | `keeping-specs-current` |
 | Domain terms line without a `CONTEXT.md` entry | `keeping-specs-current`, `domain-modeling` |
-| Independently revertible ACs / grouping by screen / spec-only / fromKind vs toKind | `logical-commits` |
+| Independently revertible ACs / grouping by screen / spec-only / fromKind vs toKind / reconstruct after tests-after | `logical-commits` |
 | Tests-after / production that landed as a dependency / tests-only commit on top / folding tests-after into sibling production / click-path production after field tests / follow-up rewrite onto click path / fold reload when GET already hydrates | `logical-commits` |
 | Review-thread batch / commit subject names two threads with "and" | `logical-commits` |
 | Extra visible chrome / document title / extra form or link or extra nav on a route / extra inspect of Out of scope kinds / extra host observability without an AC | `keeping-specs-current` |
