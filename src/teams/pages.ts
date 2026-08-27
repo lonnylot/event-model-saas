@@ -36,7 +36,7 @@ export function pickerHtml(
     email,
     isSiteAdmin,
     `<h1>Your teams</h1>${links}`,
-    { head: `<link rel="stylesheet" href="/shell.css">`, bodyClass: "app-picker" },
+    { head: `<link rel="stylesheet" href="/shell.css">`, bodyClass: "app-picker", lead: `<p><a href="/app">Event Model</a></p>` },
   );
 }
 

@@ -233,3 +233,14 @@ test("GET `/app` as a Person with two Teams `body` computed `background-color` i
     "rgb(247, 244, 238)",
   );
 });
+
+
+test("GET `/app` as a Person with two Teams shows a link whose accessible name is `Event Model`", async ({
+  page,
+}) => {
+  await page.request.post("/api/test/picker-session");
+  await page.goto("/app");
+  await expect(
+    page.getByRole("link", { name: "Event Model", exact: true }),
+  ).toBeVisible();
+});

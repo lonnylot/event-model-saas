@@ -34,7 +34,7 @@ Login, 404, expired magic link, and signed-in team pages are unstyled HTML: emai
 - [x] GET `/app` as a Person who is not site admin with no teams `body` computed `background-color` is `rgb(247, 244, 238)`
 - [x] GET `/app` as a Person who is not site admin with no teams shows a link whose accessible name is `Event Model`
 - [x] GET `/app` as a Person with two Teams `body` computed `background-color` is `rgb(247, 244, 238)`
-- [ ] GET `/app` as a Person with two Teams shows a link whose accessible name is `Event Model`
+- [x] GET `/app` as a Person with two Teams shows a link whose accessible name is `Event Model`
 - [ ] GET `/app/teams/{id}` as a member `body` computed `background-color` is `rgb(247, 244, 238)`
 - [ ] GET `/app/teams/{id}` as a member shows a link whose accessible name is `Event Model`
 - [ ] GET `/app/admin/teams` as site admin `body` computed `background-color` is `rgb(247, 244, 238)`
