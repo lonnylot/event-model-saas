@@ -151,6 +151,31 @@ test("After clicking `New Slice` then `Add Event`, pressing ⌘Z does not show a
   ).toHaveCount(0);
 });
 
+test("After clicking `New Slice` then `Add Event`, pressing ⌘Z, then pressing ⇧⌘Z, the Timeline region shows a listitem whose accessible name is `Event Happened`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Event Happened", exact: true }),
+  ).toBeVisible();
+  await page.keyboard.press("ControlOrMeta+z");
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Event Happened", exact: true }),
+  ).toHaveCount(0);
+  await page.keyboard.press("Shift+ControlOrMeta+z");
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Event Happened", exact: true }),
+  ).toBeVisible();
+});
+
 test("After clicking `New Slice` then `Add Read Model`, pressing ⌘Z does not show a listitem whose accessible name is `Read Model`", async ({
   page,
 }) => {

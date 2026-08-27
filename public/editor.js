@@ -1465,6 +1465,7 @@ export function bindEditor(root) {
         const entry = redoStack.pop();
         if (entry === "command") onAddCommandClick(root);
         if (entry === "actor") onAddActorClick(root);
+        if (entry === "event") onAddEventClick(root);
         return;
       }
       const entry = undoStack.pop();
@@ -1700,6 +1701,7 @@ export function bindEditor(root) {
           .filter((item) => item.getAttribute("aria-label") === "Event Happened")
           .at(-1)
           ?.remove();
+        redoStack.push("event");
         return;
       }
       if (kind === "actor") {
