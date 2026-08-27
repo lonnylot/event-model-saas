@@ -1,6 +1,6 @@
 # Canvas
 
-Status: validated
+Status: released
 
 ## Problem
 

@@ -22,6 +22,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Connections | [features/connections.md](./features/connections.md) | released |
 | Chrome | [features/chrome.md](./features/chrome.md) | released |
 | Inspect blocks | [features/inspect-blocks.md](./features/inspect-blocks.md) | released |
-| Canvas | [features/canvas.md](./features/canvas.md) | validated |
+| Canvas | [features/canvas.md](./features/canvas.md) | released |
 
 Status: `draft` → `validated` → `released`.
