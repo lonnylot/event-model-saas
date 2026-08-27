@@ -316,3 +316,44 @@ test("After dragging from `Command port` onto `Event Happened port` twice, click
     timeline.locator("p").filter({ hasText: "Command → Event Happened" }),
   ).toHaveCount(2);
 });
+
+async function clickTimelineAwayFromItems(page: Page) {
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  await timeline.click({ position: { x: 1, y: 1 } });
+}
+
+test("After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem then the Timeline region, pressing Backspace, then pressing ⌘Z, the remaining Actor `id` is the Actor that was last and the first Actor `id` is the Actor that was first", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Actor", exact: true }).click();
+  await page.getByRole("button", { name: "Add Actor", exact: true }).click();
+  const before = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  const firstId = before.slices[0].actors[0].id;
+  const lastId = before.slices[0].actors[1].id;
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Actor", exact: true })
+    .first()
+    .click();
+  await clickTimelineAwayFromItems(page);
+  await page.keyboard.press("Backspace");
+  const afterDelete = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  expect(afterDelete.slices[0].actors).toHaveLength(1);
+  expect(afterDelete.slices[0].actors[0].id).toBe(lastId);
+  await page.keyboard.press("ControlOrMeta+z");
+  const afterUndo = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  expect(afterUndo.slices[0].actors[0].id).toBe(firstId);
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Actor", exact: true }),
+  ).toHaveCount(2);
+});

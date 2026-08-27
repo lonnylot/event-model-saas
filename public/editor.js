@@ -55,6 +55,8 @@ import { deleteCommand } from "./delete-command.js";
 import { restoreCommand } from "./restore-command.js";
 import { restoreConnection } from "./restore-connection.js";
 import { deleteConnection } from "./delete-connection.js";
+import { deleteActor } from "./delete-actor.js";
+import { restoreActor } from "./restore-actor.js";
 
 const undoStack = [];
 const redoStack = [];
@@ -1467,6 +1469,28 @@ export function bindEditor(root) {
       const entry = undoStack.pop();
       const kind = typeof entry === "string" ? entry : entry?.kind;
 
+      if (kind === "deleteActor") {
+        holder.textContent = JSON.stringify(
+          restoreActor(
+            JSON.parse(holder.textContent || "{}"),
+            entry.actor,
+            entry.sliceId,
+            entry.index,
+          ),
+        );
+        const list = root.querySelector('[aria-label="Timeline"] ul');
+        if (list && entry.actor) {
+          const item = root.createElement("li");
+          item.textContent = "Actor";
+          item.setAttribute("aria-label", "Actor");
+          item.dataset.kind = "actor";
+          item.setAttribute("data-id", entry.actor.id);
+          const before = list.children[entry.index];
+          if (before) list.insertBefore(item, before);
+          else list.append(item);
+        }
+        return;
+      }
       if (kind === "deleteConnection") {
         holder.textContent = JSON.stringify(
           restoreConnection(
@@ -1660,6 +1684,30 @@ export function bindEditor(root) {
     if (event.key !== "Backspace" && event.key !== "Delete") return;
     if (event.target instanceof HTMLInputElement) return;
     const holder = root.getElementById("event-model-document");
+    if (holder && selected === "actor" && selectedActorItem) {
+      const actorId = selectedActorItem.dataset.id;
+      const model = JSON.parse(holder.textContent || "{}");
+      const slice = (model.slices ?? []).find((s) =>
+        (s.actors ?? []).some((actor) => actor.id === actorId),
+      );
+      const index = slice
+        ? (slice.actors ?? []).findIndex((actor) => actor.id === actorId)
+        : -1;
+      const actor = index >= 0 ? slice.actors[index] : undefined;
+      holder.textContent = JSON.stringify(deleteActor(model, actorId));
+      selectedActorItem.remove();
+      if (actor && slice && index >= 0) {
+        undoStack.push({
+          kind: "deleteActor",
+          actor,
+          sliceId: slice.id,
+          index,
+        });
+      }
+      selectedActorItem = null;
+      selected = null;
+      return;
+    }
     if (holder && selected === "connection" && selectedConnectionNode) {
       const connectionId = selectedConnectionNode.dataset.id;
       const model = JSON.parse(holder.textContent || "{}");
