@@ -7,7 +7,8 @@ description: >
   commit, when a spec-only commit lists every AC, reconstruct after
   tests-after already landed, when production
   landed as a dependency of another AC, when several review threads
-  share a commit, when a commit subject names two threads with "and",
+  share a commit (leftover-hide unbindAddField vs unbindFieldName),
+  when a commit subject names two threads with "and",
   when folding tests-after into a sibling production commit,
   when adding a tests-only commit on top after review,
   when a review strengthens tests for ACs whose production already landed,
@@ -70,7 +71,7 @@ When a later checkbox's proof stays green with no new production (GET already hy
 | "Checkpoint before I forget" | Unfinished slices are not logical. Finish GREEN, then commit. |
 | "Spec in a follow-up commit" | Same-commit spec update is the iron law. |
 | "One screen is one commit" | Grouping by screen is the miss. Split independently revertible ACs. |
-| "One drag is one commit" | fromKind vs toKind are two checkboxes. Land EVENT toKind only, then READMODEL. |
+| "One drag is one commit" | fromKind vs toKind are two checkboxes. Land EVENT toKind only, then READMODEL. Leftover-hide `unbindAddField` vs `unbindFieldName` is the same split. |
 | "Reload is a second checkbox so a second commit" | GET already hydrates that field. Fold the proof or unsplit the bullet. |
 | "Spec first, then one feat" | Spec hunk lands with the first production that implements it. |
 | "I'll fold tests-after in a follow-up on top of HEAD" | Reconstruct into the production commit. A follow-up cannot un-do tests-after. |
@@ -78,4 +79,4 @@ When a later checkbox's proof stays green with no new production (GET already hy
 
 ## Red flags
 
-Empty or "WIP" messages on a PR. Default-branch commits for a feature. Code committed without the spec hunk that describes it. Dedicated tests in a follow-up commit after the production that needed them. A follow-up on top of HEAD to "fold" tests-after. Production that landed early as a dependency, then a later test-only commit for that criterion. One commit that ships several independent ACs together. One commit that batches several review-thread fixes. A commit subject that names two new ACs or two review threads with "and". Spec-only then one feat. Grouped by screen. fromKind and toKind in one commit. A toKind commit that already copies toKind for every target, so the next toKind AC is test-only. A tests-only reload commit when GET already hydrates that field. A tests-only commit added after review is still tests-after. A tests-only wait-after-open helper on HEAD is tests-after. Folding that helper onto HEAD does not reconstruct it. A follow-up that rewrites tests onto the click path is still a follow-up. Folding several tests-after into one production commit is still grouping. Folding a no-unique-production proof into the commit that wrote the field is not grouping.
+Empty or "WIP" messages on a PR. Default-branch commits for a feature. Code committed without the spec hunk that describes it. Dedicated tests in a follow-up commit after the production that needed them. A follow-up on top of HEAD to "fold" tests-after. Production that landed early as a dependency, then a later test-only commit for that criterion. One commit that ships several independent ACs together. One commit that batches several review-thread fixes (leftover-hide `unbindAddField` vs `unbindFieldName`). A commit subject that names two new ACs or two review threads with "and". Spec-only then one feat. Grouped by screen. fromKind and toKind in one commit. A toKind commit that already copies toKind for every target, so the next toKind AC is test-only. A tests-only reload commit when GET already hydrates that field. A tests-only commit added after review is still tests-after. A tests-only wait-after-open helper on HEAD is tests-after. Folding that helper onto HEAD does not reconstruct it. A follow-up that rewrites tests onto the click path is still a follow-up. Folding several tests-after into one production commit is still grouping. Folding a no-unique-production proof into the commit that wrote the field is not grouping.

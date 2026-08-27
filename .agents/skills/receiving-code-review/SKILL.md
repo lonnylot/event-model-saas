@@ -7,6 +7,7 @@ description: >
   always-delete-last tests-only follow-up, a unique assertion restated after
   weaker includes-scale production, a targeting packed "and" split into two weaker
   it titles, a tests-only Playwright wait / wait-after-open helper after production,
+  several review threads in one commit (leftover-hide unbindAddField vs unbindFieldName),
   or when feedback is unclear or looks wrong.
 ---
 
