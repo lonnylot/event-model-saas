@@ -5,6 +5,7 @@ description: >
   Playwright tests, mapping acceptance criteria to tests, checking a
   weaker-reading fixture, unit `toContain(">X<")` for a named link or button,
   unit `not.toContain("<li>X</li>")` for a does-not-show listitem,
+  `includes scale(` / `toContain("scale(")` when canvas pan already writes `scale(1)`,
   clicking-appends tested at a function production never calls,
   dragging-appends unit that passes the kind already in the input,
   same-control Name values that never select the other entity
@@ -69,6 +70,7 @@ A criterion that names a screen, "shows", or "lists" is proven at the app or flo
    | Accessible name **is** `X` | Playwright `name: "X"` without `exact: true` (matches `Xyz`) |
    | Named link/button/textbox `X` (unit HTML) | `toContain(">X<")` (heading or span named X stays green) |
    | Exact script / command value | Unordered `toContain` of each token (`echo playwright test`) |
+   | "includes `scale(`" / `toContain("scale(")` | Canvas pan already writes `scale(1)`; deleting the unique ctrl/meta branch stays green |
    | YAML key / workflow event | Prefix match (`/pull_request:/` also hits `pull_request_target:`) |
    | "does not show a control named X" | Querying only `button` and `link` (checkbox/menuitem named X stays green) |
    | "does not show a listitem whose accessible name is X" (unit HTML) | `not.toContain("<li>X</li>")` (exact tag; `<li aria-label="X">` stays green) |

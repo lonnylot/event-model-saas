@@ -33,6 +33,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Wait for New Slice after click / named Ports before pointer-down / force hover vs Timeline pan | `playwright-e2e`, `tdd-loop` |
 | Accessible name **is** X / Playwright substring | `testing`, `playwright-e2e` |
 | Unit `toContain(">X<")` for a named link/button/textbox | `testing` |
+| `includes scale(` / `toContain("scale(")` when canvas pan already writes `scale(1)` | `testing`, `keeping-specs-current`, `tdd-loop` |
 | Unit `not.toContain("<li>X</li>")` for a does-not-show listitem | `testing` |
 | Clicking-appends tested at a function production never calls | `testing` |
 | Dragging-appends unit that passes the kind already in the input | `testing` |
