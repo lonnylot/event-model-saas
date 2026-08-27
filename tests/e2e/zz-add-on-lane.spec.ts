@@ -114,3 +114,15 @@ test("After clicking `New Slice` on that page, the Timeline region shows a butto
       .getByRole("button", { name: "Add Actor on lane", exact: true }),
   ).toBeVisible();
 });
+
+test("After clicking `New Slice` on that page, the Timeline region shows a button whose accessible name is `Add Command on lane`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("button", { name: "Add Command on lane", exact: true }),
+  ).toBeVisible();
+});

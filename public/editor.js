@@ -38,10 +38,14 @@ export function onNewSliceClick(root) {
   undoStack.push("slice");
   const timeline = root.querySelector('[aria-label="Timeline"]');
   if (timeline) {
-    const button = root.createElement("button");
-    button.type = "button";
-    button.textContent = "Add Actor on lane";
-    timeline.append(button);
+    const actor = root.createElement("button");
+    actor.type = "button";
+    actor.textContent = "Add Actor on lane";
+    timeline.append(actor);
+    const command = root.createElement("button");
+    command.type = "button";
+    command.textContent = "Add Command on lane";
+    timeline.append(command);
   }
 }
 
