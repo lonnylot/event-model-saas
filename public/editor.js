@@ -32,6 +32,7 @@ import { reorderSlices } from "./reorder-slices.js";
 import { moveActorToSlice } from "./move-actor-to-slice.js";
 import { moveCommandToSlice } from "./move-command-to-slice.js";
 import { moveEventToSlice } from "./move-event-to-slice.js";
+import { moveReadModelToSlice } from "./move-read-model-to-slice.js";
 import { deleteSlice } from "./delete-slice.js";
 import { deleteCommand } from "./delete-command.js";
 import { deleteConnection } from "./delete-connection.js";
@@ -1555,6 +1556,7 @@ export function bindEditor(root) {
   let dragSliceItem = null;
   let dragCommandItem = null;
   let dragEventItem = null;
+  let dragReadModelItem = null;
   root.addEventListener("mousedown", (event) => {
     const actorItem = event.target?.closest?.("li");
     if (actorItem && slicesList?.contains(actorItem)) {
@@ -1584,6 +1586,14 @@ export function bindEditor(root) {
       !event.target?.closest?.("button[data-id]")
     ) {
       dragEventItem = actorItem;
+    }
+    if (
+      actorItem &&
+      timelineList?.contains(actorItem) &&
+      actorItem.dataset.kind === "readmodel" &&
+      !event.target?.closest?.("button[data-id]")
+    ) {
+      dragReadModelItem = actorItem;
     }
     const port = event.target?.closest?.("button[data-id]");
     if (port) {
@@ -1705,6 +1715,29 @@ export function bindEditor(root) {
         return;
       }
       dragEventItem = null;
+    }
+    if (dragReadModelItem) {
+      const sliceItem = event.target?.closest?.("li");
+      const holder = root.getElementById("event-model-document");
+      if (
+        holder &&
+        sliceItem &&
+        slicesList?.contains(sliceItem) &&
+        dragReadModelItem.dataset.id &&
+        sliceItem.dataset.id
+      ) {
+        holder.textContent = JSON.stringify(
+          moveReadModelToSlice(
+            JSON.parse(holder.textContent || "{}"),
+            dragReadModelItem.dataset.id,
+            sliceItem.dataset.id,
+          ),
+        );
+        dragReadModelItem = null;
+        sourcePort = null;
+        return;
+      }
+      dragReadModelItem = null;
     }
     const target = event.target?.closest?.("button[data-id]");
     if (sourcePort && target && sourcePort === target) {

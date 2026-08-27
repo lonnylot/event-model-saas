@@ -118,3 +118,26 @@ test("After clicking `New Slice` twice then `Add Event`, dragging the Timeline `
   ]);
   expect(after.slices.at(-1).events).toEqual([]);
 });
+
+test("After clicking `New Slice` twice then `Add Read Model`, dragging the Timeline `Read Model` listitem onto the first Slices `New Slice` listitem sets the first Slice `readModels` to one Read Model and the last Slice `readModels` to `[]`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  const readModel = page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Read Model", exact: true });
+  await expect(readModel).toBeVisible();
+  await readModel.dragTo(
+    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
+  );
+  const after = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  expect(after.slices[0].readModels).toEqual([
+    expect.objectContaining({ title: "Read Model" }),
+  ]);
+  expect(after.slices.at(-1).readModels).toEqual([]);
+});
