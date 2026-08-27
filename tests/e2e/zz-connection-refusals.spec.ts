@@ -221,3 +221,26 @@ test("Dragging from `Read Model port` onto `Event Happened port` does not append
   const json = await page.locator("#event-model-document").textContent();
   expect(JSON.parse(json ?? "{}").connections ?? []).toEqual([]);
 });
+
+test("Dragging from `Read Model port` onto `Event Happened port` shows the text `A read model can't write an event.` in the Read Model listitem", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await expect(
+    page.getByRole("button", { name: "Read Model port", exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Event Happened port", exact: true }),
+  ).toBeVisible();
+  await page
+    .getByRole("button", { name: "Read Model port", exact: true })
+    .dragTo(
+      page.getByRole("button", { name: "Event Happened port", exact: true }),
+    );
+  await expect(
+    page.getByRole("listitem", { name: "Read Model", exact: true }),
+  ).toContainText("A read model can't write an event.");
+});

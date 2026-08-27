@@ -856,6 +856,23 @@ export function bindEditor(root) {
           );
         }
       }
+      if (
+        sourcePort.dataset.kind === "READMODEL" &&
+        target.dataset.kind === "EVENT"
+      ) {
+        const readModelItem = sourcePort.closest("li");
+        if (
+          readModelItem &&
+          !readModelItem.textContent?.includes(
+            "A read model can't write an event.",
+          )
+        ) {
+          readModelItem.insertAdjacentHTML(
+            "beforeend",
+            "<p>A read model can't write an event.</p>",
+          );
+        }
+      }
     }
     for (const highlighted of root.querySelectorAll("[aria-current]")) {
       highlighted.removeAttribute("aria-current");
