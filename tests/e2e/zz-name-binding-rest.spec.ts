@@ -548,3 +548,36 @@ test("After clicking `New Slice` then `Add Read Model` twice, clicking the first
     JSON.parse(json ?? "{}").slices?.[0]?.readModels?.[0]?.description,
   ).toBe("List view");
 });
+
+async function addTwoAutomationsClickFirstFillDescription(page: Page) {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "Add Automation", exact: true }).click();
+  await page.getByRole("button", { name: "Add Automation", exact: true }).click();
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Automation", exact: true }),
+  ).toHaveCount(2);
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Automation", exact: true })
+    .first()
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Description", exact: true })
+    .fill("When paid", { timeout: 5000 });
+}
+
+test("After clicking `New Slice` then `Add Automation` twice, clicking the first Timeline `Automation` listitem, filling Inspector `Description` with `When paid` sets the first Automation `description` to `When paid`", async ({
+  page,
+}) => {
+  await addTwoAutomationsClickFirstFillDescription(page);
+  const json = await page
+    .locator("#event-model-document")
+    .evaluate((el) => el.textContent);
+  expect(
+    JSON.parse(json ?? "{}").slices?.[0]?.processors?.[0]?.description,
+  ).toBe("When paid");
+});
