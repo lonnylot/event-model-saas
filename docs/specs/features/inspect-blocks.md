@@ -47,7 +47,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person,
 
 ## Out of scope
 
-Description, Fields, Slice type picker, inspecting a Connection, inspect after reload, Event / Read Model / Automation reload-lists, multi-item Name binding, Actor Name Unsaved changes, model-level Title, dashed Add on a lane, keyboard shortcuts, delete, drag blocks between Slices, undo, pan, moving Slices, Mac window chrome. Slice and Actor Name are [chrome.md](./chrome.md).
+Description, Fields, Slice type picker, inspecting a Connection, inspect after reload, Event / Read Model / Automation reload-lists, in-session visible listitem text on Name fill, multi-item Name binding, Actor Name Unsaved changes, model-level Title, dashed Add on a lane, keyboard shortcuts, delete, drag blocks between Slices, undo, pan, moving Slices, Mac window chrome. Slice and Actor Name are [chrome.md](./chrome.md).
 
 ## Restates
 
