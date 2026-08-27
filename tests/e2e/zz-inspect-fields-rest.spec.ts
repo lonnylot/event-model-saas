@@ -858,3 +858,31 @@ test("After clicking `New Slice` then `Add Command` twice, clicking the first Ti
       ?.example,
   ).toBe("abc");
 });
+
+test("After clicking `New Slice` then `Add Command` twice, clicking the first Timeline `Command` listitem, clicking `Add Field`, clicking `Delete Field` sets the first Command `fields` to `[]`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  const commands = page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Command", exact: true });
+  await expect(commands).toHaveCount(2);
+  await commands.first().click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("button", { name: "Add Field", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("button", { name: "Delete Field", exact: true })
+    .click();
+  const json = await page
+    .locator("#event-model-document")
+    .evaluate((el) => el.textContent);
+  expect(
+    JSON.parse(json ?? "{}").slices?.[0]?.commands?.[0]?.fields,
+  ).toEqual([]);
+});

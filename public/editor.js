@@ -603,6 +603,9 @@ export function bindEditor(root) {
               deleteField(
                 JSON.parse(documentHolder.textContent || "{}"),
                 selected,
+                selected === "command"
+                  ? selectedCommandItem?.dataset?.id
+                  : undefined,
               ),
             );
           }
