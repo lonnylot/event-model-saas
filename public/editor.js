@@ -1613,6 +1613,37 @@ export function bindEditor(root) {
             });
           }
         }
+        if (entry?.kind === "deleteAutomation") {
+          const automationId = entry.automation?.id;
+          const model = JSON.parse(holder.textContent || "{}");
+          const slice = (model.slices ?? []).find((s) =>
+            (s.processors ?? []).some(
+              (automation) => automation.id === automationId,
+            ),
+          );
+          const index = slice
+            ? (slice.processors ?? []).findIndex(
+                (automation) => automation.id === automationId,
+              )
+            : -1;
+          const automation = index >= 0 ? slice.processors[index] : undefined;
+          holder.textContent = JSON.stringify(
+            deleteAutomation(model, automationId),
+          );
+          const list = root.querySelector('[aria-label="Timeline"] ul');
+          const item = [...(list?.children ?? [])].find(
+            (node) => node.getAttribute?.("data-id") === automationId,
+          );
+          item?.remove();
+          if (automation && slice && index >= 0) {
+            undoStack.push({
+              kind: "deleteAutomation",
+              automation,
+              sliceId: slice.id,
+              index,
+            });
+          }
+        }
         return;
       }
       const entry = undoStack.pop();
@@ -1637,6 +1668,7 @@ export function bindEditor(root) {
           if (before) list.insertBefore(item, before);
           else list.append(item);
         }
+        redoStack.push(entry);
         return;
       }
       if (kind === "deleteReadModel") {
