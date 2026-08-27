@@ -404,6 +404,7 @@ export function bindEditor(root) {
       selected = "readmodel";
       selectedReadModelItem = item;
       bindName("Read Model");
+      bindDescription();
       return;
     }
     if (item.dataset.kind === "automation") {
