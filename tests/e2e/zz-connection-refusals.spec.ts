@@ -323,3 +323,81 @@ test("After dragging from `Event Happened port` onto `Read Model port`, dragging
   const json = await page.locator("#event-model-document").textContent();
   expect(JSON.parse(json ?? "{}").connections ?? []).toHaveLength(1);
 });
+
+test("After dragging from `Command port` onto `Event Happened port`, dragging from `Command port` onto `Event Happened port` again shows the text `That connection already exists.` in the Command listitem", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await expect(
+    page.getByRole("button", { name: "Command port", exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Event Happened port", exact: true }),
+  ).toBeVisible();
+  await page
+    .getByRole("button", { name: "Command port", exact: true })
+    .dragTo(
+      page.getByRole("button", { name: "Event Happened port", exact: true }),
+    );
+  await page
+    .getByRole("button", { name: "Command port", exact: true })
+    .dragTo(
+      page.getByRole("button", { name: "Event Happened port", exact: true }),
+    );
+  await expect(
+    page.getByRole("listitem", { name: "Command", exact: true }),
+  ).toContainText("That connection already exists.");
+});
+
+test("After dragging from `Command port` onto `Event Happened port`, dragging from `Command port` onto `Event Happened port` again, pressing ⌘Z twice does not show a listitem whose accessible name is `New Slice`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  const commandPort = page.getByRole("button", {
+    name: "Command port",
+    exact: true,
+  });
+  const eventPort = page.getByRole("button", {
+    name: "Event Happened port",
+    exact: true,
+  });
+  await expect(commandPort).toBeVisible();
+  await expect(eventPort).toBeVisible();
+  await commandPort.dragTo(eventPort);
+  await commandPort.dragTo(eventPort);
+  await page.keyboard.press("ControlOrMeta+z");
+  await page.keyboard.press("ControlOrMeta+z");
+  await expect(
+    page.getByRole("listitem", { name: "New Slice", exact: true }),
+  ).toHaveCount(0);
+});
+
+test("After dragging from `Event Happened port` onto `Read Model port`, dragging from `Event Happened port` onto `Read Model port` again shows the text `That connection already exists.` in the Event Happened listitem", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  const eventPort = page.getByRole("button", {
+    name: "Event Happened port",
+    exact: true,
+  });
+  const readModelPort = page.getByRole("button", {
+    name: "Read Model port",
+    exact: true,
+  });
+  await expect(eventPort).toBeVisible();
+  await expect(readModelPort).toBeVisible();
+  await eventPort.dragTo(readModelPort);
+  await eventPort.dragTo(readModelPort);
+  await expect(
+    page.getByRole("listitem", { name: "Event Happened", exact: true }),
+  ).toContainText("That connection already exists.");
+});

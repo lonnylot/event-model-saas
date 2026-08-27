@@ -744,9 +744,15 @@ export function bindEditor(root) {
     const target = event.target?.closest?.("button[data-id]");
     if (sourcePort && target && sourcePort !== target) {
       const holder = root.getElementById("event-model-document");
+      const model = JSON.parse(holder?.textContent || "{}");
+      const alreadyConnected = (model.connections ?? []).some(
+        (connection) =>
+          connection.fromID === sourcePort.dataset.id &&
+          connection.toID === target.dataset.id,
+      );
       if (holder) {
         holder.textContent = JSON.stringify(
-          appendConnection(JSON.parse(holder.textContent || "{}"), {
+          appendConnection(model, {
             fromID: sourcePort.dataset.id,
             fromKind: sourcePort.dataset.kind,
             toID: target.dataset.id,
@@ -759,7 +765,22 @@ export function bindEditor(root) {
           }),
         );
       }
+      if (alreadyConnected) {
+        const sourceItem = sourcePort.closest("li");
+        if (
+          sourceItem &&
+          !sourceItem.textContent?.includes(
+            "That connection already exists.",
+          )
+        ) {
+          sourceItem.insertAdjacentHTML(
+            "beforeend",
+            "<p>That connection already exists.</p>",
+          );
+        }
+      }
       if (
+        !alreadyConnected &&
         sourcePort.dataset.kind === "COMMAND" &&
         target.dataset.kind === "EVENT"
       ) {
