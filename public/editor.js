@@ -1561,6 +1561,31 @@ export function bindEditor(root) {
             });
           }
         }
+        if (entry?.kind === "deleteEvent") {
+          const eventId = entry.event?.id;
+          const model = JSON.parse(holder.textContent || "{}");
+          const slice = (model.slices ?? []).find((s) =>
+            (s.events ?? []).some((event) => event.id === eventId),
+          );
+          const index = slice
+            ? (slice.events ?? []).findIndex((event) => event.id === eventId)
+            : -1;
+          const eventBlock = index >= 0 ? slice.events[index] : undefined;
+          holder.textContent = JSON.stringify(deleteEvent(model, eventId));
+          const list = root.querySelector('[aria-label="Timeline"] ul');
+          const item = [...(list?.children ?? [])].find(
+            (node) => node.getAttribute?.("data-id") === eventId,
+          );
+          item?.remove();
+          if (eventBlock && slice && index >= 0) {
+            undoStack.push({
+              kind: "deleteEvent",
+              event: eventBlock,
+              sliceId: slice.id,
+              index,
+            });
+          }
+        }
         return;
       }
       const entry = undoStack.pop();
@@ -1641,6 +1666,7 @@ export function bindEditor(root) {
           if (before) list.insertBefore(item, before);
           else list.append(item);
         }
+        redoStack.push(entry);
         return;
       }
       if (kind === "deleteActor") {
