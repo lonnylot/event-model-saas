@@ -292,3 +292,24 @@ test("Filling the Inspector `Name` textbox with `Orders` after selecting `Read M
     "Orders",
   );
 });
+
+test("Filling the Inspector `Name` textbox with `Orders` after selecting `Read Model` shows a Timeline listitem whose accessible name is `Orders`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Read Model", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Name", exact: true })
+    .fill("Orders");
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Orders", exact: true }),
+  ).toBeVisible();
+});

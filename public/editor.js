@@ -185,6 +185,7 @@ export function bindEditor(root) {
   let selectedActorItem = null;
   let selectedCommandItem = null;
   let selectedEventItem = null;
+  let selectedReadModelItem = null;
   const inspector = root.querySelector('[aria-label="Inspector"]');
   const nameInput = () => inspector?.querySelector("input");
   const bindName = (value) => {
@@ -237,6 +238,9 @@ export function bindEditor(root) {
         if (selected === "event" && selectedEventItem) {
           selectedEventItem.setAttribute("aria-label", input.value);
         }
+        if (selected === "readmodel" && selectedReadModelItem) {
+          selectedReadModelItem.setAttribute("aria-label", input.value);
+        }
         if (selected === "slice") {
           const main = root.querySelector("main");
           if (main && !main.textContent?.includes("Unsaved changes.")) {
@@ -264,6 +268,7 @@ export function bindEditor(root) {
     }
     if (item.dataset.kind === "readmodel") {
       selected = "readmodel";
+      selectedReadModelItem = item;
       bindName("Read Model");
       return;
     }
