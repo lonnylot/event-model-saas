@@ -13,7 +13,7 @@ Members can inspect Slice and Actor Name, but clicking Command, Event Happened, 
 - [x] Filling the Inspector `Name` textbox with `Place Order` after selecting `Command` sets the last Command `title` to `Place Order`
 - [x] Filling the Inspector `Name` textbox with `Place Order` after selecting `Command` shows a Timeline listitem whose accessible name is `Place Order`
 - [x] After clicking `New Slice` then `Add Event` on that page, clicking the Timeline `Event Happened` listitem shows a textbox whose accessible name is `Name` in the Inspector region
-- [ ] After clicking `New Slice` then `Add Event` on that page, clicking the Timeline `Event Happened` listitem shows that `Name` textbox with the value `Event Happened`
+- [x] After clicking `New Slice` then `Add Event` on that page, clicking the Timeline `Event Happened` listitem shows that `Name` textbox with the value `Event Happened`
 - [ ] Filling the Inspector `Name` textbox with `Order Placed` after selecting `Event Happened` sets the last Event `title` to `Order Placed`
 - [ ] Filling the Inspector `Name` textbox with `Order Placed` after selecting `Event Happened` shows a Timeline listitem whose accessible name is `Order Placed`
 - [ ] After clicking `New Slice` then `Add Read Model` on that page, clicking the Timeline `Read Model` listitem shows a textbox whose accessible name is `Name` in the Inspector region
@@ -37,7 +37,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person,
 
 ## Assumptions
 
-- Command, Event, Read Model, and Automation selection is a click on the Timeline listitem.
+- Command, Event, Read Model, and Automation selection is a click on the Timeline listitem. The Inspector `Name` textbox is one control; selecting another of those kinds in the same session updates that `Name` value.
 - This slice is one in-session Command, Event, Read Model, and Automation. Name JSON mutates the last of that kind.
 - Inspect is a click on a click-created listitem. GET-rendered Timeline blocks omit `data-kind`; inspect after reload is later.
 - The Inspector `Name` textbox edits Command, Event, Read Model, or Automation `title`. The JSON key stays `title`.

@@ -237,9 +237,7 @@ export function bindEditor(root) {
       return;
     }
     if (item.dataset.kind === "event") {
-      if (inspector && !nameInput()) {
-        inspector.insertAdjacentHTML("beforeend", "<label>Name <input /></label>");
-      }
+      bindName("Event Happened");
       return;
     }
     if (item.dataset.kind !== "actor") return;
