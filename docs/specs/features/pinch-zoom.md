@@ -1,6 +1,6 @@
 # Pinch zoom
 
-Status: validated
+Status: released
 
 ## Problem
 
