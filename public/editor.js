@@ -10,6 +10,7 @@ import { setSliceDescription } from "./set-slice-description.js";
 import { setActorName } from "./set-actor-name.js";
 import { setActorDescription } from "./set-actor-description.js";
 import { setCommandTitle } from "./set-command-title.js";
+import { setCommandDescription } from "./set-command-description.js";
 import { setEventTitle } from "./set-event-title.js";
 import { setReadModelTitle } from "./set-read-model-title.js";
 import { setAutomationTitle } from "./set-automation-title.js";
@@ -283,6 +284,14 @@ export function bindEditor(root) {
         if (holder && selected === "actor") {
           holder.textContent = JSON.stringify(
             setActorDescription(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+            ),
+          );
+        }
+        if (holder && selected === "command") {
+          holder.textContent = JSON.stringify(
+            setCommandDescription(
               JSON.parse(holder.textContent || "{}"),
               input.value,
             ),

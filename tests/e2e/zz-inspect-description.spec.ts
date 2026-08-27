@@ -30,7 +30,7 @@ const test = base.extend<object, { adminState: string }>({
   adminState: [
     async ({ browser }, use, workerInfo) => {
       const page = await browser.newPage({
-        baseURL: "http://127.0.0.1:8787",
+        baseURL: `http://127.0.0.1:${process.env.E2E_PORT || 8787}`,
       });
       const request = page.context().request;
       await consumeAdmin(page, request);
@@ -175,4 +175,54 @@ test("After clicking `New Slice` then `Add Command` on that page, clicking the T
       .getByRole("region", { name: "Inspector", exact: true })
       .getByRole("textbox", { name: "Description", exact: true }),
   ).toBeVisible();
+});
+
+test("Filling the Inspector `Description` textbox with `Customer submits cart` after selecting `Command` sets the last Command `description` to `Customer submits cart`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("listitem", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Command", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Description", exact: true })
+    .fill("Customer submits cart");
+  const json = await page.locator("#event-model-document").textContent();
+  expect(
+    JSON.parse(json ?? "{}").slices.at(-1).commands.at(-1).description,
+  ).toBe("Customer submits cart");
+});
+
+test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add Command`, clicks the Timeline `Command` listitem, fills `Description` with `Customer submits cart`, and Saves, a reload of that page sets the last Command `description` to `Customer submits cart`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Command", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Description", exact: true })
+    .fill("Customer submits cart");
+  await Promise.all([
+    page.waitForResponse(
+      (response) =>
+        response.url().includes("/api/models/") &&
+        response.request().method() === "PUT",
+    ),
+    page.getByRole("button", { name: "Save", exact: true }).click(),
+  ]);
+  await page.reload();
+  const json = await page.locator("#event-model-document").textContent();
+  expect(
+    JSON.parse(json ?? "{}").slices.at(-1).commands.at(-1).description,
+  ).toBe("Customer submits cart");
 });

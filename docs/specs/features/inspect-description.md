@@ -13,14 +13,14 @@ Members can inspect Name on a Slice, Actor, Command, Event, Read Model, or Autom
 - [x] After clicking `New Slice` then `Add Actor` on that page, clicking the Timeline `Actor` listitem shows a textbox whose accessible name is `Description` in the Inspector region
 - [x] Filling the Inspector `Description` textbox with `Shopper persona` after selecting `Actor` sets the last Actor `description` to `Shopper persona`
 - [x] After clicking `New Slice` then `Add Command` on that page, clicking the Timeline `Command` listitem shows a textbox whose accessible name is `Description` in the Inspector region
-- [ ] Filling the Inspector `Description` textbox with `Customer submits cart` after selecting `Command` sets the last Command `description` to `Customer submits cart`
+- [x] Filling the Inspector `Description` textbox with `Customer submits cart` after selecting `Command` sets the last Command `description` to `Customer submits cart`
 - [ ] After clicking `New Slice` then `Add Event` on that page, clicking the Timeline `Event Happened` listitem shows a textbox whose accessible name is `Description` in the Inspector region
 - [ ] Filling the Inspector `Description` textbox with `Cart was submitted` after selecting `Event Happened` sets the last Event `description` to `Cart was submitted`
 - [ ] After clicking `New Slice` then `Add Read Model` on that page, clicking the Timeline `Read Model` listitem shows a textbox whose accessible name is `Description` in the Inspector region
 - [ ] Filling the Inspector `Description` textbox with `Orders the shopper can see` after selecting `Read Model` sets the last Read Model `description` to `Orders the shopper can see`
 - [ ] After clicking `New Slice` then `Add Automation` on that page, clicking the Timeline `Automation` listitem shows a textbox whose accessible name is `Description` in the Inspector region
 - [ ] Filling the Inspector `Description` textbox with `Email when paid` after selecting `Automation` sets the last Automation `description` to `Email when paid`
-- [ ] After a member creates a model, opens it, clicks `New Slice`, clicks `Add Command`, clicks the Timeline `Command` listitem, fills `Description` with `Customer submits cart`, and Saves, a reload of that page sets the last Command `description` to `Customer submits cart`
+- [x] After a member creates a model, opens it, clicks `New Slice`, clicks `Add Command`, clicks the Timeline `Command` listitem, fills `Description` with `Customer submits cart`, and Saves, a reload of that page sets the last Command `description` to `Customer submits cart`
 
 ## Domain terms
 
