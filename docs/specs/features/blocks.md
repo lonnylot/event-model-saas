@@ -46,7 +46,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person,
 
 ## Assumptions
 
-- Add targets the last Slice. Slice and Actor selection are [chrome.md](./chrome.md).
+- Toolbar Add still targets the last Slice. Slice and Actor selection are [chrome.md](./chrome.md).
 - Clicking an Add button with no Slices does not create a Slice.
 - Empty Actor JSON is `{ "id": "{uuid}", "name": "Actor" }`.
 - Empty Command JSON is `{ "id": "{uuid}", "title": "Command", "type": "COMMAND", "fields": [] }`.
