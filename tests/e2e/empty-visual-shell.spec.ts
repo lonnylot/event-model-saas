@@ -77,3 +77,14 @@ test("GET `/app` as site admin with no teams shows a link whose accessible name 
     page.getByRole("link", { name: "Event Model", exact: true }),
   ).toBeVisible();
 });
+
+
+test("GET `/app` as site admin with no teams, the link `Event Model` has `href` `/app`", async ({
+  page,
+  request,
+}) => {
+  await consumeAdmin(page, request);
+  await expect(
+    page.getByRole("link", { name: "Event Model", exact: true }),
+  ).toHaveAttribute("href", "/app");
+});
