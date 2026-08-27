@@ -401,3 +401,64 @@ test("After dragging from `Event Happened port` onto `Read Model port`, dragging
     page.getByRole("listitem", { name: "Event Happened", exact: true }),
   ).toContainText("That connection already exists.");
 });
+
+test("Dragging from `Command port` onto the same `Command port` does not append a Connection", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  const port = page.getByRole("button", { name: "Command port", exact: true });
+  await expect(port).toBeVisible();
+  await port.dragTo(port);
+  const json = await page.locator("#event-model-document").textContent();
+  expect(JSON.parse(json ?? "{}").connections ?? []).toEqual([]);
+});
+
+test("Dragging from `Command port` onto the same `Command port` shows the text `A block can't connect to itself.` in the Command listitem", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  const port = page.getByRole("button", { name: "Command port", exact: true });
+  await expect(port).toBeVisible();
+  await port.dragTo(port);
+  await expect(
+    page.getByRole("listitem", { name: "Command", exact: true }),
+  ).toContainText("A block can't connect to itself.");
+});
+
+test("Dragging from `Event Happened port` onto the same `Event Happened port` shows the text `A block can't connect to itself.` in the Event Happened listitem", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  const port = page.getByRole("button", {
+    name: "Event Happened port",
+    exact: true,
+  });
+  await expect(port).toBeVisible();
+  await port.dragTo(port);
+  await expect(
+    page.getByRole("listitem", { name: "Event Happened", exact: true }),
+  ).toContainText("A block can't connect to itself.");
+});
+
+test("Dragging from `Read Model port` onto the same `Read Model port` shows the text `A block can't connect to itself.` in the Read Model listitem", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  const port = page.getByRole("button", {
+    name: "Read Model port",
+    exact: true,
+  });
+  await expect(port).toBeVisible();
+  await port.dragTo(port);
+  await expect(
+    page.getByRole("listitem", { name: "Read Model", exact: true }),
+  ).toContainText("A block can't connect to itself.");
+});

@@ -23,8 +23,10 @@ Command → Read Model and Event → Command are refused with copy on the source
 - [x] After dragging from `Command port` onto `Event Happened port`, dragging from `Command port` onto `Event Happened port` again shows the text `That connection already exists.` in the Command listitem
 - [x] After dragging from `Command port` onto `Event Happened port`, dragging from `Command port` onto `Event Happened port` again, pressing ⌘Z twice does not show a listitem whose accessible name is `New Slice`
 - [x] After dragging from `Event Happened port` onto `Read Model port`, dragging from `Event Happened port` onto `Read Model port` again shows the text `That connection already exists.` in the Event Happened listitem
-- [ ] Dragging from `Command port` onto the same `Command port` does not append a Connection
-- [ ] Dragging from `Command port` onto the same `Command port` shows the text `A block can't connect to itself.` in the Command listitem
+- [x] Dragging from `Command port` onto the same `Command port` does not append a Connection
+- [x] Dragging from `Command port` onto the same `Command port` shows the text `A block can't connect to itself.` in the Command listitem
+- [x] Dragging from `Event Happened port` onto the same `Event Happened port` shows the text `A block can't connect to itself.` in the Event Happened listitem
+- [x] Dragging from `Read Model port` onto the same `Read Model port` shows the text `A block can't connect to itself.` in the Read Model listitem
 - [ ] Dragging from `Command port` onto the Timeline `Actor` listitem does not append a Connection
 - [ ] Dragging from `Command port` onto the Timeline `Actor` listitem shows the text `An actor isn't a connection endpoint.` in the Command listitem
 - [ ] Dragging from `Command port` onto the Timeline `Automation` listitem does not append a Connection

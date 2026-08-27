@@ -742,6 +742,30 @@ export function bindEditor(root) {
       return;
     }
     const target = event.target?.closest?.("button[data-id]");
+    if (sourcePort && target && sourcePort === target) {
+      const holder = root.getElementById("event-model-document");
+      if (holder) {
+        holder.textContent = JSON.stringify(
+          appendConnection(JSON.parse(holder.textContent || "{}"), {
+            fromID: sourcePort.dataset.id,
+            fromKind: sourcePort.dataset.kind,
+            toID: target.dataset.id,
+            toKind:
+              target.dataset.kind === "COMMAND" ? target.dataset.kind : undefined,
+          }),
+        );
+      }
+      const commandItem = sourcePort.closest("li");
+      if (
+        commandItem &&
+        !commandItem.textContent?.includes("A block can't connect to itself.")
+      ) {
+        commandItem.insertAdjacentHTML(
+          "beforeend",
+          "<p>A block can't connect to itself.</p>",
+        );
+      }
+    }
     if (sourcePort && target && sourcePort !== target) {
       const holder = root.getElementById("event-model-document");
       const model = JSON.parse(holder?.textContent || "{}");
