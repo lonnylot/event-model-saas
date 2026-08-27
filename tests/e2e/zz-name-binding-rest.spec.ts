@@ -917,3 +917,24 @@ test("After a member creates a model, opens it, clicks the `Untitled` heading, c
     .fill("Library Checkout");
   await expect(page.getByText("Unsaved changes.")).toBeVisible();
 });
+
+test("After a member creates a model, opens it, clicks the `Untitled` heading, clicks `Save`, then fills the Inspector `Description` textbox with `Library checkout blueprint`, the page shows the text `Unsaved changes.`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("heading", { name: "Untitled", exact: true }).click();
+  await Promise.all([
+    page.waitForResponse(
+      (response) =>
+        response.url().includes("/api/models/") &&
+        response.request().method() === "PUT",
+    ),
+    page.getByRole("button", { name: "Save", exact: true }).click(),
+  ]);
+  await expect(page.getByText("Unsaved changes.")).toHaveCount(0);
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Description", exact: true })
+    .fill("Library checkout blueprint");
+  await expect(page.getByText("Unsaved changes.")).toBeVisible();
+});
