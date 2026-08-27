@@ -105,3 +105,16 @@ test("After clicking `New Slice` on that page, clicking the `New Slice` listitem
       .getByRole("combobox", { name: "Type", exact: true }),
   ).toBeVisible();
 });
+
+test("After clicking `New Slice` on that page, clicking the `New Slice` listitem shows that `Type` combobox with the value `State Change`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("listitem", { name: "New Slice", exact: true }).click();
+  await expect(
+    page
+      .getByRole("region", { name: "Inspector", exact: true })
+      .getByRole("combobox", { name: "Type", exact: true }),
+  ).toHaveValue("State Change");
+});

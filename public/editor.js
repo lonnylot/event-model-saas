@@ -474,7 +474,7 @@ export function bindEditor(root) {
       if (inspector && !typeSelect) {
         inspector.insertAdjacentHTML(
           "beforeend",
-          "<label>Type <select></select></label>",
+          "<label>Type <select><option>State Change</option></select></label>",
         );
       }
     } else {
