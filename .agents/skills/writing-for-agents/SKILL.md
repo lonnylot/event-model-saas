@@ -61,7 +61,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Review-thread batch / commit subject names two threads with "and" (leftover-hide unbindAddField vs unbindFieldName) | `logical-commits` |
 | Extra visible chrome / document title / extra form or link or extra nav on a route / extra inspect of Out of scope kinds (leftover Add Field / Field name after insert-if-missing switch; leftover Field type / Optional / Example / Delete Field after unbindFieldName-only; leftover Actor / Slice Field chrome after dropped sibling unbind; GET-rendered Description / Add Field when ACs only name Name) / hardcoded create-title Name after fill heading / extra Delete key when AC names only Backspace / extra host observability without an AC | `keeping-specs-current` |
 | Playwright wait after open (editor bound / networkidle) / New Slice / named Ports / force hover flagged as extra chrome | `keeping-specs-current`, `playwright-e2e` |
-| Omitted sibling kinds (Event reload-lists; Event / Read Model same-port copy; Event / Read Model onto Actor / Automation / Slice; Event → Read Model duplicate of a kind-agnostic refuse) | `keeping-specs-current` |
+| Omitted sibling kinds (Event reload-lists; Event / Read Model same-port copy; Event / Read Model onto Actor / Automation / Slice; Event → Read Model duplicate of a kind-agnostic refuse; Event → Read Model Connection after reload when ACs only cover Command → Event) | `keeping-specs-current` |
 | In-session visible text when the AC is accessible name | `keeping-specs-current` |
 | Extra R2 put / D1 insert / store write after a refuse without an AC that asserts the stored body | `keeping-specs-current`, `testing` |
 | Leftover success-arm after a refuse | `keeping-specs-current` |
