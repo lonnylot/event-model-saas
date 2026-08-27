@@ -1468,6 +1468,13 @@ export function bindEditor(root) {
         if (entry === "event") onAddEventClick(root);
         if (entry === "readmodel") onAddReadModelClick(root);
         if (entry === "automation") onAddAutomationClick(root);
+        if (entry?.kind === "move") {
+          const sliceId = entry.sliceId;
+          const model = JSON.parse(holder.textContent || "{}");
+          const next = moveSliceLeft(model, sliceId);
+          holder.textContent = JSON.stringify(next);
+          if (next !== model) undoStack.push({ kind: "move", sliceId });
+        }
         return;
       }
       const entry = undoStack.pop();
@@ -1661,6 +1668,7 @@ export function bindEditor(root) {
             entry.sliceId,
           ),
         );
+        redoStack.push(entry);
         return;
       }
       if (kind === "automation") {

@@ -280,6 +280,35 @@ test("After clicking `New Slice` twice, clicking the last `New Slice` listitem, 
   expect(after.slices[0].id).toBe(firstId);
 });
 
+test("After clicking `New Slice` twice, clicking the last `New Slice` listitem, pressing ⌥⌘←, pressing ⌘Z, then pressing ⇧⌘Z, the first Slice `id` is the Slice that was last before the undo", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await clickNewSlice(page);
+  const before = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  const lastId = before.slices[1].id;
+  await page
+    .locator("ul")
+    .first()
+    .getByRole("listitem", { name: "New Slice", exact: true })
+    .last()
+    .click();
+  await page.keyboard.press("Alt+ControlOrMeta+ArrowLeft");
+  const afterMove = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  expect(afterMove.slices[0].id).toBe(lastId);
+  await page.keyboard.press("ControlOrMeta+z");
+  await page.keyboard.press("Shift+ControlOrMeta+z");
+  const afterRedo = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  expect(afterRedo.slices[0].id).toBe(lastId);
+});
+
 test("After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing Backspace, then pressing ⌘Z, the remaining Slice `id` is the Slice that was last and the first Slice `id` is the Slice that was first", async ({
   page,
 }) => {
