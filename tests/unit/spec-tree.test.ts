@@ -123,4 +123,11 @@ describe("spec tree", () => {
       );
     }
   });
+
+  it("inspect-rest Assumptions does not claim this slice owns in-session Add Field append", () => {
+    const text = readFileSync("docs/specs/features/inspect-rest.md", "utf8");
+    expect(text).not.toContain(
+      "This slice owns that append and the Field name after reload inspect",
+    );
+  });
 });

@@ -40,7 +40,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Connection, F
 
 ## Seams
 
-- `document` module — set Slice / Actor / Command / Event / Read Model / Automation `description`, Slice `sliceType` / `title`, Event Model `title`, append Field, set Field `name`, set Field `type`, set Field `optional`, and set Field `example` on an in-memory Event Model; the editor click, fill, and select path calls it
+- `document` module — set Slice / Actor / Command / Event / Read Model / Automation `description`, Slice `sliceType` / `title`, Event Model `title`, set Field `name`, set Field `type`, set Field `optional`, and set Field `example` on an in-memory Event Model; the editor click, fill, and select path calls it
 - `handleRequest` — model page HTML hydrates Timeline Connection text and Slice / heading listitems so Inspector binds after GET
 - Browser — Playwright against `wrangler dev` with `TEST_MAIL=1`
 
@@ -50,7 +50,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Connection, F
 - Description / Type / Field / Connection / Slice Name / heading Name after reload is a click on the GET-rendered listitem or heading, same as [inspect-blocks.md](./inspect-blocks.md) / [chrome.md](./chrome.md) for Name. Field type / Optional / Example after reload is a click on that GET-rendered listitem.
 - Delete Connection is Backspace. No extra Inspector delete button.
 - Heading click to open model Inspector stays [model-inspector.md](./model-inspector.md) when that spec is present. This slice owns the click after reload. No ⇧⌘I.
-- Add Field on Event / Read Model / Automation appends `newField`. This slice owns that append and the Field name after reload inspect.
+- Add Field that appends `newField` on Event / Read Model / Automation stays [inspect-fields-rest.md](./inspect-fields-rest.md). This slice owns the Field name after reload inspect.
 - The `TEST_MAIL=1` memory adapter does not count login attempts, so Playwright files can share one Worker without the production 5-per-hour cap.
 
 ## Out of scope
