@@ -244,3 +244,17 @@ test("Dragging from `Read Model port` onto `Event Happened port` shows the text 
     page.getByRole("listitem", { name: "Read Model", exact: true }),
   ).toContainText("A read model can't write an event.");
 });
+
+test("After clicking `New Slice` then `Add Read Model` twice, dragging from the first `Read Model port` onto the last `Read Model port` does not append a Connection", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  const ports = page.getByRole("button", { name: "Read Model port", exact: true });
+  await expect(ports).toHaveCount(2);
+  await ports.first().dragTo(ports.last());
+  const json = await page.locator("#event-model-document").textContent();
+  expect(JSON.parse(json ?? "{}").connections ?? []).toEqual([]);
+});
