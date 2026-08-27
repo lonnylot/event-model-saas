@@ -866,6 +866,10 @@ export function bindEditor(root) {
           ),
         );
       }
+      const main = root.querySelector("main");
+      if (main && !main.textContent?.includes("Unsaved changes.")) {
+        main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
+      }
       if (
         inspector &&
         (selected === "command" ||
