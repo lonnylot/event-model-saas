@@ -89,10 +89,13 @@ async function openUntitledModel(page: Page) {
 }
 
 async function clickNewSlice(page: Page) {
+  const count =
+    (await page.getByRole("listitem", { name: "New Slice", exact: true }).count()) +
+    1;
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }),
-  ).toBeVisible();
+  ).toHaveCount(count);
 }
 
 test("After clicking `New Slice` then `Add Command` twice, dragging from the first `Command port` onto the last `Command port` does not append a Connection", async ({
@@ -627,4 +630,83 @@ test("Dragging from `Read Model port` onto the Timeline `Automation` listitem sh
   await expect(
     page.getByRole("listitem", { name: "Read Model", exact: true }),
   ).toContainText("An automation isn't a connection endpoint.");
+});
+
+test("Dragging from `Command port` onto the first `New Slice` listitem does not append a Connection", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  const slice = page.getByRole("listitem", { name: "New Slice", exact: true });
+  await expect(slice).toHaveCount(2);
+  await expect(
+    page.getByRole("button", { name: "Command port", exact: true }),
+  ).toBeVisible();
+  await page
+    .getByRole("button", { name: "Command port", exact: true })
+    .dragTo(slice.first());
+  const json = await page.locator("#event-model-document").textContent();
+  expect(JSON.parse(json ?? "{}").connections ?? []).toEqual([]);
+});
+
+test("Dragging from `Command port` onto the first `New Slice` listitem shows the text `A slice isn't a connection endpoint.` in the Command listitem", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  const slice = page.getByRole("listitem", { name: "New Slice", exact: true });
+  await expect(slice).toHaveCount(2);
+  await expect(
+    page.getByRole("button", { name: "Command port", exact: true }),
+  ).toBeVisible();
+  await page
+    .getByRole("button", { name: "Command port", exact: true })
+    .dragTo(slice.first());
+  await expect(
+    page.getByRole("listitem", { name: "Command", exact: true }),
+  ).toContainText("A slice isn't a connection endpoint.");
+});
+
+test("Dragging from `Event Happened port` onto the first `New Slice` listitem shows the text `A slice isn't a connection endpoint.` in the Event Happened listitem", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  const slice = page.getByRole("listitem", { name: "New Slice", exact: true });
+  await expect(slice).toHaveCount(2);
+  await expect(
+    page.getByRole("button", { name: "Event Happened port", exact: true }),
+  ).toBeVisible();
+  await page
+    .getByRole("button", { name: "Event Happened port", exact: true })
+    .dragTo(slice.first());
+  await expect(
+    page.getByRole("listitem", { name: "Event Happened", exact: true }),
+  ).toContainText("A slice isn't a connection endpoint.");
+});
+
+test("Dragging from `Read Model port` onto the first `New Slice` listitem shows the text `A slice isn't a connection endpoint.` in the Read Model listitem", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  const slice = page.getByRole("listitem", { name: "New Slice", exact: true });
+  await expect(slice).toHaveCount(2);
+  await expect(
+    page.getByRole("button", { name: "Read Model port", exact: true }),
+  ).toBeVisible();
+  await page
+    .getByRole("button", { name: "Read Model port", exact: true })
+    .dragTo(slice.first());
+  await expect(
+    page.getByRole("listitem", { name: "Read Model", exact: true }),
+  ).toContainText("A slice isn't a connection endpoint.");
 });

@@ -977,6 +977,25 @@ export function bindEditor(root) {
         );
       }
     }
+    if (
+      sourcePort &&
+      !target &&
+      dropItem &&
+      slicesList?.contains(dropItem)
+    ) {
+      const commandItem = sourcePort.closest("li");
+      if (
+        commandItem &&
+        !commandItem.textContent?.includes(
+          "A slice isn't a connection endpoint.",
+        )
+      ) {
+        commandItem.insertAdjacentHTML(
+          "beforeend",
+          "<p>A slice isn't a connection endpoint.</p>",
+        );
+      }
+    }
     for (const highlighted of root.querySelectorAll("[aria-current]")) {
       highlighted.removeAttribute("aria-current");
     }
