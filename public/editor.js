@@ -17,6 +17,7 @@ import { setEventDescription } from "./set-event-description.js";
 
 import { appendField } from "./append-field.js";
 import { setFieldName } from "./set-field-name.js";
+import { setFieldType } from "./set-field-type.js";
 import { setEventTitle } from "./set-event-title.js";
 import { setReadModelTitle } from "./set-read-model-title.js";
 import { setReadModelDescription } from "./set-read-model-description.js";
@@ -757,7 +758,11 @@ export function bindEditor(root) {
     if (sliceType === "AUTOMATION") return "Automation";
     return "State Change";
   };
-  const typeSelect = () => inspector?.querySelector("select");
+  const typeSelect = () =>
+    [...(inspector?.querySelectorAll("select") ?? [])].find(
+      (select) =>
+        select.closest("label")?.childNodes[0]?.textContent?.trim() === "Type",
+    );
   const unbindType = () => {
     typeSelect()?.closest("label")?.remove();
   };
@@ -820,6 +825,39 @@ export function bindEditor(root) {
     );
   const unbindAddField = () => addFieldButton()?.remove();
   const unbindFieldName = () => fieldNameInput()?.closest("label")?.remove();
+  const lastCommandFieldType = () => {
+    const holder = root.getElementById("event-model-document");
+    const model = JSON.parse(holder?.textContent || "{}");
+    return model.slices?.at(-1)?.commands?.at(-1)?.fields?.[0]?.type;
+  };
+  const fieldTypeSelect = () =>
+    [...(inspector?.querySelectorAll("select") ?? [])].find((select) =>
+      select.closest("label")?.textContent?.includes("Field type"),
+    );
+  const unbindFieldType = () => fieldTypeSelect()?.closest("label")?.remove();
+  const bindFieldType = (value) => {
+    if (!inspector || selected !== "command") {
+      unbindFieldType();
+      return;
+    }
+    let select = fieldTypeSelect();
+    if (!select) {
+      inspector.insertAdjacentHTML(
+        "beforeend",
+        "<label>Field type <select><option>String</option><option>Boolean</option><option>Int</option><option>Long</option><option>Double</option><option>Decimal</option><option>Date</option><option>DateTime</option><option>UUID</option><option>Custom</option></select></label>",
+      );
+      select = fieldTypeSelect();
+      select?.addEventListener("change", () => {
+        const holder = root.getElementById("event-model-document");
+        if (holder && selected === "command") {
+          holder.textContent = JSON.stringify(
+            setFieldType(JSON.parse(holder.textContent || "{}"), select.value),
+          );
+        }
+      });
+    }
+    if (select && value) select.value = value;
+  };
   const bindFieldName = (value) => {
     if (
       !inspector ||
@@ -886,6 +924,7 @@ export function bindEditor(root) {
     ) {
       unbindAddField();
       unbindFieldName();
+      unbindFieldType();
       return;
     }
     if (addFieldButton()) return;
@@ -918,6 +957,9 @@ export function bindEditor(root) {
               ? lastAutomationFieldName()
               : lastCommandFieldName()) ?? "newField",
       );
+      if (selected === "command") {
+        bindFieldType(lastCommandFieldType() ?? "String");
+      }
     });
   };
   const getRenderedTimelineItems = new Set(
@@ -1066,8 +1108,13 @@ export function bindEditor(root) {
       unbindType();
       bindAddField();
       const fieldName = lastCommandFieldName();
-      if (fieldName) bindFieldName(fieldName);
-      else unbindFieldName();
+      if (fieldName) {
+        bindFieldName(fieldName);
+        bindFieldType(lastCommandFieldType());
+      } else {
+        unbindFieldName();
+        unbindFieldType();
+      }
       return;
     }
     if (item.dataset.kind === "event") {
@@ -1085,6 +1132,7 @@ export function bindEditor(root) {
       unbindFieldName();
       unbindType();
       bindAddField();
+      unbindFieldType();
       const eventFieldName = lastEventFieldName();
       if (eventFieldName) bindFieldName(eventFieldName);
       else unbindFieldName();
@@ -1105,6 +1153,7 @@ export function bindEditor(root) {
       unbindFieldName();
       unbindType();
       bindAddField();
+      unbindFieldType();
       const readModelFieldName = lastReadModelFieldName();
       if (readModelFieldName) bindFieldName(readModelFieldName);
       else unbindFieldName();
@@ -1123,6 +1172,7 @@ export function bindEditor(root) {
 
       unbindType();
       bindAddField();
+      unbindFieldType();
       const automationFieldName = lastAutomationFieldName();
       if (automationFieldName) bindFieldName(automationFieldName);
       else unbindFieldName();
