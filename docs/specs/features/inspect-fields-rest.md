@@ -43,7 +43,7 @@ Event Model, Slice, Command, Event, Read Model, Automation, Field, Team, Person,
 
 ## Assumptions
 
-- `Add Field` and Command `newField` / `String` / `Field name` stay [inspect-fields.md](./inspect-fields.md) when that spec is present.
+- Last-Command `Add Field` and last-Command `newField` / `String` / Field name stay [inspect-fields.md](./inspect-fields.md) when that spec is present.
 - Field type option labels are the schema enum: `String`, `Boolean`, `Int`, `Long`, `Double`, `Decimal`, `Date`, `DateTime`, `UUID`, `Custom`. Combobox accessible name is `Field type`.
 - `Optional` is a checkbox. `Example` is a textbox. `Delete Field` is a button on that Field row.
 - Add still targets the last Slice. Command Field type / optional / example / delete mutate the last Command. Add Field after selecting Event / Read Model / Automation mutates the last of that kind, including Field name / type / optional / example / delete. After two Commands, Add Field and Field name mutate the clicked Command.
