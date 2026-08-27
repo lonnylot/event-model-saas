@@ -743,18 +743,6 @@ export function bindEditor(root) {
     }
     const target = event.target?.closest?.("button[data-id]");
     if (sourcePort && target && sourcePort === target) {
-      const holder = root.getElementById("event-model-document");
-      if (holder) {
-        holder.textContent = JSON.stringify(
-          appendConnection(JSON.parse(holder.textContent || "{}"), {
-            fromID: sourcePort.dataset.id,
-            fromKind: sourcePort.dataset.kind,
-            toID: target.dataset.id,
-            toKind:
-              target.dataset.kind === "COMMAND" ? target.dataset.kind : undefined,
-          }),
-        );
-      }
       const commandItem = sourcePort.closest("li");
       if (
         commandItem &&
