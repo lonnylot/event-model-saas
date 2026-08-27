@@ -842,6 +842,11 @@ export function bindEditor(root) {
     const model = JSON.parse(holder?.textContent || "{}");
     return model.slices?.at(-1)?.readModels?.at(-1)?.fields?.[0]?.type;
   };
+  const lastAutomationFieldType = () => {
+    const holder = root.getElementById("event-model-document");
+    const model = JSON.parse(holder?.textContent || "{}");
+    return model.slices?.at(-1)?.processors?.at(-1)?.fields?.[0]?.type;
+  };
   const fieldTypeSelect = () =>
     [...(inspector?.querySelectorAll("select") ?? [])].find((select) =>
       select.closest("label")?.textContent?.includes("Field type"),
@@ -852,7 +857,8 @@ export function bindEditor(root) {
       !inspector ||
       (selected !== "command" &&
         selected !== "event" &&
-        selected !== "readmodel")
+        selected !== "readmodel" &&
+        selected !== "automation")
     ) {
       unbindFieldType();
       return;
@@ -886,6 +892,15 @@ export function bindEditor(root) {
               JSON.parse(holder.textContent || "{}"),
               select.value,
               "readmodel",
+            ),
+          );
+        }
+        if (holder && selected === "automation") {
+          holder.textContent = JSON.stringify(
+            setFieldType(
+              JSON.parse(holder.textContent || "{}"),
+              select.value,
+              "automation",
             ),
           );
         }
@@ -1077,6 +1092,9 @@ export function bindEditor(root) {
       }
       if (selected === "readmodel") {
         bindFieldType(lastReadModelFieldType() ?? "String");
+      }
+      if (selected === "automation") {
+        bindFieldType(lastAutomationFieldType() ?? "String");
       }
     });
   };
@@ -1306,12 +1324,16 @@ export function bindEditor(root) {
 
       unbindType();
       bindAddField();
-      unbindFieldType();
       unbindOptional();
       unbindExample();
       const automationFieldName = lastAutomationFieldName();
-      if (automationFieldName) bindFieldName(automationFieldName);
-      else unbindFieldName();
+      if (automationFieldName) {
+        bindFieldName(automationFieldName);
+        bindFieldType(lastAutomationFieldType());
+      } else {
+        unbindFieldName();
+        unbindFieldType();
+      }
       return;
     }
     if (item.dataset.kind !== "actor") return;

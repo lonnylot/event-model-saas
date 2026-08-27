@@ -907,4 +907,42 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add 
   ).toHaveValue("UUID");
 });
 
+test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add Automation`, clicks the Timeline `Automation` listitem, clicks `Add Field`, selects `UUID` in `Field type`, and Saves, a reload of that page, clicking the Timeline `Automation` listitem shows Inspector `Field type` with the value `UUID`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Automation", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Automation", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("button", { name: "Add Field", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("combobox", { name: "Field type", exact: true })
+    .selectOption("UUID");
+  await Promise.all([
+    page.waitForResponse(
+      (response) =>
+        response.url().includes("/api/models/") &&
+        response.request().method() === "PUT",
+    ),
+    page.getByRole("button", { name: "Save", exact: true }).click(),
+  ]);
+  await page.reload();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Automation", exact: true })
+    .click();
+  await expect(
+    page
+      .getByRole("region", { name: "Inspector", exact: true })
+      .getByRole("combobox", { name: "Field type", exact: true }),
+  ).toHaveValue("UUID");
+});
+
 
