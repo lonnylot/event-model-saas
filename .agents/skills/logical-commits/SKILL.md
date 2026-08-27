@@ -10,6 +10,7 @@ description: >
   share a commit, when a commit subject names two threads with "and",
   when folding tests-after into a sibling production commit,
   when adding a tests-only commit on top after review,
+  when a review strengthens tests for ACs whose production already landed,
   when click-path production lands after field AC tests,
   when a follow-up rewrites tests onto the click path,
   when fromKind and toKind share a commit,
