@@ -24,7 +24,7 @@ description: >
   when restating a weaker fixture after production landed,
   when restating a unique factor-not-1 assertion after includes-scale production landed,
   when a checked AC's it has no assertion,
-  when adding a document title or heading or form or link or extra nav the AC does not name,
+  when adding a document title or heading or form or link or extra nav the AC does not name (hardcoded create-title Name after fill heading),
   when Inspector Name shows for Command or Event,
   or when the user mentions TDD, red-green-refactor, the build
   loop, or looping.
