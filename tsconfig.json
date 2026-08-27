@@ -27,6 +27,7 @@
     "public/append-connection.js",
     "public/set-slice-title.js",
     "public/set-actor-name.js",
-    "public/set-command-title.js"
+    "public/set-command-title.js",
+    "public/set-event-title.js"
   ]
 }

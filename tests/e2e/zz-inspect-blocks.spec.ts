@@ -192,3 +192,23 @@ test("After clicking `New Slice` then `Add Event` on that page, clicking the Tim
       .getByRole("textbox", { name: "Name", exact: true }),
   ).toHaveValue("Event Happened");
 });
+
+test("Filling the Inspector `Name` textbox with `Order Placed` after selecting `Event Happened` sets the last Event `title` to `Order Placed`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Event Happened", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Name", exact: true })
+    .fill("Order Placed");
+  const json = await page.locator("#event-model-document").textContent();
+  expect(JSON.parse(json ?? "{}").slices[0].events.at(-1).title).toBe(
+    "Order Placed",
+  );
+});

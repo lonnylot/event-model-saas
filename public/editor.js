@@ -8,6 +8,7 @@ import { appendConnection } from "./append-connection.js";
 import { setSliceTitle } from "./set-slice-title.js";
 import { setActorName } from "./set-actor-name.js";
 import { setCommandTitle } from "./set-command-title.js";
+import { setEventTitle } from "./set-event-title.js";
 
 export function onNewSliceClick(root) {
   const list = root.querySelector("ul");
@@ -206,6 +207,11 @@ export function bindEditor(root) {
             setCommandTitle(JSON.parse(holder.textContent || "{}"), input.value),
           );
         }
+        if (holder && selected === "event") {
+          holder.textContent = JSON.stringify(
+            setEventTitle(JSON.parse(holder.textContent || "{}"), input.value),
+          );
+        }
         if (selected === "slice" && selectedSliceItem) {
           selectedSliceItem.textContent = input.value;
           selectedSliceItem.setAttribute("aria-label", input.value);
@@ -237,6 +243,7 @@ export function bindEditor(root) {
       return;
     }
     if (item.dataset.kind === "event") {
+      selected = "event";
       bindName("Event Happened");
       return;
     }
