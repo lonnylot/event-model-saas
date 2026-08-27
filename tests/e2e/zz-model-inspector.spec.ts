@@ -97,3 +97,15 @@ test("GET `/app/teams/{id}/models/{mid}` as a member, clicking the heading whose
       .getByRole("textbox", { name: "Name", exact: true }),
   ).toBeVisible();
 });
+
+test("GET `/app/teams/{id}/models/{mid}` as a member, clicking the heading whose accessible name is `Untitled` shows that `Name` textbox with the value `Untitled`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("heading", { name: "Untitled", exact: true }).click();
+  await expect(
+    page
+      .getByRole("region", { name: "Inspector", exact: true })
+      .getByRole("textbox", { name: "Name", exact: true }),
+  ).toHaveValue("Untitled");
+});

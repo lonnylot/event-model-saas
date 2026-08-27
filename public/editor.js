@@ -598,7 +598,10 @@ export function bindEditor(root) {
   });
   root.querySelector("h1")?.addEventListener("click", () => {
     if (inspector && !nameInput()) {
-      inspector.insertAdjacentHTML("beforeend", "<label>Name <input /></label>");
+      inspector.insertAdjacentHTML(
+        "beforeend",
+        '<label>Name <input value="Untitled" /></label>',
+      );
     }
   });
   root.addEventListener("keydown", (event) => {

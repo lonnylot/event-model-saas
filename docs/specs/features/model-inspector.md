@@ -9,7 +9,7 @@ The editor heading shows the Event Model title, but clicking it does not open In
 ## Acceptance criteria
 
 - [x] GET `/app/teams/{id}/models/{mid}` as a member, clicking the heading whose accessible name is `Untitled` shows a textbox whose accessible name is `Name` in the Inspector region
-- [ ] GET `/app/teams/{id}/models/{mid}` as a member, clicking the heading whose accessible name is `Untitled` shows that `Name` textbox with the value `Untitled`
+- [x] GET `/app/teams/{id}/models/{mid}` as a member, clicking the heading whose accessible name is `Untitled` shows that `Name` textbox with the value `Untitled`
 - [ ] Filling the Inspector `Name` textbox with `Library Checkout` after clicking the `Untitled` heading sets the Event Model `title` to `Library Checkout`
 - [ ] Filling the Inspector `Name` textbox with `Library Checkout` after clicking the `Untitled` heading shows a heading whose accessible name is `Library Checkout`
 - [ ] GET `/app/teams/{id}/models/{mid}` as a member, clicking the heading whose accessible name is `Untitled` shows a textbox whose accessible name is `Description` in the Inspector region
