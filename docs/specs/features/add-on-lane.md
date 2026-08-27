@@ -13,7 +13,7 @@ Members can Add from the toolbar onto the last Slice only. They cannot Add on a 
 - [x] After clicking `New Slice` on that page, the Timeline region shows a button whose accessible name is `Add Event on lane`
 - [x] After clicking `New Slice` on that page, the Timeline region shows a button whose accessible name is `Add Read Model on lane`
 - [x] After clicking `New Slice` on that page, the Timeline region shows a button whose accessible name is `Add Automation on lane`
-- [x] After clicking `New Slice` twice, clicking the first `Add Command on lane` sets the first Slice `commands` to one Command and the last Slice `commands` to `[]`
+- [x] After clicking `New Slice` twice, clicking the first `Add Command on lane` appends a Command only on the first Slice
 - [x] After clicking `New Slice`, pressing ⌥⌘1 appends an Actor whose `name` is `Actor`
 - [x] After clicking `New Slice`, pressing ⌥⌘2 appends a Command whose `title` is `Command`
 - [x] After clicking `New Slice`, pressing ⌥⌘3 appends an Event whose `title` is `Event Happened`

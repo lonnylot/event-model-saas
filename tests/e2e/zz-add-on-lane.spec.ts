@@ -163,7 +163,7 @@ test("After clicking `New Slice` on that page, the Timeline region shows a butto
   ).toBeVisible();
 });
 
-test("After clicking `New Slice` twice, clicking the first `Add Command on lane` sets the first Slice `commands` to one Command and the last Slice `commands` to `[]`", async ({
+test("After clicking `New Slice` twice, clicking the first `Add Command on lane` appends a Command only on the first Slice", async ({
   page,
 }) => {
   await openUntitledModel(page);
