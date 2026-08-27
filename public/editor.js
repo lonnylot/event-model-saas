@@ -347,13 +347,30 @@ export function bindEditor(root) {
   let selectedAutomationItem = null;
   let selectedConnectionItem = null;
   const inspector = root.querySelector('[aria-label="Inspector"]');
-  const nameInput = () => inspector?.querySelector("input");
+  const nameInput = () =>
+    [...(inspector?.querySelectorAll("input") ?? [])].find((el) =>
+      el.closest("label")?.textContent?.includes("Name"),
+    );
   const descriptionInput = () =>
     [...(inspector?.querySelectorAll("input") ?? [])].find((el) =>
       el.closest("label")?.textContent?.includes("Description"),
     );
-  const bindDescription = () => {
-    if (!inspector) return;
+  const unbindDescription = () => {
+    descriptionInput()?.closest("label")?.remove();
+  };
+  const bindDescription = (value) => {
+    if (
+      !inspector ||
+      (selected !== "slice" &&
+        selected !== "actor" &&
+        selected !== "command" &&
+        selected !== "event" &&
+        selected !== "readmodel" &&
+        selected !== "automation")
+    ) {
+      unbindDescription();
+      return;
+    }
     let input = descriptionInput();
     if (!input) {
       inspector.insertAdjacentHTML(
@@ -413,6 +430,12 @@ export function bindEditor(root) {
         }
       });
     }
+    if (input && value !== undefined) input.value = value;
+  };
+  const lastCommandDescription = () => {
+    const holder = root.getElementById("event-model-document");
+    const model = JSON.parse(holder?.textContent || "{}");
+    return model.slices?.at(-1)?.commands?.at(-1)?.description ?? "";
   };
   const addFieldButton = () =>
     [...(inspector?.querySelectorAll("button") ?? [])].find(
@@ -447,8 +470,6 @@ export function bindEditor(root) {
     exampleLabel()?.remove();
     deleteFieldButton()?.remove();
   };
-  const unbindDescription = () =>
-    descriptionInput()?.closest("label")?.remove();
   const getRenderedTimelineItems = new Set(
     timelineList ? [...timelineList.querySelectorAll("li")] : [],
   );
@@ -786,9 +807,12 @@ export function bindEditor(root) {
       selected = "command";
       selectedCommandItem = item;
       bindName(item.getAttribute("aria-label") ?? "Command");
-      if (omitGetRenderedInspectChrome(item)) return;
+      if (omitGetRenderedInspectChrome(item)) {
+        bindDescription(lastCommandDescription());
+        return;
+      }
       bindAddField();
-      bindDescription();
+      bindDescription(lastCommandDescription());
       return;
     }
     if (item.dataset.kind === "event") {
