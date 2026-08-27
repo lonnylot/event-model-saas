@@ -28,6 +28,7 @@ import { deleteSlice } from "./delete-slice.js";
 import { deleteCommand } from "./delete-command.js";
 import { deleteConnection } from "./delete-connection.js";
 import { deleteActor } from "./delete-actor.js";
+import { deleteEvent } from "./delete-event.js";
 import { undoConnection } from "./undo-connection.js";
 
 const undoStack = [];
@@ -143,6 +144,7 @@ export function onAddEventClick(root) {
     item.textContent = "Event Happened";
     item.setAttribute("aria-label", "Event Happened");
     item.dataset.kind = "event";
+    item.setAttribute("data-id", event.id);
     const port = root.createElement("button");
     port.type = "button";
     port.textContent = "Event Happened port";
@@ -733,6 +735,15 @@ export function bindEditor(root) {
       );
       selectedActorItem.remove();
       selectedActorItem = null;
+      selected = null;
+    }
+    const eventId = selectedEventItem?.dataset?.id;
+    if (holder && selected === "event" && eventId && selectedEventItem) {
+      holder.textContent = JSON.stringify(
+        deleteEvent(JSON.parse(holder.textContent || "{}"), eventId),
+      );
+      selectedEventItem.remove();
+      selectedEventItem = null;
       selected = null;
     }
   });
