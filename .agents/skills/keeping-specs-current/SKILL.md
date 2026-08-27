@@ -61,7 +61,7 @@ description: >
   specs that just landed, leftover broader assignment (all Command Field
   name) after Out of scope narrowed to Last-Command,
   when Restates names a path not in the tree
-  (canvas-rest.md / add-on-lane.md / delete-blocks.md not on this HEAD / do not edit if not on the branch), leftover Out of scope still unowned later after Restates
+  (canvas-rest.md / add-on-lane.md / delete-blocks.md not on this HEAD / do not edit if not on the branch), Assumptions link files not in the tree, leftover Out of scope still unowned later after Restates
   (delete, drag, pan, moving Slices; Command Description / Command Field after rewriting only that sibling), Out of scope unnamed stay later for a released spec
   (Description and Fields stay later vs inspect-description / inspect-fields), when leftover action POST remains after a deleted
   control, when a leftover test title still quotes a restated AC, when
