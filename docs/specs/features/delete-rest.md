@@ -1,6 +1,6 @@
 # Delete rest
 
-Status: validated
+Status: released
 
 ## Problem
 

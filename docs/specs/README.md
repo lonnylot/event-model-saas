@@ -35,6 +35,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Model inspector | [features/model-inspector.md](./features/model-inspector.md) | released |
 | Connection refusals | [features/connection-refusals.md](./features/connection-refusals.md) | released |
 | Delete blocks | [features/delete-blocks.md](./features/delete-blocks.md) | released |
-| Delete rest | [features/delete-rest.md](./features/delete-rest.md) | validated |
+| Delete rest | [features/delete-rest.md](./features/delete-rest.md) | released |
 
 Status: `draft` → `validated` → `released`.
