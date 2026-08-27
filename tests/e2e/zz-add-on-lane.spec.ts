@@ -189,3 +189,13 @@ test("After clicking `New Slice`, pressing ⌥⌘1 appends an Actor whose `name`
   const json = await page.locator("#event-model-document").textContent();
   expect(JSON.parse(json ?? "{}").slices[0].actors[0].name).toBe("Actor");
 });
+
+test("After clicking `New Slice`, pressing ⌥⌘2 appends a Command whose `title` is `Command`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.keyboard.press("Alt+ControlOrMeta+Digit2");
+  const json = await page.locator("#event-model-document").textContent();
+  expect(JSON.parse(json ?? "{}").slices[0].commands[0].title).toBe("Command");
+});

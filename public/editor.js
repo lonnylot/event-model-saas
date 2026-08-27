@@ -544,12 +544,14 @@ export function bindEditor(root) {
   });
   root.addEventListener("keydown", (event) => {
     if (!event.altKey || !(event.metaKey || event.ctrlKey)) return;
-    if (event.code !== "Digit1") return;
     const holder = root.getElementById("event-model-document");
-    if (holder) {
-      holder.textContent = JSON.stringify(
-        appendActor(JSON.parse(holder.textContent || "{}")),
-      );
+    if (!holder) return;
+    const model = JSON.parse(holder.textContent || "{}");
+    if (event.code === "Digit1") {
+      holder.textContent = JSON.stringify(appendActor(model));
+    }
+    if (event.code === "Digit2") {
+      holder.textContent = JSON.stringify(appendCommand(model));
     }
   });
 }
