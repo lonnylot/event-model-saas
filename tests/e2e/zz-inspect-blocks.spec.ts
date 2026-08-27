@@ -112,3 +112,23 @@ test("After clicking `New Slice` then `Add Command` on that page, clicking the T
       .getByRole("textbox", { name: "Name", exact: true }),
   ).toHaveValue("Command");
 });
+
+test("Filling the Inspector `Name` textbox with `Place Order` after selecting `Command` sets the last Command `title` to `Place Order`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Command", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Name", exact: true })
+    .fill("Place Order");
+  const json = await page.locator("#event-model-document").textContent();
+  expect(JSON.parse(json ?? "{}").slices[0].commands.at(-1).title).toBe(
+    "Place Order",
+  );
+});

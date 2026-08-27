@@ -7,6 +7,7 @@ import { appendAutomation } from "./append-automation.js";
 import { appendConnection } from "./append-connection.js";
 import { setSliceTitle } from "./set-slice-title.js";
 import { setActorName } from "./set-actor-name.js";
+import { setCommandTitle } from "./set-command-title.js";
 
 export function onNewSliceClick(root) {
   const list = root.querySelector("ul");
@@ -198,6 +199,11 @@ export function bindEditor(root) {
             setActorName(JSON.parse(holder.textContent || "{}"), input.value),
           );
         }
+        if (holder && selected === "command") {
+          holder.textContent = JSON.stringify(
+            setCommandTitle(JSON.parse(holder.textContent || "{}"), input.value),
+          );
+        }
         if (selected === "slice" && selectedSliceItem) {
           selectedSliceItem.textContent = input.value;
           selectedSliceItem.setAttribute("aria-label", input.value);
@@ -220,12 +226,8 @@ export function bindEditor(root) {
     const item = event.target?.closest?.("li");
     if (!item || !timelineList.contains(item)) return;
     if (item.dataset.kind === "command") {
-      if (inspector && !nameInput()) {
-        inspector.insertAdjacentHTML(
-          "beforeend",
-          '<label>Name <input value="Command" /></label>',
-        );
-      }
+      selected = "command";
+      bindName("Command");
       return;
     }
     if (item.dataset.kind !== "actor") return;
