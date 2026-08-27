@@ -54,3 +54,15 @@ test('GET `/app` as site admin with no teams has a `link[rel="stylesheet"]` whos
     "/shell.css",
   );
 });
+
+
+test("GET `/app` as site admin with no teams `body` computed `background-color` is `rgb(247, 244, 238)`", async ({
+  page,
+  request,
+}) => {
+  await consumeAdmin(page, request);
+  await expect(page.locator("body")).toHaveCSS(
+    "background-color",
+    "rgb(247, 244, 238)",
+  );
+});
