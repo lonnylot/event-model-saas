@@ -73,6 +73,7 @@ export function onNewSliceClick(root) {
     const readModel = root.createElement("button");
     readModel.type = "button";
     readModel.textContent = "Add Read Model on lane";
+    readModel.setAttribute("data-slice-index", String(sliceIndex));
     timeline.append(readModel);
     const automation = root.createElement("button");
     automation.type = "button";
@@ -223,6 +224,9 @@ export function bindEditor(root) {
       }
       if (button.textContent === "Add Event on lane") {
         holder.textContent = JSON.stringify(appendEvent(model, index));
+      }
+      if (button.textContent === "Add Read Model on lane") {
+        holder.textContent = JSON.stringify(appendReadModel(model, index));
       }
     });
   }

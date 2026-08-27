@@ -129,3 +129,20 @@ test("After clicking `New Slice` twice, clicking the first `Add Event on lane` a
   expect(slices[0].events).toHaveLength(1);
   expect(slices.at(-1).events).toEqual([]);
 });
+
+test("After clicking `New Slice` twice, clicking the first `Add Read Model on lane` appends a Read Model only on the first Slice", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await clickNewSlice(page);
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("button", { name: "Add Read Model on lane", exact: true })
+    .first()
+    .click();
+  const json = await page.locator("#event-model-document").textContent();
+  const slices = JSON.parse(json ?? "{}").slices;
+  expect(slices[0].readModels).toHaveLength(1);
+  expect(slices.at(-1).readModels).toEqual([]);
+});

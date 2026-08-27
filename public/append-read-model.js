@@ -1,11 +1,13 @@
-export function appendReadModel(model) {
+export function appendReadModel(model, sliceIndex) {
   const slices = [...(model.slices ?? [])];
   if (slices.length === 0) return { ...model, slices };
-  const last = slices[slices.length - 1];
-  slices[slices.length - 1] = {
-    ...last,
+  const index = sliceIndex ?? slices.length - 1;
+  const target = slices[index];
+  if (!target) return { ...model, slices };
+  slices[index] = {
+    ...target,
     readModels: [
-      ...(last.readModels ?? []),
+      ...(target.readModels ?? []),
       { id: crypto.randomUUID(), title: "Read Model", type: "READMODEL", fields: [] },
     ],
   };
