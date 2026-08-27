@@ -30,11 +30,11 @@ If the product inventories screens and primitives (design-system spec): screens 
 
 ## Assumptions
 
-Environment facts (hostname, test adapter, platform flags). A shippable operator command or npm script that changes persisted state, or host-path construction of an architecture-named adapter, is an acceptance criterion so `tdd-loop` can name it — do not park it here. Distinguishing behavior existing production does not already do (factor is not the unzoomed pan `1`) is an acceptance criterion — do not park it here. A shared Inspector textbox value after select (Description; empty omitted JSON) is an acceptance criterion — do not park it here. A mutation key leftover released specs and this HEAD's write path do not implement (by id vs last-of-kind; GET listitems have no `data-id`) is unfinished — restate to match HEAD (`keeping-specs-current`).
+Environment facts (hostname, test adapter, platform flags). A shippable operator command or npm script that changes persisted state, or host-path construction of an architecture-named adapter, is an acceptance criterion so `tdd-loop` can name it — do not park it here. Distinguishing behavior existing production does not already do (factor is not the unzoomed pan `1`) is an acceptance criterion — do not park it here. A shared Inspector textbox value after select (Description; empty omitted JSON) is an acceptance criterion — do not park it here. Visible copy / an insert on the source listitem is an acceptance criterion — do not park it here. A mutation key leftover released specs and this HEAD's write path do not implement (by id vs last-of-kind; GET listitems have no `data-id`) is unfinished — restate to match HEAD (`keeping-specs-current`).
 
 ## Out of scope
 
-Explicit non-goals. When ACs cover some kinds of a shared family, name the omitted kinds here. When ACs are in-session Backspace and GET listitems have no `data-id`, name delete-after-reload (inspect-after-reload family). Unnamed stay later for work a released spec already owns is unfinished — point at that spec (`keeping-specs-current`).
+Explicit non-goals. When ACs cover some kinds of a shared family, name the omitted kinds here (Event reload-lists; Event / Read Model same-port copy; Event / Read Model onto Actor / Automation / Slice; Event → Read Model duplicate of a kind-agnostic refuse). When ACs are in-session Backspace and GET listitems have no `data-id`, name delete-after-reload (inspect-after-reload family). Unnamed stay later for work a released spec already owns is unfinished — point at that spec (`keeping-specs-current`).
 
 ## Restates
 
