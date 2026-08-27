@@ -1492,6 +1492,31 @@ export function bindEditor(root) {
             undoStack.push({ kind: "deleteSlice", slice, index });
           }
         }
+        if (entry?.kind === "deleteCommand") {
+          const commandId = entry.command?.id;
+          const model = JSON.parse(holder.textContent || "{}");
+          const slice = (model.slices ?? []).find((s) =>
+            (s.commands ?? []).some((command) => command.id === commandId),
+          );
+          const index = slice
+            ? (slice.commands ?? []).findIndex((c) => c.id === commandId)
+            : -1;
+          const command = index >= 0 ? slice.commands[index] : undefined;
+          holder.textContent = JSON.stringify(deleteCommand(model, commandId));
+          const list = root.querySelector('[aria-label="Timeline"] ul');
+          const item = [...(list?.children ?? [])].find(
+            (node) => node.getAttribute?.("data-id") === commandId,
+          );
+          item?.remove();
+          if (command && slice && index >= 0) {
+            undoStack.push({
+              kind: "deleteCommand",
+              command,
+              sliceId: slice.id,
+              index,
+            });
+          }
+        }
         return;
       }
       const entry = undoStack.pop();
@@ -1641,6 +1666,7 @@ export function bindEditor(root) {
           if (before) list.insertBefore(item, before);
           else list.append(item);
         }
+        redoStack.push(entry);
         return;
       }
       if (kind === "command") {

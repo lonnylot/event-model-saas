@@ -444,6 +444,35 @@ test("After clicking `New Slice` then `Add Command` twice, clicking the first Ti
   ).toHaveCount(2);
 });
 
+test("After clicking `New Slice` then `Add Command` twice, clicking the first Timeline `Command` listitem then the Timeline region, pressing Backspace, pressing ⌘Z, then pressing ⇧⌘Z, the remaining Command `id` is the Command that was last", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  const before = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  const lastId = before.slices[0].commands[1].id;
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Command", exact: true })
+    .first()
+    .click();
+  await page.getByRole("region", { name: "Timeline", exact: true }).click({
+    position: { x: 1, y: 1 },
+  });
+  await page.keyboard.press("Backspace");
+  await page.keyboard.press("ControlOrMeta+z");
+  await page.keyboard.press("Shift+ControlOrMeta+z");
+  const afterRedo = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  expect(afterRedo.slices[0].commands).toHaveLength(1);
+  expect(afterRedo.slices[0].commands[0].id).toBe(lastId);
+});
+
 test("After dragging from `Command port` onto `Event Happened port` twice, clicking the first Timeline text `Command → Event Happened` then the Timeline region, pressing Backspace, then pressing ⌘Z, the remaining connection `id` is the connection that was last and the first connection `id` is the connection that was first", async ({
   page,
 }) => {
