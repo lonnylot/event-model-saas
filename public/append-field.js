@@ -1,5 +1,4 @@
 export function appendField(model, target = "command", id) {
-export function appendField(model, target = "command") {
   const slices = [...(model.slices ?? [])];
   const slice = slices.at(-1);
   if (!slice) return model;
@@ -13,9 +12,6 @@ export function appendField(model, target = "command") {
     const event = events[index];
     if (!event) return model;
     events[index] = {
-    const event = events.at(-1);
-    if (!event) return model;
-    events[events.length - 1] = {
       ...event,
       fields: [...(event.fields ?? []), field],
     };
@@ -31,9 +27,6 @@ export function appendField(model, target = "command") {
     const readModel = readModels[index];
     if (!readModel) return model;
     readModels[index] = {
-    const readModel = readModels.at(-1);
-    if (!readModel) return model;
-    readModels[readModels.length - 1] = {
       ...readModel,
       fields: [...(readModel.fields ?? []), field],
     };
@@ -49,9 +42,6 @@ export function appendField(model, target = "command") {
     const automation = processors[index];
     if (!automation) return model;
     processors[index] = {
-    const automation = processors.at(-1);
-    if (!automation) return model;
-    processors[processors.length - 1] = {
       ...automation,
       fields: [...(automation.fields ?? []), field],
     };

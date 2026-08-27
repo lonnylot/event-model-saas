@@ -1,5 +1,4 @@
 export function setFieldName(model, name, id, target = "command") {
-export function setFieldName(model, name, target = "command") {
   const slices = [...(model.slices ?? [])];
   const slice = slices.at(-1);
   if (!slice) return model;
@@ -10,7 +9,6 @@ export function setFieldName(model, name, target = "command") {
       : events.length - 1;
     if (index < 0) return model;
     const event = events[index];
-    const event = events.at(-1);
     if (!event) return model;
     const fields = [...(event.fields ?? [])];
     if (!fields.length) return model;
@@ -46,32 +44,6 @@ export function setFieldName(model, name, target = "command") {
     if (!fields.length) return model;
     fields[0] = { ...fields[0], name };
     processors[index] = { ...automation, fields };
-    slices[slices.length - 1] = { ...slice, processors };
-    return { ...model, slices };
-  }
-    events[events.length - 1] = { ...event, fields };
-    slices[slices.length - 1] = { ...slice, events };
-    return { ...model, slices };
-  }
-  if (target === "readmodel") {
-    const readModels = [...(slice.readModels ?? [])];
-    const readModel = readModels.at(-1);
-    if (!readModel) return model;
-    const fields = [...(readModel.fields ?? [])];
-    if (!fields.length) return model;
-    fields[0] = { ...fields[0], name };
-    readModels[readModels.length - 1] = { ...readModel, fields };
-    slices[slices.length - 1] = { ...slice, readModels };
-    return { ...model, slices };
-  }
-  if (target === "automation") {
-    const processors = [...(slice.processors ?? [])];
-    const automation = processors.at(-1);
-    if (!automation) return model;
-    const fields = [...(automation.fields ?? [])];
-    if (!fields.length) return model;
-    fields[0] = { ...fields[0], name };
-    processors[processors.length - 1] = { ...automation, fields };
     slices[slices.length - 1] = { ...slice, processors };
     return { ...model, slices };
   }
