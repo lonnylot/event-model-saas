@@ -60,12 +60,12 @@ Person, Site admin, Team, Invite, Membership, Session, Magic link
 
 - Team name and invite email are JSON fields `name` and `email`.
 - Invite email is trimmed and lowercased.
-- Creating a Team does not create Event Models (persistence is a later spec).
+- Creating a Team does not create Event Models. Event Model persistence is [model-persistence.md](./model-persistence.md).
 - `run_worker_first` includes `/app` and `/app/*`.
 
 ## Out of scope
 
-Editor canvas, per-model ACLs, non-admin team creation. Event Model create/import/save/export and the team page model list are owned by model-persistence.
+Editor canvas, per-model ACLs, non-admin team creation. Event Model create/import/save/export and the team page model list are owned by model-persistence. AppBar `Event Model` link and Page background on `/app`, picker, team, and Teams admin are [visual-shell.md](./visual-shell.md).
 
 ## Restates
 

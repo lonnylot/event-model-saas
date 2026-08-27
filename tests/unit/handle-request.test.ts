@@ -35,4 +35,58 @@ describe("handleRequest", () => {
     expect(await response.text()).toBe('{"error":"not found"}');
     expect(assetsFetch).not.toHaveBeenCalled();
   });
+
+  it("GET `/favicon.png` returns status 200", async () => {
+    const assetsFetch = vi.fn(async () => new Response("x", { status: 200 }));
+    const response = await handleRequest(
+      new Request("https://event-model.lonnylot.com/favicon.png"),
+      envWithAssets(assetsFetch),
+    );
+    expect(response.status).toBe(200);
+  });
+
+  it("GET `/favicon.png` returns content-type `image/png`", async () => {
+    const assetsFetch = vi.fn(async () => new Response("x", { status: 200 }));
+    const response = await handleRequest(
+      new Request("https://event-model.lonnylot.com/favicon.png"),
+      envWithAssets(assetsFetch),
+    );
+    expect(response.headers.get("content-type")).toBe("image/png");
+  });
+
+  it("GET `/og.png` returns status 200", async () => {
+    const assetsFetch = vi.fn(async () => new Response("x", { status: 200 }));
+    const response = await handleRequest(
+      new Request("https://event-model.lonnylot.com/og.png"),
+      envWithAssets(assetsFetch),
+    );
+    expect(response.status).toBe(200);
+  });
+
+  it("GET `/og.png` returns content-type `image/png`", async () => {
+    const assetsFetch = vi.fn(async () => new Response("x", { status: 200 }));
+    const response = await handleRequest(
+      new Request("https://event-model.lonnylot.com/og.png"),
+      envWithAssets(assetsFetch),
+    );
+    expect(response.headers.get("content-type")).toBe("image/png");
+  });
+
+  it("GET `/shell.css` returns status 200", async () => {
+    const assetsFetch = vi.fn(async () => new Response("x", { status: 200 }));
+    const response = await handleRequest(
+      new Request("https://event-model.lonnylot.com/shell.css"),
+      envWithAssets(assetsFetch),
+    );
+    expect(response.status).toBe(200);
+  });
+
+  it("GET `/shell.css` returns content-type `text/css`", async () => {
+    const assetsFetch = vi.fn(async () => new Response("x", { status: 200 }));
+    const response = await handleRequest(
+      new Request("https://event-model.lonnylot.com/shell.css"),
+      envWithAssets(assetsFetch),
+    );
+    expect(response.headers.get("content-type")).toBe("text/css");
+  });
 });

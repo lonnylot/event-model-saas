@@ -93,6 +93,65 @@ export async function handleRequest(
     const last = g.__emSent?.at(-1) ?? null;
     return jsonOk(JSON.stringify({ text: last?.text ?? "" }));
   }
+
+  if (path === "/api/test/non-admin-session" && request.method === "POST") {
+    if (env.TEST_MAIL !== "1" || !env.auth) return jsonNotFound();
+    const personId = env.auth.randomId();
+    await env.auth.store.insertPerson({
+      id: personId,
+      email: "teammate@example.com",
+      isSiteAdmin: false,
+    });
+    const sessionId = env.auth.randomId();
+    await env.auth.store.insertSession({
+      id: sessionId,
+      personId,
+      expiresAt: env.auth.now() + 7 * 24 * 60 * 60 * 1000,
+    });
+    return new Response(null, {
+      status: 204,
+      headers: {
+        "Set-Cookie": `session=${sessionId}; Path=/; HttpOnly; SameSite=Lax`,
+      },
+    });
+  }
+
+  if (path === "/api/test/picker-session" && request.method === "POST") {
+    if (env.TEST_MAIL !== "1" || !env.auth) return jsonNotFound();
+    const personId = env.auth.randomId();
+    await env.auth.store.insertPerson({
+      id: personId,
+      email: "picker@example.com",
+      isSiteAdmin: false,
+    });
+    const teamA = env.auth.randomId();
+    const teamB = env.auth.randomId();
+    await env.auth.store.insertTeam({ id: teamA, name: "Alpha" });
+    await env.auth.store.insertTeam({ id: teamB, name: "Beta" });
+    await env.auth.store.addMembership(teamA, personId);
+    await env.auth.store.addMembership(teamB, personId);
+    const sessionId = env.auth.randomId();
+    await env.auth.store.insertSession({
+      id: sessionId,
+      personId,
+      expiresAt: env.auth.now() + 7 * 24 * 60 * 60 * 1000,
+    });
+    return new Response(null, {
+      status: 204,
+      headers: {
+        "Set-Cookie": `session=${sessionId}; Path=/; HttpOnly; SameSite=Lax`,
+      },
+    });
+  }
+
+  if (request.method === "GET" && (path === "/favicon.png" || path === "/og.png" || path === "/shell.css")) {
+    const asset = await env.ASSETS.fetch(request);
+    const headers = new Headers();
+    if (path === "/favicon.png") headers.set("content-type", "image/png");
+    if (path === "/og.png") headers.set("content-type", "image/png");
+    if (path === "/shell.css") headers.set("content-type", "text/css");
+    return new Response(asset.body, { status: asset.status, headers });
+  }
   if (path === "/api/teams" && request.method === "POST") {
     if (!env.auth) return jsonNotFound();
     const person = await personFromRequest(env.auth, request);

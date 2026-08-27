@@ -71,16 +71,16 @@ Must match the Mac app’s editing behavior:
 - Zoom / pan (toolbar zoom, scroll to pan, pinch zoom). Pinch pan and ⌘+/⌘-/⌘0 stay later
 - Undo New Slice and undo Command → Event. Undo of move, delete, and Add stays later
 
-Mac-only chrome is not ported: `NSDocument`, native menus as macOS menus, AppKit welcome window. The web shell is: team name, in-session selectable Event Model heading, dirty indicator, Save, Export, sign out. GET heading after JSON `title` change is the Event Model `title` ([features/inspect-rest.md](./features/inspect-rest.md)). Team-list and Export filename stay the D1 create title until later.
+Mac-only chrome is not ported: `NSDocument`, native menus as macOS menus, AppKit welcome window. Signed-out and team/admin HTML is paper workshop ([design-system.md](./design-system.md), [features/visual-shell.md](./features/visual-shell.md)). The editor web shell is: team name, in-session selectable Event Model heading, dirty indicator, Save, Export, sign out. GET heading after JSON `title` change is the Event Model `title` ([features/inspect-rest.md](./features/inspect-rest.md)). Team-list and Export filename stay the D1 create title until later. Editor chrome styling stays later.
 
-The JSON Schema stays `format: "eventmodel"`, `schemaVersion: 1`, compatible with the Mac app. The schema file is copied into this repo when persistence is implemented; it does not diverge without a spec change.
+The JSON Schema stays `format: "eventmodel"`, `schemaVersion: 1`, compatible with the Mac app. The schema file is `schemas/eventmodel.schema.json` in this repo; it does not diverge without a spec change.
 
 ## Error handling
 
 | Case | Behavior |
 |------|----------|
 | Unknown email at login | Same success copy as a valid request. Site admin emailed. Rate limited. |
-| Expired / used magic link | Message + path to request a new link. No session. |
+| Expired / used magic link | Heading `This link is expired or already used.` No session. Request a new one stays later. |
 | Session missing / expired | Login page. In-memory editor state is lost (warn if dirty before navigating away; not across a dead session). |
 | Save version mismatch | 409. Keep local edits. Person must reload to get the latest, which discards local, or copy local aside. |
 | Illegal connection | Command → Read Model: no edge; the Command listitem shows `A command can't write a read model.` Event → Command: no edge; the Event Happened listitem shows `An event can't trigger a command.` Leftover Mac pairs refuse with copy on the source ([features/connection-refusals.md](./features/connection-refusals.md)). Highlighting legal targets and snap-back are [features/connection-feedback.md](./features/connection-feedback.md). Undo of a Connection is [features/canvas.md](./features/canvas.md). |

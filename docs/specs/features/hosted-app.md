@@ -40,6 +40,6 @@ Event Model
 
 ## Out of scope
 
-Magic-link login, email field, D1, R2, teams, editor canvas.
+Magic-link login, email field, D1, R2, teams, editor canvas. Paper tokens, favicon, Open Graph, stylesheet, and Button primary on Login `Email me a link` are [visual-shell.md](./visual-shell.md). Card stays later.
 
 ## Restates

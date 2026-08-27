@@ -8,6 +8,7 @@ System specs (architecture, business, testing, design, observability) are option
 |------|------|--------|
 | Architecture | [architecture.md](./architecture.md) | draft |
 | Product | [product.md](./product.md) | draft |
+| Design system | [design-system.md](./design-system.md) | validated |
 
 Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPLATE.md). List each feature here when created:
 
@@ -38,5 +39,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Delete blocks | [features/delete-blocks.md](./features/delete-blocks.md) | released |
 | Delete rest | [features/delete-rest.md](./features/delete-rest.md) | released |
 | Inspect rest | [features/inspect-rest.md](./features/inspect-rest.md) | released |
+| Visual shell | [features/visual-shell.md](./features/visual-shell.md) | validated |
 
 Status: `draft` → `validated` → `released`.
