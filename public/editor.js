@@ -469,6 +469,17 @@ export function bindEditor(root) {
       });
     }
     if (input) input.value = value;
+    const typeSelect = inspector?.querySelector("select");
+    if (selected === "slice") {
+      if (inspector && !typeSelect) {
+        inspector.insertAdjacentHTML(
+          "beforeend",
+          "<label>Type <select></select></label>",
+        );
+      }
+    } else {
+      typeSelect?.closest("label")?.remove();
+    }
   };
   timelineList?.addEventListener("click", (event) => {
     const item = event.target?.closest?.("li");

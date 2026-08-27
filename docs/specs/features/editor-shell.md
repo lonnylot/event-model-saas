@@ -48,12 +48,12 @@ Event Model, Slice, Team, Person, Version
 - New Slice is in-memory until Save. Save still uses the version check from model-persistence.
 - Empty Slice JSON is `{ "id": "{uuid}", "title": "New Slice", "sliceType": "STATE_CHANGE", "actors": [], "commands": [], "events": [], "readModels": [], "processors": [] }`.
 - Zoom factors are `1.25` (in), `0.8` (out), `1` (reset). Pan is [canvas.md](./canvas.md).
-- Inspector in this slice is an empty named region; Slice and Actor Name are [chrome.md](./chrome.md). Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md).
+- Inspector in this slice is an empty named region; Slice and Actor Name are [chrome.md](./chrome.md). Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md). Slice type picker is [slice-type.md](./slice-type.md). Empty New Slice stays `STATE_CHANGE`.
 - The `TEST_MAIL=1` memory adapter does not count login attempts, so Playwright files can share one Worker without the production 5-per-hour cap.
 
 ## Out of scope
 
-Keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane.md). Selected-Slice ⌥⌘1 / ⌥⌘3–5 are [add-on-lane-rest.md](./add-on-lane-rest.md). Undo, pan, and moving Slices are [canvas.md](./canvas.md). Mac window chrome. Actors, commands, events, read models, and automations are [blocks.md](./blocks.md). Connections are [connections.md](./connections.md). Slice and Actor Name are [chrome.md](./chrome.md). Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md). Description is [inspect-description.md](./inspect-description.md). Add Field and Field name on Command are [inspect-fields.md](./inspect-fields.md). Slice type picker stay later.
+Keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane.md). Selected-Slice ⌥⌘1 / ⌥⌘3–5 are [add-on-lane-rest.md](./add-on-lane-rest.md). Undo, pan, and moving Slices are [canvas.md](./canvas.md). Mac window chrome. Actors, commands, events, read models, and automations are [blocks.md](./blocks.md). Connections are [connections.md](./connections.md). Slice and Actor Name are [chrome.md](./chrome.md). Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md). Description is [inspect-description.md](./inspect-description.md). Add Field and Field name on Command are [inspect-fields.md](./inspect-fields.md). Slice type picker is [slice-type.md](./slice-type.md).
 
 ## Restates
 

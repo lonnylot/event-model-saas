@@ -14,6 +14,10 @@ _Avoid_: diagram, board, canvas file, project
 One vertical column on the timeline. It has a type (`STATE_CHANGE`, `STATE_VIEW`, or `AUTOMATION`) and holds actors, commands, events, read models, and automations.
 _Avoid_: column, step, swimlane
 
+**Slice type**:
+The Slice `sliceType` value: `STATE_CHANGE`, `STATE_VIEW`, or `AUTOMATION`. Inspector labels are State Change, State View, and Automation.
+_Avoid_: kind (for this), category, slice kind
+
 **Actor**:
 A person or system that issues a command in a slice.
 _Avoid_: user (for this role), persona, role
