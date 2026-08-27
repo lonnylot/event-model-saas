@@ -390,6 +390,13 @@ export function bindEditor(root) {
   let selectedReadModelItem = null;
   let selectedAutomationItem = null;
   let selectedConnectionItem = null;
+  timeline?.addEventListener("click", (event) => {
+    const line = event.target?.closest?.("p");
+    if (!line || !timeline.contains(line)) return;
+    if (line.textContent !== "Command → Event Happened") return;
+    selected = "connection";
+    selectedConnectionItem = line;
+  });
   const inspector = root.querySelector('[aria-label="Inspector"]');
   const nameInput = () =>
     [...(inspector?.querySelectorAll("input") ?? [])].find(
