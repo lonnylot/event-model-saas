@@ -742,3 +742,32 @@ test("Dragging from `Read Model port` onto the first `New Slice` listitem shows 
     page.getByRole("listitem", { name: "Read Model", exact: true }),
   ).toContainText("A slice isn't a connection endpoint.");
 });
+test("After dragging from `Command port` onto `Event Happened port`, pointer-down on `Command port`, the `Event Happened port` does not have `aria-current` `true`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  const commandPort = page.getByRole("button", {
+    name: "Command port",
+    exact: true,
+  });
+  const eventPort = page.getByRole("button", {
+    name: "Event Happened port",
+    exact: true,
+  });
+  await expect(commandPort).toBeVisible();
+  await expect(eventPort).toBeVisible();
+  await commandPort.dragTo(eventPort);
+  await expect
+    .poll(async () => {
+      const json = await page.locator("#event-model-document").textContent();
+      return (JSON.parse(json ?? "{}").connections ?? []).length;
+    })
+    .toBe(1);
+  await commandPort.hover({ force: true });
+  await page.mouse.down();
+  await expect(eventPort).not.toHaveAttribute("aria-current", "true");
+});
+
