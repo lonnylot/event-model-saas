@@ -1,6 +1,6 @@
 # Connection feedback
 
-Status: validated
+Status: released
 
 ## Problem
 
