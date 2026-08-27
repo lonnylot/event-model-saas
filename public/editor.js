@@ -936,6 +936,27 @@ export function bindEditor(root) {
         }
       }
     }
+    const dropItem = event.target?.closest?.("li");
+    if (
+      sourcePort &&
+      !target &&
+      dropItem &&
+      timelineList?.contains(dropItem) &&
+      dropItem.dataset.kind === "actor"
+    ) {
+      const commandItem = sourcePort.closest("li");
+      if (
+        commandItem &&
+        !commandItem.textContent?.includes(
+          "An actor isn't a connection endpoint.",
+        )
+      ) {
+        commandItem.insertAdjacentHTML(
+          "beforeend",
+          "<p>An actor isn't a connection endpoint.</p>",
+        );
+      }
+    }
     for (const highlighted of root.querySelectorAll("[aria-current]")) {
       highlighted.removeAttribute("aria-current");
     }
