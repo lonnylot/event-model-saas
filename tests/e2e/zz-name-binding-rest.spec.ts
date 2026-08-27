@@ -297,6 +297,17 @@ test("After clicking `New Slice` then `Add Automation` twice, clicking the first
   );
 });
 
+test("Filling the Inspector `Name` textbox with `Send Email` after selecting `Automation` sets the Timeline `Send Email` listitem visible text to `Send Email`", async ({
+  page,
+}) => {
+  await addTwoAutomationsClickFirstFillSendEmail(page);
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Send Email", exact: true }),
+  ).toHaveText("Send Email");
+});
+
 test("After clicking `New Slice` then `Add Command` then `Save` on that page, filling the Inspector `Name` textbox with `Place Order` after selecting `Command` shows the text `Unsaved changes.`", async ({
   page,
 }) => {

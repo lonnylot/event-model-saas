@@ -18,7 +18,7 @@ Command Name binds by id, shows visible text, and Actor Name dirties after Save.
 - [x] Filling the Inspector `Name` textbox with `Shopper` after selecting the first Timeline `Actor` sets that listitem visible text to `Shopper`
 - [x] Filling the Inspector `Name` textbox with `Order Placed` after selecting `Event Happened` sets the Timeline `Order Placed` listitem visible text to `Order Placed`
 - [x] Filling the Inspector `Name` textbox with `Orders` after selecting `Read Model` sets the Timeline `Orders` listitem visible text to `Orders`
-- [ ] Filling the Inspector `Name` textbox with `Send Email` after selecting `Automation` sets the Timeline `Send Email` listitem visible text to `Send Email`
+- [x] Filling the Inspector `Name` textbox with `Send Email` after selecting `Automation` sets the Timeline `Send Email` listitem visible text to `Send Email`
 - [x] After clicking `New Slice` then `Add Command` then `Save` on that page, filling the Inspector `Name` textbox with `Place Order` after selecting `Command` shows the text `Unsaved changes.`
 - [x] After clicking `New Slice` then `Add Event` then `Save` on that page, filling the Inspector `Name` textbox with `Order Placed` after selecting `Event Happened` shows the text `Unsaved changes.`
 - [x] After clicking `New Slice` then `Add Read Model` then `Save` on that page, filling the Inspector `Name` textbox with `Orders` after selecting `Read Model` shows the text `Unsaved changes.`

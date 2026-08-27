@@ -1100,6 +1100,7 @@ export function bindEditor(root) {
           selectedReadModelItem.setAttribute("aria-label", input.value);
         }
         if (selected === "automation" && selectedAutomationItem) {
+          selectedAutomationItem.textContent = input.value;
           selectedAutomationItem.setAttribute("aria-label", input.value);
         }
         if (selected === "model") {
