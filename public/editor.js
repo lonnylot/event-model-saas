@@ -431,6 +431,17 @@ export function bindEditor(root) {
       selected = "command";
       selectedCommandItem = item;
       bindName("Command");
+      if (
+        inspector &&
+        ![...inspector.querySelectorAll("button")].some(
+          (button) => button.textContent === "Add Field",
+        )
+      ) {
+        inspector.insertAdjacentHTML(
+          "beforeend",
+          '<button type="button">Add Field</button>',
+        );
+      }
       bindDescription();
       return;
     }
