@@ -50,7 +50,7 @@ Event Model, Slice, Command, Event, Read Model, Automation, Field, Team, Person,
 
 ## Seams
 
-- `document` module — set Field `type` / `optional` / `example`, delete Field, append Field on Event / Read Model / Automation, set Field `name` on the clicked Command / Event / Read Model / Automation; the editor path calls it
+- `document` module — set Field `type` / `optional` / `example`, delete Field, append Field on Event / Read Model / Automation, set Field `name` on the clicked Command / Event / Read Model / Automation (`appendField(model, target, id)` / `setFieldName(model, name, id, target)` when `id` is the clicked block); last-Command `appendField(model)` / `setFieldName(model, name)` stay [inspect-fields.md](./inspect-fields.md); the editor path calls it
 - Browser — Playwright against `wrangler dev` with `TEST_MAIL=1`
 
 ## Assumptions
