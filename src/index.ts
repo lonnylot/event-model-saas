@@ -98,6 +98,7 @@ export async function handleRequest(
     const asset = await env.ASSETS.fetch(request);
     const headers = new Headers();
     if (path === "/favicon.png") headers.set("content-type", "image/png");
+    if (path === "/og.png") headers.set("content-type", "image/png");
     return new Response(asset.body, { status: asset.status, headers });
   }
   if (path === "/api/teams" && request.method === "POST") {

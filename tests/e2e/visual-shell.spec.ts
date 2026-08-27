@@ -62,3 +62,9 @@ test("GET `/og.png` returns status 200", async ({ request }) => {
   const response = await request.get("/og.png");
   expect(response.status()).toBe(200);
 });
+
+
+test("GET `/og.png` returns content-type `image/png`", async ({ request }) => {
+  const response = await request.get("/og.png");
+  expect(response.headers()["content-type"]).toMatch(/^image\/png\b/);
+});
