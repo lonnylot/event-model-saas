@@ -266,6 +266,15 @@ export function bindEditor(root) {
         ) {
           inspectorEl.insertAdjacentHTML("beforeend", "<p>From Command</p>");
         }
+        if (
+          inspectorEl &&
+          !inspectorEl.textContent?.includes("To Event Happened")
+        ) {
+          inspectorEl.insertAdjacentHTML(
+            "beforeend",
+            "<p>To Event Happened</p>",
+          );
+        }
         return;
       }
       if (connection.textContent !== "Event Happened → Read Model") return;
