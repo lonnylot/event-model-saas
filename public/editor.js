@@ -475,18 +475,21 @@ export function bindEditor(root) {
       if (inspector && !typeSelect) {
         inspector.insertAdjacentHTML(
           "beforeend",
-          "<label>Type <select><option>State Change</option><option>State View</option></select></label>",
+          "<label>Type <select><option>State Change</option><option>State View</option><option>Automation</option></select></label>",
         );
         const select = inspector.querySelector("select");
         select?.addEventListener("change", () => {
-          if (select.value !== "State View") return;
+          const sliceType =
+            select.value === "State View"
+              ? "STATE_VIEW"
+              : select.value === "Automation"
+                ? "AUTOMATION"
+                : null;
+          if (!sliceType) return;
           const holder = root.getElementById("event-model-document");
           if (holder) {
             holder.textContent = JSON.stringify(
-              setSliceType(
-                JSON.parse(holder.textContent || "{}"),
-                "STATE_VIEW",
-              ),
+              setSliceType(JSON.parse(holder.textContent || "{}"), sliceType),
             );
           }
         });

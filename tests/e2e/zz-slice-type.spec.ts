@@ -133,6 +133,20 @@ test("Selecting `State View` in Inspector `Type` after selecting `New Slice` set
   expect(JSON.parse(json ?? "{}").slices.at(-1).sliceType).toBe("STATE_VIEW");
 });
 
+test("Selecting `Automation` in Inspector `Type` after selecting `New Slice` sets the last Slice `sliceType` to `AUTOMATION`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("listitem", { name: "New Slice", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("combobox", { name: "Type", exact: true })
+    .selectOption("Automation");
+  const json = await page.locator("#event-model-document").textContent();
+  expect(JSON.parse(json ?? "{}").slices.at(-1).sliceType).toBe("AUTOMATION");
+});
+
 test("After a member creates a model, opens it, clicks `New Slice`, clicks the `New Slice` listitem, selects `State View` in `Type`, and Saves, a reload of that page sets the last Slice `sliceType` to `STATE_VIEW`", async ({
   page,
 }) => {
