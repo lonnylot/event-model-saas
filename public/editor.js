@@ -476,6 +476,21 @@ export function bindEditor(root) {
           );
         }
       }
+      if (
+        sourcePort.dataset.kind === "EVENT" &&
+        target.dataset.kind === "COMMAND"
+      ) {
+        const eventItem = sourcePort.closest("li");
+        if (
+          eventItem &&
+          !eventItem.textContent?.includes("An event can't trigger a command.")
+        ) {
+          eventItem.insertAdjacentHTML(
+            "beforeend",
+            "<p>An event can't trigger a command.</p>",
+          );
+        }
+      }
     }
     for (const highlighted of root.querySelectorAll("[aria-current]")) {
       highlighted.removeAttribute("aria-current");
