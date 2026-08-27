@@ -29,7 +29,7 @@ Event Model, Slice, Actor, Command, Event, Connection, Team, Person, Version
 
 - Two `New Slice` listitems are distinguished as first vs last, not by renaming. Chrome Name still mutates the last Slice; multi-item Name binding stays later.
 - Slice selection for move and delete is a click on the Slices listitem. After that click, Inspector `Name` may have focus, so delete is Backspace after clicking the Timeline region (not while typing in `Name`).
-- Add Actor still targets the last Slice ([blocks.md](./blocks.md)).
+- Add Actor still targets the last Slice ([blocks.md](./blocks.md)). Clicking Add Actor with no Slice does not append a Timeline listitem.
 - Drag-between-Slices drop target is the first Slices listitem. Same lane on the canvas is that move.
 - ⌥⌘← is Playwright `Alt+Meta+ArrowLeft` (CI: `ControlOrMeta` for ⌘). ⌥⌘→ is later.
 - Backspace deletes the selected Slice. Two `New Slice` listitems: the first is the clicked item. Delete is the same path.

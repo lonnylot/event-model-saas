@@ -64,6 +64,9 @@ async function openUntitledModel(page: Page) {
       page.getByRole("heading", { name: "Library", exact: true }),
     ).toBeVisible();
   }
+  const untitledBefore = await page
+    .getByRole("link", { name: "Untitled", exact: true })
+    .count();
   await Promise.all([
     page.waitForResponse(
       (response) =>
@@ -72,10 +75,21 @@ async function openUntitledModel(page: Page) {
     ),
     page.getByRole("button", { name: "Create model", exact: true }).click(),
   ]);
+  await expect(
+    page.getByRole("link", { name: "Untitled", exact: true }),
+  ).toHaveCount(untitledBefore + 1);
   await page.goto("/app");
   await page.getByRole("link", { name: "Untitled", exact: true }).last().click();
   await expect(
     page.getByRole("heading", { name: "Untitled", exact: true }),
+  ).toBeVisible();
+  await page.waitForLoadState("networkidle");
+}
+
+async function clickNewSlice(page: Page) {
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await expect(
+    page.getByRole("listitem", { name: "New Slice", exact: true }),
   ).toBeVisible();
 }
 
@@ -83,7 +97,7 @@ test("After clicking `New Slice` on that page, clicking the `New Slice` listitem
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("listitem", { name: "New Slice", exact: true }).click();
   await expect(
     page
@@ -96,7 +110,7 @@ test("After clicking `New Slice` on that page, clicking the `New Slice` listitem
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("listitem", { name: "New Slice", exact: true }).click();
   await expect(
     page
@@ -109,7 +123,7 @@ test("Filling the Inspector `Name` textbox with `Checkout` after selecting `New 
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("listitem", { name: "New Slice", exact: true }).click();
   await page
     .getByRole("region", { name: "Inspector", exact: true })
@@ -123,7 +137,7 @@ test("Filling the Inspector `Name` textbox with `Checkout` after selecting `New 
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("listitem", { name: "New Slice", exact: true }).click();
   await page
     .getByRole("region", { name: "Inspector", exact: true })
@@ -138,7 +152,7 @@ test("After clicking `New Slice`, Saving, then filling the Inspector `Name` text
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await Promise.all([
     page.waitForResponse(
       (response) =>
@@ -160,7 +174,7 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks the `
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("listitem", { name: "New Slice", exact: true }).click();
   await page
     .getByRole("region", { name: "Inspector", exact: true })
@@ -184,7 +198,7 @@ test("After clicking `New Slice` then `Add Actor` on that page, clicking the Tim
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Actor", exact: true }).click();
   await page
     .getByRole("region", { name: "Timeline", exact: true })
@@ -201,7 +215,7 @@ test("After clicking `New Slice` then `Add Actor` on that page, clicking the Tim
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Actor", exact: true }).click();
   await page
     .getByRole("region", { name: "Timeline", exact: true })
@@ -218,7 +232,7 @@ test("Filling the Inspector `Name` textbox with `Shopper` after selecting `Actor
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Actor", exact: true }).click();
   await page
     .getByRole("region", { name: "Timeline", exact: true })
@@ -236,7 +250,7 @@ test("Filling the Inspector `Name` textbox with `Shopper` after selecting `Actor
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Actor", exact: true }).click();
   await page
     .getByRole("region", { name: "Timeline", exact: true })
@@ -257,7 +271,7 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add 
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Actor", exact: true }).click();
   await page
     .getByRole("region", { name: "Timeline", exact: true })

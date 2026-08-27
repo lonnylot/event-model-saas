@@ -64,6 +64,9 @@ async function openUntitledModel(page: Page) {
       page.getByRole("heading", { name: "Library", exact: true }),
     ).toBeVisible();
   }
+  const untitledBefore = await page
+    .getByRole("link", { name: "Untitled", exact: true })
+    .count();
   await Promise.all([
     page.waitForResponse(
       (response) =>
@@ -72,16 +75,27 @@ async function openUntitledModel(page: Page) {
     ),
     page.getByRole("button", { name: "Create model", exact: true }).click(),
   ]);
+  await expect(
+    page.getByRole("link", { name: "Untitled", exact: true }),
+  ).toHaveCount(untitledBefore + 1);
   await page.goto("/app");
   await page.getByRole("link", { name: "Untitled", exact: true }).last().click();
   await expect(
     page.getByRole("heading", { name: "Untitled", exact: true }),
   ).toBeVisible();
+  await page.waitForLoadState("networkidle");
+}
+
+async function clickNewSlice(page: Page) {
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await expect(
+    page.getByRole("listitem", { name: "New Slice", exact: true }),
+  ).toBeVisible();
 }
 
 test("Clicking `New Slice` on that page shows a listitem whose accessible name is `New Slice`", async ({ page }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }),
   ).toBeVisible();
@@ -94,13 +108,13 @@ test("GET `/app/teams/{id}/models/{mid}` as a member with no local edits does no
 
 test("After clicking `New Slice` on that page, the page shows the text `Unsaved changes.`", async ({ page }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await expect(page.getByText("Unsaved changes.")).toBeVisible();
 });
 
 test("After clicking `New Slice` then `Save` on that page, the page does not show the text `Unsaved changes.`", async ({ page }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await expect(page.getByText("Unsaved changes.")).toBeVisible();
   await Promise.all([
     page.waitForResponse(
@@ -140,7 +154,7 @@ test("Clicking `Reset zoom` after `Zoom in` on that page sets the Timeline `styl
 
 test("After a member creates a model, opens it, clicks `New Slice`, and Saves, a reload of that page shows a listitem whose accessible name is `New Slice`", async ({ page }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await Promise.all([
     page.waitForResponse(
       (response) =>

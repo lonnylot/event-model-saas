@@ -64,6 +64,9 @@ async function openUntitledModel(page: Page) {
       page.getByRole("heading", { name: "Library", exact: true }),
     ).toBeVisible();
   }
+  const untitledBefore = await page
+    .getByRole("link", { name: "Untitled", exact: true })
+    .count();
   await Promise.all([
     page.waitForResponse(
       (response) =>
@@ -72,19 +75,33 @@ async function openUntitledModel(page: Page) {
     ),
     page.getByRole("button", { name: "Create model", exact: true }).click(),
   ]);
+  await expect(
+    page.getByRole("link", { name: "Untitled", exact: true }),
+  ).toHaveCount(untitledBefore + 1);
   await page.goto("/app");
   await page.getByRole("link", { name: "Untitled", exact: true }).last().click();
   await expect(
     page.getByRole("heading", { name: "Untitled", exact: true }),
   ).toBeVisible();
+  await page.waitForLoadState("networkidle");
+}
+
+async function clickNewSlice(page: Page) {
+  const count =
+    (await page.getByRole("listitem", { name: "New Slice", exact: true }).count()) +
+    1;
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await expect(
+    page.getByRole("listitem", { name: "New Slice", exact: true }),
+  ).toHaveCount(count);
 }
 
 test("After clicking `New Slice` twice, clicking the last `New Slice` listitem and pressing ⌥⌘← sets the first Slice `id` to the Slice that was last", async ({
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
+  await clickNewSlice(page);
   const before = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
@@ -104,15 +121,16 @@ test("After clicking `New Slice` twice then `Add Actor`, dragging the Timeline `
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Actor", exact: true }).click();
-  await page
+  const actor = page
     .getByRole("region", { name: "Timeline", exact: true })
-    .getByRole("listitem", { name: "Actor", exact: true })
-    .dragTo(
-      page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
-    );
+    .getByRole("listitem", { name: "Actor", exact: true });
+  await expect(actor).toBeVisible();
+  await actor.dragTo(
+    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
+  );
   const after = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
@@ -126,8 +144,8 @@ test("After clicking `New Slice` twice, clicking the first `New Slice` listitem 
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
+  await clickNewSlice(page);
   const before = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
@@ -175,7 +193,7 @@ test("After clicking `New Slice`, pressing ⌘Z does not show a listitem whose a
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.keyboard.press("ControlOrMeta+z");
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }),
@@ -186,9 +204,15 @@ test("After dragging `Command port` onto `Event Happened port`, pressing ⌘Z do
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await expect(
+    page.getByRole("button", { name: "Command port", exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Event Happened port", exact: true }),
+  ).toBeVisible();
   await page
     .getByRole("button", { name: "Command port", exact: true })
     .dragTo(
