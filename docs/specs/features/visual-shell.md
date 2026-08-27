@@ -9,7 +9,7 @@ Login, 404, expired magic link, and signed-in team pages are unstyled HTML: emai
 ## Acceptance criteria
 
 - [x] GET `/favicon.png` returns status 200
-- [ ] GET `/favicon.png` returns content-type `image/png`
+- [x] GET `/favicon.png` returns content-type `image/png`
 - [ ] GET `/og.png` returns status 200
 - [ ] GET `/og.png` returns content-type `image/png`
 - [ ] GET `/shell.css` returns status 200

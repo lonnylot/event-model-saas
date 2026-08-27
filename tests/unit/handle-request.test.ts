@@ -44,4 +44,13 @@ describe("handleRequest", () => {
     );
     expect(response.status).toBe(200);
   });
+
+  it("GET `/favicon.png` returns content-type `image/png`", async () => {
+    const assetsFetch = vi.fn(async () => new Response("x", { status: 200 }));
+    const response = await handleRequest(
+      new Request("https://event-model.lonnylot.com/favicon.png"),
+      envWithAssets(assetsFetch),
+    );
+    expect(response.headers.get("content-type")).toBe("image/png");
+  });
 });
