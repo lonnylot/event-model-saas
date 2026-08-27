@@ -502,7 +502,9 @@ export function bindEditor(root) {
       }
       if (
         inspector &&
-        (selected === "command" || selected === "event") &&
+        (selected === "command" ||
+          selected === "event" ||
+          selected === "readmodel") &&
         ![...inspector.querySelectorAll("input")].some((input) =>
           input.closest("label")?.textContent?.includes("Optional"),
         )
