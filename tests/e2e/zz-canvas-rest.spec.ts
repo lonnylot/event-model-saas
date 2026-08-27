@@ -186,3 +186,14 @@ test("After clicking `New Slice` then `Add Command`, pressing ⌘Z shows a listi
     page.getByRole("listitem", { name: "New Slice", exact: true }),
   ).toBeVisible();
 });
+
+test("Pressing ⌘+ on the Event Model page sets the Timeline `style.transform` to a value that includes `scale(1.25)`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.keyboard.press("ControlOrMeta+Equal");
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  await expect.poll(async () => timeline.evaluate((el) => el.style.transform)).toContain(
+    "scale(1.25)",
+  );
+});

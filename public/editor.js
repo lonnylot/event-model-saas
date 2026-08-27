@@ -1345,6 +1345,16 @@ export function bindEditor(root) {
       root.querySelector("ul")?.lastElementChild?.remove();
       return;
     }
+    if (
+      (event.metaKey || event.ctrlKey) &&
+      !event.altKey &&
+      (event.key === "=" || event.key === "+")
+    ) {
+      event.preventDefault();
+      scale = 1.25;
+      applyTimelineTransform();
+      return;
+    }
     if (event.key !== "Backspace" && event.key !== "Delete") return;
     if (event.target instanceof HTMLInputElement) return;
     const holder = root.getElementById("event-model-document");
