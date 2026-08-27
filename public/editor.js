@@ -1272,12 +1272,7 @@ export function bindEditor(root) {
       (event.key === "n" || event.key === "N")
     ) {
       event.preventDefault();
-      const holder = root.getElementById("event-model-document");
-      if (holder) {
-        holder.textContent = JSON.stringify(
-          appendSlice(JSON.parse(holder.textContent || "{}")),
-        );
-      }
+      onNewSliceClick(root);
       return;
     }
     if (

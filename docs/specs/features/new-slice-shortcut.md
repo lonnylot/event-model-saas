@@ -9,7 +9,7 @@ New Slice exists as a toolbar button. ⇧⌘N does not append a Slice, so the Ma
 ## Acceptance criteria
 
 - [x] Pressing ⇧⌘N on the Event Model page appends a Slice whose `title` is `New Slice`
-- [ ] Pressing ⇧⌘N on the Event Model page shows a listitem whose accessible name is `New Slice`
+- [x] Pressing ⇧⌘N on the Event Model page shows a listitem whose accessible name is `New Slice`
 
 ## Domain terms
 
