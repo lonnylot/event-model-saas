@@ -11,19 +11,19 @@ import { setCommandTitle } from "./set-command-title.js";
 import { setEventTitle } from "./set-event-title.js";
 import { setReadModelTitle } from "./set-read-model-title.js";
 import { setAutomationTitle } from "./set-automation-title.js";
+import { moveSliceLeft } from "./move-slice-left.js";
 
 export function onNewSliceClick(root) {
   const holder = root.getElementById("event-model-document");
-  if (holder) {
-    holder.textContent = JSON.stringify(
-      appendSlice(JSON.parse(holder.textContent || "{}")),
-    );
-  }
+  const next = appendSlice(JSON.parse(holder?.textContent || "{}"));
+  if (holder) holder.textContent = JSON.stringify(next);
+  const slice = next.slices?.at(-1);
   const list = root.querySelector("ul");
   if (list) {
     const item = root.createElement("li");
     item.textContent = "New Slice";
     item.setAttribute("aria-label", "New Slice");
+    if (slice) item.setAttribute("data-id", slice.id);
     list.append(item);
   }
   const main = root.querySelector("main");
@@ -301,6 +301,24 @@ export function bindEditor(root) {
     selected = "slice";
     selectedSliceItem = item;
     bindName("New Slice");
+  });
+  root.addEventListener("keydown", (event) => {
+    if (
+      !(
+        event.altKey &&
+        (event.metaKey || event.ctrlKey) &&
+        event.key === "ArrowLeft"
+      )
+    ) {
+      return;
+    }
+    const holder = root.getElementById("event-model-document");
+    const sliceId = selectedSliceItem?.dataset?.id;
+    if (holder && sliceId) {
+      holder.textContent = JSON.stringify(
+        moveSliceLeft(JSON.parse(holder.textContent || "{}"), sliceId),
+      );
+    }
   });
   let sourcePort = null;
   root.addEventListener("mousedown", (event) => {

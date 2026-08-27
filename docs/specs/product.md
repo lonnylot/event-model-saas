@@ -62,13 +62,13 @@ Port the Mac `DocumentEditorView` structure: **slice sidebar | timeline canvas**
 Must match the Mac app’s editing behavior:
 
 - New Slice (⇧⌘N / toolbar)
-- Add actors, commands, events, read models, automations (toolbar, dashed Add on a lane, keyboard equivalents of ⌥⌘1–5)
+- Add actors, commands, events, read models, automations (toolbar). Dashed Add on a lane and keyboard ⌥⌘1–5 stay later
 - Inspect a Slice, Actor, Command, Event, Read Model, or Automation; edit Name. Description, Fields, and Slice type picker stay later
-- Move slices (sidebar or canvas; ⌥⌘← / ⌥⌘→)
+- Move slices (⌥⌘←). ⌥⌘→ and sidebar drag-reorder stay later
 - Drag blocks between slices on the same lane
 - Connect by dragging a **Port** (command → event, event → read model). Highlighting legal targets, snap-back, reason on the source, and other illegal pairs stay later
 - Delete selection (Backspace/Delete)
-- Zoom / pan (pinch, ⌘+/⌘-/⌘0, toolbar zoom, scroll to pan)
+- Zoom / pan (toolbar zoom, scroll to pan). Pinch pan and ⌘+/⌘-/⌘0 stay later
 - Undo structural edits, including connections
 
 Mac-only chrome is not ported: `NSDocument`, native menus as macOS menus, AppKit welcome window. The web shell is: team name, model title, dirty indicator, Save, Export, sign out.
@@ -83,7 +83,7 @@ The JSON Schema stays `format: "eventmodel"`, `schemaVersion: 1`, compatible wit
 | Expired / used magic link | Message + path to request a new link. No session. |
 | Session missing / expired | Login page. In-memory editor state is lost (warn if dirty before navigating away; not across a dead session). |
 | Save version mismatch | 409. Keep local edits. Person must reload to get the latest, which discards local, or copy local aside. |
-| Illegal connection | Command → Read Model: no edge; the page shows `A command can't write a read model.` Other illegal pairs, reason on the source, snap-back, and undo stay later. |
+| Illegal connection | Command → Read Model: no edge; the page shows `A command can't write a read model.` Other illegal pairs, reason on the source, and snap-back stay later. Undo of a Connection is [features/canvas.md](./features/canvas.md). |
 | Import invalid JSON / schema | Reject; no D1 row; no R2 object. |
 | Not a team member | 404 on model routes. |
 | Write failure (R2 or D1) | 500. Version unchanged. Client keeps dirty document and may retry Save. |
@@ -92,4 +92,4 @@ The JSON Schema stays `format: "eventmodel"`, `schemaVersion: 1`, compatible wit
 
 - **Unit** at the document module: schema validation, legal edges, mutations (add/move/delete slice and blocks). This is the web counterpart of `EventModelTests`.
 - **Unit** at API seams with fake D1, R2, and email: invite-only gate, `SITE_ADMIN_EMAIL` bootstrap, unknown-email notify, magic-link consume, version match vs 409, failed write does not bump version.
-- **Playwright**: request login (test email adapter, never live mail), land on the team page model list, open the Event Model, New Slice, click New Slice, fill Name with Checkout, Save, reload still lists Checkout, Add Command, click Command, fill Name with Place Order, Save, reload still lists Place Order, Add Event, drag Command port onto Event Happened port, Save, reload still shows `Command → Event Happened`, second session Save → 409 UI. Playwright `workers` is `1` because the `TEST_MAIL` memory adapter is process-global. Dashed Add on a lane, keyboard ⌥⌘1–5, highlighting legal targets, snap-back, reason on the source, other illegal pairs, Description, Fields, and Slice type picker stay later.
+- **Playwright**: request login (test email adapter, never live mail), land on the team page model list, open the Event Model, New Slice, click New Slice, fill Name with Checkout, Save, reload still lists Checkout, Add Command, click Command, fill Name with Place Order, Save, reload still lists Place Order, Add Event, drag Command port onto Event Happened port, Save, reload still shows `Command → Event Happened`, second session Save → 409 UI, two New Slice then ⌥⌘← reorders, drag Actor onto the first Slice, Backspace deletes a Slice, scroll pans, ⌘Z undoes New Slice and undoes Command → Event. Playwright `workers` is `1` because the `TEST_MAIL` memory adapter is process-global. Pinch pan, ⌥⌘→, sidebar drag-reorder, dashed Add on a lane, keyboard ⌥⌘1–5, highlighting legal targets, snap-back, reason on the source, other illegal pairs, Description, Fields, and Slice type picker stay later.

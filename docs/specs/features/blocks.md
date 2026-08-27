@@ -58,10 +58,10 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person,
 
 ## Out of scope
 
-Dashed Add on a lane, keyboard shortcuts, delete, drag between Slices, undo, pan, moving Slices, Mac window chrome, creating a Slice from Add when there are none. Connections are [connections.md](./connections.md). Slice and Actor Name are [chrome.md](./chrome.md). Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md). Description, Fields, and Slice type picker stay later.
+Dashed Add on a lane and keyboard ⌥⌘1–5 stay later. Delete, drag between Slices, undo, pan, and moving Slices are [canvas.md](./canvas.md). Mac window chrome, creating a Slice from Add when there are none. Connections are [connections.md](./connections.md). Slice and Actor Name are [chrome.md](./chrome.md). Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md). Description, Fields, and Slice type picker stay later.
 
 ## Restates
 
-- [editor-shell.md](./editor-shell.md) — Out of scope no longer owns Actors, commands, events, read models, or automations; this slice owns adding those blocks. Keyboard shortcuts and moving Slices stay later. Connections are [connections.md](./connections.md). Slice and Actor Name are [chrome.md](./chrome.md).
+- [editor-shell.md](./editor-shell.md) — Out of scope no longer owns Actors, commands, events, read models, or automations; this slice owns adding those blocks. Keyboard ⌥⌘1–5 stay later. Moving Slices is [canvas.md](./canvas.md). Connections are [connections.md](./connections.md). Slice and Actor Name are [chrome.md](./chrome.md).
 - [model-persistence.md](./model-persistence.md) — Out of scope no longer owns Actors, commands, events, read models, or automations; this slice owns adding those blocks.
 - [product.md](../product.md) — Playwright path for this slice is open Event Model, New Slice, Add Actor, Save, reload still lists Actor on the Timeline. Command port drag is [connections.md](./connections.md). Dashed Add on a lane and keyboard ⌥⌘1–5 stay later.
