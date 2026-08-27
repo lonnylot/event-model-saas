@@ -71,7 +71,7 @@ Must match the Mac app’s editing behavior:
 - Zoom / pan (toolbar zoom, scroll to pan, pinch zoom). Pinch pan and ⌘+/⌘-/⌘0 stay later
 - Undo New Slice and undo Command → Event. Undo of move, delete, and Add stays later
 
-Mac-only chrome is not ported: `NSDocument`, native menus as macOS menus, AppKit welcome window. The web shell is: team name, in-session selectable Event Model heading, dirty indicator, Save, Export, sign out. GET heading, team-list, and Export filename stay the D1 create title until later.
+Mac-only chrome is not ported: `NSDocument`, native menus as macOS menus, AppKit welcome window. The web shell is: team name, in-session selectable Event Model heading, dirty indicator, Save, Export, sign out. GET heading after JSON `title` change is the Event Model `title` ([features/inspect-rest.md](./features/inspect-rest.md)). Team-list and Export filename stay the D1 create title until later.
 
 The JSON Schema stays `format: "eventmodel"`, `schemaVersion: 1`, compatible with the Mac app. The schema file is copied into this repo when persistence is implemented; it does not diverge without a spec change.
 
