@@ -99,6 +99,7 @@ export async function handleRequest(
     const headers = new Headers();
     if (path === "/favicon.png") headers.set("content-type", "image/png");
     if (path === "/og.png") headers.set("content-type", "image/png");
+    if (path === "/shell.css") headers.set("content-type", "text/css");
     return new Response(asset.body, { status: asset.status, headers });
   }
   if (path === "/api/teams" && request.method === "POST") {

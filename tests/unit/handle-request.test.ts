@@ -80,4 +80,13 @@ describe("handleRequest", () => {
     );
     expect(response.status).toBe(200);
   });
+
+  it("GET `/shell.css` returns content-type `text/css`", async () => {
+    const assetsFetch = vi.fn(async () => new Response("x", { status: 200 }));
+    const response = await handleRequest(
+      new Request("https://event-model.lonnylot.com/shell.css"),
+      envWithAssets(assetsFetch),
+    );
+    expect(response.headers.get("content-type")).toBe("text/css");
+  });
 });

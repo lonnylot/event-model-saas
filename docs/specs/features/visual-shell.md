@@ -13,7 +13,7 @@ Login, 404, expired magic link, and signed-in team pages are unstyled HTML: emai
 - [x] GET `/og.png` returns status 200
 - [x] GET `/og.png` returns content-type `image/png`
 - [x] GET `/shell.css` returns status 200
-- [ ] GET `/shell.css` returns content-type `text/css`
+- [x] GET `/shell.css` returns content-type `text/css`
 - [ ] GET `/` has a `link[rel="icon"]` whose `href` is `/favicon.png`
 - [ ] GET `/` has a `link[rel="stylesheet"]` whose `href` is `/shell.css`
 - [ ] GET `/` has a `meta[property="og:image"]` whose `content` ends with `/og.png`

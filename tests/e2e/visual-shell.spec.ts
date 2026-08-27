@@ -74,3 +74,11 @@ test("GET `/shell.css` returns status 200", async ({ request }) => {
   const response = await request.get("/shell.css");
   expect(response.status()).toBe(200);
 });
+
+
+test("GET `/shell.css` returns content-type `text/css`", async ({
+  request,
+}) => {
+  const response = await request.get("/shell.css");
+  expect(response.headers()["content-type"]).toMatch(/^text\/css\b/);
+});
