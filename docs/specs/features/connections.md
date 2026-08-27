@@ -41,7 +41,7 @@ Event Model, Slice, Command, Event, Read Model, Actor, Automation, Connection, T
 
 ## Out of scope
 
-Dashed Add on a lane, keyboard shortcuts, delete, drag blocks between Slices, undo, pan, moving Slices, highlighting legal targets, Mac window chrome, Actor or Automation as connection endpoints, duplicate-connection refusal, self-connection refusal, the other illegal-pair copy from the Mac app. Slice and Actor Name are [chrome.md](./chrome.md). Description, fields, and type picker stay later.
+Dashed Add on a lane, keyboard shortcuts, delete, drag blocks between Slices, undo, pan, moving Slices, highlighting legal targets, Mac window chrome, Actor or Automation as connection endpoints, duplicate-connection refusal, self-connection refusal, the other illegal-pair copy from the Mac app. Slice and Actor Name are [chrome.md](./chrome.md). Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md). Description, Fields, and Slice type picker stay later.
 
 ## Restates
 

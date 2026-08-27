@@ -63,7 +63,7 @@ Must match the Mac app’s editing behavior:
 
 - New Slice (⇧⌘N / toolbar)
 - Add actors, commands, events, read models, automations (toolbar, dashed Add on a lane, keyboard equivalents of ⌥⌘1–5)
-- Inspect a Slice or Actor; edit Name. Description, fields, type picker, and inspecting Command / Event / Read Model / Automation stay later
+- Inspect a Slice, Actor, Command, Event, Read Model, or Automation; edit Name. Description, Fields, and Slice type picker stay later
 - Move slices (sidebar or canvas; ⌥⌘← / ⌥⌘→)
 - Drag blocks between slices on the same lane
 - Connect by dragging a **Port** (command → event, event → read model). Highlighting legal targets, snap-back, reason on the source, and other illegal pairs stay later
@@ -92,4 +92,4 @@ The JSON Schema stays `format: "eventmodel"`, `schemaVersion: 1`, compatible wit
 
 - **Unit** at the document module: schema validation, legal edges, mutations (add/move/delete slice and blocks). This is the web counterpart of `EventModelTests`.
 - **Unit** at API seams with fake D1, R2, and email: invite-only gate, `SITE_ADMIN_EMAIL` bootstrap, unknown-email notify, magic-link consume, version match vs 409, failed write does not bump version.
-- **Playwright**: request login (test email adapter, never live mail), land on the team page model list, open the Event Model, New Slice, click New Slice, fill Name with Checkout, Save, reload still lists Checkout, Add Command, Add Event, drag Command port onto Event Happened port, Save, reload still shows `Command → Event Happened`, second session Save → 409 UI. Playwright `workers` is `1` because the `TEST_MAIL` memory adapter is process-global. Dashed Add on a lane, keyboard ⌥⌘1–5, highlighting legal targets, snap-back, reason on the source, other illegal pairs, description, fields, type picker, and inspecting Command / Event / Read Model / Automation stay later.
+- **Playwright**: request login (test email adapter, never live mail), land on the team page model list, open the Event Model, New Slice, click New Slice, fill Name with Checkout, Save, reload still lists Checkout, Add Command, click Command, fill Name with Place Order, Save, reload still lists Place Order, Add Event, drag Command port onto Event Happened port, Save, reload still shows `Command → Event Happened`, second session Save → 409 UI. Playwright `workers` is `1` because the `TEST_MAIL` memory adapter is process-global. Dashed Add on a lane, keyboard ⌥⌘1–5, highlighting legal targets, snap-back, reason on the source, other illegal pairs, Description, Fields, and Slice type picker stay later.

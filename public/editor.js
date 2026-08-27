@@ -55,6 +55,7 @@ export function onAddCommandClick(root) {
     const item = root.createElement("li");
     item.textContent = "Command";
     item.setAttribute("aria-label", "Command");
+    item.dataset.kind = "command";
     const port = root.createElement("button");
     port.type = "button";
     port.textContent = "Command port";
@@ -218,6 +219,12 @@ export function bindEditor(root) {
   timelineList?.addEventListener("click", (event) => {
     const item = event.target?.closest?.("li");
     if (!item || !timelineList.contains(item)) return;
+    if (item.dataset.kind === "command") {
+      if (inspector && !nameInput()) {
+        inspector.insertAdjacentHTML("beforeend", "<label>Name <input /></label>");
+      }
+      return;
+    }
     if (item.dataset.kind !== "actor") return;
     selected = "actor";
     selectedActorItem = item;

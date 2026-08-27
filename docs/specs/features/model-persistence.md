@@ -89,7 +89,7 @@ Event Model, Team, Person, Version, Slice
 
 ## Out of scope
 
-Undo, pan, keyboard shortcuts, moving Slices, Mac window chrome, document history. Editor canvas, New Slice, zoom, and the dirty indicator are [editor-shell.md](./editor-shell.md). Actors, commands, events, read models, and automations are [blocks.md](./blocks.md). Connections are [connections.md](./connections.md). Slice and Actor Name are [chrome.md](./chrome.md). Description, fields, and type picker stay later.
+Undo, pan, keyboard shortcuts, moving Slices, Mac window chrome, document history. Editor canvas, New Slice, zoom, and the dirty indicator are [editor-shell.md](./editor-shell.md). Actors, commands, events, read models, and automations are [blocks.md](./blocks.md). Connections are [connections.md](./connections.md). Slice and Actor Name are [chrome.md](./chrome.md). Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md). Description, Fields, and Slice type picker stay later.
 
 ## Restates
 
