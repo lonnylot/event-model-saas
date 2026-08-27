@@ -72,7 +72,7 @@ export function modelPageHtml(
       ),
       ...(slice.commands ?? []).map(
         (command) =>
-          `<li aria-label="${command.title}">${command.title}</li>`,
+          `<li aria-label="${command.title}" data-kind="command">${command.title}</li>`,
       ),
     ])
     .join("");

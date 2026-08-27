@@ -33,14 +33,14 @@ Event Model, Slice, Actor, Team, Person, Version
 
 - Slice selection is a click on the Slices listitem. Actor selection is a click on the Timeline Actor listitem.
 - This slice is one in-session `New Slice` and one in-session Timeline `Actor`. Name JSON mutates the last slice/actor. Multi-item binding is later.
-- Inspect is a click on a click-created listitem. GET-rendered Timeline actors omit `data-kind`; inspect after reload is later.
+- Inspect is a click on a click-created listitem. Inspect after reload is [inspect-after-reload.md](./inspect-after-reload.md).
 - The Inspector `Name` textbox edits Slice `title` or Actor `name`. The JSON keys stay `title` and `name`.
 - Name edits are in-memory until Save. Save still uses the version check from model-persistence.
 - The `TEST_MAIL=1` memory adapter does not count login attempts, so Playwright files can share one Worker without the production 5-per-hour cap.
 
 ## Out of scope
 
-Description is [inspect-description.md](./inspect-description.md). Add Field and Field name on Command are [inspect-fields.md](./inspect-fields.md). Slice type picker is [slice-type.md](./slice-type.md). Inspecting a Connection, inspect after reload, multi-item Name binding, Actor Name Unsaved changes, model-level Title, Mac window chrome. Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md). Keyboard shortcuts for this slice's keys, delete, drag blocks between Slices, undo, pan, and moving Slices are [canvas.md](./canvas.md). Highlighting legal targets is [connection-feedback.md](./connection-feedback.md). Dashed Add on a lane and keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane.md). Click-append from `Add Actor on lane` / `Add Event on lane` / `Add Read Model on lane` / `Add Automation on lane` and selected-Slice ⌥⌘1 / ⌥⌘3–5 are [add-on-lane-rest.md](./add-on-lane-rest.md).
+Description is [inspect-description.md](./inspect-description.md). Add Field and Field name on Command are [inspect-fields.md](./inspect-fields.md). Slice type picker is [slice-type.md](./slice-type.md). Inspecting a Connection, multi-item Name binding, Actor Name Unsaved changes, model-level Title, Mac window chrome. Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md). Inspect after reload is [inspect-after-reload.md](./inspect-after-reload.md). Keyboard shortcuts for this slice's keys, delete, drag blocks between Slices, undo, pan, and moving Slices are [canvas.md](./canvas.md). Highlighting legal targets is [connection-feedback.md](./connection-feedback.md). Dashed Add on a lane and keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane.md). Click-append from `Add Actor on lane` / `Add Event on lane` / `Add Read Model on lane` / `Add Automation on lane` and selected-Slice ⌥⌘1 / ⌥⌘3–5 are [add-on-lane-rest.md](./add-on-lane-rest.md).
 
 ## Restates
 

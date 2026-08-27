@@ -504,7 +504,7 @@ export function bindEditor(root) {
     if (item.dataset.kind === "command") {
       selected = "command";
       selectedCommandItem = item;
-      bindName("Command");
+      bindName(item.getAttribute("aria-label") ?? "Command");
       bindAddField();
       bindDescription();
       return;

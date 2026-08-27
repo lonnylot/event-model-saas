@@ -40,14 +40,14 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person,
 - Command, Event, Read Model, and Automation selection is a click on the Timeline listitem. The Inspector `Name` textbox is one control; selecting another of those kinds in the same session updates that `Name` value.
 - Toolbar Add still targets the last Slice. Clicking Add Command, Add Event, Add Read Model, or Add Automation with no Slice does not append a Timeline listitem.
 - This slice is one in-session Command, Event, Read Model, and Automation. Name JSON mutates the last of that kind.
-- Inspect is a click on a click-created listitem. GET-rendered Timeline blocks omit `data-kind`; inspect after reload is later.
+- Inspect is a click on a click-created listitem. Inspect after reload is [inspect-after-reload.md](./inspect-after-reload.md).
 - The Inspector `Name` textbox edits Command, Event, Read Model, or Automation `title`. The JSON key stays `title`.
 - Name edits are in-memory until Save. Save still uses the version check from model-persistence.
 - The `TEST_MAIL=1` memory adapter does not count login attempts, so Playwright files can share one Worker without the production 5-per-hour cap.
 
 ## Out of scope
 
-Description is [inspect-description.md](./inspect-description.md). Slice type picker is [slice-type.md](./slice-type.md). Inspecting a Connection, inspect after reload, Event / Read Model / Automation reload-lists, in-session visible listitem text on Name fill, multi-item Name binding, Actor Name Unsaved changes, model-level Title, Mac window chrome. Dashed Add on a lane and keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane.md). Click-append from `Add Actor on lane` / `Add Event on lane` / `Add Read Model on lane` / `Add Automation on lane` and selected-Slice ⌥⌘1 / ⌥⌘3–5 are [add-on-lane-rest.md](./add-on-lane-rest.md). Slice and Actor Name are [chrome.md](./chrome.md). Delete, drag blocks between Slices, undo, pan, and moving Slices are [canvas.md](./canvas.md). Add Field and Field name on Command are [inspect-fields.md](./inspect-fields.md). Field type / optional / example / delete stay later.
+Description is [inspect-description.md](./inspect-description.md). Slice type picker is [slice-type.md](./slice-type.md). Inspecting a Connection, in-session visible listitem text on Name fill, multi-item Name binding, Actor Name Unsaved changes, model-level Title, Mac window chrome. Dashed Add on a lane and keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane.md). Click-append from `Add Actor on lane` / `Add Event on lane` / `Add Read Model on lane` / `Add Automation on lane` and selected-Slice ⌥⌘1 / ⌥⌘3–5 are [add-on-lane-rest.md](./add-on-lane-rest.md). Slice and Actor Name are [chrome.md](./chrome.md). Inspect after reload and Event / Read Model / Automation reload-lists are [inspect-after-reload.md](./inspect-after-reload.md). Delete, drag blocks between Slices, undo, pan, and moving Slices are [canvas.md](./canvas.md). Add Field and Field name on Command are [inspect-fields.md](./inspect-fields.md). Field type / optional / example / delete stay later.
 
 ## Restates
 
