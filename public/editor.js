@@ -419,6 +419,13 @@ export function bindEditor(root) {
     );
   const unbindAddField = () => addFieldButton()?.remove();
   const unbindFieldName = () => fieldNameLabel()?.remove();
+  const unbindFieldRow = () => {
+    unbindFieldName();
+    fieldTypeLabel()?.remove();
+    optionalLabel()?.remove();
+    exampleLabel()?.remove();
+    deleteFieldButton()?.remove();
+  };
   const unbindDescription = () =>
     descriptionInput()?.closest("label")?.remove();
   const getRenderedTimelineItems = new Set(
@@ -427,17 +434,13 @@ export function bindEditor(root) {
   const omitGetRenderedInspectChrome = (item) => {
     if (!getRenderedTimelineItems.has(item)) return false;
     unbindAddField();
-    unbindFieldName();
+    unbindFieldRow();
     unbindDescription();
     return true;
   };
   const unbindFieldChrome = () => {
     unbindAddField();
-    unbindFieldName();
-    fieldTypeLabel()?.remove();
-    optionalLabel()?.remove();
-    exampleLabel()?.remove();
-    deleteFieldButton()?.remove();
+    unbindFieldRow();
   };
   const bindAddField = () => {
     if (!inspector || addFieldButton()) return;
@@ -774,7 +777,7 @@ export function bindEditor(root) {
       if (omitGetRenderedInspectChrome(item)) return;
       bindAddField();
       bindDescription();
-      unbindFieldName();
+      unbindFieldRow();
       return;
     }
     if (item.dataset.kind === "readmodel") {
@@ -784,7 +787,7 @@ export function bindEditor(root) {
       if (omitGetRenderedInspectChrome(item)) return;
       bindAddField();
       bindDescription();
-      unbindFieldName();
+      unbindFieldRow();
       return;
     }
     if (item.dataset.kind === "automation") {
@@ -794,7 +797,7 @@ export function bindEditor(root) {
       if (omitGetRenderedInspectChrome(item)) return;
       bindAddField();
       bindDescription();
-      unbindFieldName();
+      unbindFieldRow();
       return;
     }
     if (item.dataset.kind !== "actor") return;
