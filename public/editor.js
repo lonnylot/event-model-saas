@@ -425,7 +425,8 @@ export function bindEditor(root) {
       if (
         selected !== "command" &&
         selected !== "event" &&
-        selected !== "readmodel"
+        selected !== "readmodel" &&
+        selected !== "automation"
       ) {
         return;
       }
