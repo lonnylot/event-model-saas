@@ -1,6 +1,6 @@
 # Inspect fields rest
 
-Status: validated
+Status: released
 
 ## Problem
 
