@@ -12,6 +12,7 @@ import { setActorDescription } from "./set-actor-description.js";
 import { setCommandTitle } from "./set-command-title.js";
 import { setCommandDescription } from "./set-command-description.js";
 import { setEventTitle } from "./set-event-title.js";
+import { setEventDescription } from "./set-event-description.js";
 import { setReadModelTitle } from "./set-read-model-title.js";
 import { setAutomationTitle } from "./set-automation-title.js";
 import { moveSliceLeft } from "./move-slice-left.js";
@@ -292,6 +293,14 @@ export function bindEditor(root) {
         if (holder && selected === "command") {
           holder.textContent = JSON.stringify(
             setCommandDescription(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+            ),
+          );
+        }
+        if (holder && selected === "event") {
+          holder.textContent = JSON.stringify(
+            setEventDescription(
               JSON.parse(holder.textContent || "{}"),
               input.value,
             ),

@@ -32,6 +32,7 @@
     "public/set-command-title.js",
     "public/set-command-description.js",
     "public/set-event-title.js",
+    "public/set-event-description.js",
     "public/set-read-model-title.js",
     "public/set-automation-title.js"
   ]
