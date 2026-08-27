@@ -30,6 +30,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Two or more feat/ PRs at once | `parallel-feature-work`, `using-git-worktrees`, `releasing-a-spec` |
 | Playwright / flow CI | `playwright-e2e`, `testing` |
 | Async form fetch / last-mail before the invite POST | `playwright-e2e` |
+| Wait for New Slice after click / named Ports before pointer-down / force hover vs Timeline pan | `playwright-e2e`, `tdd-loop` |
 | Accessible name **is** X / Playwright substring | `testing`, `playwright-e2e` |
 | Unit `toContain(">X<")` for a named link/button/textbox | `testing` |
 | Unit `not.toContain("<li>X</li>")` for a does-not-show listitem | `testing` |
