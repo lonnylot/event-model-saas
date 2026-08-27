@@ -4,11 +4,11 @@ Status: draft
 
 ## Problem
 
-One paragraph: who, what, why.
+One paragraph: who, what, why. Do not name later-slice behavior as current (⌘+/⌘-/⌘0 while product.md keeps keyboard zoom later).
 
 ## Acceptance criteria
 
-Testable bullets. Each becomes one test name. One behavior per bullet; "and" (any case) means split unless the cases share one early return (`testing`). Restating a bullet renames that test. A leftover title that now includes the restated words must assert those words (or drop them from the leftover title).
+Testable bullets. Each becomes one test name. One behavior per bullet; "and" (any case) means split unless the cases share one early return (`testing`). An "includes `scale(`" AC that existing pan already satisfies is unfinished (`testing`). Restating a bullet renames that test. A leftover title that now includes the restated words must assert those words (or drop them from the leftover title).
 
 - [ ] …
 
@@ -30,7 +30,7 @@ If the product inventories screens and primitives (design-system spec): screens 
 
 ## Assumptions
 
-Environment facts (hostname, test adapter, platform flags). A shippable operator command or npm script that changes persisted state, or host-path construction of an architecture-named adapter, is an acceptance criterion so `tdd-loop` can name it — do not park it here.
+Environment facts (hostname, test adapter, platform flags). A shippable operator command or npm script that changes persisted state, or host-path construction of an architecture-named adapter, is an acceptance criterion so `tdd-loop` can name it — do not park it here. Distinguishing behavior existing production does not already do (factor is not the unzoomed pan `1`) is an acceptance criterion — do not park it here.
 
 ## Out of scope
 
@@ -38,4 +38,4 @@ Explicit non-goals. When ACs cover some kinds of a shared family, name the omitt
 
 ## Restates
 
-Released specs whose bullets this change rewrites. Listing a path without rewriting that file is unfinished. When Restates names a path (system spec or sibling feature), leftover locked claims and leftover Out of scope still listing those words as unowned later are rewritten (`keeping-specs-current`). Rewriting only one sibling word (undo) is unfinished.
+Released specs whose bullets this change rewrites. Listing a path without rewriting that file is unfinished. A path that is not in this tree (`canvas-rest.md`) or "do not edit if not on the branch" is unfinished — drop it. Do not link files that are not in the tree from Assumptions. When Restates names a path (system spec or sibling feature), leftover locked claims and leftover Out of scope still listing those words as unowned later are rewritten (`keeping-specs-current`). Rewriting only one sibling word (undo) is unfinished.

@@ -33,6 +33,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Wait for New Slice after click / named Ports before pointer-down / force hover vs Timeline pan | `playwright-e2e`, `tdd-loop` |
 | Accessible name **is** X / Playwright substring | `testing`, `playwright-e2e` |
 | Unit `toContain(">X<")` for a named link/button/textbox | `testing` |
+| `includes scale(` / `toContain("scale(")` when canvas pan already writes `scale(1)` | `testing`, `keeping-specs-current`, `tdd-loop` |
 | Unit `not.toContain("<li>X</li>")` for a does-not-show listitem | `testing` |
 | Clicking-appends tested at a function production never calls | `testing` |
 | Dragging-appends unit that passes the kind already in the input | `testing` |
@@ -44,12 +45,14 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Architecture-named store never constructed in a test / each new SQL untested | `testing` |
 | Packed "and" AC / independent env/branch cases | `testing`, `keeping-specs-current` |
 | Assumption vs acceptance criterion | `keeping-specs-current` |
-| Restated AC with leftover sections / leftover Assumptions after Out of scope / leftover Seams after deleting a named module / leftover Seams that name a path or mutation production does not call (scroll path / undo those mutations) / leftover test title / leftover Restates / leftover Out of scope still unowned later after Restates (delete, drag, pan, moving Slices) / leftover locked claims in a restated system spec | `keeping-specs-current` |
+| Distinguishing factor parked in Assumptions (factor is not unzoomed pan `1`) | `keeping-specs-current` |
+| Restated AC with leftover sections / leftover Assumptions after Out of scope / leftover Seams after deleting a named module / leftover Seams that name a path or mutation production does not call (scroll path / undo those mutations) / leftover test title / leftover Restates / Restates names a path not in the tree (`canvas-rest.md` / do not edit if not on the branch) / leftover Out of scope still unowned later after Restates (delete, drag, pan, moving Slices) / leftover locked claims in a restated system spec | `keeping-specs-current` |
 | 303/redirect AC vs a shows bullet on the same path | `keeping-specs-current` |
 | product.md leftover locked words / later-slice Playwright `add a slice` / leftover Restates quoting old product.md Playwright / leftover Document flow schema-reject / leftover Editor (Mac parity) after restating Testing highlighting / leftover Editor drag/delete/undo / leftover Document flow Mac-like undo / leftover Testing Unit mutations / copying a schema file instead of restating / Next slice still names a released slug / removing product.md from Restates | `keeping-specs-current` |
+| Problem names later-slice keyboard zoom as current (⌘+/⌘-/⌘0 while product.md keeps it later) | `keeping-specs-current` |
 | Domain terms line without a `CONTEXT.md` entry | `keeping-specs-current`, `domain-modeling` |
 | Independently revertible ACs / grouping by screen / spec-only / fromKind vs toKind / reconstruct after tests-after | `logical-commits` |
-| Tests-after / production that landed as a dependency / tests-only commit on top / review-strengthened tests after production landed / one-item Backspace tests-only follow-up / folding tests-after into sibling production / click-path production after field tests / follow-up rewrite onto click path / fold reload when GET already hydrates | `logical-commits`, `receiving-code-review` |
+| Tests-after / production that landed as a dependency / tests-only commit on top / review-strengthened tests after production landed / one-item Backspace tests-only follow-up / unique assertion after weaker `includes scale(` production / folding tests-after into sibling production / click-path production after field tests / follow-up rewrite onto click path / fold reload when GET already hydrates | `logical-commits`, `receiving-code-review` |
 | Review-thread batch / commit subject names two threads with "and" | `logical-commits` |
 | Extra visible chrome / document title / extra form or link or extra nav on a route / extra inspect of Out of scope kinds / extra host observability without an AC | `keeping-specs-current` |
 | Playwright wait for New Slice / named Ports / force hover flagged as extra chrome | `keeping-specs-current`, `playwright-e2e` |
