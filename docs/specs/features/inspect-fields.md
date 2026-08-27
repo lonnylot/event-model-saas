@@ -1,6 +1,6 @@
 # Inspect fields
 
-Status: validated
+Status: released
 
 ## Problem
 
