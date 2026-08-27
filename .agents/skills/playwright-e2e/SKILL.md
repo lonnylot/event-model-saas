@@ -11,7 +11,7 @@ description: >
   named Ports before pointer-down, force hover vs Timeline pan,
   wait after open (editor bound) before lane Add or ⌥⌘1–5,
   Playwright `workers` isolation,
-  or a Backspace / clicked-item flow with one New Slice (always-delete-last).
+  or a Backspace / clicked-item / first-vs-last / the first New Slice flow with one item (always-delete-last / .first() / only-last).
   Also when updating a Flow row in a testing spec.
 ---
 
@@ -27,7 +27,7 @@ Flow tests prove the catalogued user path through a real browser. Domain and app
 
 ## Loop
 
-1. **Quote the criterion.** Open the feature spec and the Flow row in the testing spec if it exists. Test name is that criterion. The Playwright spec lands in the same commit as the production that implements that criterion (`logical-commits`). A clicked-item / Backspace flow with one `New Slice` is the weaker reading (`testing`); always-delete-last stays green. Two default-named Slices prove remaining JSON id, not "does not show New Slice". Completion: deleting the flow would fail this test for that reason.
+1. **Quote the criterion.** Open the feature spec and the Flow row in the testing spec if it exists. Test name is that criterion. The Playwright spec lands in the same commit as the production that implements that criterion (`logical-commits`). A clicked-item / Backspace / first-vs-last / `the first New Slice listitem` flow with one `New Slice` is the weaker reading (`testing`); always-delete-last / `.first()` / only-last / `.at(-1)` stays green. Two default-named Slices prove remaining JSON id, not "does not show New Slice". Completion: deleting the flow would fail this test for that reason.
 
 2. **Script and CI.** Read `package.json` (or the product's equivalent). If `test:e2e` is missing, add it (Playwright's documented runner) in the same change. Changing Playwright `workers` (or other runner isolation) needs a spec sentence first (`keeping-specs-current`) — do not silently set `workers: 1` always. If CI has no job that runs that script, add one on `pull_request` — unit tests + build do not prove a click path. A unit test that only checks `scripts["test:e2e"]` is a non-empty string stays green if the script is `true` or `echo`. Unordered `toContain("playwright")` plus `toContain("test")` stays green for `echo playwright test`. An AC that says the script "includes the tokens" is a weaker criterion — restate as the script **is** `playwright test` (`keeping-specs-current`). Completion: the manifest and the workflow name the same script; any script-existence test asserts the exact value `playwright test` (consecutive runner tokens), not `length > 0` and not unordered token inclusion.
 

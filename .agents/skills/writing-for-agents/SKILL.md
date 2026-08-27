@@ -38,7 +38,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Clicking-appends tested at a function production never calls | `testing` |
 | Dragging-appends unit that passes the kind already in the input | `testing` |
 | Same-control Name values that never select the other entity (Command vs Event / Read Model / Automation; first-click-wins / insert-if-missing) | `testing` |
-| "that Slice" / clicked-item / Backspace AC with only one item / always-delete-last / one New Slice | `testing`, `keeping-specs-current`, `playwright-e2e` |
+| "that Slice" / clicked-item / Backspace / "the first X" / first-vs-last AC with only one item / always-delete-last / `.first()` / only-last / one New Slice | `testing`, `keeping-specs-current`, `playwright-e2e` |
 | Empty stub `it` / checked AC with no assertion | `testing`, `tdd-loop` |
 | Module / seam / adapter vocabulary | `codebase-design` |
 | Architecture adapter constructed only under a test flag / injected `env.documents` / construction parked in Assumptions | `testing`, `codebase-design`, `keeping-specs-current` |
