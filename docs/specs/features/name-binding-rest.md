@@ -24,7 +24,7 @@ Command Name binds by id, shows visible text, and Actor Name dirties after Save.
 - [x] After clicking `New Slice` then `Add Read Model` then `Save` on that page, filling the Inspector `Name` textbox with `Orders` after selecting `Read Model` shows the text `Unsaved changes.`
 - [x] After clicking `New Slice` then `Add Automation` then `Save` on that page, filling the Inspector `Name` textbox with `Send Email` after selecting `Automation` shows the text `Unsaved changes.`
 - [x] After clicking `New Slice` twice, clicking the first `New Slice` listitem, filling Inspector `Description` with `First column` sets the first Slice `description` to `First column`
-- [ ] After clicking `New Slice` then `Add Command` twice, clicking the first Timeline `Command` listitem, filling Inspector `Description` with `Submit cart` sets the first Command `description` to `Submit cart`
+- [x] After clicking `New Slice` then `Add Command` twice, clicking the first Timeline `Command` listitem, filling Inspector `Description` with `Submit cart` sets the first Command `description` to `Submit cart`
 - [ ] After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem, filling Inspector `Description` with `Librarian` sets the first Actor `description` to `Librarian`
 - [ ] After clicking `New Slice` then `Add Event` twice, clicking the first Timeline `Event Happened` listitem, filling Inspector `Description` with `It happened` sets the first Event `description` to `It happened`
 - [ ] After clicking `New Slice` then `Add Read Model` twice, clicking the first Timeline `Read Model` listitem, filling Inspector `Description` with `List view` sets the first Read Model `description` to `List view`

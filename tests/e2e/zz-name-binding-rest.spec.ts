@@ -416,3 +416,36 @@ test("After clicking `New Slice` twice, clicking the first `New Slice` listitem,
     .evaluate((el) => el.textContent);
   expect(JSON.parse(json ?? "{}").slices?.[0]?.description).toBe("First column");
 });
+
+async function addTwoCommandsClickFirstFillDescription(page: Page) {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Command", exact: true }),
+  ).toHaveCount(2);
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Command", exact: true })
+    .first()
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Description", exact: true })
+    .fill("Submit cart");
+}
+
+test("After clicking `New Slice` then `Add Command` twice, clicking the first Timeline `Command` listitem, filling Inspector `Description` with `Submit cart` sets the first Command `description` to `Submit cart`", async ({
+  page,
+}) => {
+  await addTwoCommandsClickFirstFillDescription(page);
+  const json = await page
+    .locator("#event-model-document")
+    .evaluate((el) => el.textContent);
+  expect(JSON.parse(json ?? "{}").slices?.[0]?.commands?.[0]?.description).toBe(
+    "Submit cart",
+  );
+});
