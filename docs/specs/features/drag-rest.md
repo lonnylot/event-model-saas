@@ -4,7 +4,7 @@ Status: validated
 
 ## Problem
 
-Members can drag an Actor onto another Slice. They cannot drag an Event, Read Model, or Automation between Slices, or drag a Slice on the Timeline, so Mac same-lane and canvas-slice move is incomplete.
+Members can drag an Actor or Command onto another Slice, and drag Slices in the sidebar. They cannot drag an Event, Read Model, or Automation between Slices, or drag a Slice on the Timeline, so Mac same-lane and canvas-slice move is incomplete.
 
 ## Acceptance criteria
 
@@ -37,6 +37,8 @@ Undo of move. Pinch zoom. Mac window chrome. Actor / Command drag and sidebar dr
 
 - [canvas-rest.md](./canvas-rest.md) — Out of scope no longer owns drag of Event, Read Model, and Automation between Slices; this slice owns those. Command drag and sidebar reorder stay that file. Timeline Slice drag is this slice.
 - [canvas.md](./canvas.md) — Timeline Slice drag is this slice. Actor drag stays this file. Drag of Event, Read Model, and Automation between Slices, and Timeline Slice drag, is this slice.
+- [editor-shell.md](./editor-shell.md) — Timeline Slice drag is this slice. Undo, pan, and moving Slices (⌥⌘←) stay [canvas.md](./canvas.md). Drag of Event, Read Model, and Automation between Slices is this slice.
+- [model-persistence.md](./model-persistence.md) — Timeline Slice drag is this slice. Undo, pan, and moving Slices (⌥⌘←) stay [canvas.md](./canvas.md). Drag of Event, Read Model, and Automation between Slices is this slice.
 - [blocks.md](./blocks.md) — Drag of Event, Read Model, and Automation between Slices, and Timeline Slice drag, is this slice. Actor drag stays [canvas.md](./canvas.md).
 - [chrome.md](./chrome.md) — Drag of Event, Read Model, and Automation between Slices, and Timeline Slice drag, is this slice. Actor drag stays [canvas.md](./canvas.md).
 - [connections.md](./connections.md) — Drag of Event, Read Model, and Automation between Slices, and Timeline Slice drag, is this slice. Actor drag stays [canvas.md](./canvas.md).
