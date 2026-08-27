@@ -1,6 +1,6 @@
 # Connection refusals
 
-Status: validated
+Status: released
 
 ## Problem
 
