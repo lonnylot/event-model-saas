@@ -350,6 +350,19 @@ export function bindEditor(root) {
       });
     }
   };
+  const bindAddField = () => {
+    if (
+      inspector &&
+      ![...inspector.querySelectorAll("button")].some(
+        (button) => button.textContent === "Add Field",
+      )
+    ) {
+      inspector.insertAdjacentHTML(
+        "beforeend",
+        '<button type="button">Add Field</button>',
+      );
+    }
+  };
   const bindName = (value) => {
     if (!inspector) return;
     let input = nameInput();
@@ -431,17 +444,7 @@ export function bindEditor(root) {
       selected = "command";
       selectedCommandItem = item;
       bindName("Command");
-      if (
-        inspector &&
-        ![...inspector.querySelectorAll("button")].some(
-          (button) => button.textContent === "Add Field",
-        )
-      ) {
-        inspector.insertAdjacentHTML(
-          "beforeend",
-          '<button type="button">Add Field</button>',
-        );
-      }
+      bindAddField();
       bindDescription();
       return;
     }
@@ -449,6 +452,7 @@ export function bindEditor(root) {
       selected = "event";
       selectedEventItem = item;
       bindName("Event Happened");
+      bindAddField();
       bindDescription();
       return;
     }
