@@ -68,6 +68,7 @@ export function onNewSliceClick(root) {
     const event = root.createElement("button");
     event.type = "button";
     event.textContent = "Add Event on lane";
+    event.setAttribute("data-slice-index", String(sliceIndex));
     timeline.append(event);
     const readModel = root.createElement("button");
     readModel.type = "button";
@@ -213,13 +214,16 @@ export function bindEditor(root) {
     );
     timeline.addEventListener("click", (event) => {
       const button = event.target?.closest?.("button");
-      if (button?.textContent !== "Add Actor on lane") return;
       const holder = root.getElementById("event-model-document");
-      if (!holder) return;
+      if (!holder || !button) return;
       const index = Number(button.getAttribute("data-slice-index"));
-      holder.textContent = JSON.stringify(
-        appendActor(JSON.parse(holder.textContent || "{}"), index),
-      );
+      const model = JSON.parse(holder.textContent || "{}");
+      if (button.textContent === "Add Actor on lane") {
+        holder.textContent = JSON.stringify(appendActor(model, index));
+      }
+      if (button.textContent === "Add Event on lane") {
+        holder.textContent = JSON.stringify(appendEvent(model, index));
+      }
     });
   }
   root.querySelectorAll("button").forEach((button) => {
