@@ -327,3 +327,28 @@ test("After clicking `New Slice` then `Add Automation` on that page, clicking th
       .getByRole("textbox", { name: "Description", exact: true }),
   ).toBeVisible();
 });
+
+test("Filling the Inspector `Description` textbox with `Email when paid` after selecting `Automation` sets the last Automation `description` to `Email when paid`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Command", exact: true })
+    .click();
+  await page.getByRole("button", { name: "Add Automation", exact: true }).click();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Automation", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("textbox", { name: "Description", exact: true })
+    .fill("Email when paid");
+  const json = await page.locator("#event-model-document").textContent();
+  expect(
+    JSON.parse(json ?? "{}").slices.at(-1).processors.at(-1).description,
+  ).toBe("Email when paid");
+});

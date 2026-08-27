@@ -16,6 +16,7 @@ import { setEventDescription } from "./set-event-description.js";
 import { setReadModelTitle } from "./set-read-model-title.js";
 import { setReadModelDescription } from "./set-read-model-description.js";
 import { setAutomationTitle } from "./set-automation-title.js";
+import { setAutomationDescription } from "./set-automation-description.js";
 import { moveSliceLeft } from "./move-slice-left.js";
 import { moveActorToSlice } from "./move-actor-to-slice.js";
 import { deleteSlice } from "./delete-slice.js";
@@ -310,6 +311,14 @@ export function bindEditor(root) {
         if (holder && selected === "readmodel") {
           holder.textContent = JSON.stringify(
             setReadModelDescription(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+            ),
+          );
+        }
+        if (holder && selected === "automation") {
+          holder.textContent = JSON.stringify(
+            setAutomationDescription(
               JSON.parse(holder.textContent || "{}"),
               input.value,
             ),

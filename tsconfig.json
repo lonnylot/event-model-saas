@@ -35,6 +35,7 @@
     "public/set-event-description.js",
     "public/set-read-model-title.js",
     "public/set-read-model-description.js",
-    "public/set-automation-title.js"
+    "public/set-automation-title.js",
+    "public/set-automation-description.js"
   ]
 }
