@@ -22,7 +22,7 @@ Event Model, Slice, Actor, Command, Event, Connection, Team, Person, Version
 
 ## Seams
 
-- `document` module — move Slice, move Actor between Slices, delete Slice, undo those mutations and undo Connection; the editor key, drag, and scroll path calls it
+- `document` module — `moveSliceLeft`, `moveActorToSlice`, `deleteSlice`, `undoConnection`; the editor key and drag path calls those
 - Browser — Playwright against `wrangler dev` with `TEST_MAIL=1`
 
 ## Assumptions
