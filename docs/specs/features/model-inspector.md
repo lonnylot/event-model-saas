@@ -1,6 +1,6 @@
 # Model inspector
 
-Status: validated
+Status: released
 
 ## Problem
 
