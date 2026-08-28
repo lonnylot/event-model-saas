@@ -152,3 +152,12 @@ test("GET `/login` link `Event Model` computed `color` is `rgb(15, 118, 110)`", 
     page.getByRole("link", { name: "Event Model", exact: true }),
   ).toHaveCSS("color", "rgb(15, 118, 110)");
 });
+
+test("GET `/login` textbox `Email` computed `border-top-color` is `rgb(226, 232, 240)`", async ({
+  page,
+}) => {
+  await page.goto("/login");
+  await expect(
+    page.getByRole("textbox", { name: "Email", exact: true }),
+  ).toHaveCSS("border-top-color", "rgb(226, 232, 240)");
+});
