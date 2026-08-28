@@ -260,3 +260,12 @@ test("GET `/` without a Session shows a heading whose accessible name is `Invite
     }),
   ).toBeVisible();
 });
+
+test("GET `/` without a Session shows the text `The Mac app is local: one person, one .eventmodel file.`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByText("The Mac app is local: one person, one .eventmodel file."),
+  ).toBeVisible();
+});
