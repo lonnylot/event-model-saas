@@ -116,3 +116,13 @@ test("GET `/` form `waitlist-form` computed `border-radius` is `10px`", async ({
     "10px",
   );
 });
+
+test("GET `/` form `waitlist-form` computed `max-width` is `384px`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator("form#waitlist-form")).toHaveCSS(
+    "max-width",
+    "384px",
+  );
+});
