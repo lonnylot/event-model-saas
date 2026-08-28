@@ -1,8 +1,37 @@
 import { describe, expect, it, vi } from "vitest";
+import { createMemoryStore } from "../../src/auth/memory-store.ts";
+import type { AuthRuntime, MailMessage } from "../../src/auth/types.ts";
 import { handleRequest } from "../../src/index.ts";
 
 function envWithAssets() {
   return { ASSETS: { fetch: vi.fn() } };
+}
+
+function recordingMail(): { mail: AuthRuntime["mail"]; sent: MailMessage[] } {
+  const sent: MailMessage[] = [];
+  return {
+    sent,
+    mail: {
+      async send(message) {
+        sent.push(message);
+      },
+    },
+  };
+}
+
+function authEnv(overrides: Partial<AuthRuntime> = {}) {
+  const { mail, sent } = recordingMail();
+  const store = createMemoryStore();
+  const auth: AuthRuntime = {
+    store,
+    mail,
+    now: () => 1_700_000_000_000,
+    randomId: () => "id-1",
+    siteAdminEmail: "lonny@lonnylot.com",
+    authFrom: "auth@event-model.lonnylot.com",
+    ...overrides,
+  };
+  return { env: { ...envWithAssets(), auth }, auth, sent };
 }
 
 function waitlistPost(email: string, ip = "203.0.113.1") {
@@ -44,6 +73,13 @@ describe("waitlist", () => {
       '{"ok":true,"message":"If you\'re on the list, we\'ll be in touch."}',
     );
   });
+
+  it("POST `/api/waitlist` with a new email inserts that email into the waitlist", async () => {
+    const { env, auth } = authEnv();
+    await handleRequest(waitlistPost("wait@example.com"), env);
+    expect(await auth.store.isWaitlisted("wait@example.com")).toBe(true);
+  });
 });
+
 
 

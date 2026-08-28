@@ -202,5 +202,11 @@ export function createD1Store(db: D1Database): AuthStore {
         .bind(version, id)
         .run();
     },
+    async insertWaitlist() {
+      throw new Error("waitlist D1 is later");
+    },
+    async isWaitlisted() {
+      throw new Error("waitlist D1 is later");
+    },
   };
 }

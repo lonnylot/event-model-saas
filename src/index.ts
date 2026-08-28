@@ -2,7 +2,7 @@ import { consumeLink } from "./auth/consume-link";
 import { createD1Store } from "./auth/d1-store";
 import { createMemoryStore } from "./auth/memory-store";
 import { requestLink, REQUEST_LINK_OK_BODY } from "./auth/request-link";
-import { WAITLIST_OK_BODY } from "./auth/join-waitlist";
+import { joinWaitlist, WAITLIST_OK_BODY } from "./auth/join-waitlist";
 import type { MailMessage } from "./auth/types";
 import {
   appPageHtml,
@@ -84,6 +84,23 @@ export async function handleRequest(
     return jsonOk(REQUEST_LINK_OK_BODY);
   }
   if (path === "/api/waitlist" && request.method === "POST") {
+    if (env.auth) {
+      let email = "";
+      try {
+        const body = (await request.json()) as { email?: string };
+        email = typeof body.email === "string" ? body.email : "";
+      } catch {
+        email = "";
+      }
+      const ip =
+        request.headers.get("cf-connecting-ip") ??
+        request.headers.get("x-forwarded-for") ??
+        "0.0.0.0";
+      await joinWaitlist(env.auth, {
+        email,
+        clientIp: ip.split(",")[0].trim(),
+      });
+    }
     return jsonOk(WAITLIST_OK_BODY);
   }
   if (path === "/api/auth/consume" && request.method === "GET") {

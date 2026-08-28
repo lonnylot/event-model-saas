@@ -66,7 +66,7 @@ GET `/` is the login form. A visitor cannot tell what Event Model is. Paper-work
 - [x] POST `/api/waitlist` returns status 200
 - [x] POST `/api/waitlist` returns content-type `application/json; charset=utf-8`
 - [x] POST `/api/waitlist` returns body `{"ok":true,"message":"If you're on the list, we'll be in touch."}`
-- [ ] POST `/api/waitlist` with a new email inserts that email into the waitlist
+- [x] POST `/api/waitlist` with a new email inserts that email into the waitlist
 - [ ] POST `/api/waitlist` with a new email sends a waitlist mail to `SITE_ADMIN_EMAIL` whose text includes that address
 - [ ] Waitlist mail subject is `Waitlist request`
 - [ ] POST `/api/waitlist` with an email already on the waitlist does not insert a second row and does not send mail

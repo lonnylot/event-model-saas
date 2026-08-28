@@ -15,6 +15,7 @@ export function createMemoryStore(): AuthStore {
   const teams: Team[] = [];
   const memberships: { teamId: string; personId: string }[] = [];
   const models: EventModelRow[] = [];
+  const waitlist: string[] = [];
 
   return {
     async getPersonByEmail(email) {
@@ -89,6 +90,12 @@ export function createMemoryStore(): AuthStore {
     async setEventModelVersion(id, version) {
       const found = models.find((m) => m.id === id);
       if (found) found.version = version;
+    },
+    async insertWaitlist(email) {
+      if (!waitlist.includes(email)) waitlist.push(email);
+    },
+    async isWaitlisted(email) {
+      return waitlist.includes(email);
     },
   };
 }
