@@ -62,6 +62,7 @@ body.landing main {
 body.not-found {
   background-color: #FFFFFF;
   color: #0F172A;
+  font-family: ui-sans-serif, system-ui, sans-serif;
 }
 body.expired {
   background-color: #FFFFFF;

@@ -202,3 +202,10 @@ test("GET `/login` link `Join the waitlist` computed `color` is `rgb(15, 118, 11
     page.getByRole("link", { name: "Join the waitlist", exact: true }),
   ).toHaveCSS("color", "rgb(15, 118, 110)");
 });
+
+test("GET an unknown document path `body` computed `font-family` includes `system-ui`", async ({
+  page,
+}) => {
+  await page.goto("/no-such-page");
+  await expect(page.locator("body")).toHaveCSS("font-family", /system-ui/);
+});
