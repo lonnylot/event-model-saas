@@ -11,10 +11,10 @@ test("GET `/login` shows a textbox whose accessible name is `Email`", async ({
   ).toBeVisible();
 });
 
-test("GET `/` shows a button whose accessible name is `Email me a link`", async ({
+test("GET `/login` shows a button whose accessible name is `Email me a link`", async ({
   page,
 }) => {
-  await page.goto("/");
+  await page.goto("/login");
   await expect(
     page.getByRole("button", { name: "Email me a link", exact: true }),
   ).toBeVisible();

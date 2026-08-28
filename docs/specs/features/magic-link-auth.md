@@ -9,7 +9,7 @@ The host is public and invite-only, but nobody can sign in. This slice lets a Pe
 ## Acceptance criteria
 
 - [x] GET `/login` shows a textbox whose accessible name is `Email`
-- [x] GET `/` shows a button whose accessible name is `Email me a link`
+- [x] GET `/login` shows a button whose accessible name is `Email me a link`
 - [x] POST `/api/auth/request-link` returns status 200
 - [x] POST `/api/auth/request-link` returns content-type `application/json; charset=utf-8`
 - [x] POST `/api/auth/request-link` returns body `{"ok":true,"message":"If you have access, check your inbox."}`
