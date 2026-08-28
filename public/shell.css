@@ -50,6 +50,7 @@ body.landing main {
 #login button {
   background-color: #0F766E;
   color: #FFFFFF;
+  border-radius: 10px;
 }
 #login input {
   border-top-color: #E2E8F0;

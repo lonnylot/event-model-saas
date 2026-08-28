@@ -184,3 +184,12 @@ test("GET `/login` form `login` computed `border-radius` is `10px`", async ({
   await page.goto("/login");
   await expect(page.locator("form#login")).toHaveCSS("border-radius", "10px");
 });
+
+test("GET `/login` button `Email me a link` computed `border-radius` is `10px`", async ({
+  page,
+}) => {
+  await page.goto("/login");
+  await expect(
+    page.getByRole("button", { name: "Email me a link", exact: true }),
+  ).toHaveCSS("border-radius", "10px");
+});
