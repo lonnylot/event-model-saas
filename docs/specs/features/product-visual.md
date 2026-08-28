@@ -18,7 +18,7 @@ Public pages have copy and body colors only. Signed-in pages are paper cream. Th
 - [x] GET `/` button `Join the waitlist` computed `color` is `rgb(255, 255, 255)`
 - [x] GET `/` button `Join the waitlist` computed `border-radius` is `10px`
 - [x] GET `/` textbox `Email` computed `border-top-color` is `rgb(226, 232, 240)`
-- [ ] GET `/` textbox `Email` computed `border-radius` is `10px`
+- [x] GET `/` textbox `Email` computed `border-radius` is `10px`
 - [ ] GET `/` textbox `Email` computed `background-color` is `rgb(255, 255, 255)`
 - [ ] GET `/` form `waitlist-form` computed `border-top-color` is `rgb(226, 232, 240)`
 - [ ] GET `/` form `waitlist-form` computed `border-radius` is `10px`
