@@ -28,7 +28,7 @@ Event Model, Slice, Team, Person, Version
 
 ## Out of scope
 
-⌥⌘1–5, dashed Add on a lane, Description, Fields, Slice type picker, Mac window chrome. Toolbar New Slice stays [editor-shell.md](./editor-shell.md).
+⌥⌘1–5, dashed Add on a lane, Mac window chrome. Toolbar New Slice stays [editor-shell.md](./editor-shell.md). Last-item Description is [inspect-description.md](./inspect-description.md). Description-by-id, Slice type-by-id, Type dirty, Add Field dirty, and heading dirty are [name-binding-rest.md](./name-binding-rest.md). Remaining Field type / optional / example / delete are [inspect-fields-rest.md](./inspect-fields-rest.md). Last-Slice Type picker is [slice-type.md](./slice-type.md).
 
 ## Restates
 

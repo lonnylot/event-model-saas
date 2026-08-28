@@ -6,8 +6,8 @@ import { appendReadModel } from "./append-read-model.js";
 import { appendAutomation } from "./append-automation.js";
 import { appendConnection } from "./append-connection.js";
 import { setSliceTitle } from "./set-slice-title.js";
-import { setSliceDescription } from "./set-slice-description.js";
 import { setSliceType } from "./set-slice-type.js";
+import { setSliceDescription } from "./set-slice-description.js";
 import { setActorName } from "./set-actor-name.js";
 import { setActorDescription } from "./set-actor-description.js";
 import { setCommandTitle } from "./set-command-title.js";
@@ -383,48 +383,85 @@ export function bindEditor(root) {
             setSliceDescription(
               JSON.parse(holder.textContent || "{}"),
               input.value,
+              selectedSliceItem?.dataset?.id,
             ),
           );
+          const main = root.querySelector("main");
+          if (main && !main.textContent?.includes("Unsaved changes.")) {
+            main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
+          }
         }
         if (holder && selected === "actor") {
           holder.textContent = JSON.stringify(
             setActorDescription(
               JSON.parse(holder.textContent || "{}"),
               input.value,
+              selectedActorItem?.dataset?.id,
             ),
           );
+
+          const main = root.querySelector("main");
+          if (main && !main.textContent?.includes("Unsaved changes.")) {
+            main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
+          }
         }
         if (holder && selected === "command") {
           holder.textContent = JSON.stringify(
             setCommandDescription(
               JSON.parse(holder.textContent || "{}"),
               input.value,
+              selectedCommandItem?.dataset?.id,
             ),
           );
+          const main = root.querySelector("main");
+          if (main && !main.textContent?.includes("Unsaved changes.")) {
+            main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
+          }
         }
         if (holder && selected === "event") {
           holder.textContent = JSON.stringify(
             setEventDescription(
               JSON.parse(holder.textContent || "{}"),
               input.value,
+              selectedEventItem?.dataset?.id,
             ),
           );
+          const main = root.querySelector("main");
+          if (main && !main.textContent?.includes("Unsaved changes.")) {
+            main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
+          }
         }
         if (holder && selected === "readmodel") {
           holder.textContent = JSON.stringify(
             setReadModelDescription(
               JSON.parse(holder.textContent || "{}"),
               input.value,
+              selectedReadModelItem?.dataset?.id,
             ),
           );
+          const main = root.querySelector("main");
+          if (main && !main.textContent?.includes("Unsaved changes.")) {
+            main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
+          }
         }
         if (holder && selected === "automation") {
           holder.textContent = JSON.stringify(
             setAutomationDescription(
               JSON.parse(holder.textContent || "{}"),
               input.value,
+              selectedAutomationItem?.dataset?.id,
             ),
           );
+          const main = root.querySelector("main");
+          if (main && !main.textContent?.includes("Unsaved changes.")) {
+            main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
+          }
+        }
+        if (selected === "heading") {
+          const main = root.querySelector("main");
+          if (main && !main.textContent?.includes("Unsaved changes.")) {
+            main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
+          }
         }
       });
     }
@@ -593,8 +630,16 @@ export function bindEditor(root) {
         const holder = root.getElementById("event-model-document");
         if (holder) {
           holder.textContent = JSON.stringify(
-            setSliceType(JSON.parse(holder.textContent || "{}"), sliceType),
+            setSliceType(
+              JSON.parse(holder.textContent || "{}"),
+              sliceType,
+              selectedSliceItem?.dataset?.id,
+            ),
           );
+          const main = root.querySelector("main");
+          if (main && !main.textContent?.includes("Unsaved changes.")) {
+            main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
+          }
         }
       });
     }
@@ -827,6 +872,10 @@ export function bindEditor(root) {
           ),
         );
       }
+      const main = root.querySelector("main");
+      if (main && !main.textContent?.includes("Unsaved changes.")) {
+        main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
+      }
       if (
         inspector &&
         (selected === "command" ||
@@ -1004,12 +1053,20 @@ export function bindEditor(root) {
         const holder = root.getElementById("event-model-document");
         if (holder && selected === "slice") {
           holder.textContent = JSON.stringify(
-            setSliceTitle(JSON.parse(holder.textContent || "{}"), input.value),
+            setSliceTitle(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+              selectedSliceItem?.dataset?.id,
+            ),
           );
         }
         if (holder && selected === "actor") {
           holder.textContent = JSON.stringify(
-            setActorName(JSON.parse(holder.textContent || "{}"), input.value),
+            setActorName(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+              selectedActorItem?.dataset?.id,
+            ),
           );
         }
         if (holder && selected === "command") {
@@ -1023,7 +1080,11 @@ export function bindEditor(root) {
         }
         if (holder && selected === "event") {
           holder.textContent = JSON.stringify(
-            setEventTitle(JSON.parse(holder.textContent || "{}"), input.value),
+            setEventTitle(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+              selectedEventItem?.dataset?.id,
+            ),
           );
         }
         if (holder && selected === "readmodel") {
@@ -1031,6 +1092,7 @@ export function bindEditor(root) {
             setReadModelTitle(
               JSON.parse(holder.textContent || "{}"),
               input.value,
+              selectedReadModelItem?.dataset?.id,
             ),
           );
         }
@@ -1039,6 +1101,7 @@ export function bindEditor(root) {
             setAutomationTitle(
               JSON.parse(holder.textContent || "{}"),
               input.value,
+              selectedAutomationItem?.dataset?.id,
             ),
           );
         }
@@ -1066,19 +1129,36 @@ export function bindEditor(root) {
           selectedCommandItem.setAttribute("aria-label", input.value);
         }
         if (selected === "event" && selectedEventItem) {
+          const text = [...selectedEventItem.childNodes].find(
+            (node) => node.nodeType === 3,
+          );
+          if (text) text.textContent = input.value;
           selectedEventItem.setAttribute("aria-label", input.value);
         }
         if (selected === "readmodel" && selectedReadModelItem) {
+          const text = [...selectedReadModelItem.childNodes].find(
+            (node) => node.nodeType === 3,
+          );
+          if (text) text.textContent = input.value;
           selectedReadModelItem.setAttribute("aria-label", input.value);
         }
         if (selected === "automation" && selectedAutomationItem) {
+          selectedAutomationItem.textContent = input.value;
           selectedAutomationItem.setAttribute("aria-label", input.value);
         }
         if (selected === "model") {
           const heading = root.querySelector("h1");
           if (heading) heading.textContent = input.value;
         }
-        if (selected === "slice" || selected === "actor") {
+        if (
+          selected === "slice" ||
+          selected === "actor" ||
+          selected === "command" ||
+          selected === "event" ||
+          selected === "readmodel" ||
+          selected === "automation" ||
+          selected === "model"
+        ) {
           const main = root.querySelector("main");
           if (main && !main.textContent?.includes("Unsaved changes.")) {
             main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
@@ -1106,8 +1186,16 @@ export function bindEditor(root) {
           const holder = root.getElementById("event-model-document");
           if (holder) {
             holder.textContent = JSON.stringify(
-              setSliceType(JSON.parse(holder.textContent || "{}"), sliceType),
+              setSliceType(
+                JSON.parse(holder.textContent || "{}"),
+                sliceType,
+                selectedSliceItem?.dataset?.id,
+              ),
             );
+            const main = root.querySelector("main");
+            if (main && !main.textContent?.includes("Unsaved changes.")) {
+              main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
+            }
           }
         });
       }
@@ -1273,6 +1361,10 @@ export function bindEditor(root) {
               textarea.value,
             ),
           );
+          const main = root.querySelector("main");
+          if (main && !main.textContent?.includes("Unsaved changes.")) {
+            main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
+          }
         }
       });
     }

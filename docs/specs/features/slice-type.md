@@ -26,7 +26,7 @@ Event Model, Slice, Slice type, Automation, Team, Person, Version
 ## Assumptions
 
 - Slice selection is a click on the Slices listitem ([chrome.md](./chrome.md)).
-- This slice is one in-session `New Slice`. Slice type JSON mutates the last Slice.
+- This slice is one in-session `New Slice`. Slice type JSON mutates the last Slice. Type on the clicked Slice of two is [name-binding-rest.md](./name-binding-rest.md).
 - Combobox option labels are `State Change`, `State View`, and `Automation`. JSON stays `STATE_CHANGE`, `STATE_VIEW`, `AUTOMATION`.
 - New Slice still starts as `STATE_CHANGE` ([editor-shell.md](./editor-shell.md)).
 - Slice type edits are in-memory until Save. Save still uses the version check from model-persistence.
@@ -35,7 +35,7 @@ Event Model, Slice, Slice type, Automation, Team, Person, Version
 
 ## Out of scope
 
-Description is [inspect-description.md](./inspect-description.md). Last-Command Add Field and last-Command Field name stay [inspect-fields.md](./inspect-fields.md). Field name on the clicked Command of two, and Field name / type / optional / example / delete on Event / Read Model / Automation, are [inspect-fields-rest.md](./inspect-fields-rest.md). Inspecting a Connection is [inspect-connection.md](./inspect-connection.md). Slice type help copy, creating a Slice as State View from New Slice, multi-item Slice type binding, dashed Add on a lane and keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane.md). ⇧⌘N is [new-slice-shortcut.md](./new-slice-shortcut.md). Mac window chrome. Event Model title and Description are [model-inspector.md](./model-inspector.md). Name stays [chrome.md](./chrome.md). Inspect after reload is [inspect-after-reload.md](./inspect-after-reload.md). Event → Read Model inspect, Slice type after reload, Connection after reload, and heading Name after reload are [inspect-rest.md](./inspect-rest.md).
+Description is [inspect-description.md](./inspect-description.md). Last-Command Add Field and last-Command Field name stay [inspect-fields.md](./inspect-fields.md). Field name on the clicked Command of two, and Field name / type / optional / example / delete on Event / Read Model / Automation, are [inspect-fields-rest.md](./inspect-fields-rest.md). Inspecting a Connection is [inspect-connection.md](./inspect-connection.md). Slice type help copy, creating a Slice as State View from New Slice, dashed Add on a lane and keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane.md). Type on the clicked Slice of two is [name-binding-rest.md](./name-binding-rest.md). ⇧⌘N is [new-slice-shortcut.md](./new-slice-shortcut.md). Mac window chrome. Event Model title and Description are [model-inspector.md](./model-inspector.md). Name stays [chrome.md](./chrome.md). Inspect after reload is [inspect-after-reload.md](./inspect-after-reload.md). Event → Read Model inspect, Slice type after reload, Connection after reload, and heading Name after reload are [inspect-rest.md](./inspect-rest.md).
 
 ## Restates
 

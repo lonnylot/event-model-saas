@@ -1,10 +1,9 @@
-export function setEventTitle(model, title) {
-  const slices = [...(model.slices ?? [])];
-  const slice = slices.at(-1);
-  if (!slice) return model;
-  const events = [...(slice.events ?? [])];
-  if (!events.length) return model;
-  events[events.length - 1] = { ...events[events.length - 1], title };
-  slices[slices.length - 1] = { ...slice, events };
+export function setEventTitle(model, title, id) {
+  const slices = (model.slices ?? []).map((slice) => ({
+    ...slice,
+    events: (slice.events ?? []).map((event) =>
+      event.id === id ? { ...event, title } : event,
+    ),
+  }));
   return { ...model, slices };
 }

@@ -1,6 +1,6 @@
-export function setSliceTitle(model, title) {
-  const slices = [...(model.slices ?? [])];
-  if (!slices.length) return model;
-  slices[slices.length - 1] = { ...slices[slices.length - 1], title };
+export function setSliceTitle(model, title, id) {
+  const slices = (model.slices ?? []).map((slice) =>
+    slice.id === id ? { ...slice, title } : slice,
+  );
   return { ...model, slices };
 }

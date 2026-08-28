@@ -1,13 +1,9 @@
-export function setAutomationTitle(model, title) {
-  const slices = [...(model.slices ?? [])];
-  const slice = slices.at(-1);
-  if (!slice) return model;
-  const processors = [...(slice.processors ?? [])];
-  if (!processors.length) return model;
-  processors[processors.length - 1] = {
-    ...processors[processors.length - 1],
-    title,
-  };
-  slices[slices.length - 1] = { ...slice, processors };
+export function setAutomationTitle(model, title, id) {
+  const slices = (model.slices ?? []).map((slice) => ({
+    ...slice,
+    processors: (slice.processors ?? []).map((processor) =>
+      processor.id === id ? { ...processor, title } : processor,
+    ),
+  }));
   return { ...model, slices };
 }
