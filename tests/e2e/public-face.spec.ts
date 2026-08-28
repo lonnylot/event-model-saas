@@ -237,3 +237,14 @@ test("GET `/` without a Session shows the text `a processor with no human actor`
   await page.goto("/");
   await expect(page.getByText("a processor with no human actor")).toBeVisible();
 });
+
+test("GET `/` without a Session shows the text `Commands connect to events. Events connect to read models.`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByText(
+      "Commands connect to events. Events connect to read models.",
+    ),
+  ).toBeVisible();
+});
