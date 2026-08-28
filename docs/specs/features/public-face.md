@@ -44,7 +44,7 @@ GET `/` is the login form. A visitor cannot tell what Event Model is. Paper-work
 - [x] GET `/` with a Session does not show a button whose accessible name is `Sign out`
 - [x] GET `/` `body` computed `background-color` is `rgb(255, 255, 255)`
 - [x] GET `/` `body` computed `color` is `rgb(15, 23, 42)`
-- [ ] GET `/` has a `meta[property="og:description"]` whose `content` is `Event Modeling for the whole team.`
+- [x] GET `/` has a `meta[property="og:description"]` whose `content` is `Event Modeling for the whole team.`
 - [x] GET `/login` without a Session returns status 200
 - [x] GET `/login` without a Session has a `link[rel="stylesheet"]` whose `href` is `/shell.css`
 - [x] GET `/login` without a Session has a `link[rel="icon"]` whose `href` is `/favicon.png`

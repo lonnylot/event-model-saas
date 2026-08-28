@@ -416,3 +416,13 @@ test("GET `/` `body` computed `color` is `rgb(15, 23, 42)`", async ({
   await page.goto("/");
   await expect(page.locator("body")).toHaveCSS("color", "rgb(15, 23, 42)");
 });
+
+test('GET `/` has a `meta[property="og:description"]` whose `content` is `Event Modeling for the whole team.`', async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator('meta[property="og:description"]')).toHaveAttribute(
+    "content",
+    "Event Modeling for the whole team.",
+  );
+});

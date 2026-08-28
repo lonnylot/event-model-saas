@@ -61,4 +61,4 @@ Editor canvas (`/app/teams/{id}/models/{mid}`) is not a screen in this file.
 
 ## Mark
 
-`public/favicon.png` and `public/og.png` are the same two-slice paper mark (no letters). Open Graph title and description are HTML meta, not pixels in the PNG.
+`public/favicon.png` and `public/og.png` are the same two-slice paper mark (no letters). Open Graph title and description are HTML meta, not pixels in the PNG. Title is `Event Model`. Description is `Event Modeling for the whole team.`

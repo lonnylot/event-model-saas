@@ -18,7 +18,6 @@ Login, 404, expired magic link, and signed-in team pages are unstyled HTML: emai
 - [x] GET `/` has a `link[rel="stylesheet"]` whose `href` is `/shell.css`
 - [x] GET `/` has a `meta[property="og:image"]` whose `content` ends with `/og.png`
 - [x] GET `/` has a `meta[property="og:title"]` whose `content` is `Event Model`
-- [x] GET `/` has a `meta[property="og:description"]` whose `content` is `Access is by invite.`
 - [x] GET an unknown document path has a `link[rel="stylesheet"]` whose `href` is `/shell.css`
 - [x] GET an unknown document path `body` computed `background-color` is `rgb(247, 244, 238)`
 - [x] GET `/api/auth/consume` with a used magic-link token has a `link[rel="stylesheet"]` whose `href` is `/shell.css`
@@ -55,7 +54,7 @@ Screens: Not found, Expired link, App, Team picker, Team, Teams admin. Primitive
 ## Assumptions
 
 - Token hex values and primitive rules live in [design-system.md](../design-system.md). Playwright computed colors on `/app`, picker, team, and Teams admin are the sRGB of `paper` and `ink-paper` (`rgb(247, 244, 238)` and `rgb(28, 25, 23)`). GET `/` Page background and color are [public-face.md](./public-face.md).
-- `og:image` `content` ends with `/og.png`.
+- `og:image` `content` ends with `/og.png`. `og:description` is [public-face.md](./public-face.md).
 - Login heading `Sign in` and marketing header `Event Model` link are [public-face.md](./public-face.md).
 - AppBar `Event Model` is a link to `/app`. Teams admin, email, and Sign out stay the existing controls. `appPageHtml` (Person who is not site admin, no teams) composes AppBar the same way `shell` does.
 - `TEST_MAIL=1` Playwright `workers` is `1` (hosted-app / magic-link). Playwright `webServer` wrangler `--port` and `--inspector-port` are checkout-unique from a hash of `cwd` so parallel worktrees do not collide; worker fixtures read `E2E_PORT`.

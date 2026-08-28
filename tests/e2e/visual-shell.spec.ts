@@ -128,16 +128,6 @@ test('GET `/` has a `meta[property="og:title"]` whose `content` is `Event Model`
 });
 
 
-test('GET `/` has a `meta[property="og:description"]` whose `content` is `Access is by invite.`', async ({
-  page,
-}) => {
-  await page.goto("/");
-  await expect(
-    page.locator('meta[property="og:description"]'),
-  ).toHaveAttribute("content", "Access is by invite.");
-});
-
-
 test('GET an unknown document path has a `link[rel="stylesheet"]` whose `href` is `/shell.css`', async ({
   page,
 }) => {
