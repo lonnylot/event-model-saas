@@ -63,3 +63,13 @@ test("GET `/login` without a Session returns status 200", async ({
   const response = await request.get("/login", { maxRedirects: 0 });
   expect(response.status()).toBe(200);
 });
+
+test('GET `/login` without a Session has a `link[rel="stylesheet"]` whose `href` is `/shell.css`', async ({
+  page,
+}) => {
+  await page.goto("/login");
+  await expect(page.locator('link[rel="stylesheet"]')).toHaveAttribute(
+    "href",
+    "/shell.css",
+  );
+});
