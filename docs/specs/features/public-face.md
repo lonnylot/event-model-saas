@@ -1,6 +1,6 @@
 # Public face
 
-Status: validated
+Status: released
 
 ## Problem
 
