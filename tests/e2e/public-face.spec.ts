@@ -287,3 +287,10 @@ test("GET `/` without a Session shows the text `Site admin creates Teams and sen
     page.getByText("Site admin creates Teams and sends Invites."),
   ).toBeVisible();
 });
+
+test("GET `/` without a Session shows the text `Save is explicit.`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.getByText("Save is explicit.")).toBeVisible();
+});
