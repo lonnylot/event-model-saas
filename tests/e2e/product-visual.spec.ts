@@ -96,3 +96,13 @@ test("GET `/` textbox `Email` computed `border-radius` is `10px`", async ({
     page.getByRole("textbox", { name: "Email", exact: true }),
   ).toHaveCSS("border-radius", "10px");
 });
+
+test("GET `/` form `waitlist-form` computed `border-top-color` is `rgb(226, 232, 240)`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator("form#waitlist-form")).toHaveCSS(
+    "border-top-color",
+    "rgb(226, 232, 240)",
+  );
+});
