@@ -41,5 +41,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Inspect rest | [features/inspect-rest.md](./features/inspect-rest.md) | released |
 | Visual shell | [features/visual-shell.md](./features/visual-shell.md) | released |
 | New Slice shortcut | [features/new-slice-shortcut.md](./features/new-slice-shortcut.md) | released |
+| Move slice right | [features/move-slice-right.md](./features/move-slice-right.md) | validated |
 
 Status: `draft` → `validated` → `released`.
