@@ -17,6 +17,7 @@ Public (`/`, `/login`):
 | `canvas` | `#FFFFFF` |
 | `ink` | `#0F172A` |
 | `accent` | `#0F766E` |
+| `on-accent` | `#FFFFFF` |
 
 Signed-in team/admin leftover (until a later slice):
 
@@ -42,7 +43,7 @@ Signed-in team/admin leftover (until a later slice):
 | Page (signed-in) | `body` background `paper`, color `ink-paper` |
 | Card | Login form in a `measure`-wide panel, `hairline` border, `radius`, padding |
 | AppBar | Signed-in top bar: link `Event Model` to `/app`, then email, optional Teams admin, Sign out |
-| Button primary (public) | Background `accent` |
+| Button primary (public) | Background `accent`, color `on-accent` |
 | Button primary (signed-in) | Background `ink-paper`, color `paper`, `radius` |
 | Field | `paper` fill, `hairline` border, `radius` |
 
