@@ -47,7 +47,7 @@ Event Model, Person, Team, Site admin, Session, Magic link
 
 ## UI
 
-Screens: Not found, Expired link, App, Team picker, Team, Teams admin. Primitives this slice composes: Page (signed-in: `body` background `paper`, color `ink-paper`), AppBar. Public Page and Login Button primary are [public-face.md](./public-face.md). Inventory: [design-system.md](../design-system.md).
+Screens: App, Team picker, Team, Teams admin. Primitives this slice composes: Page (signed-in: `body` background `paper`, color `ink-paper`), AppBar. Public Page, Login Button primary, Landing, Login, Not found, and Expired link are [public-face.md](./public-face.md). Inventory: [design-system.md](../design-system.md).
 
 ## Assumptions
 
@@ -61,14 +61,14 @@ Screens: Not found, Expired link, App, Team picker, Team, Teams admin. Primitive
 
 ## Out of scope
 
-Editor canvas (`/app/teams/{id}/models/{mid}`), Inspector, sticky-note lane colors, dark mode, webfont files, extra “Request a new one” on the expired page. Card, Field, Page font `type`, Button primary `radius`, `measure`, and `hairline` stay later. Login Button primary is [public-face.md](./public-face.md). Viewport meta on routes that already have it stays.
+Editor canvas (`/app/teams/{id}/models/{mid}`), Inspector, sticky-note lane colors, dark mode, webfont files. Public Page, Login, Landing, Marketing header, expired `Sign in`, and public Button primary are [public-face.md](./public-face.md). Card, Field, font `type`, and `radius` stay later. Extra “Request a new one” heading on the expired page stays out. Viewport meta on routes that already have it stays.
 
 ## Restates
 
 - [hosted-app.md](./hosted-app.md) — 404 heading `Not found` stays that file. GET `/` heading and `Access is by invite.` are [public-face.md](./public-face.md). Favicon, stylesheet, `og:image`, and `og:title` on `/` stay this slice.
-- [magic-link-auth.md](./magic-link-auth.md) — Expired heading and signed-in email / Sign out stay that file. Expired Page background is [public-face.md](./public-face.md). AppBar on `/app` that is not redirected stays this slice.
+- [magic-link-auth.md](./magic-link-auth.md) — Expired heading and signed-in email / Sign out stay that file. Expired Page background and `Sign in` are [public-face.md](./public-face.md). AppBar on `/app` that is not redirected stays this slice.
 - [teams-and-invites.md](./teams-and-invites.md) — Team name, Create team, Teams admin, picker `Your teams`, team heading stay that file. AppBar `Event Model` link and Page background on `/app`, picker, team, and Teams admin are this slice. Creating a Team still does not create Event Models; Event Model persistence is [model-persistence.md](./model-persistence.md).
 - [model-persistence.md](./model-persistence.md) — Create model and the Untitled link stay that file. AppBar `Event Model` link on GET `/app/teams/{id}` is this slice.
-- [product.md](../product.md) — Team/admin HTML is paper workshop ([design-system.md](../design-system.md)). GET `/` Page background is [public-face.md](./public-face.md). Expired / used magic link is the heading only (no path to request a new one). The schema file is in this repo. Editor web shell (team name, in-session heading, dirty, Save, Export, sign out) stays later for a later slice.
-- [architecture.md](../architecture.md) — Design tokens live in `docs/specs/design-system.md`. Signed-out and team/admin HTML is Worker HTML plus `public/` CSS. Editor canvas TypeScript stays the timeline; its styling stays later. `run_worker_first` includes `/favicon.png`, `/og.png`, and `/shell.css` as those ACs land.
-- [design-system.md](../design-system.md) — this slice composes signed-in Page background and color and AppBar. Public Page background on `/` is [public-face.md](./public-face.md). Login Button primary is [public-face.md](./public-face.md). Card, Field, font `type`, and `radius` stay later.
+- [product.md](../product.md) — Team/admin HTML is paper workshop ([design-system.md](../design-system.md)). Public HTML is [public-face.md](./public-face.md). Expired heading stays this file's leftover of magic-link-auth; expired `Sign in` is [public-face.md](./public-face.md). The schema file is in this repo. Editor web shell (team name, in-session heading, dirty, Save, Export, sign out) stays later for a later slice.
+- [architecture.md](../architecture.md) — Design tokens live in `docs/specs/design-system.md`. Team/admin HTML is Worker HTML plus `public/` CSS with paper tokens. Public HTML is [public-face.md](./public-face.md). Editor canvas TypeScript stays the timeline; its styling stays later. `run_worker_first` includes `/favicon.png`, `/og.png`, and `/shell.css`. `/` and `/login` are [public-face.md](./public-face.md).
+- [design-system.md](../design-system.md) — this slice composes signed-in Page background and color and AppBar. Public Page, Marketing header, and public Button primary are [public-face.md](./public-face.md). Card, Field, font `type`, and `radius` stay later.

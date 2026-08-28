@@ -8,7 +8,7 @@ This file owns stack, modules, and seams. It does not own feature acceptance cri
 
 ## Spec tree
 
-Specs live in `docs/specs/` (this file, `product.md`, `design-system.md`, and other system specs at that root; features in `docs/specs/features/`). ADRs live in `docs/adr/`. The repo has no `docs/superpowers/` directory. Feature implementation is `releasing-a-spec` on a `feat/<slug>` or `fix/<slug>` branch. There is no parallel implementation-plan directory. Tokens for signed-out and team/admin HTML live in `design-system.md`; [features/visual-shell.md](./features/visual-shell.md) applies them. Editor canvas styling stays later.
+Specs live in `docs/specs/` (this file, `product.md`, `design-system.md`, and other system specs at that root; features in `docs/specs/features/`). ADRs live in `docs/adr/`. The repo has no `docs/superpowers/` directory. Feature implementation is `releasing-a-spec` on a `feat/<slug>` or `fix/<slug>` branch. There is no parallel implementation-plan directory. Tokens live in `design-system.md`. [features/public-face.md](./features/public-face.md) applies public tokens on `/`, `/login`, 404, and expired. [features/visual-shell.md](./features/visual-shell.md) applies paper tokens on signed-in team/admin HTML. Editor canvas styling stays later.
 
 ## Outcome
 
@@ -23,7 +23,7 @@ A Cloudflare Worker serves signed-out and team/admin HTML, the editor canvas pag
 | Metadata | D1 |
 | Document body | R2 object `models/{id}.eventmodel` (current JSON only) |
 | Mail | Cloudflare Email binding. From `auth@event-model.lonnylot.com` (display name `Event Model`). Admin notify to `SITE_ADMIN_EMAIL` (unknown login and waitlist). |
-| Front end | Worker HTML plus `public/` CSS for Login, 404, expired link, and signed-in team/admin screens. Editor canvas is custom timeline TypeScript (no xyflow/React Flow) matching the Mac layout; canvas styling stays later. |
+| Front end | Worker HTML plus `public/` CSS for Landing (`/`), Login (`/login`), 404, expired link, and signed-in team/admin screens. Editor canvas is custom timeline TypeScript (no xyflow/React Flow) matching the Mac layout; canvas styling stays later. |
 | Document language | `.eventmodel` schema v1, same as the Mac app |
 | Tests | Vitest (unit) + Playwright (flows) + GitHub Actions |
 | Auth session | httpOnly Secure SameSite=Lax cookie on `event-model.lonnylot.com` |
