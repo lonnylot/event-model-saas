@@ -11,7 +11,8 @@ description: >
   several review threads in one commit (leftover-hide unbindAddField vs unbindFieldName),
   two kind-gated if-arms (COMMAND vs EVENT alreadyConnected) in one commit,
   sibling-kind copy of a kind-agnostic insert as tests-only,
-  extra ACs that stay green because another spec already owns that production,
+  extra ACs that stay green because another spec already owns that production
+  (horizontal wheel / pinch pan when canvas already owns Timeline wheel deltaX),
   withholding unique production (stylesheet already applying paper; shared helper
   landing later route ACs), a follow-up reply that names a split without a rebase,
   or when feedback is unclear or looks wrong.
