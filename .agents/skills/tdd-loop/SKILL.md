@@ -65,7 +65,7 @@ If this session is the orchestrator (`releasing-a-spec` dispatching agents), do 
 
 4. **Sync.** If the slice taught a tighter rule, update the spec in the same tree (`keeping-specs-current`). A tighter fake / test-double parse is a tighter rule.
 
-5. **Commit.** One logical commit for this criterion (`logical-commits`). When restating a weaker fixture after production landed (one-item Backspace → two-item remaining JSON id; `includes scale(` → factor is not the unzoomed pan `1`), reconstruct into that production commit — do not commit tests-only on top (`receiving-code-review`). Then the next criterion — do not batch. Grouping by screen is batching.
+5. **Commit.** One logical commit for this criterion (`logical-commits`). When restating a weaker fixture after production landed (one-item Backspace → two-item remaining JSON id; `includes scale(` → factor is not the unzoomed pan `1`; widget-role Sign up after a checked AC with no `it`), reconstruct into that production commit — do not commit tests-only on top (`receiving-code-review`). Then the next criterion — do not batch. Grouping by screen is batching.
 
 Bugs: write the failing reproduction first, then fix.
 
