@@ -5,6 +5,7 @@ body.login {
 body.landing {
   background-color: #FFFFFF;
   color: #0F172A;
+  font-family: ui-sans-serif, system-ui, sans-serif;
 }
 #login button {
   background-color: #0F766E;

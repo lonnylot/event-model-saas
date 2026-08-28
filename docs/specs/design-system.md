@@ -2,50 +2,41 @@
 
 Status: released
 
-Tokens and primitives for Event Model SaaS HTML that is not the editor canvas. [features/public-face.md](./features/public-face.md) applies public tokens on `/`. [features/visual-shell.md](./features/visual-shell.md) still applies paper tokens on signed-in team/admin HTML. This file does not own feature acceptance criteria.
+Tokens and primitives for Event Model SaaS HTML including the editor canvas. [features/product-visual.md](./features/product-visual.md) applies them. This file does not own feature acceptance criteria.
 
 ## Look
 
-Contemporary SaaS on public HTML (`/`, `/login`, 404, expired): light canvas. Signed-in team/admin HTML stays paper workshop until a later slice. Editor canvas styling stays later.
+Contemporary SaaS on every HTML surface (`/`, `/login`, 404, expired, `/app`, team/admin, editor): light canvas, slate text, teal accent. Paper workshop is leftover unused.
 
 ## Tokens
-
-Public (`/`, `/login`, 404, expired):
 
 | Token | Value |
 |-------|--------|
 | `canvas` | `#FFFFFF` |
+| `canvas-subtle` | `#F8FAFC` |
 | `ink` | `#0F172A` |
+| `muted` | `#64748B` |
+| `line` | `#E2E8F0` |
 | `accent` | `#0F766E` |
 | `on-accent` | `#FFFFFF` |
-
-Signed-in team/admin leftover (until a later slice):
-
-| Token | Value |
-|-------|--------|
-| `paper` | `#F7F4EE` |
-| `ink-paper` | `#1C1917` |
-| `muted` | `#78716C` |
-| `hairline` | `#E7E0D4` |
-| `ochre` | `#C0783A` |
-| `terracotta` | `#B85C38` |
 | `type` | `ui-sans-serif, system-ui, sans-serif` |
-| `radius` | `8px` |
+| `radius` | `10px` |
 | `measure` | `24rem` |
+| `measure-landing` | `36rem` |
 
-Sticky-note lane colors on the canvas stay later. `ochre` and `terracotta` are leftover paper tokens, not the public mark.
+Leftover unused paper tokens (not applied): `paper` `#F7F4EE`, `ink-paper` `#1C1917`, `ochre` `#C0783A`, `terracotta` `#B85C38`.
+
+Sticky-note block fills ([features/product-visual.md](./features/product-visual.md)): Actor `#FEF3C7` / `#F59E0B`; Command `#DBEAFE` / `#2563EB`; Event `#FFEDD5` / `#EA580C`; Read Model `#DCFCE7` / `#16A34A`; Automation `#EDE9FE` / `#7C3AED`.
 
 ## Primitives
 
 | Primitive | Does |
 |-----------|------|
-| Page (public) | `body` background `canvas`, color `ink` |
-| Page (signed-in) | `body` background `paper`, color `ink-paper` |
-| Card | Login form in a `measure`-wide panel, `hairline` border, `radius`, padding |
-| AppBar | Signed-in top bar: link `Event Model` to `/app`, then email, optional Teams admin, Sign out |
-| Button primary (public) | Background `accent`, color `on-accent` |
-| Button primary (signed-in) | Background `ink-paper`, color `paper`, `radius` |
-| Field | `paper` fill, `hairline` border, `radius` |
+| Page | `body` background `canvas`, color `ink`, font `type` |
+| Card | `measure`-wide panel, `line` border, `radius` |
+| AppBar | Top bar: wordmark, then Sign in / Open app or email, optional Teams admin, Sign out. `line` bottom border. Wordmark `/` when signed out, `/app` when signed in |
+| Button primary | Background `accent`, color `on-accent`, `radius` |
+| Field | `line` border, `radius` |
 
 ## Screens
 
@@ -59,8 +50,7 @@ Sticky-note lane colors on the canvas stay later. `ochre` and `terracotta` are l
 | Team picker | GET `/app` with two Teams |
 | Team | GET `/app/teams/{id}` |
 | Teams admin | GET `/app/admin/teams` |
-
-Editor canvas (`/app/teams/{id}/models/{mid}`) is not a screen in this file.
+| Editor | GET `/app/teams/{id}/models/{mid}` |
 
 ## Mark
 
