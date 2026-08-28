@@ -28,7 +28,7 @@ Event Model, Slice, Command, Team, Person, Version
 
 ## Assumptions
 
-- Two `New Slice` listitems are first vs last. Sidebar drag uses the Slices list. Command drop target is the first Slices listitem. Add Command still targets the last Slice ([blocks.md](./blocks.md)).
+- Two `New Slice` listitems are first vs last. Sidebar drag uses the Slices list. Command drop target is the first Slices listitem. Command listitem drag is mousedown on the listitem, not on `Command port`. Port onto a Slice stays [connection-refusals.md](./connection-refusals.md). Add Command still targets the last Slice ([blocks.md](./blocks.md)).
 - ⌘Z is Playwright `ControlOrMeta+z`. Undo stack: Add Command is last, so one ⌘Z removes Command and leaves New Slice. Undo New Slice and undo Command → Event stay [canvas.md](./canvas.md).
 - ⌘+ is `ControlOrMeta+Equal`. ⌘- is `ControlOrMeta+Minus`. ⌘0 is `ControlOrMeta+Digit0`. Zoom factors stay `1.25` / `0.8` / `1` from [editor-shell.md](./editor-shell.md). Toolbar zoom stays that file.
 - Mutations are in-memory until Save. Save still uses the version check from model-persistence.
@@ -40,8 +40,9 @@ Drag of Event / Read Model / Automation between Slices, undo of move / delete / 
 
 ## Restates
 
-- [connection-refusals.md](./connection-refusals.md) — After a refused second Command → Event, ⌘Z three times does not show New Slice (Add Command is on the undo stack). Two presses no longer reach New Slice.
-- [canvas.md](./canvas.md) — Out of scope no longer owns sidebar drag-reorder, drag of Command between Slices, undo of Add, or ⌘+/⌘-/⌘0; this slice owns those. Pinch pan stays this file (the Timeline `wheel` listener). Drag of Event / Read Model / Automation, undo of move / delete, stay later. Actor drag, Slice Backspace, ⌥⌘←, vertical scroll, undo New Slice, and undo Connection stay this file.- [blocks.md](./blocks.md) — Drag Command between Slices and undo Add Command are this slice.
+- [connection-refusals.md](./connection-refusals.md) — After a refused second Command → Event, ⌘Z three times does not show New Slice (Add Command is on the undo stack). Two presses no longer reach New Slice. Port onto a Slice stays that file.
+- [canvas.md](./canvas.md) — Out of scope no longer owns sidebar drag-reorder, drag of Command between Slices, undo of Add, or ⌘+/⌘-/⌘0; this slice owns those. Pinch pan stays this file (the Timeline `wheel` listener). Drag of Event / Read Model / Automation, undo of move / delete, stay later. Actor drag, Slice Backspace, ⌥⌘←, scroll pan, undo New Slice, and undo Connection stay this file.
+- [blocks.md](./blocks.md) — Drag Command between Slices and undo Add Command are this slice.
 - [editor-shell.md](./editor-shell.md) — Keyboard zoom is this slice. Toolbar zoom stays this file. Pinch pan stays [canvas.md](./canvas.md).
 - [chrome.md](./chrome.md) — Drag of Command between Slices, undo Add Command, and ⌘+/⌘-/⌘0 are this slice. Pinch pan stays [canvas.md](./canvas.md).
 - [connections.md](./connections.md) — Drag of Command between Slices, undo Add Command, and ⌘+/⌘-/⌘0 are this slice. Pinch pan stays [canvas.md](./canvas.md).

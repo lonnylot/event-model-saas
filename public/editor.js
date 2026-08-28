@@ -1470,7 +1470,8 @@ export function bindEditor(root) {
     if (
       actorItem &&
       timelineList?.contains(actorItem) &&
-      actorItem.dataset.kind === "command"
+      actorItem.dataset.kind === "command" &&
+      !event.target?.closest?.("button[data-id]")
     ) {
       dragCommandItem = actorItem;
     }
