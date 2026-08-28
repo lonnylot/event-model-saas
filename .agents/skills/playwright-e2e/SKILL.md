@@ -4,7 +4,7 @@ description: >
   Use when adding or changing Playwright tests, a test:e2e script, a
   script-existence guard, an exact `playwright test` script value, a
   browser user flow, an accessible-name locator, a does-not-show
-  control assertion, a listitem visible-text `/^X/` when Ports are descendants,
+  control assertion that queries only button and link, a listitem visible-text `/^X/` when Ports are descendants,
   a listitem toHaveText that pins a Command port wipe,
   the CI job that runs flow tests, Playwright
   webServer env, blanking live API keys, an empty-state flow after a
