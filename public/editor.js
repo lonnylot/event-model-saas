@@ -2543,13 +2543,6 @@ export function bindEditor(root) {
           ).connections?.at(-1);
           if (connection) line.setAttribute("data-id", connection.id);
           timeline.append(line);
-        if (timeline && holder) {
-          const stored = JSON.parse(holder.textContent || "{}");
-          const connection = (stored.connections ?? []).at(-1);
-          const p = root.createElement("p");
-          p.textContent = "Command → Event Happened";
-          if (connection) p.dataset.id = connection.id;
-          timeline.append(p);
         }
         undoStack.push("connection");
       }
