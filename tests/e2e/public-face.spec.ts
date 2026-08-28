@@ -223,3 +223,10 @@ test("GET `/` without a Session shows the text `intent, then a fact that happene
     page.getByText("intent, then a fact that happened"),
   ).toBeVisible();
 });
+
+test("GET `/` without a Session shows the text `a view of state from events`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.getByText("a view of state from events")).toBeVisible();
+});
