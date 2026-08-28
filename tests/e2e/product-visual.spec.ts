@@ -161,3 +161,12 @@ test("GET `/login` textbox `Email` computed `border-top-color` is `rgb(226, 232,
     page.getByRole("textbox", { name: "Email", exact: true }),
   ).toHaveCSS("border-top-color", "rgb(226, 232, 240)");
 });
+
+test("GET `/login` textbox `Email` computed `border-radius` is `10px`", async ({
+  page,
+}) => {
+  await page.goto("/login");
+  await expect(
+    page.getByRole("textbox", { name: "Email", exact: true }),
+  ).toHaveCSS("border-radius", "10px");
+});

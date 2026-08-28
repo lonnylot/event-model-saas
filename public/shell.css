@@ -49,6 +49,7 @@ body.landing main {
 }
 #login input {
   border-top-color: #E2E8F0;
+  border-radius: 10px;
 }
 body.not-found {
   background-color: #FFFFFF;
