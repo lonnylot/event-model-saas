@@ -93,7 +93,22 @@ describe("waitlist", () => {
     await handleRequest(waitlistPost("wait@example.com"), env);
     expect(sent[0]?.subject).toBe("Waitlist request");
   });
+
+  it("POST `/api/waitlist` with an email already on the waitlist does not insert a second row and does not send mail", async () => {
+    const { env, auth, sent } = authEnv();
+    let inserts = 0;
+    const orig = auth.store.insertWaitlist.bind(auth.store);
+    auth.store.insertWaitlist = async (email) => {
+      inserts += 1;
+      await orig(email);
+    };
+    await handleRequest(waitlistPost("wait@example.com"), env);
+    await handleRequest(waitlistPost("wait@example.com"), env);
+    expect(inserts).toBe(1);
+    expect(sent).toHaveLength(1);
+  });
 });
+
 
 
 
