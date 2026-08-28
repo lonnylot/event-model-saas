@@ -9,6 +9,9 @@ body.login header {
 body.login:not(.landing) a[href="/"] {
   color: #0F766E;
 }
+a[href="/#waitlist"] {
+  color: #0F766E;
+}
 body.landing {
   background-color: #FFFFFF;
   color: #0F172A;

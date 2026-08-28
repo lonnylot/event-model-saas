@@ -193,3 +193,12 @@ test("GET `/login` button `Email me a link` computed `border-radius` is `10px`",
     page.getByRole("button", { name: "Email me a link", exact: true }),
   ).toHaveCSS("border-radius", "10px");
 });
+
+test("GET `/login` link `Join the waitlist` computed `color` is `rgb(15, 118, 110)`", async ({
+  page,
+}) => {
+  await page.goto("/login");
+  await expect(
+    page.getByRole("link", { name: "Join the waitlist", exact: true }),
+  ).toHaveCSS("color", "rgb(15, 118, 110)");
+});
