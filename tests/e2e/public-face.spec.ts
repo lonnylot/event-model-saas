@@ -432,3 +432,11 @@ test("GET `/login` with a Session returns status 303", async ({ page }) => {
   const response = await page.request.get("/login", { maxRedirects: 0 });
   expect(response.status()).toBe(303);
 });
+
+test("GET `/login` with a Session sets `Location` to `/app`", async ({
+  page,
+}) => {
+  await page.request.post("/api/test/non-admin-session");
+  const response = await page.request.get("/login", { maxRedirects: 0 });
+  expect(response.headers()["location"]).toBe("/app");
+});

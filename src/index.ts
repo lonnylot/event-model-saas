@@ -461,7 +461,10 @@ export async function handleRequest(
     if (env.auth) {
       const person = await personFromRequest(env.auth, request);
       if (person) {
-        return new Response(null, { status: 303 });
+        return new Response(null, {
+          status: 303,
+          headers: { Location: "/app" },
+        });
       }
     }
     return env.ASSETS.fetch(request);

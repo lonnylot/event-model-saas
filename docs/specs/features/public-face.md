@@ -55,7 +55,7 @@ GET `/` is the login form. A visitor cannot tell what Event Model is. Paper-work
 - [x] GET `/login` without a Session shows a link whose accessible name is `Event Model`
 - [x] GET `/login` without a Session, the link `Event Model` has `href` `/`
 - [x] GET `/login` with a Session returns status 303
-- [ ] GET `/login` with a Session sets `Location` to `/app`
+- [x] GET `/login` with a Session sets `Location` to `/app`
 - [ ] GET `/login` `body` computed `background-color` is `rgb(255, 255, 255)`
 - [ ] GET `/login` button `Email me a link` computed `background-color` is `rgb(15, 118, 110)`
 - [ ] GET `/login` button `Email me a link` computed `color` is `rgb(255, 255, 255)`
