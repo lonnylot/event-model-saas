@@ -72,6 +72,9 @@ body.expired {
   color: #0F172A;
   font-family: ui-sans-serif, system-ui, sans-serif;
 }
+body.expired a[href="/login"] {
+  background-color: #0F766E;
+}
 body.app-none {
   background-color: #F7F4EE;
 }

@@ -258,3 +258,13 @@ test("GET `/api/auth/consume` with a used magic-link token `body` computed `font
   await openUsedMagicLink(page, request);
   await expect(page.locator("body")).toHaveCSS("font-family", /system-ui/);
 });
+
+test("GET `/api/auth/consume` with a used magic-link token, the link `Sign in` computed `background-color` is `rgb(15, 118, 110)`", async ({
+  page,
+  request,
+}) => {
+  await openUsedMagicLink(page, request);
+  await expect(
+    page.getByRole("link", { name: "Sign in", exact: true }),
+  ).toHaveCSS("background-color", "rgb(15, 118, 110)");
+});
