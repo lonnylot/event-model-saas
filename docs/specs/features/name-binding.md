@@ -31,7 +31,7 @@ Event Model, Slice, Actor, Command, Team, Person, Version
 
 ## Out of scope
 
-Multi-item Name for Slice, Actor, Event, Read Model, or Automation is [name-binding-rest.md](./name-binding-rest.md). Visible text for those kinds is [name-binding-rest.md](./name-binding-rest.md). Command / Event / Read Model / Automation Name dirty is [name-binding-rest.md](./name-binding-rest.md). Inspect after reload. Description, Fields, Slice type picker, Mac window chrome.
+Multi-item Name for Slice, Actor, Event, Read Model, or Automation is [name-binding-rest.md](./name-binding-rest.md). Visible text for those kinds is [name-binding-rest.md](./name-binding-rest.md). Command / Event / Read Model / Automation Name dirty is [name-binding-rest.md](./name-binding-rest.md). Description-by-id, Slice type-by-id, Type dirty, Add Field dirty, and heading dirty are [name-binding-rest.md](./name-binding-rest.md). Remaining Field type / optional / example / delete are [inspect-fields-rest.md](./inspect-fields-rest.md). Last-Slice Type picker is [slice-type.md](./slice-type.md). Inspect after reload is [inspect-after-reload.md](./inspect-after-reload.md). Mac window chrome.
 
 ## Restates
 
