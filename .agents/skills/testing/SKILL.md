@@ -5,6 +5,7 @@ description: >
   Playwright tests, mapping acceptance criteria to tests, checking a
   weaker-reading fixture, unit `toContain(">X<")` for a named link or button,
   unit `not.toContain("<li>X</li>")` for a does-not-show listitem,
+  Playwright "does not show a control named X" querying only button and link,
   Playwright `/^X/` on a listitem that contains Port descendants,
   Playwright toHaveText on a listitem that has descendant Command port,
   `includes scale(` / `toContain("scale(")` when canvas pan already writes `scale(1)`,
