@@ -6,6 +6,12 @@ describe("spec tree", () => {
     expect(existsSync("docs/superpowers")).toBe(false);
   });
 
+  it("CONTEXT.md **Term** headings are unique", () => {
+    const text = readFileSync("CONTEXT.md", "utf8");
+    const headings = [...text.matchAll(/^\*\*[^*]+\*\*:/gm)].map((m) => m[0]);
+    expect(headings).toEqual([...new Set(headings)]);
+  });
+
   it("model-inspector Restates does not leave Inspect after reload of the heading stays later", () => {
     const text = readFileSync(
       "docs/specs/features/model-inspector.md",
