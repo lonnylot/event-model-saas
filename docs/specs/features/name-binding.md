@@ -1,6 +1,6 @@
 # Name binding
 
-Status: validated
+Status: released
 
 ## Problem
 
