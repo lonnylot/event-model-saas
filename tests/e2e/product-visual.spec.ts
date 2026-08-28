@@ -177,3 +177,10 @@ test("GET `/login` form `login` computed `max-width` is `384px`", async ({
   await page.goto("/login");
   await expect(page.locator("form#login")).toHaveCSS("max-width", "384px");
 });
+
+test("GET `/login` form `login` computed `border-radius` is `10px`", async ({
+  page,
+}) => {
+  await page.goto("/login");
+  await expect(page.locator("form#login")).toHaveCSS("border-radius", "10px");
+});
