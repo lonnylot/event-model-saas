@@ -29,7 +29,7 @@ GET `/` is the login form. A visitor cannot tell what Event Model is. Paper-work
 - [x] GET `/` without a Session shows the text `Commands connect to events. Events connect to read models.`
 - [x] GET `/` without a Session shows a heading whose accessible name is `Invite-only, version-checked saves`
 - [x] GET `/` without a Session shows the text `The Mac app is local: one person, one .eventmodel file.`
-- [ ] GET `/` without a Session shows the text `Magic-link sign-in. No password, no public signup.`
+- [x] GET `/` without a Session shows the text `Magic-link sign-in. No password, no public signup.`
 - [ ] GET `/` without a Session shows the text `Site admin creates Teams and sends Invites.`
 - [ ] GET `/` without a Session shows the text `Save is explicit.`
 - [ ] GET `/` without a Session shows a heading whose accessible name is `Join the waitlist`

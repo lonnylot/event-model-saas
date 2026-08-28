@@ -269,3 +269,12 @@ test("GET `/` without a Session shows the text `The Mac app is local: one person
     page.getByText("The Mac app is local: one person, one .eventmodel file."),
   ).toBeVisible();
 });
+
+test("GET `/` without a Session shows the text `Magic-link sign-in. No password, no public signup.`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByText("Magic-link sign-in. No password, no public signup."),
+  ).toBeVisible();
+});
