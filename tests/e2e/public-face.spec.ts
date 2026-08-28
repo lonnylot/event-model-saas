@@ -332,3 +332,12 @@ test("GET `/` without a Session, a link `Join the waitlist` has an `href` that e
     page.getByRole("link", { name: "Join the waitlist", exact: true }),
   ).toHaveAttribute("href", /#waitlist$/);
 });
+
+test("GET `/` without a Session shows a textbox whose accessible name is `Email`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByRole("textbox", { name: "Email", exact: true }),
+  ).toBeVisible();
+});
