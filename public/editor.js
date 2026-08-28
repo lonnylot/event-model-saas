@@ -28,7 +28,9 @@ import { setEventModelTitle } from "./set-event-model-title.js";
 import { setEventModelDescription } from "./set-event-model-description.js";
 import { moveSliceLeft } from "./move-slice-left.js";
 import { moveSliceRight } from "./move-slice-right.js";
+import { reorderSlices } from "./reorder-slices.js";
 import { moveActorToSlice } from "./move-actor-to-slice.js";
+import { moveCommandToSlice } from "./move-command-to-slice.js";
 import { deleteSlice } from "./delete-slice.js";
 import { deleteCommand } from "./delete-command.js";
 import { deleteConnection } from "./delete-connection.js";
@@ -37,6 +39,7 @@ import { deleteEvent } from "./delete-event.js";
 import { deleteReadModel } from "./delete-read-model.js";
 import { deleteAutomation } from "./delete-automation.js";
 import { undoConnection } from "./undo-connection.js";
+import { undoAddCommand } from "./undo-add-command.js";
 
 const undoStack = [];
 
@@ -138,6 +141,7 @@ export function onAddCommandClick(root) {
     item.append(port);
     list.append(item);
   }
+  if (command) undoStack.push("command");
 }
 
 export function onAddEventClick(root) {
@@ -1323,12 +1327,44 @@ export function bindEditor(root) {
         }
         return;
       }
+      if (kind === "command") {
+        holder.textContent = JSON.stringify(
+          undoAddCommand(JSON.parse(holder.textContent || "{}")),
+        );
+        const timelineList = root.querySelector('[aria-label="Timeline"] ul');
+        for (const node of [...(timelineList?.querySelectorAll("li") ?? [])]) {
+          if (node.getAttribute("aria-label") === "Command") node.remove();
+        }
+        return;
+      }
       if (kind !== "slice") return;
       const model = JSON.parse(holder.textContent || "{}");
       const last = model.slices?.at(-1);
       if (!last) return;
       holder.textContent = JSON.stringify(deleteSlice(model, last.id));
       root.querySelector("ul")?.lastElementChild?.remove();
+      return;
+    }
+    if (
+      (event.metaKey || event.ctrlKey) &&
+      !event.altKey &&
+      (event.key === "=" || event.key === "+")
+    ) {
+      event.preventDefault();
+      scale = 1.25;
+      applyTimelineTransform();
+      return;
+    }
+    if ((event.metaKey || event.ctrlKey) && !event.altKey && event.key === "-") {
+      event.preventDefault();
+      scale = 0.8;
+      applyTimelineTransform();
+      return;
+    }
+    if ((event.metaKey || event.ctrlKey) && !event.altKey && event.key === "0") {
+      event.preventDefault();
+      scale = 1;
+      applyTimelineTransform();
       return;
     }
     if (event.key !== "Backspace" && event.key !== "Delete") return;
@@ -1415,8 +1451,14 @@ export function bindEditor(root) {
   });
   let sourcePort = null;
   let dragActorItem = null;
+  let dragSliceItem = null;
+  let dragCommandItem = null;
   root.addEventListener("mousedown", (event) => {
     const actorItem = event.target?.closest?.("li");
+    if (actorItem && slicesList?.contains(actorItem)) {
+      dragSliceItem = actorItem;
+      return;
+    }
     if (
       actorItem &&
       timelineList?.contains(actorItem) &&
@@ -1424,6 +1466,14 @@ export function bindEditor(root) {
     ) {
       dragActorItem = actorItem;
       return;
+    }
+    if (
+      actorItem &&
+      timelineList?.contains(actorItem) &&
+      actorItem.dataset.kind === "command" &&
+      !event.target?.closest?.("button[data-id]")
+    ) {
+      dragCommandItem = actorItem;
     }
     const port = event.target?.closest?.("button[data-id]");
     if (port) {
@@ -1457,6 +1507,28 @@ export function bindEditor(root) {
     }
   });
   root.addEventListener("mouseup", (event) => {
+    if (dragSliceItem) {
+      const sliceItem = event.target?.closest?.("li");
+      const holder = root.getElementById("event-model-document");
+      if (
+        holder &&
+        sliceItem &&
+        slicesList?.contains(sliceItem) &&
+        dragSliceItem !== sliceItem &&
+        dragSliceItem.dataset.id &&
+        sliceItem.dataset.id
+      ) {
+        holder.textContent = JSON.stringify(
+          reorderSlices(
+            JSON.parse(holder.textContent || "{}"),
+            dragSliceItem.dataset.id,
+            sliceItem.dataset.id,
+          ),
+        );
+      }
+      dragSliceItem = null;
+      return;
+    }
     if (dragActorItem) {
       const sliceItem = event.target?.closest?.("li");
       const holder = root.getElementById("event-model-document");
@@ -1477,6 +1549,29 @@ export function bindEditor(root) {
       }
       dragActorItem = null;
       return;
+    }
+    if (dragCommandItem) {
+      const sliceItem = event.target?.closest?.("li");
+      const holder = root.getElementById("event-model-document");
+      if (
+        holder &&
+        sliceItem &&
+        slicesList?.contains(sliceItem) &&
+        dragCommandItem.dataset.id &&
+        sliceItem.dataset.id
+      ) {
+        holder.textContent = JSON.stringify(
+          moveCommandToSlice(
+            JSON.parse(holder.textContent || "{}"),
+            dragCommandItem.dataset.id,
+            sliceItem.dataset.id,
+          ),
+        );
+        dragCommandItem = null;
+        sourcePort = null;
+        return;
+      }
+      dragCommandItem = null;
     }
     const target = event.target?.closest?.("button[data-id]");
     if (sourcePort && target && sourcePort === target) {
