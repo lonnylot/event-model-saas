@@ -6,7 +6,7 @@ const SESSION_MAX_AGE = 7 * 24 * 60 * 60;
 export const EXPIRED_HEADING = "This link is expired or already used.";
 
 export function expiredLinkHtml(): string {
-  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="/shell.css"></head><body class="expired"><main><h1>${EXPIRED_HEADING}</h1><a href="#">Sign in</a></main></body></html>`;
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="/shell.css"></head><body class="expired"><main><h1>${EXPIRED_HEADING}</h1><a href="/login">Sign in</a></main></body></html>`;
 }
 
 export async function consumeLink(

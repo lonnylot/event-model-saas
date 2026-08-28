@@ -69,4 +69,4 @@ Event Model persistence, editor canvas. Signed-in `/app` that is not redirected 
 ## Restates
 
 - [architecture.md](../architecture.md) — Mail From display name is `Event Model`
-- [product.md](../product.md) — session cookie is 7 days (not sliding on use); invalid/used heading is `This link is expired or already used.`; unauthenticated GET `/app` 303s to `/login`; this slice is released
+- [product.md](../product.md) — session cookie is 7 days (not sliding on use); invalid/used heading is `This link is expired or already used.`; expired `Sign in` to `/login` is [public-face.md](./public-face.md); unauthenticated GET `/app` 303s to `/login`; this slice is released

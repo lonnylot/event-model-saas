@@ -521,3 +521,13 @@ test("GET `/api/auth/consume` with a used magic-link token shows a link whose ac
     page.getByRole("link", { name: "Sign in", exact: true }),
   ).toBeVisible();
 });
+
+test("GET `/api/auth/consume` with a used magic-link token, the link `Sign in` has `href` `/login`", async ({
+  page,
+  request,
+}) => {
+  await openUsedMagicLink(page, request);
+  await expect(
+    page.getByRole("link", { name: "Sign in", exact: true }),
+  ).toHaveAttribute("href", "/login");
+});
