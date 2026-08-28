@@ -32,7 +32,7 @@ GET `/` is the login form. A visitor cannot tell what Event Model is. Paper-work
 - [x] GET `/` without a Session shows the text `Magic-link sign-in. No password, no public signup.`
 - [x] GET `/` without a Session shows the text `Site admin creates Teams and sends Invites.`
 - [x] GET `/` without a Session shows the text `Save is explicit.`
-- [ ] GET `/` without a Session shows a heading whose accessible name is `Join the waitlist`
+- [x] GET `/` without a Session shows a heading whose accessible name is `Join the waitlist`
 - [ ] GET `/` without a Session shows the text `Leave your email. If you already have access, use Sign in.`
 - [ ] GET `/` without a Session shows a link whose accessible name is `Join the waitlist`
 - [ ] GET `/` without a Session, a link `Join the waitlist` has an `href` that ends with `#waitlist`

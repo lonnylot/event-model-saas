@@ -294,3 +294,12 @@ test("GET `/` without a Session shows the text `Save is explicit.`", async ({
   await page.goto("/");
   await expect(page.getByText("Save is explicit.")).toBeVisible();
 });
+
+test("GET `/` without a Session shows a heading whose accessible name is `Join the waitlist`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByRole("heading", { name: "Join the waitlist", exact: true }),
+  ).toBeVisible();
+});
