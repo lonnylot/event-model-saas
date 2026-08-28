@@ -16,6 +16,7 @@ body.not-found {
 }
 body.expired {
   background-color: #FFFFFF;
+  color: #0F172A;
 }
 body.app-none {
   background-color: #F7F4EE;

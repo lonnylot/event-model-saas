@@ -519,6 +519,14 @@ test("GET `/api/auth/consume` with a used magic-link token `body` computed `back
   );
 });
 
+test("GET `/api/auth/consume` with a used magic-link token `body` computed `color` is `rgb(15, 23, 42)`", async ({
+  page,
+  request,
+}) => {
+  await openUsedMagicLink(page, request);
+  await expect(page.locator("body")).toHaveCSS("color", "rgb(15, 23, 42)");
+});
+
 test("GET `/api/auth/consume` with a used magic-link token shows a link whose accessible name is `Sign in`", async ({
   page,
   request,
