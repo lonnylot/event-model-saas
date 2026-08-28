@@ -83,3 +83,12 @@ test('GET `/login` without a Session has a `link[rel="icon"]` whose `href` is `/
     "/favicon.png",
   );
 });
+
+test("GET `/login` without a Session shows a heading whose accessible name is `Sign in`", async ({
+  page,
+}) => {
+  await page.goto("/login");
+  await expect(
+    page.getByRole("heading", { name: "Sign in", exact: true }),
+  ).toBeVisible();
+});
