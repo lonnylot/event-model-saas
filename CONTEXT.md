@@ -81,3 +81,7 @@ _Avoid_: login, token (as the product word)
 **Version**:
 The integer on Event Model metadata that Save must match. It is not a history of old documents.
 _Avoid_: revision, etag, lock
+
+**Waitlist**:
+A stored email of someone who asked to be invited. It is not a Person, Invite, Session, or signup.
+_Avoid_: signup, lead, subscriber

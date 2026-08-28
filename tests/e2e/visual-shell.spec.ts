@@ -6,7 +6,7 @@ import {
 } from "@playwright/test";
 
 async function consumeAdmin(page: Page, request: APIRequestContext) {
-  await page.goto("/");
+  await page.goto("/login");
   await page
     .getByRole("textbox", { name: "Email", exact: true })
     .fill("lonny@lonnylot.com");
@@ -128,55 +128,6 @@ test('GET `/` has a `meta[property="og:title"]` whose `content` is `Event Model`
 });
 
 
-test('GET `/` has a `meta[property="og:description"]` whose `content` is `Access is by invite.`', async ({
-  page,
-}) => {
-  await page.goto("/");
-  await expect(
-    page.locator('meta[property="og:description"]'),
-  ).toHaveAttribute("content", "Access is by invite.");
-});
-
-
-test("GET `/` `body` computed `background-color` is `rgb(247, 244, 238)`", async ({
-  page,
-}) => {
-  await page.goto("/");
-  await expect(page.locator("body")).toHaveCSS(
-    "background-color",
-    "rgb(247, 244, 238)",
-  );
-});
-
-
-test("GET `/` `body` computed `color` is `rgb(28, 25, 23)`", async ({
-  page,
-}) => {
-  await page.goto("/");
-  await expect(page.locator("body")).toHaveCSS("color", "rgb(28, 25, 23)");
-});
-
-
-test("GET `/` button `Email me a link` computed `background-color` is `rgb(28, 25, 23)`", async ({
-  page,
-}) => {
-  await page.goto("/");
-  await expect(
-    page.getByRole("button", { name: "Email me a link", exact: true }),
-  ).toHaveCSS("background-color", "rgb(28, 25, 23)");
-});
-
-
-test("GET `/` button `Email me a link` computed `color` is `rgb(247, 244, 238)`", async ({
-  page,
-}) => {
-  await page.goto("/");
-  await expect(
-    page.getByRole("button", { name: "Email me a link", exact: true }),
-  ).toHaveCSS("color", "rgb(247, 244, 238)");
-});
-
-
 test('GET an unknown document path has a `link[rel="stylesheet"]` whose `href` is `/shell.css`', async ({
   page,
 }) => {
@@ -184,17 +135,6 @@ test('GET an unknown document path has a `link[rel="stylesheet"]` whose `href` i
   await expect(page.locator('link[rel="stylesheet"]')).toHaveAttribute(
     "href",
     "/shell.css",
-  );
-});
-
-
-test("GET an unknown document path `body` computed `background-color` is `rgb(247, 244, 238)`", async ({
-  page,
-}) => {
-  await page.goto("/no-such-page");
-  await expect(page.locator("body")).toHaveCSS(
-    "background-color",
-    "rgb(247, 244, 238)",
   );
 });
 
@@ -207,18 +147,6 @@ test('GET `/api/auth/consume` with a used magic-link token has a `link[rel="styl
   await expect(page.locator('link[rel="stylesheet"]')).toHaveAttribute(
     "href",
     "/shell.css",
-  );
-});
-
-
-test("GET `/api/auth/consume` with a used magic-link token `body` computed `background-color` is `rgb(247, 244, 238)`", async ({
-  page,
-  request,
-}) => {
-  await openUsedMagicLink(page, request);
-  await expect(page.locator("body")).toHaveCSS(
-    "background-color",
-    "rgb(247, 244, 238)",
   );
 });
 

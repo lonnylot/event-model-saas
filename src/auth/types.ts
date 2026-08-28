@@ -58,6 +58,8 @@ export type AuthStore = {
   getEventModel(id: string): Promise<EventModelRow | null>;
   listEventModelsForTeam(teamId: string): Promise<EventModelRow[]>;
   setEventModelVersion(id: string, version: number): Promise<void>;
+  insertWaitlist(email: string): Promise<void>;
+  isWaitlisted(email: string): Promise<boolean>;
 };
 
 export type MailPort = {

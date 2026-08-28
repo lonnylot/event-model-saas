@@ -7,6 +7,7 @@ function fakeD1() {
   const teams = new Map<string, Row>();
   const memberships: { team_id: string; person_id: string }[] = [];
   const eventModels = new Map<string, Row>();
+  const waitlist = new Set<string>();
 
   const db = {
     prepare(sql: string) {
@@ -54,6 +55,10 @@ function fakeD1() {
                 if (row) row.version = Number(args[0]);
                 return {};
               }
+              if (sql === "INSERT OR IGNORE INTO waitlist (email) VALUES (?)") {
+                waitlist.add(String(args[0]));
+                return {};
+              }
               throw new Error(`unexpected run SQL: ${sql}`);
             },
             async first() {
@@ -76,6 +81,10 @@ function fakeD1() {
                 "SELECT id, team_id, title, version, r2_key FROM event_models WHERE id = ?"
               ) {
                 return eventModels.get(String(args[0])) ?? null;
+              }
+              if (sql === "SELECT email FROM waitlist WHERE email = ?") {
+                const email = String(args[0]);
+                return waitlist.has(email) ? { email } : null;
               }
               throw new Error(`unexpected first SQL: ${sql}`);
             },
@@ -172,4 +181,11 @@ describe("createD1Store", () => {
     await store.setEventModelVersion("model-1", 2);
     expect((await store.getEventModel("model-1"))?.version).toBe(2);
   });
+
+  it("`createD1Store` `insertWaitlist` with email `wait@example.com` then `isWaitlisted` returns true", async () => {
+    const store = createD1Store(fakeD1());
+    await store.insertWaitlist("wait@example.com");
+    expect(await store.isWaitlisted("wait@example.com")).toBe(true);
+  });
 });
+

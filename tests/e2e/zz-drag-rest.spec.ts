@@ -9,7 +9,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 
 async function consumeAdmin(page: Page, request: APIRequestContext) {
-  await page.goto("/");
+  await page.goto("/login");
   await page.getByRole("textbox", { name: "Email", exact: true }).fill(
     "lonny@lonnylot.com",
   );

@@ -2,18 +2,29 @@
 
 Status: released
 
-Tokens and primitives for Event Model SaaS HTML that is not the editor canvas. [features/visual-shell.md](./features/visual-shell.md) applies them. This file does not own feature acceptance criteria.
+Tokens and primitives for Event Model SaaS HTML that is not the editor canvas. [features/public-face.md](./features/public-face.md) applies public tokens on `/`. [features/visual-shell.md](./features/visual-shell.md) still applies paper tokens on signed-in team/admin HTML. This file does not own feature acceptance criteria.
 
 ## Look
 
-Paper workshop. Off-white page, ink text, hairline rules. Not a gray SaaS dashboard and not a dark studio.
+Contemporary SaaS on public HTML (`/`, `/login`, 404, expired): light canvas. Signed-in team/admin HTML stays paper workshop until a later slice. Editor canvas styling stays later.
 
 ## Tokens
+
+Public (`/`, `/login`, 404, expired):
+
+| Token | Value |
+|-------|--------|
+| `canvas` | `#FFFFFF` |
+| `ink` | `#0F172A` |
+| `accent` | `#0F766E` |
+| `on-accent` | `#FFFFFF` |
+
+Signed-in team/admin leftover (until a later slice):
 
 | Token | Value |
 |-------|--------|
 | `paper` | `#F7F4EE` |
-| `ink` | `#1C1917` |
+| `ink-paper` | `#1C1917` |
 | `muted` | `#78716C` |
 | `hairline` | `#E7E0D4` |
 | `ochre` | `#C0783A` |
@@ -22,23 +33,26 @@ Paper workshop. Off-white page, ink text, hairline rules. Not a gray SaaS dashbo
 | `radius` | `8px` |
 | `measure` | `24rem` |
 
-`ochre` and `terracotta` are the mark on `favicon.png` and `og.png`. Sticky-note lane colors on the canvas stay later.
+Sticky-note lane colors on the canvas stay later. `ochre` and `terracotta` are leftover paper tokens, not the public mark.
 
 ## Primitives
 
 | Primitive | Does |
 |-----------|------|
-| Page | `body` background `paper`, color `ink`, font `type` |
+| Page (public) | `body` background `canvas`, color `ink` |
+| Page (signed-in) | `body` background `paper`, color `ink-paper` |
 | Card | Login form in a `measure`-wide panel, `hairline` border, `radius`, padding |
 | AppBar | Signed-in top bar: link `Event Model` to `/app`, then email, optional Teams admin, Sign out |
-| Button primary | Background `ink`, color `paper`, `radius` |
+| Button primary (public) | Background `accent`, color `on-accent` |
+| Button primary (signed-in) | Background `ink-paper`, color `paper`, `radius` |
 | Field | `paper` fill, `hairline` border, `radius` |
 
 ## Screens
 
 | Screen | Path |
 |--------|------|
-| Login | GET `/` |
+| Landing | GET `/` |
+| Login | GET `/login` |
 | Not found | GET unknown document path |
 | Expired link | GET `/api/auth/consume` used or expired |
 | App | GET `/app` when not redirected |
@@ -50,4 +64,4 @@ Editor canvas (`/app/teams/{id}/models/{mid}`) is not a screen in this file.
 
 ## Mark
 
-`public/favicon.png` and `public/og.png` are the same two-slice paper mark (no letters). Open Graph title and description are HTML meta, not pixels in the PNG.
+`public/favicon.png` and `public/og.png` are the same two-slice timeline mark in `ink` and `accent` on `canvas` (no letters). Open Graph title and description are HTML meta, not pixels in the PNG. Title is `Event Model`. Description is `Event Modeling for the whole team.`

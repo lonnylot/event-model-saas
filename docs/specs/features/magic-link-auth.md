@@ -8,8 +8,8 @@ The host is public and invite-only, but nobody can sign in. This slice lets a Pe
 
 ## Acceptance criteria
 
-- [x] GET `/` shows a textbox whose accessible name is `Email`
-- [x] GET `/` shows a button whose accessible name is `Email me a link`
+- [x] GET `/login` shows a textbox whose accessible name is `Email`
+- [x] GET `/login` shows a button whose accessible name is `Email me a link`
 - [x] POST `/api/auth/request-link` returns status 200
 - [x] POST `/api/auth/request-link` returns content-type `application/json; charset=utf-8`
 - [x] POST `/api/auth/request-link` returns body `{"ok":true,"message":"If you have access, check your inbox."}`
@@ -31,13 +31,13 @@ The host is public and invite-only, but nobody can sign in. This slice lets a Pe
 - [x] GET `/api/auth/consume` with an expired magic-link token shows a heading whose accessible name is `This link is expired or already used.`
 - [x] GET `/api/auth/consume` with a used magic-link token does not set a Session cookie
 - [x] GET `/app` without a Session returns status 303
-- [x] GET `/app` without a Session sets `Location` to `/`
+- [x] GET `/app` without a Session sets `Location` to `/login`
 - [x] GET `/app` with a Session that is not redirected shows the Person's email
 - [x] GET `/app` with a Session that is not redirected shows a button whose accessible name is `Sign out`
 - [x] POST `/api/auth/sign-out` with a Session returns status 303
 - [x] POST `/api/auth/sign-out` with a Session sets `Location` to `/`
 - [x] POST `/api/auth/sign-out` clears the Session cookie
-- [x] Submitting `Email me a link` on `/` with `SITE_ADMIN_EMAIL` shows the text `If you have access, check your inbox.`
+- [x] Submitting `Email me a link` on `/login` with `SITE_ADMIN_EMAIL` shows the text `If you have access, check your inbox.`
 - [x] After consuming the magic-link from that submission, `/app` shows `SITE_ADMIN_EMAIL`
 
 ## Domain terms
@@ -64,9 +64,9 @@ Person, Site admin, Session, Magic link
 
 ## Out of scope
 
-Event Model persistence, editor canvas. Signed-in `/app` that is not redirected still shows the Person's email and Sign out. Paper Page on the expired document and AppBar on `/app` that is not redirected are [visual-shell.md](./visual-shell.md). Team create, Invite, picker, and `/app/teams/{id}` are owned by teams-and-invites.
+Event Model persistence, editor canvas. Signed-in `/app` that is not redirected still shows the Person's email and Sign out. Paper Page on the expired document and AppBar on `/app` that is not redirected are [visual-shell.md](./visual-shell.md). Team create, Invite, picker, and `/app/teams/{id}` are owned by teams-and-invites. Email lives on GET `/login`. Landing GET `/` is [public-face.md](./public-face.md).
 
 ## Restates
 
 - [architecture.md](../architecture.md) — Mail From display name is `Event Model`
-- [product.md](../product.md) — session cookie is 7 days (not sliding on use); invalid/used heading is `This link is expired or already used.` (no “Request a new one.”); this slice is released; next slice is teams-and-invites
+- [product.md](../product.md) — session cookie is 7 days (not sliding on use); invalid/used heading is `This link is expired or already used.`; expired `Sign in` to `/login` is [public-face.md](./public-face.md); unauthenticated GET `/app` 303s to `/login`; this slice is released

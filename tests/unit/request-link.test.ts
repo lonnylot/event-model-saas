@@ -121,6 +121,12 @@ describe("request-link", () => {
     expect(notify?.text).toContain("stranger@example.com");
   });
 
+  it("POST `/api/auth/request-link` with an unknown email does not insert a waitlist row", async () => {
+    const { env, auth } = authEnv();
+    await handleRequest(requestLinkPost("stranger@example.com"), env);
+    expect(await auth.store.isWaitlisted("stranger@example.com")).toBe(false);
+  });
+
   it("The sixth POST `/api/auth/request-link` for the same email within one hour does not send mail", async () => {
     const { env, sent } = authEnv();
     for (let i = 0; i < 6; i++) {

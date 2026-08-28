@@ -4,6 +4,7 @@ import { describe, expect, it } from "vitest";
 const wrangler = JSON.parse(readFileSync("wrangler.jsonc", "utf8")) as {
   name: string;
   routes?: { pattern: string; custom_domain: boolean }[];
+  assets?: { run_worker_first?: string[] };
 };
 
 describe("wrangler.jsonc", () => {
@@ -17,5 +18,13 @@ describe("wrangler.jsonc", () => {
         { pattern: "event-model.lonnylot.com", custom_domain: true },
       ]),
     );
+  });
+
+  it("`wrangler.jsonc` `run_worker_first` includes `/`", () => {
+    expect(wrangler.assets?.run_worker_first).toContain("/");
+  });
+
+  it("`wrangler.jsonc` `run_worker_first` includes `/login`", () => {
+    expect(wrangler.assets?.run_worker_first).toContain("/login");
   });
 });
