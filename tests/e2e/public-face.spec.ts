@@ -92,3 +92,10 @@ test("GET `/login` without a Session shows a heading whose accessible name is `S
     page.getByRole("heading", { name: "Sign in", exact: true }),
   ).toBeVisible();
 });
+
+test("GET `/login` without a Session shows the text `We'll email you a magic link.`", async ({
+  page,
+}) => {
+  await page.goto("/login");
+  await expect(page.getByText("We'll email you a magic link.")).toBeVisible();
+});
