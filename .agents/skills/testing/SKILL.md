@@ -6,6 +6,7 @@ description: >
   weaker-reading fixture, unit `toContain(">X<")` for a named link or button,
   unit `not.toContain("<li>X</li>")` for a does-not-show listitem,
   Playwright `/^X/` on a listitem that contains Port descendants,
+  Playwright toHaveText on a listitem that has descendant Command port,
   `includes scale(` / `toContain("scale(")` when canvas pan already writes `scale(1)`,
   clicking-appends tested at a function production never calls,
   dragging-appends unit that passes the kind already in the input,
@@ -80,6 +81,7 @@ A criterion that names a screen, "shows", or "lists" is proven at the app or flo
    | Independently revertible copy vs splice (Command drag) | One `it` packing first has X **and** last is [] (copy without splice stays green on the first assertion) |
    | Accessible name **is** `X` | Playwright `name: "X"` without `exact: true` (matches `Xyz`) |
    | Listitem visible text **is** `X` | Playwright `/^X/` on the listitem (descendant Port labels / extra suffix stay green) |
+   | Listitem visible text / own text node | Playwright `toHaveText("Place Order")` on the listitem (descendant `Command port` stays green, or stays green only when `textContent` wipes descendants) |
    | Named link/button/textbox `X` (unit HTML) | `toContain(">X<")` (heading or span named X stays green); `toContain('<a href="/app">X</a>')` packs name vs href |
    | Computed `background-color` / `color` | Unit `toContain` of the stylesheet `<link>` (deleting `body { background-color }` stays green) |
    | Exact script / command value | Unordered `toContain` of each token (`echo playwright test`) |

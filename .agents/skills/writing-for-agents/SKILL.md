@@ -37,6 +37,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Computed CSS proven by stylesheet `toContain` | `testing`, `tdd-loop` |
 | `includes scale(` / `toContain("scale(")` when canvas pan already writes `scale(1)` | `testing`, `keeping-specs-current`, `tdd-loop` |
 | Unit `not.toContain("<li>X</li>")` for a does-not-show listitem | `testing` |
+| Playwright `toHaveText` on a listitem that has descendant `Command port` | `testing`, `playwright-e2e` |
 | Clicking-appends tested at a function production never calls | `testing` |
 | Dragging-appends unit that passes the kind already in the input | `testing` |
 | Same-control Name values that never select the other entity (Command vs Event / Read Model / Automation; first-click-wins / insert-if-missing) | `testing` |
