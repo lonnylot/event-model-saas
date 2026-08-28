@@ -61,7 +61,7 @@ Screens: App, Team picker, Team, Teams admin. Primitives this slice composes: Pa
 
 ## Out of scope
 
-Editor canvas (`/app/teams/{id}/models/{mid}`), Inspector, sticky-note lane colors, dark mode, webfont files. Public Page, Login, Landing, Marketing header, expired `Sign in`, and public Button primary are [public-face.md](./public-face.md). Card, Field, font `type`, and `radius` stay later. Extra “Request a new one” heading on the expired page stays out. Viewport meta on routes that already have it stays.
+Editor canvas (`/app/teams/{id}/models/{mid}`), Inspector, sticky-note lane colors, dark mode, webfont files. Public Page, Login, Landing, Marketing header, expired `Sign in`, and Login Button primary are [public-face.md](./public-face.md). Card, Field, font `type`, `radius`, and Landing `Join the waitlist` Button primary stay later. Extra “Request a new one” heading on the expired page stays out. Viewport meta on routes that already have it stays.
 
 ## Restates
 
@@ -71,4 +71,4 @@ Editor canvas (`/app/teams/{id}/models/{mid}`), Inspector, sticky-note lane colo
 - [model-persistence.md](./model-persistence.md) — Create model and the Untitled link stay that file. AppBar `Event Model` link on GET `/app/teams/{id}` is this slice.
 - [product.md](../product.md) — Team/admin HTML is paper workshop ([design-system.md](../design-system.md)). Public HTML is [public-face.md](./public-face.md). Expired heading stays this file's leftover of magic-link-auth; expired `Sign in` is [public-face.md](./public-face.md). The schema file is in this repo. Editor web shell (team name, in-session heading, dirty, Save, Export, sign out) stays later for a later slice.
 - [architecture.md](../architecture.md) — Design tokens live in `docs/specs/design-system.md`. Team/admin HTML is Worker HTML plus `public/` CSS with paper tokens. Public HTML is [public-face.md](./public-face.md). Editor canvas TypeScript stays the timeline; its styling stays later. `run_worker_first` includes `/favicon.png`, `/og.png`, and `/shell.css`. `/` and `/login` are [public-face.md](./public-face.md).
-- [design-system.md](../design-system.md) — this slice composes signed-in Page background and color and AppBar. Public Page, Marketing header, and public Button primary are [public-face.md](./public-face.md). Card, Field, font `type`, and `radius` stay later.
+- [design-system.md](../design-system.md) — this slice composes signed-in Page background and color and AppBar. Public Page, Marketing header, and Login Button primary are [public-face.md](./public-face.md). Card, Field, font `type`, `radius`, and Landing `Join the waitlist` Button primary stay later.
