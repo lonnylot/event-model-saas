@@ -40,7 +40,7 @@ Drag of Event, Read Model, and Automation between Slices, and Timeline Slice dra
 
 ## Restates
 
-- [connection-refusals.md](./connection-refusals.md) — After a refused second Command → Event, ⌘Z three times does not show New Slice (Add Command is on the undo stack). Two presses no longer reach New Slice. Port onto a Slice stays that file.
+- [connection-refusals.md](./connection-refusals.md) — After a refused second Command → Event, ⌘Z four times does not show New Slice (Add Command is on the undo stack). Two presses no longer reach New Slice. Port onto a Slice stays that file.
 - [canvas.md](./canvas.md) — Out of scope no longer owns sidebar drag-reorder, drag of Command between Slices, undo of Add, or ⌘+/⌘-/⌘0; this slice owns those. Pinch pan stays this file (the Timeline `wheel` listener). Drag of Event, Read Model, and Automation, and Timeline Slice drag, are [drag-rest.md](./drag-rest.md). Undo of remaining Adds, move, delete, and redo are [undo-rest.md](./undo-rest.md). Actor drag, Slice Backspace, ⌥⌘←, scroll pan, undo New Slice, and undo Connection stay this file.
 - [blocks.md](./blocks.md) — Drag Command between Slices and undo Add Command are this slice.
 - [editor-shell.md](./editor-shell.md) — Keyboard zoom is this slice. Toolbar zoom stays this file. Pinch pan stays [canvas.md](./canvas.md).

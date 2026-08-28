@@ -62,6 +62,7 @@ Extra undo toolbar. Mac window chrome. Undo New Slice, undo Connection (without 
 ## Restates
 
 - [canvas-rest.md](./canvas-rest.md) — Undo Add Command stays that file. Undo of remaining Adds, move, delete, and redo are this slice.
+- [connection-refusals.md](./connection-refusals.md) — After a refused second Command → Event, ⌘Z four times does not show New Slice (Add Event is on the undo stack). Three presses no longer reach New Slice. Port onto a Slice stays that file.
 - [canvas.md](./canvas.md) — Undo of remaining Adds, move, delete, and redo are this slice. Undo New Slice and undo Connection without a prior delete stay that file.
 - [blocks.md](./blocks.md) — Undo of remaining Adds, move, delete, and redo are this slice. Undo New Slice stays [canvas.md](./canvas.md). Undo Add Command stays [canvas-rest.md](./canvas-rest.md).
 - [chrome.md](./chrome.md) — Undo of remaining Adds, move, delete, and redo are this slice. Undo New Slice stays [canvas.md](./canvas.md). Undo Add Command stays [canvas-rest.md](./canvas-rest.md).
