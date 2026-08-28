@@ -2,13 +2,21 @@
 
 Status: released
 
-Tokens and primitives for Event Model SaaS HTML that is not the editor canvas. [features/visual-shell.md](./features/visual-shell.md) applies them. This file does not own feature acceptance criteria.
+Tokens and primitives for Event Model SaaS HTML that is not the editor canvas. [features/public-face.md](./features/public-face.md) applies public tokens on `/`. [features/visual-shell.md](./features/visual-shell.md) still applies paper tokens on signed-in team/admin HTML. This file does not own feature acceptance criteria.
 
 ## Look
 
-Paper workshop. Off-white page, ink text, hairline rules. Not a gray SaaS dashboard and not a dark studio.
+Contemporary SaaS on public landing (`/`): light canvas. Signed-in team/admin HTML stays paper workshop until a later slice. Editor canvas styling stays later.
 
 ## Tokens
+
+Public (`/`):
+
+| Token | Value |
+|-------|--------|
+| `canvas` | `#FFFFFF` |
+
+Signed-in team/admin leftover (until a later slice):
 
 | Token | Value |
 |-------|--------|
@@ -28,7 +36,8 @@ Paper workshop. Off-white page, ink text, hairline rules. Not a gray SaaS dashbo
 
 | Primitive | Does |
 |-----------|------|
-| Page | `body` background `paper`, color `ink`, font `type` |
+| Page (public) | `body` background `canvas` |
+| Page (signed-in) | `body` background `paper`, color `ink` |
 | Card | Login form in a `measure`-wide panel, `hairline` border, `radius`, padding |
 | AppBar | Signed-in top bar: link `Event Model` to `/app`, then email, optional Teams admin, Sign out |
 | Button primary | Background `ink`, color `paper`, `radius` |

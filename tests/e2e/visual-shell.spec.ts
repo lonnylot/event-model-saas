@@ -138,17 +138,6 @@ test('GET `/` has a `meta[property="og:description"]` whose `content` is `Access
 });
 
 
-test("GET `/` `body` computed `background-color` is `rgb(247, 244, 238)`", async ({
-  page,
-}) => {
-  await page.goto("/");
-  await expect(page.locator("body")).toHaveCSS(
-    "background-color",
-    "rgb(247, 244, 238)",
-  );
-});
-
-
 test("GET `/` `body` computed `color` is `rgb(28, 25, 23)`", async ({
   page,
 }) => {

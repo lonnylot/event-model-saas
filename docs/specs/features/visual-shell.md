@@ -19,7 +19,6 @@ Login, 404, expired magic link, and signed-in team pages are unstyled HTML: emai
 - [x] GET `/` has a `meta[property="og:image"]` whose `content` ends with `/og.png`
 - [x] GET `/` has a `meta[property="og:title"]` whose `content` is `Event Model`
 - [x] GET `/` has a `meta[property="og:description"]` whose `content` is `Access is by invite.`
-- [x] GET `/` `body` computed `background-color` is `rgb(247, 244, 238)`
 - [x] GET `/` `body` computed `color` is `rgb(28, 25, 23)`
 - [x] GET an unknown document path has a `link[rel="stylesheet"]` whose `href` is `/shell.css`
 - [x] GET an unknown document path `body` computed `background-color` is `rgb(247, 244, 238)`
@@ -56,7 +55,7 @@ Screens: Not found, Expired link, App, Team picker, Team, Teams admin. Primitive
 
 ## Assumptions
 
-- Token hex values and primitive rules live in [design-system.md](../design-system.md). Playwright computed colors are the sRGB of `paper` and `ink`.
+- Token hex values and primitive rules live in [design-system.md](../design-system.md). Playwright computed colors on `/app`, picker, team, and Teams admin are the sRGB of `paper` and `ink`. GET `/` Page background is [public-face.md](./public-face.md).
 - `og:image` `content` ends with `/og.png`.
 - Login heading `Sign in` and marketing header `Event Model` link are [public-face.md](./public-face.md).
 - AppBar `Event Model` is a link to `/app`. Teams admin, email, and Sign out stay the existing controls. `appPageHtml` (Person who is not site admin, no teams) composes AppBar the same way `shell` does.
@@ -74,6 +73,6 @@ Editor canvas (`/app/teams/{id}/models/{mid}`), Inspector, sticky-note lane colo
 - [magic-link-auth.md](./magic-link-auth.md) — Expired heading and signed-in email / Sign out stay that file. Paper Page on the expired document and AppBar on `/app` that is not redirected are this slice.
 - [teams-and-invites.md](./teams-and-invites.md) — Team name, Create team, Teams admin, picker `Your teams`, team heading stay that file. AppBar `Event Model` link and Page background on `/app`, picker, team, and Teams admin are this slice. Creating a Team still does not create Event Models; Event Model persistence is [model-persistence.md](./model-persistence.md).
 - [model-persistence.md](./model-persistence.md) — Create model and the Untitled link stay that file. AppBar `Event Model` link on GET `/app/teams/{id}` is this slice.
-- [product.md](../product.md) — Signed-out and team/admin HTML is paper workshop ([design-system.md](../design-system.md)). Expired / used magic link is the heading only (no path to request a new one). The schema file is in this repo. Editor web shell (team name, in-session heading, dirty, Save, Export, sign out) stays later for a later slice.
+- [product.md](../product.md) — Team/admin HTML is paper workshop ([design-system.md](../design-system.md)). GET `/` Page background is [public-face.md](./public-face.md). Expired / used magic link is the heading only (no path to request a new one). The schema file is in this repo. Editor web shell (team name, in-session heading, dirty, Save, Export, sign out) stays later for a later slice.
 - [architecture.md](../architecture.md) — Design tokens live in `docs/specs/design-system.md`. Signed-out and team/admin HTML is Worker HTML plus `public/` CSS. Editor canvas TypeScript stays the timeline; its styling stays later. `run_worker_first` includes `/favicon.png`, `/og.png`, and `/shell.css` as those ACs land.
-- [design-system.md](../design-system.md) — this slice composes Page background and color and AppBar. Login Button primary is [public-face.md](./public-face.md). Card, Field, font `type`, and `radius` stay later.
+- [design-system.md](../design-system.md) — this slice composes signed-in Page background and color and AppBar. Public Page background on `/` is [public-face.md](./public-face.md). Login Button primary is [public-face.md](./public-face.md). Card, Field, font `type`, and `radius` stay later.

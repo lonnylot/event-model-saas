@@ -399,3 +399,13 @@ test("GET `/` with a Session does not show a button whose accessible name is `Si
     page.getByRole("button", { name: "Sign out", exact: true }),
   ).toHaveCount(0);
 });
+
+test("GET `/` `body` computed `background-color` is `rgb(255, 255, 255)`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator("body")).toHaveCSS(
+    "background-color",
+    "rgb(255, 255, 255)",
+  );
+});

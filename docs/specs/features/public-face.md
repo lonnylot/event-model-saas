@@ -42,7 +42,7 @@ GET `/` is the login form. A visitor cannot tell what Event Model is. Paper-work
 - [x] GET `/` with a Session, a link `Open app` has `href` `/app`
 - [x] GET `/` with a Session does not show a link whose accessible name is `Sign in`
 - [x] GET `/` with a Session does not show a button whose accessible name is `Sign out`
-- [ ] GET `/` `body` computed `background-color` is `rgb(255, 255, 255)`
+- [x] GET `/` `body` computed `background-color` is `rgb(255, 255, 255)`
 - [ ] GET `/` `body` computed `color` is `rgb(15, 23, 42)`
 - [ ] GET `/` has a `meta[property="og:description"]` whose `content` is `Event Modeling for the whole team.`
 - [x] GET `/login` without a Session returns status 200
