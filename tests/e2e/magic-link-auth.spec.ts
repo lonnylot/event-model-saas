@@ -2,10 +2,10 @@ import { expect, test } from "@playwright/test";
 
 test.describe.configure({ mode: "serial" });
 
-test("GET `/` shows a textbox whose accessible name is `Email`", async ({
+test("GET `/login` shows a textbox whose accessible name is `Email`", async ({
   page,
 }) => {
-  await page.goto("/");
+  await page.goto("/login");
   await expect(
     page.getByRole("textbox", { name: "Email", exact: true }),
   ).toBeVisible();

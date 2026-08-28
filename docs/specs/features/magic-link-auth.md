@@ -8,7 +8,7 @@ The host is public and invite-only, but nobody can sign in. This slice lets a Pe
 
 ## Acceptance criteria
 
-- [x] GET `/` shows a textbox whose accessible name is `Email`
+- [x] GET `/login` shows a textbox whose accessible name is `Email`
 - [x] GET `/` shows a button whose accessible name is `Email me a link`
 - [x] POST `/api/auth/request-link` returns status 200
 - [x] POST `/api/auth/request-link` returns content-type `application/json; charset=utf-8`
@@ -64,7 +64,7 @@ Person, Site admin, Session, Magic link
 
 ## Out of scope
 
-Event Model persistence, editor canvas. Signed-in `/app` that is not redirected still shows the Person's email and Sign out. Paper Page on the expired document and AppBar on `/app` that is not redirected are [visual-shell.md](./visual-shell.md). Team create, Invite, picker, and `/app/teams/{id}` are owned by teams-and-invites.
+Event Model persistence, editor canvas. Signed-in `/app` that is not redirected still shows the Person's email and Sign out. Paper Page on the expired document and AppBar on `/app` that is not redirected are [visual-shell.md](./visual-shell.md). Team create, Invite, picker, and `/app/teams/{id}` are owned by teams-and-invites. Email lives on GET `/login`. Landing GET `/` is [public-face.md](./public-face.md).
 
 ## Restates
 
