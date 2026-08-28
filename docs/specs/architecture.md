@@ -35,20 +35,20 @@ A Cloudflare Worker serves signed-out and team/admin HTML, the editor canvas pag
 | Module | Does | Depends on |
 |--------|------|------------|
 | `document` | Parse/validate schema, legal edges, mutations on an Event Model | Schema file only |
-| `auth` | Magic-link issue/consume, session cookie, unknown-email notify, rate limit, site-admin bootstrap | D1, Email, env |
+| `auth` | Magic-link issue/consume, session cookie, unknown-email notify, waitlist join, rate limit, site-admin bootstrap | D1, Email, env |
 | `teams` | Create team (site admin), invite, membership, list teams for a Person | D1, Email |
 | `models` | Create/list/get/import/export/save with version check | D1, R2, `document` |
 | `api` | HTTP routes, 404 for non-members, 409 on version mismatch | `auth`, `teams`, `models` |
-| `web` | Login, team picker, model list, editor shell | `api` |
+| `web` | Landing, Login, waitlist form, team picker, model list, editor shell | `api` |
 
 Tests call `document`, `auth`, `teams`, and `models` at those module seams. Playwright drives `web` against a test Worker with fake Email and isolated D1/R2.
 
 ## Persistence
 
-**D1** holds: people, sessions, magic-link tokens, teams, memberships, invites, event-model metadata (`id`, `team_id`, `title`, `version`, `r2_key`).
+**D1** holds: people, sessions, magic-link tokens, teams, memberships, invites, waitlist emails, event-model metadata (`id`, `team_id`, `title`, `version`, `r2_key`).
 
 **R2** holds only the current document body. Version is the integer on the D1 row. A successful save writes R2 then increments `version` in the same logical operation; a failed write must not increment.
 
 ## Out of this file
 
-Live collaboration, billing, public signup, R2 version history, per-model ACLs. Feature slices and their ACs live under `docs/specs/features/`.
+Live collaboration, billing, public signup, R2 version history, per-model ACLs. Waitlist is not public signup. Feature slices and their ACs live under `docs/specs/features/`.

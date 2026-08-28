@@ -202,11 +202,18 @@ export function createD1Store(db: D1Database): AuthStore {
         .bind(version, id)
         .run();
     },
-    async insertWaitlist() {
-      throw new Error("waitlist D1 is later");
+    async insertWaitlist(email) {
+      await db
+        .prepare("INSERT OR IGNORE INTO waitlist (email) VALUES (?)")
+        .bind(email)
+        .run();
     },
-    async isWaitlisted() {
-      throw new Error("waitlist D1 is later");
+    async isWaitlisted(email) {
+      const row = await db
+        .prepare("SELECT email FROM waitlist WHERE email = ?")
+        .bind(email)
+        .first();
+      return row != null;
     },
   };
 }

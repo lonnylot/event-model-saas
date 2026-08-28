@@ -13,7 +13,7 @@ The Mac app is local-only: one person, one `.eventmodel` file, no accounts. Team
 | Topic | Choice |
 |-------|--------|
 | Host | Cloudflare Worker + static assets at **event-model.lonnylot.com** |
-| Metadata | **D1** (people, sessions, teams, memberships, invites, event-model rows) |
+| Metadata | **D1** (people, sessions, teams, memberships, invites, waitlist emails, event-model rows) |
 | Document body | **R2** — current `.eventmodel` JSON only; no version history |
 | Auth | Invite-only. Magic link by email. `SITE_ADMIN_EMAIL` is the one exception (may sign in without an invite and becomes site admin). |
 | Unknown login | Requester always sees the same “if you have access, check your inbox” copy. Site admin is emailed that address so they can invite. |
