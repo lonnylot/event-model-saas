@@ -20,3 +20,12 @@ test("GET `/` without a Session shows the text `One Event Model, signed in. No p
     page.getByText("One Event Model, signed in. No passing files around."),
   ).toBeVisible();
 });
+
+test("GET `/` without a Session shows a link whose accessible name is `Event Model`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByRole("link", { name: "Event Model", exact: true }),
+  ).toBeVisible();
+});
