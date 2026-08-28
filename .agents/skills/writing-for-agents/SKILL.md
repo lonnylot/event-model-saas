@@ -32,6 +32,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Async form fetch / last-mail before the invite POST | `playwright-e2e` |
 | Wait after open (editor bound / networkidle) and after New Slice click / named Ports before pointer-down / force hover vs Timeline pan / lane Add or ⌥⌘1–5 | `playwright-e2e`, `tdd-loop` |
 | Accessible name **is** X / Playwright substring | `testing`, `playwright-e2e` |
+| Listitem visible text **is** X / Playwright `/^X/` with Port descendants | `testing`, `playwright-e2e`, `tdd-loop` |
 | Unit `toContain(">X<")` for a named link/button/textbox / name vs href packed in one tag `toContain` | `testing` |
 | Computed CSS proven by stylesheet `toContain` | `testing`, `tdd-loop` |
 | `includes scale(` / `toContain("scale(")` when canvas pan already writes `scale(1)` | `testing`, `keeping-specs-current`, `tdd-loop` |
