@@ -541,3 +541,18 @@ test("GET an unknown document path `body` computed `background-color` is `rgb(25
     "rgb(255, 255, 255)",
   );
 });
+
+test("Submitting `Join the waitlist` on `/` with email `wait@example.com` shows the text `If you're on the list, we'll be in touch.`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page
+    .getByRole("textbox", { name: "Email", exact: true })
+    .fill("wait@example.com");
+  await page
+    .getByRole("button", { name: "Join the waitlist", exact: true })
+    .click();
+  await expect(
+    page.getByText("If you're on the list, we'll be in touch."),
+  ).toBeVisible();
+});

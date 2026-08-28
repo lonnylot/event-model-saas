@@ -80,7 +80,7 @@ GET `/` is the login form. A visitor cannot tell what Event Model is. Paper-work
 - [x] POST `/api/waitlist` when the waitlist insert fails returns status 500 and does not send mail
 - [x] POST `/api/auth/request-link` with an unknown email does not insert a waitlist row
 - [x] `createD1Store` `insertWaitlist` with email `wait@example.com` then `isWaitlisted` returns true
-- [ ] Submitting `Join the waitlist` on `/` with email `wait@example.com` shows the text `If you're on the list, we'll be in touch.`
+- [x] Submitting `Join the waitlist` on `/` with email `wait@example.com` shows the text `If you're on the list, we'll be in touch.`
 
 ## Domain terms
 
@@ -91,7 +91,7 @@ Event Model, Person, Site admin, Session, Magic link, Team, Invite, Waitlist, Sl
 - `handleRequest` — GET `/`, GET `/login`, POST `/api/waitlist`; unit tests pass a fake store and fake mail
 - `joinWaitlist` in `src/auth/` — unit tests pass a fake store and fake mail
 - `createD1Store` in `src/auth/d1-store.ts` — unit tests construct it so a broken waitlist statement fails
-- `env.ASSETS.fetch` — `public/index.html`, `public/login.html`, `public/404.html`, `public/shell.css`, `public/favicon.png`, `public/og.png`
+- `env.ASSETS.fetch` — `public/index.html`, `public/login.html`, `public/404.html`, `public/shell.css`, `public/favicon.png`, `public/og.png`, `public/waitlist.js`
 - Browser — Playwright against `wrangler dev` with `TEST_MAIL=1`
 
 ## UI
