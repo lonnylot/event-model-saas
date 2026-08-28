@@ -65,7 +65,7 @@ description: >
   were not rewritten, when two-dot vs default deletes a released spec
   or Playwright file or catalog row (three-dot from a stale merge-base
   hides it), when after rebase leftover grep skipped catalog-released
-  specs that just landed (leftover remaining Adds after a comma; packed Undo onto canvas), leftover broader assignment (all Command Field
+  specs that just landed, leftover broader assignment (all Command Field
   name) after Out of scope narrowed to Last-Command,
   when Restates names a path not in the tree
   (canvas-rest.md / add-on-lane.md / delete-blocks.md not on this HEAD / do not edit if not on the branch), Assumptions link files not in the tree, leftover Out of scope still unowned later after Restates
@@ -183,7 +183,7 @@ Status on every spec: `draft` → `validated` → `released`.
 - An AC is restated but UI / Events / Assumptions still describe the deleted behavior
 - Out of scope restated but Assumptions of that file still say the deleted ownership (`persistence is a later spec`)
 - Leftover Assumptions `Add targets the last Slice` after Restates moved lane Add (say `Toolbar Add still targets the last Slice`)
-- Leftover broader assignment (all Command Field name stay inspect-fields.md) after Out of scope narrowed to Last-Command; after rebase, leftover grep skipped catalog-released specs that just landed (leftover remaining Adds after a comma; packed Undo onto canvas)
+- Leftover broader assignment (all Command Field name stay inspect-fields.md) after Out of scope narrowed to Last-Command; after rebase, leftover grep skipped catalog-released specs that just landed
 - Rewriting Out of scope swallowed the `## Restates` heading (`inspect-fields-rest.md.## Restates`)
 - Restates omits a released spec that still describes the deleted behavior (packed Out of scope `Inspector Description / Fields / Slice type picker stay later` still lists Fields as later; packed `Slice type picker, inspect after reload, Mac window chrome` still lists inspect after reload as later; `Event / Read Model / Automation reload-lists` in inspect-description Out of scope; packed `Canvas move / delete / pan / undo` still lists Delete as canvas.md; leftover `Chrome Name still mutates the last Command` after this slice owns Command bind-by-id)
 - Leftover Seams after deleting a named module; Restates omits architecture.md (draft) or product.md Testing still names the deleted module; leftover Seams replacing a released last-Command arity with by-id without restating that spec
