@@ -29,3 +29,12 @@ test("GET `/` without a Session shows a link whose accessible name is `Event Mod
     page.getByRole("link", { name: "Event Model", exact: true }),
   ).toBeVisible();
 });
+
+test("GET `/` without a Session, the link `Event Model` has `href` `/`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByRole("link", { name: "Event Model", exact: true }),
+  ).toHaveAttribute("href", "/");
+});
