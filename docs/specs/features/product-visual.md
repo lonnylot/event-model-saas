@@ -10,7 +10,7 @@ Public pages have copy and body colors only. Signed-in pages are paper cream. Th
 
 - [x] GET `/` `body` computed `font-family` includes `system-ui`
 - [x] GET `/` `header` computed `border-bottom-color` is `rgb(226, 232, 240)`
-- [ ] GET `/` link `Sign in` computed `color` is `rgb(15, 118, 110)`
+- [x] GET `/` link `Sign in` computed `color` is `rgb(15, 118, 110)`
 - [ ] GET `/` heading `Event Modeling for the whole team` computed `font-size` is `36px`
 - [ ] GET `/` the text `One Event Model, signed in. No passing files around.` computed `color` is `rgb(100, 116, 139)`
 - [ ] GET `/` `main` computed `max-width` is `576px`
