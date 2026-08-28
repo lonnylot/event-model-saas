@@ -106,3 +106,13 @@ test("GET `/` form `waitlist-form` computed `border-top-color` is `rgb(226, 232,
     "rgb(226, 232, 240)",
   );
 });
+
+test("GET `/` form `waitlist-form` computed `border-radius` is `10px`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator("form#waitlist-form")).toHaveCSS(
+    "border-radius",
+    "10px",
+  );
+});
