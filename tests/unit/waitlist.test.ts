@@ -119,7 +119,48 @@ describe("waitlist", () => {
     expect(await auth.store.isWaitlisted("wait@example.com")).toBe(false);
     expect(sent).toHaveLength(0);
   });
+
+  it("POST `/api/waitlist` does not create a Person", async () => {
+    const { env, auth } = authEnv();
+    await handleRequest(waitlistPost("wait@example.com"), env);
+    expect(await auth.store.getPersonByEmail("wait@example.com")).toBeNull();
+  });
+
+  it("POST `/api/waitlist` does not set a Session cookie", async () => {
+    const response = await handleRequest(
+      waitlistPost("wait@example.com"),
+      envWithAssets(),
+    );
+    expect(response.headers.get("Set-Cookie")).toBeNull();
+  });
+
+  it("POST `/api/waitlist` with an invalid email returns status 200", async () => {
+    const response = await handleRequest(waitlistPost(""), envWithAssets());
+    expect(response.status).toBe(200);
+  });
+
+  it("POST `/api/waitlist` with an invalid email does not insert a waitlist row and does not send mail", async () => {
+    const { env, auth, sent } = authEnv();
+    for (const body of [
+      waitlistPost(""),
+      waitlistPost("not-an-email"),
+      new Request("https://event-model.lonnylot.com/api/waitlist", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          "cf-connecting-ip": "203.0.113.1",
+        },
+        body: JSON.stringify({}),
+      }),
+    ]) {
+      await handleRequest(body, env);
+    }
+    expect(await auth.store.isWaitlisted("")).toBe(false);
+    expect(await auth.store.isWaitlisted("not-an-email")).toBe(false);
+    expect(sent).toHaveLength(0);
+  });
 });
+
 
 
 

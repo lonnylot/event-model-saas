@@ -71,10 +71,10 @@ GET `/` is the login form. A visitor cannot tell what Event Model is. Paper-work
 - [x] Waitlist mail subject is `Waitlist request`
 - [x] POST `/api/waitlist` with an email already on the waitlist does not insert a second row and does not send mail
 - [x] POST `/api/waitlist` with an existing Person email does not insert a waitlist row and does not send mail
-- [ ] POST `/api/waitlist` does not create a Person
-- [ ] POST `/api/waitlist` does not set a Session cookie
-- [ ] POST `/api/waitlist` with an invalid email returns status 200
-- [ ] POST `/api/waitlist` with an invalid email does not insert a waitlist row and does not send mail
+- [x] POST `/api/waitlist` does not create a Person
+- [x] POST `/api/waitlist` does not set a Session cookie
+- [x] POST `/api/waitlist` with an invalid email returns status 200
+- [x] POST `/api/waitlist` with an invalid email does not insert a waitlist row and does not send mail
 - [ ] The sixth POST `/api/waitlist` for the same email within one hour does not send mail
 - [ ] The twenty-first POST `/api/waitlist` from the same client IP within one hour does not send mail and does not insert a waitlist row
 - [ ] POST `/api/waitlist` when the waitlist insert fails returns status 500 and does not send mail

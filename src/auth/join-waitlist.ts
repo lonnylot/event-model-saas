@@ -9,6 +9,7 @@ export async function joinWaitlist(
   input: { email: string; clientIp: string },
 ): Promise<void> {
   const email = normalizeEmail(input.email);
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return;
   if (await runtime.store.getPersonByEmail(email)) return;
   if (await runtime.store.isWaitlisted(email)) return;
   await runtime.store.insertWaitlist(email);
