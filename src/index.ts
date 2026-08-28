@@ -465,7 +465,7 @@ export async function handleRequest(
       if (person) {
         html = html.replace(
           '<a href="/login">Sign in</a>',
-          '<a href="/login">Sign in</a><a href="#">Open app</a>',
+          '<a href="/login">Sign in</a><a href="/app">Open app</a>',
         );
       }
     }

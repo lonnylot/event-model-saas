@@ -369,3 +369,13 @@ test("GET `/` with a Session shows a link whose accessible name is `Open app`", 
     page.getByRole("link", { name: "Open app", exact: true }),
   ).toBeVisible();
 });
+
+test("GET `/` with a Session, a link `Open app` has `href` `/app`", async ({
+  page,
+}) => {
+  await page.request.post("/api/test/non-admin-session");
+  await page.goto("/");
+  await expect(
+    page.getByRole("link", { name: "Open app", exact: true }),
+  ).toHaveAttribute("href", "/app");
+});
