@@ -440,3 +440,13 @@ test("GET `/login` with a Session sets `Location` to `/app`", async ({
   const response = await page.request.get("/login", { maxRedirects: 0 });
   expect(response.headers()["location"]).toBe("/app");
 });
+
+test("GET `/login` `body` computed `background-color` is `rgb(255, 255, 255)`", async ({
+  page,
+}) => {
+  await page.goto("/login");
+  await expect(page.locator("body")).toHaveCSS(
+    "background-color",
+    "rgb(255, 255, 255)",
+  );
+});
