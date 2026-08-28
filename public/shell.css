@@ -13,6 +13,9 @@ body.landing header {
 body.landing a[href="/login"] {
   color: #0F766E;
 }
+body.landing h1 {
+  font-size: 36px;
+}
 #login button {
   background-color: #0F766E;
   color: #FFFFFF;

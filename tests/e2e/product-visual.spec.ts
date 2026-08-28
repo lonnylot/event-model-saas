@@ -25,3 +25,15 @@ test("GET `/` link `Sign in` computed `color` is `rgb(15, 118, 110)`", async ({
     page.getByRole("link", { name: "Sign in", exact: true }),
   ).toHaveCSS("color", "rgb(15, 118, 110)");
 });
+
+test("GET `/` heading `Event Modeling for the whole team` computed `font-size` is `36px`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByRole("heading", {
+      name: "Event Modeling for the whole team",
+      exact: true,
+    }),
+  ).toHaveCSS("font-size", "36px");
+});
