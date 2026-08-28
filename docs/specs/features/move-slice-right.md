@@ -1,6 +1,6 @@
 # Move slice right
 
-Status: validated
+Status: released
 
 ## Problem
 
