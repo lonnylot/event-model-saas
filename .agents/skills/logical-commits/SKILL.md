@@ -32,8 +32,6 @@ description: >
   AC commits,
   when sibling locator / fixture waits (.first() / Timeline ul append) land
   tests-only after production added a second matching New Slice,
-  when sibling locator / fixture waits (.first() / Timeline ul append) land
-  tests-only after production added a second matching New Slice,
   when withholding unique production (status already sending content-type;
   stylesheet already applying paper; shared helper landing later route ACs),
   when a follow-up reply names a split without a rebase,
@@ -97,7 +95,6 @@ When a later checkbox's proof stays green with no new production (GET already hy
 | "Spec first, then one feat" | Spec hunk lands with the first production that implements it. |
 | "I'll fold tests-after in a follow-up on top of HEAD" | Reconstruct into the production commit. A follow-up cannot un-do tests-after. |
 | "I'll add the wait helper now, reconstruct later" | A tests-only wait-after-open helper on HEAD is tests-after. Reconstruct now. |
-| "Sibling locator waits are a separate rebase/CI commit" | Production that added the second matching control owns those waits. Reconstruct into that commit. |
 | "Sibling locator waits are a separate rebase/CI commit" | Production that added the second matching control owns those waits. Reconstruct into that commit. |
 | "Stylesheet then paper is two commits" | Not if the stylesheet commit already painted paper. Login-only selector first. |
 | "AppBar in shell() then split the route tests" | Shared helper already landed later ACs. Withhold like status vs content-type. |
