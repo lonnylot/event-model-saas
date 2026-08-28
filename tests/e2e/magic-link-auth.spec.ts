@@ -36,11 +36,11 @@ test("GET `/app` without a Session returns status 303", async ({ request }) => {
   expect(response.status()).toBe(303);
 });
 
-test("GET `/app` without a Session sets `Location` to `/`", async ({
+test("GET `/app` without a Session sets `Location` to `/login`", async ({
   request,
 }) => {
   const response = await request.get("/app", { maxRedirects: 0 });
-  expect(response.headers()["location"]).toBe("/");
+  expect(response.headers()["location"]).toBe("/login");
 });
 
 test("After consuming the magic-link from that submission, `/app` shows `SITE_ADMIN_EMAIL`", async ({

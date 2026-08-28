@@ -356,14 +356,14 @@ export async function handleRequest(
     if (!env.auth) {
       return new Response(null, {
         status: 303,
-        headers: { Location: "/" },
+        headers: { Location: "/login" },
       });
     }
     const person = await personFromRequest(env.auth, request);
     if (!person) {
       return new Response(null, {
         status: 303,
-        headers: { Location: "/" },
+        headers: { Location: "/login" },
       });
     }
     const teams = await env.auth.store.listTeamsForPerson(person.id);

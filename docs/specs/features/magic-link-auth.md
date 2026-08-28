@@ -31,7 +31,7 @@ The host is public and invite-only, but nobody can sign in. This slice lets a Pe
 - [x] GET `/api/auth/consume` with an expired magic-link token shows a heading whose accessible name is `This link is expired or already used.`
 - [x] GET `/api/auth/consume` with a used magic-link token does not set a Session cookie
 - [x] GET `/app` without a Session returns status 303
-- [x] GET `/app` without a Session sets `Location` to `/`
+- [x] GET `/app` without a Session sets `Location` to `/login`
 - [x] GET `/app` with a Session that is not redirected shows the Person's email
 - [x] GET `/app` with a Session that is not redirected shows a button whose accessible name is `Sign out`
 - [x] POST `/api/auth/sign-out` with a Session returns status 303
@@ -69,4 +69,4 @@ Event Model persistence, editor canvas. Signed-in `/app` that is not redirected 
 ## Restates
 
 - [architecture.md](../architecture.md) — Mail From display name is `Event Model`
-- [product.md](../product.md) — session cookie is 7 days (not sliding on use); invalid/used heading is `This link is expired or already used.` (no “Request a new one.”); this slice is released; next slice is teams-and-invites
+- [product.md](../product.md) — session cookie is 7 days (not sliding on use); invalid/used heading is `This link is expired or already used.`; unauthenticated GET `/app` 303s to `/login`; this slice is released

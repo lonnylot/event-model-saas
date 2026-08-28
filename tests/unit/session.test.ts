@@ -41,13 +41,13 @@ describe("signed-in app", () => {
     expect(response.status).toBe(303);
   });
 
-  it("GET `/app` without a Session sets `Location` to `/`", async () => {
+  it("GET `/app` without a Session sets `Location` to `/login`", async () => {
     const { env } = authEnv();
     const response = await handleRequest(
       new Request("https://event-model.lonnylot.com/app"),
       env,
     );
-    expect(response.headers.get("Location")).toBe("/");
+    expect(response.headers.get("Location")).toBe("/login");
   });
 
   it("GET `/app` with a Session that is not redirected shows the Person's email", async () => {

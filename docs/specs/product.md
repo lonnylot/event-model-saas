@@ -34,7 +34,7 @@ The Mac app is local-only: one person, one `.eventmodel` file, no accounts. Team
 
 ## Sign-in flow
 
-1. Login page: email field only.
+1. Login page GET `/login`: email field only. Unauthenticated GET `/app` 303s to `/login`.
 2. If the email is `SITE_ADMIN_EMAIL` or belongs to an invited Person, send a one-time magic link (TTL 15 minutes, single use).
 3. If the email is unknown: do **not** send a login link. Still show the same success copy. Email the site admin: `{address} tried to sign in and has no account`.
 4. Rate limit: 5 login submissions per email per hour, and 20 per client IP per hour. Over limit: same success copy, no extra mail.
