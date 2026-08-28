@@ -23,4 +23,8 @@ describe("wrangler.jsonc", () => {
   it("`wrangler.jsonc` `run_worker_first` includes `/`", () => {
     expect(wrangler.assets?.run_worker_first).toContain("/");
   });
+
+  it("`wrangler.jsonc` `run_worker_first` includes `/login`", () => {
+    expect(wrangler.assets?.run_worker_first).toContain("/login");
+  });
 });
