@@ -20,10 +20,10 @@ test("GET `/login` shows a button whose accessible name is `Email me a link`", a
   ).toBeVisible();
 });
 
-test("Submitting `Email me a link` on `/` with `SITE_ADMIN_EMAIL` shows the text `If you have access, check your inbox.`", async ({
+test("Submitting `Email me a link` on `/login` with `SITE_ADMIN_EMAIL` shows the text `If you have access, check your inbox.`", async ({
   page,
 }) => {
-  await page.goto("/");
+  await page.goto("/login");
   await page.getByRole("textbox", { name: "Email", exact: true }).fill("lonny@lonnylot.com");
   await page.getByRole("button", { name: "Email me a link", exact: true }).click();
   await expect(

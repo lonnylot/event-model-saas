@@ -37,7 +37,7 @@ The host is public and invite-only, but nobody can sign in. This slice lets a Pe
 - [x] POST `/api/auth/sign-out` with a Session returns status 303
 - [x] POST `/api/auth/sign-out` with a Session sets `Location` to `/`
 - [x] POST `/api/auth/sign-out` clears the Session cookie
-- [x] Submitting `Email me a link` on `/` with `SITE_ADMIN_EMAIL` shows the text `If you have access, check your inbox.`
+- [x] Submitting `Email me a link` on `/login` with `SITE_ADMIN_EMAIL` shows the text `If you have access, check your inbox.`
 - [x] After consuming the magic-link from that submission, `/app` shows `SITE_ADMIN_EMAIL`
 
 ## Domain terms
