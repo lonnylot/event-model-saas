@@ -11,3 +11,12 @@ test("GET `/` without a Session shows a heading whose accessible name is `Event 
     }),
   ).toBeVisible();
 });
+
+test("GET `/` without a Session shows the text `One Event Model, signed in. No passing files around.`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByText("One Event Model, signed in. No passing files around."),
+  ).toBeVisible();
+});

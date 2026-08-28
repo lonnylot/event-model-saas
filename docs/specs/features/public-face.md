@@ -11,7 +11,7 @@ GET `/` is the login form. A visitor cannot tell what Event Model is. Paper-work
 - [x] `wrangler.jsonc` `run_worker_first` includes `/`
 - [x] `wrangler.jsonc` `run_worker_first` includes `/login`
 - [x] GET `/` without a Session shows a heading whose accessible name is `Event Modeling for the whole team`
-- [ ] GET `/` without a Session shows the text `One Event Model, signed in. No passing files around.`
+- [x] GET `/` without a Session shows the text `One Event Model, signed in. No passing files around.`
 - [ ] GET `/` without a Session shows a link whose accessible name is `Event Model`
 - [ ] GET `/` without a Session, the link `Event Model` has `href` `/`
 - [ ] GET `/` without a Session shows a link whose accessible name is `Sign in`
