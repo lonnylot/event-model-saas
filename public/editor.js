@@ -1187,11 +1187,15 @@ export function bindEditor(root) {
           if (holder) {
             holder.textContent = JSON.stringify(
               setSliceType(
-              JSON.parse(holder.textContent || "{}"),
-              sliceType,
-              selectedSliceItem?.dataset?.id,
-            ),
+                JSON.parse(holder.textContent || "{}"),
+                sliceType,
+                selectedSliceItem?.dataset?.id,
+              ),
             );
+            const main = root.querySelector("main");
+            if (main && !main.textContent?.includes("Unsaved changes.")) {
+              main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
+            }
           }
         });
       }
