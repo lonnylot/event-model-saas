@@ -1,6 +1,6 @@
 # Name binding rest
 
-Status: validated
+Status: released
 
 ## Problem
 
