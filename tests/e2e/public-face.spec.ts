@@ -99,3 +99,12 @@ test("GET `/login` without a Session shows the text `We'll email you a magic lin
   await page.goto("/login");
   await expect(page.getByText("We'll email you a magic link.")).toBeVisible();
 });
+
+test("GET `/login` without a Session shows a link whose accessible name is `Join the waitlist`", async ({
+  page,
+}) => {
+  await page.goto("/login");
+  await expect(
+    page.getByRole("link", { name: "Join the waitlist", exact: true }),
+  ).toBeVisible();
+});
