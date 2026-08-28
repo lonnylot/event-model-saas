@@ -248,3 +248,15 @@ test("GET `/` without a Session shows the text `Commands connect to events. Even
     ),
   ).toBeVisible();
 });
+
+test("GET `/` without a Session shows a heading whose accessible name is `Invite-only, version-checked saves`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByRole("heading", {
+      name: "Invite-only, version-checked saves",
+      exact: true,
+    }),
+  ).toBeVisible();
+});
