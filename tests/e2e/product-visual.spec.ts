@@ -126,3 +126,10 @@ test("GET `/` form `waitlist-form` computed `max-width` is `384px`", async ({
     "384px",
   );
 });
+
+test("GET `/login` `body` computed `font-family` includes `system-ui`", async ({
+  page,
+}) => {
+  await page.goto("/login");
+  await expect(page.locator("body")).toHaveCSS("font-family", /system-ui/);
+});

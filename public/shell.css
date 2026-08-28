@@ -1,6 +1,7 @@
 body.login {
   background-color: #FFFFFF;
   color: #0F172A;
+  font-family: ui-sans-serif, system-ui, sans-serif;
 }
 body.landing {
   background-color: #FFFFFF;
