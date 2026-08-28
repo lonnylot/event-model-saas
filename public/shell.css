@@ -27,6 +27,9 @@ body.landing main {
   color: #FFFFFF;
   border-radius: 10px;
 }
+#waitlist-form input {
+  border-top-color: #E2E8F0;
+}
 #login button {
   background-color: #0F766E;
   color: #FFFFFF;
