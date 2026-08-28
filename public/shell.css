@@ -75,6 +75,7 @@ body.expired {
 body.expired a[href="/login"] {
   background-color: #0F766E;
   color: #FFFFFF;
+  border-radius: 10px;
 }
 body.app-none {
   background-color: #F7F4EE;

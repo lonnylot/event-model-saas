@@ -278,3 +278,13 @@ test("GET `/api/auth/consume` with a used magic-link token, the link `Sign in` c
     page.getByRole("link", { name: "Sign in", exact: true }),
   ).toHaveCSS("color", "rgb(255, 255, 255)");
 });
+
+test("GET `/api/auth/consume` with a used magic-link token, the link `Sign in` computed `border-radius` is `10px`", async ({
+  page,
+  request,
+}) => {
+  await openUsedMagicLink(page, request);
+  await expect(
+    page.getByRole("link", { name: "Sign in", exact: true }),
+  ).toHaveCSS("border-radius", "10px");
+});

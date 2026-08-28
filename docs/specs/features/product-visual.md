@@ -36,7 +36,7 @@ Public pages have copy and body colors only. Signed-in pages are paper cream. Th
 - [x] GET `/api/auth/consume` with a used magic-link token `body` computed `font-family` includes `system-ui`
 - [x] GET `/api/auth/consume` with a used magic-link token, the link `Sign in` computed `background-color` is `rgb(15, 118, 110)`
 - [x] GET `/api/auth/consume` with a used magic-link token, the link `Sign in` computed `color` is `rgb(255, 255, 255)`
-- [ ] GET `/api/auth/consume` with a used magic-link token, the link `Sign in` computed `border-radius` is `10px`
+- [x] GET `/api/auth/consume` with a used magic-link token, the link `Sign in` computed `border-radius` is `10px`
 - [ ] GET `/app` as site admin with no teams `body` computed `background-color` is `rgb(255, 255, 255)`
 - [ ] GET `/app` as site admin with no teams `body` computed `color` is `rgb(15, 23, 42)`
 - [ ] GET `/app` as site admin with no teams `body` computed `font-family` includes `system-ui`
