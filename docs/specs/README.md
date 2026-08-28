@@ -42,6 +42,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Visual shell | [features/visual-shell.md](./features/visual-shell.md) | released |
 | New Slice shortcut | [features/new-slice-shortcut.md](./features/new-slice-shortcut.md) | released |
 | Move slice right | [features/move-slice-right.md](./features/move-slice-right.md) | released |
-| Canvas rest | [features/canvas-rest.md](./features/canvas-rest.md) | validated |
+| Canvas rest | [features/canvas-rest.md](./features/canvas-rest.md) | released |
 
 Status: `draft` → `validated` → `released`.
