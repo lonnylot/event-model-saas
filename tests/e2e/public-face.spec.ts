@@ -278,3 +278,12 @@ test("GET `/` without a Session shows the text `Magic-link sign-in. No password,
     page.getByText("Magic-link sign-in. No password, no public signup."),
   ).toBeVisible();
 });
+
+test("GET `/` without a Session shows the text `Site admin creates Teams and sends Invites.`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByText("Site admin creates Teams and sends Invites."),
+  ).toBeVisible();
+});
