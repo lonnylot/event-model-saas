@@ -159,7 +159,17 @@ describe("waitlist", () => {
     expect(await auth.store.isWaitlisted("not-an-email")).toBe(false);
     expect(sent).toHaveLength(0);
   });
+
+  it("The sixth POST `/api/waitlist` for the same email within one hour does not send mail", async () => {
+    const { env, auth, sent } = authEnv();
+    auth.store.isWaitlisted = async () => false;
+    for (let i = 0; i < 6; i++) {
+      await handleRequest(waitlistPost("wait@example.com"), env);
+    }
+    expect(sent).toHaveLength(5);
+  });
 });
+
 
 
 
