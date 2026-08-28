@@ -184,3 +184,12 @@ test("GET `/` without a Session shows a heading whose accessible name is `The mo
     }),
   ).toBeVisible();
 });
+
+test("GET `/` without a Session shows the text `Here the Event Model belongs to a Team.`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByText("Here the Event Model belongs to a Team."),
+  ).toBeVisible();
+});
