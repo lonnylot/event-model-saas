@@ -89,7 +89,7 @@ async function openUntitledModel(page: Page) {
 async function clickNewSlice(page: Page) {
   const count =
     (await page.getByRole("listitem", { name: "New Slice", exact: true }).count()) +
-    1;
+    2;
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }),
@@ -106,12 +106,11 @@ test("After clicking `New Slice` twice, dragging the first `New Slice` listitem 
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
   const lastId = before.slices[1].id;
-  await page
-    .getByRole("listitem", { name: "New Slice", exact: true })
+  const sidebarSlices = page
+    .locator("ul")
     .first()
-    .dragTo(
-      page.getByRole("listitem", { name: "New Slice", exact: true }).last(),
-    );
+    .getByRole("listitem", { name: "New Slice", exact: true });
+  await sidebarSlices.first().dragTo(sidebarSlices.last());
   const after = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
@@ -183,7 +182,7 @@ test("After clicking `New Slice` then `Add Command`, pressing ⌘Z shows a listi
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   await page.keyboard.press("ControlOrMeta+z");
   await expect(
-    page.getByRole("listitem", { name: "New Slice", exact: true }),
+    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
   ).toBeVisible();
 });
 

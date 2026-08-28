@@ -31,6 +31,9 @@ import { moveSliceRight } from "./move-slice-right.js";
 import { reorderSlices } from "./reorder-slices.js";
 import { moveActorToSlice } from "./move-actor-to-slice.js";
 import { moveCommandToSlice } from "./move-command-to-slice.js";
+import { moveEventToSlice } from "./move-event-to-slice.js";
+import { moveReadModelToSlice } from "./move-read-model-to-slice.js";
+import { moveAutomationToSlice } from "./move-automation-to-slice.js";
 import { deleteSlice } from "./delete-slice.js";
 import { deleteCommand } from "./delete-command.js";
 import { deleteConnection } from "./delete-connection.js";
@@ -57,6 +60,14 @@ export function onNewSliceClick(root) {
     if (slice) item.setAttribute("data-id", slice.id);
     item.setAttribute("data-slice-index", String(sliceIndex));
     list.append(item);
+  }
+  const timelineSlices = root.querySelector('[aria-label="Timeline"] ul');
+  if (timelineSlices) {
+    const item = root.createElement("li");
+    item.textContent = "New Slice";
+    item.setAttribute("aria-label", "New Slice");
+    if (slice) item.setAttribute("data-id", slice.id);
+    timelineSlices.append(item);
   }
   const main = root.querySelector("main");
   if (main && !main.textContent?.includes("Unsaved changes.")) {
@@ -1443,6 +1454,9 @@ export function bindEditor(root) {
       if (!last) return;
       holder.textContent = JSON.stringify(deleteSlice(model, last.id));
       root.querySelector("ul")?.lastElementChild?.remove();
+      timelineList
+        ?.querySelector(`li[data-id="${last.id}"]:not([data-kind])`)
+        ?.remove();
       return;
     }
     if (
@@ -1476,6 +1490,9 @@ export function bindEditor(root) {
         deleteSlice(JSON.parse(holder.textContent || "{}"), sliceId),
       );
       selectedSliceItem.remove();
+      root
+        .querySelectorAll(`li[data-id="${sliceId}"]:not([data-kind])`)
+        .forEach((item) => item.remove());
       selectedSliceItem = null;
       selected = null;
     }
@@ -1553,10 +1570,22 @@ export function bindEditor(root) {
   let dragActorItem = null;
   let dragSliceItem = null;
   let dragCommandItem = null;
+  let dragEventItem = null;
+  let dragReadModelItem = null;
+  let dragAutomationItem = null;
+  let dragTimelineSliceItem = null;
   root.addEventListener("mousedown", (event) => {
     const actorItem = event.target?.closest?.("li");
     if (actorItem && slicesList?.contains(actorItem)) {
       dragSliceItem = actorItem;
+      return;
+    }
+    if (
+      actorItem &&
+      timelineList?.contains(actorItem) &&
+      !actorItem.dataset.kind
+    ) {
+      dragTimelineSliceItem = actorItem;
       return;
     }
     if (
@@ -1574,6 +1603,30 @@ export function bindEditor(root) {
       !event.target?.closest?.("button[data-id]")
     ) {
       dragCommandItem = actorItem;
+    }
+    if (
+      actorItem &&
+      timelineList?.contains(actorItem) &&
+      actorItem.dataset.kind === "event" &&
+      !event.target?.closest?.("button[data-id]")
+    ) {
+      dragEventItem = actorItem;
+    }
+    if (
+      actorItem &&
+      timelineList?.contains(actorItem) &&
+      actorItem.dataset.kind === "readmodel" &&
+      !event.target?.closest?.("button[data-id]")
+    ) {
+      dragReadModelItem = actorItem;
+    }
+    if (
+      actorItem &&
+      timelineList?.contains(actorItem) &&
+      actorItem.dataset.kind === "automation" &&
+      !event.target?.closest?.("button[data-id]")
+    ) {
+      dragAutomationItem = actorItem;
     }
     const port = event.target?.closest?.("button[data-id]");
     if (port) {
@@ -1629,6 +1682,29 @@ export function bindEditor(root) {
       dragSliceItem = null;
       return;
     }
+    if (dragTimelineSliceItem) {
+      const sliceItem = event.target?.closest?.("li");
+      const holder = root.getElementById("event-model-document");
+      if (
+        holder &&
+        sliceItem &&
+        timelineList?.contains(sliceItem) &&
+        !sliceItem.dataset.kind &&
+        dragTimelineSliceItem !== sliceItem &&
+        dragTimelineSliceItem.dataset.id &&
+        sliceItem.dataset.id
+      ) {
+        holder.textContent = JSON.stringify(
+          reorderSlices(
+            JSON.parse(holder.textContent || "{}"),
+            dragTimelineSliceItem.dataset.id,
+            sliceItem.dataset.id,
+          ),
+        );
+      }
+      dragTimelineSliceItem = null;
+      return;
+    }
     if (dragActorItem) {
       const sliceItem = event.target?.closest?.("li");
       const holder = root.getElementById("event-model-document");
@@ -1672,6 +1748,75 @@ export function bindEditor(root) {
         return;
       }
       dragCommandItem = null;
+    }
+    if (dragEventItem) {
+      const sliceItem = event.target?.closest?.("li");
+      const holder = root.getElementById("event-model-document");
+      if (
+        holder &&
+        sliceItem &&
+        slicesList?.contains(sliceItem) &&
+        dragEventItem.dataset.id &&
+        sliceItem.dataset.id
+      ) {
+        holder.textContent = JSON.stringify(
+          moveEventToSlice(
+            JSON.parse(holder.textContent || "{}"),
+            dragEventItem.dataset.id,
+            sliceItem.dataset.id,
+          ),
+        );
+        dragEventItem = null;
+        sourcePort = null;
+        return;
+      }
+      dragEventItem = null;
+    }
+    if (dragReadModelItem) {
+      const sliceItem = event.target?.closest?.("li");
+      const holder = root.getElementById("event-model-document");
+      if (
+        holder &&
+        sliceItem &&
+        slicesList?.contains(sliceItem) &&
+        dragReadModelItem.dataset.id &&
+        sliceItem.dataset.id
+      ) {
+        holder.textContent = JSON.stringify(
+          moveReadModelToSlice(
+            JSON.parse(holder.textContent || "{}"),
+            dragReadModelItem.dataset.id,
+            sliceItem.dataset.id,
+          ),
+        );
+        dragReadModelItem = null;
+        sourcePort = null;
+        return;
+      }
+      dragReadModelItem = null;
+    }
+    if (dragAutomationItem) {
+      const sliceItem = event.target?.closest?.("li");
+      const holder = root.getElementById("event-model-document");
+      if (
+        holder &&
+        sliceItem &&
+        slicesList?.contains(sliceItem) &&
+        dragAutomationItem.dataset.id &&
+        sliceItem.dataset.id
+      ) {
+        holder.textContent = JSON.stringify(
+          moveAutomationToSlice(
+            JSON.parse(holder.textContent || "{}"),
+            dragAutomationItem.dataset.id,
+            sliceItem.dataset.id,
+          ),
+        );
+        dragAutomationItem = null;
+        sourcePort = null;
+        return;
+      }
+      dragAutomationItem = null;
     }
     const target = event.target?.closest?.("button[data-id]");
     if (sourcePort && target && sourcePort === target) {

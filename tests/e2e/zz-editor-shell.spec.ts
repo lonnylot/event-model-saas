@@ -89,7 +89,7 @@ async function openUntitledModel(page: Page) {
 async function clickNewSlice(page: Page) {
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
-    page.getByRole("listitem", { name: "New Slice", exact: true }),
+    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
   ).toBeVisible();
 }
 
@@ -97,7 +97,7 @@ test("Clicking `New Slice` on that page shows a listitem whose accessible name i
   await openUntitledModel(page);
   await clickNewSlice(page);
   await expect(
-    page.getByRole("listitem", { name: "New Slice", exact: true }),
+    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
   ).toBeVisible();
 });
 
@@ -165,6 +165,6 @@ test("After a member creates a model, opens it, clicks `New Slice`, and Saves, a
   ]);
   await page.reload();
   await expect(
-    page.getByRole("listitem", { name: "New Slice", exact: true }),
+    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
   ).toBeVisible();
 });

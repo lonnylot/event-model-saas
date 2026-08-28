@@ -89,7 +89,7 @@ async function openUntitledModel(page: Page) {
 async function clickNewSlice(page: Page) {
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
-    page.getByRole("listitem", { name: "New Slice", exact: true }),
+    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
   ).toBeVisible();
 }
 

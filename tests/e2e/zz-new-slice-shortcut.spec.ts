@@ -95,6 +95,6 @@ test("Pressing ⇧⌘N on the Event Model page shows a listitem whose accessible
   ).toBeVisible();
   await page.keyboard.press("Shift+ControlOrMeta+KeyN");
   await expect(
-    page.getByRole("listitem", { name: "New Slice", exact: true }),
+    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
   ).toBeVisible();
 });

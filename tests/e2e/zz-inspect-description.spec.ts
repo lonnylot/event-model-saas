@@ -89,7 +89,7 @@ async function openUntitledModel(page: Page) {
 async function clickNewSlice(page: Page) {
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
-    page.getByRole("listitem", { name: "New Slice", exact: true }),
+    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
   ).toBeVisible();
 }
 
@@ -98,7 +98,7 @@ test("After clicking `New Slice` on that page, clicking the `New Slice` listitem
 }) => {
   await openUntitledModel(page);
   await clickNewSlice(page);
-  await page.getByRole("listitem", { name: "New Slice", exact: true }).click();
+  await page.getByRole("listitem", { name: "New Slice", exact: true }).first().click();
   await expect(
     page
       .getByRole("region", { name: "Inspector", exact: true })
@@ -111,7 +111,7 @@ test("Filling the Inspector `Description` textbox with `Checkout flow` after sel
 }) => {
   await openUntitledModel(page);
   await clickNewSlice(page);
-  await page.getByRole("listitem", { name: "New Slice", exact: true }).click();
+  await page.getByRole("listitem", { name: "New Slice", exact: true }).first().click();
   await page
     .getByRole("region", { name: "Inspector", exact: true })
     .getByRole("textbox", { name: "Description", exact: true })
@@ -144,7 +144,7 @@ test("Filling the Inspector `Description` textbox with `Shopper persona` after s
 }) => {
   await openUntitledModel(page);
   await clickNewSlice(page);
-  await page.getByRole("listitem", { name: "New Slice", exact: true }).click();
+  await page.getByRole("listitem", { name: "New Slice", exact: true }).first().click();
   await page.getByRole("button", { name: "Add Actor", exact: true }).click();
   await page
     .getByRole("region", { name: "Timeline", exact: true })
@@ -182,7 +182,7 @@ test("Filling the Inspector `Description` textbox with `Customer submits cart` a
 }) => {
   await openUntitledModel(page);
   await clickNewSlice(page);
-  await page.getByRole("listitem", { name: "New Slice", exact: true }).click();
+  await page.getByRole("listitem", { name: "New Slice", exact: true }).first().click();
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   await page
     .getByRole("region", { name: "Timeline", exact: true })
