@@ -314,3 +314,12 @@ test("GET `/` without a Session shows the text `Leave your email. If you already
     ),
   ).toBeVisible();
 });
+
+test("GET `/` without a Session shows a link whose accessible name is `Join the waitlist`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByRole("link", { name: "Join the waitlist", exact: true }),
+  ).toBeVisible();
+});
