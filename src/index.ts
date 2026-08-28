@@ -457,6 +457,15 @@ export async function handleRequest(
       });
     }
   }
+  if (request.method === "GET" && path === "/login") {
+    if (env.auth) {
+      const person = await personFromRequest(env.auth, request);
+      if (person) {
+        return new Response(null, { status: 303 });
+      }
+    }
+    return env.ASSETS.fetch(request);
+  }
   if (request.method === "GET" && path === "/") {
     const asset = await env.ASSETS.fetch(request);
     let html = await asset.text();

@@ -426,3 +426,9 @@ test('GET `/` has a `meta[property="og:description"]` whose `content` is `Event 
     "Event Modeling for the whole team.",
   );
 });
+
+test("GET `/login` with a Session returns status 303", async ({ page }) => {
+  await page.request.post("/api/test/non-admin-session");
+  const response = await page.request.get("/login", { maxRedirects: 0 });
+  expect(response.status()).toBe(303);
+});
