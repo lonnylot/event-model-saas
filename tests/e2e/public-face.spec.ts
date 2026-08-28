@@ -511,3 +511,13 @@ test("GET `/api/auth/consume` with a used magic-link token `body` computed `back
     "rgb(255, 255, 255)",
   );
 });
+
+test("GET `/api/auth/consume` with a used magic-link token shows a link whose accessible name is `Sign in`", async ({
+  page,
+  request,
+}) => {
+  await openUsedMagicLink(page, request);
+  await expect(
+    page.getByRole("link", { name: "Sign in", exact: true }),
+  ).toBeVisible();
+});
