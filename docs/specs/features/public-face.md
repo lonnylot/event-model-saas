@@ -45,7 +45,7 @@ GET `/` is the login form. A visitor cannot tell what Event Model is. Paper-work
 - [ ] GET `/` `body` computed `background-color` is `rgb(255, 255, 255)`
 - [ ] GET `/` `body` computed `color` is `rgb(15, 23, 42)`
 - [ ] GET `/` has a `meta[property="og:description"]` whose `content` is `Event Modeling for the whole team.`
-- [ ] GET `/login` without a Session returns status 200
+- [x] GET `/login` without a Session returns status 200
 - [ ] GET `/login` without a Session has a `link[rel="stylesheet"]` whose `href` is `/shell.css`
 - [ ] GET `/login` without a Session has a `link[rel="icon"]` whose `href` is `/favicon.png`
 - [ ] GET `/login` without a Session shows a heading whose accessible name is `Sign in`

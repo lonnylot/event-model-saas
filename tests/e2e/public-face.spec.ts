@@ -56,3 +56,10 @@ test("GET `/` without a Session, a link `Sign in` has `href` `/login`", async ({
     page.getByRole("link", { name: "Sign in", exact: true }),
   ).toHaveAttribute("href", "/login");
 });
+
+test("GET `/login` without a Session returns status 200", async ({
+  request,
+}) => {
+  const response = await request.get("/login", { maxRedirects: 0 });
+  expect(response.status()).toBe(200);
+});
