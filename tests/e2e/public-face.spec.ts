@@ -205,3 +205,12 @@ test("GET `/` without a Session shows a heading whose accessible name is `A time
     }),
   ).toBeVisible();
 });
+
+test("GET `/` without a Session shows the text `a vertical column on the timeline`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByText("a vertical column on the timeline"),
+  ).toBeVisible();
+});

@@ -22,7 +22,7 @@ GET `/` is the login form. A visitor cannot tell what Event Model is. Paper-work
 - [x] GET `/` without a Session shows a heading whose accessible name is `The model lives with the team`
 - [x] GET `/` without a Session shows the text `Here the Event Model belongs to a Team.`
 - [x] GET `/` without a Session shows a heading whose accessible name is `A timeline of slices`
-- [ ] GET `/` without a Session shows the text `a vertical column on the timeline`
+- [x] GET `/` without a Session shows the text `a vertical column on the timeline`
 - [ ] GET `/` without a Session shows the text `intent, then a fact that happened`
 - [ ] GET `/` without a Session shows the text `a view of state from events`
 - [ ] GET `/` without a Session shows the text `a processor with no human actor`
