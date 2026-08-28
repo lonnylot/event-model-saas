@@ -172,3 +172,15 @@ test("GET `/` without a Session does not show a control whose accessible name is
     ).toHaveCount(0);
   }
 });
+
+test("GET `/` without a Session shows a heading whose accessible name is `The model lives with the team`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByRole("heading", {
+      name: "The model lives with the team",
+      exact: true,
+    }),
+  ).toBeVisible();
+});
