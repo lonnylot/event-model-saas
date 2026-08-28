@@ -168,7 +168,20 @@ describe("waitlist", () => {
     }
     expect(sent).toHaveLength(5);
   });
+
+  it("The twenty-first POST `/api/waitlist` from the same client IP within one hour does not send mail and does not insert a waitlist row", async () => {
+    const { env, auth, sent } = authEnv();
+    for (let i = 0; i < 21; i++) {
+      await handleRequest(
+        waitlistPost(`person${i}@example.com`, "198.51.100.9"),
+        env,
+      );
+    }
+    expect(sent).toHaveLength(20);
+    expect(await auth.store.isWaitlisted("person20@example.com")).toBe(false);
+  });
 });
+
 
 
 

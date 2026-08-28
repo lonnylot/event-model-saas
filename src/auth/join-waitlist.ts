@@ -6,6 +6,7 @@ export const WAITLIST_OK_BODY =
 
 const HOUR_MS = 60 * 60 * 1000;
 const EMAIL_LIMIT = 5;
+const IP_LIMIT = 20;
 
 export async function joinWaitlist(
   runtime: AuthRuntime,
@@ -15,11 +16,16 @@ export async function joinWaitlist(
   if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return;
   const now = runtime.now();
   await runtime.store.insertAttempt(`waitlist-email:${email}`, now);
+  await runtime.store.insertAttempt(`waitlist-ip:${input.clientIp}`, now);
   const emailCount = await runtime.store.countAttempts(
     `waitlist-email:${email}`,
     now - HOUR_MS,
   );
-  if (emailCount > EMAIL_LIMIT) return;
+  const ipCount = await runtime.store.countAttempts(
+    `waitlist-ip:${input.clientIp}`,
+    now - HOUR_MS,
+  );
+  if (emailCount > EMAIL_LIMIT || ipCount > IP_LIMIT) return;
   if (await runtime.store.getPersonByEmail(email)) return;
   if (await runtime.store.isWaitlisted(email)) return;
   await runtime.store.insertWaitlist(email);
