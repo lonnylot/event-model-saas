@@ -143,3 +143,12 @@ test("GET `/login` `header` computed `border-bottom-color` is `rgb(226, 232, 240
     "rgb(226, 232, 240)",
   );
 });
+
+test("GET `/login` link `Event Model` computed `color` is `rgb(15, 118, 110)`", async ({
+  page,
+}) => {
+  await page.goto("/login");
+  await expect(
+    page.getByRole("link", { name: "Event Model", exact: true }),
+  ).toHaveCSS("color", "rgb(15, 118, 110)");
+});

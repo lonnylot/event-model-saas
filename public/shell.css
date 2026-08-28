@@ -6,6 +6,9 @@ body.login {
 body.login header {
   border-bottom-color: #E2E8F0;
 }
+body.login:not(.landing) a[href="/"] {
+  color: #0F766E;
+}
 body.landing {
   background-color: #FFFFFF;
   color: #0F172A;
