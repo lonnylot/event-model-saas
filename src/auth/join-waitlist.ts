@@ -10,4 +10,10 @@ export async function joinWaitlist(
 ): Promise<void> {
   const email = normalizeEmail(input.email);
   await runtime.store.insertWaitlist(email);
+  await runtime.mail.send({
+    to: runtime.siteAdminEmail,
+    from: runtime.authFrom,
+    subject: "Waitlist",
+    text: email,
+  });
 }

@@ -79,7 +79,16 @@ describe("waitlist", () => {
     await handleRequest(waitlistPost("wait@example.com"), env);
     expect(await auth.store.isWaitlisted("wait@example.com")).toBe(true);
   });
+
+  it("POST `/api/waitlist` with a new email sends a waitlist mail to `SITE_ADMIN_EMAIL` whose text includes that address", async () => {
+    const { env, sent } = authEnv();
+    await handleRequest(waitlistPost("wait@example.com"), env);
+    const notify = sent.find((m) => m.to === "lonny@lonnylot.com");
+    expect(notify).toBeDefined();
+    expect(notify?.text).toContain("wait@example.com");
+  });
 });
+
 
 
 
