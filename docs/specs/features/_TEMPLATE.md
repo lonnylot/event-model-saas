@@ -26,7 +26,7 @@ If the product catalogs actions (observability spec): `action` names from that c
 
 ## UI
 
-If the product inventories screens and primitives (design-system spec): screens and primitives this feature uses. Starting or stopping compose of an existing primitive updates that inventory. Listing a primitive here without an AC that asserts it is leftover (`keeping-specs-current`). Page (public) ink on listed Login / 404 / expired screens needs a body `color` AC on each, or those screens drop; leftover paper `ink-paper` CSS after restating public ink is the same miss. Otherwise omit this section.
+If the product inventories screens and primitives (design-system spec): screens and primitives this feature uses. Starting or stopping compose of an existing primitive updates that inventory. Listing a primitive here without an AC that asserts it is leftover (`keeping-specs-current`). Page (public) ink on listed Login / 404 / expired screens needs a body `color` AC on each, or those screens drop; leftover paper `ink-paper` CSS after restating public ink is the same miss. Claiming public Button primary after ACs narrowed to Login `Email me a link` is leftover broader assignment. Otherwise omit this section.
 
 ## Assumptions
 
