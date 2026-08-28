@@ -19,7 +19,6 @@ Login, 404, expired magic link, and signed-in team pages are unstyled HTML: emai
 - [x] GET `/` has a `meta[property="og:image"]` whose `content` ends with `/og.png`
 - [x] GET `/` has a `meta[property="og:title"]` whose `content` is `Event Model`
 - [x] GET an unknown document path has a `link[rel="stylesheet"]` whose `href` is `/shell.css`
-- [x] GET an unknown document path `body` computed `background-color` is `rgb(247, 244, 238)`
 - [x] GET `/api/auth/consume` with a used magic-link token has a `link[rel="stylesheet"]` whose `href` is `/shell.css`
 - [x] GET `/app` as site admin with no teams has a `link[rel="stylesheet"]` whose `href` is `/shell.css`
 - [x] GET `/app` as site admin with no teams `body` computed `background-color` is `rgb(247, 244, 238)`

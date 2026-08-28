@@ -62,7 +62,7 @@ GET `/` is the login form. A visitor cannot tell what Event Model is. Paper-work
 - [x] GET `/api/auth/consume` with a used magic-link token `body` computed `background-color` is `rgb(255, 255, 255)`
 - [x] GET `/api/auth/consume` with a used magic-link token shows a link whose accessible name is `Sign in`
 - [x] GET `/api/auth/consume` with a used magic-link token, the link `Sign in` has `href` `/login`
-- [ ] GET an unknown document path `body` computed `background-color` is `rgb(255, 255, 255)`
+- [x] GET an unknown document path `body` computed `background-color` is `rgb(255, 255, 255)`
 - [ ] POST `/api/waitlist` returns status 200
 - [ ] POST `/api/waitlist` returns content-type `application/json; charset=utf-8`
 - [ ] POST `/api/waitlist` returns body `{"ok":true,"message":"If you're on the list, we'll be in touch."}`

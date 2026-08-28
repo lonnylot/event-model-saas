@@ -531,3 +531,13 @@ test("GET `/api/auth/consume` with a used magic-link token, the link `Sign in` h
     page.getByRole("link", { name: "Sign in", exact: true }),
   ).toHaveAttribute("href", "/login");
 });
+
+test("GET an unknown document path `body` computed `background-color` is `rgb(255, 255, 255)`", async ({
+  page,
+}) => {
+  await page.goto("/no-such-page");
+  await expect(page.locator("body")).toHaveCSS(
+    "background-color",
+    "rgb(255, 255, 255)",
+  );
+});
