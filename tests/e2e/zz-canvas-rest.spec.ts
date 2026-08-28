@@ -117,3 +117,25 @@ test("After clicking `New Slice` twice, dragging the first `New Slice` listitem 
   );
   expect(after.slices[0].id).toBe(lastId);
 });
+
+test("After clicking `New Slice` twice then `Add Command`, dragging the Timeline `Command` listitem onto the first Slices `New Slice` listitem sets the first Slice `commands` to one Command", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  const command = page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Command", exact: true });
+  await expect(command).toBeVisible();
+  await command.dragTo(
+    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
+  );
+  const after = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  expect(after.slices[0].commands).toEqual([
+    expect.objectContaining({ title: "Command" }),
+  ]);
+});

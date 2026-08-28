@@ -30,6 +30,7 @@ import { moveSliceLeft } from "./move-slice-left.js";
 import { moveSliceRight } from "./move-slice-right.js";
 import { reorderSlices } from "./reorder-slices.js";
 import { moveActorToSlice } from "./move-actor-to-slice.js";
+import { moveCommandToSlice } from "./move-command-to-slice.js";
 import { deleteSlice } from "./delete-slice.js";
 import { deleteCommand } from "./delete-command.js";
 import { deleteConnection } from "./delete-connection.js";
@@ -1417,6 +1418,7 @@ export function bindEditor(root) {
   let sourcePort = null;
   let dragActorItem = null;
   let dragSliceItem = null;
+  let dragCommandItem = null;
   root.addEventListener("mousedown", (event) => {
     const actorItem = event.target?.closest?.("li");
     if (actorItem && slicesList?.contains(actorItem)) {
@@ -1430,6 +1432,13 @@ export function bindEditor(root) {
     ) {
       dragActorItem = actorItem;
       return;
+    }
+    if (
+      actorItem &&
+      timelineList?.contains(actorItem) &&
+      actorItem.dataset.kind === "command"
+    ) {
+      dragCommandItem = actorItem;
     }
     const port = event.target?.closest?.("button[data-id]");
     if (port) {
@@ -1505,6 +1514,29 @@ export function bindEditor(root) {
       }
       dragActorItem = null;
       return;
+    }
+    if (dragCommandItem) {
+      const sliceItem = event.target?.closest?.("li");
+      const holder = root.getElementById("event-model-document");
+      if (
+        holder &&
+        sliceItem &&
+        slicesList?.contains(sliceItem) &&
+        dragCommandItem.dataset.id &&
+        sliceItem.dataset.id
+      ) {
+        holder.textContent = JSON.stringify(
+          moveCommandToSlice(
+            JSON.parse(holder.textContent || "{}"),
+            dragCommandItem.dataset.id,
+            sliceItem.dataset.id,
+          ),
+        );
+        dragCommandItem = null;
+        sourcePort = null;
+        return;
+      }
+      dragCommandItem = null;
     }
     const target = event.target?.closest?.("button[data-id]");
     if (sourcePort && target && sourcePort === target) {
