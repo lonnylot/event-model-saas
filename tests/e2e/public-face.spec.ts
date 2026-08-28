@@ -341,3 +341,12 @@ test("GET `/` without a Session shows a textbox whose accessible name is `Email`
     page.getByRole("textbox", { name: "Email", exact: true }),
   ).toBeVisible();
 });
+
+test("GET `/` without a Session shows a button whose accessible name is `Join the waitlist`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByRole("button", { name: "Join the waitlist", exact: true }),
+  ).toBeVisible();
+});

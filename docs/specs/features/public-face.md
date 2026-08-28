@@ -37,7 +37,7 @@ GET `/` is the login form. A visitor cannot tell what Event Model is. Paper-work
 - [x] GET `/` without a Session shows a link whose accessible name is `Join the waitlist`
 - [x] GET `/` without a Session, a link `Join the waitlist` has an `href` that ends with `#waitlist`
 - [x] GET `/` without a Session shows a textbox whose accessible name is `Email`
-- [ ] GET `/` without a Session shows a button whose accessible name is `Join the waitlist`
+- [x] GET `/` without a Session shows a button whose accessible name is `Join the waitlist`
 - [ ] GET `/` with a Session shows a link whose accessible name is `Open app`
 - [ ] GET `/` with a Session, a link `Open app` has `href` `/app`
 - [ ] GET `/` with a Session does not show a link whose accessible name is `Sign in`
