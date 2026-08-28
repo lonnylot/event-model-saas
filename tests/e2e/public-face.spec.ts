@@ -350,3 +350,22 @@ test("GET `/` without a Session shows a button whose accessible name is `Join th
     page.getByRole("button", { name: "Join the waitlist", exact: true }),
   ).toBeVisible();
 });
+
+test("GET `/` without a Session does not show a link whose accessible name is `Open app`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByRole("link", { name: "Open app", exact: true }),
+  ).toHaveCount(0);
+});
+
+test("GET `/` with a Session shows a link whose accessible name is `Open app`", async ({
+  page,
+}) => {
+  await page.request.post("/api/test/non-admin-session");
+  await page.goto("/");
+  await expect(
+    page.getByRole("link", { name: "Open app", exact: true }),
+  ).toBeVisible();
+});

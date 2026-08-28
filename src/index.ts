@@ -457,6 +457,23 @@ export async function handleRequest(
       });
     }
   }
+  if (request.method === "GET" && path === "/") {
+    const asset = await env.ASSETS.fetch(request);
+    let html = await asset.text();
+    if (env.auth) {
+      const person = await personFromRequest(env.auth, request);
+      if (person) {
+        html = html.replace(
+          '<a href="/login">Sign in</a>',
+          '<a href="/login">Sign in</a><a href="#">Open app</a>',
+        );
+      }
+    }
+    return new Response(html, {
+      status: asset.status,
+      headers: { "content-type": "text/html; charset=utf-8" },
+    });
+  }
   return env.ASSETS.fetch(request);
 }
 
