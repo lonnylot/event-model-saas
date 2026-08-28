@@ -4,7 +4,7 @@ Status: draft
 
 ## Problem
 
-One paragraph: who, what, why. Do not name later-slice behavior as current (⌥⌘→ while product.md keeps Move slices right later; undo of move / delete while product.md keeps those later).
+One paragraph: who, what, why. Do not name later-slice behavior as current (⌥⌘→ while product.md keeps Move slices right later; undo of move / delete while product.md keeps those later; Command drag / sidebar reorder while product.md keeps those later).
 
 ## Acceptance criteria
 
