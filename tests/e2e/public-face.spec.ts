@@ -303,3 +303,14 @@ test("GET `/` without a Session shows a heading whose accessible name is `Join t
     page.getByRole("heading", { name: "Join the waitlist", exact: true }),
   ).toBeVisible();
 });
+
+test("GET `/` without a Session shows the text `Leave your email. If you already have access, use Sign in.`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByText(
+      "Leave your email. If you already have access, use Sign in.",
+    ),
+  ).toBeVisible();
+});
