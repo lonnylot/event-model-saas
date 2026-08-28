@@ -230,3 +230,10 @@ test("GET `/` without a Session shows the text `a view of state from events`", a
   await page.goto("/");
   await expect(page.getByText("a view of state from events")).toBeVisible();
 });
+
+test("GET `/` without a Session shows the text `a processor with no human actor`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.getByText("a processor with no human actor")).toBeVisible();
+});

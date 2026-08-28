@@ -25,7 +25,7 @@ GET `/` is the login form. A visitor cannot tell what Event Model is. Paper-work
 - [x] GET `/` without a Session shows the text `a vertical column on the timeline`
 - [x] GET `/` without a Session shows the text `intent, then a fact that happened`
 - [x] GET `/` without a Session shows the text `a view of state from events`
-- [ ] GET `/` without a Session shows the text `a processor with no human actor`
+- [x] GET `/` without a Session shows the text `a processor with no human actor`
 - [ ] GET `/` without a Session shows the text `Commands connect to events. Events connect to read models.`
 - [ ] GET `/` without a Session shows a heading whose accessible name is `Invite-only, version-checked saves`
 - [ ] GET `/` without a Session shows the text `The Mac app is local: one person, one .eventmodel file.`
