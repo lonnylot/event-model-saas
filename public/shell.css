@@ -70,6 +70,7 @@ body.not-found h1 {
 body.expired {
   background-color: #FFFFFF;
   color: #0F172A;
+  font-family: ui-sans-serif, system-ui, sans-serif;
 }
 body.app-none {
   background-color: #F7F4EE;
