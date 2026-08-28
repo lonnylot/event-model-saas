@@ -57,6 +57,7 @@ GET `/` is the login form. A visitor cannot tell what Event Model is. Paper-work
 - [x] GET `/login` with a Session returns status 303
 - [x] GET `/login` with a Session sets `Location` to `/app`
 - [x] GET `/login` `body` computed `background-color` is `rgb(255, 255, 255)`
+- [x] GET `/login` `body` computed `color` is `rgb(15, 23, 42)`
 - [x] GET `/login` button `Email me a link` computed `background-color` is `rgb(15, 118, 110)`
 - [x] GET `/login` button `Email me a link` computed `color` is `rgb(255, 255, 255)`
 - [x] GET `/api/auth/consume` with a used magic-link token `body` computed `background-color` is `rgb(255, 255, 255)`

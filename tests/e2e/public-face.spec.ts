@@ -483,6 +483,13 @@ test("GET `/login` `body` computed `background-color` is `rgb(255, 255, 255)`", 
   );
 });
 
+test("GET `/login` `body` computed `color` is `rgb(15, 23, 42)`", async ({
+  page,
+}) => {
+  await page.goto("/login");
+  await expect(page.locator("body")).toHaveCSS("color", "rgb(15, 23, 42)");
+});
+
 test("GET `/login` button `Email me a link` computed `background-color` is `rgb(15, 118, 110)`", async ({
   page,
 }) => {
