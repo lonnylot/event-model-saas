@@ -20,6 +20,7 @@ description: >
   an early-return "and" that should stay one criterion,
   a targeting packed "and" (first Slice has X and last is []) that should stay one
   only-on-the-first-Slice criterion,
+  copy vs splice (Command drag: first Slice has X vs last is []) that is not targeting,
   a host-path constructor weaker fixture,
   status vs content-type vs body, status vs row vs R2, independent env/branch cases, proving a screen/shows
   criterion (not a source grep), computed CSS proven by stylesheet toContain,
@@ -58,7 +59,7 @@ A criterion that names a screen, "shows", or "lists" is proven at the app or flo
 
 ## Steps
 
-1. **Quote the criterion.** Open the spec. Write the test name as the criterion. If that name contains "and" (any case) or independent env/branch cases, split into one `it` each — only when the cases are independently revertible production (status vs content-type vs body; membership 404 vs happy path; status vs heading vs row vs R2; two workflow `on:` events and a `run` step). Do not split an early-return reject (returns 400 and does not insert / does not put / leaves version N) into separate ACs if they share one production path: those are one criterion. A targeting AC that packs "first Slice has X and last Slice is []" (lane click / selected-Slice ⌥⌘2) is one criterion — restate as "only on the first Slice" and keep both assertions in that one `it` so append-to-both and append-to-neither fail. Splitting into two `it`s that each drop one side is the weaker reading. If the next AC would be green without new production, fold the proof into this commit or do not split the bullet (`logical-commits`). A restated weaker fixture (one-item clicked-item / Backspace) after that AC's production landed is reconstruct into that production commit (`logical-commits`, `receiving-code-review`) — a tests-only follow-up is tests-after even when always-delete-last now fails. The assertion must fail a weaker implementation of those words.
+1. **Quote the criterion.** Open the spec. Write the test name as the criterion. If that name contains "and" (any case) or independent env/branch cases, split into one `it` each — only when the cases are independently revertible production (status vs content-type vs body; membership 404 vs happy path; status vs heading vs row vs R2; two workflow `on:` events and a `run` step). Do not split an early-return reject (returns 400 and does not insert / does not put / leaves version N) into separate ACs if they share one production path: those are one criterion. A targeting AC that packs "first Slice has X and last Slice is []" (lane click / selected-Slice ⌥⌘2) is one criterion — restate as "only on the first Slice" and keep both assertions in that one `it` so append-to-both and append-to-neither fail. Splitting into two `it`s that each drop one side is the weaker reading. Independently revertible copy vs splice (Command drag: first Slice `commands` is one Command vs last is `[]`) is not targeting — copy/push can land without splice (`logical-commits`). Do not restate that drag as one only-on-the-first-Slice bullet. If the next AC would be green without new production, fold the proof into this commit or do not split the bullet (`logical-commits`). A restated weaker fixture (one-item clicked-item / Backspace) after that AC's production landed is reconstruct into that production commit (`logical-commits`, `receiving-code-review`) — a tests-only follow-up is tests-after even when always-delete-last now fails. The assertion must fail a weaker implementation of those words.
 
    Weaker readings this step exists to catch:
 
@@ -75,6 +76,7 @@ A criterion that names a screen, "shows", or "lists" is proven at the app or flo
    | One row's own text | Document-level `toContain` or `[\s\S]*` that can cross a tag |
    | Packed "and" | One `it` covering independent cases (status vs heading vs content-type vs body vs row vs R2; `pull_request` vs `push` vs a `run` step) |
    | Targeting "only on the first Slice" (first has X and last is []) | Packed `and` title (`first Slice … and the last Slice`); two `it`s that each drop one side (append-to-both / append-to-neither stay green) |
+   | Independently revertible copy vs splice (Command drag) | One `it` packing first has X **and** last is [] (copy without splice stays green on the first assertion) |
    | Accessible name **is** `X` | Playwright `name: "X"` without `exact: true` (matches `Xyz`) |
    | Named link/button/textbox `X` (unit HTML) | `toContain(">X<")` (heading or span named X stays green); `toContain('<a href="/app">X</a>')` packs name vs href |
    | Computed `background-color` / `color` | Unit `toContain` of the stylesheet `<link>` (deleting `body { background-color }` stays green) |
