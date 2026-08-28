@@ -138,14 +138,6 @@ test('GET `/` has a `meta[property="og:description"]` whose `content` is `Access
 });
 
 
-test("GET `/` `body` computed `color` is `rgb(28, 25, 23)`", async ({
-  page,
-}) => {
-  await page.goto("/");
-  await expect(page.locator("body")).toHaveCSS("color", "rgb(28, 25, 23)");
-});
-
-
 test('GET an unknown document path has a `link[rel="stylesheet"]` whose `href` is `/shell.css`', async ({
   page,
 }) => {

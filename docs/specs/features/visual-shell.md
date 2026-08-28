@@ -19,7 +19,6 @@ Login, 404, expired magic link, and signed-in team pages are unstyled HTML: emai
 - [x] GET `/` has a `meta[property="og:image"]` whose `content` ends with `/og.png`
 - [x] GET `/` has a `meta[property="og:title"]` whose `content` is `Event Model`
 - [x] GET `/` has a `meta[property="og:description"]` whose `content` is `Access is by invite.`
-- [x] GET `/` `body` computed `color` is `rgb(28, 25, 23)`
 - [x] GET an unknown document path has a `link[rel="stylesheet"]` whose `href` is `/shell.css`
 - [x] GET an unknown document path `body` computed `background-color` is `rgb(247, 244, 238)`
 - [x] GET `/api/auth/consume` with a used magic-link token has a `link[rel="stylesheet"]` whose `href` is `/shell.css`
@@ -51,11 +50,11 @@ Event Model, Person, Team, Site admin, Session, Magic link
 
 ## UI
 
-Screens: Not found, Expired link, App, Team picker, Team, Teams admin. Primitives this slice composes: Page (`body` background `paper`, color `ink`), AppBar. Login Button primary is [public-face.md](./public-face.md). Inventory: [design-system.md](../design-system.md).
+Screens: Not found, Expired link, App, Team picker, Team, Teams admin. Primitives this slice composes: Page (signed-in: `body` background `paper`, color `ink-paper`), AppBar. Public Page and Login Button primary are [public-face.md](./public-face.md). Inventory: [design-system.md](../design-system.md).
 
 ## Assumptions
 
-- Token hex values and primitive rules live in [design-system.md](../design-system.md). Playwright computed colors on `/app`, picker, team, and Teams admin are the sRGB of `paper` and `ink`. GET `/` Page background is [public-face.md](./public-face.md).
+- Token hex values and primitive rules live in [design-system.md](../design-system.md). Playwright computed colors on `/app`, picker, team, and Teams admin are the sRGB of `paper` and `ink-paper` (`rgb(247, 244, 238)` and `rgb(28, 25, 23)`). GET `/` Page background and color are [public-face.md](./public-face.md).
 - `og:image` `content` ends with `/og.png`.
 - Login heading `Sign in` and marketing header `Event Model` link are [public-face.md](./public-face.md).
 - AppBar `Event Model` is a link to `/app`. Teams admin, email, and Sign out stay the existing controls. `appPageHtml` (Person who is not site admin, no teams) composes AppBar the same way `shell` does.

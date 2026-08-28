@@ -15,13 +15,14 @@ Public (`/`):
 | Token | Value |
 |-------|--------|
 | `canvas` | `#FFFFFF` |
+| `ink` | `#0F172A` |
 
 Signed-in team/admin leftover (until a later slice):
 
 | Token | Value |
 |-------|--------|
 | `paper` | `#F7F4EE` |
-| `ink` | `#1C1917` |
+| `ink-paper` | `#1C1917` |
 | `muted` | `#78716C` |
 | `hairline` | `#E7E0D4` |
 | `ochre` | `#C0783A` |
@@ -36,11 +37,11 @@ Signed-in team/admin leftover (until a later slice):
 
 | Primitive | Does |
 |-----------|------|
-| Page (public) | `body` background `canvas` |
-| Page (signed-in) | `body` background `paper`, color `ink` |
+| Page (public) | `body` background `canvas`, color `ink` |
+| Page (signed-in) | `body` background `paper`, color `ink-paper` |
 | Card | Login form in a `measure`-wide panel, `hairline` border, `radius`, padding |
 | AppBar | Signed-in top bar: link `Event Model` to `/app`, then email, optional Teams admin, Sign out |
-| Button primary | Background `ink`, color `paper`, `radius` |
+| Button primary (signed-in) | Background `ink-paper`, color `paper`, `radius` |
 | Field | `paper` fill, `hairline` border, `radius` |
 
 ## Screens
