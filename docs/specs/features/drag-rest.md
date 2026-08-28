@@ -1,6 +1,6 @@
 # Drag rest
 
-Status: validated
+Status: released
 
 ## Problem
 
