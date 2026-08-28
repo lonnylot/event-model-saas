@@ -21,7 +21,6 @@ Login, 404, expired magic link, and signed-in team pages are unstyled HTML: emai
 - [x] GET an unknown document path has a `link[rel="stylesheet"]` whose `href` is `/shell.css`
 - [x] GET an unknown document path `body` computed `background-color` is `rgb(247, 244, 238)`
 - [x] GET `/api/auth/consume` with a used magic-link token has a `link[rel="stylesheet"]` whose `href` is `/shell.css`
-- [x] GET `/api/auth/consume` with a used magic-link token `body` computed `background-color` is `rgb(247, 244, 238)`
 - [x] GET `/app` as site admin with no teams has a `link[rel="stylesheet"]` whose `href` is `/shell.css`
 - [x] GET `/app` as site admin with no teams `body` computed `background-color` is `rgb(247, 244, 238)`
 - [x] GET `/app` as site admin with no teams shows a link whose accessible name is `Event Model`
@@ -68,7 +67,7 @@ Editor canvas (`/app/teams/{id}/models/{mid}`), Inspector, sticky-note lane colo
 ## Restates
 
 - [hosted-app.md](./hosted-app.md) — GET `/` heading is [public-face.md](./public-face.md). Text `Access is by invite.` and 404 heading `Not found` stay that file. Paper tokens, favicon, Open Graph, and stylesheet on those documents are this slice. Login Button primary is [public-face.md](./public-face.md). Card stays later.
-- [magic-link-auth.md](./magic-link-auth.md) — Expired heading and signed-in email / Sign out stay that file. Paper Page on the expired document and AppBar on `/app` that is not redirected are this slice.
+- [magic-link-auth.md](./magic-link-auth.md) — Expired heading and signed-in email / Sign out stay that file. Expired Page background is [public-face.md](./public-face.md). AppBar on `/app` that is not redirected stays this slice.
 - [teams-and-invites.md](./teams-and-invites.md) — Team name, Create team, Teams admin, picker `Your teams`, team heading stay that file. AppBar `Event Model` link and Page background on `/app`, picker, team, and Teams admin are this slice. Creating a Team still does not create Event Models; Event Model persistence is [model-persistence.md](./model-persistence.md).
 - [model-persistence.md](./model-persistence.md) — Create model and the Untitled link stay that file. AppBar `Event Model` link on GET `/app/teams/{id}` is this slice.
 - [product.md](../product.md) — Team/admin HTML is paper workshop ([design-system.md](../design-system.md)). GET `/` Page background is [public-face.md](./public-face.md). Expired / used magic link is the heading only (no path to request a new one). The schema file is in this repo. Editor web shell (team name, in-session heading, dirty, Save, Export, sign out) stays later for a later slice.

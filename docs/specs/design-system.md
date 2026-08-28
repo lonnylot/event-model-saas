@@ -6,11 +6,11 @@ Tokens and primitives for Event Model SaaS HTML that is not the editor canvas. [
 
 ## Look
 
-Contemporary SaaS on public HTML (`/`, `/login`): light canvas. Signed-in team/admin HTML stays paper workshop until a later slice. Editor canvas styling stays later.
+Contemporary SaaS on public HTML (`/`, `/login`, expired): light canvas. Signed-in team/admin HTML stays paper workshop until a later slice. Editor canvas styling stays later.
 
 ## Tokens
 
-Public (`/`, `/login`):
+Public (`/`, `/login`, expired):
 
 | Token | Value |
 |-------|--------|
