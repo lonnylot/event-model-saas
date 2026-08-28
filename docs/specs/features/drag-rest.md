@@ -31,15 +31,15 @@ Event Model, Slice, Event, Read Model, Automation, Team, Person, Version
 
 ## Out of scope
 
-Undo of move. Mac window chrome. Actor / Command drag and sidebar drag stay those specs. Pinch zoom is [pinch-zoom.md](./pinch-zoom.md).
+Undo of move is [undo-rest.md](./undo-rest.md). Mac window chrome. Actor / Command drag and sidebar drag stay those specs. Pinch zoom is [pinch-zoom.md](./pinch-zoom.md).
 
 ## Restates
 
 - [canvas-rest.md](./canvas-rest.md) — Out of scope no longer owns drag of Event, Read Model, and Automation between Slices; this slice owns those. Command drag and sidebar reorder stay that file. Timeline Slice drag is this slice.
 - [canvas.md](./canvas.md) — Timeline Slice drag is this slice. Actor drag stays this file. Drag of Event, Read Model, and Automation between Slices, and Timeline Slice drag, is this slice.
-- [editor-shell.md](./editor-shell.md) — Timeline Slice drag is this slice. Undo, pan, and moving Slices (⌥⌘←) stay [canvas.md](./canvas.md). Drag of Event, Read Model, and Automation between Slices is this slice.
-- [model-persistence.md](./model-persistence.md) — Timeline Slice drag is this slice. Undo, pan, and moving Slices (⌥⌘←) stay [canvas.md](./canvas.md). Drag of Event, Read Model, and Automation between Slices is this slice.
-- [connection-feedback.md](./connection-feedback.md) — Timeline Slice drag is this slice. Undo, pan, and moving Slices (⌥⌘←) stay [canvas.md](./canvas.md). Drag of Event, Read Model, and Automation between Slices is this slice.
+- [editor-shell.md](./editor-shell.md) — Timeline Slice drag is this slice. Undo New Slice / Connection, pan, and moving Slices (⌥⌘←) stay [canvas.md](./canvas.md). Undo of remaining Adds, move, delete, and redo are [undo-rest.md](./undo-rest.md). Drag of Event, Read Model, and Automation between Slices is this slice.
+- [model-persistence.md](./model-persistence.md) — Timeline Slice drag is this slice. Undo New Slice / Connection, pan, and moving Slices (⌥⌘←) stay [canvas.md](./canvas.md). Undo of remaining Adds, move, delete, and redo are [undo-rest.md](./undo-rest.md). Drag of Event, Read Model, and Automation between Slices is this slice.
+- [connection-feedback.md](./connection-feedback.md) — Timeline Slice drag is this slice. Undo New Slice / Connection, pan, and moving Slices (⌥⌘←) stay [canvas.md](./canvas.md). Undo of remaining Adds, move, delete, and redo are [undo-rest.md](./undo-rest.md). Drag of Event, Read Model, and Automation between Slices is this slice.
 - [blocks.md](./blocks.md) — Drag of Event, Read Model, and Automation between Slices, and Timeline Slice drag, is this slice. Actor drag stays [canvas.md](./canvas.md).
 - [chrome.md](./chrome.md) — Drag of Event, Read Model, and Automation between Slices, and Timeline Slice drag, is this slice. Actor drag stays [canvas.md](./canvas.md).
 - [connections.md](./connections.md) — Drag of Event, Read Model, and Automation between Slices, and Timeline Slice drag, is this slice. Actor drag stays [canvas.md](./canvas.md).

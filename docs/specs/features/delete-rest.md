@@ -32,7 +32,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person,
 
 ## Out of scope
 
-Undo of delete. Inspector Delete Connection button. Mac window chrome. Slice Backspace stays [canvas.md](./canvas.md). Command / Connection Backspace stay [delete-blocks.md](./delete-blocks.md).
+Undo of delete is [undo-rest.md](./undo-rest.md). Inspector Delete Connection button. Mac window chrome. Slice Backspace stays [canvas.md](./canvas.md). Command / Connection Backspace stay [delete-blocks.md](./delete-blocks.md).
 
 ## Restates
 
