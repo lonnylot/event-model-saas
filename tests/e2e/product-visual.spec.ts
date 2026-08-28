@@ -46,3 +46,8 @@ test("GET `/` the text `One Event Model, signed in. No passing files around.` co
     page.getByText("One Event Model, signed in. No passing files around."),
   ).toHaveCSS("color", "rgb(100, 116, 139)");
 });
+
+test("GET `/` `main` computed `max-width` is `576px`", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator("main")).toHaveCSS("max-width", "576px");
+});

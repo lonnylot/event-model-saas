@@ -19,6 +19,9 @@ body.landing h1 {
 body.landing main > p:first-of-type {
   color: #64748B;
 }
+body.landing main {
+  max-width: 36rem;
+}
 #login button {
   background-color: #0F766E;
   color: #FFFFFF;
