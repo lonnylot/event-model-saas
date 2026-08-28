@@ -37,3 +37,12 @@ test("GET `/` heading `Event Modeling for the whole team` computed `font-size` i
     }),
   ).toHaveCSS("font-size", "36px");
 });
+
+test("GET `/` the text `One Event Model, signed in. No passing files around.` computed `color` is `rgb(100, 116, 139)`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByText("One Event Model, signed in. No passing files around."),
+  ).toHaveCSS("color", "rgb(100, 116, 139)");
+});
