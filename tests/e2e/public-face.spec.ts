@@ -117,3 +117,12 @@ test("GET `/login` without a Session, the link `Join the waitlist` has `href` `/
     page.getByRole("link", { name: "Join the waitlist", exact: true }),
   ).toHaveAttribute("href", "/#waitlist");
 });
+
+test("GET `/login` without a Session shows a link whose accessible name is `Event Model`", async ({
+  page,
+}) => {
+  await page.goto("/login");
+  await expect(
+    page.getByRole("link", { name: "Event Model", exact: true }),
+  ).toBeVisible();
+});
