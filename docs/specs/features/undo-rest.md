@@ -1,6 +1,6 @@
 # Undo rest
 
-Status: validated
+Status: released
 
 ## Problem
 
