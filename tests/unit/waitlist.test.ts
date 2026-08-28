@@ -107,7 +107,20 @@ describe("waitlist", () => {
     expect(inserts).toBe(1);
     expect(sent).toHaveLength(1);
   });
+
+  it("POST `/api/waitlist` with an existing Person email does not insert a waitlist row and does not send mail", async () => {
+    const { env, auth, sent } = authEnv();
+    await auth.store.insertPerson({
+      id: "p-1",
+      email: "wait@example.com",
+      isSiteAdmin: false,
+    });
+    await handleRequest(waitlistPost("wait@example.com"), env);
+    expect(await auth.store.isWaitlisted("wait@example.com")).toBe(false);
+    expect(sent).toHaveLength(0);
+  });
 });
+
 
 
 
