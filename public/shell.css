@@ -43,6 +43,9 @@ body.landing main {
   border-radius: 10px;
   max-width: 24rem;
 }
+#login {
+  max-width: 24rem;
+}
 #login button {
   background-color: #0F766E;
   color: #FFFFFF;

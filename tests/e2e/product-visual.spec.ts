@@ -170,3 +170,10 @@ test("GET `/login` textbox `Email` computed `border-radius` is `10px`", async ({
     page.getByRole("textbox", { name: "Email", exact: true }),
   ).toHaveCSS("border-radius", "10px");
 });
+
+test("GET `/login` form `login` computed `max-width` is `384px`", async ({
+  page,
+}) => {
+  await page.goto("/login");
+  await expect(page.locator("form#login")).toHaveCSS("max-width", "384px");
+});
