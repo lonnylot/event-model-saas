@@ -1266,6 +1266,16 @@ export function bindEditor(root) {
   });
   root.addEventListener("keydown", (event) => {
     if (
+      event.shiftKey &&
+      (event.metaKey || event.ctrlKey) &&
+      !event.altKey &&
+      (event.key === "n" || event.key === "N")
+    ) {
+      event.preventDefault();
+      onNewSliceClick(root);
+      return;
+    }
+    if (
       event.altKey &&
       (event.metaKey || event.ctrlKey) &&
       event.key === "ArrowLeft"

@@ -7,6 +7,7 @@ import { appendReadModel } from "../../src/document/append-read-model.ts";
 import { appendAutomation } from "../../src/document/append-automation.ts";
 import { appendConnection } from "../../src/document/append-connection.ts";
 import {
+  bindEditor,
   onAddActorClick,
   onAddAutomationClick,
   onAddCommandClick,
@@ -41,6 +42,77 @@ function clickedSlice() {
   onNewSliceClick(root);
   return JSON.parse(holder.textContent).slices[0];
 }
+
+function pressedNewSliceShortcut() {
+  if (typeof HTMLElement === "undefined") {
+    globalThis.HTMLElement = class HTMLElement {};
+  }
+  if (typeof HTMLInputElement === "undefined") {
+    globalThis.HTMLInputElement = class HTMLInputElement {};
+  }
+  const holder = { textContent: JSON.stringify(empty) };
+  const listeners: Record<string, ((event: object) => void)[]> = {};
+  const root = {
+    querySelector(sel: string) {
+      if (sel === "ul") return { append() {}, addEventListener() {} };
+      if (sel === "main") return { textContent: "", insertAdjacentHTML() {} };
+      if (sel === '[aria-label="Timeline"]')
+        return { style: {}, addEventListener() {}, append() {} };
+      if (sel === '[aria-label="Timeline"] ul')
+        return {
+          addEventListener() {},
+          contains() {
+            return false;
+          },
+          querySelectorAll() {
+            return [];
+          },
+        };
+      if (sel === '[aria-label="Inspector"]')
+        return {
+          querySelector() {
+            return null;
+          },
+          querySelectorAll() {
+            return [];
+          },
+          insertAdjacentHTML() {},
+        };
+      return null;
+    },
+    querySelectorAll() {
+      return [];
+    },
+    getElementById(id: string) {
+      return id === "event-model-document" ? holder : null;
+    },
+    createElement() {
+      return { textContent: "", setAttribute() {}, addEventListener() {} };
+    },
+    addEventListener(type: string, fn: (event: object) => void) {
+      (listeners[type] ??= []).push(fn);
+    },
+  };
+  bindEditor(root);
+  for (const fn of listeners.keydown ?? []) {
+    fn({
+      shiftKey: true,
+      metaKey: true,
+      ctrlKey: false,
+      altKey: false,
+      key: "n",
+      code: "KeyN",
+      preventDefault() {},
+    });
+  }
+  return JSON.parse(holder.textContent).slices[0];
+}
+
+describe("pressing New Slice shortcut", () => {
+  it("Pressing ⇧⌘N on the Event Model page appends a Slice whose `title` is `New Slice`", () => {
+    expect(pressedNewSliceShortcut()?.title).toBe("New Slice");
+  });
+});
 
 describe("clicking New Slice", () => {
   it("Clicking `New Slice` on that page appends a Slice whose `title` is `New Slice`", () => {

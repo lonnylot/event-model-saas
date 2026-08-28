@@ -51,7 +51,7 @@ Creating a Slice from Add when there are none. Toolbar Add stays [blocks.md](./b
 - [editor-shell.md](./editor-shell.md) — Out of scope no longer owns keyboard ⌥⌘1–5; this slice owns those.
 - [chrome.md](./chrome.md) — Keyboard shortcuts for ⌥⌘1–5 are this slice.
 - [canvas.md](./canvas.md) — Out of scope no longer owns dashed Add on a lane or keyboard ⌥⌘1–5; this slice owns those.
-- [inspect-blocks.md](./inspect-blocks.md) — Out of scope no longer owns dashed Add on a lane or keyboard shortcuts; this slice owns those.
+- [inspect-blocks.md](./inspect-blocks.md) — Out of scope no longer owns dashed Add on a lane or keyboard ⌥⌘1–5; this slice owns those. ⇧⌘N is [new-slice-shortcut.md](./new-slice-shortcut.md).
 - [connections.md](./connections.md) — Out of scope no longer owns dashed Add on a lane or keyboard ⌥⌘1–5; this slice owns those.
 - [connection-feedback.md](./connection-feedback.md) — Out of scope no longer owns dashed Add on a lane or keyboard ⌥⌘1–5; this slice owns those.
 - [model-persistence.md](./model-persistence.md) — Out of scope no longer owns keyboard ⌥⌘1–5; this slice owns those.
