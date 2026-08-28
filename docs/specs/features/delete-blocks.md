@@ -22,7 +22,7 @@ Event Model, Slice, Command, Event, Read Model, Connection, Team, Person, Versio
 
 ## Assumptions
 
-- Two Timeline `Command` listitems are first vs last. Chrome Name still mutates the last Command.
+- Two Timeline `Command` listitems are first vs last. Command Name mutates the last Command only when that Command is selected. Command multi-item Name is [name-binding.md](./name-binding.md).
 - Command selection is a click on the Timeline listitem. Connection selection is a click on the Timeline text `Command → Event Happened`. After that click, Inspector `Name` may have focus, so delete is Backspace after clicking the Timeline region (not while typing in `Name`).
 - Add still targets the last Slice. Add Command twice then Add Event and Add Read Model for the two Connections.
 - Remaining Connection after deleting `Command → Event Happened` is Event → Read Model (`fromKind` `EVENT`).

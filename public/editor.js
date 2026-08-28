@@ -1014,7 +1014,11 @@ export function bindEditor(root) {
         }
         if (holder && selected === "command") {
           holder.textContent = JSON.stringify(
-            setCommandTitle(JSON.parse(holder.textContent || "{}"), input.value),
+            setCommandTitle(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+              selectedCommandItem?.dataset?.id,
+            ),
           );
         }
         if (holder && selected === "event") {
@@ -1055,6 +1059,10 @@ export function bindEditor(root) {
           selectedActorItem.setAttribute("aria-label", input.value);
         }
         if (selected === "command" && selectedCommandItem) {
+          const textNode = [...selectedCommandItem.childNodes].find(
+            (node) => node.nodeType === Node.TEXT_NODE,
+          );
+          if (textNode) textNode.textContent = input.value;
           selectedCommandItem.setAttribute("aria-label", input.value);
         }
         if (selected === "event" && selectedEventItem) {
@@ -1070,7 +1078,7 @@ export function bindEditor(root) {
           const heading = root.querySelector("h1");
           if (heading) heading.textContent = input.value;
         }
-        if (selected === "slice") {
+        if (selected === "slice" || selected === "actor") {
           const main = root.querySelector("main");
           if (main && !main.textContent?.includes("Unsaved changes.")) {
             main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
