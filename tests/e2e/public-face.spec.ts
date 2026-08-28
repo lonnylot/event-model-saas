@@ -379,3 +379,23 @@ test("GET `/` with a Session, a link `Open app` has `href` `/app`", async ({
     page.getByRole("link", { name: "Open app", exact: true }),
   ).toHaveAttribute("href", "/app");
 });
+
+test("GET `/` with a Session does not show a link whose accessible name is `Sign in`", async ({
+  page,
+}) => {
+  await page.request.post("/api/test/non-admin-session");
+  await page.goto("/");
+  await expect(
+    page.getByRole("link", { name: "Sign in", exact: true }),
+  ).toHaveCount(0);
+});
+
+test("GET `/` with a Session does not show a button whose accessible name is `Sign out`", async ({
+  page,
+}) => {
+  await page.request.post("/api/test/non-admin-session");
+  await page.goto("/");
+  await expect(
+    page.getByRole("button", { name: "Sign out", exact: true }),
+  ).toHaveCount(0);
+});
