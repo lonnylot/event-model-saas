@@ -7,6 +7,9 @@ body.landing {
   color: #0F172A;
   font-family: ui-sans-serif, system-ui, sans-serif;
 }
+body.landing header {
+  border-bottom-color: #E2E8F0;
+}
 #login button {
   background-color: #0F766E;
   color: #FFFFFF;
