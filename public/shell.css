@@ -12,6 +12,7 @@ body.landing {
 }
 body.not-found {
   background-color: #FFFFFF;
+  color: #0F172A;
 }
 body.expired {
   background-color: #FFFFFF;

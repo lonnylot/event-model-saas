@@ -549,6 +549,13 @@ test("GET an unknown document path `body` computed `background-color` is `rgb(25
   );
 });
 
+test("GET an unknown document path `body` computed `color` is `rgb(15, 23, 42)`", async ({
+  page,
+}) => {
+  await page.goto("/no-such-page");
+  await expect(page.locator("body")).toHaveCSS("color", "rgb(15, 23, 42)");
+});
+
 test("Submitting `Join the waitlist` on `/` with email `wait@example.com` shows the text `If you're on the list, we'll be in touch.`", async ({
   page,
 }) => {
