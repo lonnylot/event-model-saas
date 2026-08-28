@@ -64,7 +64,7 @@ GET `/` is the login form. A visitor cannot tell what Event Model is. Paper-work
 - [x] GET `/api/auth/consume` with a used magic-link token, the link `Sign in` has `href` `/login`
 - [x] GET an unknown document path `body` computed `background-color` is `rgb(255, 255, 255)`
 - [x] POST `/api/waitlist` returns status 200
-- [ ] POST `/api/waitlist` returns content-type `application/json; charset=utf-8`
+- [x] POST `/api/waitlist` returns content-type `application/json; charset=utf-8`
 - [ ] POST `/api/waitlist` returns body `{"ok":true,"message":"If you're on the list, we'll be in touch."}`
 - [ ] POST `/api/waitlist` with a new email inserts that email into the waitlist
 - [ ] POST `/api/waitlist` with a new email sends a waitlist mail to `SITE_ADMIN_EMAIL` whose text includes that address

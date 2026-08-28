@@ -83,7 +83,10 @@ export async function handleRequest(
     return jsonOk(REQUEST_LINK_OK_BODY);
   }
   if (path === "/api/waitlist" && request.method === "POST") {
-    return new Response(null, { status: 200 });
+    return new Response(null, {
+      status: 200,
+      headers: { "content-type": "application/json; charset=utf-8" },
+    });
   }
   if (path === "/api/auth/consume" && request.method === "GET") {
     if (env.auth) {
