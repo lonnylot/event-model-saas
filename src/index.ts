@@ -82,6 +82,9 @@ export async function handleRequest(
     }
     return jsonOk(REQUEST_LINK_OK_BODY);
   }
+  if (path === "/api/waitlist" && request.method === "POST") {
+    return new Response(null, { status: 200 });
+  }
   if (path === "/api/auth/consume" && request.method === "GET") {
     if (env.auth) {
       return consumeLink(env.auth, url.searchParams.get("token") ?? "", url);
