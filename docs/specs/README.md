@@ -18,7 +18,7 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Magic-link auth | [features/magic-link-auth.md](./features/magic-link-auth.md) | released |
 | Teams and invites | [features/teams-and-invites.md](./features/teams-and-invites.md) | released |
 | Model persistence | [features/model-persistence.md](./features/model-persistence.md) | released |
-| Editor shell | [features/editor-shell.md](./features/editor-shell.md) | released |
+| Editor shell | [features/editor-shell.md](./editor-shell.md) | released |
 | Blocks | [features/blocks.md](./features/blocks.md) | released |
 | Connections | [features/connections.md](./features/connections.md) | released |
 | Chrome | [features/chrome.md](./features/chrome.md) | released |
@@ -40,6 +40,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Delete rest | [features/delete-rest.md](./features/delete-rest.md) | released |
 | Inspect rest | [features/inspect-rest.md](./features/inspect-rest.md) | released |
 | Visual shell | [features/visual-shell.md](./features/visual-shell.md) | released |
-| New Slice shortcut | [features/new-slice-shortcut.md](./features/new-slice-shortcut.md) | validated |
+| New Slice shortcut | [features/new-slice-shortcut.md](./features/new-slice-shortcut.md) | released |
 
 Status: `draft` → `validated` → `released`.
