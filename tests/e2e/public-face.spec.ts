@@ -47,3 +47,12 @@ test("GET `/` without a Session shows a link whose accessible name is `Sign in`"
     page.getByRole("link", { name: "Sign in", exact: true }),
   ).toBeVisible();
 });
+
+test("GET `/` without a Session, a link `Sign in` has `href` `/login`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByRole("link", { name: "Sign in", exact: true }),
+  ).toHaveAttribute("href", "/login");
+});
