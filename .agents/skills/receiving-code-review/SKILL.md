@@ -9,7 +9,6 @@ description: >
   it titles, copy vs splice packed as targeting or landed in one commit,
   a tests-only Playwright wait / wait-after-open helper after production,
   sibling locator / fixture waits after production added a second matching New Slice,
-  sibling locator / fixture waits after production added a second matching New Slice,
   several review threads in one commit (leftover-hide unbindAddField vs unbindFieldName),
   restates leftover docs plus a production restore in one commit
   (setSliceType last-item fallback / bindName Type id),
