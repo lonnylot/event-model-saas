@@ -57,7 +57,7 @@ Screens: App, Team picker, Team, Teams admin. Primitives this slice composes: Pa
 - AppBar `Event Model` is a link to `/app`. Teams admin, email, and Sign out stay the existing controls. `appPageHtml` (Person who is not site admin, no teams) composes AppBar the same way `shell` does.
 - `TEST_MAIL=1` Playwright `workers` is `1` (hosted-app / magic-link). Playwright `webServer` wrangler `--port` and `--inspector-port` are checkout-unique from a hash of `cwd` so parallel worktrees do not collide; worker fixtures read `E2E_PORT`.
 - POST `/api/test/non-admin-session` and POST `/api/test/picker-session` exist only when `TEST_MAIL` is `1`. The first inserts a Person who is not site admin with no teams and sets a Session cookie. The second inserts a Person with two Teams and sets a Session cookie. When `TEST_MAIL` is not `1`, those paths are JSON 404.
-- Favicon and OG PNGs are the two-slice paper mark with no letters.
+- Favicon and OG PNG mark is [public-face.md](./public-face.md).
 
 ## Out of scope
 

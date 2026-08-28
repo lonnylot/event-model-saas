@@ -81,6 +81,8 @@ GET `/` is the login form. A visitor cannot tell what Event Model is. Paper-work
 - [x] POST `/api/auth/request-link` with an unknown email does not insert a waitlist row
 - [x] `createD1Store` `insertWaitlist` with email `wait@example.com` then `isWaitlisted` returns true
 - [x] Submitting `Join the waitlist` on `/` with email `wait@example.com` shows the text `If you're on the list, we'll be in touch.`
+- [x] `public/favicon.png` pixels include ink, accent, and canvas, and do not include ochre or terracotta
+- [x] `public/og.png` pixels include ink, accent, and canvas, and do not include ochre or terracotta
 
 ## Domain terms
 
@@ -106,7 +108,7 @@ Screens: Landing, Login, Not found, Expired link. Primitives this slice composes
 - Playwright computed colors are the sRGB of `canvas` `#FFFFFF` → `rgb(255, 255, 255)`, `ink` `#0F172A` → `rgb(15, 23, 42)`, `accent` `#0F766E` → `rgb(15, 118, 110)`, `on-accent` `#FFFFFF` → `rgb(255, 255, 255)`.
 - `TEST_MAIL=1` Playwright `workers` is `1`. Playwright `webServer` wrangler `--port` and `--inspector-port` are checkout-unique from a hash of `cwd`; worker fixtures read `E2E_PORT`.
 - GET `/` with a Session uses an existing `TEST_MAIL=1` session helper (consume a magic link, or POST `/api/test/non-admin-session`).
-- Favicon and OG PNGs are the two-slice timeline mark in `ink` and `accent` on `canvas`, with no letters. Open Graph title stays `Event Model`.
+- Open Graph title stays `Event Model`.
 - Login heading is `Sign in`. The wordmark link `Event Model` is the Marketing header, not a second heading.
 
 ## Out of scope
@@ -117,7 +119,7 @@ Signed-in AppBar, team picker, team page, and Teams admin restyle (those pages s
 
 - [hosted-app.md](./hosted-app.md) — GET `/` heading is `Event Modeling for the whole team`. GET `/` does not show the text `Access is by invite.` GET `/` still does not show `Sign up`. 404 heading `Not found` stays that file.
 - [magic-link-auth.md](./magic-link-auth.md) — Email and `Email me a link` live on GET `/login`. GET `/app` without a Session sets `Location` to `/login`. Submitting `Email me a link` is on `/login`. POST sign-out still sets `Location` to `/`. Consume of a valid magic link still sets `Location` to `/app`.
-- [visual-shell.md](./visual-shell.md) — Public Page background and color, Login Button primary colors, 404 and expired Page background, and `og:description` are this slice. Favicon, stylesheet, `og:image`, `og:title`, and AppBar plus paper Page on `/app`, picker, team, and Teams admin stay that file.
+- [visual-shell.md](./visual-shell.md) — Public Page background and color, Login Button primary colors, 404 and expired Page background, `og:description`, and favicon/og mark pixels are this slice. Favicon and OG status, content-type, `link rel=icon` href, `og:image`, `og:title`, stylesheet, and AppBar plus paper Page on `/app`, picker, team, and Teams admin stay that file.
 - [design-system.md](../design-system.md) — Public HTML is contemporary SaaS (`canvas`, `ink`, `accent`). Paper tokens remain for signed-in team/admin HTML. Login is GET `/login`. Landing is GET `/`. Marketing header and public Button primary are this slice. Card, Field, font `type`, and `radius` stay later.
 - [product.md](../product.md) — GET `/` is the marketing landing. Login is GET `/login`. Waitlist is not public signup. Expired used-link page shows `Sign in` to `/login`. Public HTML is contemporary SaaS; team/admin HTML stays paper workshop until a later slice. Session missing opens `/login`.
 - [architecture.md](../architecture.md) — `run_worker_first` includes `/` and `/login`. D1 holds waitlist emails. `auth` joins the waitlist. `web` serves Landing at `/` and Login at `/login`. Public tokens are [design-system.md](../design-system.md) as applied by this slice.
