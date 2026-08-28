@@ -34,5 +34,16 @@ describe("waitlist", () => {
       "application/json; charset=utf-8",
     );
   });
+
+  it('POST `/api/waitlist` returns body `{"ok":true,"message":"If you\'re on the list, we\'ll be in touch."}`', async () => {
+    const response = await handleRequest(
+      waitlistPost("wait@example.com"),
+      envWithAssets(),
+    );
+    expect(await response.text()).toBe(
+      '{"ok":true,"message":"If you\'re on the list, we\'ll be in touch."}',
+    );
+  });
 });
+
 
