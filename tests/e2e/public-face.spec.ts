@@ -193,3 +193,15 @@ test("GET `/` without a Session shows the text `Here the Event Model belongs to 
     page.getByText("Here the Event Model belongs to a Team."),
   ).toBeVisible();
 });
+
+test("GET `/` without a Session shows a heading whose accessible name is `A timeline of slices`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByRole("heading", {
+      name: "A timeline of slices",
+      exact: true,
+    }),
+  ).toBeVisible();
+});
