@@ -209,3 +209,12 @@ test("GET an unknown document path `body` computed `font-family` includes `syste
   await page.goto("/no-such-page");
   await expect(page.locator("body")).toHaveCSS("font-family", /system-ui/);
 });
+
+test("GET an unknown document path heading `Not found` computed `font-size` is `36px`", async ({
+  page,
+}) => {
+  await page.goto("/no-such-page");
+  await expect(
+    page.getByRole("heading", { name: "Not found", exact: true }),
+  ).toHaveCSS("font-size", "36px");
+});

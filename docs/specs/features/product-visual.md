@@ -32,7 +32,7 @@ Public pages have copy and body colors only. Signed-in pages are paper cream. Th
 - [x] GET `/login` button `Email me a link` computed `border-radius` is `10px`
 - [x] GET `/login` link `Join the waitlist` computed `color` is `rgb(15, 118, 110)`
 - [x] GET an unknown document path `body` computed `font-family` includes `system-ui`
-- [ ] GET an unknown document path heading `Not found` computed `font-size` is `36px`
+- [x] GET an unknown document path heading `Not found` computed `font-size` is `36px`
 - [ ] GET `/api/auth/consume` with a used magic-link token `body` computed `font-family` includes `system-ui`
 - [ ] GET `/api/auth/consume` with a used magic-link token, the link `Sign in` computed `background-color` is `rgb(15, 118, 110)`
 - [ ] GET `/api/auth/consume` with a used magic-link token, the link `Sign in` computed `color` is `rgb(255, 255, 255)`

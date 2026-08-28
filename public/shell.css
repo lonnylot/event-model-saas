@@ -64,6 +64,9 @@ body.not-found {
   color: #0F172A;
   font-family: ui-sans-serif, system-ui, sans-serif;
 }
+body.not-found h1 {
+  font-size: 36px;
+}
 body.expired {
   background-color: #FFFFFF;
   color: #0F172A;
