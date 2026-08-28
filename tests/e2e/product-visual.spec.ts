@@ -60,3 +60,12 @@ test("GET `/` button `Join the waitlist` computed `background-color` is `rgb(15,
     page.getByRole("button", { name: "Join the waitlist", exact: true }),
   ).toHaveCSS("background-color", "rgb(15, 118, 110)");
 });
+
+test("GET `/` button `Join the waitlist` computed `color` is `rgb(255, 255, 255)`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByRole("button", { name: "Join the waitlist", exact: true }),
+  ).toHaveCSS("color", "rgb(255, 255, 255)");
+});
