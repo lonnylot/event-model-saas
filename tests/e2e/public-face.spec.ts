@@ -214,3 +214,12 @@ test("GET `/` without a Session shows the text `a vertical column on the timelin
     page.getByText("a vertical column on the timeline"),
   ).toBeVisible();
 });
+
+test("GET `/` without a Session shows the text `intent, then a fact that happened`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByText("intent, then a fact that happened"),
+  ).toBeVisible();
+});
