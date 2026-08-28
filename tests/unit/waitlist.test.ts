@@ -180,7 +180,18 @@ describe("waitlist", () => {
     expect(sent).toHaveLength(20);
     expect(await auth.store.isWaitlisted("person20@example.com")).toBe(false);
   });
+
+  it("POST `/api/waitlist` when the waitlist insert fails returns status 500 and does not send mail", async () => {
+    const { env, auth, sent } = authEnv();
+    auth.store.insertWaitlist = async () => {
+      throw new Error("d1 down");
+    };
+    const response = await handleRequest(waitlistPost("wait@example.com"), env);
+    expect(response.status).toBe(500);
+    expect(sent).toHaveLength(0);
+  });
 });
+
 
 
 

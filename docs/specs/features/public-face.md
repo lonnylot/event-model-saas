@@ -77,7 +77,7 @@ GET `/` is the login form. A visitor cannot tell what Event Model is. Paper-work
 - [x] POST `/api/waitlist` with an invalid email does not insert a waitlist row and does not send mail
 - [x] The sixth POST `/api/waitlist` for the same email within one hour does not send mail
 - [x] The twenty-first POST `/api/waitlist` from the same client IP within one hour does not send mail and does not insert a waitlist row
-- [ ] POST `/api/waitlist` when the waitlist insert fails returns status 500 and does not send mail
+- [x] POST `/api/waitlist` when the waitlist insert fails returns status 500 and does not send mail
 - [ ] POST `/api/auth/request-link` with an unknown email does not insert a waitlist row
 - [ ] `createD1Store` `insertWaitlist` with email `wait@example.com` then `isWaitlisted` returns true
 - [ ] Submitting `Join the waitlist` on `/` with email `wait@example.com` shows the text `If you're on the list, we'll be in touch.`

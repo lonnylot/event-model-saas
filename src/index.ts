@@ -96,10 +96,14 @@ export async function handleRequest(
         request.headers.get("cf-connecting-ip") ??
         request.headers.get("x-forwarded-for") ??
         "0.0.0.0";
-      await joinWaitlist(env.auth, {
-        email,
-        clientIp: ip.split(",")[0].trim(),
-      });
+      try {
+        await joinWaitlist(env.auth, {
+          email,
+          clientIp: ip.split(",")[0].trim(),
+        });
+      } catch {
+        return new Response(null, { status: 500 });
+      }
     }
     return jsonOk(WAITLIST_OK_BODY);
   }
