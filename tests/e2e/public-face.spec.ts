@@ -73,3 +73,13 @@ test('GET `/login` without a Session has a `link[rel="stylesheet"]` whose `href`
     "/shell.css",
   );
 });
+
+test('GET `/login` without a Session has a `link[rel="icon"]` whose `href` is `/favicon.png`', async ({
+  page,
+}) => {
+  await page.goto("/login");
+  await expect(page.locator('link[rel="icon"]')).toHaveAttribute(
+    "href",
+    "/favicon.png",
+  );
+});
