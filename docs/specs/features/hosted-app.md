@@ -8,7 +8,6 @@ Nothing is reachable at event-model.lonnylot.com. This slice puts a Worker and a
 
 ## Acceptance criteria
 
-- [x] GET `/` shows the text `Access is by invite.`
 - [x] GET `/` does not show a control whose accessible name is `Sign up`
 - [x] GET an unknown document path returns status 404
 - [x] GET an unknown document path shows a heading whose accessible name is `Not found`
@@ -39,6 +38,6 @@ Event Model
 
 ## Out of scope
 
-Magic-link login, email field, D1, R2, teams, editor canvas. GET `/` heading, landing copy, and Login Button primary are [public-face.md](./public-face.md). Favicon, stylesheet, `og:image`, and `og:title` are [visual-shell.md](./visual-shell.md).
+Magic-link login, email field, D1, R2, teams, editor canvas. GET `/` heading, landing copy, waitlist, and `/login` are [public-face.md](./public-face.md). Favicon, stylesheet, `og:image`, and `og:title` are [visual-shell.md](./visual-shell.md).
 
 ## Restates

@@ -1,10 +1,5 @@
 import { expect, test } from "@playwright/test";
 
-test("GET `/` shows the text `Access is by invite.`", async ({ page }) => {
-  await page.goto("/");
-  await expect(page.getByText("Access is by invite.")).toBeVisible();
-});
-
 test("GET `/` does not show a control whose accessible name is `Sign up`", async ({
   page,
 }) => {

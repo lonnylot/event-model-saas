@@ -65,7 +65,7 @@ Editor canvas (`/app/teams/{id}/models/{mid}`), Inspector, sticky-note lane colo
 
 ## Restates
 
-- [hosted-app.md](./hosted-app.md) — GET `/` heading is [public-face.md](./public-face.md). Text `Access is by invite.` and 404 heading `Not found` stay that file. Paper tokens, favicon, Open Graph, and stylesheet on those documents are this slice. Login Button primary is [public-face.md](./public-face.md). Card stays later.
+- [hosted-app.md](./hosted-app.md) — 404 heading `Not found` stays that file. GET `/` heading and `Access is by invite.` are [public-face.md](./public-face.md). Favicon, stylesheet, `og:image`, and `og:title` on `/` stay this slice.
 - [magic-link-auth.md](./magic-link-auth.md) — Expired heading and signed-in email / Sign out stay that file. Expired Page background is [public-face.md](./public-face.md). AppBar on `/app` that is not redirected stays this slice.
 - [teams-and-invites.md](./teams-and-invites.md) — Team name, Create team, Teams admin, picker `Your teams`, team heading stay that file. AppBar `Event Model` link and Page background on `/app`, picker, team, and Teams admin are this slice. Creating a Team still does not create Event Models; Event Model persistence is [model-persistence.md](./model-persistence.md).
 - [model-persistence.md](./model-persistence.md) — Create model and the Untitled link stay that file. AppBar `Event Model` link on GET `/app/teams/{id}` is this slice.

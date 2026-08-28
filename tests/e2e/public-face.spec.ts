@@ -556,3 +556,10 @@ test("Submitting `Join the waitlist` on `/` with email `wait@example.com` shows 
     page.getByText("If you're on the list, we'll be in touch."),
   ).toBeVisible();
 });
+
+test("GET `/` does not show the text `Access is by invite.`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.getByText("Access is by invite.")).toHaveCount(0);
+});
