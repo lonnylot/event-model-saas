@@ -57,5 +57,5 @@ Event Model, Slice, Team, Person, Version
 
 ## Restates
 
-- [model-persistence.md](./model-persistence.md) — Out of scope no longer owns editor canvas, New Slice, zoom, or the dirty indicator; this slice owns those. Undo New Slice is [canvas.md](./canvas.md). Undo of remaining Adds, move, delete, undo Add Command, and redo are [undo-rest.md](./undo-rest.md). Connections are [connections.md](./connections.md). Slice and Actor Name are [chrome.md](./chrome.md).
+- [model-persistence.md](./model-persistence.md) — Out of scope no longer owns editor canvas, New Slice, zoom, or the dirty indicator; this slice owns those. Undo New Slice is [canvas.md](./canvas.md). Undo of remaining Adds, move, delete, and redo are [undo-rest.md](./undo-rest.md). Undo Add Command stays [canvas-rest.md](./canvas-rest.md). Connections are [connections.md](./connections.md). Slice and Actor Name are [chrome.md](./chrome.md).
 - [product.md](../product.md) — Playwright path for this slice is open Event Model, New Slice, dirty copy, Save, reload still lists New Slice. Add Actor is [blocks.md](./blocks.md).
