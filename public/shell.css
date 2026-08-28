@@ -22,6 +22,9 @@ body.landing main > p:first-of-type {
 body.landing main {
   max-width: 36rem;
 }
+#waitlist-form button {
+  background-color: #0F766E;
+}
 #login button {
   background-color: #0F766E;
   color: #FFFFFF;

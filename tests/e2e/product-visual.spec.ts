@@ -51,3 +51,12 @@ test("GET `/` `main` computed `max-width` is `576px`", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator("main")).toHaveCSS("max-width", "576px");
 });
+
+test("GET `/` button `Join the waitlist` computed `background-color` is `rgb(15, 118, 110)`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByRole("button", { name: "Join the waitlist", exact: true }),
+  ).toHaveCSS("background-color", "rgb(15, 118, 110)");
+});

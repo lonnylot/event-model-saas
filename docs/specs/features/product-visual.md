@@ -14,7 +14,7 @@ Public pages have copy and body colors only. Signed-in pages are paper cream. Th
 - [x] GET `/` heading `Event Modeling for the whole team` computed `font-size` is `36px`
 - [x] GET `/` the text `One Event Model, signed in. No passing files around.` computed `color` is `rgb(100, 116, 139)`
 - [x] GET `/` `main` computed `max-width` is `576px`
-- [ ] GET `/` button `Join the waitlist` computed `background-color` is `rgb(15, 118, 110)`
+- [x] GET `/` button `Join the waitlist` computed `background-color` is `rgb(15, 118, 110)`
 - [ ] GET `/` button `Join the waitlist` computed `color` is `rgb(255, 255, 255)`
 - [ ] GET `/` button `Join the waitlist` computed `border-radius` is `10px`
 - [ ] GET `/` textbox `Email` computed `border-top-color` is `rgb(226, 232, 240)`
