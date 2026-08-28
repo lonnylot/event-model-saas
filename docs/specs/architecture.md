@@ -22,7 +22,7 @@ A Cloudflare Worker serves signed-out and team/admin HTML, the editor canvas pag
 | Domain | Custom domain `event-model.lonnylot.com` on zone `lonnylot.com` |
 | Metadata | D1 |
 | Document body | R2 object `models/{id}.eventmodel` (current JSON only) |
-| Mail | Cloudflare Email binding. From `auth@event-model.lonnylot.com` (display name `Event Model`). Admin notify to `SITE_ADMIN_EMAIL`. |
+| Mail | Cloudflare Email binding. From `auth@event-model.lonnylot.com` (display name `Event Model`). Admin notify to `SITE_ADMIN_EMAIL` (unknown login and waitlist). |
 | Front end | Worker HTML plus `public/` CSS for Login, 404, expired link, and signed-in team/admin screens. Editor canvas is custom timeline TypeScript (no xyflow/React Flow) matching the Mac layout; canvas styling stays later. |
 | Document language | `.eventmodel` schema v1, same as the Mac app |
 | Tests | Vitest (unit) + Playwright (flows) + GitHub Actions |

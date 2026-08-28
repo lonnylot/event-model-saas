@@ -13,7 +13,7 @@ export async function joinWaitlist(
   await runtime.mail.send({
     to: runtime.siteAdminEmail,
     from: runtime.authFrom,
-    subject: "Waitlist",
+    subject: "Waitlist request",
     text: email,
   });
 }

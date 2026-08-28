@@ -87,7 +87,14 @@ describe("waitlist", () => {
     expect(notify).toBeDefined();
     expect(notify?.text).toContain("wait@example.com");
   });
+
+  it("Waitlist mail subject is `Waitlist request`", async () => {
+    const { env, sent } = authEnv();
+    await handleRequest(waitlistPost("wait@example.com"), env);
+    expect(sent[0]?.subject).toBe("Waitlist request");
+  });
 });
+
 
 
 
