@@ -135,3 +135,40 @@ test("GET `/login` without a Session, the link `Event Model` has `href` `/`", as
     page.getByRole("link", { name: "Event Model", exact: true }),
   ).toHaveAttribute("href", "/");
 });
+
+test("GET `/` without a Session does not show a button whose accessible name is `Email me a link`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByRole("button", { name: "Email me a link", exact: true }),
+  ).toHaveCount(0);
+});
+
+test("GET `/` without a Session does not show a control whose accessible name is `Sign up`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  for (const role of [
+    "button",
+    "link",
+    "checkbox",
+    "radio",
+    "switch",
+    "menuitem",
+    "menuitemcheckbox",
+    "menuitemradio",
+    "option",
+    "tab",
+    "combobox",
+    "textbox",
+    "searchbox",
+    "slider",
+    "spinbutton",
+    "treeitem",
+  ] as const) {
+    await expect(
+      page.getByRole(role, { name: "Sign up", exact: true }),
+    ).toHaveCount(0);
+  }
+});

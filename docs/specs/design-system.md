@@ -38,7 +38,8 @@ Paper workshop. Off-white page, ink text, hairline rules. Not a gray SaaS dashbo
 
 | Screen | Path |
 |--------|------|
-| Login | GET `/` |
+| Landing | GET `/` |
+| Login | GET `/login` |
 | Not found | GET unknown document path |
 | Expired link | GET `/api/auth/consume` used or expired |
 | App | GET `/app` when not redirected |

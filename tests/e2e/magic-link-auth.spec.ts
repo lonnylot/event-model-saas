@@ -47,7 +47,7 @@ test("After consuming the magic-link from that submission, `/app` shows `SITE_AD
   page,
   request,
 }) => {
-  await page.goto("/");
+  await page.goto("/login");
   await page.getByRole("textbox", { name: "Email", exact: true }).fill("lonny@lonnylot.com");
   await page.getByRole("button", { name: "Email me a link", exact: true }).click();
   await expect(

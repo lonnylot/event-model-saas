@@ -39,6 +39,6 @@ Event Model
 
 ## Out of scope
 
-Magic-link login, email field, D1, R2, teams, editor canvas. GET `/` heading is [public-face.md](./public-face.md). Paper tokens, favicon, Open Graph, stylesheet, and Button primary on Login `Email me a link` are [visual-shell.md](./visual-shell.md). Card stays later.
+Magic-link login, email field, D1, R2, teams, editor canvas. GET `/` heading, landing copy, and Login Button primary are [public-face.md](./public-face.md). Favicon, stylesheet, `og:image`, and `og:title` are [visual-shell.md](./visual-shell.md).
 
 ## Restates

@@ -17,8 +17,8 @@ GET `/` is the login form. A visitor cannot tell what Event Model is. Paper-work
 - [x] GET `/` without a Session shows a link whose accessible name is `Sign in`
 - [x] GET `/` without a Session, a link `Sign in` has `href` `/login`
 - [ ] GET `/` without a Session does not show a link whose accessible name is `Open app`
-- [ ] GET `/` without a Session does not show a button whose accessible name is `Email me a link`
-- [ ] GET `/` without a Session does not show a control whose accessible name is `Sign up`
+- [x] GET `/` without a Session does not show a button whose accessible name is `Email me a link`
+- [x] GET `/` without a Session does not show a control whose accessible name is `Sign up`
 - [ ] GET `/` without a Session shows a heading whose accessible name is `The model lives with the team`
 - [ ] GET `/` without a Session shows the text `Here the Event Model belongs to a Team.`
 - [ ] GET `/` without a Session shows a heading whose accessible name is `A timeline of slices`
