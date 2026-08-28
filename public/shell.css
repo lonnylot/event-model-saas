@@ -3,6 +3,9 @@ body.login {
   color: #0F172A;
   font-family: ui-sans-serif, system-ui, sans-serif;
 }
+body.login header {
+  border-bottom-color: #E2E8F0;
+}
 body.landing {
   background-color: #FFFFFF;
   color: #0F172A;

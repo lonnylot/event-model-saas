@@ -23,7 +23,7 @@ Public pages have copy and body colors only. Signed-in pages are paper cream. Th
 - [x] GET `/` form `waitlist-form` computed `border-radius` is `10px`
 - [x] GET `/` form `waitlist-form` computed `max-width` is `384px`
 - [x] GET `/login` `body` computed `font-family` includes `system-ui`
-- [ ] GET `/login` `header` computed `border-bottom-color` is `rgb(226, 232, 240)`
+- [x] GET `/login` `header` computed `border-bottom-color` is `rgb(226, 232, 240)`
 - [ ] GET `/login` link `Event Model` computed `color` is `rgb(15, 118, 110)`
 - [ ] GET `/login` textbox `Email` computed `border-top-color` is `rgb(226, 232, 240)`
 - [ ] GET `/login` textbox `Email` computed `border-radius` is `10px`
