@@ -33,7 +33,7 @@ Signed-in team/admin leftover (until a later slice):
 | `radius` | `8px` |
 | `measure` | `24rem` |
 
-`ochre` and `terracotta` are the mark on `favicon.png` and `og.png`. Sticky-note lane colors on the canvas stay later.
+Sticky-note lane colors on the canvas stay later. `ochre` and `terracotta` are leftover paper tokens, not the public mark.
 
 ## Primitives
 
