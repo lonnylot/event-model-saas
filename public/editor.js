@@ -1794,6 +1794,7 @@ export function bindEditor(root) {
         if (timelineEl && entry.connection) {
           const p = root.createElement("p");
           p.textContent = "Command → Event Happened";
+          p.setAttribute("data-kind", "connection");
           p.dataset.id = entry.connection.id;
           const before = [...timelineEl.querySelectorAll("p")][entry.index];
           if (before) timelineEl.insertBefore(p, before);
@@ -2531,10 +2532,7 @@ export function bindEditor(root) {
         target.dataset.kind === "EVENT"
       ) {
         const timeline = root.querySelector('[aria-label="Timeline"]');
-        if (
-          timeline &&
-          !timeline.textContent?.includes("Command → Event Happened")
-        ) {
+        if (timeline) {
           const line = root.createElement("p");
           line.textContent = "Command → Event Happened";
           line.setAttribute("data-kind", "connection");
