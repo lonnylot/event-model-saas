@@ -10,7 +10,7 @@ Canvas shipped ⌥⌘←, Actor drag, Slice Backspace, scroll pan, and undo of N
 
 - [x] After clicking `New Slice` twice, dragging the first `New Slice` listitem onto the last `New Slice` listitem sets the first Slice `id` to the Slice that was last
 - [x] After clicking `New Slice` twice then `Add Command`, dragging the Timeline `Command` listitem onto the first Slices `New Slice` listitem sets the first Slice `commands` to one Command
-- [ ] After clicking `New Slice` twice then `Add Command`, dragging the Timeline `Command` listitem onto the first Slices `New Slice` listitem sets the last Slice `commands` to `[]`
+- [x] After clicking `New Slice` twice then `Add Command`, dragging the Timeline `Command` listitem onto the first Slices `New Slice` listitem sets the last Slice `commands` to `[]`
 - [ ] After clicking `New Slice` then `Add Command`, pressing ⌘Z does not show a listitem whose accessible name is `Command`
 - [ ] After clicking `New Slice` then `Add Command`, pressing ⌘Z shows a listitem whose accessible name is `New Slice`
 - [ ] Pressing ⌘+ on the Event Model page sets the Timeline `style.transform` to a value that includes `scale(1.25)`

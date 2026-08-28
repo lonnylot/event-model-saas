@@ -8,6 +8,7 @@ export function moveCommandToSlice(model, commandId, sliceId) {
     const index = slice.commands.findIndex((item) => item.id === commandId);
     if (index >= 0) {
       command = slice.commands[index];
+      slice.commands.splice(index, 1);
       break;
     }
   }
