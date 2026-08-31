@@ -693,3 +693,17 @@ test("After clicking `New Slice` then `Add Automation` on that page, the Timelin
       .getByRole("listitem", { name: "Automation", exact: true }),
   ).toHaveCSS("border-top-color", "rgb(124, 58, 237)");
 });
+
+test("After clicking `New Slice` then `Add Actor` on that page, the Timeline listitem `Actor` computed `border-radius` is `10px`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Actor", exact: true }).click();
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Actor", exact: true }),
+  ).toHaveCSS("border-radius", "10px");
+});
