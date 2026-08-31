@@ -161,4 +161,5 @@ li[data-kind="command"] {
 }
 li[data-kind="event"] {
   background-color: #FFEDD5;
+  border-top-color: #EA580C;
 }
