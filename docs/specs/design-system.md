@@ -2,11 +2,15 @@
 
 Status: released
 
-Tokens and primitives for Event Model SaaS HTML including the editor canvas. [features/product-visual.md](./features/product-visual.md) applies them. This file does not own feature acceptance criteria.
+Tokens and primitives for Event Model SaaS HTML including the editor canvas. [features/product-visual.md](./features/product-visual.md) applies token values. [features/designed-surfaces.md](./features/designed-surfaces.md) applies composed look. This file does not own feature acceptance criteria.
 
 ## Look
 
-Contemporary SaaS on every HTML surface (`/`, `/login`, 404, expired, `/app`, team/admin, editor): light canvas, slate text, teal accent. Paper workshop is leftover unused.
+Contemporary SaaS on every HTML surface (`/`, `/login`, 404, expired, `/app`, team/admin, editor): light canvas, slate text, teal accent, spaced layout, not a UA-default stack. Paper workshop is leftover unused. Spacing, type, and layout are iterated (`visual-design`, [ADR 0001](../adr/0001-look-iteration.md)); token values stay this file.
+
+## Accessibility
+
+HTML meets WCAG 2.2 AA for contrast of these token pairs (`ink` on `canvas`, `on-accent` on `accent`) and a visible `:focus-visible` affordance. Bar: [ADR 0001](../adr/0001-look-iteration.md).
 
 ## Tokens
 

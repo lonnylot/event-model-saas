@@ -45,6 +45,8 @@ Waitlist `does not create a Person` / `does not set a Session cookie` on a POST 
 
 A computed-color AC is unproven by stylesheet `toContain` — Playwright `toHaveCSS` of the unique declaration, or uncheck. Playwright `toHaveCSS` of a UA default (`input` white / Email Field canvas fill) or a color inherited from a parent/body AC (Landing heading ink after public-face `body.landing`; editor `Slices` after this slice's `body.app-editor` ink) is existing behavior — drop the bullet (`keeping-specs-current`).
 
+Look of named screens is `visual-design`. Do not prove look as a pile of computed rgb() ACs. Prove names, flows, token *use*, a11y, and that unique look rules exist (composed layout that is not the UA default: `display` flex, `padding-top` not `0px`).
+
 A hosted Worker path is unproven by a handler unit test when `run_worker_first` can be deleted without failing that test.
 
 Click/drag criteria are unproven by a unit call production never makes — prove the in-memory document after the click, or Playwright `dragTo` / the editor mouseup path.

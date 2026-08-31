@@ -122,7 +122,7 @@ Screens: Landing, Login, Not found, Expired link, App, Team picker, Team, Teams 
 
 ## Out of scope
 
-Webfont files. Dark mode. Public signup. Site admin waitlist table UI. Mac window chrome. Editing behavior (New Slice, Save, drag, inspect) stays the released editor specs.
+Webfont files. Dark mode. Public signup. Site admin waitlist table UI. Mac window chrome. Editing behavior (New Slice, Save, drag, inspect) stays the released editor specs. Composed look (spacing, AppBar flex, Card padding, viewport, focus-visible, contrast proofs) is [designed-surfaces.md](./designed-surfaces.md).
 
 ## Restates
 
@@ -130,7 +130,7 @@ Webfont files. Dark mode. Public signup. Site admin waitlist table UI. Mac windo
 - [visual-shell.md](./visual-shell.md) — Page background and `ink` color on `/app`, picker, team, and Teams admin are `canvas` `rgb(255, 255, 255)` and `ink` `rgb(15, 23, 42)`, not paper. AppBar `Event Model` href `/app` stays that file. Editor canvas stylesheet and sticky-note colors are this slice.
 - [teams-and-invites.md](./teams-and-invites.md) — Team name, Create team, Teams admin, picker `Your teams`, team heading stay that file. AppBar `Event Model` href `/app` stays [visual-shell.md](./visual-shell.md). Page `canvas` background and `ink` color on `/app`, picker, team, and Teams admin are this slice.
 - [magic-link-auth.md](./magic-link-auth.md) — Expired heading and signed-in email / Sign out stay that file. Expired Page `canvas`/`ink` and expired `Sign in` are [public-face.md](./public-face.md). AppBar on `/app` that is not redirected stays [visual-shell.md](./visual-shell.md).
-- [design-system.md](../design-system.md) — One contemporary SaaS look on public HTML, signed-in HTML, and the editor. Page `type` on every listed screen, and Page `canvas`/`ink` on signed-in `/app`, picker, team, Teams admin, and Editor, are this slice. Public Page `canvas`/`ink` are [public-face.md](./public-face.md). Paper tokens are leftover unused. Sticky-note lane colors are this slice. Editor is a screen in that file.
-- [product.md](../product.md) — Team/admin HTML and editor chrome use contemporary SaaS ([design-system.md](../design-system.md), this slice), not paper workshop.
+- [design-system.md](../design-system.md) — Token values and primitive inventory on public HTML, signed-in HTML, and the editor stay this slice. Composed look (spacing, AppBar flex, Card padding, viewport, focus-visible) is [designed-surfaces.md](./designed-surfaces.md). Page `type` on every listed screen, and Page `canvas`/`ink` on signed-in `/app`, picker, team, Teams admin, and Editor, are this slice. Public Page `canvas`/`ink` are [public-face.md](./public-face.md). Paper tokens are leftover unused. Sticky-note lane colors are this slice. Editor is a screen in that file.
+- [product.md](../product.md) — Team/admin HTML and editor chrome use contemporary SaaS token values ([design-system.md](../design-system.md), this slice), not paper workshop. Composed look is [designed-surfaces.md](./designed-surfaces.md).
 - [architecture.md](../architecture.md) — Worker HTML plus `public/` CSS includes the editor canvas page. Tokens in `design-system.md` apply on `/`, `/login`, 404, expired, `/app`, and `/app/teams/{id}/models/{mid}`.
 - [editor-shell.md](./editor-shell.md) — Out of scope no longer owns canvas styling; this slice owns stylesheet, AppBar, Timeline background, Inspector border, and block fills on that page. New Slice, zoom, and dirty copy stay that file.
