@@ -88,6 +88,9 @@ body.app-none header {
 body.app-none a[href="/app"] {
   color: #0F766E;
 }
+#create-team button {
+  background-color: #0F766E;
+}
 body.app-guest {
   background-color: #F7F4EE;
 }

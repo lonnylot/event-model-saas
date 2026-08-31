@@ -70,3 +70,13 @@ test("GET `/app` as site admin with no teams, the link `Event Model` computed `c
     page.getByRole("link", { name: "Event Model", exact: true }),
   ).toHaveCSS("color", "rgb(15, 118, 110)");
 });
+
+test("GET `/app` as site admin with no teams, the button `Create team` computed `background-color` is `rgb(15, 118, 110)`", async ({
+  page,
+  request,
+}) => {
+  await consumeAdmin(page, request);
+  await expect(
+    page.getByRole("button", { name: "Create team", exact: true }),
+  ).toHaveCSS("background-color", "rgb(15, 118, 110)");
+});
