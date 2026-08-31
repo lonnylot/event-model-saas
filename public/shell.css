@@ -126,6 +126,7 @@ body.app-team {
 body.app-admin {
   background-color: #FFFFFF;
   color: #0F172A;
+  font-family: ui-sans-serif, system-ui, sans-serif;
 }
 form.invite button {
   background-color: #0F766E;
