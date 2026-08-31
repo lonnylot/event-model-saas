@@ -115,6 +115,7 @@ body.app-team {
 #create-model button {
   background-color: #0F766E;
   color: #FFFFFF;
+  border-radius: 10px;
 }
 body.app-admin {
   background-color: #F7F4EE;

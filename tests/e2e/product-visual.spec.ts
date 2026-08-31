@@ -356,3 +356,13 @@ test("GET `/app/teams/{id}` as a member, the button `Create model` computed `col
     page.getByRole("button", { name: "Create model", exact: true }),
   ).toHaveCSS("color", "rgb(255, 255, 255)");
 });
+
+test("GET `/app/teams/{id}` as a member, the button `Create model` computed `border-radius` is `10px`", async ({
+  page,
+  request,
+}) => {
+  await consumeAdminOnTeam(page, request);
+  await expect(
+    page.getByRole("button", { name: "Create model", exact: true }),
+  ).toHaveCSS("border-radius", "10px");
+});
