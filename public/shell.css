@@ -169,4 +169,5 @@ li[data-kind="readmodel"] {
 }
 li[data-kind="automation"] {
   background-color: #EDE9FE;
+  border-top-color: #7C3AED;
 }

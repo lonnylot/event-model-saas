@@ -79,7 +79,7 @@ Public pages have copy and body colors only. Signed-in pages are paper cream. Th
 - [x] After clicking `New Slice` then `Add Read Model` on that page, the Timeline listitem `Read Model` computed `background-color` is `rgb(220, 252, 231)`
 - [x] After clicking `New Slice` then `Add Read Model` on that page, the Timeline listitem `Read Model` computed `border-top-color` is `rgb(22, 163, 74)`
 - [x] After clicking `New Slice` then `Add Automation` on that page, the Timeline listitem `Automation` computed `background-color` is `rgb(237, 233, 254)`
-- [ ] After clicking `New Slice` then `Add Automation` on that page, the Timeline listitem `Automation` computed `border-top-color` is `rgb(124, 58, 237)`
+- [x] After clicking `New Slice` then `Add Automation` on that page, the Timeline listitem `Automation` computed `border-top-color` is `rgb(124, 58, 237)`
 - [ ] After clicking `New Slice` then `Add Actor` on that page, the Timeline listitem `Actor` computed `border-radius` is `10px`
 
 ## Domain terms
