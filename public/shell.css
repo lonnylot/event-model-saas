@@ -159,3 +159,6 @@ li[data-kind="command"] {
   background-color: #DBEAFE;
   border-top-color: #2563EB;
 }
+li[data-kind="event"] {
+  background-color: #FFEDD5;
+}
