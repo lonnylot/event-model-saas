@@ -482,6 +482,17 @@ test("GET `/app/admin/teams` as site admin, the button `Send invite` computed `c
   ).toHaveCSS("color", "rgb(255, 255, 255)");
 });
 
+test("GET `/app/admin/teams` as site admin, the button `Send invite` computed `border-radius` is `10px`", async ({
+  page,
+  request,
+}) => {
+  await consumeAdminOnTeam(page, request);
+  await page.goto("/app/admin/teams");
+  await expect(
+    page.getByRole("button", { name: "Send invite", exact: true }),
+  ).toHaveCSS("border-radius", "10px");
+});
+
 test("GET `/app/admin/teams` as site admin, the textbox `Invite email` computed `border-top-color` is `rgb(226, 232, 240)`", async ({
   page,
   request,

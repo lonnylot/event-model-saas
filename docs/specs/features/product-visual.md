@@ -66,6 +66,7 @@ Public pages have copy and body colors only. Signed-in pages are paper cream. Th
 - [x] GET `/app/admin/teams` as site admin `body` computed `font-family` includes `system-ui`
 - [x] GET `/app/admin/teams` as site admin, the button `Send invite` computed `background-color` is `rgb(15, 118, 110)`
 - [x] GET `/app/admin/teams` as site admin, the button `Send invite` computed `color` is `rgb(255, 255, 255)`
+- [x] GET `/app/admin/teams` as site admin, the button `Send invite` computed `border-radius` is `10px`
 - [x] GET `/app/admin/teams` as site admin, the textbox `Invite email` computed `border-top-color` is `rgb(226, 232, 240)`
 - [x] GET `/app/teams/{id}/models/{mid}` as a member has a `link[rel="stylesheet"]` whose `href` is `/shell.css`
 - [x] GET `/app/teams/{id}/models/{mid}` as a member `body` computed `background-color` is `rgb(255, 255, 255)`
@@ -106,7 +107,7 @@ Event Model, Person, Site admin, Session, Team, Slice, Actor, Command, Event, Re
 
 ## UI
 
-Screens: Landing, Login, Not found, Expired link, App, Team picker, Team, Teams admin, Editor. Primitives this slice composes: Page (`type` on Landing, Login, Not found, Expired link, site-admin no-teams `/app`, guest `/app`, picker, team, Teams admin, and Editor; `canvas` background on signed-in `/app` (site-admin no-teams, guest, picker), team, Teams admin, and Editor; `ink` text on site-admin no-teams `/app`, guest `/app`, picker, team, Teams admin, and Editor). Public Page `canvas` background and `ink` text are [public-face.md](./public-face.md). AppBar, Marketing header, Card, Field (`line` border and `radius`; not `canvas` fill), Button primary (`accent` / `on-accent` / `radius` on `Email me a link`, `Join the waitlist`, `Create team`, `Create model`, `Save`, expired `Sign in`; `accent` / `on-accent` on `Send invite`), sticky-note block fills. Inventory: [design-system.md](../design-system.md).
+Screens: Landing, Login, Not found, Expired link, App, Team picker, Team, Teams admin, Editor. Primitives this slice composes: Page (`type` on Landing, Login, Not found, Expired link, site-admin no-teams `/app`, guest `/app`, picker, team, Teams admin, and Editor; `canvas` background on signed-in `/app` (site-admin no-teams, guest, picker), team, Teams admin, and Editor; `ink` text on site-admin no-teams `/app`, guest `/app`, picker, team, Teams admin, and Editor). Public Page `canvas` background and `ink` text are [public-face.md](./public-face.md). AppBar, Marketing header, Card, Field (`line` border and `radius`; not `canvas` fill), Button primary (`accent` / `on-accent` / `radius` on `Email me a link`, `Join the waitlist`, `Create team`, `Create model`, `Send invite`, `Save`, expired `Sign in`), sticky-note block fills. Inventory: [design-system.md](../design-system.md).
 
 ## Assumptions
 
@@ -124,9 +125,9 @@ Webfont files. Dark mode. Public signup. Site admin waitlist table UI. Mac windo
 
 ## Restates
 
-- [public-face.md](./public-face.md) — Card, Field, font `type`, `radius`, and Landing `Join the waitlist` Button primary are this slice. Login Button primary colors on `Email me a link` stay that file; `radius` on that button is this slice. Signed-in restyle and editor styling are this slice, not a later slice. Dark mode, webfont files, public signup, and waitlist table UI stay that file's Out of scope.
+- [public-face.md](./public-face.md) — Public Page `canvas` background and `ink` text stay that file. Card, Field (`line` border and `radius`; not `canvas` fill), font `type`, `radius`, and Landing `Join the waitlist` Button primary are this slice. Login Button primary colors on `Email me a link` stay that file; `radius` on that button is this slice. Signed-in restyle and editor styling are this slice, not a later slice. Dark mode, webfont files, public signup, and waitlist table UI stay that file's Out of scope.
 - [visual-shell.md](./visual-shell.md) — Page background and `ink` color on `/app`, picker, team, and Teams admin are `canvas` `rgb(255, 255, 255)` and `ink` `rgb(15, 23, 42)`, not paper. AppBar `Event Model` href `/app` stays that file. Editor canvas stylesheet and sticky-note colors are this slice.
-- [design-system.md](../design-system.md) — One contemporary SaaS look on public HTML, signed-in HTML, and the editor. Paper tokens are leftover unused. Sticky-note lane colors are this slice. Editor is a screen in that file.
+- [design-system.md](../design-system.md) — One contemporary SaaS look on public HTML, signed-in HTML, and the editor. Page `type` on every listed screen, and Page `canvas`/`ink` on signed-in `/app`, picker, team, Teams admin, and Editor, are this slice. Public Page `canvas`/`ink` are [public-face.md](./public-face.md). Paper tokens are leftover unused. Sticky-note lane colors are this slice. Editor is a screen in that file.
 - [product.md](../product.md) — Team/admin HTML and editor chrome use contemporary SaaS ([design-system.md](../design-system.md), this slice), not paper workshop.
 - [architecture.md](../architecture.md) — Worker HTML plus `public/` CSS includes the editor canvas page. Tokens in `design-system.md` apply on `/`, `/login`, 404, expired, `/app`, and `/app/teams/{id}/models/{mid}`.
 - [editor-shell.md](./editor-shell.md) — Out of scope no longer owns canvas styling; this slice owns stylesheet, AppBar, Timeline background, Inspector border, and block fills on that page. New Slice, zoom, and dirty copy stay that file.
