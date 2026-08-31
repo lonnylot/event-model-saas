@@ -475,3 +475,13 @@ test("GET `/app/teams/{id}/models/{mid}` as a member `header` computed `border-b
     "rgb(226, 232, 240)",
   );
 });
+
+test("GET `/app/teams/{id}/models/{mid}` as a member, the button `Save` computed `background-color` is `rgb(15, 118, 110)`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await expect(
+    page.getByRole("button", { name: "Save", exact: true }),
+  ).toHaveCSS("background-color", "rgb(15, 118, 110)");
+});
