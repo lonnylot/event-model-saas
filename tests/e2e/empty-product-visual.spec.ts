@@ -80,3 +80,13 @@ test("GET `/app` as site admin with no teams, the button `Create team` computed 
     page.getByRole("button", { name: "Create team", exact: true }),
   ).toHaveCSS("background-color", "rgb(15, 118, 110)");
 });
+
+test("GET `/app` as site admin with no teams, the button `Create team` computed `color` is `rgb(255, 255, 255)`", async ({
+  page,
+  request,
+}) => {
+  await consumeAdmin(page, request);
+  await expect(
+    page.getByRole("button", { name: "Create team", exact: true }),
+  ).toHaveCSS("color", "rgb(255, 255, 255)");
+});
