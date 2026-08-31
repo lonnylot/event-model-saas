@@ -8,7 +8,7 @@ This file owns stack, modules, and seams. It does not own feature acceptance cri
 
 ## Spec tree
 
-Specs live in `docs/specs/` (this file, `product.md`, `design-system.md`, and other system specs at that root; features in `docs/specs/features/`). ADRs live in `docs/adr/`. The repo has no `docs/superpowers/` directory. Feature implementation is `releasing-a-spec` on a `feat/<slug>` or `fix/<slug>` branch. There is no parallel implementation-plan directory. Tokens live in `design-system.md`. [features/public-face.md](./features/public-face.md) applies public tokens on `/`, `/login`, 404, and expired. [features/product-visual.md](./features/product-visual.md) applies type, Card, Field, Button primary, signed-in Page, and editor canvas styling.
+Specs live in `docs/specs/` (this file, `product.md`, `design-system.md`, and other system specs at that root; features in `docs/specs/features/`). ADRs live in `docs/adr/`. The repo has no `docs/superpowers/` directory. Feature implementation is `releasing-a-spec` on a `feat/<slug>` or `fix/<slug>` branch. There is no parallel implementation-plan directory. Tokens live in `design-system.md`. [features/public-face.md](./features/public-face.md) applies public tokens on `/`, `/login`, 404, and expired. [features/product-visual.md](./features/product-visual.md) applies type, Card, Field, Button primary, signed-in Page, and editor canvas styling. [features/designed-surfaces.md](./features/designed-surfaces.md) applies composed look (spacing, AppBar flex, Card padding, viewport, focus-visible).
 
 ## Outcome
 

@@ -6,7 +6,7 @@ Spec-loop owns **after the PR is open**: a missing or weaker test found in revie
 
 ## Look pass
 
-A `visual-design` look pass is one slice per named screen (or one stylesheet several named screens mount, plus the shell it left). Not one commit per CSS property. Look-may-grow ACs (new heading/image/static page) land in that screen's look-pass commit.
+A `visual-design` look pass is one slice per named screen (or one stylesheet several named screens mount, plus the shell it left). Viewport meta copied onto login / expired / guest `/app` / `shell` / editor is that shell — unique proof is GET `/`; not a commit or AC per HTML file. Not one commit per CSS property. Look-may-grow ACs (new heading/image/static page) land in that screen's look-pass commit.
 
 ## Independently revertible here
 

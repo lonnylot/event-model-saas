@@ -59,3 +59,4 @@ Webfont files. Dark mode. Public signup. Site admin waitlist table UI. Mac windo
 - [visual-shell.md](./visual-shell.md) — AppBar wordmark hrefs stay that file. AppBar layout (flex, padding) is this slice.
 - [design-system.md](../design-system.md) — Tokens and primitive inventory stay that file. Look is iterated under [ADR 0001](../../adr/0001-look-iteration.md); this slice applies composed layout. Accessibility bar is that ADR.
 - [product.md](../product.md) — Contemporary SaaS on public, team/admin, and editor HTML includes composed look ([ADR 0001](../../adr/0001-look-iteration.md), this slice), not token checkboxes alone.
+- [architecture.md](../architecture.md) — Public-face still applies public tokens; product-visual still applies type, Card, Field, Button primary, signed-in Page, and editor canvas styling. Composed look (spacing, AppBar flex, Card padding, viewport, focus-visible) is this slice.
