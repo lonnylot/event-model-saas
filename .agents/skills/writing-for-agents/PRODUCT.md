@@ -1,0 +1,28 @@
+# This product (Event Model SaaS)
+
+Load with `writing-for-agents`. Portable procedure is `SKILL.md` (spec-loop).
+
+## Homes here
+
+- Specs: `docs/specs/` (system) and `docs/specs/features/` (slices). ADRs: `docs/adr/`
+- Product catalogs for a portable skill: `.agents/skills/<name>/PRODUCT.md` (agents: `.agents/agents/<name>/PRODUCT.md`)
+- Do not add a parallel vendor directory (`docs/superpowers/` or any other spec/plan tree)
+
+## Spec-loop vs this product
+
+Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model catalogs, host names, or weaker-reading *instances* to those files.
+
+- A miss that is a **new general rule** missing from spec-loop: contribute it upstream, or one portable sentence if you must ship it this HEAD (it will need re-fold on the next spec-loop copy).
+- A miss that is a **product instance** (that Slice, fromKind/toKind, R2/D1 stored body, Inspector Name, leftover `product.md` phrases): the matching `PRODUCT.md`.
+- `post-merge-improver`: product-instance harvest → `PRODUCT.md`. Do not add a second copy of a spec-loop rule.
+- Next spec-loop sync: copy `SKILL.md` / `AGENT.md` from spec-loop; leave `PRODUCT.md` in place. Spec-loop wins where a `PRODUCT.md` sentence *conflicts* with the portable skill.
+
+## When a spec moves a skill (this product)
+
+| Spec change | Skill + `PRODUCT.md` |
+|-------------|----------------------|
+| Extra visible chrome without an AC; extra R2/D1 without stored-body AC; 303 vs shows; `run_worker_first` vs Compute row | `keeping-specs-current` |
+| Accessible name **is** X / Playwright substring; unit `toContain(">X<")` | `testing`, `playwright-e2e` |
+| Spec tree location / vendor plan dirs / `docs/superpowers/` | this skill, `keeping-specs-current` |
+| Architecture adapter constructed only under a test flag / injected `env.documents` | `testing`, `codebase-design`, `keeping-specs-current` |
+| Independently revertible fromKind vs toKind / GET already hydrates | `logical-commits` |

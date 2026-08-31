@@ -2,9 +2,8 @@
 name: verification-before-completion
 description: >
   Use when about to claim work is complete, fixed, passing, or released,
-  before a commit or pull request, whenever a status claim needs
-  evidence, or when green test would not prove ACs whose Playwright
-  files two-dot vs default deleted.
+  before a commit or pull request, or whenever a status claim needs
+  evidence.
 ---
 
 # Verification before completion
@@ -29,7 +28,7 @@ Skip a step = the claim is false.
 
 | Claim | Fresh evidence |
 |-------|----------------|
-| Tests pass | Test script, 0 failures. Two-dot vs default deleting a released Playwright file leaves those ACs unproven. |
+| Tests pass | Test script, 0 failures |
 | Types / lint clean | Those scripts, 0 errors |
 | Bug fixed | The reproduction test fails without the fix, passes with it |
 | CI green | Checks on **this** HEAD |
