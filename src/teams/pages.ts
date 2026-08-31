@@ -12,7 +12,7 @@ function shell(
   const bodyClass = extras.bodyClass ? ` class="${extras.bodyClass}"` : "";
   const head = extras.head ?? "";
   const lead = extras.lead ?? "";
-  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">${head}</head><body${bodyClass}><main>${lead}${inner}<p>${email}</p>${admin}<form method="post" action="/api/auth/sign-out"><button type="submit">Sign out</button></form></main><script src="/teams.js"></script></body></html>`;
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">${head}</head><body${bodyClass}>${lead}<main>${inner}<p>${email}</p>${admin}<form method="post" action="/api/auth/sign-out"><button type="submit">Sign out</button></form></main><script src="/teams.js"></script></body></html>`;
 }
 
 export function noTeamsAdminHtml(email: string): string {
@@ -20,7 +20,7 @@ export function noTeamsAdminHtml(email: string): string {
     email,
     true,
     `<form method="post" action="/api/teams" id="create-team"><label for="team-name">Team name</label><input id="team-name" name="name" required /><button type="submit">Create team</button></form>`,
-    { head: `<link rel="stylesheet" href="/shell.css">`, bodyClass: "app-none", lead: `<header><p><a href="/app">Event Model</a></p></header>` },
+    { head: `<link rel="stylesheet" href="/shell.css">`, bodyClass: "app-none", lead: `<header><a href="/app">Event Model</a></header>` },
   );
 }
 
@@ -121,7 +121,7 @@ export function modelPageHtml(
       )
       .map(() => '<p data-kind="connection">Event Happened → Read Model</p>'),
   ].join("");
-  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="/shell.css"></head><body class="app-editor"><main><header><p>${teamName}</p></header><h1>${title}</h1><h2>Slices</h2><button type="button">New Slice</button><button type="button">Add Actor</button><button type="button">Add Command</button><button type="button">Add Event</button><button type="button">Add Read Model</button><button type="button">Add Automation</button><ul>${items}</ul><section aria-label="Timeline"><ul>${timelineItems}</ul>${connectionCopy}</section><section aria-label="Inspector"></section><button type="button">Zoom in</button><button type="button">Zoom out</button><button type="button">Reset zoom</button><form id="save-model" method="post" action="/api/models/${modelId}"><input type="hidden" name="version" value="${version}" /><button type="submit">Save</button></form><form id="export-model" method="get" action="/api/models/${modelId}/export"><button type="submit">Export</button></form><p>${email}</p><form method="post" action="/api/auth/sign-out"><button type="submit">Sign out</button></form></main><script type="application/json" id="event-model-document">${documentJson}</script><script src="/teams.js"></script><script type="module" src="/editor.js"></script></body></html>`;
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="/shell.css"></head><body class="app-editor"><header><p>${teamName}</p></header><main><h1>${title}</h1><h2>Slices</h2><button type="button">New Slice</button><button type="button">Add Actor</button><button type="button">Add Command</button><button type="button">Add Event</button><button type="button">Add Read Model</button><button type="button">Add Automation</button><ul>${items}</ul><section aria-label="Timeline"><ul>${timelineItems}</ul>${connectionCopy}</section><section aria-label="Inspector"></section><button type="button">Zoom in</button><button type="button">Zoom out</button><button type="button">Reset zoom</button><form id="save-model" method="post" action="/api/models/${modelId}"><input type="hidden" name="version" value="${version}" /><button type="submit">Save</button></form><form id="export-model" method="get" action="/api/models/${modelId}/export"><button type="submit">Export</button></form><p>${email}</p><form method="post" action="/api/auth/sign-out"><button type="submit">Sign out</button></form></main><script type="application/json" id="event-model-document">${documentJson}</script><script src="/teams.js"></script><script type="module" src="/editor.js"></script></body></html>`;
 }
 
 export function adminTeamsHtml(email: string, teams: Team[]): string {

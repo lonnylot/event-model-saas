@@ -9,20 +9,20 @@ Public and signed-in HTML apply tokens as isolated computed properties. Landing 
 ## Acceptance criteria
 
 - [x] GET `/` has a `meta[name="viewport"]` whose `content` includes `width=device-width`
-- [ ] GET `/` `header` computed `display` is `flex`
-- [ ] GET `/` `header` computed `padding-top` is not `0px`
-- [ ] GET `/` `main` computed `padding-top` is not `0px`
-- [ ] GET `/` form `waitlist-form` computed `padding-top` is not `0px`
-- [ ] GET `/login` `header` computed `display` is `flex`
-- [ ] GET `/login` `header` computed `padding-top` is not `0px`
-- [ ] GET `/login` form `login` computed `padding-top` is not `0px`
-- [ ] GET `/app` as site admin with no teams `header` computed `display` is `flex`
-- [ ] GET `/app` as site admin with no teams `header` computed `padding-top` is not `0px`
-- [ ] GET `/app/teams/{id}/models/{mid}` as a member `header` computed `display` is `flex`
-- [ ] GET `/app/teams/{id}/models/{mid}` as a member `header` computed `padding-top` is not `0px`
+- [x] GET `/` `header` computed `display` is `flex`
+- [x] GET `/` `header` computed `padding-top` is not `0px`
+- [x] GET `/` `main` computed `padding-top` is not `0px`
+- [x] GET `/` form `waitlist-form` computed `padding-top` is not `0px`
+- [x] GET `/login` `header` computed `display` is `flex`
+- [x] GET `/login` `header` computed `padding-top` is not `0px`
+- [x] GET `/login` form `login` computed `padding-top` is not `0px`
+- [x] GET `/app` as site admin with no teams `header` computed `display` is `flex`
+- [x] GET `/app` as site admin with no teams `header` computed `padding-top` is not `0px`
+- [x] GET `/app/teams/{id}/models/{mid}` as a member `header` computed `display` is `flex`
+- [x] GET `/app/teams/{id}/models/{mid}` as a member `header` computed `padding-top` is not `0px`
 - [ ] Contrast of `ink` `#0F172A` on `canvas` `#FFFFFF` is at least 4.5:1
 - [ ] Contrast of `on-accent` `#FFFFFF` on `accent` `#0F766E` is at least 4.5:1
-- [ ] GET `/` link `Sign in` `:focus-visible` computed `box-shadow` is not `none`
+- [x] GET `/` link `Sign in` `:focus-visible` computed `box-shadow` is not `none`
 
 ## Domain terms
 
