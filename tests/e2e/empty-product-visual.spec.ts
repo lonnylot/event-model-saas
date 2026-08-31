@@ -33,3 +33,11 @@ test("GET `/app` as site admin with no teams `body` computed `background-color` 
     "rgb(255, 255, 255)",
   );
 });
+
+test("GET `/app` as site admin with no teams `body` computed `color` is `rgb(15, 23, 42)`", async ({
+  page,
+  request,
+}) => {
+  await consumeAdmin(page, request);
+  await expect(page.locator("body")).toHaveCSS("color", "rgb(15, 23, 42)");
+});
