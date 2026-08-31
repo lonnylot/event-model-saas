@@ -1,6 +1,6 @@
 # Designed surfaces
 
-Status: validated
+Status: released
 
 ## Problem
 
