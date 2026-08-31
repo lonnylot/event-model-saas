@@ -41,3 +41,11 @@ test("GET `/app` as site admin with no teams `body` computed `color` is `rgb(15,
   await consumeAdmin(page, request);
   await expect(page.locator("body")).toHaveCSS("color", "rgb(15, 23, 42)");
 });
+
+test("GET `/app` as site admin with no teams `body` computed `font-family` includes `system-ui`", async ({
+  page,
+  request,
+}) => {
+  await consumeAdmin(page, request);
+  await expect(page.locator("body")).toHaveCSS("font-family", /system-ui/);
+});
