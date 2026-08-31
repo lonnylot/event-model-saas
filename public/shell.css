@@ -137,6 +137,7 @@ form.invite input {
 }
 body.app-editor {
   background-color: #FFFFFF;
+  color: #0F172A;
   font-family: ui-sans-serif, system-ui, sans-serif;
 }
 body.app-editor header {

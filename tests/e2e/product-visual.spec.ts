@@ -515,6 +515,14 @@ test("GET `/app/teams/{id}/models/{mid}` as a member `body` computed `background
   );
 });
 
+test("GET `/app/teams/{id}/models/{mid}` as a member `body` computed `color` is `rgb(15, 23, 42)`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await expect(page.locator("body")).toHaveCSS("color", "rgb(15, 23, 42)");
+});
+
 test("GET `/app/teams/{id}/models/{mid}` as a member `body` computed `font-family` includes `system-ui`", async ({
   page,
   request,
