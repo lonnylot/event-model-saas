@@ -595,3 +595,17 @@ test("After clicking `New Slice` then `Add Command` on that page, the Timeline l
       .getByRole("listitem", { name: "Command", exact: true }),
   ).toHaveCSS("background-color", "rgb(219, 234, 254)");
 });
+
+test("After clicking `New Slice` then `Add Command` on that page, the Timeline listitem `Command` computed `border-top-color` is `rgb(37, 99, 235)`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Command", exact: true }),
+  ).toHaveCSS("border-top-color", "rgb(37, 99, 235)");
+});

@@ -157,4 +157,5 @@ li[data-kind="actor"] {
 }
 li[data-kind="command"] {
   background-color: #DBEAFE;
+  border-top-color: #2563EB;
 }
