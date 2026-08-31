@@ -26,15 +26,15 @@ main {
 body.app-editor main {
   padding: 0;
 }
-h1 {
+body:not(.app-editor) h1 {
   line-height: 1.15;
   margin: 0 0 0.75rem;
 }
-h2 {
+body:not(.app-editor) h2 {
   font-size: 1.25rem;
   margin: 2rem 0 0.5rem;
 }
-p {
+body:not(.app-editor) p {
   line-height: 1.6;
   margin: 0 0 0.85rem;
 }
@@ -50,8 +50,8 @@ form.invite {
   border-radius: 10px;
   max-width: 24rem;
 }
-input,
-button {
+body:not(.app-editor) input,
+body:not(.app-editor) button {
   font: inherit;
   padding: 0.65rem 0.85rem;
 }
