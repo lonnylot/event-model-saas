@@ -44,6 +44,29 @@ async function consumeAdminOnTeam(page: Page, request: APIRequestContext) {
   }
 }
 
+async function openUntitledModel(page: Page, request: APIRequestContext) {
+  await consumeAdminOnTeam(page, request);
+  const untitledBefore = await page
+    .getByRole("link", { name: "Untitled", exact: true })
+    .count();
+  await Promise.all([
+    page.waitForResponse(
+      (response) =>
+        response.url().includes("/models") &&
+        response.request().method() === "POST",
+    ),
+    page.getByRole("button", { name: "Create model", exact: true }).click(),
+  ]);
+  await expect(
+    page.getByRole("link", { name: "Untitled", exact: true }),
+  ).toHaveCount(untitledBefore + 1);
+  await page.goto("/app");
+  await page.getByRole("link", { name: "Untitled", exact: true }).last().click();
+  await expect(
+    page.getByRole("heading", { name: "Untitled", exact: true }),
+  ).toBeVisible();
+}
+
 test("GET `/` `body` computed `font-family` includes `system-ui`", async ({
   page,
 }) => {
@@ -410,4 +433,15 @@ test("GET `/app/admin/teams` as site admin, the textbox `Invite email` computed 
   await expect(
     page.getByRole("textbox", { name: "Invite email", exact: true }),
   ).toHaveCSS("border-top-color", "rgb(226, 232, 240)");
+});
+
+test('GET `/app/teams/{id}/models/{mid}` as a member has a `link[rel="stylesheet"]` whose `href` is `/shell.css`', async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await expect(page.locator('link[rel="stylesheet"]')).toHaveAttribute(
+    "href",
+    "/shell.css",
+  );
 });
