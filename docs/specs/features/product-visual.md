@@ -76,7 +76,7 @@ Public pages have copy and body colors only. Signed-in pages are paper cream. Th
 - [x] After clicking `New Slice` then `Add Command` on that page, the Timeline listitem `Command` computed `border-top-color` is `rgb(37, 99, 235)`
 - [x] After clicking `New Slice` then `Add Event` on that page, the Timeline listitem `Event Happened` computed `background-color` is `rgb(255, 237, 213)`
 - [x] After clicking `New Slice` then `Add Event` on that page, the Timeline listitem `Event Happened` computed `border-top-color` is `rgb(234, 88, 12)`
-- [ ] After clicking `New Slice` then `Add Read Model` on that page, the Timeline listitem `Read Model` computed `background-color` is `rgb(220, 252, 231)`
+- [x] After clicking `New Slice` then `Add Read Model` on that page, the Timeline listitem `Read Model` computed `background-color` is `rgb(220, 252, 231)`
 - [ ] After clicking `New Slice` then `Add Read Model` on that page, the Timeline listitem `Read Model` computed `border-top-color` is `rgb(22, 163, 74)`
 - [ ] After clicking `New Slice` then `Add Automation` on that page, the Timeline listitem `Automation` computed `background-color` is `rgb(237, 233, 254)`
 - [ ] After clicking `New Slice` then `Add Automation` on that page, the Timeline listitem `Automation` computed `border-top-color` is `rgb(124, 58, 237)`

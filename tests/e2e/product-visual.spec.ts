@@ -637,3 +637,17 @@ test("After clicking `New Slice` then `Add Event` on that page, the Timeline lis
       .getByRole("listitem", { name: "Event Happened", exact: true }),
   ).toHaveCSS("border-top-color", "rgb(234, 88, 12)");
 });
+
+test("After clicking `New Slice` then `Add Read Model` on that page, the Timeline listitem `Read Model` computed `background-color` is `rgb(220, 252, 231)`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Read Model", exact: true }),
+  ).toHaveCSS("background-color", "rgb(220, 252, 231)");
+});

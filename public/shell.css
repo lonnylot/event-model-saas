@@ -163,3 +163,6 @@ li[data-kind="event"] {
   background-color: #FFEDD5;
   border-top-color: #EA580C;
 }
+li[data-kind="readmodel"] {
+  background-color: #DCFCE7;
+}
