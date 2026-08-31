@@ -130,3 +130,14 @@ test("GET `/app` as site admin with no teams, the button `Sign out` computed `ba
     page.getByRole("button", { name: "Sign out", exact: true }),
   ).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
 });
+
+test("GET `/app` as a Person who is not site admin with no teams `body` computed `background-color` is `rgb(255, 255, 255)`", async ({
+  page,
+}) => {
+  await page.request.post("/api/test/non-admin-session");
+  await page.goto("/app");
+  await expect(page.locator("body")).toHaveCSS(
+    "background-color",
+    "rgb(255, 255, 255)",
+  );
+});
