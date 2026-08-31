@@ -151,3 +151,6 @@ body.app-editor section[aria-label="Timeline"] {
 body.app-editor section[aria-label="Inspector"] {
   border-left-color: #E2E8F0;
 }
+li[data-kind="actor"] {
+  background-color: #FEF3C7;
+}

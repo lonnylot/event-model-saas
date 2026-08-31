@@ -70,7 +70,7 @@ Public pages have copy and body colors only. Signed-in pages are paper cream. Th
 - [x] GET `/app/teams/{id}/models/{mid}` as a member, the button `Sign out` computed `background-color` is `rgba(0, 0, 0, 0)`
 - [x] GET `/app/teams/{id}/models/{mid}` as a member, the region `Timeline` computed `background-color` is `rgb(248, 250, 252)`
 - [x] GET `/app/teams/{id}/models/{mid}` as a member, the region `Inspector` computed `border-left-color` is `rgb(226, 232, 240)`
-- [ ] After clicking `New Slice` then `Add Actor` on that page, the Timeline listitem `Actor` computed `background-color` is `rgb(254, 243, 199)`
+- [x] After clicking `New Slice` then `Add Actor` on that page, the Timeline listitem `Actor` computed `background-color` is `rgb(254, 243, 199)`
 - [ ] After clicking `New Slice` then `Add Actor` on that page, the Timeline listitem `Actor` computed `border-top-color` is `rgb(245, 158, 11)`
 - [ ] After clicking `New Slice` then `Add Command` on that page, the Timeline listitem `Command` computed `background-color` is `rgb(219, 234, 254)`
 - [ ] After clicking `New Slice` then `Add Command` on that page, the Timeline listitem `Command` computed `border-top-color` is `rgb(37, 99, 235)`

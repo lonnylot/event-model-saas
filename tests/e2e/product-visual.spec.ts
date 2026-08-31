@@ -65,6 +65,14 @@ async function openUntitledModel(page: Page, request: APIRequestContext) {
   await expect(
     page.getByRole("heading", { name: "Untitled", exact: true }),
   ).toBeVisible();
+  await page.waitForLoadState("networkidle");
+}
+
+async function clickNewSlice(page: Page) {
+  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await expect(
+    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
+  ).toBeVisible();
 }
 
 test("GET `/` `body` computed `font-family` includes `system-ui`", async ({
@@ -544,4 +552,18 @@ test("GET `/app/teams/{id}/models/{mid}` as a member, the region `Inspector` com
   await expect(
     page.getByRole("region", { name: "Inspector", exact: true }),
   ).toHaveCSS("border-left-color", "rgb(226, 232, 240)");
+});
+
+test("After clicking `New Slice` then `Add Actor` on that page, the Timeline listitem `Actor` computed `background-color` is `rgb(254, 243, 199)`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Actor", exact: true }).click();
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Actor", exact: true }),
+  ).toHaveCSS("background-color", "rgb(254, 243, 199)");
 });
