@@ -61,7 +61,7 @@ Public pages have copy and body colors only. Signed-in pages are paper cream. Th
 - [x] GET `/app/admin/teams` as site admin, the textbox `Invite email` computed `border-top-color` is `rgb(226, 232, 240)`
 - [x] GET `/app/teams/{id}/models/{mid}` as a member has a `link[rel="stylesheet"]` whose `href` is `/shell.css`
 - [x] GET `/app/teams/{id}/models/{mid}` as a member `body` computed `background-color` is `rgb(255, 255, 255)`
-- [ ] GET `/app/teams/{id}/models/{mid}` as a member `body` computed `font-family` includes `system-ui`
+- [x] GET `/app/teams/{id}/models/{mid}` as a member `body` computed `font-family` includes `system-ui`
 - [ ] GET `/app/teams/{id}/models/{mid}` as a member `header` computed `border-bottom-color` is `rgb(226, 232, 240)`
 - [ ] GET `/app/teams/{id}/models/{mid}` as a member, the button `Save` computed `background-color` is `rgb(15, 118, 110)`
 - [ ] GET `/app/teams/{id}/models/{mid}` as a member, the button `Save` computed `color` is `rgb(255, 255, 255)`

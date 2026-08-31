@@ -456,3 +456,11 @@ test("GET `/app/teams/{id}/models/{mid}` as a member `body` computed `background
     "rgb(255, 255, 255)",
   );
 });
+
+test("GET `/app/teams/{id}/models/{mid}` as a member `body` computed `font-family` includes `system-ui`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await expect(page.locator("body")).toHaveCSS("font-family", /system-ui/);
+});
