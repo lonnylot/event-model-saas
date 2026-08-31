@@ -116,6 +116,7 @@ body.app-picker h1 + p a {
 body.app-team {
   background-color: #FFFFFF;
   color: #0F172A;
+  font-family: ui-sans-serif, system-ui, sans-serif;
 }
 #create-model button {
   background-color: #0F766E;

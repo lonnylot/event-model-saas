@@ -57,6 +57,7 @@ Public pages have copy and body colors only. Signed-in pages are paper cream. Th
 - [x] GET `/app` as a Person with two Teams, a link whose accessible name is the first Team name computed `color` is `rgb(15, 118, 110)`
 - [x] GET `/app/teams/{id}` as a member `body` computed `background-color` is `rgb(255, 255, 255)`
 - [x] GET `/app/teams/{id}` as a member `body` computed `color` is `rgb(15, 23, 42)`
+- [x] GET `/app/teams/{id}` as a member `body` computed `font-family` includes `system-ui`
 - [x] GET `/app/teams/{id}` as a member, the button `Create model` computed `background-color` is `rgb(15, 118, 110)`
 - [x] GET `/app/teams/{id}` as a member, the button `Create model` computed `color` is `rgb(255, 255, 255)`
 - [x] GET `/app/teams/{id}` as a member, the button `Create model` computed `border-radius` is `10px`
@@ -102,7 +103,7 @@ Event Model, Person, Site admin, Session, Team, Slice, Actor, Command, Event, Re
 
 ## UI
 
-Screens: Landing, Login, Not found, Expired link, App, Team picker, Team, Teams admin, Editor. Primitives this slice composes: Page (`type` on Landing, Login, Not found, Expired link, site-admin no-teams `/app`, guest `/app`, picker, and Editor; `canvas` background on signed-in `/app` (site-admin no-teams, guest, picker), team, Teams admin, and Editor; `ink` text on site-admin no-teams `/app`, guest `/app`, picker, and team). Public Page `canvas` background and `ink` text are [public-face.md](./public-face.md). AppBar, Marketing header, Card, Field (`line` border and `radius`; not `canvas` fill), Button primary (`accent` / `on-accent` / `radius` on `Email me a link`, `Join the waitlist`, `Create team`, `Create model`, `Save`, expired `Sign in`; `accent` / `on-accent` on `Send invite`), sticky-note block fills. Inventory: [design-system.md](../design-system.md).
+Screens: Landing, Login, Not found, Expired link, App, Team picker, Team, Teams admin, Editor. Primitives this slice composes: Page (`type` on Landing, Login, Not found, Expired link, site-admin no-teams `/app`, guest `/app`, picker, team, and Editor; `canvas` background on signed-in `/app` (site-admin no-teams, guest, picker), team, Teams admin, and Editor; `ink` text on site-admin no-teams `/app`, guest `/app`, picker, and team). Public Page `canvas` background and `ink` text are [public-face.md](./public-face.md). AppBar, Marketing header, Card, Field (`line` border and `radius`; not `canvas` fill), Button primary (`accent` / `on-accent` / `radius` on `Email me a link`, `Join the waitlist`, `Create team`, `Create model`, `Save`, expired `Sign in`; `accent` / `on-accent` on `Send invite`), sticky-note block fills. Inventory: [design-system.md](../design-system.md).
 
 ## Assumptions
 
