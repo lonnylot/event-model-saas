@@ -506,8 +506,20 @@ describe("create model", () => {
       env,
     );
     expect(await response.text()).toContain(
-      '<section aria-label="Inspector"></section>',
+      '<section aria-label="Inspector">',
     );
+  });
+
+  it("GET `/app/teams/{id}/models/{mid}` as a member shows a heading whose accessible name is `Inspector`", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/app/teams/team-1/models/model-1",
+        { headers: { Cookie: "session=sess-admin" } },
+      ),
+      env,
+    );
+    expect(await response.text()).toContain("<h2>Inspector</h2>");
   });
 
   it("GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Zoom in`", async () => {
