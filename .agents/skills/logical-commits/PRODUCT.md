@@ -24,7 +24,7 @@ If the next checkbox stays green with no new production, fold the proof into the
 - Waitlist `does not create a Person` / `does not set a Session cookie` on a POST that never created those — fold into the insert / status-200 commit (TDD slice), not a unique-production regex commit.
 - Invalid-email status 200 when success 200 already landed is tests-after, not an early-return pack (`testing`).
 - Unknown-login waitlist proof when `request-link` never calls `insertWaitlist` — fold into the waitlist insert commit, or unsplit.
-- Extra ACs that stay green because another spec already owns that production (horizontal wheel / pinch pan when canvas Timeline `wheel` already does `panX -= event.deltaX`) — drop the AC and restore Out of scope; do not fold those tests into a sibling unique-production commit.
+- Extra ACs that stay green because another spec already owns that production (horizontal wheel / pinch pan when canvas Timeline `wheel` already does `panX -= event.deltaX`; Landing heading ink when public-face already owns `body.landing` color) — drop the AC and restore Out of scope; do not fold those tests into a sibling unique-production commit (muted lead-copy). A computed-color checkbox whose proof stays green because the UA default already paints it (Email Field canvas fill `rgb(255, 255, 255)` on `input`) or because a parent/body AC this slice already owns already paints it (editor `Slices` heading after `body.app-editor` ink) is that drop — do not fold into waitlist-form border or body-ink.
 
 ## TDD slice only (before the PR is open)
 
