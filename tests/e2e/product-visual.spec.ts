@@ -485,3 +485,13 @@ test("GET `/app/teams/{id}/models/{mid}` as a member, the button `Save` computed
     page.getByRole("button", { name: "Save", exact: true }),
   ).toHaveCSS("background-color", "rgb(15, 118, 110)");
 });
+
+test("GET `/app/teams/{id}/models/{mid}` as a member, the button `Save` computed `color` is `rgb(255, 255, 255)`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await expect(
+    page.getByRole("button", { name: "Save", exact: true }),
+  ).toHaveCSS("color", "rgb(255, 255, 255)");
+});
