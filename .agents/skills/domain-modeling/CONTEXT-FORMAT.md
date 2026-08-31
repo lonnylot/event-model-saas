@@ -13,7 +13,6 @@ _Avoid_: synonym, other-word
 ```
 
 - Pick one word. List rivals under `_Avoid_`.
-- One `**Term**:` heading per word. Grep `CONTEXT.md` for that heading before adding; a second heading is unfinished.
 - Define what it is, not what it does.
 - Only terms unique to this context. Not "timeout" or "repository".
 - Group under subheadings when clusters appear. A new product starts flat.
