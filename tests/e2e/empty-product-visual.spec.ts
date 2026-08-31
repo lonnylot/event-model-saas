@@ -49,3 +49,14 @@ test("GET `/app` as site admin with no teams `body` computed `font-family` inclu
   await consumeAdmin(page, request);
   await expect(page.locator("body")).toHaveCSS("font-family", /system-ui/);
 });
+
+test("GET `/app` as site admin with no teams `header` computed `border-bottom-color` is `rgb(226, 232, 240)`", async ({
+  page,
+  request,
+}) => {
+  await consumeAdmin(page, request);
+  await expect(page.locator("header")).toHaveCSS(
+    "border-bottom-color",
+    "rgb(226, 232, 240)",
+  );
+});
