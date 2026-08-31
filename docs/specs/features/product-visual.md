@@ -46,7 +46,7 @@ Public pages have copy and body colors only. Signed-in pages are paper cream. Th
 - [x] GET `/app` as site admin with no teams, the button `Create team` computed `color` is `rgb(255, 255, 255)`
 - [x] GET `/app` as site admin with no teams, the button `Create team` computed `border-radius` is `10px`
 - [x] GET `/app` as site admin with no teams, the textbox `Team name` computed `border-top-color` is `rgb(226, 232, 240)`
-- [ ] GET `/app` as site admin with no teams, the textbox `Team name` computed `border-radius` is `10px`
+- [x] GET `/app` as site admin with no teams, the textbox `Team name` computed `border-radius` is `10px`
 - [ ] GET `/app` as site admin with no teams, the button `Sign out` computed `background-color` is `rgba(0, 0, 0, 0)`
 - [ ] GET `/app` as a Person who is not site admin with no teams `body` computed `background-color` is `rgb(255, 255, 255)`
 - [ ] GET `/app` as a Person with two Teams `body` computed `background-color` is `rgb(255, 255, 255)`
