@@ -131,3 +131,6 @@ body.app-editor {
   background-color: #FFFFFF;
   font-family: ui-sans-serif, system-ui, sans-serif;
 }
+body.app-editor header {
+  border-bottom-color: #E2E8F0;
+}

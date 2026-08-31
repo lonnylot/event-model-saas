@@ -464,3 +464,14 @@ test("GET `/app/teams/{id}/models/{mid}` as a member `body` computed `font-famil
   await openUntitledModel(page, request);
   await expect(page.locator("body")).toHaveCSS("font-family", /system-ui/);
 });
+
+test("GET `/app/teams/{id}/models/{mid}` as a member `header` computed `border-bottom-color` is `rgb(226, 232, 240)`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await expect(page.locator("header")).toHaveCSS(
+    "border-bottom-color",
+    "rgb(226, 232, 240)",
+  );
+});
