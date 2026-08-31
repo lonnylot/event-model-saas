@@ -495,3 +495,13 @@ test("GET `/app/teams/{id}/models/{mid}` as a member, the button `Save` computed
     page.getByRole("button", { name: "Save", exact: true }),
   ).toHaveCSS("color", "rgb(255, 255, 255)");
 });
+
+test("GET `/app/teams/{id}/models/{mid}` as a member, the button `Save` computed `border-radius` is `10px`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await expect(
+    page.getByRole("button", { name: "Save", exact: true }),
+  ).toHaveCSS("border-radius", "10px");
+});
