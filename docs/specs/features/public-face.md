@@ -101,7 +101,7 @@ Event Model, Person, Site admin, Session, Magic link, Team, Invite, Waitlist, Sl
 
 ## UI
 
-Screens: Landing, Login, Not found, Expired link. Primitives this slice composes: Page (public: `canvas` background, `ink` text), Marketing header, Login Button primary (`accent` fill, `on-accent` text on `Email me a link`). Card, Field, font `type`, `radius`, and Landing `Join the waitlist` Button primary stay later. Inventory: [design-system.md](../design-system.md).
+Screens: Landing, Login, Not found, Expired link. Primitives this slice composes: Page (public: `canvas` background, `ink` text), Marketing header, Login Button primary (`accent` fill, `on-accent` text on `Email me a link`). Card, Field, font `type`, `radius`, and Landing `Join the waitlist` Button primary are [product-visual.md](./product-visual.md). Inventory: [design-system.md](../design-system.md).
 
 ## Assumptions
 
@@ -116,13 +116,13 @@ Screens: Landing, Login, Not found, Expired link. Primitives this slice composes
 
 ## Out of scope
 
-Signed-in AppBar, team picker, team page, and Teams admin restyle (those pages stay paper workshop until a later slice). Editor canvas styling. Site admin waitlist table UI. Webfont files. Dark mode. Public signup. Sticky-note lane colors.
+Site admin waitlist table UI. Webfont files. Dark mode. Public signup. Signed-in restyle, editor styling, Card, Field, `type`, `radius`, Landing `Join the waitlist` Button primary, and sticky-note lane colors are [product-visual.md](./product-visual.md).
 
 ## Restates
 
 - [hosted-app.md](./hosted-app.md) — GET `/` heading is `Event Modeling for the whole team`. GET `/` does not show the text `Access is by invite.` GET `/` still does not show `Sign up`. 404 heading `Not found` stays that file.
 - [magic-link-auth.md](./magic-link-auth.md) — Email and `Email me a link` live on GET `/login`. GET `/app` without a Session sets `Location` to `/login`. Submitting `Email me a link` is on `/login`. POST sign-out still sets `Location` to `/`. Consume of a valid magic link still sets `Location` to `/app`.
-- [visual-shell.md](./visual-shell.md) — Public Page background and color, Login Button primary colors, 404 and expired Page background, `og:description`, and favicon/og mark pixels are this slice. Favicon and OG status, content-type, `link rel=icon` href, `og:image`, `og:title`, stylesheet, and AppBar plus paper Page on `/app`, picker, team, and Teams admin stay that file.
-- [design-system.md](../design-system.md) — Public HTML is contemporary SaaS (`canvas`, `ink`, `accent`). Paper tokens remain for signed-in team/admin HTML. Login is GET `/login`. Landing is GET `/`. Marketing header and Login Button primary on `Email me a link` are this slice. Card, Field, font `type`, `radius`, and Landing `Join the waitlist` Button primary stay later.
-- [product.md](../product.md) — GET `/` is the marketing landing. Login is GET `/login`. Waitlist is not public signup. Expired used-link page shows `Sign in` to `/login`. Public HTML is contemporary SaaS; team/admin HTML stays paper workshop until a later slice. Session missing opens `/login`.
+- [visual-shell.md](./visual-shell.md) — Public Page background and color, Login Button primary colors, 404 and expired Page background, `og:description`, and favicon/og mark pixels are this slice. Favicon and OG status, content-type, `link rel=icon` href, `og:image`, `og:title`, stylesheet, and AppBar on `/app`, picker, team, and Teams admin stay that file. Signed-in Page colors are [product-visual.md](./product-visual.md).
+- [design-system.md](../design-system.md) — Public HTML is contemporary SaaS (`canvas`, `ink`, `accent`). Login is GET `/login`. Landing is GET `/`. Marketing header and Login Button primary colors on `Email me a link` are this slice. Card, Field, font `type`, `radius`, Landing `Join the waitlist` Button primary, signed-in HTML, and editor styling are [product-visual.md](./product-visual.md).
+- [product.md](../product.md) — GET `/` is the marketing landing. Login is GET `/login`. Waitlist is not public signup. Expired used-link page shows `Sign in` to `/login`. Public HTML is contemporary SaaS; team/admin and editor chrome are [product-visual.md](./product-visual.md). Session missing opens `/login`.
 - [architecture.md](../architecture.md) — `run_worker_first` includes `/` and `/login`. D1 holds waitlist emails. `auth` joins the waitlist. `web` serves Landing at `/` and Login at `/login`. Public tokens are [design-system.md](../design-system.md) as applied by this slice.

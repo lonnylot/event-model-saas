@@ -64,7 +64,7 @@ Person, Site admin, Session, Magic link
 
 ## Out of scope
 
-Event Model persistence, editor canvas. Signed-in `/app` that is not redirected still shows the Person's email and Sign out. Paper Page on the expired document and AppBar on `/app` that is not redirected are [visual-shell.md](./visual-shell.md). Team create, Invite, picker, and `/app/teams/{id}` are owned by teams-and-invites. Email lives on GET `/login`. Landing GET `/` is [public-face.md](./public-face.md).
+Event Model persistence, editor canvas. Signed-in `/app` that is not redirected still shows the Person's email and Sign out. Expired Page `canvas`/`ink` and expired `Sign in` are [public-face.md](./public-face.md). AppBar on `/app` that is not redirected is [visual-shell.md](./visual-shell.md). Team create, Invite, picker, and `/app/teams/{id}` are owned by teams-and-invites. Email lives on GET `/login`. Landing GET `/` is [public-face.md](./public-face.md).
 
 ## Restates
 

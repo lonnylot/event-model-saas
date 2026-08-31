@@ -2,6 +2,11 @@ import { expect, test, type Page, type APIRequestContext } from "@playwright/tes
 
 test.describe.configure({ mode: "serial" });
 
+test.beforeAll(async ({ request }) => {
+  const response = await request.post("/api/test/reset-store");
+  expect(response.status()).toBe(204);
+});
+
 async function consumeAdmin(page: Page, request: APIRequestContext) {
   await page.goto("/login");
   await page.getByRole("textbox", { name: "Email", exact: true }).fill(

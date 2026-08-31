@@ -119,6 +119,19 @@ export async function handleRequest(
     return jsonOk(JSON.stringify({ text: last?.text ?? "" }));
   }
 
+  if (path === "/api/test/reset-store" && request.method === "POST") {
+    if (env.TEST_MAIL !== "1") return jsonNotFound();
+    const g = globalThis as unknown as {
+      __emAuth?: AuthRuntime;
+      __emSent?: MailMessage[];
+      __emDocuments?: DocumentsPort;
+    };
+    delete g.__emAuth;
+    delete g.__emSent;
+    delete g.__emDocuments;
+    return new Response(null, { status: 204 });
+  }
+
   if (path === "/api/test/non-admin-session" && request.method === "POST") {
     if (env.TEST_MAIL !== "1" || !env.auth) return jsonNotFound();
     const personId = env.auth.randomId();

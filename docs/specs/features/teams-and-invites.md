@@ -65,7 +65,7 @@ Person, Site admin, Team, Invite, Membership, Session, Magic link
 
 ## Out of scope
 
-Editor canvas, per-model ACLs, non-admin team creation. Event Model create/import/save/export and the team page model list are owned by model-persistence. AppBar `Event Model` link and Page background on `/app`, picker, team, and Teams admin are [visual-shell.md](./visual-shell.md).
+Editor canvas, per-model ACLs, non-admin team creation. Event Model create/import/save/export and the team page model list are owned by model-persistence. AppBar `Event Model` href `/app` on `/app`, picker, team, and Teams admin is [visual-shell.md](./visual-shell.md). Page `canvas` background and `ink` color on those screens are [product-visual.md](./product-visual.md).
 
 ## Restates
 

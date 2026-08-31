@@ -1,35 +1,184 @@
 body.login {
   background-color: #FFFFFF;
   color: #0F172A;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+body.login header {
+  border-bottom-color: #E2E8F0;
+}
+body.login:not(.landing) a[href="/"] {
+  color: #0F766E;
+}
+a[href="/#waitlist"] {
+  color: #0F766E;
 }
 body.landing {
   background-color: #FFFFFF;
   color: #0F172A;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+body.landing header {
+  border-bottom-color: #E2E8F0;
+}
+body.landing a[href="/login"] {
+  color: #0F766E;
+}
+body.landing h1 {
+  font-size: 36px;
+}
+body.landing main > p:first-of-type {
+  color: #64748B;
+}
+body.landing main {
+  max-width: 36rem;
+}
+#waitlist-form button {
+  background-color: #0F766E;
+  color: #FFFFFF;
+  border-radius: 10px;
+}
+#waitlist-form input {
+  border-top-color: #E2E8F0;
+  border-radius: 10px;
+}
+#waitlist-form {
+  border-top-color: #E2E8F0;
+  border-radius: 10px;
+  max-width: 24rem;
+}
+#login {
+  max-width: 24rem;
+  border-radius: 10px;
 }
 #login button {
   background-color: #0F766E;
   color: #FFFFFF;
+  border-radius: 10px;
+}
+#login input {
+  border-top-color: #E2E8F0;
+  border-radius: 10px;
 }
 body.not-found {
   background-color: #FFFFFF;
   color: #0F172A;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+body.not-found h1 {
+  font-size: 36px;
 }
 body.expired {
   background-color: #FFFFFF;
   color: #0F172A;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+body.expired a[href="/login"] {
+  background-color: #0F766E;
+  color: #FFFFFF;
+  border-radius: 10px;
 }
 body.app-none {
-  background-color: #F7F4EE;
+  background-color: #FFFFFF;
+  color: #0F172A;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+body.app-none header {
+  border-bottom-color: #E2E8F0;
+}
+body.app-none a[href="/app"] {
+  color: #0F766E;
+}
+#create-team button {
+  background-color: #0F766E;
+  color: #FFFFFF;
+  border-radius: 10px;
+}
+#create-team input {
+  border-top-color: #E2E8F0;
+  border-radius: 10px;
+}
+body.app-none form[action="/api/auth/sign-out"] button {
+  background-color: transparent;
 }
 body.app-guest {
-  background-color: #F7F4EE;
+  background-color: #FFFFFF;
+  color: #0F172A;
+  font-family: ui-sans-serif, system-ui, sans-serif;
 }
 body.app-picker {
-  background-color: #F7F4EE;
+  background-color: #FFFFFF;
+  color: #0F172A;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+body.app-picker h1 + p a {
+  color: #0F766E;
 }
 body.app-team {
-  background-color: #F7F4EE;
+  background-color: #FFFFFF;
+  color: #0F172A;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+#create-model button {
+  background-color: #0F766E;
+  color: #FFFFFF;
+  border-radius: 10px;
 }
 body.app-admin {
-  background-color: #F7F4EE;
+  background-color: #FFFFFF;
+  color: #0F172A;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+form.invite button {
+  background-color: #0F766E;
+  color: #FFFFFF;
+  border-radius: 10px;
+}
+form.invite input {
+  border-top-color: #E2E8F0;
+}
+body.app-editor {
+  background-color: #FFFFFF;
+  color: #0F172A;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+body.app-editor header {
+  border-bottom-color: #E2E8F0;
+}
+#save-model button {
+  background-color: #0F766E;
+  color: #FFFFFF;
+  border-radius: 10px;
+}
+#export-model button {
+  background-color: transparent;
+}
+body.app-editor form[action="/api/auth/sign-out"] button {
+  background-color: transparent;
+}
+body.app-editor section[aria-label="Timeline"] {
+  background-color: #F8FAFC;
+}
+body.app-editor section[aria-label="Inspector"] {
+  border-left-color: #E2E8F0;
+}
+li[data-kind="actor"] {
+  background-color: #FEF3C7;
+  border-top-color: #F59E0B;
+  border-radius: 10px;
+}
+li[data-kind="command"] {
+  background-color: #DBEAFE;
+  border-top-color: #2563EB;
+}
+li[data-kind="event"] {
+  background-color: #FFEDD5;
+  border-top-color: #EA580C;
+}
+li[data-kind="readmodel"] {
+  background-color: #DCFCE7;
+  border-top-color: #16A34A;
+}
+li[data-kind="automation"] {
+  background-color: #EDE9FE;
+  border-top-color: #7C3AED;
 }

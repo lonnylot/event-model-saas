@@ -151,18 +151,6 @@ test('GET `/api/auth/consume` with a used magic-link token has a `link[rel="styl
 });
 
 
-test("GET `/app` as a Person with two Teams `body` computed `background-color` is `rgb(247, 244, 238)`", async ({
-  page,
-}) => {
-  await page.request.post("/api/test/picker-session");
-  await page.goto("/app");
-  await expect(page.locator("body")).toHaveCSS(
-    "background-color",
-    "rgb(247, 244, 238)",
-  );
-});
-
-
 test("GET `/app` as a Person with two Teams shows a link whose accessible name is `Event Model`", async ({
   page,
 }) => {
@@ -174,18 +162,6 @@ test("GET `/app` as a Person with two Teams shows a link whose accessible name i
 });
 
 
-test("GET `/app/teams/{id}` as a member `body` computed `background-color` is `rgb(247, 244, 238)`", async ({
-  page,
-  request,
-}) => {
-  await consumeAdminOnTeam(page, request);
-  await expect(page.locator("body")).toHaveCSS(
-    "background-color",
-    "rgb(247, 244, 238)",
-  );
-});
-
-
 test("GET `/app/teams/{id}` as a member shows a link whose accessible name is `Event Model`", async ({
   page,
   request,
@@ -194,19 +170,6 @@ test("GET `/app/teams/{id}` as a member shows a link whose accessible name is `E
   await expect(
     page.getByRole("link", { name: "Event Model", exact: true }),
   ).toBeVisible();
-});
-
-
-test("GET `/app/admin/teams` as site admin `body` computed `background-color` is `rgb(247, 244, 238)`", async ({
-  page,
-  request,
-}) => {
-  await consumeAdminOnTeam(page, request);
-  await page.goto("/app/admin/teams");
-  await expect(page.locator("body")).toHaveCSS(
-    "background-color",
-    "rgb(247, 244, 238)",
-  );
 });
 
 
