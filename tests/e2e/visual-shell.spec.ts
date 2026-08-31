@@ -151,18 +151,6 @@ test('GET `/api/auth/consume` with a used magic-link token has a `link[rel="styl
 });
 
 
-test("GET `/app` as a Person with two Teams `body` computed `background-color` is `rgb(247, 244, 238)`", async ({
-  page,
-}) => {
-  await page.request.post("/api/test/picker-session");
-  await page.goto("/app");
-  await expect(page.locator("body")).toHaveCSS(
-    "background-color",
-    "rgb(247, 244, 238)",
-  );
-});
-
-
 test("GET `/app` as a Person with two Teams shows a link whose accessible name is `Event Model`", async ({
   page,
 }) => {

@@ -288,3 +288,14 @@ test("GET `/api/auth/consume` with a used magic-link token, the link `Sign in` c
     page.getByRole("link", { name: "Sign in", exact: true }),
   ).toHaveCSS("border-radius", "10px");
 });
+
+test("GET `/app` as a Person with two Teams `body` computed `background-color` is `rgb(255, 255, 255)`", async ({
+  page,
+}) => {
+  await page.request.post("/api/test/picker-session");
+  await page.goto("/app");
+  await expect(page.locator("body")).toHaveCSS(
+    "background-color",
+    "rgb(255, 255, 255)",
+  );
+});
