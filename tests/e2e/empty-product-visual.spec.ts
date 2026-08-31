@@ -141,3 +141,11 @@ test("GET `/app` as a Person who is not site admin with no teams `body` computed
     "rgb(255, 255, 255)",
   );
 });
+
+test("GET `/app` as a Person who is not site admin with no teams `body` computed `color` is `rgb(15, 23, 42)`", async ({
+  page,
+}) => {
+  await page.request.post("/api/test/non-admin-session");
+  await page.goto("/app");
+  await expect(page.locator("body")).toHaveCSS("color", "rgb(15, 23, 42)");
+});

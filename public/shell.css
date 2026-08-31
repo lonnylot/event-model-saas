@@ -102,6 +102,7 @@ body.app-none form[action="/api/auth/sign-out"] button {
 }
 body.app-guest {
   background-color: #FFFFFF;
+  color: #0F172A;
 }
 body.app-picker {
   background-color: #FFFFFF;

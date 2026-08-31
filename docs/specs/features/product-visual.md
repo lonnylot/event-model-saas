@@ -49,6 +49,7 @@ Public pages have copy and body colors only. Signed-in pages are paper cream. Th
 - [x] GET `/app` as site admin with no teams, the textbox `Team name` computed `border-radius` is `10px`
 - [x] GET `/app` as site admin with no teams, the button `Sign out` computed `background-color` is `rgba(0, 0, 0, 0)`
 - [x] GET `/app` as a Person who is not site admin with no teams `body` computed `background-color` is `rgb(255, 255, 255)`
+- [x] GET `/app` as a Person who is not site admin with no teams `body` computed `color` is `rgb(15, 23, 42)`
 - [x] GET `/app` as a Person with two Teams `body` computed `background-color` is `rgb(255, 255, 255)`
 - [x] GET `/app` as a Person with two Teams, a link whose accessible name is the first Team name computed `color` is `rgb(15, 118, 110)`
 - [x] GET `/app/teams/{id}` as a member `body` computed `background-color` is `rgb(255, 255, 255)`
@@ -97,7 +98,7 @@ Event Model, Person, Site admin, Session, Team, Slice, Actor, Command, Event, Re
 
 ## UI
 
-Screens: Landing, Login, Not found, Expired link, App, Team picker, Team, Teams admin, Editor. Primitives this slice composes: Page (`canvas` background, `ink` text, `type`), AppBar, Marketing header, Card, Field, Button primary (`accent` / `on-accent` / `radius` on `Email me a link`, `Join the waitlist`, `Create team`, `Create model`, `Send invite`, `Save`, expired `Sign in`), sticky-note block fills. Inventory: [design-system.md](../design-system.md).
+Screens: Landing, Login, Not found, Expired link, App, Team picker, Team, Teams admin, Editor. Primitives this slice composes: Page (`type` on Landing, Login, Not found, Expired link, site-admin no-teams `/app`, and Editor; `canvas` background on signed-in `/app` (site-admin no-teams, guest, picker), team, Teams admin, and Editor; `ink` text on site-admin no-teams `/app` and guest `/app`). Public Page `canvas` background and `ink` text are [public-face.md](./public-face.md). AppBar, Marketing header, Card, Field (`line` border and `radius`; not `canvas` fill), Button primary (`accent` / `on-accent` / `radius` on `Email me a link`, `Join the waitlist`, `Create team`, `Create model`, `Save`, expired `Sign in`; `accent` / `on-accent` on `Send invite`), sticky-note block fills. Inventory: [design-system.md](../design-system.md).
 
 ## Assumptions
 
