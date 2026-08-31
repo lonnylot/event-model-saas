@@ -12,6 +12,8 @@ A "does not show a control named X" query that lists only `button` and `link` st
 
 A clicked-item / Backspace / first-vs-last / `the first New Slice listitem` flow with one `New Slice` is the weaker reading (`testing/PRODUCT.md`).
 
+Playwright `toHaveCSS` of a computed color that is the UA default (`input` background `rgb(255, 255, 255)` / Email Field canvas fill) or inherited from a parent/body AC (Landing heading ink after public-face `body.landing`; editor `Slices` after `body.app-editor` ink) is the weaker reading (`testing`) — it stays green if the unique declaration is deleted.
+
 ## Script
 
 Any script-existence test asserts the exact value `playwright test` (consecutive runner tokens), not `length > 0` and not unordered token inclusion. An AC that says the script "includes the tokens" is a weaker criterion — restate as the script **is** `playwright test` (`keeping-specs-current`).

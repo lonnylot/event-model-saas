@@ -13,6 +13,7 @@ Spec-loop owns **after the PR is open**: a missing or weaker test found in revie
 - Four independently revertible ACs on GET `/app` (Team name, Create team, Sign out, Teams admin) are four commits. Five ACs on GET `/app/teams/{id}/models/{mid}` (heading, email, Save, Export, Sign out) are five.
 - Leftover-hide `unbindAddField` vs `unbindFieldName` is the same split.
 - Client `fetch` in `public/*.js` that a Playwright flow needs is that flow's production.
+- Restates leftover rewrite vs unique production restore of a different path are two commits: Card/Field stay later vs PNG mark pixels; leftover Restates public-face Field not-canvas-fill / public Page `canvas`/`ink` / design-system Page `type`/`canvas`/`ink` vs unique Send invite radius. A subject that names two review threads with "and" has not addressed either.
 
 Do not introduce a shared helper (`shell()`) only to keep two checkboxes in one commit. A stylesheet commit must not already apply paper (Login-only selector, not global `body { background-color }`). When splitting status vs content-type, the status commit must not already send that header.
 
@@ -24,7 +25,7 @@ If the next checkbox stays green with no new production, fold the proof into the
 - Waitlist `does not create a Person` / `does not set a Session cookie` on a POST that never created those — fold into the insert / status-200 commit (TDD slice), not a unique-production regex commit.
 - Invalid-email status 200 when success 200 already landed is tests-after, not an early-return pack (`testing`).
 - Unknown-login waitlist proof when `request-link` never calls `insertWaitlist` — fold into the waitlist insert commit, or unsplit.
-- Extra ACs that stay green because another spec already owns that production (horizontal wheel / pinch pan when canvas Timeline `wheel` already does `panX -= event.deltaX`) — drop the AC and restore Out of scope; do not fold those tests into a sibling unique-production commit.
+- Extra ACs that stay green because another spec already owns that production (horizontal wheel / pinch pan when canvas Timeline `wheel` already does `panX -= event.deltaX`; Landing heading ink when public-face already owns `body.landing` color) — drop the AC and restore Out of scope; do not fold those tests into a sibling unique-production commit (muted lead-copy). A computed-color checkbox whose proof stays green because the UA default already paints it (Email Field canvas fill `rgb(255, 255, 255)` on `input`) or because a parent/body AC this slice already owns already paints it (editor `Slices` heading after `body.app-editor` ink) is that drop — do not fold into waitlist-form border or body-ink.
 
 ## TDD slice only (before the PR is open)
 

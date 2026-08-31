@@ -19,8 +19,8 @@ Extra visible chrome without an AC is unfinished — add the AC or omit it. Here
 - Inspector Name (or other inspect chrome) on a kind Out of scope names inspecting (Command / Event / Read Model / Automation)
 - Leftover Add Field / Field name / Field type / Optional / Example / Delete Field after a narrower unbind
 - GET-rendered Description / Add Field when ACs only name Name
-- UI / Restates that claim compose of primitives (Card, Field, Page `type`, Button `radius`) this HEAD does not ship
-- Page ink on Login/404/expired without color ACs; leftover paper `ink-paper` on `body.login` after restating Page (public) ink
+- UI / Restates that claim compose of primitives (Card, Field, Page `type`, Button `radius`) this HEAD does not ship; leftover Field `canvas` fill after dropped Email fill AC; leftover Card `padding` with no AC; leftover Button primary `radius` on `Send invite`; leftover design-system Page on every listed screen
+- Page ink on Login/404/expired without color ACs; leftover paper `ink-paper` on `body.login` after restating Page (public) ink; leftover signed-in Page `ink`/`type` on guest/picker/team/Teams admin/editor without body ACs; leftover visual-shell background and color when this slice only proves `ink` on one route
 - Assigning a listitem's `textContent` so a released nested control (`Command port`) disappears
 
 Extra persistence (R2 `put`, D1 insert, store write after a refuse) without an AC that asserts the stored body is the same miss.
@@ -59,6 +59,8 @@ Restating one phrase in a `product.md` bullet is unfinished until you re-read th
 
 Two-dot vs current default deleting a catalog-released spec, Playwright file, or catalog row is blocking — three-dot from a stale merge-base hides that drop.
 
-An AC "includes the tokens" rather than **is** the exact command, or "includes `scale(`" when canvas pan already writes `scale(1)`, is a weaker criterion (`testing`).
+After rebase onto default, grep leftover paper Page / Page background assigned to visual-shell against every catalog-released spec on HEAD, not only Restates already listed — files that landed in the rebase are the usual omit (`teams-and-invites.md` / `magic-link-auth.md`). Listing `teams-and-invites.md` in Restates without rewriting leftover Page background still assigned to visual-shell, leftover paper Page on expired in `magic-link-auth.md`, or product-visual Restates that omits those files, is unfinished.
+
+An AC "includes the tokens" rather than **is** the exact command, or "includes `scale(`" when canvas pan already writes `scale(1)`, is a weaker criterion (`testing`). An AC of a computed color that is the user-agent default (`input` background `rgb(255, 255, 255)` / Email Field canvas fill) is unproven — drop it unless deleting the unique declaration fails (`testing`). An AC of a computed color that inherits from a parent/body AC this slice or another spec already owns (Landing heading ink after public-face `body.landing`; editor `Slices` heading after this slice's body ink) is extra — drop it; do not fold into waitlist-form border, muted lead-copy, or body-ink (`logical-commits`).
 
 Parking a distinguishing factor (factor is not the unzoomed pan `1`; mark pixels ink/accent vs ochre) or a shared-control Description value only in Assumptions is unfinished.
