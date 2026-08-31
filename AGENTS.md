@@ -59,11 +59,11 @@ Load the matching skill **before** the work. Do not re-derive the procedure from
 | `codebase-design` | Module shape, seam, adapter, depth; architecture adapter only under a test flag; injected `env.documents` |
 | `testing` | Test placement, seams, mapping criteria, weaker-reading fixtures, early-return "and" that should stay one criterion; Playwright `exact: true`; R2/D1 stored body; that Slice; fromKind vs toKind; UA-default / inherited `toHaveCSS` |
 | `tdd-loop` | Implementing or fixing; before production code; host-path constructor; orchestrator about to write production code; empty stub `it`; UA-default / inherited `toHaveCSS` |
-| `logical-commits` | A criterion is green; deciding whether / what to commit; reconstruct after tests-after in the TDD slice; review-thread commit; unsplit leftover checkboxes; fromKind vs toKind; GET already hydrates; extra ACs folded into sibling unique production (UA-default fill / inherited heading) |
+| `logical-commits` | A criterion is green; deciding whether / what to commit; reconstruct after tests-after in the TDD slice; review-thread commit; unsplit leftover checkboxes; fromKind vs toKind; GET already hydrates; extra ACs folded into sibling unique production (UA-default fill / inherited heading); leftover Restates vs unique Send invite radius |
 | `github-ci-loop` | Starting work; branching; opening a PR; waiting on CI; checks never started; unmergeable PR; rebase onto default |
 | `spec-review-loop` | PR exists; merge/release; resume after context compaction; rebase voids Approve |
 | `post-merge-improvement` | PR just merged; learn from review into skills/docs; product-instance harvest into `PRODUCT.md` |
-| `receiving-code-review` | Implementing or pushing back on review comments; extra ACs folded into sibling unique production (UA-default fill / inherited heading) |
+| `receiving-code-review` | Implementing or pushing back on review comments; extra ACs folded into sibling unique production (UA-default fill / inherited heading); leftover Restates vs unique Send invite radius |
 | `verification-before-completion` | About to claim done, green, fixed, or released |
 | `releasing-a-spec` | Given a spec to implement; iterating; validating; shipping; dispatch spec-implementer |
 | `parallel-feature-work` | Two or more feature specs at once; separate implementer agents; next-in-line integrate |

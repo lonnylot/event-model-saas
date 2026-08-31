@@ -13,6 +13,7 @@ Spec-loop owns **after the PR is open**: a missing or weaker test found in revie
 - Four independently revertible ACs on GET `/app` (Team name, Create team, Sign out, Teams admin) are four commits. Five ACs on GET `/app/teams/{id}/models/{mid}` (heading, email, Save, Export, Sign out) are five.
 - Leftover-hide `unbindAddField` vs `unbindFieldName` is the same split.
 - Client `fetch` in `public/*.js` that a Playwright flow needs is that flow's production.
+- Restates leftover rewrite vs unique production restore of a different path are two commits: Card/Field stay later vs PNG mark pixels; leftover Restates public-face Field not-canvas-fill / public Page `canvas`/`ink` / design-system Page `type`/`canvas`/`ink` vs unique Send invite radius. A subject that names two review threads with "and" has not addressed either.
 
 Do not introduce a shared helper (`shell()`) only to keep two checkboxes in one commit. A stylesheet commit must not already apply paper (Login-only selector, not global `body { background-color }`). When splitting status vs content-type, the status commit must not already send that header.
 
