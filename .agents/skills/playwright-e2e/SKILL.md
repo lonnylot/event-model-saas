@@ -5,7 +5,8 @@ description: >
   script-existence guard, a browser user flow, the CI job that runs
   flow tests, a unique TCP port per checkout for flow tests,
   Playwright toHaveCSS of a computed color that is the UA default
-  or inherited from a parent/body AC, Playwright webServer env,
+  or inherited from a parent/body AC, Playwright locator.focus of
+  :focus-visible, Playwright webServer env,
   blanking live API keys, an empty-state flow after a mutating spec
   file, or an already-mounted UI re-open. Also when updating a Flow
   row in a testing spec.
