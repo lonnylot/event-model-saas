@@ -64,3 +64,29 @@ test("GET `/` link `Sign in` `:focus-visible` computed `box-shadow` is not `none
   await signIn.focus();
   await expect(signIn).not.toHaveCSS("box-shadow", "none");
 });
+
+test("GET `/` shows an image whose accessible name is `Event Model editor`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByRole("img", { name: "Event Model editor", exact: true }),
+  ).toBeVisible();
+});
+
+test("GET `/` heading `Event Modeling for the whole team` computed `font-size` is `56px`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByRole("heading", {
+      name: "Event Modeling for the whole team",
+      exact: true,
+    }),
+  ).toHaveCSS("font-size", "56px");
+});
+
+test("GET `/` `main` computed `max-width` is `none`", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator("main")).toHaveCSS("max-width", "none");
+});

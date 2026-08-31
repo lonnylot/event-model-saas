@@ -16,30 +16,83 @@
       <a href="/login">Sign in</a>
     </header>
     <main>
-      <h1>Event Modeling for the whole team</h1>
-      <p>One Event Model, signed in. No passing files around.</p>
-      <a href="#waitlist">Join the waitlist</a>
-      <h2>The model lives with the team</h2>
-      <p>Here the Event Model belongs to a Team.</p>
-      <h2>A timeline of slices</h2>
-      <p>A Slice is a vertical column on the timeline.</p>
-      <p>A Command is an intent, then a fact that happened is an Event.</p>
-      <p>A Read Model is a view of state from events.</p>
-      <p>An Automation is a processor with no human actor.</p>
-      <p>Commands connect to events. Events connect to read models.</p>
-      <h2>Invite-only, version-checked saves</h2>
-      <p>The Mac app is local: one person, one .eventmodel file.</p>
-      <p>Magic-link sign-in. No password, no public signup.</p>
-      <p>Site admin creates Teams and sends Invites.</p>
-      <p>Save is explicit.</p>
-      <h2 id="waitlist">Join the waitlist</h2>
-      <p>Leave your email. If you already have access, use Sign in.</p>
-      <form id="waitlist-form">
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" autocomplete="email" required />
-        <button type="submit">Join the waitlist</button>
-      </form>
-      <p id="waitlist-status" hidden></p>
+      <section class="hero">
+        <h1>Event Modeling for the whole team</h1>
+        <p>One Event Model, signed in. No passing files around.</p>
+        <p>
+          <a class="btn-primary" href="#waitlist">Join the waitlist</a>
+        </p>
+        <figure>
+          <div class="product-shot" role="img" aria-label="Event Model editor">
+            <div class="product-chrome" aria-hidden="true">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="chrome-title">Library Checkout</span>
+            </div>
+            <div class="product-body" aria-hidden="true">
+              <aside>
+                <div class="slice-item on">Checkout</div>
+                <div class="slice-item">Fulfillment</div>
+                <div class="slice-item">Notify</div>
+              </aside>
+              <div class="lanes">
+                <div class="lane">
+                  <span class="chip actor">Shopper</span>
+                  <span class="chip actor">Warehouse</span>
+                </div>
+                <div class="lane">
+                  <span class="chip command">Place Order</span>
+                  <span class="chip event">Order Placed</span>
+                  <span class="chip command">Pick Items</span>
+                  <span class="chip event">Items Picked</span>
+                </div>
+                <div class="lane">
+                  <span class="chip readmodel">Orders</span>
+                  <span class="chip readmodel">Inventory</span>
+                </div>
+              </div>
+              <div class="inspector">
+                <div class="inspector-k">Name</div>
+                <div class="inspector-v">Place Order</div>
+                <div class="inspector-k">Type</div>
+                <div class="inspector-v">Command</div>
+              </div>
+            </div>
+          </div>
+        </figure>
+      </section>
+      <section class="bento">
+        <article>
+          <h2>The model lives with the team</h2>
+          <p>Here the Event Model belongs to a Team.</p>
+        </article>
+        <article>
+          <h2>A timeline of slices</h2>
+          <p>A Slice is a vertical column on the timeline.</p>
+          <p>A Command is an intent, then a fact that happened is an Event.</p>
+          <p>A Read Model is a view of state from events.</p>
+          <p>An Automation is a processor with no human actor.</p>
+          <p>Commands connect to events. Events connect to read models.</p>
+        </article>
+        <article>
+          <h2>Invite-only, version-checked saves</h2>
+          <p>The Mac app is local: one person, one .eventmodel file.</p>
+          <p>Magic-link sign-in. No password, no public signup.</p>
+          <p>Site admin creates Teams and sends Invites.</p>
+          <p>Save is explicit.</p>
+        </article>
+      </section>
+      <section class="waitlist-band" id="waitlist">
+        <h2>Join the waitlist</h2>
+        <p>Leave your email. If you already have access, use Sign in.</p>
+        <form id="waitlist-form">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required />
+          <button type="submit">Join the waitlist</button>
+        </form>
+        <p id="waitlist-status" hidden></p>
+      </section>
     </main>
     <script src="/waitlist.js"></script>
   </body>

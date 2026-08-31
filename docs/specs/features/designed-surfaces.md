@@ -1,6 +1,6 @@
 # Designed surfaces
 
-Status: released
+Status: validated
 
 ## Problem
 
@@ -23,6 +23,9 @@ Public and signed-in HTML apply tokens as isolated computed properties. Landing 
 - [x] Contrast of `ink` `#0F172A` on `canvas` `#FFFFFF` is at least 4.5:1
 - [x] Contrast of `on-accent` `#FFFFFF` on `accent` `#0F766E` is at least 4.5:1
 - [x] GET `/` link `Sign in` `:focus-visible` computed `box-shadow` is not `none`
+- [x] GET `/` shows an image whose accessible name is `Event Model editor`
+- [x] GET `/` heading `Event Modeling for the whole team` computed `font-size` is `56px`
+- [x] GET `/` `main` computed `max-width` is `none`
 
 ## Domain terms
 
@@ -54,7 +57,7 @@ Webfont files. Dark mode. Public signup. Site admin waitlist table UI. Mac windo
 
 ## Restates
 
-- [product-visual.md](./product-visual.md) — Token computed colors and sticky-note fills stay that file. Spacing, type composition, AppBar layout, Card padding, viewport, focus-visible, and contrast proofs are this slice. Out of scope no longer parks look iteration; `visual-design` owns it. Webfont, dark mode, public signup, waitlist table stay Out of scope.
+- [product-visual.md](./product-visual.md) — Token computed colors and sticky-note fills stay that file. Spacing, type composition, AppBar layout, Card padding, viewport, focus-visible, and contrast proofs are this slice. GET `/` heading `Event Modeling for the whole team` computed `font-size` is `56px`, not `36px`. GET `/` `main` computed `max-width` is `none`, not `576px`. Out of scope no longer parks look iteration; `visual-design` owns it. Webfont, dark mode, public signup, waitlist table stay Out of scope.
 - [public-face.md](./public-face.md) — Copy, routes, waitlist POST, body canvas/ink, Login Button primary colors stay that file. Landing/Login look (flex header, padding, waitlist Card padding) is this slice.
 - [visual-shell.md](./visual-shell.md) — AppBar wordmark hrefs stay that file. AppBar layout (flex, padding) is this slice.
 - [design-system.md](../design-system.md) — Tokens and primitive inventory stay that file. Look is iterated under [ADR 0001](../../adr/0001-look-iteration.md); this slice applies composed layout. Accessibility bar is that ADR.

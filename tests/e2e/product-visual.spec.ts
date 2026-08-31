@@ -101,7 +101,7 @@ test("GET `/` link `Sign in` computed `color` is `rgb(15, 118, 110)`", async ({
   ).toHaveCSS("color", "rgb(15, 118, 110)");
 });
 
-test("GET `/` heading `Event Modeling for the whole team` computed `font-size` is `36px`", async ({
+test("GET `/` heading `Event Modeling for the whole team` computed `font-size` is `56px`", async ({
   page,
 }) => {
   await page.goto("/");
@@ -110,7 +110,7 @@ test("GET `/` heading `Event Modeling for the whole team` computed `font-size` i
       name: "Event Modeling for the whole team",
       exact: true,
     }),
-  ).toHaveCSS("font-size", "36px");
+  ).toHaveCSS("font-size", "56px");
 });
 
 test("GET `/` the text `One Event Model, signed in. No passing files around.` computed `color` is `rgb(100, 116, 139)`", async ({
@@ -122,9 +122,9 @@ test("GET `/` the text `One Event Model, signed in. No passing files around.` co
   ).toHaveCSS("color", "rgb(100, 116, 139)");
 });
 
-test("GET `/` `main` computed `max-width` is `576px`", async ({ page }) => {
+test("GET `/` `main` computed `max-width` is `none`", async ({ page }) => {
   await page.goto("/");
-  await expect(page.locator("main")).toHaveCSS("max-width", "576px");
+  await expect(page.locator("main")).toHaveCSS("max-width", "none");
 });
 
 test("GET `/` button `Join the waitlist` computed `background-color` is `rgb(15, 118, 110)`", async ({
