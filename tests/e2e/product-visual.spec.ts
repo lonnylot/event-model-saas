@@ -535,3 +535,13 @@ test("GET `/app/teams/{id}/models/{mid}` as a member, the region `Timeline` comp
     page.getByRole("region", { name: "Timeline", exact: true }),
   ).toHaveCSS("background-color", "rgb(248, 250, 252)");
 });
+
+test("GET `/app/teams/{id}/models/{mid}` as a member, the region `Inspector` computed `border-left-color` is `rgb(226, 232, 240)`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await expect(
+    page.getByRole("region", { name: "Inspector", exact: true }),
+  ).toHaveCSS("border-left-color", "rgb(226, 232, 240)");
+});
