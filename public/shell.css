@@ -120,3 +120,6 @@ body.app-team {
 body.app-admin {
   background-color: #FFFFFF;
 }
+form.invite button {
+  background-color: #0F766E;
+}

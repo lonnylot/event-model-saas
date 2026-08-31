@@ -378,3 +378,14 @@ test("GET `/app/admin/teams` as site admin `body` computed `background-color` is
     "rgb(255, 255, 255)",
   );
 });
+
+test("GET `/app/admin/teams` as site admin, the button `Send invite` computed `background-color` is `rgb(15, 118, 110)`", async ({
+  page,
+  request,
+}) => {
+  await consumeAdminOnTeam(page, request);
+  await page.goto("/app/admin/teams");
+  await expect(
+    page.getByRole("button", { name: "Send invite", exact: true }),
+  ).toHaveCSS("background-color", "rgb(15, 118, 110)");
+});
