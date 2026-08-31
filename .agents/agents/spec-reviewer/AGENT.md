@@ -26,7 +26,7 @@ If any input is missing, ask for it and stop.
 1. The feature spec and every system spec it names.
 2. `AGENTS.md` and the skills the change should have followed (`tdd-loop`, `keeping-specs-current`, `testing`, `logical-commits`, plus any product skill the spec names).
 3. The original task statement.
-4. `git log <base>..<head> --oneline` and `git diff <base>...<head>` (three-dot). Also `git diff <base> <head>` (two-dot). Two-dot deleting a catalog-released spec, Playwright file, or catalog row is blocking (`keeping-specs-current`); three-dot from a stale merge-base hides that drop.
+4. `git log <base>..<head> --oneline` and `git diff <base>...<head>` (three-dot).
 
 Do not trust a summary of the diff. Read the diff.
 

@@ -32,9 +32,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Restated AC with leftover sections / leftover test title / leftover Restates / leftover locked claims in a restated system spec | `keeping-specs-current` |
 | Domain terms line without a `CONTEXT.md` entry | `keeping-specs-current`, `domain-modeling` |
 | Independently revertible ACs / grouping by screen / spec-only / reconstruct after tests-after in the TDD slice / review-thread or CI-fix commit on HEAD / unsplit leftover checkboxes | `logical-commits` |
-| Extra visible chrome without an AC; extra R2/D1 without stored-body AC; 303 vs shows; `run_worker_first` vs Compute row | `keeping-specs-current`, `testing` |
-| Accessible name **is** X / Playwright substring; unit `toContain(">X<")` | `testing`, `playwright-e2e` |
-| Spec tree location / vendor plan dirs / `docs/superpowers/` | this skill, `keeping-specs-current` |
+| Extra visible chrome without an AC | `keeping-specs-current` |
 | How agents write docs | this skill |
 | Product architecture / UI kit / telemetry / domain rules | the product skill that owns that fact — add a row here when you add that skill |
 
@@ -76,5 +74,4 @@ Inline what every branch needs. Disclose what only some branches need.
 - Skills: `.agents/skills/<name>/SKILL.md`
 - Named agents: `.agents/agents/<name>/AGENT.md`
 - Always-on: `AGENTS.md`
-- Specs: `docs/specs/` (system) and `docs/specs/features/` (slices). ADRs: `docs/adr/`
-- Do not add a parallel vendor directory (`docs/superpowers/` or any other spec/plan tree). Feature work is `releasing-a-spec`. The feature spec is the work list.
+- Do not add a parallel vendor directory.

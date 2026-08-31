@@ -8,7 +8,7 @@ This file and `.agents/` are the only project agent instructions. They are harne
 
 1. Read this file, then `CONTEXT.md`, then `docs/specs/README.md`.
 2. Treat specs as the product. Code is an implementation of a spec. A change that is not in a spec is unfinished.
-3. Load the skill for the work you are doing **before** you edit code (table below). Skills live in `.agents/skills/`. Named agents live in `.agents/agents/`.
+3. Load the skill for the work you are doing **before** you edit code (table below). Skills live in `.agents/skills/`. Named agents live in `.agents/agents/`. If `.agents/skills/<name>/PRODUCT.md` exists, load it with that skill. Same for `.agents/agents/<name>/PRODUCT.md`.
 4. If you cannot name the spec file you are implementing or updating, stop and write or find it under `docs/specs/` (or `docs/adr/`). Do not write `docs/superpowers/` or any other vendor spec/plan tree.
 
 After ten minutes you should be able to answer: what outcome this app exists for; which spec is source of truth for the current task; what must never ship (unspecced behavior, untested behavior, silent actions).
@@ -26,7 +26,7 @@ NO SHIP UNTIL CI IS GREEN, A SEPARATE REVIEWER APPROVES THIS HEAD, AND THE RELEA
 - Keep the spec **current**: if implementation teaching contradicts the spec, fix the spec in the same logical commit (or revert the code).
 - A stale spec is a defect. Discovering drift and leaving it is a failed task.
 - Status lives on the spec: `draft` → `validated` → `released`. Only `validated` specs may be implemented. Only `released` specs may be called done.
-- A spec change that changes **how work is done** updates the matching skill in the same change (`writing-for-agents`).
+- A spec change that changes **how work is done** updates the matching skill in the same change (`writing-for-agents`). Event Model instances of that procedure go in that skill's `PRODUCT.md`, not in the portable `SKILL.md`.
 
 **REQUIRED:** `keeping-specs-current` on every behavior change. **REQUIRED:** `releasing-a-spec` when taking a spec from idea to ship (orchestrator: validate, dispatch `spec-implementer`, review, dispatch `release-manager`). **REQUIRED:** `verification-before-completion` before any done/green/released claim. The orchestrator session does not write production code.
 
@@ -41,33 +41,34 @@ NO SHIP UNTIL CI IS GREEN, A SEPARATE REVIEWER APPROVES THIS HEAD, AND THE RELEA
 | Feature specs | `docs/specs/features/<slug>.md` | One vertical slice. Template: `docs/specs/features/_TEMPLATE.md`. |
 | Design system | `docs/specs/design-system.md` | Tokens and primitives. |
 | Hard decisions | `docs/adr/NNNN-slug.md` | Irreversible trade-offs only. |
-| Procedures | `.agents/skills/*/SKILL.md` | How to write, test, review, and release. |
+| Procedures | `.agents/skills/*/SKILL.md` | How to write, test, review, and release (spec-loop). |
+| This product | `.agents/skills/*/PRODUCT.md` | Event Model catalogs for that skill. Load with the skill. Same for `.agents/agents/*/PRODUCT.md`. |
 | Named agents | `.agents/agents/*/AGENT.md` | Roles: `spec-implementer` (resume per spec), `spec-reviewer` (fresh each dispatch), `release-manager` (merge), `post-merge-improver`. |
 
 Add product-owned system specs (architecture, business, testing, design, observability) to this table when those files exist. Environment (`package.json`, configs, CI workflows) owns installed versions, scripts, and CI. Specs do not cache that.
 
 ## Skills
 
-Load the matching skill **before** the work. Do not re-derive the procedure from this file.
+Load the matching skill **before** the work. Do not re-derive the procedure from this file. Load that skill's `PRODUCT.md` when the file exists.
 
 | Skill | Reach for it when |
 |-------|-------------------|
-| `keeping-specs-current` | Any behavior change; suspected spec drift; leftover sections after restating an AC; leftover locked claims in a restated system spec; host-path construction parked in Assumptions |
-| `writing-for-agents` | Editing AGENTS.md, skills, or agents; spec changed a procedure |
+| `keeping-specs-current` | Any behavior change; suspected spec drift; leftover sections after restating an AC; leftover locked claims in a restated system spec; leftover `product.md`; that Slice; extra R2/D1; 303 vs shows; `run_worker_first`; `docs/superpowers/` |
+| `writing-for-agents` | Editing AGENTS.md, skills, or agents; spec changed a procedure; harvest into `PRODUCT.md` vs portable `SKILL.md` |
 | `domain-modeling` | New or conflicting domain term; CONTEXT.md; ADR |
-| `codebase-design` | Module shape, seam, adapter, depth |
-| `testing` | Test placement, seams, mapping criteria, weaker-reading fixtures, early-return "and" that should stay one criterion |
-| `tdd-loop` | Implementing or fixing; before production code; host-path constructor; orchestrator about to write production code |
-| `logical-commits` | A criterion is green; deciding whether / what to commit; reconstruct after tests-after in the TDD slice; review-thread commit; unsplit leftover checkboxes |
+| `codebase-design` | Module shape, seam, adapter, depth; architecture adapter only under a test flag; injected `env.documents` |
+| `testing` | Test placement, seams, mapping criteria, weaker-reading fixtures, early-return "and" that should stay one criterion; Playwright `exact: true`; R2/D1 stored body; that Slice; fromKind vs toKind |
+| `tdd-loop` | Implementing or fixing; before production code; host-path constructor; orchestrator about to write production code; empty stub `it` |
+| `logical-commits` | A criterion is green; deciding whether / what to commit; reconstruct after tests-after in the TDD slice; review-thread commit; unsplit leftover checkboxes; fromKind vs toKind; GET already hydrates |
 | `github-ci-loop` | Starting work; branching; opening a PR; waiting on CI; checks never started; unmergeable PR; rebase onto default |
 | `spec-review-loop` | PR exists; merge/release; resume after context compaction; rebase voids Approve |
-| `post-merge-improvement` | PR just merged; learn from review into skills/docs |
+| `post-merge-improvement` | PR just merged; learn from review into skills/docs; product-instance harvest into `PRODUCT.md` |
 | `receiving-code-review` | Implementing or pushing back on review comments |
 | `verification-before-completion` | About to claim done, green, fixed, or released |
 | `releasing-a-spec` | Given a spec to implement; iterating; validating; shipping; dispatch spec-implementer |
 | `parallel-feature-work` | Two or more feature specs at once; separate implementer agents; next-in-line integrate |
 | `using-git-worktrees` | Dispatch spec-implementer; isolated checkout for a feat/ branch; parallel agents |
-| `playwright-e2e` | Browser user flows; flow CI job; test-server fakes; empty-state reset between files; unique checkout port for flow tests |
+| `playwright-e2e` | Browser user flows; flow CI job; test-server fakes; empty-state reset between files; unique checkout port for flow tests; accessible name **is** X (`exact: true`) |
 
 Handed a spec, or asked to implement/ship: `releasing-a-spec` (orchestrator). Two or more specs this session, or next-in-line integrate: `parallel-feature-work` first. Implementing any slice: dispatch `.agents/agents/spec-implementer/AGENT.md` (`tdd-loop` lives there). Isolated tree: `using-git-worktrees` for every implementer. Ready to review: `spec-review-loop` (fresh `spec-reviewer` every dispatch; resume the implementer on Changes requested). Ready to merge: dispatch `.agents/agents/release-manager/AGENT.md`. After merge: `post-merge-improvement`. Browser flow tests: `playwright-e2e`. Spec changed a procedure: `writing-for-agents`.
 

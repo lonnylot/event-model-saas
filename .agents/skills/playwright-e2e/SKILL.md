@@ -5,9 +5,9 @@ description: >
   script-existence guard, a browser user flow, the CI job that runs
   flow tests, a unique TCP port per checkout for flow tests,
   Playwright webServer env, blanking live API keys, an
-  empty-state flow after a mutating spec file, an already-mounted UI
-  re-open, or an accessible name **is** X (Playwright `exact: true`).
-  Also when updating a Flow row in a testing spec.
+  empty-state flow after a mutating spec file, or an
+  already-mounted UI re-open. Also when updating a Flow row in a
+  testing spec.
 ---
 
 # Playwright e2e

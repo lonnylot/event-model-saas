@@ -52,15 +52,6 @@ A criterion that names a screen, "shows", or "lists" is proven at the app or flo
    | One row's own text | Document-level `toContain` or `[\s\S]*` that can cross a tag |
    | Packed "and" | One `it` covering independent cases |
    | Architecture-named production adapter | Injected runtime stays green if the host path never constructs it |
-   | Named control / accessible name **is** X | Unit `toContain(">X<")`; Playwright `name: "X"` without `exact: true` |
-   | Does not show a named control | Query of only `button` and `link` (checkbox/menuitem stay green) |
-   | Listitem visible text **is** X | `/^X/` or `toHaveText("X")` when Port descendants exist |
-   | Computed color / CSS | Stylesheet `toContain`; UA-default `toHaveCSS` (`input` white) that stays green if the unique declaration is deleted |
-   | Architecture-named store / new SQL | Memory fake stays green if D1 SQL is never executed |
-   | Success write (R2 / D1) | Status/version asserted without the stored body |
-   | "that Slice" / clicked item | One-item fixture (`.at(-1)` / last stays green) |
-   | Dragging fromKind/toKind | Unit that passes kinds already in the input and asserts those same values |
-   | Checked AC / empty stub `it` | Empty body; deleting production leaves the test green |
 
    When a production module is deleted, rename or delete its dedicated test file in the same change. When an AC is restated, rename the `it` / `test()` that quoted the old words. Renaming is unfinished until that leftover test's assertions fail a weaker reading of the new words, or the leftover title drops the new words. A restated "does not show X" inverts the assertion (`not.toContain`); dropping `toContain` is not the proof. Completion: deleting the feature, or swapping in the weaker algorithm, fails this test for that reason.
 

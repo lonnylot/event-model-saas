@@ -12,12 +12,7 @@ description: >
   a Domain terms line names a word CONTEXT.md does not define, when
   tightening a fake or test-double parse, when adding an operator CLI,
   host-path construction of an architecture-named adapter,
-  leftover product.md locked words, extra R2 put / D1 insert without an AC
-  that asserts the stored body, extra chrome without an AC, UI that claims
-  compose of primitives without ACs, 303 vs shows on the same path,
-  `run_worker_first` vs architecture Compute row, docs/superpowers vendor
-  spec tree, or whenever CONTEXT.md, docs/specs, or docs/adr may be missing
-  or stale.
+  or whenever CONTEXT.md, docs/specs, or docs/adr may be missing or stale.
 ---
 
 # Keeping specs current
@@ -70,7 +65,6 @@ Status on every spec: `draft` → `validated` → `released`.
 | Test layer, seam list | `docs/specs/testing.md` when the product has one |
 | Primitive, token | `docs/specs/design-system.md` when the product has one |
 | Event or span name | `docs/specs/observability.md` when the product has one |
-| Locked v1 product decisions | `docs/specs/product.md` |
 
 ## Rationalizations
 
@@ -100,12 +94,5 @@ Status on every spec: `draft` → `validated` → `released`.
 - Two numbered rules in the same spec cannot both hold
 - A fake / test-double parse tightened with a new unit test and no spec hunk
 - Extra visible chrome with no AC
-- A "that Slice" / clicked-item AC with only one item and no last-Slice restatement
-- Two-dot vs default deletes a catalog-released spec, Playwright file, or catalog row
-- Extra R2 put / D1 insert without an AC that asserts the stored body
-- UI lists primitives this slice claims to compose without an AC for each
-- 303/redirect AC vs a shows bullet on the same path
-- `run_worker_first` path list vs architecture Compute row
-- Specs or plans under `docs/superpowers/` or another vendor spec/plan tree
 
 **All of these mean: stop coding. Update the spec.**
