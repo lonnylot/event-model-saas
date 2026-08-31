@@ -400,3 +400,14 @@ test("GET `/app/admin/teams` as site admin, the button `Send invite` computed `c
     page.getByRole("button", { name: "Send invite", exact: true }),
   ).toHaveCSS("color", "rgb(255, 255, 255)");
 });
+
+test("GET `/app/admin/teams` as site admin, the textbox `Invite email` computed `border-top-color` is `rgb(226, 232, 240)`", async ({
+  page,
+  request,
+}) => {
+  await consumeAdminOnTeam(page, request);
+  await page.goto("/app/admin/teams");
+  await expect(
+    page.getByRole("textbox", { name: "Invite email", exact: true }),
+  ).toHaveCSS("border-top-color", "rgb(226, 232, 240)");
+});

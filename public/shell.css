@@ -124,3 +124,6 @@ form.invite button {
   background-color: #0F766E;
   color: #FFFFFF;
 }
+form.invite input {
+  border-top-color: #E2E8F0;
+}
