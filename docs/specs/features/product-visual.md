@@ -116,6 +116,7 @@ Screens: Landing, Login, Not found, Expired link, App, Team picker, Team, Teams 
 - `radius` `10px`. Landing `main` `max-width` `36rem` → `576px`. Card / waitlist form `max-width` `24rem` → `384px`. Display heading `font-size` `36px`.
 - Quiet controls (`Sign out`, `Export`) use a transparent background `rgba(0, 0, 0, 0)`.
 - `TEST_MAIL=1` Playwright `workers` is `1`. Playwright `webServer` wrangler `--port` and `--inspector-port` are checkout-unique from a hash of `cwd`; worker fixtures read `E2E_PORT`.
+- POST `/api/test/reset-store` exists only when `TEST_MAIL` is `1`. It recreates the in-process fake store and mail so an empty-state file still sees no Teams after a mutating file. When `TEST_MAIL` is not `1`, that path is JSON 404.
 - Form `waitlist-form` is `id="waitlist-form"`. Form `login` is `id="login"`.
 - Timeline listitem accessible names after Add are `Actor`, `Command`, `Event Happened`, `Read Model`, `Automation` (existing defaults).
 
