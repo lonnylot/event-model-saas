@@ -100,3 +100,13 @@ test("GET `/app` as site admin with no teams, the button `Create team` computed 
     page.getByRole("button", { name: "Create team", exact: true }),
   ).toHaveCSS("border-radius", "10px");
 });
+
+test("GET `/app` as site admin with no teams, the textbox `Team name` computed `border-top-color` is `rgb(226, 232, 240)`", async ({
+  page,
+  request,
+}) => {
+  await consumeAdmin(page, request);
+  await expect(
+    page.getByRole("textbox", { name: "Team name", exact: true }),
+  ).toHaveCSS("border-top-color", "rgb(226, 232, 240)");
+});

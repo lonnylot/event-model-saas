@@ -93,6 +93,9 @@ body.app-none a[href="/app"] {
   color: #FFFFFF;
   border-radius: 10px;
 }
+#create-team input {
+  border-top-color: #E2E8F0;
+}
 body.app-guest {
   background-color: #F7F4EE;
 }
