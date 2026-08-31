@@ -299,3 +299,17 @@ test("GET `/app` as a Person with two Teams `body` computed `background-color` i
     "rgb(255, 255, 255)",
   );
 });
+
+test("GET `/app` as a Person with two Teams, a link whose accessible name is the first Team name computed `color` is `rgb(15, 118, 110)`", async ({
+  page,
+}) => {
+  await page.request.post("/api/test/picker-session");
+  await page.goto("/app");
+  const firstTeamName = await page
+    .locator('a[href^="/app/teams/"]')
+    .first()
+    .innerText();
+  await expect(
+    page.getByRole("link", { name: firstTeamName, exact: true }),
+  ).toHaveCSS("color", "rgb(15, 118, 110)");
+});
