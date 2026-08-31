@@ -60,3 +60,13 @@ test("GET `/app` as site admin with no teams `header` computed `border-bottom-co
     "rgb(226, 232, 240)",
   );
 });
+
+test("GET `/app` as site admin with no teams, the link `Event Model` computed `color` is `rgb(15, 118, 110)`", async ({
+  page,
+  request,
+}) => {
+  await consumeAdmin(page, request);
+  await expect(
+    page.getByRole("link", { name: "Event Model", exact: true }),
+  ).toHaveCSS("color", "rgb(15, 118, 110)");
+});

@@ -41,7 +41,7 @@ Public pages have copy and body colors only. Signed-in pages are paper cream. Th
 - [x] GET `/app` as site admin with no teams `body` computed `color` is `rgb(15, 23, 42)`
 - [x] GET `/app` as site admin with no teams `body` computed `font-family` includes `system-ui`
 - [x] GET `/app` as site admin with no teams `header` computed `border-bottom-color` is `rgb(226, 232, 240)`
-- [ ] GET `/app` as site admin with no teams, the link `Event Model` computed `color` is `rgb(15, 118, 110)`
+- [x] GET `/app` as site admin with no teams, the link `Event Model` computed `color` is `rgb(15, 118, 110)`
 - [ ] GET `/app` as site admin with no teams, the button `Create team` computed `background-color` is `rgb(15, 118, 110)`
 - [ ] GET `/app` as site admin with no teams, the button `Create team` computed `color` is `rgb(255, 255, 255)`
 - [ ] GET `/app` as site admin with no teams, the button `Create team` computed `border-radius` is `10px`
