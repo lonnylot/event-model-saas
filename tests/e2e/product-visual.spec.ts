@@ -343,6 +343,14 @@ test("GET `/app` as a Person with two Teams `body` computed `background-color` i
   );
 });
 
+test("GET `/app` as a Person with two Teams `body` computed `color` is `rgb(15, 23, 42)`", async ({
+  page,
+}) => {
+  await page.request.post("/api/test/picker-session");
+  await page.goto("/app");
+  await expect(page.locator("body")).toHaveCSS("color", "rgb(15, 23, 42)");
+});
+
 test("GET `/app` as a Person with two Teams, a link whose accessible name is the first Team name computed `color` is `rgb(15, 118, 110)`", async ({
   page,
 }) => {
