@@ -145,3 +145,6 @@ body.app-editor header {
 body.app-editor form[action="/api/auth/sign-out"] button {
   background-color: transparent;
 }
+body.app-editor section[aria-label="Timeline"] {
+  background-color: #F8FAFC;
+}

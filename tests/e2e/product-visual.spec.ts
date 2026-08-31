@@ -525,3 +525,13 @@ test("GET `/app/teams/{id}/models/{mid}` as a member, the button `Sign out` comp
     page.getByRole("button", { name: "Sign out", exact: true }),
   ).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
 });
+
+test("GET `/app/teams/{id}/models/{mid}` as a member, the region `Timeline` computed `background-color` is `rgb(248, 250, 252)`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await expect(
+    page.getByRole("region", { name: "Timeline", exact: true }),
+  ).toHaveCSS("background-color", "rgb(248, 250, 252)");
+});
