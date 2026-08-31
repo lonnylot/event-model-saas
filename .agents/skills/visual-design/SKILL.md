@@ -5,7 +5,8 @@ description: >
   named screens, when a computed-color AC would stand in for a composed
   page, when extra chrome is look not capability, when applying design
   tokens, when adding a heading, image, landmark, or static public page
-  during a look pass, or when a reviewer would block padding without an AC.
+  during a look pass, when a look selector would miss markup that is not
+  that element, or when a reviewer would block padding without an AC.
 ---
 
 # Visual design
@@ -51,7 +52,7 @@ Still stop and return `need-user` when the addition:
 
 1. **Quote locked constraints.** Feature spec ACs, design-system tokens, accessibility bar. Completion: you can name the screens and the bar.
 
-2. **Prove locked.** `tdd-loop` + `testing` for names, flows, token *use* (deleting the unique token declaration fails), and a11y. Do not add a computed-rgb `it` for each spacing or type rule. One proof that unique look rules exist (composed layout that is not the UA default) is enough for "not unstyled." Completion: those tests fail a weaker reading (`testing`).
+2. **Prove locked.** `tdd-loop` + `testing` for names, flows, token *use* (deleting the unique token declaration fails), and a11y. Do not add a computed-rgb `it` for each spacing or type rule. One proof that unique look rules exist (composed layout that is not the UA default) is enough for "not unstyled." Unique-look proof is a screen whose markup matches the selector — a `header` rule is not proof on a lead that is not `header`. Completion: those tests fail a weaker reading (`testing`).
 
 3. **Iterate look in the browser.** Change CSS and structure of named screens. Check desktop and a narrow viewport. Completion: tokens hold; a11y holds; existing named controls/copy remain; the composed page is not UA-default stack.
 

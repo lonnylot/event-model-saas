@@ -53,7 +53,7 @@ Load the matching skill **before** the work. Do not re-derive the procedure from
 
 | Skill | Reach for it when |
 |-------|-------------------|
-| `keeping-specs-current` | Any behavior change; suspected spec drift; leftover sections after restating an AC; leftover locked claims in a restated system spec; leftover `product.md`; that Slice; extra R2/D1; 303 vs shows; `run_worker_first`; `docs/superpowers/`; UA-default / inherited computed color; leftover signed-in Page ink/type / Send invite radius / Field fill / Card padding; leftover paper Page assigned to visual-shell; Restates omits draft architecture CSS assignment |
+| `keeping-specs-current` | Any behavior change; suspected spec drift; leftover sections after restating an AC; leftover locked claims in a restated system spec; leftover `product.md`; that Slice; extra R2/D1; 303 vs shows; `run_worker_first`; `docs/superpowers/`; UA-default / inherited computed color; leftover signed-in Page ink/type / Send invite radius / Field fill / Card padding; leftover paper Page assigned to visual-shell; Restates omits draft architecture CSS assignment; leftover AppBar on picker lead `<p>` |
 | `writing-for-agents` | Editing AGENTS.md, skills, or agents; spec changed a procedure; harvest into `PRODUCT.md` vs portable `SKILL.md` |
 | `domain-modeling` | New or conflicting domain term; CONTEXT.md; ADR |
 | `codebase-design` | Module shape, seam, adapter, depth; architecture adapter only under a test flag; injected `env.documents` |
@@ -69,7 +69,7 @@ Load the matching skill **before** the work. Do not re-derive the procedure from
 | `parallel-feature-work` | Two or more feature specs at once; separate implementer agents; next-in-line integrate |
 | `using-git-worktrees` | Dispatch spec-implementer; isolated checkout for a feat/ branch; parallel agents |
 | `playwright-e2e` | Browser user flows; flow CI job; test-server fakes; empty-state reset between files; unique checkout port for flow tests; accessible name **is** X (`exact: true`); UA-default / inherited `toHaveCSS`; `:focus-visible` `locator.focus()` |
-| `visual-design` | Restyling named screens; look may grow (heading/image/static page ACs in the same commit); padding/type/layout without a computed-CSS catalog |
+| `visual-design` | Restyling named screens; look may grow (heading/image/static page ACs in the same commit); padding/type/layout without a computed-CSS catalog; `header` / AppBar vs picker lead `<p>` |
 
 Handed a spec, or asked to implement/ship: `releasing-a-spec` (orchestrator). Two or more specs this session, or next-in-line integrate: `parallel-feature-work` first. Implementing any slice: dispatch `.agents/agents/spec-implementer/AGENT.md` (`tdd-loop` lives there). Isolated tree: `using-git-worktrees` for every implementer. Ready to review: `spec-review-loop` (fresh `spec-reviewer` every dispatch; resume the implementer on Changes requested). Ready to merge: dispatch `.agents/agents/release-manager/AGENT.md`. After merge: `post-merge-improvement`. Browser flow tests: `playwright-e2e`. Restyling named screens: `visual-design`. Spec changed a procedure: `writing-for-agents`.
 
