@@ -4,10 +4,11 @@ description: >
   Use when adding or changing Playwright tests, a test:e2e script, a
   script-existence guard, a browser user flow, the CI job that runs
   flow tests, a unique TCP port per checkout for flow tests,
-  Playwright webServer env, blanking live API keys, an
-  empty-state flow after a mutating spec file, or an
-  already-mounted UI re-open. Also when updating a Flow row in a
-  testing spec.
+  Playwright toHaveCSS of a computed color that is the UA default
+  or inherited from a parent/body AC, Playwright webServer env,
+  blanking live API keys, an empty-state flow after a mutating spec
+  file, or an already-mounted UI re-open. Also when updating a Flow
+  row in a testing spec.
 ---
 
 # Playwright e2e
