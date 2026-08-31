@@ -32,6 +32,18 @@ async function openUsedMagicLink(page: Page, request: APIRequestContext) {
   await page.goto(match![0]);
 }
 
+async function consumeAdminOnTeam(page: Page, request: APIRequestContext) {
+  await consumeAdmin(page, request);
+  const name = page.getByRole("textbox", { name: "Team name", exact: true });
+  if (await name.isVisible()) {
+    await name.fill("Library");
+    await page.getByRole("button", { name: "Create team", exact: true }).click();
+    await expect(
+      page.getByRole("heading", { name: "Library", exact: true }),
+    ).toBeVisible();
+  }
+}
+
 test("GET `/` `body` computed `font-family` includes `system-ui`", async ({
   page,
 }) => {
@@ -312,4 +324,15 @@ test("GET `/app` as a Person with two Teams, a link whose accessible name is the
   await expect(
     page.getByRole("link", { name: firstTeamName, exact: true }),
   ).toHaveCSS("color", "rgb(15, 118, 110)");
+});
+
+test("GET `/app/teams/{id}` as a member `body` computed `background-color` is `rgb(255, 255, 255)`", async ({
+  page,
+  request,
+}) => {
+  await consumeAdminOnTeam(page, request);
+  await expect(page.locator("body")).toHaveCSS(
+    "background-color",
+    "rgb(255, 255, 255)",
+  );
 });

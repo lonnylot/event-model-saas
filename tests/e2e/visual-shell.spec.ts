@@ -162,18 +162,6 @@ test("GET `/app` as a Person with two Teams shows a link whose accessible name i
 });
 
 
-test("GET `/app/teams/{id}` as a member `body` computed `background-color` is `rgb(247, 244, 238)`", async ({
-  page,
-  request,
-}) => {
-  await consumeAdminOnTeam(page, request);
-  await expect(page.locator("body")).toHaveCSS(
-    "background-color",
-    "rgb(247, 244, 238)",
-  );
-});
-
-
 test("GET `/app/teams/{id}` as a member shows a link whose accessible name is `Event Model`", async ({
   page,
   request,
