@@ -55,7 +55,7 @@ Public pages have copy and body colors only. Signed-in pages are paper cream. Th
 - [x] GET `/app/teams/{id}` as a member, the button `Create model` computed `background-color` is `rgb(15, 118, 110)`
 - [x] GET `/app/teams/{id}` as a member, the button `Create model` computed `color` is `rgb(255, 255, 255)`
 - [x] GET `/app/teams/{id}` as a member, the button `Create model` computed `border-radius` is `10px`
-- [ ] GET `/app/admin/teams` as site admin `body` computed `background-color` is `rgb(255, 255, 255)`
+- [x] GET `/app/admin/teams` as site admin `body` computed `background-color` is `rgb(255, 255, 255)`
 - [ ] GET `/app/admin/teams` as site admin, the button `Send invite` computed `background-color` is `rgb(15, 118, 110)`
 - [ ] GET `/app/admin/teams` as site admin, the button `Send invite` computed `color` is `rgb(255, 255, 255)`
 - [ ] GET `/app/admin/teams` as site admin, the textbox `Invite email` computed `border-top-color` is `rgb(226, 232, 240)`

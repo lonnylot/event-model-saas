@@ -366,3 +366,15 @@ test("GET `/app/teams/{id}` as a member, the button `Create model` computed `bor
     page.getByRole("button", { name: "Create model", exact: true }),
   ).toHaveCSS("border-radius", "10px");
 });
+
+test("GET `/app/admin/teams` as site admin `body` computed `background-color` is `rgb(255, 255, 255)`", async ({
+  page,
+  request,
+}) => {
+  await consumeAdminOnTeam(page, request);
+  await page.goto("/app/admin/teams");
+  await expect(page.locator("body")).toHaveCSS(
+    "background-color",
+    "rgb(255, 255, 255)",
+  );
+});
