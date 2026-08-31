@@ -42,7 +42,7 @@ Event Model, Person, Team, Site admin, Session, Magic link
 
 ## UI
 
-Screens: App, Team picker, Team, Teams admin. Primitives this slice composes: AppBar (`Event Model` href `/app`). Page background and color on those screens are [product-visual.md](./product-visual.md). Public Page, Login Button primary, Landing, Login, Not found, and Expired link are [public-face.md](./public-face.md). Inventory: [design-system.md](../design-system.md).
+Screens: App, Team picker, Team, Teams admin. Primitives this slice composes: AppBar (`Event Model` href `/app`). Page `canvas` background and `ink` color on those screens are [product-visual.md](./product-visual.md). Public Page, Login Button primary, Landing, Login, Not found, and Expired link are [public-face.md](./public-face.md). Inventory: [design-system.md](../design-system.md).
 
 ## Assumptions
 
@@ -62,7 +62,7 @@ Dark mode, webfont files. Public Page, Login, Landing, Marketing header, expired
 
 - [hosted-app.md](./hosted-app.md) — 404 heading `Not found` stays that file. GET `/` heading and `Access is by invite.` are [public-face.md](./public-face.md). Favicon, stylesheet, `og:image`, and `og:title` on `/` stay this slice.
 - [magic-link-auth.md](./magic-link-auth.md) — Expired heading and signed-in email / Sign out stay that file. Expired Page background and `Sign in` are [public-face.md](./public-face.md). AppBar on `/app` that is not redirected stays this slice.
-- [teams-and-invites.md](./teams-and-invites.md) — Team name, Create team, Teams admin, picker `Your teams`, team heading stay that file. AppBar `Event Model` link on `/app`, picker, team, and Teams admin stays this slice. Page background on those screens is [product-visual.md](./product-visual.md). Creating a Team still does not create Event Models; Event Model persistence is [model-persistence.md](./model-persistence.md).
+- [teams-and-invites.md](./teams-and-invites.md) — Team name, Create team, Teams admin, picker `Your teams`, team heading stay that file. AppBar `Event Model` link on `/app`, picker, team, and Teams admin stays this slice. Page `canvas` background and `ink` color on those screens are [product-visual.md](./product-visual.md). Creating a Team still does not create Event Models; Event Model persistence is [model-persistence.md](./model-persistence.md).
 - [model-persistence.md](./model-persistence.md) — Create model and the Untitled link stay that file. AppBar `Event Model` link on GET `/app/teams/{id}` is this slice.
 - [product.md](../product.md) — Team/admin HTML and editor chrome are contemporary SaaS ([product-visual.md](./product-visual.md)). Public HTML is [public-face.md](./public-face.md). Expired heading stays this file's leftover of magic-link-auth; expired `Sign in` is [public-face.md](./public-face.md). The schema file is in this repo.
 - [architecture.md](../architecture.md) — Design tokens live in `docs/specs/design-system.md`. Team/admin and editor HTML is Worker HTML plus `public/` CSS with contemporary SaaS tokens ([product-visual.md](./product-visual.md)). Public HTML is [public-face.md](./public-face.md). Editor canvas TypeScript stays the timeline. `run_worker_first` includes `/favicon.png`, `/og.png`, and `/shell.css`. `/` and `/login` are [public-face.md](./public-face.md).
