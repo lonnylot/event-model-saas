@@ -155,3 +155,6 @@ li[data-kind="actor"] {
   background-color: #FEF3C7;
   border-top-color: #F59E0B;
 }
+li[data-kind="command"] {
+  background-color: #DBEAFE;
+}
