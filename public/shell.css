@@ -127,3 +127,6 @@ form.invite button {
 form.invite input {
   border-top-color: #E2E8F0;
 }
+body.app-editor {
+  background-color: #FFFFFF;
+}

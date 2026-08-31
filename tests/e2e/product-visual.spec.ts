@@ -445,3 +445,14 @@ test('GET `/app/teams/{id}/models/{mid}` as a member has a `link[rel="stylesheet
     "/shell.css",
   );
 });
+
+test("GET `/app/teams/{id}/models/{mid}` as a member `body` computed `background-color` is `rgb(255, 255, 255)`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await expect(page.locator("body")).toHaveCSS(
+    "background-color",
+    "rgb(255, 255, 255)",
+  );
+});
