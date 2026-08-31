@@ -665,3 +665,17 @@ test("After clicking `New Slice` then `Add Read Model` on that page, the Timelin
       .getByRole("listitem", { name: "Read Model", exact: true }),
   ).toHaveCSS("border-top-color", "rgb(22, 163, 74)");
 });
+
+test("After clicking `New Slice` then `Add Automation` on that page, the Timeline listitem `Automation` computed `background-color` is `rgb(237, 233, 254)`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Automation", exact: true }).click();
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Automation", exact: true }),
+  ).toHaveCSS("background-color", "rgb(237, 233, 254)");
+});
