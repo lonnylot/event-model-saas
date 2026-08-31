@@ -567,3 +567,17 @@ test("After clicking `New Slice` then `Add Actor` on that page, the Timeline lis
       .getByRole("listitem", { name: "Actor", exact: true }),
   ).toHaveCSS("background-color", "rgb(254, 243, 199)");
 });
+
+test("After clicking `New Slice` then `Add Actor` on that page, the Timeline listitem `Actor` computed `border-top-color` is `rgb(245, 158, 11)`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Actor", exact: true }).click();
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Actor", exact: true }),
+  ).toHaveCSS("border-top-color", "rgb(245, 158, 11)");
+});

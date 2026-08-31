@@ -153,4 +153,5 @@ body.app-editor section[aria-label="Inspector"] {
 }
 li[data-kind="actor"] {
   background-color: #FEF3C7;
+  border-top-color: #F59E0B;
 }
