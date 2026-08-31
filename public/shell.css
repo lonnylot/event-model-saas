@@ -108,6 +108,7 @@ body.app-guest {
 body.app-picker {
   background-color: #FFFFFF;
   color: #0F172A;
+  font-family: ui-sans-serif, system-ui, sans-serif;
 }
 body.app-picker h1 + p a {
   color: #0F766E;
