@@ -120,3 +120,13 @@ test("GET `/app` as site admin with no teams, the textbox `Team name` computed `
     page.getByRole("textbox", { name: "Team name", exact: true }),
   ).toHaveCSS("border-radius", "10px");
 });
+
+test("GET `/app` as site admin with no teams, the button `Sign out` computed `background-color` is `rgba(0, 0, 0, 0)`", async ({
+  page,
+  request,
+}) => {
+  await consumeAdmin(page, request);
+  await expect(
+    page.getByRole("button", { name: "Sign out", exact: true }),
+  ).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
+});
