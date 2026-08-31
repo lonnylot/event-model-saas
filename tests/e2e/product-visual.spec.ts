@@ -336,3 +336,13 @@ test("GET `/app/teams/{id}` as a member `body` computed `background-color` is `r
     "rgb(255, 255, 255)",
   );
 });
+
+test("GET `/app/teams/{id}` as a member, the button `Create model` computed `background-color` is `rgb(15, 118, 110)`", async ({
+  page,
+  request,
+}) => {
+  await consumeAdminOnTeam(page, request);
+  await expect(
+    page.getByRole("button", { name: "Create model", exact: true }),
+  ).toHaveCSS("background-color", "rgb(15, 118, 110)");
+});
