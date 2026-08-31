@@ -21,6 +21,7 @@ One commit is one finished thought: one spec criterion (or one review/CI fix) wi
 - A single review thread or a single CI cause is fixed and green
 - Spec status flip (`validated` / `released`) after the gate that allows it
 - One production change several named screens mount, plus the shell it left — splitting those routes is empty / tests-after
+- A `visual-design` look pass is one slice per named screen (or one stylesheet several named screens mount, plus the shell it left). Not one commit per CSS property.
 - Leftover checked ACs that share one production path (`testing`) — fold into the commit that made them true
 
 ## When not to commit

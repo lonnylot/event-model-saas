@@ -1,3 +1,66 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1.5rem;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #E2E8F0;
+}
+header a {
+  text-decoration: none;
+  font-weight: 600;
+}
+main {
+  padding: 2.5rem 1.5rem 4rem;
+}
+body.app-editor main {
+  padding: 0;
+}
+body:not(.app-editor) h1 {
+  line-height: 1.15;
+  margin: 0 0 0.75rem;
+}
+body:not(.app-editor) h2 {
+  font-size: 1.25rem;
+  margin: 2rem 0 0.5rem;
+}
+body:not(.app-editor) p {
+  line-height: 1.6;
+  margin: 0 0 0.85rem;
+}
+#waitlist-form,
+#login,
+#create-team,
+form.invite {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  max-width: 24rem;
+}
+body:not(.app-editor) input,
+body:not(.app-editor) button {
+  font: inherit;
+  padding: 0.65rem 0.85rem;
+}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px #0F766E;
+}
 body.login {
   background-color: #FFFFFF;
   color: #0F172A;
@@ -31,6 +94,18 @@ body.landing main > p:first-of-type {
 }
 body.landing main {
   max-width: 36rem;
+  margin-inline: auto;
+}
+body.login:not(.landing) main,
+body.not-found main,
+body.expired main,
+body.app-none main,
+body.app-guest main,
+body.app-picker main,
+body.app-team main,
+body.app-admin main {
+  max-width: 36rem;
+  margin-inline: auto;
 }
 #waitlist-form button {
   background-color: #0F766E;
@@ -39,15 +114,6 @@ body.landing main {
 }
 #waitlist-form input {
   border-top-color: #E2E8F0;
-  border-radius: 10px;
-}
-#waitlist-form {
-  border-top-color: #E2E8F0;
-  border-radius: 10px;
-  max-width: 24rem;
-}
-#login {
-  max-width: 24rem;
   border-radius: 10px;
 }
 #login button {

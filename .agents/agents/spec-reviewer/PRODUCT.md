@@ -6,4 +6,6 @@ Also `git diff <base> <head>` (two-dot). Two-dot deleting a catalog-released spe
 
 Product weaker fixtures, extra chrome, leftover `product.md`, and "that Slice" one-item proofs are blocking when this HEAD contradicts them — load `testing/PRODUCT.md` and `keeping-specs-current/PRODUCT.md`. Do not label those `note`. Playwright `toHaveCSS` of UA-default Email Field canvas fill or inherited heading ink is that weaker fixture. UI / Restates that name signed-in Page `ink`/`type`, Send invite radius, leftover Field `canvas` fill, or Card `padding` without those ACs is leftover locked compose. Leftover paper Page / Page background assigned to visual-shell in `teams-and-invites.md` / `magic-link-auth.md` after restating signed-in Page is leftover Restates.
 
+Look of named screens is `visual-design`. Do not block padding, type, or composition of existing primitives when tokens and a11y hold. Do not demand a prior human validate for look chrome whose AC landed in the same commit. New heading/image/route **without** an AC on this HEAD is still blocking.
+
 Do not require reconstructing a review-thread or CI-fix commit into an earlier AC (portable `logical-commits`). Do not require a commit per leftover checkbox when those ACs share one production path.

@@ -14,7 +14,9 @@ A targeting "only on the first Slice" packed "and" stays one `it`. Copy vs splic
 
 ## GREEN
 
-No extra chrome the AC does not name (`keeping-specs-current/PRODUCT.md`): no extra `<title>`, heading, form, link, nav; no Inspector Name on Out of scope kinds; no extra stylesheet on an Out of scope route; no leftover paper `ink-paper` on public `body.login`; no `textContent` wipe of `Command port`.
+Look of named screens is `visual-design`, not extra UI. Padding, type, and composition of existing primitives on those screens do not need a new AC per property. New heading/image/static page: append the AC in this commit (`visual-design` Look may grow).
+
+No extra **capability** chrome the AC does not name (`keeping-specs-current/PRODUCT.md`): no Inspector Name on Out of scope kinds; no extra stylesheet on an Out of scope route; no leftover paper `ink-paper` on public `body.login`; no `textContent` wipe of `Command port`.
 
 No extra R2/D1 write without a stored-body AC. Architecture adapters constructed on Worker `fetch`, not only behind `TEST_MAIL=1`.
 

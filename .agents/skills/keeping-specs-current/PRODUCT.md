@@ -10,6 +10,8 @@ Load with `keeping-specs-current`. Portable procedure is `SKILL.md` (spec-loop).
 
 ## Chrome, persistence, host
 
+Look of **named screens** is `visual-design` ([ADR 0001](../../../docs/adr/0001-look-iteration.md)). Spacing, type, density, and layout of those screens are not extra chrome. A new heading, image, landmark, or static public page on a named screen is unfinished until its AC lands in the **same commit** as the production — do not halt for a new human validate; the PR is the gate. Still extra chrome: new persistence, new capability (signup, billing), copy that asserts a new product claim, or chrome on a screen this spec does not own.
+
 Extra visible chrome without an AC is unfinished — add the AC or omit it. Here that includes:
 
 - Document title, extra nav, extra form, extra link, extra heading on a route

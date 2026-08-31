@@ -42,7 +42,7 @@ Event Model, Person, Team, Site admin, Session, Magic link
 
 ## UI
 
-Screens: App, Team picker, Team, Teams admin. Primitives this slice composes: AppBar (`Event Model` href `/app`). Page `canvas` background and `ink` color on those screens are [product-visual.md](./product-visual.md). Public Page, Login Button primary, Landing, Login, Not found, and Expired link are [public-face.md](./public-face.md). Inventory: [design-system.md](../design-system.md).
+Screens: App, Team picker, Team, Teams admin. Primitives this slice composes: AppBar (`Event Model` href `/app`). AppBar layout (flex, padding) is [designed-surfaces.md](./designed-surfaces.md). Page `canvas` background and `ink` color on those screens are [product-visual.md](./product-visual.md). Public Page, Login Button primary, Landing, Login, Not found, and Expired link are [public-face.md](./public-face.md). Inventory: [design-system.md](../design-system.md).
 
 ## Assumptions
 
@@ -56,7 +56,7 @@ Screens: App, Team picker, Team, Teams admin. Primitives this slice composes: Ap
 
 ## Out of scope
 
-Dark mode, webfont files. Public Page, Login, Landing, Marketing header, expired `Sign in`, and Login Button primary are [public-face.md](./public-face.md). Card, Field, font `type`, `radius`, Landing `Join the waitlist` Button primary, signed-in Page colors, editor stylesheet, and sticky-note colors are [product-visual.md](./product-visual.md). Extra “Request a new one” heading on the expired page stays out. Viewport meta on routes that already have it stays.
+Dark mode, webfont files. Public Page, Login, Landing, Marketing header, expired `Sign in`, and Login Button primary are [public-face.md](./public-face.md). Card, Field, font `type`, `radius`, Landing `Join the waitlist` Button primary, signed-in Page colors, editor stylesheet, and sticky-note colors are [product-visual.md](./product-visual.md). Extra “Request a new one” heading on the expired page stays out. AppBar layout (flex, padding), GET `/` viewport, and composed look are [designed-surfaces.md](./designed-surfaces.md). Viewport meta on 404 stays.
 
 ## Restates
 

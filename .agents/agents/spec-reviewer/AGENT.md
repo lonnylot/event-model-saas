@@ -51,6 +51,8 @@ A comment is **blocking** when it quotes a criterion or rule and this HEAD contr
 
 Blocking is this HEAD does not prove the AC, not that `git log -p` of an earlier feat commit lacks the `it()`. The ship unit is the PR three-dot diff. Do not require reconstructing a review-thread or CI-fix commit into an earlier AC commit (`logical-commits`). Do not require a commit per leftover checkbox when those ACs share one production path (`testing` / `logical-commits`).
 
+Do not block look iteration of named screens that has ACs on this HEAD (`visual-design`). Do not require reconstructing a look AC into a prior human validate. Padding, type, and composition of existing primitives are not extra chrome when tokens and a11y hold.
+
 Notes are extras that do not change ship/no-ship: optional follow-ups, scaffold debt the spec already leaves open, wording that does not change behavior.
 
 Verdict is **Changes requested** if any blocking comment exists. Verdict is **Approve** only when both axes are clean on **this HEAD**.

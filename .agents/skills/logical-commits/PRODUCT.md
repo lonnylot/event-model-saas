@@ -4,6 +4,10 @@ Load with `logical-commits`. Portable procedure is `SKILL.md` (spec-loop).
 
 Spec-loop owns **after the PR is open**: a missing or weaker test found in review or CI is one review/CI commit on HEAD. Do not reconstruct it into an earlier AC. Rows below that say reconstruct apply only in the **TDD slice** (before the PR is the review unit).
 
+## Look pass
+
+A `visual-design` look pass is one slice per named screen (or one stylesheet several named screens mount, plus the shell it left). Not one commit per CSS property. Look-may-grow ACs (new heading/image/static page) land in that screen's look-pass commit.
+
 ## Independently revertible here
 
 - fromKind vs toKind (or any copied field): land EVENT `toKind` only, then READMODEL with its test. The first commit must not already copy that field for every target.

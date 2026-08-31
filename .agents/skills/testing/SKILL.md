@@ -59,7 +59,7 @@ A criterion that names a screen, "shows", or "lists" is proven at the app or flo
 
 3. **Confirm the seam.** Fake adapters at the seams the architecture spec (or `codebase-design`) names. If the criterion names a persistence behavior of a specific adapter, the test constructs that adapter — faking the port only proves the orchestrator called it. A `readFileSync` of wiring for a fake identifier is a parse test. Proof is a call under the test adapter, or a flow that fails if those constructors are unused. Completion: no mock of a domain collaborator that is not an adapter. No live third-party in tests.
 
-4. **Independent expected values.** Pull numbers, event names, and catalog fields from the spec tree. Do not reimplement the unit under test inside the assertion.
+4. **Independent expected values.** Pull numbers, event names, and catalog fields from the spec tree. Do not reimplement the unit under test inside the assertion. Do not prove look as a pile of computed rgb() ACs. Prove names, flows, token use, a11y, and that unique look rules exist (`visual-design`).
 
 5. **Telemetry contract.** If the product catalogs actions: for each new `action`, assert `capture` was called with that name (fake Telemetry). A property allowlist is proven against the observability catalog, not a handwritten table exercised on one action.
 
