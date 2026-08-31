@@ -1,6 +1,6 @@
 # Product visual
 
-Status: validated
+Status: released
 
 ## Problem
 
