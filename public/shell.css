@@ -142,3 +142,6 @@ body.app-editor header {
 #export-model button {
   background-color: transparent;
 }
+body.app-editor form[action="/api/auth/sign-out"] button {
+  background-color: transparent;
+}

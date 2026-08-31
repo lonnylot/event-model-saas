@@ -515,3 +515,13 @@ test("GET `/app/teams/{id}/models/{mid}` as a member, the button `Export` comput
     page.getByRole("button", { name: "Export", exact: true }),
   ).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
 });
+
+test("GET `/app/teams/{id}/models/{mid}` as a member, the button `Sign out` computed `background-color` is `rgba(0, 0, 0, 0)`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await expect(
+    page.getByRole("button", { name: "Sign out", exact: true }),
+  ).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
+});

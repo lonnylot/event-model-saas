@@ -67,7 +67,7 @@ Public pages have copy and body colors only. Signed-in pages are paper cream. Th
 - [x] GET `/app/teams/{id}/models/{mid}` as a member, the button `Save` computed `color` is `rgb(255, 255, 255)`
 - [x] GET `/app/teams/{id}/models/{mid}` as a member, the button `Save` computed `border-radius` is `10px`
 - [x] GET `/app/teams/{id}/models/{mid}` as a member, the button `Export` computed `background-color` is `rgba(0, 0, 0, 0)`
-- [ ] GET `/app/teams/{id}/models/{mid}` as a member, the button `Sign out` computed `background-color` is `rgba(0, 0, 0, 0)`
+- [x] GET `/app/teams/{id}/models/{mid}` as a member, the button `Sign out` computed `background-color` is `rgba(0, 0, 0, 0)`
 - [ ] GET `/app/teams/{id}/models/{mid}` as a member, the region `Timeline` computed `background-color` is `rgb(248, 250, 252)`
 - [ ] GET `/app/teams/{id}/models/{mid}` as a member, the region `Inspector` computed `border-left-color` is `rgb(226, 232, 240)`
 - [ ] After clicking `New Slice` then `Add Actor` on that page, the Timeline listitem `Actor` computed `background-color` is `rgb(254, 243, 199)`
