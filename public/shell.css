@@ -139,3 +139,6 @@ body.app-editor header {
   color: #FFFFFF;
   border-radius: 10px;
 }
+#export-model button {
+  background-color: transparent;
+}
