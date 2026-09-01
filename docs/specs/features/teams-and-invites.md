@@ -21,13 +21,13 @@ A signed-in Person has no Team. The site admin cannot create a Team or Invite an
 - [x] GET `/app/teams/{id}` as a member shows a heading whose accessible name is the Team name
 - [x] GET `/app/teams/{id}` as a member shows the Person's email
 - [x] GET `/app/teams/{id}` as a member shows a button whose accessible name is `Sign out`
-- [x] GET `/app/teams/{id}` as site admin shows a link whose accessible name is `Teams admin`
+- [x] GET `/app/teams/{id}` as site admin, `nav` shows a link whose accessible name is `Teams admin`
 - [x] GET `/app/teams/{id}` as a Person who is not a member returns status 404
 - [x] GET `/app` as a Person with two Teams shows a heading whose accessible name is `Your teams`
 - [x] GET `/app` as a Person with two Teams shows a link whose accessible name is the first Team name
 - [x] GET `/app` as a Person with two Teams shows a link whose accessible name is the second Team name
-- [x] GET `/app` as site admin with no teams shows a link whose accessible name is `Teams admin`
-- [x] GET `/app` as site admin with two Teams shows a link whose accessible name is `Teams admin`
+- [x] GET `/app` as site admin with no teams, `nav` shows a link whose accessible name is `Teams admin`
+- [x] GET `/app` as site admin with two Teams, `nav` shows a link whose accessible name is `Teams admin`
 - [x] GET `/app/admin/teams` as a Person who is not site admin returns status 303
 - [x] GET `/app/admin/teams` as a Person who is not site admin sets `Location` to `/app`
 - [x] GET `/app/admin/teams` as site admin shows the Person's email
@@ -65,7 +65,7 @@ Person, Site admin, Team, Invite, Membership, Session, Magic link
 
 ## Out of scope
 
-Editor canvas, per-model ACLs, non-admin team creation. Event Model create/import/save/export and the team page model list are owned by model-persistence. AppBar `Event Model` href `/app` on `/app`, picker, team, and Teams admin is [visual-shell.md](./visual-shell.md). Page `canvas` background and `ink` color on those screens are [product-visual.md](./product-visual.md).
+Editor canvas, per-model ACLs, non-admin team creation. Event Model create/import/save/export and the team page model list are owned by model-persistence. AppBar `Event Model` href `/app` on `/app`, picker, team, and Teams admin is [visual-shell.md](./visual-shell.md). Page `canvas` background and `ink` color on those screens are [product-visual.md](./product-visual.md). Signed-in AppBar `nav` and `Teams admin` href are [admin-nav.md](./admin-nav.md).
 
 ## Restates
 

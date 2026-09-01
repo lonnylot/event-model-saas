@@ -61,7 +61,7 @@ Screens: Landing, Login, Not found, Expired link, App, Team picker, Team, Teams 
 
 ## Out of scope
 
-Dark mode. Public signup. Site admin waitlist table UI. Mac window chrome. Editing behavior (New Slice, Save, drag, inspect) stays the released editor specs. Product-visual token *values* (body canvas/ink, accent buttons, sticky-note fills) stay [product-visual.md](./product-visual.md). Landing depth is [landing-depth.md](./landing-depth.md). Landing product frame contents (hosted editor, not Mac window) are [landing-saas-shot.md](./landing-saas-shot.md). Landing chrome depth (no URL bar; nav / bento / waitlist / footer lift) is [landing-chrome-depth.md](./landing-chrome-depth.md).
+Dark mode. Public signup. Site admin waitlist table UI. Mac window chrome. Editing behavior (New Slice, Save, drag, inspect) stays the released editor specs. Product-visual token *values* (body canvas/ink, accent buttons, sticky-note fills) stay [product-visual.md](./product-visual.md). Landing depth is [landing-depth.md](./landing-depth.md). Landing product frame contents (hosted editor, not Mac window) are [landing-saas-shot.md](./landing-saas-shot.md). Landing chrome depth (no URL bar; nav / bento / waitlist / footer lift) is [landing-chrome-depth.md](./landing-chrome-depth.md). Signed-in AppBar `nav` is [admin-nav.md](./admin-nav.md).
 
 ## Restates
 

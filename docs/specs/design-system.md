@@ -37,7 +37,7 @@ Sticky-note block fills ([features/product-visual.md](./features/product-visual.
 |-----------|------|
 | Page | `body` background `canvas`, color `ink`, font `type` |
 | Card | `measure`-wide panel, `line` border, `radius` |
-| AppBar | Top bar: wordmark, then Sign in / Open app or email, optional Teams admin, Sign out. `line` bottom border. Wordmark `/` when signed out, `/app` when signed in |
+| AppBar | Top bar: wordmark, then Sign in / Open app or email, optional Teams admin, Sign out. `line` bottom border. Wordmark `/` when signed out, `/app` when signed in. Signed-in admin screens put optional Teams admin in a `nav` landmark ([features/admin-nav.md](./features/admin-nav.md)) |
 | Button primary | Background `accent`, color `on-accent`, `radius` |
 | Field | `line` border, `radius` |
 | Footer | Landmark on Landing: wordmark, then Sign in when signed out or Open app when signed in |

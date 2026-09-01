@@ -99,6 +99,78 @@ body.app-none header,
 body.app-editor header {
   border-bottom-color: #e2e8f0;
 }
+body.app-none header,
+body.app-guest header,
+body.app-picker header,
+body.app-team header,
+body.app-admin header {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 1px 2px rgba(15, 23, 42, 0.06),
+    0 12px 32px rgba(15, 23, 42, 0.12);
+}
+body.app-none .appbar-end,
+body.app-guest .appbar-end,
+body.app-picker .appbar-end,
+body.app-team .appbar-end,
+body.app-admin .appbar-end {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+body.app-none header > a,
+body.app-guest header > a,
+body.app-picker header > a,
+body.app-team header > a,
+body.app-admin header > a {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+body.app-none header nav a,
+body.app-guest header nav a,
+body.app-picker header nav a,
+body.app-team header nav a,
+body.app-admin header nav a {
+  font-weight: 500;
+  font-size: 0.85rem;
+  color: #0f766e;
+}
+body.app-none header p,
+body.app-guest header p,
+body.app-picker header p,
+body.app-team header p,
+body.app-admin header p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #64748b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 14rem;
+}
+body.app-none header form,
+body.app-guest header form,
+body.app-picker header form,
+body.app-team header form,
+body.app-admin header form {
+  display: inline;
+  margin: 0;
+}
+body.app-none header button,
+body.app-guest header button,
+body.app-picker header button,
+body.app-team header button,
+body.app-admin header button {
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #0f172a;
+  cursor: pointer;
+}
 body.login:not(.landing) a[href="/"] {
   color: #0f766e;
 }
