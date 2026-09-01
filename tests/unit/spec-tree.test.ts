@@ -136,4 +136,13 @@ describe("spec tree", () => {
       "This slice owns that append and the Field name after reload inspect",
     );
   });
+
+  it("product-visual Assumptions do not leave Landing main max-width 36rem or Display heading 36px", () => {
+    const text = readFileSync(
+      "docs/specs/features/product-visual.md",
+      "utf8",
+    );
+    expect(text).not.toContain("Landing `main` `max-width` `36rem`");
+    expect(text).not.toContain("Display heading `font-size` `36px`");
+  });
 });
