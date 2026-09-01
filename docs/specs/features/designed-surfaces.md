@@ -28,6 +28,10 @@ Public and signed-in HTML apply tokens as isolated computed properties. Landing 
 - [x] GET `/` `main` computed `max-width` is `none`
 - [x] GET `/app/teams/{id}/models/{mid}` as a member `main` computed `display` is `grid`
 - [x] GET `/app/teams/{id}/models/{mid}` as a member shows a heading whose accessible name is `Inspector`
+- [x] GET `/app/teams/{id}/models/{mid}` as a member shows a heading whose accessible name is `Model`
+- [x] GET `/app/teams/{id}/models/{mid}` as a member with no Slices shows a heading whose accessible name is `Start the timeline`
+- [x] GET `/app/teams/{id}/models/{mid}` as a member shows the text `Time`
+- [x] GET `/app/teams/{id}/models/{mid}` as a member with no local edits shows the text `Nothing Selected`
 
 ## Domain terms
 

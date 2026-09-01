@@ -92,3 +92,41 @@ test("GET `/app/teams/{id}/models/{mid}` as a member shows a heading whose acces
     page.getByRole("heading", { name: "Inspector", exact: true }),
   ).toBeVisible();
 });
+
+test("GET `/app/teams/{id}/models/{mid}` as a member shows a heading whose accessible name is `Model`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await expect(
+    page.getByRole("heading", { name: "Model", exact: true }),
+  ).toBeVisible();
+});
+
+test("GET `/app/teams/{id}/models/{mid}` as a member with no Slices shows a heading whose accessible name is `Start the timeline`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await expect(
+    page.getByRole("heading", { name: "Start the timeline", exact: true }),
+  ).toBeVisible();
+});
+
+test("GET `/app/teams/{id}/models/{mid}` as a member shows the text `Time`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await expect(page.getByText("Time", { exact: true })).toBeVisible();
+});
+
+test("GET `/app/teams/{id}/models/{mid}` as a member with no local edits shows the text `Nothing Selected`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await expect(
+    page.getByText("Nothing Selected", { exact: true }),
+  ).toBeVisible();
+});

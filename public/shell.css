@@ -588,7 +588,7 @@ body.app-editor .slice-rail {
   border-right: 1px solid #e2e8f0;
   overflow: auto;
   padding: 0.75rem 0.65rem;
-  background: #ffffff;
+  background: #f8fafc;
   min-width: 0;
 }
 body.app-editor .slice-rail h2 {
@@ -597,7 +597,17 @@ body.app-editor .slice-rail h2 {
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: #64748b;
-  margin: 0 0 0.5rem;
+  margin: 0.85rem 0 0.4rem;
+}
+body.app-editor .slice-rail h2:first-child {
+  margin-top: 0;
+}
+body.app-editor .model-row {
+  margin: 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.4rem 0.55rem;
+  color: #0f172a;
 }
 body.app-editor .slice-rail ul {
   list-style: none;
@@ -611,40 +621,182 @@ body.app-editor .slice-rail li {
   font-size: 0.84rem;
   font-weight: 500;
   padding: 0.4rem 0.55rem;
-  border-radius: 10px;
+  border-radius: 6px;
   cursor: pointer;
 }
 body.app-editor .slice-rail li:hover {
-  background: #f0fdfa;
-  color: #0f766e;
+  background: rgba(74, 122, 209, 0.12);
+  color: #0f172a;
 }
 body.app-editor section[aria-label="Timeline"] {
   grid-area: timeline;
   overflow: hidden;
-  padding: 1rem;
+  padding: 0;
   background-color: #f8fafc;
-  background-image:
-    linear-gradient(#e2e8f0 1px, transparent 1px),
-    linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
-  background-size: 1.5rem 1.5rem;
   min-width: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
+}
+body.app-editor .time-chrome {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.5rem 1rem;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #64748b;
+  flex: 0 0 auto;
+}
+body.app-editor .time-rule {
+  flex: 1;
+  height: 2px;
+  background: rgba(85, 93, 102, 0.35);
+}
+body.app-editor .timeline-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+body.app-editor .timeline-empty h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  text-transform: none;
+  color: #0f172a;
+}
+body.app-editor .timeline-empty p {
+  margin: 0;
+  max-width: 28rem;
+  color: #64748b;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+body.app-editor .board {
+  display: none;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  align-items: stretch;
+  gap: 0;
+  padding: 1.1rem;
+}
+body.app-editor section[aria-label="Timeline"]:has(.slice-col) .timeline-empty {
+  display: none;
+}
+body.app-editor section[aria-label="Timeline"]:has(.slice-col) .board {
+  display: flex;
+}
+body.app-editor .lane-rail {
+  display: flex;
+  flex-direction: column;
+  width: 8rem;
+  flex: 0 0 8rem;
+  padding-right: 0.5rem;
+  border-right: 1px solid #e2e8f0;
+}
+body.app-editor .lane-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.65rem 0.4rem 0;
+  min-height: 5.4rem;
+}
+body.app-editor .lane-label:first-child {
+  min-height: 3.5rem;
+  color: #64748b;
+}
+body.app-editor .lane-label.actor {
+  color: #d97706;
+  background: rgba(245, 158, 11, 0.1);
+}
+body.app-editor .lane-label.command {
+  color: #2563eb;
+  background: rgba(37, 99, 235, 0.1);
+}
+body.app-editor .lane-label.event {
+  color: #ea580c;
+  background: rgba(234, 88, 12, 0.1);
+}
+body.app-editor .lane-label.readmodel {
+  color: #16a34a;
+  background: rgba(22, 163, 74, 0.1);
+}
+body.app-editor .lane-label.automation {
+  color: #7c3aed;
+  background: rgba(124, 58, 237, 0.1);
+}
+body.app-editor .slice-col {
+  width: 14.5rem;
+  flex: 0 0 14.5rem;
+  margin-left: 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 body.app-editor section[aria-label="Timeline"] ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  gap: 0.55rem;
-  min-height: 4rem;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+body.app-editor .slice-head {
+  padding: 0.65rem 0.7rem;
+  min-height: 3.5rem;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+body.app-editor section[aria-label="Timeline"] .slice-head li {
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+body.app-editor .lane {
+  padding: 0.55rem 0.65rem 0.7rem;
+  min-height: 5.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+body.app-editor .lane[data-lane="actor"] {
+  background: rgba(245, 158, 11, 0.1);
+}
+body.app-editor .lane[data-lane="command"] {
+  background: rgba(37, 99, 235, 0.1);
+}
+body.app-editor .lane[data-lane="event"] {
+  background: rgba(234, 88, 12, 0.1);
+}
+body.app-editor .lane[data-lane="readmodel"] {
+  background: rgba(22, 163, 74, 0.1);
+}
+body.app-editor .lane[data-lane="automation"] {
+  background: rgba(124, 58, 237, 0.1);
 }
 body.app-editor section[aria-label="Timeline"] li {
-  padding: 0.55rem 0.7rem 0.6rem;
-  min-width: 7.5rem;
+  padding: 0.5rem 0.65rem 0.55rem;
+  min-width: 0;
   border-top-width: 3px;
   border-top-style: solid;
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
@@ -652,16 +804,10 @@ body.app-editor section[aria-label="Timeline"] li {
   font-weight: 600;
   border-radius: 10px;
 }
-body.app-editor section[aria-label="Timeline"] li:not([data-kind]) {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  color: #64748b;
-  box-shadow: none;
-}
 body.app-editor section[aria-label="Timeline"] li button {
   display: block;
   width: 100%;
-  margin-top: 0.45rem;
+  margin-top: 0.4rem;
   font: inherit;
   font-size: 0.65rem;
   font-weight: 500;
@@ -672,20 +818,20 @@ body.app-editor section[aria-label="Timeline"] li button {
   border-radius: 10px;
   cursor: pointer;
 }
-body.app-editor section[aria-label="Timeline"] > button {
+body.app-editor .lane > button {
   font: inherit;
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 500;
-  padding: 0.28rem 0.5rem;
-  margin: 0.65rem 0.3rem 0 0;
-  border: 1px dashed #cbd5e1;
-  background: #ffffff;
+  padding: 0.35rem 0.5rem;
+  border: 1px dashed #94a3b8;
+  background: rgba(255, 255, 255, 0.55);
   color: #64748b;
-  border-radius: 10px;
+  border-radius: 8px;
   cursor: pointer;
+  text-align: left;
 }
 body.app-editor section[aria-label="Timeline"] p[data-kind="connection"] {
-  margin: 0.65rem 0 0;
+  margin: 0.65rem 1rem 0.85rem;
   font-size: 0.75rem;
   color: #64748b;
 }
@@ -704,6 +850,22 @@ body.app-editor section[aria-label="Inspector"] h2 {
   text-transform: uppercase;
   color: #64748b;
   margin: 0 0 0.75rem;
+}
+body.app-editor .inspector-empty {
+  margin: 2rem 0 0.35rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+body.app-editor .inspector-empty-hint {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #64748b;
+  line-height: 1.45;
+}
+body.app-editor section[aria-label="Inspector"]:has(label) .inspector-empty,
+body.app-editor section[aria-label="Inspector"]:has(label) .inspector-empty-hint {
+  display: none;
 }
 body.app-editor section[aria-label="Inspector"] label {
   display: flex;
