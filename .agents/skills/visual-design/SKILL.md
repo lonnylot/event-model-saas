@@ -7,7 +7,9 @@ description: >
   tokens, when adding a heading, image, landmark, or static public page
   during a look pass, when a look selector would miss markup that is not
   that element, when viewport meta is copied onto sibling HTML of named
-  screens, or when a reviewer would block padding without an AC.
+  screens, when a webfont import would change the type token, when
+  look-may-grow would contradict Out of scope webfonts, or when a
+  reviewer would block padding without an AC.
 ---
 
 # Visual design
@@ -29,7 +31,7 @@ Do **not** use this skill to add persistence, public signup, billing, or copy th
 
 | Locked (spec or ADR) | Iterated (this skill) |
 |----------------------|------------------------|
-| Screens, routes that do work, copy that claims, controls that persist or submit | Spacing, type scale, density, how primitives compose |
+| Screens, routes that do work, copy that claims, controls that persist or submit | Spacing, type scale (font-size/weight/line-height, not the `type` token font-family), density, how primitives compose |
 | Brand tokens | Hover/focus styling that does not add a control |
 | Accessibility bar (contrast, names, keyboard, focus visible) | Layout of the same screens |
 | Out of scope | — |
@@ -40,7 +42,7 @@ A feature spec does **not** catalog computed CSS per property. It names screens,
 
 On a **validated** spec that already names the screens:
 
-The **implementer** (`spec-implementer`) may add look chrome — section heading, product image of existing UI, landmark, decorative control, static public page that does not persist — by **appending the AC, then the production, in the same commit**. Do not stop for a new human *validate* of that chrome. Look-may-grow is not skip review: the feat/ PR still enters `spec-review-loop` after the first green commit, and merge is still `release-manager`. The orchestrator does not screenshot-and-iterate in this session.
+The **implementer** (`spec-implementer`) may add look chrome — section heading, product image of existing UI, landmark, decorative control, static public page that does not persist — by **appending the AC, then the production, in the same commit**. Do not stop for a new human *validate* of that chrome. Look-may-grow is not skip review: the feat/ PR still enters `spec-review-loop` after the first green commit, and merge is still `release-manager`. The orchestrator does not screenshot-and-iterate in this session. Filling a region another released spec still calls empty is unfinished until Restates that spec (`keeping-specs-current`).
 
 Still stop and return `need-user` when the addition:
 
@@ -48,6 +50,8 @@ Still stop and return `need-user` when the addition:
 - Adds a capability (signup, billing, a new authenticated flow)
 - Asserts a new product claim (pricing, SLA, "anyone can join")
 - Contradicts Out of scope or the accessibility bar
+- Changes a brand token (the `type` font-family stack is not type scale)
+- Ships a webfont `@import` (Out of scope webfont files)
 
 ## Loop
 
@@ -57,7 +61,7 @@ Still stop and return `need-user` when the addition:
 
 3. **Iterate look in the browser.** Change CSS and structure of named screens. Check desktop and a narrow viewport. This step runs in `spec-implementer`, not the orchestrator session. Completion: tokens hold; a11y holds; existing named controls/copy remain; the composed page is not UA-default stack.
 
-4. **Grow.** If a heading, image, landmark, or static public page is needed, append its AC and ship it in this look pass (`Look may grow`). Completion: `git show` lists the new AC with the production.
+4. **Grow.** If a heading, image, landmark, or static public page is needed, append its AC and ship it in this look pass (`Look may grow`). Restating a look AC (heading size, max-width) is unfinished until leftover Assumptions in that spec no longer quote the old values, and leftover unused tokens that still encode the old measure are marked leftover unused or dropped (`keeping-specs-current`). Completion: `git show` lists the new AC with the production.
 
 5. **Commit.** One look pass per named screen (or one stylesheet pass that several named screens mount, plus the shell it left). Viewport meta copied onto sibling HTML of those screens is that shell, not extra chrome — unique AC on one route is enough. Not one commit per CSS property (`logical-commits`). Then the next screen.
 
@@ -73,7 +77,7 @@ When this skill is copied into spec-loop, these portable sentences move with it:
 
 | Skill | Sentence |
 |-------|----------|
-| `keeping-specs-current` | Look of named screens is `visual-design`. Extra chrome is new capability, persistence, or a screen this spec does not own — not spacing/type/layout. Look chrome on named screens is an AC in the same commit (`visual-design` Look may grow). Viewport meta copied onto sibling HTML of named screens is the look shell, not extra chrome. |
+| `keeping-specs-current` | Look of named screens is `visual-design`. Extra chrome is new capability, persistence, or a screen this spec does not own — not spacing/type/layout. Look chrome on named screens is an AC in the same commit (`visual-design` Look may grow). Viewport meta copied onto sibling HTML of named screens is the look shell, not extra chrome. Restating a look AC is unfinished until leftover Assumptions no longer quote the old size/max-width. Filling a region another released spec still calls empty is unfinished until Restates that spec. |
 | `tdd-loop` GREEN | Extra look on named screens is `visual-design`, not extra UI. |
 | `testing` | Do not prove look as a pile of computed rgb() ACs. Prove names, flows, token use, a11y, and that unique look rules exist. |
 | `logical-commits` | A look pass is one slice per named screen (`visual-design`). Viewport meta copied onto sibling HTML is that shell. |
@@ -81,7 +85,7 @@ When this skill is copied into spec-loop, these portable sentences move with it:
 | `spec-review-loop` | Look-may-grow PRs enter this loop after the first green commit. |
 | `releasing-a-spec` | Screenshot-and-iterate is `spec-implementer`. Look-may-grow is not skip review. |
 | `writing-for-agents` map | Look / spacing / type / layout of named screens → `visual-design` |
-| `AGENTS.md` table | `visual-design` — restyling named screens; look may grow (not skip review) |
+| `AGENTS.md` table | `visual-design` — restyling named screens; look may grow (not skip review); webfont / type token is need-user |
 
 ## Rationalizations
 
@@ -92,4 +96,5 @@ When this skill is copied into spec-loop, these portable sentences move with it:
 | "I'll screenshot and iterate here" | Dispatch `spec-implementer`. The orchestrator does not write production code. |
 | "Look-may-grow skips the reviewer" | It skips a new validate. `spec-review-loop` still runs. |
 | "I'll add Sign up while I'm here" | Capability. `need-user`. |
+| "A webfont @import is just type look-may-grow" | Type scale is font-size. The `type` token and a webfont `@import` are locked / Out of scope. `need-user`. |
 | "toHaveCSS of every color is the look proof" | That is a token catalog, not a composed page. |
