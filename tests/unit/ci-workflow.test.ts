@@ -119,4 +119,8 @@ describe("GitHub Actions CI", () => {
     expect(jobs.deploy).toBeDefined();
     expect(jobs.deploy.needs).toContain("test");
   });
+
+  it("GitHub Actions workflow `.github/workflows/ci.yml` job `deploy` `if` includes `github.event_name == 'push'`", () => {
+    expect(jobs.deploy?.if ?? "").toContain("github.event_name == 'push'");
+  });
 });
