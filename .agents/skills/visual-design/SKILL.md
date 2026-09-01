@@ -6,7 +6,8 @@ description: >
   page, when extra chrome is look not capability, when applying design
   tokens, when adding a heading, image, landmark, or static public page
   during a look pass, when a look selector would miss markup that is not
-  that element, when viewport meta is copied onto sibling HTML of named
+  that element, when unique-look markup of a named screen changes,
+  when viewport meta is copied onto sibling HTML of named
   screens, when a webfont import would change the type token, when
   look-may-grow would contradict Out of scope webfonts, or when a
   reviewer would block padding without an AC.
@@ -61,7 +62,7 @@ Still stop and return `need-user` when the addition:
 
 3. **Iterate look in the browser.** Change CSS and structure of named screens. Check desktop and a narrow viewport. This step runs in `spec-implementer`, not the orchestrator session. Completion: tokens hold; a11y holds; existing named controls/copy remain; the composed page is not UA-default stack.
 
-4. **Grow.** If a heading, image, landmark, or static public page is needed, append its AC and ship it in this look pass (`Look may grow`). Restating a look AC (heading size, max-width) is unfinished until leftover Assumptions in that spec no longer quote the old values, leftover Problem no longer lists the deleted tell as current, leftover unused tokens that still encode the old measure are marked leftover unused or dropped, and Restates does not name a primitive the ACs do not lift (`keeping-specs-current`). Completion: `git show` lists the new AC with the production.
+4. **Grow.** If a heading, image, landmark, or static public page is needed, append its AC and ship it in this look pass (`Look may grow`). Changing whether a named screen's markup matches the unique-look selector (wrapping a lead in `header`) is unfinished until the unique-look screen list matches that markup. Restating a look AC (heading size, max-width) is unfinished until leftover Assumptions in that spec no longer quote the old values, leftover Problem no longer lists the deleted tell as current, leftover unused tokens that still encode the old measure are marked leftover unused or dropped, and Restates does not name a primitive the ACs do not lift (`keeping-specs-current`). Completion: `git show` lists the new AC with the production; the unique-look screen list matches the markup.
 
 5. **Commit.** One look pass per named screen (or one stylesheet pass that several named screens mount, plus the shell it left). Viewport meta copied onto sibling HTML of those screens is that shell, not extra chrome — unique AC on one route is enough. Not one commit per CSS property (`logical-commits`). Then the next screen.
 
@@ -77,15 +78,15 @@ When this skill is copied into spec-loop, these portable sentences move with it:
 
 | Skill | Sentence |
 |-------|----------|
-| `keeping-specs-current` | Look of named screens is `visual-design`. Extra chrome is new capability, persistence, or a screen this spec does not own — not spacing/type/layout. Look chrome on named screens is an AC in the same commit (`visual-design` Look may grow). Viewport meta copied onto sibling HTML of named screens is the look shell, not extra chrome. Restating a look AC is unfinished until leftover Assumptions no longer quote the old size/max-width, leftover Problem no longer lists the deleted tell as current, and Restates does not name a primitive the ACs do not lift. Filling a region another released spec still calls empty is unfinished until Restates that spec. |
+| `keeping-specs-current` | Look of named screens is `visual-design`. Extra chrome is new capability, persistence, or a screen this spec does not own — not spacing/type/layout. Look chrome on named screens is an AC in the same commit (`visual-design` Look may grow). Viewport meta copied onto sibling HTML of named screens is the look shell, not extra chrome. Changing whether named-screen markup matches the unique-look selector is unfinished until the unique-look screen list matches. Restating a look AC is unfinished until leftover Assumptions no longer quote the old size/max-width, leftover Problem no longer lists the deleted tell as current, and Restates does not name a primitive the ACs do not lift. Filling a region another released spec still calls empty is unfinished until Restates that spec. |
 | `tdd-loop` GREEN | Extra look on named screens is `visual-design`, not extra UI. |
 | `testing` | Do not prove look as a pile of computed rgb() ACs. Prove names, flows, token use, a11y, and that unique look rules exist. |
 | `logical-commits` | A look pass is one slice per named screen (`visual-design`). Viewport meta copied onto sibling HTML is that shell. |
 | `spec-reviewer` | Do not block look iteration that has ACs on this HEAD. Do not require reconstructing a look AC into a prior human validate. Look-may-grow is not skip this review. |
 | `spec-review-loop` | Look-may-grow PRs enter this loop after the first green commit. |
 | `releasing-a-spec` | Screenshot-and-iterate is `spec-implementer`. Look-may-grow is not skip review. |
-| `writing-for-agents` map | Look / spacing / type / layout of named screens → `visual-design` |
-| `AGENTS.md` table | `visual-design` — restyling named screens; look may grow (not skip review); webfont / type token is need-user |
+| `writing-for-agents` map | Look / spacing / type / layout of named screens → `visual-design`. Unique-look markup of named screens (wrapping a lead in `header`) → `visual-design` |
+| `AGENTS.md` table | `visual-design` — restyling named screens; look may grow (not skip review); unique-look markup of named screens; webfont / type token is need-user |
 
 ## Rationalizations
 
