@@ -27,7 +27,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Look-may-grow skip-validate vs skip-review | `visual-design`, `spec-review-loop`, `releasing-a-spec` |
 | Unique-look `header` / AppBar on picker / team / Teams admin while lead is `<p><a href="/app">Event Model</a></p>` | `visual-design`, `keeping-specs-current` |
 | Viewport meta copied onto sibling named-screen HTML without extra ACs (login / expired / guest `/app` / `shell` / editor; unique proof GET `/`) | `visual-design`, `keeping-specs-current`, `logical-commits` |
-| UI / Restates compose of primitives without ACs (signed-in Page `ink`/`type` on guest/picker/team/Teams admin/editor; Send invite radius; leftover Field `canvas` fill / Card `padding`; leftover visual-shell background when this slice only proves `ink`) | `keeping-specs-current` |
+| UI / Restates compose of primitives without ACs (signed-in Page `ink`/`type` on guest/picker/team/Teams admin/editor; Send invite radius; leftover Field `canvas` fill / Card `padding`; leftover waitlist Card lift vs `.waitlist-band`; leftover visual-shell background when this slice only proves `ink`) | `keeping-specs-current` |
 | Leftover paper Page / Page background assigned to visual-shell after restating signed-in Page (`teams-and-invites.md` / `magic-link-auth.md`; product-visual Restates omits those files) | `keeping-specs-current` |
 | Restates omitting draft `architecture.md` that still assigns token/CSS to restated slices (public-face / product-visual apply type/Card/Field/Page/editor CSS after composed look moved to designed-surfaces) | `keeping-specs-current` |
 | Leftover Assumptions 576px/36px after restated landing heading 56px / main max-width none | `keeping-specs-current` |
