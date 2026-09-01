@@ -31,6 +31,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Leftover paper Page / Page background assigned to visual-shell after restating signed-in Page (`teams-and-invites.md` / `magic-link-auth.md`; product-visual Restates omits those files) | `keeping-specs-current` |
 | Restates omitting draft `architecture.md` that still assigns token/CSS to restated slices (public-face / product-visual apply type/Card/Field/Page/editor CSS after composed look moved to designed-surfaces) | `keeping-specs-current` |
 | Leftover Assumptions 576px/36px after restated landing heading 56px / main max-width none | `keeping-specs-current` |
+| Leftover landing-saas-shot Problem “browser chrome” after restated URL bar leftover unused | `keeping-specs-current` |
 | Restates omitting released `editor-shell.md` leftover empty named Inspector after GET Inspector chrome | `keeping-specs-current` |
 | Leftover unused `measure-landing` 36rem after restated main max-width none | `keeping-specs-current` |
 | Accessible name **is** X / Playwright substring; unit `toContain(">X<")` | `testing`, `playwright-e2e` |

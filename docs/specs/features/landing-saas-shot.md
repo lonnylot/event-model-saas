@@ -4,7 +4,7 @@ Status: released
 
 ## Problem
 
-GET `/` product frame is a Mac window: traffic-light dots and a native title bar. A visitor cannot tell Event Model is the hosted SaaS editor (browser chrome, Save, Export, Sign out, toolbar, Model, Slices, Timeline, Inspector).
+GET `/` product frame is a Mac window: traffic-light dots and a native title bar. A visitor cannot tell Event Model is the hosted SaaS editor (Save, Export, Sign out, toolbar, Model, Slices, Timeline, Inspector). Browser URL bar is leftover unused ([landing-chrome-depth.md](./landing-chrome-depth.md)).
 
 ## Acceptance criteria
 

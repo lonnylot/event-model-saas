@@ -67,6 +67,8 @@ Grep draft `architecture.md` for leftover token/CSS assignment to restated slice
 
 Restating landing heading `56px` / `main` max-width `none` is unfinished until leftover Assumptions in the same `product-visual.md` file no longer say `36px` / `576px`. Look-may-grow restated ACs still grep leftover Assumptions (`visual-design`).
 
+Restating the landing-saas-shot URL-bar AC (`.product-shot` does not show `event-model.lonnylot.com`; `.browser-bar` leftover unused) is unfinished until leftover Problem no longer lists “browser chrome” as a hosted-editor tell.
+
 GET Inspector heading / empty copy vs leftover `editor-shell.md` “empty named region” when designed-surfaces Restates omits that file is leftover Restates. Filling a region another released spec still calls empty is unfinished until Restates that spec.
 
 Leftover unused `measure-landing` `36rem` after restated `main` max-width `none` — mark leftover unused or drop (same as leftover unused paper tokens).
