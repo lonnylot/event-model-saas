@@ -7,17 +7,6 @@ test("GET `/` `.product-shot` does not contain `.product-chrome`", async ({
   await expect(page.locator(".product-shot .product-chrome")).toHaveCount(0);
 });
 
-test("GET `/` `.product-shot` shows the text `event-model.lonnylot.com`", async ({
-  page,
-}) => {
-  await page.goto("/");
-  await expect(
-    page.locator(".product-shot").getByText("event-model.lonnylot.com", {
-      exact: true,
-    }),
-  ).toBeVisible();
-});
-
 test("GET `/` `.product-shot` shows the text `Save`", async ({ page }) => {
   await page.goto("/");
   await expect(

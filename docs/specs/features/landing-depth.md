@@ -57,7 +57,7 @@ Screens: Landing. Primitives: Page, Card, AppBar, Button primary, Field, Footer.
 
 ## Out of scope
 
-Dark mode. Public signup. Site admin waitlist table UI. Login restyle. Editor restyle. Mac window chrome. Editing behavior stays the released editor specs. Product-visual token *values* stay [product-visual.md](./product-visual.md). New product claims (pricing, SLA, "anyone can join"). Hosted-editor product frame on Landing (not Mac traffic lights) is [landing-saas-shot.md](./landing-saas-shot.md).
+Dark mode. Public signup. Site admin waitlist table UI. Login restyle. Editor restyle. Mac window chrome. Editing behavior stays the released editor specs. Product-visual token *values* stay [product-visual.md](./product-visual.md). New product claims (pricing, SLA, "anyone can join"). Hosted-editor product frame on Landing (not Mac traffic lights) is [landing-saas-shot.md](./landing-saas-shot.md). Landing chrome depth (no URL bar; nav / bento / waitlist / footer lift) is [landing-chrome-depth.md](./landing-chrome-depth.md).
 
 ## Restates
 

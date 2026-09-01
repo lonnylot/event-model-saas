@@ -116,7 +116,7 @@ Screens: Landing, Login, Not found, Expired link. Primitives this slice composes
 
 ## Out of scope
 
-Site admin waitlist table UI. Dark mode. Public signup. Signed-in restyle, editor styling, Card, Field, `type`, `radius`, Landing `Join the waitlist` Button primary, and sticky-note lane colors are [product-visual.md](./product-visual.md). Composed look (spacing, AppBar flex, viewport, focus-visible, Google Fonts Inter) is [designed-surfaces.md](./designed-surfaces.md). Landing depth (hero min-height, product-shot transform, figure overlap, bento band, ink waitlist band, footer) is [landing-depth.md](./landing-depth.md). Landing product frame (hosted editor, not Mac window) is [landing-saas-shot.md](./landing-saas-shot.md).
+Site admin waitlist table UI. Dark mode. Public signup. Signed-in restyle, editor styling, Card, Field, `type`, `radius`, Landing `Join the waitlist` Button primary, and sticky-note lane colors are [product-visual.md](./product-visual.md). Composed look (spacing, AppBar flex, viewport, focus-visible, Google Fonts Inter) is [designed-surfaces.md](./designed-surfaces.md). Landing depth (hero min-height, product-shot transform, figure overlap, bento band, ink waitlist band, footer) is [landing-depth.md](./landing-depth.md). Landing product frame (hosted editor, not Mac window) is [landing-saas-shot.md](./landing-saas-shot.md). Landing chrome depth (no URL bar; nav / bento / waitlist / footer lift) is [landing-chrome-depth.md](./landing-chrome-depth.md).
 
 ## Restates
 
