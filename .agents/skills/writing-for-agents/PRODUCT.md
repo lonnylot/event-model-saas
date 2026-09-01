@@ -23,6 +23,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 |-------------|----------------------|
 | Extra visible chrome without an AC; extra R2/D1 without stored-body AC; 303 vs shows; `run_worker_first` vs Compute row | `keeping-specs-current` |
 | Look / spacing / type / layout of named screens; look may grow | `visual-design` |
+| Google Fonts Inter / type token vs type scale / Out of scope webfont files | `visual-design` |
 | Look-may-grow skip-validate vs skip-review | `visual-design`, `spec-review-loop`, `releasing-a-spec` |
 | Unique-look `header` / AppBar on picker / team / Teams admin while lead is `<p><a href="/app">Event Model</a></p>` | `visual-design`, `keeping-specs-current` |
 | Viewport meta copied onto sibling named-screen HTML without extra ACs (login / expired / guest `/app` / `shell` / editor; unique proof GET `/`) | `visual-design`, `keeping-specs-current`, `logical-commits` |

@@ -7,7 +7,9 @@ description: >
   tokens, when adding a heading, image, landmark, or static public page
   during a look pass, when a look selector would miss markup that is not
   that element, when viewport meta is copied onto sibling HTML of named
-  screens, or when a reviewer would block padding without an AC.
+  screens, when a webfont import would change the type token, when
+  look-may-grow would contradict Out of scope webfonts, or when a
+  reviewer would block padding without an AC.
 ---
 
 # Visual design
@@ -29,7 +31,7 @@ Do **not** use this skill to add persistence, public signup, billing, or copy th
 
 | Locked (spec or ADR) | Iterated (this skill) |
 |----------------------|------------------------|
-| Screens, routes that do work, copy that claims, controls that persist or submit | Spacing, type scale, density, how primitives compose |
+| Screens, routes that do work, copy that claims, controls that persist or submit | Spacing, type scale (font-size/weight/line-height, not the `type` token font-family), density, how primitives compose |
 | Brand tokens | Hover/focus styling that does not add a control |
 | Accessibility bar (contrast, names, keyboard, focus visible) | Layout of the same screens |
 | Out of scope | — |
@@ -48,6 +50,8 @@ Still stop and return `need-user` when the addition:
 - Adds a capability (signup, billing, a new authenticated flow)
 - Asserts a new product claim (pricing, SLA, "anyone can join")
 - Contradicts Out of scope or the accessibility bar
+- Changes a brand token (the `type` font-family stack is not type scale)
+- Ships a webfont `@import` (Out of scope webfont files)
 
 ## Loop
 
@@ -81,7 +85,7 @@ When this skill is copied into spec-loop, these portable sentences move with it:
 | `spec-review-loop` | Look-may-grow PRs enter this loop after the first green commit. |
 | `releasing-a-spec` | Screenshot-and-iterate is `spec-implementer`. Look-may-grow is not skip review. |
 | `writing-for-agents` map | Look / spacing / type / layout of named screens → `visual-design` |
-| `AGENTS.md` table | `visual-design` — restyling named screens; look may grow (not skip review) |
+| `AGENTS.md` table | `visual-design` — restyling named screens; look may grow (not skip review); webfont / type token is need-user |
 
 ## Rationalizations
 
@@ -92,4 +96,5 @@ When this skill is copied into spec-loop, these portable sentences move with it:
 | "I'll screenshot and iterate here" | Dispatch `spec-implementer`. The orchestrator does not write production code. |
 | "Look-may-grow skips the reviewer" | It skips a new validate. `spec-review-loop` still runs. |
 | "I'll add Sign up while I'm here" | Capability. `need-user`. |
+| "A webfont @import is just type look-may-grow" | Type scale is font-size. The `type` token and a webfont `@import` are locked / Out of scope. `need-user`. |
 | "toHaveCSS of every color is the look proof" | That is a token catalog, not a composed page. |
