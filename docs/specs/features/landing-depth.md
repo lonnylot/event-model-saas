@@ -1,6 +1,6 @@
 # Landing depth
 
-Status: validated
+Status: released
 
 ## Problem
 
