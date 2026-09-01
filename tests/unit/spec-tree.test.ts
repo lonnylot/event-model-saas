@@ -136,4 +136,26 @@ describe("spec tree", () => {
       "This slice owns that append and the Field name after reload inspect",
     );
   });
+
+  it("product-visual Assumptions do not leave Landing main max-width 36rem or Display heading 36px", () => {
+    const text = readFileSync(
+      "docs/specs/features/product-visual.md",
+      "utf8",
+    );
+    expect(text).not.toContain("Landing `main` `max-width` `36rem`");
+    expect(text).not.toContain("Display heading `font-size` `36px`");
+  });
+
+  it("designed-surfaces Restates editor-shell GET Inspector chrome; editor-shell does not leave an empty named region", () => {
+    const designed = readFileSync(
+      "docs/specs/features/designed-surfaces.md",
+      "utf8",
+    );
+    expect(designed).toContain("[editor-shell.md](./editor-shell.md)");
+    const editor = readFileSync(
+      "docs/specs/features/editor-shell.md",
+      "utf8",
+    );
+    expect(editor).not.toContain("empty named region");
+  });
 });

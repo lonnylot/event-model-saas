@@ -19,6 +19,7 @@ Same-context self-review does not count. This session does not write production 
 - PR is open (`github-ci-loop`)
 - Local `releasing-a-spec` gate is green
 - You want merge or "it's done"
+- Look-may-grow / screenshot-and-iterate: after the **first** green commit on that feat/ PR, not after the last look pass
 
 ## Loop
 
@@ -89,6 +90,7 @@ Review-cycle count is written by `release-manager`. The formula lives in that ag
 | "I'll resolve the merge conflict here" | Resume `spec-implementer` to rebase. Rebase is coding. |
 | "Enough review rounds; hand off" | The loop ends on Approve + green CI + `release-manager`. Time and leftover notes are not an exit. |
 | "Should I keep going?" | Read the PR, checks, and threads this session. Resume. Do not ask. |
+| "Look-may-grow / still iterating look" | Enter this loop after the first green commit. Screenshot-and-iterate is `spec-implementer`, then this loop. |
 
 ## Red flags
 

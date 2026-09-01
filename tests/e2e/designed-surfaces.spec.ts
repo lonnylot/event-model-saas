@@ -64,3 +64,39 @@ test("GET `/` link `Sign in` `:focus-visible` computed `box-shadow` is not `none
   await signIn.focus();
   await expect(signIn).not.toHaveCSS("box-shadow", "none");
 });
+
+test("GET `/` shows an image whose accessible name is `Event Model editor`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByRole("img", { name: "Event Model editor", exact: true }),
+  ).toBeVisible();
+});
+
+test("GET `/` heading `Event Modeling for the whole team` computed `font-size` is `56px`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByRole("heading", {
+      name: "Event Modeling for the whole team",
+      exact: true,
+    }),
+  ).toHaveCSS("font-size", "56px");
+});
+
+test("GET `/` `main` computed `max-width` is `none`", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator("main")).toHaveCSS("max-width", "none");
+});
+
+test("GET `/shell.css` includes `fonts.googleapis.com/css2?family=Inter` and `font-family: Inter, ui-sans-serif, system-ui, sans-serif`", async ({
+  request,
+}) => {
+  const css = await (await request.get("/shell.css")).text();
+  expect(css).toContain("fonts.googleapis.com/css2?family=Inter");
+  expect(css).toContain(
+    "font-family: Inter, ui-sans-serif, system-ui, sans-serif",
+  );
+});

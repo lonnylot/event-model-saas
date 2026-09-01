@@ -40,7 +40,7 @@ A feature spec does **not** catalog computed CSS per property. It names screens,
 
 On a **validated** spec that already names the screens:
 
-The implementer may add look chrome — section heading, product image of existing UI, landmark, decorative control, static public page that does not persist — by **appending the AC, then the production, in the same commit**. Do not stop for a new human validate. The PR is the human gate.
+The **implementer** (`spec-implementer`) may add look chrome — section heading, product image of existing UI, landmark, decorative control, static public page that does not persist — by **appending the AC, then the production, in the same commit**. Do not stop for a new human *validate* of that chrome. Look-may-grow is not skip review: the feat/ PR still enters `spec-review-loop` after the first green commit, and merge is still `release-manager`. The orchestrator does not screenshot-and-iterate in this session.
 
 Still stop and return `need-user` when the addition:
 
@@ -55,7 +55,7 @@ Still stop and return `need-user` when the addition:
 
 2. **Prove locked.** `tdd-loop` + `testing` for names, flows, token *use* (deleting the unique token declaration fails), and a11y. Do not add a computed-rgb `it` for each spacing or type rule. One proof that unique look rules exist (composed layout that is not the UA default) is enough for "not unstyled." Unique-look proof is a screen whose markup matches the selector — a `header` rule is not proof on a lead that is not `header`. Completion: those tests fail a weaker reading (`testing`).
 
-3. **Iterate look in the browser.** Change CSS and structure of named screens. Check desktop and a narrow viewport. Completion: tokens hold; a11y holds; existing named controls/copy remain; the composed page is not UA-default stack.
+3. **Iterate look in the browser.** Change CSS and structure of named screens. Check desktop and a narrow viewport. This step runs in `spec-implementer`, not the orchestrator session. Completion: tokens hold; a11y holds; existing named controls/copy remain; the composed page is not UA-default stack.
 
 4. **Grow.** If a heading, image, landmark, or static public page is needed, append its AC and ship it in this look pass (`Look may grow`). Completion: `git show` lists the new AC with the production.
 
@@ -65,7 +65,7 @@ Still stop and return `need-user` when the addition:
 
 Blocking: new control/copy/route **without** an AC on this HEAD; token contradiction; a11y miss; capability sneak-in; leftover product behavior chrome (`keeping-specs-current`).
 
-Not blocking: padding, type, density, composition of existing primitives on named screens when tokens and a11y hold. Do not demand a prior human validate for look chrome whose AC landed in the same commit.
+Not blocking: padding, type, density, composition of existing primitives on named screens when tokens and a11y hold. Do not demand a prior human *validate* for look chrome whose AC landed in the same commit. Still require `spec-review-loop` Approve on this HEAD before `release-manager`.
 
 ## Pack mates (upstream)
 
@@ -77,15 +77,19 @@ When this skill is copied into spec-loop, these portable sentences move with it:
 | `tdd-loop` GREEN | Extra look on named screens is `visual-design`, not extra UI. |
 | `testing` | Do not prove look as a pile of computed rgb() ACs. Prove names, flows, token use, a11y, and that unique look rules exist. |
 | `logical-commits` | A look pass is one slice per named screen (`visual-design`). Viewport meta copied onto sibling HTML is that shell. |
-| `spec-reviewer` | Do not block look iteration that has ACs on this HEAD. Do not require reconstructing a look AC into a prior human validate. |
+| `spec-reviewer` | Do not block look iteration that has ACs on this HEAD. Do not require reconstructing a look AC into a prior human validate. Look-may-grow is not skip this review. |
+| `spec-review-loop` | Look-may-grow PRs enter this loop after the first green commit. |
+| `releasing-a-spec` | Screenshot-and-iterate is `spec-implementer`. Look-may-grow is not skip review. |
 | `writing-for-agents` map | Look / spacing / type / layout of named screens → `visual-design` |
-| `AGENTS.md` table | `visual-design` — restyling named screens; look may grow |
+| `AGENTS.md` table | `visual-design` — restyling named screens; look may grow (not skip review) |
 
 ## Rationalizations
 
 | Excuse | Reality |
 |--------|---------|
 | "Every padding needs a checkbox" | Tokens and a11y are locked. Spacing is this loop. |
-| "New heading: stop for the user" | Append the AC and ship it. The PR is the gate. |
+| "New heading: stop for the user" | Append the AC. Do not halt for a new validate. The implementer still pushes the feat/ PR into `spec-review-loop`. |
+| "I'll screenshot and iterate here" | Dispatch `spec-implementer`. The orchestrator does not write production code. |
+| "Look-may-grow skips the reviewer" | It skips a new validate. `spec-review-loop` still runs. |
 | "I'll add Sign up while I'm here" | Capability. `need-user`. |
 | "toHaveCSS of every color is the look proof" | That is a token catalog, not a composed page. |

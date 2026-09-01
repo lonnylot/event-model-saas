@@ -28,7 +28,7 @@ NO SHIP UNTIL CI IS GREEN, A SEPARATE REVIEWER APPROVES THIS HEAD, AND THE RELEA
 - Status lives on the spec: `draft` → `validated` → `released`. Only `validated` specs may be implemented. Only `released` specs may be called done.
 - A spec change that changes **how work is done** updates the matching skill in the same change (`writing-for-agents`). Event Model instances of that procedure go in that skill's `PRODUCT.md`, not in the portable `SKILL.md`.
 
-**REQUIRED:** `keeping-specs-current` on every behavior change. **REQUIRED:** `releasing-a-spec` when taking a spec from idea to ship (orchestrator: validate, dispatch `spec-implementer`, review, dispatch `release-manager`). **REQUIRED:** `verification-before-completion` before any done/green/released claim. The orchestrator session does not write production code.
+**REQUIRED:** `keeping-specs-current` on every behavior change. **REQUIRED:** `releasing-a-spec` when taking a spec from idea to ship (orchestrator: validate, dispatch `spec-implementer`, review, dispatch `release-manager`). **REQUIRED:** `verification-before-completion` before any done/green/released claim. The orchestrator session does not write production code. Look-may-grow skips a new *validate* of look chrome, not `spec-review-loop` or `release-manager`. Screenshot-and-iterate is `spec-implementer`.
 
 ### Where truth lives
 
@@ -69,9 +69,9 @@ Load the matching skill **before** the work. Do not re-derive the procedure from
 | `parallel-feature-work` | Two or more feature specs at once; separate implementer agents; next-in-line integrate |
 | `using-git-worktrees` | Dispatch spec-implementer; isolated checkout for a feat/ branch; parallel agents |
 | `playwright-e2e` | Browser user flows; flow CI job; test-server fakes; empty-state reset between files; unique checkout port for flow tests; accessible name **is** X (`exact: true`); UA-default / inherited `toHaveCSS`; `:focus-visible` `locator.focus()` |
-| `visual-design` | Restyling named screens; look may grow (heading/image/static page ACs in the same commit); padding/type/layout without a computed-CSS catalog; `header` / AppBar vs picker lead `<p>`; extra viewport on sibling HTML is look shell |
+| `visual-design` | Restyling named screens; look may grow (heading/image/static page ACs in the same commit — still `spec-implementer` then `spec-review-loop`); padding/type/layout without a computed-CSS catalog; `header` / AppBar vs picker lead `<p>`; extra viewport on sibling HTML is look shell |
 
-Handed a spec, or asked to implement/ship: `releasing-a-spec` (orchestrator). Two or more specs this session, or next-in-line integrate: `parallel-feature-work` first. Implementing any slice: dispatch `.agents/agents/spec-implementer/AGENT.md` (`tdd-loop` lives there). Isolated tree: `using-git-worktrees` for every implementer. Ready to review: `spec-review-loop` (fresh `spec-reviewer` every dispatch; resume the implementer on Changes requested). Ready to merge: dispatch `.agents/agents/release-manager/AGENT.md`. After merge: `post-merge-improvement`. Browser flow tests: `playwright-e2e`. Restyling named screens: `visual-design`. Spec changed a procedure: `writing-for-agents`.
+Handed a spec, or asked to implement/ship: `releasing-a-spec` (orchestrator). Two or more specs this session, or next-in-line integrate: `parallel-feature-work` first. Implementing any slice, including look / screenshot-and-iterate: dispatch `.agents/agents/spec-implementer/AGENT.md` (`tdd-loop` and `visual-design` live there). Isolated tree: `using-git-worktrees` for every implementer. After the first green commit: `spec-review-loop` (fresh `spec-reviewer` every dispatch; resume the implementer on Changes requested). Ready to merge: dispatch `.agents/agents/release-manager/AGENT.md`. After merge: `post-merge-improvement`. Browser flow tests: `playwright-e2e`. Spec changed a procedure: `writing-for-agents`.
 
 ## GitHub loop (summary)
 
@@ -79,8 +79,8 @@ Full procedure is in the skills above. The always-on rule:
 
 1. Orchestrator: validate the spec with the user. Stay on the default branch.
 2. Worktree + `feat/<slug>` or `fix/<slug>` (`using-git-worktrees`). Dispatch `spec-implementer` there. Resume that conversation for this spec.
-3. Implementer: one logical commit per green criterion (spec + tests + code). Open a PR after the first green commit so CI runs on every push.
-4. Orchestrator: dispatch a **separate** `spec-reviewer` on a **fresh** context every time. Same-session self-review does not count. Changes requested → resume the implementer (`receiving-code-review`).
+3. Implementer: one logical commit per green criterion (spec + tests + code). Open a PR after the first green commit so CI runs on every push. Look-may-grow and screenshot-and-iterate are this step, not the orchestrator session.
+4. Orchestrator: dispatch a **separate** `spec-reviewer` on a **fresh** context every time, including look PRs after the first green commit. Same-session self-review does not count. Changes requested → resume the implementer (`receiving-code-review`).
 5. Repeat until **Approve** on this HEAD + green checks. Approve is incomplete until leftover review threads are GitHub-resolved (`is_resolved: true`), not just replied.
 6. Dispatch `release-manager` to merge, write review-cycle count, and set the spec `released`. Unmergeable: resume `spec-implementer` to rebase onto default, then a fresh `spec-reviewer` (Approve is this HEAD). Then `post-merge-improvement`.
 
@@ -102,6 +102,7 @@ Full procedure is in the skills above. The always-on rule:
 | "I'll commit once at the end" | One blob cannot be reviewed per criterion. |
 | "Work on main, PR later" | No branch, no CI loop. |
 | "I'll just implement in this session" | Dispatch `spec-implementer`. The orchestrator does not write production code. |
+| "Look-may-grow / screenshot-and-iterate here" | Look-may-grow skips a new *validate*, not the reviewer. Dispatch `spec-implementer`, then `spec-review-loop`. |
 | "I'll review my own PR" | Dispatch `spec-reviewer`. Same context is not a review. |
 | "I'll merge it myself" | Dispatch `release-manager`. |
 | "I'll just resolve the conflict here" | Resume `spec-implementer`. Rebase is coding. |

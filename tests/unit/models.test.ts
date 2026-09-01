@@ -491,9 +491,55 @@ describe("create model", () => {
       ),
       env,
     );
-    expect(await response.text()).toContain(
-      '<section aria-label="Timeline"><ul></ul></section>',
+    expect(await response.text()).toContain('aria-label="Timeline"');
+  });
+
+  it("GET `/app/teams/{id}/models/{mid}` as a member shows a heading whose accessible name is `Model`", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/app/teams/team-1/models/model-1",
+        { headers: { Cookie: "session=sess-admin" } },
+      ),
+      env,
     );
+    expect(await response.text()).toContain("<h2>Model</h2>");
+  });
+
+  it("GET `/app/teams/{id}/models/{mid}` as a member with no Slices shows a heading whose accessible name is `Start the timeline`", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/app/teams/team-1/models/model-1",
+        { headers: { Cookie: "session=sess-admin" } },
+      ),
+      env,
+    );
+    expect(await response.text()).toContain("<h2>Start the timeline</h2>");
+  });
+
+  it("GET `/app/teams/{id}/models/{mid}` as a member shows the text `Time`", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/app/teams/team-1/models/model-1",
+        { headers: { Cookie: "session=sess-admin" } },
+      ),
+      env,
+    );
+    expect(await response.text()).toContain(">Time<");
+  });
+
+  it("GET `/app/teams/{id}/models/{mid}` as a member with no local edits shows the text `Nothing Selected`", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/app/teams/team-1/models/model-1",
+        { headers: { Cookie: "session=sess-admin" } },
+      ),
+      env,
+    );
+    expect(await response.text()).toContain("Nothing Selected");
   });
 
   it("GET `/app/teams/{id}/models/{mid}` as a member shows a region whose accessible name is `Inspector`", async () => {
@@ -506,8 +552,20 @@ describe("create model", () => {
       env,
     );
     expect(await response.text()).toContain(
-      '<section aria-label="Inspector"></section>',
+      '<section aria-label="Inspector">',
     );
+  });
+
+  it("GET `/app/teams/{id}/models/{mid}` as a member shows a heading whose accessible name is `Inspector`", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/app/teams/team-1/models/model-1",
+        { headers: { Cookie: "session=sess-admin" } },
+      ),
+      env,
+    );
+    expect(await response.text()).toContain("<h2>Inspector</h2>");
   });
 
   it("GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Zoom in`", async () => {

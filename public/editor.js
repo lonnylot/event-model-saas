@@ -59,13 +59,92 @@ import { restoreAutomation } from "./restore-automation.js";
 const undoStack = [];
 const redoStack = [];
 
+function sidebarList(root) {
+  return root.querySelector(".slice-rail ul") ?? root.querySelector("ul");
+}
+
+function timelineEl(root) {
+  return root.querySelector('[aria-label="Timeline"]');
+}
+
+function lastLaneList(root, kind) {
+  const timeline = timelineEl(root);
+  if (!timeline || typeof timeline.querySelectorAll !== "function") {
+    return typeof timeline?.querySelector === "function"
+      ? timeline.querySelector("ul")
+      : null;
+  }
+  const cols = timeline.querySelectorAll(".slice-col") ?? [];
+  const col = cols[cols.length - 1];
+  if (!col) return timeline.querySelector("ul");
+  return (
+    col.querySelector(`[data-lane="${kind}"] ul`) ??
+    col.querySelector("ul")
+  );
+}
+
+function mountSliceColumn(root, slice, sliceIndex) {
+  const timeline = timelineEl(root);
+  if (!timeline) return;
+  const board =
+    typeof timeline.querySelector === "function"
+      ? (timeline.querySelector(".board") ?? timeline)
+      : timeline;
+  const col = root.createElement("div");
+  if (typeof col.append !== "function") return;
+  col.className = "slice-col";
+  col.setAttribute("data-slice-index", String(sliceIndex));
+  const head = root.createElement("ul");
+  head.className = "slice-head";
+  const titleItem = root.createElement("li");
+  titleItem.textContent = "New Slice";
+  titleItem.setAttribute("aria-label", "New Slice");
+  if (slice) titleItem.setAttribute("data-id", slice.id);
+  head.append(titleItem);
+  col.append(head);
+  const lanes = [
+    ["actor", "Add Actor on lane"],
+    ["command", "Add Command on lane"],
+    ["event", "Add Event on lane"],
+    ["readmodel", "Add Read Model on lane"],
+    ["automation", "Add Automation on lane"],
+  ];
+  for (const [kind, label] of lanes) {
+    const lane = root.createElement("div");
+    lane.className = "lane";
+    lane.setAttribute("data-lane", kind);
+    const list = root.createElement("ul");
+    lane.append(list);
+    const button = root.createElement("button");
+    button.type = "button";
+    button.textContent = label;
+    button.setAttribute("data-slice-index", String(sliceIndex));
+    if (kind === "command") {
+      button.addEventListener("click", () => {
+        const documentHolder = root.getElementById("event-model-document");
+        if (documentHolder) {
+          documentHolder.textContent = JSON.stringify(
+            appendCommand(
+              JSON.parse(documentHolder.textContent || "{}"),
+              sliceIndex,
+            ),
+          );
+        }
+      });
+    }
+    lane.append(button);
+    col.append(lane);
+  }
+  board.append(col);
+}
+
 export function onNewSliceClick(root) {
   const holder = root.getElementById("event-model-document");
   const next = appendSlice(JSON.parse(holder?.textContent || "{}"));
   if (holder) holder.textContent = JSON.stringify(next);
   const slice = next.slices?.at(-1);
   const sliceIndex = (next.slices?.length ?? 1) - 1;
-  const list = root.querySelector("ul");
+  const list = sidebarList(root);
   if (list) {
     const item = root.createElement("li");
     item.textContent = "New Slice";
@@ -74,55 +153,10 @@ export function onNewSliceClick(root) {
     item.setAttribute("data-slice-index", String(sliceIndex));
     list.append(item);
   }
-  const timelineSlices = root.querySelector('[aria-label="Timeline"] ul');
-  if (timelineSlices) {
-    const item = root.createElement("li");
-    item.textContent = "New Slice";
-    item.setAttribute("aria-label", "New Slice");
-    if (slice) item.setAttribute("data-id", slice.id);
-    timelineSlices.append(item);
-  }
+  mountSliceColumn(root, slice, sliceIndex);
   const main = root.querySelector("main");
   if (main && !main.textContent?.includes("Unsaved changes.")) {
     main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
-  }
-  const timeline = root.querySelector('[aria-label="Timeline"]');
-  if (timeline) {
-    const actor = root.createElement("button");
-    actor.type = "button";
-    actor.textContent = "Add Actor on lane";
-    actor.setAttribute("data-slice-index", String(sliceIndex));
-    timeline.append(actor);
-    const command = root.createElement("button");
-    command.type = "button";
-    command.textContent = "Add Command on lane";
-    command.addEventListener("click", () => {
-      const documentHolder = root.getElementById("event-model-document");
-      if (documentHolder) {
-        documentHolder.textContent = JSON.stringify(
-          appendCommand(
-            JSON.parse(documentHolder.textContent || "{}"),
-            sliceIndex,
-          ),
-        );
-      }
-    });
-    timeline.append(command);
-    const event = root.createElement("button");
-    event.type = "button";
-    event.textContent = "Add Event on lane";
-    event.setAttribute("data-slice-index", String(sliceIndex));
-    timeline.append(event);
-    const readModel = root.createElement("button");
-    readModel.type = "button";
-    readModel.textContent = "Add Read Model on lane";
-    readModel.setAttribute("data-slice-index", String(sliceIndex));
-    timeline.append(readModel);
-    const automation = root.createElement("button");
-    automation.type = "button";
-    automation.textContent = "Add Automation on lane";
-    automation.setAttribute("data-slice-index", String(sliceIndex));
-    timeline.append(automation);
   }
   undoStack.push("slice");
 }
@@ -132,7 +166,7 @@ export function onAddActorClick(root) {
   const next = appendActor(JSON.parse(holder?.textContent || "{}"));
   if (holder) holder.textContent = JSON.stringify(next);
   const actor = next.slices?.at(-1)?.actors?.at(-1);
-  const list = root.querySelector('[aria-label="Timeline"] ul');
+  const list = lastLaneList(root, "actor");
   if (list) {
     const item = root.createElement("li");
     item.textContent = "Actor";
@@ -149,7 +183,7 @@ export function onAddCommandClick(root) {
   const next = appendCommand(JSON.parse(holder?.textContent || "{}"));
   if (holder) holder.textContent = JSON.stringify(next);
   const command = next.slices?.at(-1)?.commands?.at(-1);
-  const list = root.querySelector('[aria-label="Timeline"] ul');
+  const list = lastLaneList(root, "command");
   if (list && command) {
     const item = root.createElement("li");
     item.textContent = "Command";
@@ -176,7 +210,7 @@ export function onAddEventClick(root) {
   const next = appendEvent(JSON.parse(holder?.textContent || "{}"));
   if (holder) holder.textContent = JSON.stringify(next);
   const event = next.slices?.at(-1)?.events?.at(-1);
-  const list = root.querySelector('[aria-label="Timeline"] ul');
+  const list = lastLaneList(root, "event");
   if (list && event) {
     const item = root.createElement("li");
     item.textContent = "Event Happened";
@@ -202,7 +236,7 @@ export function onAddReadModelClick(root) {
   const next = appendReadModel(JSON.parse(holder?.textContent || "{}"));
   if (holder) holder.textContent = JSON.stringify(next);
   const readModel = next.slices?.at(-1)?.readModels?.at(-1);
-  const list = root.querySelector('[aria-label="Timeline"] ul');
+  const list = lastLaneList(root, "readmodel");
   if (list && readModel) {
     const item = root.createElement("li");
     item.textContent = "Read Model";
@@ -228,7 +262,7 @@ export function onAddAutomationClick(root) {
   const next = appendAutomation(JSON.parse(holder?.textContent || "{}"));
   if (holder) holder.textContent = JSON.stringify(next);
   const automation = next.slices?.at(-1)?.processors?.at(-1);
-  const list = root.querySelector('[aria-label="Timeline"] ul');
+  const list = lastLaneList(root, "automation");
   if (list && automation) {
     const item = root.createElement("li");
     item.textContent = "Automation";
@@ -367,8 +401,8 @@ export function bindEditor(root) {
       button.addEventListener("click", () => onAddAutomationClick(root));
     }
   });
-  const timelineList = root.querySelector('[aria-label="Timeline"] ul');
-  const slicesList = root.querySelector("ul");
+  const timelineList = timeline;
+  const slicesList = sidebarList(root);
   let selected = null;
   let selectedSliceItem = null;
   let selectedSliceIndex = null;
@@ -547,7 +581,9 @@ export function bindEditor(root) {
   const unbindDescription = () =>
     descriptionInput()?.closest("label")?.remove();
   const getRenderedTimelineItems = new Set(
-    timelineList ? [...timelineList.querySelectorAll("li")] : [],
+    timelineList && typeof timelineList.querySelectorAll === "function"
+      ? [...timelineList.querySelectorAll("li")]
+      : [],
   );
   const omitGetRenderedInspectChrome = (item) => {
     if (!getRenderedTimelineItems.has(item)) return false;
@@ -1513,7 +1549,7 @@ export function bindEditor(root) {
           );
           const slice = index >= 0 ? model.slices[index] : undefined;
           holder.textContent = JSON.stringify(deleteSlice(model, sliceId));
-          const list = root.querySelector("ul");
+          const list = slicesList;
           const item = [...(list?.children ?? [])].find(
             (node) => node.getAttribute?.("data-id") === sliceId,
           );
@@ -1533,8 +1569,8 @@ export function bindEditor(root) {
             : -1;
           const command = index >= 0 ? slice.commands[index] : undefined;
           holder.textContent = JSON.stringify(deleteCommand(model, commandId));
-          const list = root.querySelector('[aria-label="Timeline"] ul');
-          const item = [...(list?.children ?? [])].find(
+          const list = timelineList;
+          const item = [...(list?.querySelectorAll("li") ?? [])].find(
             (node) => node.getAttribute?.("data-id") === commandId,
           );
           item?.remove();
@@ -1577,8 +1613,8 @@ export function bindEditor(root) {
             : -1;
           const actor = index >= 0 ? slice.actors[index] : undefined;
           holder.textContent = JSON.stringify(deleteActor(model, actorId));
-          const list = root.querySelector('[aria-label="Timeline"] ul');
-          const item = [...(list?.children ?? [])].find(
+          const list = timelineList;
+          const item = [...(list?.querySelectorAll("li") ?? [])].find(
             (node) => node.getAttribute?.("data-id") === actorId,
           );
           item?.remove();
@@ -1602,8 +1638,8 @@ export function bindEditor(root) {
             : -1;
           const eventBlock = index >= 0 ? slice.events[index] : undefined;
           holder.textContent = JSON.stringify(deleteEvent(model, eventId));
-          const list = root.querySelector('[aria-label="Timeline"] ul');
-          const item = [...(list?.children ?? [])].find(
+          const list = timelineList;
+          const item = [...(list?.querySelectorAll("li") ?? [])].find(
             (node) => node.getAttribute?.("data-id") === eventId,
           );
           item?.remove();
@@ -1629,8 +1665,8 @@ export function bindEditor(root) {
             : -1;
           const readModel = index >= 0 ? slice.readModels[index] : undefined;
           holder.textContent = JSON.stringify(deleteReadModel(model, readModelId));
-          const list = root.querySelector('[aria-label="Timeline"] ul');
-          const item = [...(list?.children ?? [])].find(
+          const list = timelineList;
+          const item = [...(list?.querySelectorAll("li") ?? [])].find(
             (node) => node.getAttribute?.("data-id") === readModelId,
           );
           item?.remove();
@@ -1660,8 +1696,8 @@ export function bindEditor(root) {
           holder.textContent = JSON.stringify(
             deleteAutomation(model, automationId),
           );
-          const list = root.querySelector('[aria-label="Timeline"] ul');
-          const item = [...(list?.children ?? [])].find(
+          const list = timelineList;
+          const item = [...(list?.querySelectorAll("li") ?? [])].find(
             (node) => node.getAttribute?.("data-id") === automationId,
           );
           item?.remove();
@@ -1687,7 +1723,7 @@ export function bindEditor(root) {
             entry.index,
           ),
         );
-        const list = root.querySelector('[aria-label="Timeline"] ul');
+        const list = lastLaneList(root, "automation");
         if (list && entry.automation) {
           const item = root.createElement("li");
           item.textContent = "Automation";
@@ -1710,7 +1746,7 @@ export function bindEditor(root) {
             entry.index,
           ),
         );
-        const list = root.querySelector('[aria-label="Timeline"] ul');
+        const list = lastLaneList(root, "readmodel");
         if (list && entry.readModel) {
           const item = root.createElement("li");
           item.textContent = "Read Model";
@@ -1739,7 +1775,7 @@ export function bindEditor(root) {
             entry.index,
           ),
         );
-        const list = root.querySelector('[aria-label="Timeline"] ul');
+        const list = lastLaneList(root, "event");
         if (list && entry.event) {
           const item = root.createElement("li");
           item.textContent = "Event Happened";
@@ -1768,7 +1804,7 @@ export function bindEditor(root) {
             entry.index,
           ),
         );
-        const list = root.querySelector('[aria-label="Timeline"] ul');
+        const list = lastLaneList(root, "actor");
         if (list && entry.actor) {
           const item = root.createElement("li");
           item.textContent = "Actor";
@@ -1796,7 +1832,9 @@ export function bindEditor(root) {
           p.textContent = "Command → Event Happened";
           p.setAttribute("data-kind", "connection");
           p.dataset.id = entry.connection.id;
-          const before = [...timelineEl.querySelectorAll("p")][entry.index];
+          const before = [
+            ...timelineEl.querySelectorAll('p[data-kind="connection"]'),
+          ][entry.index];
           if (before) timelineEl.insertBefore(p, before);
           else timelineEl.append(p);
         }
@@ -1812,7 +1850,7 @@ export function bindEditor(root) {
             entry.index,
           ),
         );
-        const list = root.querySelector('[aria-label="Timeline"] ul');
+        const list = lastLaneList(root, "command");
         if (list && entry.command) {
           const item = root.createElement("li");
           item.textContent = "Command";
@@ -1837,7 +1875,7 @@ export function bindEditor(root) {
           undoAddCommand(JSON.parse(holder.textContent || "{}")),
         );
         const items = [
-          ...(root.querySelector('[aria-label="Timeline"] ul')?.querySelectorAll("li") ??
+          ...(timelineList?.querySelectorAll("li") ??
             []),
         ];
         items
@@ -1855,7 +1893,7 @@ export function bindEditor(root) {
             entry.index,
           ),
         );
-        const list = root.querySelector("ul");
+        const list = slicesList;
         if (list) {
           const item = root.createElement("li");
           item.textContent = "New Slice";
@@ -1883,7 +1921,7 @@ export function bindEditor(root) {
           undoAutomation(JSON.parse(holder.textContent || "{}")),
         );
         const items = [
-          ...(root.querySelector('[aria-label="Timeline"] ul')?.querySelectorAll("li") ??
+          ...(timelineList?.querySelectorAll("li") ??
             []),
         ];
         items
@@ -1898,7 +1936,7 @@ export function bindEditor(root) {
           undoReadModel(JSON.parse(holder.textContent || "{}")),
         );
         const items = [
-          ...(root.querySelector('[aria-label="Timeline"] ul')?.querySelectorAll("li") ??
+          ...(timelineList?.querySelectorAll("li") ??
             []),
         ];
         items
@@ -1913,7 +1951,7 @@ export function bindEditor(root) {
           undoEvent(JSON.parse(holder.textContent || "{}")),
         );
         const items = [
-          ...(root.querySelector('[aria-label="Timeline"] ul')?.querySelectorAll("li") ??
+          ...(timelineList?.querySelectorAll("li") ??
             []),
         ];
         items
@@ -1928,7 +1966,7 @@ export function bindEditor(root) {
           undoActor(JSON.parse(holder.textContent || "{}")),
         );
         const items = [
-          ...(root.querySelector('[aria-label="Timeline"] ul')?.querySelectorAll("li") ??
+          ...(timelineList?.querySelectorAll("li") ??
             []),
         ];
         items
@@ -1954,10 +1992,9 @@ export function bindEditor(root) {
       const last = model.slices?.at(-1);
       if (!last) return;
       holder.textContent = JSON.stringify(deleteSlice(model, last.id));
-      root.querySelector("ul")?.lastElementChild?.remove();
-      timelineList
-        ?.querySelector(`li[data-id="${last.id}"]:not([data-kind])`)
-        ?.remove();
+      slicesList?.lastElementChild?.remove();
+      const cols = timelineList?.querySelectorAll(".slice-col");
+      cols?.[cols.length - 1]?.remove();
       redoStack.push("slice");
       return;
     }
@@ -2145,6 +2182,12 @@ export function bindEditor(root) {
       const slice = index >= 0 ? model.slices[index] : undefined;
       holder.textContent = JSON.stringify(deleteSlice(model, sliceId));
       selectedSliceItem.remove();
+      timelineList
+        ?.querySelector(
+          `.slice-col li[data-id="${sliceId}"]:not([data-kind])`,
+        )
+        ?.closest(".slice-col")
+        ?.remove();
       root
         .querySelectorAll(`li[data-id="${sliceId}"]:not([data-kind])`)
         .forEach((item) => item.remove());
