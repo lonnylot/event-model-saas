@@ -12,10 +12,10 @@ GET `/` is the login form. A visitor cannot tell what Event Model is. Paper-work
 - [x] `wrangler.jsonc` `run_worker_first` includes `/login`
 - [x] GET `/` without a Session shows a heading whose accessible name is `Event Modeling for the whole team`
 - [x] GET `/` without a Session shows the text `One Event Model, signed in. No passing files around.`
-- [x] GET `/` without a Session shows a link whose accessible name is `Event Model`
-- [x] GET `/` without a Session, the link `Event Model` has `href` `/`
-- [x] GET `/` without a Session shows a link whose accessible name is `Sign in`
-- [x] GET `/` without a Session, a link `Sign in` has `href` `/login`
+- [x] GET `/` without a Session, `header` shows a link whose accessible name is `Event Model`
+- [x] GET `/` without a Session, the `header` link `Event Model` has `href` `/`
+- [x] GET `/` without a Session, `header` shows a link whose accessible name is `Sign in`
+- [x] GET `/` without a Session, a `header` link `Sign in` has `href` `/login`
 - [x] GET `/` without a Session does not show a link whose accessible name is `Open app`
 - [x] GET `/` without a Session does not show a button whose accessible name is `Email me a link`
 - [x] GET `/` without a Session does not show a control whose accessible name is `Sign up`
@@ -38,8 +38,8 @@ GET `/` is the login form. A visitor cannot tell what Event Model is. Paper-work
 - [x] GET `/` without a Session, a link `Join the waitlist` has an `href` that ends with `#waitlist`
 - [x] GET `/` without a Session shows a textbox whose accessible name is `Email`
 - [x] GET `/` without a Session shows a button whose accessible name is `Join the waitlist`
-- [x] GET `/` with a Session shows a link whose accessible name is `Open app`
-- [x] GET `/` with a Session, a link `Open app` has `href` `/app`
+- [x] GET `/` with a Session, `header` shows a link whose accessible name is `Open app`
+- [x] GET `/` with a Session, the `header` link `Open app` has `href` `/app`
 - [x] GET `/` with a Session does not show a link whose accessible name is `Sign in`
 - [x] GET `/` with a Session does not show a button whose accessible name is `Sign out`
 - [x] GET `/` `body` computed `background-color` is `rgb(255, 255, 255)`
@@ -116,7 +116,7 @@ Screens: Landing, Login, Not found, Expired link. Primitives this slice composes
 
 ## Out of scope
 
-Site admin waitlist table UI. Dark mode. Public signup. Signed-in restyle, editor styling, Card, Field, `type`, `radius`, Landing `Join the waitlist` Button primary, and sticky-note lane colors are [product-visual.md](./product-visual.md). Composed look (spacing, AppBar flex, viewport, focus-visible, Google Fonts Inter) is [designed-surfaces.md](./designed-surfaces.md).
+Site admin waitlist table UI. Dark mode. Public signup. Signed-in restyle, editor styling, Card, Field, `type`, `radius`, Landing `Join the waitlist` Button primary, and sticky-note lane colors are [product-visual.md](./product-visual.md). Composed look (spacing, AppBar flex, viewport, focus-visible, Google Fonts Inter) is [designed-surfaces.md](./designed-surfaces.md). Landing depth (hero min-height, product-shot transform, figure overlap, bento band, ink waitlist band, footer) is [landing-depth.md](./landing-depth.md).
 
 ## Restates
 

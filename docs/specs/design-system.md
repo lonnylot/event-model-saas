@@ -2,7 +2,7 @@
 
 Status: released
 
-Tokens and primitives for Event Model SaaS HTML including the editor canvas. [features/product-visual.md](./features/product-visual.md) applies token values. [features/designed-surfaces.md](./features/designed-surfaces.md) applies composed look. This file does not own feature acceptance criteria.
+Tokens and primitives for Event Model SaaS HTML including the editor canvas. [features/product-visual.md](./features/product-visual.md) applies token values. [features/designed-surfaces.md](./features/designed-surfaces.md) applies composed look. [features/landing-depth.md](./features/landing-depth.md) applies Landing depth. This file does not own feature acceptance criteria.
 
 ## Look
 
@@ -40,6 +40,7 @@ Sticky-note block fills ([features/product-visual.md](./features/product-visual.
 | AppBar | Top bar: wordmark, then Sign in / Open app or email, optional Teams admin, Sign out. `line` bottom border. Wordmark `/` when signed out, `/app` when signed in |
 | Button primary | Background `accent`, color `on-accent`, `radius` |
 | Field | `line` border, `radius` |
+| Footer | Landmark on Landing: wordmark, then Sign in when signed out or Open app when signed in |
 
 ## Screens
 

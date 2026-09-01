@@ -513,7 +513,7 @@ export async function handleRequest(
     if (env.auth) {
       const person = await personFromRequest(env.auth, request);
       if (person) {
-        html = html.replace(
+        html = html.replaceAll(
           '<a href="/login">Sign in</a>',
           '<a href="/app">Open app</a>',
         );

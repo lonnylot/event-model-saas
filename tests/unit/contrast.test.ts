@@ -55,4 +55,12 @@ describe("design-system token contrast", () => {
       contrastRatio(token("on-accent"), token("accent")),
     ).toBeGreaterThanOrEqual(4.5);
   });
+
+  it("Contrast of `canvas` `#FFFFFF` on `ink` `#0F172A` is at least 4.5:1", () => {
+    expect(token("canvas")).toBe("#FFFFFF");
+    expect(token("ink")).toBe("#0F172A");
+    expect(contrastRatio(token("canvas"), token("ink"))).toBeGreaterThanOrEqual(
+      4.5,
+    );
+  });
 });

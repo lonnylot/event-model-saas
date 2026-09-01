@@ -56,12 +56,17 @@ test("GET `/login` form `login` computed `padding-top` is not `0px`", async ({
   await expect(page.locator("form#login")).not.toHaveCSS("padding-top", "0px");
 });
 
-test("GET `/` link `Sign in` `:focus-visible` computed `box-shadow` is not `none`", async ({
+test("GET `/` `header` link `Sign in` `:focus-visible` computed `box-shadow` is not `none`", async ({
   page,
 }) => {
   await page.goto("/");
-  const signIn = page.getByRole("link", { name: "Sign in", exact: true });
-  await signIn.focus();
+  const signIn = page.locator("header").getByRole("link", {
+    name: "Sign in",
+    exact: true,
+  });
+  await page.keyboard.press("Tab");
+  await page.keyboard.press("Tab");
+  await expect(signIn).toBeFocused();
   await expect(signIn).not.toHaveCSS("box-shadow", "none");
 });
 

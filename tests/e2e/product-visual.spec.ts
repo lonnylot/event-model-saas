@@ -92,12 +92,15 @@ test("GET `/` `header` computed `border-bottom-color` is `rgb(226, 232, 240)`", 
   );
 });
 
-test("GET `/` link `Sign in` computed `color` is `rgb(15, 118, 110)`", async ({
+test("GET `/` `header` link `Sign in` computed `color` is `rgb(15, 118, 110)`", async ({
   page,
 }) => {
   await page.goto("/");
   await expect(
-    page.getByRole("link", { name: "Sign in", exact: true }),
+    page.locator("header").getByRole("link", {
+      name: "Sign in",
+      exact: true,
+    }),
   ).toHaveCSS("color", "rgb(15, 118, 110)");
 });
 

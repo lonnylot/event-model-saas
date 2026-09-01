@@ -22,7 +22,7 @@ Public and signed-in HTML apply tokens as isolated computed properties. Landing 
 - [x] GET `/app/teams/{id}/models/{mid}` as a member `header` computed `padding-top` is not `0px`
 - [x] Contrast of `ink` `#0F172A` on `canvas` `#FFFFFF` is at least 4.5:1
 - [x] Contrast of `on-accent` `#FFFFFF` on `accent` `#0F766E` is at least 4.5:1
-- [x] GET `/` link `Sign in` `:focus-visible` computed `box-shadow` is not `none`
+- [x] GET `/` `header` link `Sign in` `:focus-visible` computed `box-shadow` is not `none`
 - [x] GET `/` shows an image whose accessible name is `Event Model editor`
 - [x] GET `/` heading `Event Modeling for the whole team` computed `font-size` is `56px`
 - [x] GET `/` `main` computed `max-width` is `none`
@@ -61,7 +61,7 @@ Screens: Landing, Login, Not found, Expired link, App, Team picker, Team, Teams 
 
 ## Out of scope
 
-Dark mode. Public signup. Site admin waitlist table UI. Mac window chrome. Editing behavior (New Slice, Save, drag, inspect) stays the released editor specs. Product-visual token *values* (body canvas/ink, accent buttons, sticky-note fills) stay [product-visual.md](./product-visual.md).
+Dark mode. Public signup. Site admin waitlist table UI. Mac window chrome. Editing behavior (New Slice, Save, drag, inspect) stays the released editor specs. Product-visual token *values* (body canvas/ink, accent buttons, sticky-note fills) stay [product-visual.md](./product-visual.md). Landing depth is [landing-depth.md](./landing-depth.md).
 
 ## Restates
 
