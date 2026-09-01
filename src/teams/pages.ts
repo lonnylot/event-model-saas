@@ -12,7 +12,7 @@ function shell(
   const bodyClass = extras.bodyClass ? ` class="${extras.bodyClass}"` : "";
   const head = extras.head ?? "";
   const lead = extras.lead ?? "";
-  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">${head}</head><body${bodyClass}>${lead}<main>${inner}<p>${email}</p>${admin}<form method="post" action="/api/auth/sign-out"><button type="submit">Sign out</button></form></main><script src="/teams.js"></script></body></html>`;
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">${head}</head><body${bodyClass}>${lead}<nav></nav><main>${inner}<p>${email}</p>${admin}<form method="post" action="/api/auth/sign-out"><button type="submit">Sign out</button></form></main><script src="/teams.js"></script></body></html>`;
 }
 
 export function noTeamsAdminHtml(email: string): string {

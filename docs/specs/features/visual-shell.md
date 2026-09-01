@@ -49,14 +49,14 @@ Screens: App, Team picker, Team, Teams admin. Primitives this slice composes: Ap
 - Token hex values and primitive rules live in [design-system.md](../design-system.md). Playwright computed colors on `/app`, picker, team, Teams admin, and the editor are [product-visual.md](./product-visual.md). GET `/` Page background and color are [public-face.md](./public-face.md).
 - `og:image` `content` ends with `/og.png`. `og:description` is [public-face.md](./public-face.md).
 - Login heading `Sign in` and marketing header `Event Model` link are [public-face.md](./public-face.md).
-- AppBar `Event Model` is a link to `/app`. Teams admin, email, and Sign out stay the existing controls. `appPageHtml` (Person who is not site admin, no teams) composes AppBar the same way `shell` does.
+- AppBar `Event Model` is a link to `/app`. Teams admin, email, and Sign out stay the existing controls. Signed-in AppBar `nav` (Teams admin href) is [admin-nav.md](./admin-nav.md). `appPageHtml` (Person who is not site admin, no teams) composes AppBar the same way `shell` does.
 - `TEST_MAIL=1` Playwright `workers` is `1` (hosted-app / magic-link). Playwright `webServer` wrangler `--port` and `--inspector-port` are checkout-unique from a hash of `cwd` so parallel worktrees do not collide; worker fixtures read `E2E_PORT`.
 - POST `/api/test/non-admin-session` and POST `/api/test/picker-session` exist only when `TEST_MAIL` is `1`. The first inserts a Person who is not site admin with no teams and sets a Session cookie. The second inserts a Person with two Teams and sets a Session cookie. POST `/api/test/reset-store` exists only when `TEST_MAIL` is `1`; it recreates the in-process fake store and mail so an empty-state file still sees no Teams after a mutating file. When `TEST_MAIL` is not `1`, those paths are JSON 404.
 - Favicon and OG PNG mark is [public-face.md](./public-face.md).
 
 ## Out of scope
 
-Dark mode. Public Page, Login, Landing, Marketing header, expired `Sign in`, and Login Button primary are [public-face.md](./public-face.md). Card, Field, font `type`, `radius`, Landing `Join the waitlist` Button primary, signed-in Page colors, editor stylesheet, and sticky-note colors are [product-visual.md](./product-visual.md). Extra “Request a new one” heading on the expired page stays out. AppBar layout (flex, padding), GET `/` viewport, composed look, and Google Fonts Inter are [designed-surfaces.md](./designed-surfaces.md). Viewport meta on 404 stays.
+Dark mode. Public Page, Login, Landing, Marketing header, expired `Sign in`, and Login Button primary are [public-face.md](./public-face.md). Card, Field, font `type`, `radius`, Landing `Join the waitlist` Button primary, signed-in Page colors, editor stylesheet, and sticky-note colors are [product-visual.md](./product-visual.md). Extra “Request a new one” heading on the expired page stays out. AppBar layout (flex, padding), GET `/` viewport, composed look, and Google Fonts Inter are [designed-surfaces.md](./designed-surfaces.md). Viewport meta on 404 stays. Signed-in AppBar `nav` is [admin-nav.md](./admin-nav.md).
 
 ## Restates
 
