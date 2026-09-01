@@ -123,4 +123,8 @@ describe("GitHub Actions CI", () => {
   it("GitHub Actions workflow `.github/workflows/ci.yml` job `deploy` `if` includes `github.event_name == 'push'`", () => {
     expect(jobs.deploy?.if ?? "").toContain("github.event_name == 'push'");
   });
+
+  it("GitHub Actions workflow `.github/workflows/ci.yml` job `deploy` `if` includes `github.ref == 'refs/heads/main'`", () => {
+    expect(jobs.deploy?.if ?? "").toContain("github.ref == 'refs/heads/main'");
+  });
 });
