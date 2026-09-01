@@ -16,7 +16,7 @@ This session does not write production code. Completeness and catalog rows are s
 ## When to use
 
 - User pastes or points at a spec
-- "Implement this" / "ship it" / "iterate until it's right"
+- "Implement this" / "ship it" / "iterate until it's right" / "screenshot and iterate"
 - Feature status is `draft` or `validated`
 
 Two or more specs in one session: load `parallel-feature-work` before this loop.
@@ -91,6 +91,7 @@ Add product gate rows (observability, design system) when those specs exist. Any
 | "Types pass so it's released" | Types are one row. CI and review Approve still required. |
 | "I reviewed it myself" | Dispatch `spec-reviewer`. Self-review is not a gate row. |
 | "I'll just implement here, it's faster" | Dispatch `spec-implementer`. This session does not write production code. |
+| "Look-may-grow / screenshot-and-iterate here" | Dispatch `spec-implementer`. Look-may-grow skips a new validate, not `spec-review-loop`. |
 
 ## Red flags
 
