@@ -34,4 +34,6 @@ After Add Command / Event / Read Model, wait for the named Ports before pointer-
 
 Hover a Port with `{ force: true }` when Timeline pan would steal the pointer.
 
+Dragging a Timeline Command / Event / Read Model / Automation listitem onto a Slice uses `sourcePosition` on the title, not the Port — a Port-centered `dragTo` starts a connection drag.
+
 Flow tests use the documented test adapter; they do not prove a production store (`testing`).

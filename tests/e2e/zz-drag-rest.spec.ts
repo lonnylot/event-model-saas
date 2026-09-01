@@ -109,6 +109,7 @@ test("After clicking `New Slice` twice then `Add Event`, dragging the Timeline `
   await expect(eventItem).toBeVisible();
   await eventItem.dragTo(
     page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
+    { sourcePosition: { x: 12, y: 8 } },
   );
   const after = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
@@ -132,6 +133,7 @@ test("After clicking `New Slice` twice then `Add Read Model`, dragging the Timel
   await expect(readModel).toBeVisible();
   await readModel.dragTo(
     page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
+    { sourcePosition: { x: 12, y: 8 } },
   );
   const after = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
@@ -155,6 +157,7 @@ test("After clicking `New Slice` twice then `Add Automation`, dragging the Timel
   await expect(automation).toBeVisible();
   await automation.dragTo(
     page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
+    { sourcePosition: { x: 12, y: 8 } },
   );
   const after = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",

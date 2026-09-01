@@ -130,6 +130,7 @@ test("After clicking `New Slice` twice then `Add Command`, dragging the Timeline
   await expect(command).toBeVisible();
   await command.dragTo(
     page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
+    { sourcePosition: { x: 12, y: 8 } },
   );
   const after = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
@@ -152,6 +153,7 @@ test("After clicking `New Slice` twice then `Add Command`, dragging the Timeline
   await expect(command).toBeVisible();
   await command.dragTo(
     page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
+    { sourcePosition: { x: 12, y: 8 } },
   );
   const after = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",

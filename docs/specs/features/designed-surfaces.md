@@ -57,6 +57,7 @@ Screens: Landing, Login, Not found, Expired link, App, Team picker, Team, Teams 
 - **Look may grow:** on named screens, the implementer may add visual structure (section headings, product images of existing UI, layout regions, static public pages that do not persist) by appending ACs in the same commit as the production (`visual-design`). Do not add persistence, public signup, or claims Out of scope names. Do not halt for a new *validate* of that chrome. Look-may-grow is not skip review: `spec-review-loop` still runs on the PR after the first green commit; merge is still `release-manager`.
 - Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).
 - Contrast proofs may be unit tests of the hex pairs; they must fail if a token changes below 4.5:1.
+- Timeline empty copy is a `p` in `.timeline-empty`. Connection lines are `p[data-kind="connection"]` so undo restore does not insert into the empty region.
 
 ## Out of scope
 

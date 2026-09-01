@@ -1832,7 +1832,9 @@ export function bindEditor(root) {
           p.textContent = "Command → Event Happened";
           p.setAttribute("data-kind", "connection");
           p.dataset.id = entry.connection.id;
-          const before = [...timelineEl.querySelectorAll("p")][entry.index];
+          const before = [
+            ...timelineEl.querySelectorAll('p[data-kind="connection"]'),
+          ][entry.index];
           if (before) timelineEl.insertBefore(p, before);
           else timelineEl.append(p);
         }
