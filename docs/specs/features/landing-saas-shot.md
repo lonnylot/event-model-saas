@@ -1,6 +1,6 @@
 # Landing SaaS shot
 
-Status: validated
+Status: released
 
 ## Problem
 
