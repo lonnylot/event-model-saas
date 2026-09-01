@@ -1,6 +1,6 @@
 # Admin nav
 
-Status: validated
+Status: released
 
 ## Problem
 
