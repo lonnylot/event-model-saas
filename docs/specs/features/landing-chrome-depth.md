@@ -49,6 +49,6 @@ Dark mode. Public signup. Site admin waitlist table UI. Login restyle. Editor re
 - [landing-depth.md](./landing-depth.md) — Layered hero, product-shot transform, figure overlap, bento `canvas-subtle` / article `canvas` fill, ink waitlist, footer landmark stay that file. AppBar / bento band / waitlist band / Footer *lift* (`box-shadow` not `none`) is this slice. Bento article `box-shadow` stays that file.
 - [designed-surfaces.md](./designed-surfaces.md) — GET `/` image accessible name `Event Model editor` stays that file. AppBar flex / padding stay that file. AppBar `box-shadow` on Landing is this slice.
 - [public-face.md](./public-face.md) — Copy, routes, waitlist POST, body `canvas`/`ink` stay that file.
-- [design-system.md](../design-system.md) — Tokens stay that file. Landing AppBar, bento band, waitlist Card, and Footer lift are this slice.
+- [design-system.md](../design-system.md) — Tokens stay that file. Landing AppBar, bento band, waitlist band, and Footer lift are this slice.
 - [product.md](../product.md) — Public HTML is contemporary SaaS; Landing nav and below-hero bands have depth (this slice). The Landing product frame has no URL bar.
 - [architecture.md](../architecture.md) — Hosted-editor product frame stays [landing-saas-shot.md](./landing-saas-shot.md). Landing chrome depth (no URL bar; nav / bento / waitlist / footer lift) is this slice.

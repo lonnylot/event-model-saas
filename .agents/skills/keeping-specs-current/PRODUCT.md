@@ -21,7 +21,7 @@ Extra visible chrome without an AC is unfinished — add the AC or omit it. Here
 - Inspector Name (or other inspect chrome) on a kind Out of scope names inspecting (Command / Event / Read Model / Automation)
 - Leftover Add Field / Field name / Field type / Optional / Example / Delete Field after a narrower unbind
 - GET-rendered Description / Add Field when ACs only name Name
-- UI / Restates that claim compose of primitives (Card, Field, Page `type`, Button `radius`) this HEAD does not ship; leftover Field `canvas` fill after dropped Email fill AC; leftover Card `padding` with no AC; leftover Button primary `radius` on `Send invite`; leftover design-system Page on every listed screen; leftover AppBar / `header` flex on picker / team / Teams admin while lead is `<p><a href="/app">Event Model</a></p>` (`visual-design/PRODUCT.md`)
+- UI / Restates that claim compose of primitives (Card, Field, Page `type`, Button `radius`) this HEAD does not ship; leftover Field `canvas` fill after dropped Email fill AC; leftover Card `padding` with no AC; leftover Button primary `radius` on `Send invite`; leftover design-system waitlist Card lift when ACs lift `.waitlist-band`; leftover design-system Page on every listed screen; leftover AppBar / `header` flex on picker / team / Teams admin while lead is `<p><a href="/app">Event Model</a></p>` (`visual-design/PRODUCT.md`)
 - Page ink on Login/404/expired without color ACs; leftover paper `ink-paper` on `body.login` after restating Page (public) ink; leftover signed-in Page `ink`/`type` on guest/picker/team/Teams admin/editor without body ACs; leftover visual-shell background and color when this slice only proves `ink` on one route
 - Assigning a listitem's `textContent` so a released nested control (`Command port`) disappears
 
@@ -66,6 +66,8 @@ After rebase onto default, grep leftover paper Page / Page background assigned t
 Grep draft `architecture.md` for leftover token/CSS assignment to restated slices even when Restates omitted it — public-face / product-visual apply type/Card/Field/Page/editor CSS after composed look moved to designed-surfaces is that omit. Draft is not a skip.
 
 Restating landing heading `56px` / `main` max-width `none` is unfinished until leftover Assumptions in the same `product-visual.md` file no longer say `36px` / `576px`. Look-may-grow restated ACs still grep leftover Assumptions (`visual-design`).
+
+Restating the landing-saas-shot URL-bar AC (`.product-shot` does not show `event-model.lonnylot.com`; `.browser-bar` leftover unused) is unfinished until leftover Problem no longer lists “browser chrome” as a hosted-editor tell.
 
 GET Inspector heading / empty copy vs leftover `editor-shell.md` “empty named region” when designed-surfaces Restates omits that file is leftover Restates. Filling a region another released spec still calls empty is unfinished until Restates that spec.
 
