@@ -26,9 +26,8 @@ HTML meets WCAG 2.2 AA for contrast of these token pairs (`ink` on `canvas`, `on
 | `type` | `Inter, ui-sans-serif, system-ui, sans-serif` |
 | `radius` | `10px` |
 | `measure` | `24rem` |
-| `measure-landing` | `36rem` |
 
-Leftover unused paper tokens (not applied): `paper` `#F7F4EE`, `ink-paper` `#1C1917`, `ochre` `#C0783A`, `terracotta` `#B85C38`.
+Leftover unused paper tokens (not applied): `paper` `#F7F4EE`, `ink-paper` `#1C1917`, `ochre` `#C0783A`, `terracotta` `#B85C38`. Leftover unused `measure-landing` `36rem` after GET `/` `main` max-width `none` ([designed-surfaces.md](./features/designed-surfaces.md)).
 
 Sticky-note block fills ([features/product-visual.md](./features/product-visual.md)): Actor `#FEF3C7` / `#F59E0B`; Command `#DBEAFE` / `#2563EB`; Event `#FFEDD5` / `#EA580C`; Read Model `#DCFCE7` / `#16A34A`; Automation `#EDE9FE` / `#7C3AED`.
 

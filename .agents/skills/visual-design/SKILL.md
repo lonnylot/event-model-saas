@@ -61,7 +61,7 @@ Still stop and return `need-user` when the addition:
 
 3. **Iterate look in the browser.** Change CSS and structure of named screens. Check desktop and a narrow viewport. This step runs in `spec-implementer`, not the orchestrator session. Completion: tokens hold; a11y holds; existing named controls/copy remain; the composed page is not UA-default stack.
 
-4. **Grow.** If a heading, image, landmark, or static public page is needed, append its AC and ship it in this look pass (`Look may grow`). Restating a look AC (heading size, max-width) is unfinished until leftover Assumptions in that spec no longer quote the old values (`keeping-specs-current`). Completion: `git show` lists the new AC with the production.
+4. **Grow.** If a heading, image, landmark, or static public page is needed, append its AC and ship it in this look pass (`Look may grow`). Restating a look AC (heading size, max-width) is unfinished until leftover Assumptions in that spec no longer quote the old values, and leftover unused tokens that still encode the old measure are marked leftover unused or dropped (`keeping-specs-current`). Completion: `git show` lists the new AC with the production.
 
 5. **Commit.** One look pass per named screen (or one stylesheet pass that several named screens mount, plus the shell it left). Viewport meta copied onto sibling HTML of those screens is that shell, not extra chrome — unique AC on one route is enough. Not one commit per CSS property (`logical-commits`). Then the next screen.
 
