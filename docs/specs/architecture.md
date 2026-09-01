@@ -26,6 +26,7 @@ A Cloudflare Worker serves signed-out and team/admin HTML, the editor canvas pag
 | Front end | Worker HTML plus `public/` CSS for Landing (`/`), Login (`/login`), 404, expired link, signed-in team/admin screens, and the editor canvas page. Editor canvas is custom timeline TypeScript (no xyflow/React Flow) matching the Mac layout. |
 | Document language | `.eventmodel` schema v1, same as the Mac app |
 | Tests | Vitest (unit) + Playwright (flows) + GitHub Actions |
+| Deploy | GitHub Actions job `deploy` on `push` to `main` after `test` runs `npx wrangler deploy --keep-vars` |
 | Auth session | httpOnly Secure SameSite=Lax cookie on `event-model.lonnylot.com` |
 
 `SITE_ADMIN_EMAIL` is an environment value. First magic-link login for that address creates the site-admin Person without an invite.

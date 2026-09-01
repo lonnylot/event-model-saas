@@ -35,4 +35,5 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Spec tree location / vendor plan dirs / `docs/superpowers/` | this skill, `keeping-specs-current` |
 | Architecture adapter constructed only under a test flag / injected `env.documents` | `testing`, `codebase-design`, `keeping-specs-current` |
 | Independently revertible fromKind vs toKind / GET already hydrates | `logical-commits` |
+| Merge-to-main deploy (`npx wrangler deploy --keep-vars` after `test`) | `github-ci-loop` |
 | Restates leftover rewrite with a production restore of a different path (leftover Restates public-face Field / Page `canvas`/`ink` / design-system Page `type`/`canvas`/`ink` vs unique Send invite radius) | `logical-commits` |
