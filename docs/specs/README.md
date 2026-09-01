@@ -50,5 +50,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Public face | [features/public-face.md](./features/public-face.md) | released |
 | Product visual | [features/product-visual.md](./features/product-visual.md) | released |
 | Designed surfaces | [features/designed-surfaces.md](./features/designed-surfaces.md) | released |
+| Deploy on main | [features/deploy-on-main.md](./features/deploy-on-main.md) | validated |
 
 Status: `draft` → `validated` → `released`.
