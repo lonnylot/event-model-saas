@@ -144,7 +144,7 @@ export function adminTeamsHtml(email: string, teams: Team[]): string {
     .join("");
   return shell(
     email,
-    false,
+    true,
     invites,
     { head: `<link rel="stylesheet" href="/shell.css">`, bodyClass: "app-admin" },
   );

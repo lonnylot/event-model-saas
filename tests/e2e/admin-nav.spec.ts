@@ -144,6 +144,34 @@ test("GET `/app/teams/{id}` as site admin, the `nav` link `Teams admin` has `hre
   ).toHaveAttribute("href", "/app/admin/teams");
 });
 
+test("GET `/app/admin/teams` as site admin, `nav` shows a link whose accessible name is `Teams admin`", async ({
+  page,
+  request,
+}) => {
+  await consumeAdminOnTeam(page, request);
+  await page.goto("/app/admin/teams");
+  await expect(
+    page.getByRole("navigation").getByRole("link", {
+      name: "Teams admin",
+      exact: true,
+    }),
+  ).toBeVisible();
+});
+
+test("GET `/app/admin/teams` as site admin, the `nav` link `Teams admin` has `href` `/app/admin/teams`", async ({
+  page,
+  request,
+}) => {
+  await consumeAdminOnTeam(page, request);
+  await page.goto("/app/admin/teams");
+  await expect(
+    page.getByRole("navigation").getByRole("link", {
+      name: "Teams admin",
+      exact: true,
+    }),
+  ).toHaveAttribute("href", "/app/admin/teams");
+});
+
 test("GET `/app/teams/{id}` as a Person who is not site admin does not show a link whose accessible name is `Teams admin`", async ({
   page,
   request,

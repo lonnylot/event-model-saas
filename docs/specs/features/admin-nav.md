@@ -24,8 +24,8 @@ The Team page (models list) and the rest of signed-in admin (Create team, Your t
 - [x] GET `/app` as site admin with two Teams, `nav` shows a link whose accessible name is `Teams admin`
 - [x] GET `/app/teams/{id}` as site admin, `nav` shows a link whose accessible name is `Teams admin`
 - [x] GET `/app/teams/{id}` as site admin, the `nav` link `Teams admin` has `href` `/app/admin/teams`
-- [ ] GET `/app/admin/teams` as site admin, `nav` shows a link whose accessible name is `Teams admin`
-- [ ] GET `/app/admin/teams` as site admin, the `nav` link `Teams admin` has `href` `/app/admin/teams`
+- [x] GET `/app/admin/teams` as site admin, `nav` shows a link whose accessible name is `Teams admin`
+- [x] GET `/app/admin/teams` as site admin, the `nav` link `Teams admin` has `href` `/app/admin/teams`
 - [x] GET `/app/teams/{id}` as a Person who is not site admin does not show a link whose accessible name is `Teams admin`
 
 ## Domain terms
