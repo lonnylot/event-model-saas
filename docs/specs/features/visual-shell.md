@@ -56,7 +56,7 @@ Screens: App, Team picker, Team, Teams admin. Primitives this slice composes: Ap
 
 ## Out of scope
 
-Dark mode, webfont files. Public Page, Login, Landing, Marketing header, expired `Sign in`, and Login Button primary are [public-face.md](./public-face.md). Card, Field, font `type`, `radius`, Landing `Join the waitlist` Button primary, signed-in Page colors, editor stylesheet, and sticky-note colors are [product-visual.md](./product-visual.md). Extra “Request a new one” heading on the expired page stays out. AppBar layout (flex, padding), GET `/` viewport, and composed look are [designed-surfaces.md](./designed-surfaces.md). Viewport meta on 404 stays.
+Dark mode. Public Page, Login, Landing, Marketing header, expired `Sign in`, and Login Button primary are [public-face.md](./public-face.md). Card, Field, font `type`, `radius`, Landing `Join the waitlist` Button primary, signed-in Page colors, editor stylesheet, and sticky-note colors are [product-visual.md](./product-visual.md). Extra “Request a new one” heading on the expired page stays out. AppBar layout (flex, padding), GET `/` viewport, composed look, and Google Fonts Inter are [designed-surfaces.md](./designed-surfaces.md). Viewport meta on 404 stays.
 
 ## Restates
 

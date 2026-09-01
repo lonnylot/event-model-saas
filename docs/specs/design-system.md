@@ -23,7 +23,7 @@ HTML meets WCAG 2.2 AA for contrast of these token pairs (`ink` on `canvas`, `on
 | `line` | `#E2E8F0` |
 | `accent` | `#0F766E` |
 | `on-accent` | `#FFFFFF` |
-| `type` | `ui-sans-serif, system-ui, sans-serif` |
+| `type` | `Inter, ui-sans-serif, system-ui, sans-serif` |
 | `radius` | `10px` |
 | `measure` | `24rem` |
 | `measure-landing` | `36rem` |
