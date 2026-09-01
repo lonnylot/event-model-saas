@@ -109,7 +109,7 @@ body.landing a[href="/login"] {
   color: #0f766e;
 }
 
-/* Landing — Stripe/Linear-scale hero */
+/* Landing — layered SaaS: tall hero, overlapping product, bands, footer */
 body.landing {
   background-color: #ffffff;
 }
@@ -122,17 +122,27 @@ body.landing main {
   padding: 1px 0 0;
 }
 body.landing .hero {
-  background-image: linear-gradient(
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: radial-gradient(
+      ellipse 80% 55% at 50% -8%,
+      rgba(15, 118, 110, 0.28),
+      transparent 58%
+    ),
+    linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.28) 0%,
-      rgba(255, 255, 255, 0.92) 72%,
+      rgba(255, 255, 255, 0.12) 0%,
+      rgba(255, 255, 255, 0.42) 42%,
+      rgba(255, 255, 255, 0.88) 78%,
       #ffffff 100%
     ),
     url("/hero-mesh.jpg");
   background-size: cover;
   background-position: center top;
   text-align: center;
-  padding: 4.5rem 1.5rem 0;
+  padding: 5rem 1.5rem 0;
 }
 body.landing h1 {
   font-size: 56px;
@@ -160,10 +170,27 @@ body.landing a.btn-primary {
 body.landing a.btn-primary:focus-visible {
   box-shadow: 0 0 0 3px #0f766e, 0 8px 24px rgba(15, 118, 110, 0.28);
 }
-body.landing figure {
-  margin: 3.5rem auto 0;
+body.landing .hero figure {
+  margin: auto auto -6.5rem;
+  width: 100%;
   max-width: 58rem;
-  padding: 0 0 4rem;
+  padding: 3.5rem 1.25rem 0;
+  position: relative;
+  z-index: 1;
+  perspective: 1600px;
+}
+body.landing .hero figure::before {
+  content: "";
+  position: absolute;
+  inset: 12% 8% -8%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(15, 118, 110, 0.28),
+    transparent 68%
+  );
+  filter: blur(28px);
+  z-index: -1;
+  pointer-events: none;
 }
 .product-shot {
   text-align: left;
@@ -171,7 +198,10 @@ body.landing figure {
   border: 1px solid #e2e8f0;
   border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.14);
+  transform: rotateX(11deg) rotateY(-7deg);
+  transform-origin: center 18%;
+  box-shadow: 0 28px 80px rgba(15, 23, 42, 0.18),
+    0 0 0 1px rgba(255, 255, 255, 0.6);
 }
 .product-chrome {
   display: flex;
@@ -285,24 +315,30 @@ body.landing .bento {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.25rem;
-  max-width: 64rem;
-  margin: 0 auto;
-  padding: 1rem 1.5rem 4.5rem;
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  background-color: #f8fafc;
+  padding: 8.5rem max(1.5rem, calc((100% - 64rem) / 2)) 4.5rem;
 }
 body.landing .bento article {
-  background: #f8fafc;
+  background: #ffffff;
+  background-color: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 14px;
   padding: 1.4rem 1.35rem 1.2rem;
   text-align: left;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04),
+    0 18px 40px rgba(15, 23, 42, 0.08);
 }
 body.landing .bento p:last-child {
   margin-bottom: 0;
 }
 body.landing .waitlist-band {
-  background: #f8fafc;
-  border-top: 1px solid #e2e8f0;
-  padding: 4rem 1.5rem 5rem;
+  background: #0f172a;
+  background-color: #0f172a;
+  border-top: 0;
+  padding: 4.5rem 1.5rem 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -311,17 +347,50 @@ body.landing .waitlist-band {
 body.landing .waitlist-band h2 {
   font-size: 1.75rem;
   letter-spacing: -0.035em;
+  color: #ffffff;
+}
+body.landing .waitlist-band > p {
+  color: #ffffff;
 }
 body.landing #waitlist-form {
   margin-top: 0.5rem;
   width: 100%;
   text-align: left;
 }
+body.landing footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem 1.75rem 1.4rem;
+  background: #ffffff;
+  border-top: 1px solid #e2e8f0;
+}
+body.landing footer a {
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+}
+body.landing footer a[href="/login"],
+body.landing footer a[href="/app"] {
+  color: #0f766e;
+}
 
 @media (max-width: 800px) {
   body.landing h1 {
     font-size: 36px;
     max-width: none;
+  }
+  body.landing .hero {
+    min-height: 100svh;
+    padding-top: 3.5rem;
+  }
+  body.landing .hero figure {
+    margin-bottom: -3.5rem;
+  }
+  .product-shot {
+    transform: rotateX(7deg);
   }
   .product-body {
     grid-template-columns: 1fr;
@@ -332,6 +401,7 @@ body.landing #waitlist-form {
   }
   body.landing .bento {
     grid-template-columns: 1fr;
+    padding-top: 5.5rem;
   }
 }
 

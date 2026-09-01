@@ -53,39 +53,51 @@ test("GET `/` without a Session shows the text `One Event Model, signed in. No p
   ).toBeVisible();
 });
 
-test("GET `/` without a Session shows a link whose accessible name is `Event Model`", async ({
+test("GET `/` without a Session, `header` shows a link whose accessible name is `Event Model`", async ({
   page,
 }) => {
   await page.goto("/");
   await expect(
-    page.getByRole("link", { name: "Event Model", exact: true }),
+    page.locator("header").getByRole("link", {
+      name: "Event Model",
+      exact: true,
+    }),
   ).toBeVisible();
 });
 
-test("GET `/` without a Session, the link `Event Model` has `href` `/`", async ({
+test("GET `/` without a Session, the `header` link `Event Model` has `href` `/`", async ({
   page,
 }) => {
   await page.goto("/");
   await expect(
-    page.getByRole("link", { name: "Event Model", exact: true }),
+    page.locator("header").getByRole("link", {
+      name: "Event Model",
+      exact: true,
+    }),
   ).toHaveAttribute("href", "/");
 });
 
-test("GET `/` without a Session shows a link whose accessible name is `Sign in`", async ({
+test("GET `/` without a Session, `header` shows a link whose accessible name is `Sign in`", async ({
   page,
 }) => {
   await page.goto("/");
   await expect(
-    page.getByRole("link", { name: "Sign in", exact: true }),
+    page.locator("header").getByRole("link", {
+      name: "Sign in",
+      exact: true,
+    }),
   ).toBeVisible();
 });
 
-test("GET `/` without a Session, a link `Sign in` has `href` `/login`", async ({
+test("GET `/` without a Session, a `header` link `Sign in` has `href` `/login`", async ({
   page,
 }) => {
   await page.goto("/");
   await expect(
-    page.getByRole("link", { name: "Sign in", exact: true }),
+    page.locator("header").getByRole("link", {
+      name: "Sign in",
+      exact: true,
+    }),
   ).toHaveAttribute("href", "/login");
 });
 
@@ -392,23 +404,29 @@ test("GET `/` without a Session does not show a link whose accessible name is `O
   ).toHaveCount(0);
 });
 
-test("GET `/` with a Session shows a link whose accessible name is `Open app`", async ({
+test("GET `/` with a Session, `header` shows a link whose accessible name is `Open app`", async ({
   page,
 }) => {
   await page.request.post("/api/test/non-admin-session");
   await page.goto("/");
   await expect(
-    page.getByRole("link", { name: "Open app", exact: true }),
+    page.locator("header").getByRole("link", {
+      name: "Open app",
+      exact: true,
+    }),
   ).toBeVisible();
 });
 
-test("GET `/` with a Session, a link `Open app` has `href` `/app`", async ({
+test("GET `/` with a Session, the `header` link `Open app` has `href` `/app`", async ({
   page,
 }) => {
   await page.request.post("/api/test/non-admin-session");
   await page.goto("/");
   await expect(
-    page.getByRole("link", { name: "Open app", exact: true }),
+    page.locator("header").getByRole("link", {
+      name: "Open app",
+      exact: true,
+    }),
   ).toHaveAttribute("href", "/app");
 });
 
