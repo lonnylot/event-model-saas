@@ -42,7 +42,7 @@ A feature spec does **not** catalog computed CSS per property. It names screens,
 
 On a **validated** spec that already names the screens:
 
-The **implementer** (`spec-implementer`) may add look chrome — section heading, product image of existing UI, landmark, decorative control, static public page that does not persist — by **appending the AC, then the production, in the same commit**. Do not stop for a new human *validate* of that chrome. Look-may-grow is not skip review: the feat/ PR still enters `spec-review-loop` after the first green commit, and merge is still `release-manager`. The orchestrator does not screenshot-and-iterate in this session.
+The **implementer** (`spec-implementer`) may add look chrome — section heading, product image of existing UI, landmark, decorative control, static public page that does not persist — by **appending the AC, then the production, in the same commit**. Do not stop for a new human *validate* of that chrome. Look-may-grow is not skip review: the feat/ PR still enters `spec-review-loop` after the first green commit, and merge is still `release-manager`. The orchestrator does not screenshot-and-iterate in this session. Filling a region another released spec still calls empty is unfinished until Restates that spec (`keeping-specs-current`).
 
 Still stop and return `need-user` when the addition:
 
@@ -77,7 +77,7 @@ When this skill is copied into spec-loop, these portable sentences move with it:
 
 | Skill | Sentence |
 |-------|----------|
-| `keeping-specs-current` | Look of named screens is `visual-design`. Extra chrome is new capability, persistence, or a screen this spec does not own — not spacing/type/layout. Look chrome on named screens is an AC in the same commit (`visual-design` Look may grow). Viewport meta copied onto sibling HTML of named screens is the look shell, not extra chrome. Restating a look AC is unfinished until leftover Assumptions no longer quote the old size/max-width. |
+| `keeping-specs-current` | Look of named screens is `visual-design`. Extra chrome is new capability, persistence, or a screen this spec does not own — not spacing/type/layout. Look chrome on named screens is an AC in the same commit (`visual-design` Look may grow). Viewport meta copied onto sibling HTML of named screens is the look shell, not extra chrome. Restating a look AC is unfinished until leftover Assumptions no longer quote the old size/max-width. Filling a region another released spec still calls empty is unfinished until Restates that spec. |
 | `tdd-loop` GREEN | Extra look on named screens is `visual-design`, not extra UI. |
 | `testing` | Do not prove look as a pile of computed rgb() ACs. Prove names, flows, token use, a11y, and that unique look rules exist. |
 | `logical-commits` | A look pass is one slice per named screen (`visual-design`). Viewport meta copied onto sibling HTML is that shell. |
