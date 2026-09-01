@@ -9,7 +9,7 @@ The Team page (models list) and the rest of signed-in admin (Create team, Your t
 ## Acceptance criteria
 
 - [x] GET `/app` as site admin with no teams shows a navigation landmark
-- [ ] GET `/app` as a Person who is not site admin with no teams shows a navigation landmark
+- [x] GET `/app` as a Person who is not site admin with no teams shows a navigation landmark
 - [x] GET `/app` as a Person with two Teams shows a navigation landmark
 - [x] GET `/app/teams/{id}` as a member shows a navigation landmark
 - [x] GET `/app/admin/teams` as site admin shows a navigation landmark

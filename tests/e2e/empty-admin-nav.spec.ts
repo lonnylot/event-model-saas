@@ -31,3 +31,11 @@ test("GET `/app` as site admin with no teams shows a navigation landmark", async
   await consumeAdmin(page, request);
   await expect(page.getByRole("navigation")).toHaveCount(1);
 });
+
+test("GET `/app` as a Person who is not site admin with no teams shows a navigation landmark", async ({
+  page,
+}) => {
+  await page.request.post("/api/test/non-admin-session");
+  await page.goto("/app");
+  await expect(page.getByRole("navigation")).toHaveCount(1);
+});
