@@ -11,8 +11,8 @@ function shell(
     : "";
   const bodyClass = extras.bodyClass ? ` class="${extras.bodyClass}"` : "";
   const head = extras.head ?? "";
-  const lead = extras.lead ?? "";
-  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">${head}</head><body${bodyClass}>${lead}<nav></nav><main>${inner}<p>${email}</p>${admin}<form method="post" action="/api/auth/sign-out"><button type="submit">Sign out</button></form></main><script src="/teams.js"></script></body></html>`;
+  const lead = extras.lead ?? `<a href="/app">Event Model</a>`;
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">${head}</head><body${bodyClass}><header>${lead}<div class="appbar-end"><nav></nav><p>${email}</p><form method="post" action="/api/auth/sign-out"><button type="submit">Sign out</button></form></div></header><main>${inner}${admin}</main><script src="/teams.js"></script></body></html>`;
 }
 
 export function noTeamsAdminHtml(email: string): string {
@@ -20,7 +20,7 @@ export function noTeamsAdminHtml(email: string): string {
     email,
     true,
     `<form method="post" action="/api/teams" id="create-team"><label for="team-name">Team name</label><input id="team-name" name="name" required /><button type="submit">Create team</button></form>`,
-    { head: `<link rel="stylesheet" href="/shell.css">`, bodyClass: "app-none", lead: `<header><a href="/app">Event Model</a></header>` },
+    { head: `<link rel="stylesheet" href="/shell.css">`, bodyClass: "app-none" },
   );
 }
 
@@ -36,7 +36,7 @@ export function pickerHtml(
     email,
     isSiteAdmin,
     `<h1>Your teams</h1>${links}`,
-    { head: `<link rel="stylesheet" href="/shell.css">`, bodyClass: "app-picker", lead: `<p><a href="/app">Event Model</a></p>` },
+    { head: `<link rel="stylesheet" href="/shell.css">`, bodyClass: "app-picker" },
   );
 }
 
@@ -56,7 +56,7 @@ export function teamPageHtml(
     email,
     isSiteAdmin,
     `<h1>${team.name}</h1><form id="create-model" method="post" action="/api/teams/${team.id}/models"><button type="submit">Create model</button></form>${links}`,
-    { head: `<link rel="stylesheet" href="/shell.css">`, bodyClass: "app-team", lead: `<p><a href="/app">Event Model</a></p>` },
+    { head: `<link rel="stylesheet" href="/shell.css">`, bodyClass: "app-team" },
   );
 }
 
@@ -146,6 +146,6 @@ export function adminTeamsHtml(email: string, teams: Team[]): string {
     email,
     false,
     invites,
-    { head: `<link rel="stylesheet" href="/shell.css">`, bodyClass: "app-admin", lead: `<p><a href="/app">Event Model</a></p>` },
+    { head: `<link rel="stylesheet" href="/shell.css">`, bodyClass: "app-admin" },
   );
 }

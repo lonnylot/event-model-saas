@@ -39,3 +39,11 @@ test("GET `/app` as a Person who is not site admin with no teams shows a navigat
   await page.goto("/app");
   await expect(page.getByRole("navigation")).toHaveCount(1);
 });
+
+test("GET `/app` as a Person who is not site admin with no teams `header` computed `display` is `flex`", async ({
+  page,
+}) => {
+  await page.request.post("/api/test/non-admin-session");
+  await page.goto("/app");
+  await expect(page.locator("header")).toHaveCSS("display", "flex");
+});

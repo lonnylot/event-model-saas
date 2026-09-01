@@ -59,3 +59,45 @@ test("GET `/app/admin/teams` as site admin shows a navigation landmark", async (
   await page.goto("/app/admin/teams");
   await expect(page.getByRole("navigation")).toHaveCount(1);
 });
+
+test("GET `/app` as a Person with two Teams `header` computed `display` is `flex`", async ({
+  page,
+}) => {
+  await page.request.post("/api/test/picker-session");
+  await page.goto("/app");
+  await expect(page.locator("header")).toHaveCSS("display", "flex");
+});
+
+test("GET `/app/teams/{id}` as a member `header` computed `display` is `flex`", async ({
+  page,
+  request,
+}) => {
+  await consumeAdminOnTeam(page, request);
+  await expect(page.locator("header")).toHaveCSS("display", "flex");
+});
+
+test("GET `/app/admin/teams` as site admin `header` computed `display` is `flex`", async ({
+  page,
+  request,
+}) => {
+  await consumeAdminOnTeam(page, request);
+  await page.goto("/app/admin/teams");
+  await expect(page.locator("header")).toHaveCSS("display", "flex");
+});
+
+test("GET `/app/teams/{id}` as a member `header` computed `box-shadow` is not `none`", async ({
+  page,
+  request,
+}) => {
+  await consumeAdminOnTeam(page, request);
+  await expect(page.locator("header")).not.toHaveCSS("box-shadow", "none");
+});
+
+test("GET `/app/admin/teams` as site admin `header` computed `box-shadow` is not `none`", async ({
+  page,
+  request,
+}) => {
+  await consumeAdminOnTeam(page, request);
+  await page.goto("/app/admin/teams");
+  await expect(page.locator("header")).not.toHaveCSS("box-shadow", "none");
+});

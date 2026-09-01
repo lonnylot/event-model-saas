@@ -13,12 +13,12 @@ The Team page (models list) and the rest of signed-in admin (Create team, Your t
 - [x] GET `/app` as a Person with two Teams shows a navigation landmark
 - [x] GET `/app/teams/{id}` as a member shows a navigation landmark
 - [x] GET `/app/admin/teams` as site admin shows a navigation landmark
-- [ ] GET `/app` as a Person who is not site admin with no teams `header` computed `display` is `flex`
-- [ ] GET `/app` as a Person with two Teams `header` computed `display` is `flex`
-- [ ] GET `/app/teams/{id}` as a member `header` computed `display` is `flex`
-- [ ] GET `/app/admin/teams` as site admin `header` computed `display` is `flex`
-- [ ] GET `/app/teams/{id}` as a member `header` computed `box-shadow` is not `none`
-- [ ] GET `/app/admin/teams` as site admin `header` computed `box-shadow` is not `none`
+- [x] GET `/app` as a Person who is not site admin with no teams `header` computed `display` is `flex`
+- [x] GET `/app` as a Person with two Teams `header` computed `display` is `flex`
+- [x] GET `/app/teams/{id}` as a member `header` computed `display` is `flex`
+- [x] GET `/app/admin/teams` as site admin `header` computed `display` is `flex`
+- [x] GET `/app/teams/{id}` as a member `header` computed `box-shadow` is not `none`
+- [x] GET `/app/admin/teams` as site admin `header` computed `box-shadow` is not `none`
 - [ ] GET `/app` as site admin with no teams, `nav` shows a link whose accessible name is `Teams admin`
 - [ ] GET `/app` as site admin with no teams, the `nav` link `Teams admin` has `href` `/app/admin/teams`
 - [ ] GET `/app` as site admin with two Teams, `nav` shows a link whose accessible name is `Teams admin`
