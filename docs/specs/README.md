@@ -49,6 +49,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Undo rest | [features/undo-rest.md](./features/undo-rest.md) | released |
 | Public face | [features/public-face.md](./features/public-face.md) | released |
 | Product visual | [features/product-visual.md](./features/product-visual.md) | released |
-| Designed surfaces | [features/designed-surfaces.md](./features/designed-surfaces.md) | validated |
+| Designed surfaces | [features/designed-surfaces.md](./features/designed-surfaces.md) | released |
 
 Status: `draft` → `validated` → `released`.
