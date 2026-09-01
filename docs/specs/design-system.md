@@ -2,7 +2,7 @@
 
 Status: released
 
-Tokens and primitives for Event Model SaaS HTML including the editor canvas. [features/product-visual.md](./features/product-visual.md) applies token values. [features/designed-surfaces.md](./features/designed-surfaces.md) applies composed look. [features/landing-depth.md](./features/landing-depth.md) applies Landing depth. This file does not own feature acceptance criteria.
+Tokens and primitives for Event Model SaaS HTML including the editor canvas. [features/product-visual.md](./features/product-visual.md) applies token values. [features/designed-surfaces.md](./features/designed-surfaces.md) applies composed look. [features/landing-depth.md](./features/landing-depth.md) applies Landing depth. [features/landing-saas-shot.md](./features/landing-saas-shot.md) applies the Landing product frame as the hosted Editor in a browser. This file does not own feature acceptance criteria.
 
 ## Look
 

@@ -24,39 +24,104 @@
         </p>
         <figure>
           <div class="product-shot" role="img" aria-label="Event Model editor">
-            <div class="product-chrome" aria-hidden="true">
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="chrome-title">Library Checkout</span>
-            </div>
-            <div class="product-body" aria-hidden="true">
-              <aside>
-                <div class="slice-item on">Checkout</div>
-                <div class="slice-item">Fulfillment</div>
-                <div class="slice-item">Notify</div>
-              </aside>
-              <div class="lanes">
-                <div class="lane">
-                  <span class="chip actor">Shopper</span>
-                  <span class="chip actor">Warehouse</span>
+            <div class="product-app" aria-hidden="true">
+              <div class="browser-bar">
+                <span class="browser-url">event-model.lonnylot.com</span>
+              </div>
+              <div class="shot-header">
+                <div class="shot-brand">
+                  <span class="shot-team">Library</span>
+                  <span class="shot-title">Library Checkout</span>
                 </div>
-                <div class="lane">
-                  <span class="chip command">Place Order</span>
-                  <span class="chip event">Order Placed</span>
-                  <span class="chip command">Pick Items</span>
-                  <span class="chip event">Items Picked</span>
-                </div>
-                <div class="lane">
-                  <span class="chip readmodel">Orders</span>
-                  <span class="chip readmodel">Inventory</span>
+                <div class="shot-actions">
+                  <span class="shot-btn primary">Save</span>
+                  <span class="shot-btn">Export</span>
+                  <span class="shot-email">lonny@lonnylot.com</span>
+                  <span class="shot-btn">Sign out</span>
                 </div>
               </div>
-              <div class="inspector">
-                <div class="inspector-k">Name</div>
-                <div class="inspector-v">Place Order</div>
-                <div class="inspector-k">Type</div>
-                <div class="inspector-v">Command</div>
+              <div class="shot-toolbar">
+                <span class="shot-btn accent">New Slice</span>
+                <span class="shot-btn">Add Actor</span>
+                <span class="shot-btn">Add Command</span>
+                <span class="shot-btn">Add Event</span>
+                <span class="shot-btn">Add Read Model</span>
+                <span class="shot-btn">Add Automation</span>
+              </div>
+              <div class="shot-main">
+                <div class="shot-rail">
+                  <div class="shot-h">Model</div>
+                  <div class="shot-model">Library Checkout</div>
+                  <div class="shot-h">Slices</div>
+                  <div class="slice-item on">Checkout</div>
+                  <div class="slice-item">Fulfillment</div>
+                  <div class="slice-item">Notify</div>
+                </div>
+                <div class="shot-timeline">
+                  <div class="shot-time">
+                    <span>Time</span>
+                    <span class="time-rule"></span>
+                  </div>
+                  <div class="shot-board">
+                    <div class="shot-lane-rail">
+                      <div class="lane-label">Slice</div>
+                      <div class="lane-label actor">Actor</div>
+                      <div class="lane-label command">Command</div>
+                      <div class="lane-label event">Event</div>
+                      <div class="lane-label readmodel">Read Model</div>
+                      <div class="lane-label automation">Automation</div>
+                    </div>
+                    <div class="shot-col">
+                      <div class="slice-head">Checkout</div>
+                      <div class="shot-lane actor">
+                        <span class="chip actor">Shopper</span>
+                      </div>
+                      <div class="shot-lane command">
+                        <span class="chip command on">Place Order</span>
+                      </div>
+                      <div class="shot-lane event">
+                        <span class="chip event">Order Placed</span>
+                      </div>
+                      <div class="shot-lane readmodel">
+                        <span class="chip readmodel">Orders</span>
+                      </div>
+                      <div class="shot-lane automation"></div>
+                    </div>
+                    <div class="shot-col">
+                      <div class="slice-head">Fulfillment</div>
+                      <div class="shot-lane actor">
+                        <span class="chip actor">Warehouse</span>
+                      </div>
+                      <div class="shot-lane command">
+                        <span class="chip command">Pick Items</span>
+                      </div>
+                      <div class="shot-lane event">
+                        <span class="chip event">Items Picked</span>
+                      </div>
+                      <div class="shot-lane readmodel">
+                        <span class="chip readmodel">Inventory</span>
+                      </div>
+                      <div class="shot-lane automation"></div>
+                    </div>
+                    <div class="shot-col">
+                      <div class="slice-head">Notify</div>
+                      <div class="shot-lane actor"></div>
+                      <div class="shot-lane command"></div>
+                      <div class="shot-lane event"></div>
+                      <div class="shot-lane readmodel"></div>
+                      <div class="shot-lane automation">
+                        <span class="chip automation">Send Email</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="shot-inspector">
+                  <div class="shot-h">Inspector</div>
+                  <div class="inspector-k">Name</div>
+                  <div class="inspector-v">Place Order</div>
+                  <div class="inspector-k">Type</div>
+                  <div class="inspector-v">Command</div>
+                </div>
               </div>
             </div>
           </div>
