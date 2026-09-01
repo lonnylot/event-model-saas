@@ -11,7 +11,7 @@ GitHub Actions runs `npm test` on `push` to `main` and stops. Merge does not upd
 - [x] GitHub Actions workflow `.github/workflows/ci.yml` has a job named `deploy` whose `needs` includes `test`
 - [x] GitHub Actions workflow `.github/workflows/ci.yml` job `deploy` `if` includes `github.event_name == 'push'`
 - [x] GitHub Actions workflow `.github/workflows/ci.yml` job `deploy` `if` includes `github.ref == 'refs/heads/main'`
-- [ ] GitHub Actions workflow `.github/workflows/ci.yml` job `deploy` has a step whose `run` is `npx wrangler deploy --keep-vars`
+- [x] GitHub Actions workflow `.github/workflows/ci.yml` job `deploy` has a step whose `run` is `npx wrangler deploy --keep-vars`
 
 ## Domain terms
 

@@ -34,7 +34,7 @@ Event Model
 ## Assumptions
 
 - Cloudflare account is the one already serving `lonnylot.com` (wrangler OAuth).
-- Custom domain provisioning happens when the `deploy` script runs via Wrangler.
+- Custom domain provisioning happens when Wrangler deploy runs (the `deploy` script, and GitHub Actions on `push` to `main` after `test`).
 
 ## Out of scope
 

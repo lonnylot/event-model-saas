@@ -127,4 +127,10 @@ describe("GitHub Actions CI", () => {
   it("GitHub Actions workflow `.github/workflows/ci.yml` job `deploy` `if` includes `github.ref == 'refs/heads/main'`", () => {
     expect(jobs.deploy?.if ?? "").toContain("github.ref == 'refs/heads/main'");
   });
+
+  it("GitHub Actions workflow `.github/workflows/ci.yml` job `deploy` has a step whose `run` is `npx wrangler deploy --keep-vars`", () => {
+    expect(jobs.deploy?.runs ?? []).toContain(
+      "npx wrangler deploy --keep-vars",
+    );
+  });
 });
