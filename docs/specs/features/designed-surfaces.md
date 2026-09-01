@@ -26,6 +26,7 @@ Public and signed-in HTML apply tokens as isolated computed properties. Landing 
 - [x] GET `/` shows an image whose accessible name is `Event Model editor`
 - [x] GET `/` heading `Event Modeling for the whole team` computed `font-size` is `56px`
 - [x] GET `/` `main` computed `max-width` is `none`
+- [x] GET `/` `body` computed `font-family` is `ui-sans-serif, system-ui, sans-serif`
 - [x] GET `/app/teams/{id}/models/{mid}` as a member `main` computed `display` is `grid`
 - [x] GET `/app/teams/{id}/models/{mid}` as a member shows a heading whose accessible name is `Inspector`
 - [x] GET `/app/teams/{id}/models/{mid}` as a member shows a heading whose accessible name is `Model`

@@ -90,3 +90,17 @@ test("GET `/` `main` computed `max-width` is `none`", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator("main")).toHaveCSS("max-width", "none");
 });
+
+test("GET `/` `body` computed `font-family` is `ui-sans-serif, system-ui, sans-serif`", async ({
+  page,
+  request,
+}) => {
+  const css = await (await request.get("/shell.css")).text();
+  expect(css).not.toContain("fonts.googleapis.com");
+  expect(css).not.toMatch(/\bInter\b/);
+  await page.goto("/");
+  await expect(page.locator("body")).toHaveCSS(
+    "font-family",
+    "ui-sans-serif, system-ui, sans-serif",
+  );
+});
