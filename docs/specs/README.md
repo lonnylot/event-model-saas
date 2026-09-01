@@ -52,6 +52,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Designed surfaces | [features/designed-surfaces.md](./features/designed-surfaces.md) | released |
 | Landing depth | [features/landing-depth.md](./features/landing-depth.md) | released |
 | Landing SaaS shot | [features/landing-saas-shot.md](./features/landing-saas-shot.md) | released |
-| Landing chrome depth | [features/landing-chrome-depth.md](./features/landing-chrome-depth.md) | validated |
+| Landing chrome depth | [features/landing-chrome-depth.md](./features/landing-chrome-depth.md) | released |
 
 Status: `draft` → `validated` → `released`.
