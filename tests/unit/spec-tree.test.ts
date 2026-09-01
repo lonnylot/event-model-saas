@@ -145,4 +145,17 @@ describe("spec tree", () => {
     expect(text).not.toContain("Landing `main` `max-width` `36rem`");
     expect(text).not.toContain("Display heading `font-size` `36px`");
   });
+
+  it("designed-surfaces Restates editor-shell GET Inspector chrome; editor-shell does not leave an empty named region", () => {
+    const designed = readFileSync(
+      "docs/specs/features/designed-surfaces.md",
+      "utf8",
+    );
+    expect(designed).toContain("[editor-shell.md](./editor-shell.md)");
+    const editor = readFileSync(
+      "docs/specs/features/editor-shell.md",
+      "utf8",
+    );
+    expect(editor).not.toContain("empty named region");
+  });
 });
