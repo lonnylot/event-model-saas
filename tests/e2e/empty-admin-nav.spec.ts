@@ -47,3 +47,31 @@ test("GET `/app` as a Person who is not site admin with no teams `header` comput
   await page.goto("/app");
   await expect(page.locator("header")).toHaveCSS("display", "flex");
 });
+
+test("GET `/app` as site admin with no teams, `nav` shows a link whose accessible name is `Teams admin`", async ({
+  page,
+  request,
+}) => {
+  await request.post("/api/test/reset-store");
+  await consumeAdmin(page, request);
+  await expect(
+    page.getByRole("navigation").getByRole("link", {
+      name: "Teams admin",
+      exact: true,
+    }),
+  ).toBeVisible();
+});
+
+test("GET `/app` as site admin with no teams, the `nav` link `Teams admin` has `href` `/app/admin/teams`", async ({
+  page,
+  request,
+}) => {
+  await request.post("/api/test/reset-store");
+  await consumeAdmin(page, request);
+  await expect(
+    page.getByRole("navigation").getByRole("link", {
+      name: "Teams admin",
+      exact: true,
+    }),
+  ).toHaveAttribute("href", "/app/admin/teams");
+});

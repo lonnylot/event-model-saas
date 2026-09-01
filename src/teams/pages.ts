@@ -7,12 +7,12 @@ function shell(
   extras: { head?: string; lead?: string; bodyClass?: string } = {},
 ): string {
   const admin = isSiteAdmin
-    ? `<p><a href="/app/admin/teams">Teams admin</a></p>`
+    ? `<a href="/app/admin/teams">Teams admin</a>`
     : "";
   const bodyClass = extras.bodyClass ? ` class="${extras.bodyClass}"` : "";
   const head = extras.head ?? "";
   const lead = extras.lead ?? `<a href="/app">Event Model</a>`;
-  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">${head}</head><body${bodyClass}><header>${lead}<div class="appbar-end"><nav></nav><p>${email}</p><form method="post" action="/api/auth/sign-out"><button type="submit">Sign out</button></form></div></header><main>${inner}${admin}</main><script src="/teams.js"></script></body></html>`;
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">${head}</head><body${bodyClass}><header>${lead}<div class="appbar-end"><nav>${admin}</nav><p>${email}</p><form method="post" action="/api/auth/sign-out"><button type="submit">Sign out</button></form></div></header><main>${inner}</main><script src="/teams.js"></script></body></html>`;
 }
 
 export function noTeamsAdminHtml(email: string): string {

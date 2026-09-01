@@ -120,7 +120,7 @@ describe("create team", () => {
     expect(await response.text()).toContain("<button type=\"submit\">Sign out</button>");
   });
 
-  it("GET `/app` as site admin with no teams shows a link whose accessible name is `Teams admin`", async () => {
+  it("GET `/app` as site admin with no teams, `nav` shows a link whose accessible name is `Teams admin`", async () => {
     const { env } = await adminEnv();
     const response = await handleRequest(
       new Request("https://event-model.lonnylot.com/app", {
@@ -128,7 +128,10 @@ describe("create team", () => {
       }),
       env,
     );
-    expect(await response.text()).toContain("<a href=\"/app/admin/teams\">Teams admin</a>");
+    const html = await response.text();
+    const nav = html.match(/<nav\b[^>]*>[\s\S]*?<\/nav>/);
+    expect(nav).not.toBeNull();
+    expect(nav![0]).toMatch(/<a\b[^>]*>Teams admin<\/a>/);
   });
 
   it("GET `/app` as site admin with one Team returns status 303", async () => {
@@ -192,7 +195,7 @@ describe("create team", () => {
     expect(await response.text()).toContain("<button type=\"submit\">Sign out</button>");
   });
 
-  it("GET `/app/teams/{id}` as site admin shows a link whose accessible name is `Teams admin`", async () => {
+  it("GET `/app/teams/{id}` as site admin, `nav` shows a link whose accessible name is `Teams admin`", async () => {
     const { env } = await adminEnv();
     await handleRequest(createTeamPost(), env);
     const response = await handleRequest(
@@ -201,7 +204,10 @@ describe("create team", () => {
       }),
       env,
     );
-    expect(await response.text()).toContain("<a href=\"/app/admin/teams\">Teams admin</a>");
+    const html = await response.text();
+    const nav = html.match(/<nav\b[^>]*>[\s\S]*?<\/nav>/);
+    expect(nav).not.toBeNull();
+    expect(nav![0]).toMatch(/<a\b[^>]*>Teams admin<\/a>/);
   });
 
   it("GET `/app/teams/{id}` as a Person who is not a member returns status 404", async () => {
@@ -271,7 +277,7 @@ describe("create team", () => {
     expect(await response.text()).toContain("<a href=\"/app/teams/t-b\">Beta</a>");
   });
 
-  it("GET `/app` as site admin with two Teams shows a link whose accessible name is `Teams admin`", async () => {
+  it("GET `/app` as site admin with two Teams, `nav` shows a link whose accessible name is `Teams admin`", async () => {
     const { env, auth } = await adminEnv();
     await auth.store.insertTeam({ id: "t-a", name: "Alpha" });
     await auth.store.insertTeam({ id: "t-b", name: "Beta" });
@@ -283,7 +289,10 @@ describe("create team", () => {
       }),
       env,
     );
-    expect(await response.text()).toContain("<a href=\"/app/admin/teams\">Teams admin</a>");
+    const html = await response.text();
+    const nav = html.match(/<nav\b[^>]*>[\s\S]*?<\/nav>/);
+    expect(nav).not.toBeNull();
+    expect(nav![0]).toMatch(/<a\b[^>]*>Teams admin<\/a>/);
   });
 
   it("GET `/app/admin/teams` as a Person who is not site admin returns status 303", async () => {

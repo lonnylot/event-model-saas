@@ -127,6 +127,15 @@ body.app-admin header > a {
   flex-shrink: 0;
   white-space: nowrap;
 }
+body.app-none header nav a,
+body.app-guest header nav a,
+body.app-picker header nav a,
+body.app-team header nav a,
+body.app-admin header nav a {
+  font-weight: 500;
+  font-size: 0.85rem;
+  color: #0f766e;
+}
 body.app-none header p,
 body.app-guest header p,
 body.app-picker header p,
