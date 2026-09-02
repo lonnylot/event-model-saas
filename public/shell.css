@@ -895,6 +895,11 @@ body.app-editor header > a {
   font-size: 0.95rem;
   margin-right: 0.75rem;
 }
+body.app-editor header nav a {
+  font-weight: 500;
+  font-size: 0.85rem;
+  color: #0f766e;
+}
 body.app-editor .editor-brand {
   display: flex;
   flex-direction: column;

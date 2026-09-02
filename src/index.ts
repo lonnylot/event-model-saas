@@ -444,6 +444,7 @@ export async function handleRequest(
           parsed.slices ?? [],
           documentJson,
           parsed.connections ?? [],
+          person.isSiteAdmin,
         ),
         {
         status: 200,

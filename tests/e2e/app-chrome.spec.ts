@@ -253,3 +253,76 @@ test("GET `/app/teams/{id}/models/{mid}` as a member, the `header` link `Event M
     }),
   ).toHaveAttribute("href", "/app");
 });
+
+test("GET `/app/teams/{id}/models/{mid}` as site admin, `nav` shows a link whose accessible name is `Teams admin`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await expect(
+    page.getByRole("navigation").getByRole("link", {
+      name: "Teams admin",
+      exact: true,
+    }),
+  ).toBeVisible();
+});
+
+test("GET `/app/teams/{id}/models/{mid}` as site admin, the `nav` link `Teams admin` has `href` `/app/admin/teams`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await expect(
+    page.getByRole("navigation").getByRole("link", {
+      name: "Teams admin",
+      exact: true,
+    }),
+  ).toHaveAttribute("href", "/app/admin/teams");
+});
+
+test("GET `/app/teams/{id}/models/{mid}` as a Person who is not site admin does not show a link whose accessible name is `Teams admin`", async ({
+  page,
+  request,
+  browser,
+}) => {
+  await request.post("/api/test/reset-store");
+  await consumeAdminOnTeam(page, request);
+  await page.goto("/app/admin/teams");
+  await page.getByRole("textbox", { name: "Invite email", exact: true }).fill(
+    "teammate@example.com",
+  );
+  await Promise.all([
+    page.waitForResponse(
+      (response) =>
+        response.url().includes("/invites") &&
+        response.request().method() === "POST",
+    ),
+    page.getByRole("button", { name: "Send invite", exact: true }).click(),
+  ]);
+  const mail = await request.get("/api/test/last-mail");
+  const body = (await mail.json()) as { text: string };
+  const match = body.text.match(/\/api\/auth\/consume\?token=[^\s]+/);
+  expect(match).not.toBeNull();
+  const teammate = await browser.newPage();
+  await teammate.goto(match![0]);
+  await Promise.all([
+    teammate.waitForResponse(
+      (response) =>
+        response.url().includes("/models") &&
+        response.request().method() === "POST",
+    ),
+    teammate.getByRole("button", { name: "Create model", exact: true }).click(),
+  ]);
+  await teammate.goto("/app");
+  await teammate
+    .getByRole("link", { name: "Untitled", exact: true })
+    .last()
+    .click();
+  await expect(
+    teammate.getByRole("heading", { name: "Untitled", exact: true }),
+  ).toBeVisible();
+  await expect(
+    teammate.getByRole("link", { name: "Teams admin", exact: true }),
+  ).toHaveCount(0);
+  await teammate.close();
+});
