@@ -1,6 +1,6 @@
 # App chrome
 
-Status: validated
+Status: released
 
 ## Problem
 

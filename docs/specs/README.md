@@ -54,6 +54,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Landing SaaS shot | [features/landing-saas-shot.md](./features/landing-saas-shot.md) | released |
 | Landing chrome depth | [features/landing-chrome-depth.md](./features/landing-chrome-depth.md) | released |
 | Admin nav | [features/admin-nav.md](./features/admin-nav.md) | released |
-| App chrome | [features/app-chrome.md](./features/app-chrome.md) | validated |
+| App chrome | [features/app-chrome.md](./features/app-chrome.md) | released |
 
 Status: `draft` → `validated` → `released`.
