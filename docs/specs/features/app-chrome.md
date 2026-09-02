@@ -9,7 +9,7 @@ The two-slice mark exists only as favicon and Open Graph pixels. The Mac app shi
 ## Acceptance criteria
 
 - [x] GET `/` `header` has an `img` whose `src` is `/favicon.png`
-- [ ] GET `/login` `header` has an `img` whose `src` is `/favicon.png`
+- [x] GET `/login` `header` has an `img` whose `src` is `/favicon.png`
 - [ ] GET `/app/teams/{id}` as a member `header` has an `img` whose `src` is `/favicon.png`
 - [ ] GET `/app/admin/teams` as site admin `header` has an `img` whose `src` is `/favicon.png`
 - [ ] GET `/app/teams/{id}/models/{mid}` as a member `header` has an `img` whose `src` is `/favicon.png`

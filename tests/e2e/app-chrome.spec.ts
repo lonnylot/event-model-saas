@@ -9,3 +9,13 @@ test("GET `/` `header` has an `img` whose `src` is `/favicon.png`", async ({
     "/favicon.png",
   );
 });
+
+test("GET `/login` `header` has an `img` whose `src` is `/favicon.png`", async ({
+  page,
+}) => {
+  await page.goto("/login");
+  await expect(page.locator("header").locator("img")).toHaveAttribute(
+    "src",
+    "/favicon.png",
+  );
+});
