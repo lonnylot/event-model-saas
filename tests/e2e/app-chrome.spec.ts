@@ -35,6 +35,30 @@ async function consumeAdminOnTeam(page: Page, request: APIRequestContext) {
   }
 }
 
+async function openUntitledModel(page: Page, request: APIRequestContext) {
+  await consumeAdminOnTeam(page, request);
+  const untitledBefore = await page
+    .getByRole("link", { name: "Untitled", exact: true })
+    .count();
+  await Promise.all([
+    page.waitForResponse(
+      (response) =>
+        response.url().includes("/models") &&
+        response.request().method() === "POST",
+    ),
+    page.getByRole("button", { name: "Create model", exact: true }).click(),
+  ]);
+  await expect(
+    page.getByRole("link", { name: "Untitled", exact: true }),
+  ).toHaveCount(untitledBefore + 1);
+  await page.goto("/app");
+  await page.getByRole("link", { name: "Untitled", exact: true }).last().click();
+  await expect(
+    page.getByRole("heading", { name: "Untitled", exact: true }),
+  ).toBeVisible();
+  await page.waitForLoadState("networkidle");
+}
+
 test("GET `/` `header` has an `img` whose `src` is `/favicon.png`", async ({
   page,
 }) => {
@@ -106,6 +130,17 @@ test("GET `/app` as a Person who is not site admin with no teams `header` has an
 }) => {
   await page.request.post("/api/test/non-admin-session");
   await page.goto("/app");
+  await expect(page.locator("header").locator("img")).toHaveAttribute(
+    "src",
+    "/favicon.png",
+  );
+});
+
+test("GET `/app/teams/{id}/models/{mid}` as a member `header` has an `img` whose `src` is `/favicon.png`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
   await expect(page.locator("header").locator("img")).toHaveAttribute(
     "src",
     "/favicon.png",

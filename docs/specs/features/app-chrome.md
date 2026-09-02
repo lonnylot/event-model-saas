@@ -15,7 +15,7 @@ The two-slice mark exists only as favicon and Open Graph pixels. The Mac app shi
 - [x] GET `/app` as site admin with no teams `header` has an `img` whose `src` is `/favicon.png`
 - [x] GET `/app` as a Person with two Teams `header` has an `img` whose `src` is `/favicon.png`
 - [x] GET `/app` as a Person who is not site admin with no teams `header` has an `img` whose `src` is `/favicon.png`
-- [ ] GET `/app/teams/{id}/models/{mid}` as a member `header` has an `img` whose `src` is `/favicon.png`
+- [x] GET `/app/teams/{id}/models/{mid}` as a member `header` has an `img` whose `src` is `/favicon.png`
 - [ ] GET `/app/teams/{id}` as a member shows a heading whose accessible name is `Event Models`
 - [ ] GET `/app/teams/{id}` as a member with no Event Models shows the text `Create a model to start the timeline.`
 - [ ] GET `/app/teams/{id}` as a member with an Event Model titled `Untitled`, the link `Untitled` is inside an `article`

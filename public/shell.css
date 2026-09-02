@@ -841,6 +841,7 @@ body.app-editor {
 body.app-editor header {
   position: relative;
   flex: 0 0 auto;
+  justify-content: flex-start;
   padding: 0.55rem 0.85rem;
   background: #ffffff;
   backdrop-filter: none;
