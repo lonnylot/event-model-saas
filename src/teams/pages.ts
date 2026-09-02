@@ -11,7 +11,7 @@ function shell(
     : "";
   const bodyClass = extras.bodyClass ? ` class="${extras.bodyClass}"` : "";
   const head = extras.head ?? "";
-  const lead = extras.lead ?? `<a href="/app">Event Model</a>`;
+  const lead = extras.lead ?? `<a href="/app"><img src="/favicon.png" alt="">Event Model</a>`;
   return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">${head}</head><body${bodyClass}><header>${lead}<div class="appbar-end"><nav>${admin}</nav><p>${email}</p><form method="post" action="/api/auth/sign-out"><button type="submit">Sign out</button></form></div></header><main>${inner}</main><script src="/teams.js"></script></body></html>`;
 }
 
@@ -49,13 +49,17 @@ export function teamPageHtml(
   const links = models
     .map(
       (m) =>
-        `<p><a href="/app/teams/${team.id}/models/${m.id}">${m.title}</a></p>`,
+        `<article><a href="/app/teams/${team.id}/models/${m.id}">${m.title}</a></article>`,
     )
     .join("");
+  const empty =
+    models.length === 0
+      ? `<p>Create a model to start the timeline.</p>`
+      : "";
   return shell(
     email,
     isSiteAdmin,
-    `<h1>${team.name}</h1><form id="create-model" method="post" action="/api/teams/${team.id}/models"><button type="submit">Create model</button></form>${links}`,
+    `<h1>${team.name}</h1><div class="models-toolbar"><h2>Event Models</h2><form id="create-model" method="post" action="/api/teams/${team.id}/models"><button type="submit">Create model</button></form></div>${empty}${links}`,
     { head: `<link rel="stylesheet" href="/shell.css">`, bodyClass: "app-team" },
   );
 }
@@ -76,6 +80,8 @@ export function modelPageHtml(
   }> = [],
   documentJson = "",
   connections: Array<{ fromKind: string; toKind: string }> = [],
+  isSiteAdmin = false,
+  teamId = "",
 ): string {
   const items = slices
     .map(
@@ -132,7 +138,10 @@ export function modelPageHtml(
       )
       .map(() => '<p data-kind="connection">Event Happened → Read Model</p>'),
   ].join("");
-  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="/shell.css"></head><body class="app-editor"><header><div class="editor-brand"><p>${teamName}</p><h1>${title}</h1></div><div class="editor-actions"><button type="button">Zoom in</button><button type="button">Zoom out</button><button type="button">Reset zoom</button><form id="save-model" method="post" action="/api/models/${modelId}"><input type="hidden" name="version" value="${version}" /><button type="submit">Save</button></form><form id="export-model" method="get" action="/api/models/${modelId}/export"><button type="submit">Export</button></form><p>${email}</p><form method="post" action="/api/auth/sign-out"><button type="submit">Sign out</button></form></div></header><div class="editor-toolbar"><button type="button">New Slice</button><button type="button">Add Actor</button><button type="button">Add Command</button><button type="button">Add Event</button><button type="button">Add Read Model</button><button type="button">Add Automation</button></div><main><div class="slice-rail"><h2>Model</h2><p class="model-row">${title}</p><h2>Slices</h2><ul>${items}</ul></div><section aria-label="Timeline"><div class="time-chrome"><span>Time</span><span class="time-rule"></span></div><div class="timeline-empty"><h2>Start the timeline</h2><p>A slice is one vertical feature: an actor, a command, the events it writes, the read models those events feed, and any automation that follows.</p></div><div class="board"><div class="lane-rail" aria-hidden="true"><div class="lane-label">Slice</div><div class="lane-label actor">Actor</div><div class="lane-label command">Command</div><div class="lane-label event">Event</div><div class="lane-label readmodel">Read Model</div><div class="lane-label automation">Automation</div></div>${sliceColumns}</div>${connectionCopy}</section><section aria-label="Inspector"><h2>Inspector</h2><p class="inspector-empty">Nothing Selected</p><p class="inspector-empty-hint">Select a slice or building block on the canvas.</p></section></main><script type="application/json" id="event-model-document">${documentJson}</script><script src="/teams.js"></script><script type="module" src="/editor.js"></script></body></html>`;
+  const admin = isSiteAdmin
+    ? `<a href="/app/admin/teams">Teams admin</a>`
+    : "";
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="/shell.css"></head><body class="app-editor"><header><a href="/app"><img src="/favicon.png" alt="">Event Model</a><div class="editor-brand"><p><a href="/app/teams/${teamId}">${teamName}</a></p><h1>${title}</h1></div><div class="editor-actions"><nav>${admin}</nav><button type="button">Zoom in</button><button type="button">Zoom out</button><button type="button">Reset zoom</button><form id="save-model" method="post" action="/api/models/${modelId}"><input type="hidden" name="version" value="${version}" /><button type="submit">Save</button></form><form id="export-model" method="get" action="/api/models/${modelId}/export"><button type="submit">Export</button></form><p>${email}</p><form method="post" action="/api/auth/sign-out"><button type="submit">Sign out</button></form></div></header><div class="editor-toolbar"><button type="button">New Slice</button><button type="button">Add Actor</button><button type="button">Add Command</button><button type="button">Add Event</button><button type="button">Add Read Model</button><button type="button">Add Automation</button></div><main><div class="slice-rail"><h2>Model</h2><p class="model-row">${title}</p><h2>Slices</h2><ul>${items}</ul></div><section aria-label="Timeline"><div class="time-chrome"><span>Time</span><span class="time-rule"></span></div><div class="timeline-empty"><h2>Start the timeline</h2><p>A slice is one vertical feature: an actor, a command, the events it writes, the read models those events feed, and any automation that follows.</p></div><div class="board"><div class="lane-rail" aria-hidden="true"><div class="lane-label">Slice</div><div class="lane-label actor">Actor</div><div class="lane-label command">Command</div><div class="lane-label event">Event</div><div class="lane-label readmodel">Read Model</div><div class="lane-label automation">Automation</div></div>${sliceColumns}</div>${connectionCopy}</section><section aria-label="Inspector"><h2>Inspector</h2><p class="inspector-empty">Nothing Selected</p><p class="inspector-empty-hint">Select a slice or building block on the canvas.</p></section></main><script type="application/json" id="event-model-document">${documentJson}</script><script src="/teams.js"></script><script type="module" src="/editor.js"></script></body></html>`;
 }
 
 export function adminTeamsHtml(email: string, teams: Team[]): string {
