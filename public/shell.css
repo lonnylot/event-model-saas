@@ -885,6 +885,8 @@ body.app-editor header {
   position: relative;
   flex: 0 0 auto;
   justify-content: flex-start;
+  flex-wrap: wrap;
+  row-gap: 0.4rem;
   padding: 0.55rem 0.85rem;
   background: #ffffff;
   backdrop-filter: none;
@@ -931,6 +933,12 @@ body.app-editor .editor-actions {
   margin-left: auto;
   flex-wrap: wrap;
   justify-content: flex-end;
+}
+@media (max-width: 52rem) {
+  body.app-editor .editor-actions {
+    flex: 1 1 100%;
+    margin-left: 0;
+  }
 }
 body.app-editor .editor-actions p {
   font-size: 0.75rem;
