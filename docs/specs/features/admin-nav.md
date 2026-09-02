@@ -40,7 +40,7 @@ Event Model, Person, Site admin, Team, Session
 
 ## UI
 
-Screens: App, Team picker, Team, Teams admin. Primitives: Page, AppBar, Card, Button primary, Field. AppBar contains a `nav` landmark (Event Model wordmark stays [visual-shell.md](./visual-shell.md); optional Teams admin lives in `nav`). Look of those screens is `visual-design` ([ADR 0001](../../adr/0001-look-iteration.md)). Inventory: [design-system.md](../design-system.md).
+Screens: App, Team picker, Team, Teams admin. Primitives: Page, AppBar, Card, Button primary, Field. AppBar contains a `nav` landmark (Event Model wordmark stays [visual-shell.md](./visual-shell.md); optional Teams admin lives in `nav`). Editor AppBar `nav` is [app-chrome.md](./app-chrome.md). Look of those screens is `visual-design` ([ADR 0001](../../adr/0001-look-iteration.md)). Inventory: [design-system.md](../design-system.md).
 
 ## Assumptions
 
@@ -48,20 +48,20 @@ Screens: App, Team picker, Team, Teams admin. Primitives: Page, AppBar, Card, Bu
 - AppBar `Event Model` href `/app` stays [visual-shell.md](./visual-shell.md). Email and Sign out stay existing controls; they move into `header` with the nav.
 - GET `/app` as site admin with no teams `header` flex / padding stay [designed-surfaces.md](./designed-surfaces.md). This slice adds `header` flex on guest `/app`, picker, Team, and Teams admin.
 - Create team, Create model, Send invite, picker Team name links, and Team heading stay [teams-and-invites.md](./teams-and-invites.md) / [model-persistence.md](./model-persistence.md).
-- Navigation landmark is one `nav` per signed-in shell page (not the Editor).
+- Navigation landmark is one `nav` per signed-in shell page. Editor `nav` (and Teams admin on Editor for site admin) is [app-chrome.md](./app-chrome.md).
 - These ACs share one signed-in AppBar pass; look is one `visual-design` pass (not one commit per CSS property). Header `box-shadow` proofs use Team and Teams admin as the two shells that already list models vs invites.
 - **Look may grow:** on App, Team picker, Team, and Teams admin, the implementer may add look chrome (card lift, denser AppBar matching the Team models list) by appending ACs in the same commit (`visual-design`). Do not add persistence, public signup, or claims Out of scope names. Do not halt for a new *validate*. Look-may-grow is not skip review.
 - Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).
 
 ## Out of scope
 
-Dark mode. Public signup. Site admin waitlist table UI. Landing restyle. Login restyle. Editor restyle. Mac window chrome. Non-admin team creation. Per-model ACLs. New product claims (pricing, SLA, "anyone can join"). Product-visual token *values* stay [product-visual.md](./product-visual.md).
+Dark mode. Public signup. Site admin waitlist table UI. Landing restyle. Login restyle. Editor canvas restyle. Mac window chrome. Non-admin team creation. Per-model ACLs. New product claims (pricing, SLA, "anyone can join"). Product-visual token *values* stay [product-visual.md](./product-visual.md). Editor AppBar `nav` is [app-chrome.md](./app-chrome.md).
 
 ## Restates
 
 - [teams-and-invites.md](./teams-and-invites.md) — Create team, Team heading, picker Team links, Invite email / Send invite stay that file. GET `/app` as site admin (no teams / two Teams) and GET `/app/teams/{id}` as site admin show `Teams admin` in `nav`, not a stray `main` paragraph. Href `/app/admin/teams` is this slice. GET `/app/admin/teams` `nav` `Teams admin` is this slice. A member does not see `Teams admin`.
-- [visual-shell.md](./visual-shell.md) — AppBar `Event Model` href `/app` on App, picker, Team, and Teams admin stays that file. AppBar `nav` and moving email / Sign out / Teams admin into `header` is this slice.
+- [visual-shell.md](./visual-shell.md) — AppBar `Event Model` href `/app` on App, picker, Team, and Teams admin stays that file. AppBar `nav` and moving email / Sign out / Teams admin into `header` is this slice. Editor `header` link `Event Model` href `/app` is [app-chrome.md](./app-chrome.md).
 - [designed-surfaces.md](./designed-surfaces.md) — GET `/app` as site admin with no teams `header` flex / padding stay that file. `header` flex on guest `/app`, picker, Team, and Teams admin is this slice.
-- [design-system.md](../design-system.md) — Tokens stay that file. AppBar on signed-in admin screens includes a `nav` landmark; optional Teams admin is in that `nav`.
-- [product.md](../product.md) — Site admin still sees Teams admin (invite). That control lives in the signed-in AppBar `nav`. Team page remains the Event Model list.
-- [architecture.md](../architecture.md) — `web` still serves team picker, model list, Teams admin. Signed-in AppBar `nav` is this slice.
+- [design-system.md](../design-system.md) — Tokens stay that file. AppBar on signed-in admin screens includes a `nav` landmark; optional Teams admin is in that `nav`. Editor AppBar `nav` and the Mark as AppBar logo are [app-chrome.md](./app-chrome.md).
+- [product.md](../product.md) — Site admin still sees Teams admin (invite). That control lives in the signed-in AppBar `nav` on App, picker, Team, and Teams admin. Editor AppBar includes that `nav` ([app-chrome.md](./app-chrome.md)). Team page remains the Event Model list (Event Models heading, empty copy, and model `article` are [app-chrome.md](./app-chrome.md)).
+- [architecture.md](../architecture.md) — `web` still serves team picker, model list, Teams admin. Signed-in AppBar `nav` on App, picker, Team, and Teams admin is this slice. Editor `nav` is [app-chrome.md](./app-chrome.md).

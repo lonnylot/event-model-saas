@@ -32,6 +32,17 @@ header a {
   letter-spacing: -0.02em;
   color: #0f172a;
 }
+header img {
+  height: 1.75rem;
+  width: 1.75rem;
+  display: block;
+  flex-shrink: 0;
+}
+header a:has(img) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
 main {
   padding: 2.5rem 1.5rem 4rem;
 }

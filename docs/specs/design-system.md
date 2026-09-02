@@ -37,7 +37,7 @@ Sticky-note block fills ([features/product-visual.md](./features/product-visual.
 |-----------|------|
 | Page | `body` background `canvas`, color `ink`, font `type` |
 | Card | `measure`-wide panel, `line` border, `radius` |
-| AppBar | Top bar: wordmark, then Sign in / Open app or email, optional Teams admin, Sign out. `line` bottom border. Wordmark `/` when signed out, `/app` when signed in. Signed-in admin screens put optional Teams admin in a `nav` landmark ([features/admin-nav.md](./features/admin-nav.md)) |
+| AppBar | Top bar: Mark (`img` `src` `/favicon.png`) next to the wordmark, then Sign in / Open app or email, optional Teams admin, Sign out. `line` bottom border. Wordmark `/` when signed out, `/app` when signed in. Signed-in admin screens put optional Teams admin in a `nav` landmark ([features/admin-nav.md](./features/admin-nav.md)). Editor AppBar includes that `nav` and the Mark ([features/app-chrome.md](./features/app-chrome.md)) |
 | Button primary | Background `accent`, color `on-accent`, `radius` |
 | Field | `line` border, `radius` |
 | Footer | Landmark on Landing: wordmark, then Sign in when signed out or Open app when signed in |
@@ -58,4 +58,4 @@ Sticky-note block fills ([features/product-visual.md](./features/product-visual.
 
 ## Mark
 
-`public/favicon.png` and `public/og.png` are the same two-slice timeline mark in `ink` and `accent` on `canvas` (no letters). Open Graph title and description are HTML meta, not pixels in the PNG. Title is `Event Model`. Description is `Event Modeling for the whole team.`
+`public/favicon.png` and `public/og.png` are the same two-slice timeline mark in `ink` and `accent` on `canvas` (no letters). Open Graph title and description are HTML meta, not pixels in the PNG. Title is `Event Model`. Description is `Event Modeling for the whole team.` The Mark is also the AppBar logo (`img` `src` `/favicon.png`) on Landing, Login, signed-in shells, and Editor ([features/app-chrome.md](./features/app-chrome.md)).
