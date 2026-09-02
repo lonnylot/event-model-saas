@@ -358,7 +358,7 @@ describe("create model", () => {
       env,
     );
     const html = await response.text();
-    expect(html).toContain("<p>Library</p>");
+    expect(html).toMatch(/<p><a\b[^>]*>Library<\/a><\/p>/);
   });
 
   it("GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `New Slice`", async () => {

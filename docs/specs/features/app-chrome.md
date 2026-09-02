@@ -26,7 +26,7 @@ The two-slice mark exists only as favicon and Open Graph pixels. The Mac app shi
 - [x] GET `/app/teams/{id}/models/{mid}` as site admin, `nav` shows a link whose accessible name is `Teams admin`
 - [x] GET `/app/teams/{id}/models/{mid}` as site admin, the `nav` link `Teams admin` has `href` `/app/admin/teams`
 - [x] GET `/app/teams/{id}/models/{mid}` as a Person who is not site admin does not show a link whose accessible name is `Teams admin`
-- [ ] GET `/app/teams/{id}/models/{mid}` as a member, a link whose accessible name is the Team name has `href` `/app/teams/{id}`
+- [x] GET `/app/teams/{id}/models/{mid}` as a member, a link whose accessible name is the Team name has `href` `/app/teams/{id}`
 
 ## Domain terms
 

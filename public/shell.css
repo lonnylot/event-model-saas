@@ -912,6 +912,11 @@ body.app-editor header p {
   font-weight: 500;
   color: #64748b;
 }
+body.app-editor .editor-brand a {
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+}
 body.app-editor h1 {
   font-size: 0.95rem;
   font-weight: 600;

@@ -326,3 +326,17 @@ test("GET `/app/teams/{id}/models/{mid}` as a Person who is not site admin does 
   ).toHaveCount(0);
   await teammate.close();
 });
+
+test("GET `/app/teams/{id}/models/{mid}` as a member, a link whose accessible name is the Team name has `href` `/app/teams/{id}`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  const match = new URL(page.url()).pathname.match(
+    /^\/app\/teams\/([^/]+)\/models\//,
+  );
+  expect(match).not.toBeNull();
+  await expect(
+    page.getByRole("link", { name: "Library", exact: true }),
+  ).toHaveAttribute("href", `/app/teams/${match![1]}`);
+});
