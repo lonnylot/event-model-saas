@@ -100,3 +100,14 @@ test("GET `/app` as a Person with two Teams `header` has an `img` whose `src` is
     "/favicon.png",
   );
 });
+
+test("GET `/app` as a Person who is not site admin with no teams `header` has an `img` whose `src` is `/favicon.png`", async ({
+  page,
+}) => {
+  await page.request.post("/api/test/non-admin-session");
+  await page.goto("/app");
+  await expect(page.locator("header").locator("img")).toHaveAttribute(
+    "src",
+    "/favicon.png",
+  );
+});

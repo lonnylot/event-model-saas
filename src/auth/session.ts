@@ -25,5 +25,5 @@ export async function personFromRequest(
 }
 
 export function appPageHtml(email: string): string {
-  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="/shell.css"></head><body class="app-guest"><header><a href="/app">Event Model</a><div class="appbar-end"><nav></nav><p>${email}</p><form method="post" action="/api/auth/sign-out"><button type="submit">Sign out</button></form></div></header><main></main></body></html>`;
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="/shell.css"></head><body class="app-guest"><header><a href="/app"><img src="/favicon.png" alt="">Event Model</a><div class="appbar-end"><nav></nav><p>${email}</p><form method="post" action="/api/auth/sign-out"><button type="submit">Sign out</button></form></div></header><main></main></body></html>`;
 }
