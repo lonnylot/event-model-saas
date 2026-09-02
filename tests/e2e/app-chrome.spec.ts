@@ -219,3 +219,11 @@ test("GET `/app/teams/{id}` as a member with an Event Model titled `Untitled`, t
       .first(),
   ).not.toHaveCSS("box-shadow", "none");
 });
+
+test("GET `/app/teams/{id}/models/{mid}` as a member shows a navigation landmark", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await expect(page.getByRole("navigation")).toHaveCount(1);
+});

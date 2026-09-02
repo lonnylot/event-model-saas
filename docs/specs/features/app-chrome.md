@@ -20,7 +20,7 @@ The two-slice mark exists only as favicon and Open Graph pixels. The Mac app shi
 - [x] GET `/app/teams/{id}` as a member with no Event Models shows the text `Create a model to start the timeline.`
 - [x] GET `/app/teams/{id}` as a member with an Event Model titled `Untitled`, the link `Untitled` is inside an `article`
 - [x] GET `/app/teams/{id}` as a member with an Event Model titled `Untitled`, that `article` computed `box-shadow` is not `none`
-- [ ] GET `/app/teams/{id}/models/{mid}` as a member shows a navigation landmark
+- [x] GET `/app/teams/{id}/models/{mid}` as a member shows a navigation landmark
 - [ ] GET `/app/teams/{id}/models/{mid}` as a member, `header` shows a link whose accessible name is `Event Model`
 - [ ] GET `/app/teams/{id}/models/{mid}` as a member, the `header` link `Event Model` has `href` `/app`
 - [ ] GET `/app/teams/{id}/models/{mid}` as site admin, `nav` shows a link whose accessible name is `Teams admin`
