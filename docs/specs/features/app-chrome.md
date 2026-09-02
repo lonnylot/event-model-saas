@@ -21,8 +21,8 @@ The two-slice mark exists only as favicon and Open Graph pixels. The Mac app shi
 - [x] GET `/app/teams/{id}` as a member with an Event Model titled `Untitled`, the link `Untitled` is inside an `article`
 - [x] GET `/app/teams/{id}` as a member with an Event Model titled `Untitled`, that `article` computed `box-shadow` is not `none`
 - [x] GET `/app/teams/{id}/models/{mid}` as a member shows a navigation landmark
-- [ ] GET `/app/teams/{id}/models/{mid}` as a member, `header` shows a link whose accessible name is `Event Model`
-- [ ] GET `/app/teams/{id}/models/{mid}` as a member, the `header` link `Event Model` has `href` `/app`
+- [x] GET `/app/teams/{id}/models/{mid}` as a member, `header` shows a link whose accessible name is `Event Model`
+- [x] GET `/app/teams/{id}/models/{mid}` as a member, the `header` link `Event Model` has `href` `/app`
 - [ ] GET `/app/teams/{id}/models/{mid}` as site admin, `nav` shows a link whose accessible name is `Teams admin`
 - [ ] GET `/app/teams/{id}/models/{mid}` as site admin, the `nav` link `Teams admin` has `href` `/app/admin/teams`
 - [ ] GET `/app/teams/{id}/models/{mid}` as a Person who is not site admin does not show a link whose accessible name is `Teams admin`

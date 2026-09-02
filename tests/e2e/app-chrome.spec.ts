@@ -227,3 +227,29 @@ test("GET `/app/teams/{id}/models/{mid}` as a member shows a navigation landmark
   await openUntitledModel(page, request);
   await expect(page.getByRole("navigation")).toHaveCount(1);
 });
+
+test("GET `/app/teams/{id}/models/{mid}` as a member, `header` shows a link whose accessible name is `Event Model`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await expect(
+    page.locator("header").getByRole("link", {
+      name: "Event Model",
+      exact: true,
+    }),
+  ).toBeVisible();
+});
+
+test("GET `/app/teams/{id}/models/{mid}` as a member, the `header` link `Event Model` has `href` `/app`", async ({
+  page,
+  request,
+}) => {
+  await openUntitledModel(page, request);
+  await expect(
+    page.locator("header").getByRole("link", {
+      name: "Event Model",
+      exact: true,
+    }),
+  ).toHaveAttribute("href", "/app");
+});

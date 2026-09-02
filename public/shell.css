@@ -889,6 +889,12 @@ body.app-editor header {
   background: #ffffff;
   backdrop-filter: none;
 }
+body.app-editor header > a {
+  flex-shrink: 0;
+  white-space: nowrap;
+  font-size: 0.95rem;
+  margin-right: 0.75rem;
+}
 body.app-editor .editor-brand {
   display: flex;
   flex-direction: column;
