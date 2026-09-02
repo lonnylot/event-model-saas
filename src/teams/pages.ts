@@ -49,7 +49,7 @@ export function teamPageHtml(
   const links = models
     .map(
       (m) =>
-        `<p><a href="/app/teams/${team.id}/models/${m.id}">${m.title}</a></p>`,
+        `<article><a href="/app/teams/${team.id}/models/${m.id}">${m.title}</a></article>`,
     )
     .join("");
   const empty =

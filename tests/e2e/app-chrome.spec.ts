@@ -167,3 +167,29 @@ test("GET `/app/teams/{id}` as a member with no Event Models shows the text `Cre
     page.getByText("Create a model to start the timeline.", { exact: true }),
   ).toBeVisible();
 });
+
+test("GET `/app/teams/{id}` as a member with an Event Model titled `Untitled`, the link `Untitled` is inside an `article`", async ({
+  page,
+  request,
+}) => {
+  await consumeAdminOnTeam(page, request);
+  const untitled = page.getByRole("link", { name: "Untitled", exact: true });
+  if ((await untitled.count()) === 0) {
+    await Promise.all([
+      page.waitForResponse(
+        (response) =>
+          response.url().includes("/models") &&
+          response.request().method() === "POST",
+      ),
+      page.getByRole("button", { name: "Create model", exact: true }).click(),
+    ]);
+  }
+  await expect(
+    page
+      .locator("article")
+      .filter({
+        has: page.getByRole("link", { name: "Untitled", exact: true }),
+      })
+      .first(),
+  ).toBeVisible();
+});
