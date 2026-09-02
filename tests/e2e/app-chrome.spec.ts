@@ -146,3 +146,13 @@ test("GET `/app/teams/{id}/models/{mid}` as a member `header` has an `img` whose
     "/favicon.png",
   );
 });
+
+test("GET `/app/teams/{id}` as a member shows a heading whose accessible name is `Event Models`", async ({
+  page,
+  request,
+}) => {
+  await consumeAdminOnTeam(page, request);
+  await expect(
+    page.getByRole("heading", { name: "Event Models", exact: true }),
+  ).toBeVisible();
+});

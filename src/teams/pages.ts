@@ -55,7 +55,7 @@ export function teamPageHtml(
   return shell(
     email,
     isSiteAdmin,
-    `<h1>${team.name}</h1><form id="create-model" method="post" action="/api/teams/${team.id}/models"><button type="submit">Create model</button></form>${links}`,
+    `<h1>${team.name}</h1><h2>Event Models</h2><form id="create-model" method="post" action="/api/teams/${team.id}/models"><button type="submit">Create model</button></form>${links}`,
     { head: `<link rel="stylesheet" href="/shell.css">`, bodyClass: "app-team" },
   );
 }
