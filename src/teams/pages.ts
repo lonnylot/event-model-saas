@@ -52,10 +52,14 @@ export function teamPageHtml(
         `<p><a href="/app/teams/${team.id}/models/${m.id}">${m.title}</a></p>`,
     )
     .join("");
+  const empty =
+    models.length === 0
+      ? `<p>Create a model to start the timeline.</p>`
+      : "";
   return shell(
     email,
     isSiteAdmin,
-    `<h1>${team.name}</h1><h2>Event Models</h2><form id="create-model" method="post" action="/api/teams/${team.id}/models"><button type="submit">Create model</button></form>${links}`,
+    `<h1>${team.name}</h1><h2>Event Models</h2><form id="create-model" method="post" action="/api/teams/${team.id}/models"><button type="submit">Create model</button></form>${empty}${links}`,
     { head: `<link rel="stylesheet" href="/shell.css">`, bodyClass: "app-team" },
   );
 }

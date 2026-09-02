@@ -156,3 +156,14 @@ test("GET `/app/teams/{id}` as a member shows a heading whose accessible name is
     page.getByRole("heading", { name: "Event Models", exact: true }),
   ).toBeVisible();
 });
+
+test("GET `/app/teams/{id}` as a member with no Event Models shows the text `Create a model to start the timeline.`", async ({
+  page,
+  request,
+}) => {
+  await request.post("/api/test/reset-store");
+  await consumeAdminOnTeam(page, request);
+  await expect(
+    page.getByText("Create a model to start the timeline.", { exact: true }),
+  ).toBeVisible();
+});
