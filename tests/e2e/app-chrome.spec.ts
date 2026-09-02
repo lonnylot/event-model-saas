@@ -193,3 +193,29 @@ test("GET `/app/teams/{id}` as a member with an Event Model titled `Untitled`, t
       .first(),
   ).toBeVisible();
 });
+
+test("GET `/app/teams/{id}` as a member with an Event Model titled `Untitled`, that `article` computed `box-shadow` is not `none`", async ({
+  page,
+  request,
+}) => {
+  await consumeAdminOnTeam(page, request);
+  const untitled = page.getByRole("link", { name: "Untitled", exact: true });
+  if ((await untitled.count()) === 0) {
+    await Promise.all([
+      page.waitForResponse(
+        (response) =>
+          response.url().includes("/models") &&
+          response.request().method() === "POST",
+      ),
+      page.getByRole("button", { name: "Create model", exact: true }).click(),
+    ]);
+  }
+  await expect(
+    page
+      .locator("article")
+      .filter({
+        has: page.getByRole("link", { name: "Untitled", exact: true }),
+      })
+      .first(),
+  ).not.toHaveCSS("box-shadow", "none");
+});
