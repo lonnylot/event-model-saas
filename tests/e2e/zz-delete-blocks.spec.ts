@@ -103,7 +103,7 @@ test("After clicking `New Slice` then `Add Command` twice, clicking the first Ti
   const before = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  const lastId = before.slices[0].commands[1].id;
+  const lastId = before.slices.at(-1).commands[1].id;
   await commands.first().click();
   await page
     .getByRole("region", { name: "Timeline", exact: true })
@@ -112,8 +112,8 @@ test("After clicking `New Slice` then `Add Command` twice, clicking the first Ti
   const after = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  expect(after.slices[0].commands).toHaveLength(1);
-  expect(after.slices[0].commands[0].id).toBe(lastId);
+  expect(after.slices.at(-1).commands).toHaveLength(1);
+  expect(after.slices.at(-1).commands[0].id).toBe(lastId);
 });
 
 async function dragPort(page: Page, fromName: string, toName: string) {

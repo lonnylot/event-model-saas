@@ -226,7 +226,7 @@ test("After clicking `New Slice`, pressing ⌥⌘1 appends an Actor whose `name`
   await clickNewSlice(page);
   await page.keyboard.press("Alt+ControlOrMeta+Digit1");
   const json = await page.locator("#event-model-document").textContent();
-  expect(JSON.parse(json ?? "{}").slices[0].actors[0].name).toBe("Actor");
+  expect(JSON.parse(json ?? "{}").slices.at(-1).actors[0].name).toBe("Actor");
 });
 
 test("After clicking `New Slice`, pressing ⌥⌘2 appends a Command whose `title` is `Command`", async ({
@@ -236,7 +236,7 @@ test("After clicking `New Slice`, pressing ⌥⌘2 appends a Command whose `titl
   await clickNewSlice(page);
   await page.keyboard.press("Alt+ControlOrMeta+Digit2");
   const json = await page.locator("#event-model-document").textContent();
-  expect(JSON.parse(json ?? "{}").slices[0].commands[0].title).toBe("Command");
+  expect(JSON.parse(json ?? "{}").slices.at(-1).commands[0].title).toBe("Command");
 });
 
 test("After clicking `New Slice`, pressing ⌥⌘3 appends an Event whose `title` is `Event Happened`", async ({
@@ -246,7 +246,7 @@ test("After clicking `New Slice`, pressing ⌥⌘3 appends an Event whose `title
   await clickNewSlice(page);
   await page.keyboard.press("Alt+ControlOrMeta+Digit3");
   const json = await page.locator("#event-model-document").textContent();
-  expect(JSON.parse(json ?? "{}").slices[0].events[0].title).toBe(
+  expect(JSON.parse(json ?? "{}").slices.at(-1).events[0].title).toBe(
     "Event Happened",
   );
 });
@@ -258,7 +258,7 @@ test("After clicking `New Slice`, pressing ⌥⌘4 appends a Read Model whose `t
   await clickNewSlice(page);
   await page.keyboard.press("Alt+ControlOrMeta+Digit4");
   const json = await page.locator("#event-model-document").textContent();
-  expect(JSON.parse(json ?? "{}").slices[0].readModels[0].title).toBe(
+  expect(JSON.parse(json ?? "{}").slices.at(-1).readModels[0].title).toBe(
     "Read Model",
   );
 });
@@ -270,7 +270,7 @@ test("After clicking `New Slice`, pressing ⌥⌘5 appends an Automation whose `
   await clickNewSlice(page);
   await page.keyboard.press("Alt+ControlOrMeta+Digit5");
   const json = await page.locator("#event-model-document").textContent();
-  expect(JSON.parse(json ?? "{}").slices[0].processors[0].title).toBe(
+  expect(JSON.parse(json ?? "{}").slices.at(-1).processors[0].title).toBe(
     "Automation",
   );
 });

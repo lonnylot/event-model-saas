@@ -118,7 +118,7 @@ test("After clicking `Add Field` on `Command`, selecting `UUID` in Inspector `Fi
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.commands?.at(-1)?.fields?.[0]?.type,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.commands?.at(-1)?.fields?.[0]?.type,
   ).toBe("UUID");
 });
 
@@ -144,7 +144,7 @@ test("After clicking `Add Field` on `Command`, checking Inspector `Optional` set
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.commands?.at(-1)?.fields?.[0]
+    JSON.parse(json ?? "{}").slices?.at(-1)?.commands?.at(-1)?.fields?.[0]
       ?.optional,
   ).toBe(true);
 });
@@ -171,7 +171,7 @@ test("After clicking `Add Field` on `Command`, filling Inspector `Example` with 
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.commands?.at(-1)?.fields?.[0]
+    JSON.parse(json ?? "{}").slices?.at(-1)?.commands?.at(-1)?.fields?.[0]
       ?.example,
   ).toBe("abc");
 });
@@ -198,7 +198,7 @@ test("After clicking `Add Field` on `Command`, clicking `Delete Field` sets the 
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.commands?.at(-1)?.fields,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.commands?.at(-1)?.fields,
   ).toEqual([]);
 });
 
@@ -220,7 +220,7 @@ test("Clicking `Add Field` after selecting `Event Happened` appends a Field whos
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.events?.at(-1)?.fields?.[0]?.name,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.events?.at(-1)?.fields?.[0]?.name,
   ).toBe("newField");
 });
 
@@ -242,7 +242,7 @@ test("Clicking `Add Field` after selecting `Read Model` appends a Field whose `n
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.readModels?.at(-1)?.fields?.[0]?.name,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.readModels?.at(-1)?.fields?.[0]?.name,
   ).toBe("newField");
 });
 
@@ -264,7 +264,7 @@ test("Clicking `Add Field` after selecting `Automation` appends a Field whose `n
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.processors?.at(-1)?.fields?.[0]?.name,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.processors?.at(-1)?.fields?.[0]?.name,
   ).toBe("newField");
 });
 
@@ -292,7 +292,7 @@ test("After clicking `New Slice` then `Add Command` twice, clicking the first Ti
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.commands?.[0]?.fields?.[0]?.name,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.commands?.[0]?.fields?.[0]?.name,
   ).toBe("orderId");
 });
 
@@ -318,7 +318,7 @@ test("After clicking `Add Field` on `Event Happened`, filling Inspector `Field n
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.events?.at(-1)?.fields?.[0]?.name,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.events?.at(-1)?.fields?.[0]?.name,
   ).toBe("eventId");
 });
 
@@ -344,7 +344,7 @@ test("After clicking `Add Field` on `Read Model`, filling Inspector `Field name`
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.readModels?.at(-1)?.fields?.[0]?.name,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.readModels?.at(-1)?.fields?.[0]?.name,
   ).toBe("viewId");
 });
 
@@ -370,7 +370,7 @@ test("After clicking `Add Field` on `Automation`, filling Inspector `Field name`
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.processors?.at(-1)?.fields?.[0]?.name,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.processors?.at(-1)?.fields?.[0]?.name,
   ).toBe("jobId");
 });
 
@@ -396,7 +396,7 @@ test("After clicking `Add Field` on `Event Happened`, selecting `UUID` in Inspec
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.events?.at(-1)?.fields?.[0]?.type,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.events?.at(-1)?.fields?.[0]?.type,
   ).toBe("UUID");
 });
 
@@ -422,7 +422,7 @@ test("After clicking `Add Field` on `Read Model`, selecting `UUID` in Inspector 
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.readModels?.at(-1)?.fields?.[0]?.type,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.readModels?.at(-1)?.fields?.[0]?.type,
   ).toBe("UUID");
 });
 
@@ -448,7 +448,7 @@ test("After clicking `Add Field` on `Automation`, selecting `UUID` in Inspector 
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.processors?.at(-1)?.fields?.[0]?.type,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.processors?.at(-1)?.fields?.[0]?.type,
   ).toBe("UUID");
 });
 
@@ -474,7 +474,7 @@ test("After clicking `Add Field` on `Event Happened`, checking Inspector `Option
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.events?.at(-1)?.fields?.[0]
+    JSON.parse(json ?? "{}").slices?.at(-1)?.events?.at(-1)?.fields?.[0]
       ?.optional,
   ).toBe(true);
 });
@@ -501,7 +501,7 @@ test("After clicking `Add Field` on `Read Model`, checking Inspector `Optional` 
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.readModels?.at(-1)?.fields?.[0]
+    JSON.parse(json ?? "{}").slices?.at(-1)?.readModels?.at(-1)?.fields?.[0]
       ?.optional,
   ).toBe(true);
 });
@@ -528,7 +528,7 @@ test("After clicking `Add Field` on `Automation`, checking Inspector `Optional` 
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.processors?.at(-1)?.fields?.[0]
+    JSON.parse(json ?? "{}").slices?.at(-1)?.processors?.at(-1)?.fields?.[0]
       ?.optional,
   ).toBe(true);
 });
@@ -555,7 +555,7 @@ test("After clicking `Add Field` on `Event Happened`, filling Inspector `Example
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.events?.at(-1)?.fields?.[0]
+    JSON.parse(json ?? "{}").slices?.at(-1)?.events?.at(-1)?.fields?.[0]
       ?.example,
   ).toBe("abc");
 });
@@ -582,7 +582,7 @@ test("After clicking `Add Field` on `Read Model`, filling Inspector `Example` wi
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.readModels?.at(-1)?.fields?.[0]
+    JSON.parse(json ?? "{}").slices?.at(-1)?.readModels?.at(-1)?.fields?.[0]
       ?.example,
   ).toBe("abc");
 });
@@ -609,7 +609,7 @@ test("After clicking `Add Field` on `Automation`, filling Inspector `Example` wi
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.processors?.at(-1)?.fields?.[0]
+    JSON.parse(json ?? "{}").slices?.at(-1)?.processors?.at(-1)?.fields?.[0]
       ?.example,
   ).toBe("abc");
 });
@@ -636,7 +636,7 @@ test("After clicking `Add Field` on `Event Happened`, clicking `Delete Field` se
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.events?.at(-1)?.fields,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.events?.at(-1)?.fields,
   ).toEqual([]);
 });
 
@@ -662,7 +662,7 @@ test("After clicking `Add Field` on `Read Model`, clicking `Delete Field` sets t
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.readModels?.at(-1)?.fields,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.readModels?.at(-1)?.fields,
   ).toEqual([]);
 });
 
@@ -688,7 +688,7 @@ test("After clicking `Add Field` on `Automation`, clicking `Delete Field` sets t
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.processors?.at(-1)?.fields,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.processors?.at(-1)?.fields,
   ).toEqual([]);
 });
 
@@ -716,7 +716,7 @@ test("After clicking `New Slice` then `Add Event` twice, clicking the first Time
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.events?.[0]?.fields?.[0]?.name,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.events?.[0]?.fields?.[0]?.name,
   ).toBe("eventId");
 });
 
@@ -744,7 +744,7 @@ test("After clicking `New Slice` then `Add Read Model` twice, clicking the first
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.readModels?.[0]?.fields?.[0]?.name,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.readModels?.[0]?.fields?.[0]?.name,
   ).toBe("viewId");
 });
 
@@ -772,7 +772,7 @@ test("After clicking `New Slice` then `Add Automation` twice, clicking the first
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.processors?.[0]?.fields?.[0]?.name,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.processors?.[0]?.fields?.[0]?.name,
   ).toBe("jobId");
 });
 
@@ -800,7 +800,7 @@ test("After clicking `New Slice` then `Add Command` twice, clicking the first Ti
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.commands?.[0]?.fields?.[0]?.type,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.commands?.[0]?.fields?.[0]?.type,
   ).toBe("UUID");
 });
 
@@ -828,7 +828,7 @@ test("After clicking `New Slice` then `Add Command` twice, clicking the first Ti
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.commands?.[0]?.fields?.[0]
+    JSON.parse(json ?? "{}").slices?.at(-1)?.commands?.[0]?.fields?.[0]
       ?.optional,
   ).toBe(true);
 });
@@ -857,7 +857,7 @@ test("After clicking `New Slice` then `Add Command` twice, clicking the first Ti
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.commands?.[0]?.fields?.[0]
+    JSON.parse(json ?? "{}").slices?.at(-1)?.commands?.[0]?.fields?.[0]
       ?.example,
   ).toBe("abc");
 });
@@ -886,7 +886,7 @@ test("After clicking `New Slice` then `Add Command` twice, clicking the first Ti
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.commands?.[0]?.fields,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.commands?.[0]?.fields,
   ).toEqual([]);
 });
 
