@@ -333,6 +333,11 @@ body.landing .hero figure::before {
 body.landing .hero .product-shot {
   animation: hero-shot-drift 7s ease-in-out infinite alternate;
 }
+@media (prefers-reduced-motion: reduce) {
+  body.landing .hero .product-shot {
+    animation-name: none;
+  }
+}
 .product-shot .shot-header {
   display: flex;
   align-items: center;

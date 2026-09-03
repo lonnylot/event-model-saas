@@ -181,3 +181,14 @@ test("GET `/` `.hero .product-shot` computed `animation-name` is not `none`", as
     "none",
   );
 });
+
+test("GET `/` with `prefers-reduced-motion: reduce`, `.hero .product-shot` computed `animation-name` is `none`", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  await expect(page.locator(".hero .product-shot")).toHaveCSS(
+    "animation-name",
+    "none",
+  );
+});
