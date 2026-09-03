@@ -191,6 +191,15 @@ a[href="/#waitlist"] {
 body.landing a[href="/login"] {
   color: #0f766e;
 }
+body.landing header > a[href="/login"],
+body.landing header > a[href="/app"],
+body.landing .hero a[href="/login"],
+body.landing .hero a[href="/app"] {
+  color: #0f766e;
+  border: 1px solid #0f766e;
+  border-radius: 999px;
+  padding: 0.4rem 0.95rem;
+}
 
 /* Landing — layered SaaS: tall hero, overlapping product, bands, footer */
 body.landing {

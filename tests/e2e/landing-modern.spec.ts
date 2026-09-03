@@ -56,3 +56,53 @@ test("GET `/` `.hero h1 span` computed `color` is `rgb(15, 118, 110)`", async ({
     "rgb(15, 118, 110)",
   );
 });
+
+test("GET `/` `header` link `Sign in` computed `border-top-width` is not `0px`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.locator("header").getByRole("link", {
+      name: "Sign in",
+      exact: true,
+    }),
+  ).not.toHaveCSS("border-top-width", "0px");
+});
+
+test("GET `/` without a Session, `.hero` link `Sign in` computed `border-top-width` is not `0px`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.locator(".hero").getByRole("link", {
+      name: "Sign in",
+      exact: true,
+    }),
+  ).not.toHaveCSS("border-top-width", "0px");
+});
+
+test("GET `/` with a Session, `header` link `Open app` computed `border-top-width` is not `0px`", async ({
+  page,
+}) => {
+  await page.request.post("/api/test/non-admin-session");
+  await page.goto("/");
+  await expect(
+    page.locator("header").getByRole("link", {
+      name: "Open app",
+      exact: true,
+    }),
+  ).not.toHaveCSS("border-top-width", "0px");
+});
+
+test("GET `/` with a Session, `.hero` link `Open app` computed `border-top-width` is not `0px`", async ({
+  page,
+}) => {
+  await page.request.post("/api/test/non-admin-session");
+  await page.goto("/");
+  await expect(
+    page.locator(".hero").getByRole("link", {
+      name: "Open app",
+      exact: true,
+    }),
+  ).not.toHaveCSS("border-top-width", "0px");
+});
