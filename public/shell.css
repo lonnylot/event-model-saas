@@ -528,6 +528,12 @@ body.landing .hero figure::before {
 .product-shot .chip.on {
   box-shadow: 0 0 0 2px #0f766e;
 }
+.product-shot .shot-connection {
+  font-size: 0.52rem;
+  font-weight: 600;
+  color: #0f766e;
+  letter-spacing: -0.01em;
+}
 .product-shot .chip.event {
   background: #ffedd5;
   border-top-color: #ea580c;

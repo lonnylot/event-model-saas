@@ -191,3 +191,12 @@ test("GET `/` `.product-shot` does not show the text `lonny@lonnylot.com`", asyn
     "lonny@lonnylot.com",
   );
 });
+
+test("GET `/` `.product-shot` shows the text `Command → Event Happened`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.locator(".product-shot").getByText("Command → Event Happened"),
+  ).toBeVisible();
+});
