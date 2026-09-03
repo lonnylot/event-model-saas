@@ -96,10 +96,44 @@ async function clickNewSlice(page: Page) {
   ).toHaveCount(count);
 }
 
+async function openImportedEmptyModel(page: Page) {
+  await page.goto("/app");
+  const createTeam = page.getByRole("textbox", {
+    name: "Team name",
+    exact: true,
+  });
+  if (await createTeam.isVisible()) {
+    await createTeam.fill("Library");
+    await page.getByRole("button", { name: "Create team", exact: true }).click();
+    await expect(
+      page.getByRole("heading", { name: "Library", exact: true }),
+    ).toBeVisible();
+  }
+  const teamId = new URL(page.url()).pathname.split("/")[3];
+  const response = await page.request.post(`/api/teams/${teamId}/imports`, {
+    data: {
+      document: {
+        format: "eventmodel",
+        schemaVersion: 1,
+        id: crypto.randomUUID(),
+        title: "Empty Import",
+        slices: [],
+      },
+    },
+  });
+  expect(response.status()).toBe(201);
+  await page.goto("/app");
+  await page.getByRole("link", { name: "Empty Import", exact: true }).last().click();
+  await expect(
+    page.getByRole("heading", { name: "Empty Import", exact: true }),
+  ).toBeVisible();
+  await page.waitForLoadState("networkidle");
+}
+
 test("After clicking `New Slice` twice, clicking the first `Add Actor on lane` appends an Actor only on the first Slice", async ({
   page,
 }) => {
-  await openUntitledModel(page);
+  await openImportedEmptyModel(page);
   await clickNewSlice(page);
   await clickNewSlice(page);
   await page
@@ -116,7 +150,7 @@ test("After clicking `New Slice` twice, clicking the first `Add Actor on lane` a
 test("After clicking `New Slice` twice, clicking the first `Add Event on lane` appends an Event only on the first Slice", async ({
   page,
 }) => {
-  await openUntitledModel(page);
+  await openImportedEmptyModel(page);
   await clickNewSlice(page);
   await clickNewSlice(page);
   await page
@@ -133,7 +167,7 @@ test("After clicking `New Slice` twice, clicking the first `Add Event on lane` a
 test("After clicking `New Slice` twice, clicking the first `Add Read Model on lane` appends a Read Model only on the first Slice", async ({
   page,
 }) => {
-  await openUntitledModel(page);
+  await openImportedEmptyModel(page);
   await clickNewSlice(page);
   await clickNewSlice(page);
   await page
@@ -150,7 +184,7 @@ test("After clicking `New Slice` twice, clicking the first `Add Read Model on la
 test("After clicking `New Slice` twice, clicking the first `Add Automation on lane` appends an Automation only on the first Slice", async ({
   page,
 }) => {
-  await openUntitledModel(page);
+  await openImportedEmptyModel(page);
   await clickNewSlice(page);
   await clickNewSlice(page);
   await page
@@ -167,7 +201,7 @@ test("After clicking `New Slice` twice, clicking the first `Add Automation on la
 test("After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing ⌥⌘1 appends an Actor only on the first Slice", async ({
   page,
 }) => {
-  await openUntitledModel(page);
+  await openImportedEmptyModel(page);
   await clickNewSlice(page);
   await clickNewSlice(page);
   await page
@@ -185,7 +219,7 @@ test("After clicking `New Slice` twice, clicking the first `New Slice` listitem 
 test("After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing ⌥⌘3 appends an Event only on the first Slice", async ({
   page,
 }) => {
-  await openUntitledModel(page);
+  await openImportedEmptyModel(page);
   await clickNewSlice(page);
   await clickNewSlice(page);
   await page
@@ -203,7 +237,7 @@ test("After clicking `New Slice` twice, clicking the first `New Slice` listitem 
 test("After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing ⌥⌘4 appends a Read Model only on the first Slice", async ({
   page,
 }) => {
-  await openUntitledModel(page);
+  await openImportedEmptyModel(page);
   await clickNewSlice(page);
   await clickNewSlice(page);
   await page
@@ -221,7 +255,7 @@ test("After clicking `New Slice` twice, clicking the first `New Slice` listitem 
 test("After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing ⌥⌘5 appends an Automation only on the first Slice", async ({
   page,
 }) => {
-  await openUntitledModel(page);
+  await openImportedEmptyModel(page);
   await clickNewSlice(page);
   await clickNewSlice(page);
   await page

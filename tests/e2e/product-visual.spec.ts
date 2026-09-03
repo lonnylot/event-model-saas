@@ -69,10 +69,13 @@ async function openUntitledModel(page: Page, request: APIRequestContext) {
 }
 
 async function clickNewSlice(page: Page) {
+  const count =
+    (await page.getByRole("listitem", { name: "New Slice", exact: true }).count()) +
+    2;
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
-    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
-  ).toBeVisible();
+    page.getByRole("listitem", { name: "New Slice", exact: true }),
+  ).toHaveCount(count);
 }
 
 test("GET `/` `body` computed `font-family` includes `system-ui`", async ({
@@ -639,7 +642,8 @@ test("After clicking `New Slice` then `Add Actor` on that page, the Timeline lis
   await expect(
     page
       .getByRole("region", { name: "Timeline", exact: true })
-      .getByRole("listitem", { name: "Actor", exact: true }),
+      .getByRole("listitem", { name: "Actor", exact: true })
+      .last(),
   ).toHaveCSS("background-color", "rgb(254, 243, 199)");
 });
 
@@ -653,7 +657,8 @@ test("After clicking `New Slice` then `Add Actor` on that page, the Timeline lis
   await expect(
     page
       .getByRole("region", { name: "Timeline", exact: true })
-      .getByRole("listitem", { name: "Actor", exact: true }),
+      .getByRole("listitem", { name: "Actor", exact: true })
+      .last(),
   ).toHaveCSS("border-top-color", "rgb(245, 158, 11)");
 });
 
@@ -779,6 +784,7 @@ test("After clicking `New Slice` then `Add Actor` on that page, the Timeline lis
   await expect(
     page
       .getByRole("region", { name: "Timeline", exact: true })
-      .getByRole("listitem", { name: "Actor", exact: true }),
+      .getByRole("listitem", { name: "Actor", exact: true })
+      .last(),
   ).toHaveCSS("border-radius", "10px");
 });

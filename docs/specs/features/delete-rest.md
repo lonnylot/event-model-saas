@@ -8,11 +8,11 @@ Backspace deletes a selected Slice, Command, or Connection. Members cannot delet
 
 ## Acceptance criteria
 
-- [x] After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem then the Timeline region, pressing Backspace sets the remaining Actor `id` to the Actor that was last
+- [x] After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem on the last Slice then the Timeline region, pressing Backspace sets the remaining Actor `id` on the last Slice to the Actor that was last
 - [x] After clicking `New Slice` then `Add Event` twice, clicking the first Timeline `Event Happened` listitem then the Timeline region, pressing Backspace sets the remaining Event `id` to the Event that was last
 - [x] After clicking `New Slice` then `Add Read Model` twice, clicking the first Timeline `Read Model` listitem then the Timeline region, pressing Backspace sets the remaining Read Model `id` to the Read Model that was last
 - [x] After clicking `New Slice` then `Add Automation` twice, clicking the first Timeline `Automation` listitem then the Timeline region, pressing Backspace sets the remaining Automation `id` to the Automation that was last
-- [x] After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem then the Timeline region, pressing Delete sets the remaining Actor `id` to the Actor that was last
+- [x] After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem on the last Slice then the Timeline region, pressing Delete sets the remaining Actor `id` on the last Slice to the Actor that was last
 
 ## Domain terms
 

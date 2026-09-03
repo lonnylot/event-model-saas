@@ -96,10 +96,44 @@ async function clickNewSlice(page: Page) {
   ).toHaveCount(count);
 }
 
+async function openImportedEmptyModel(page: Page) {
+  await page.goto("/app");
+  const createTeam = page.getByRole("textbox", {
+    name: "Team name",
+    exact: true,
+  });
+  if (await createTeam.isVisible()) {
+    await createTeam.fill("Library");
+    await page.getByRole("button", { name: "Create team", exact: true }).click();
+    await expect(
+      page.getByRole("heading", { name: "Library", exact: true }),
+    ).toBeVisible();
+  }
+  const teamId = new URL(page.url()).pathname.split("/")[3];
+  const response = await page.request.post(`/api/teams/${teamId}/imports`, {
+    data: {
+      document: {
+        format: "eventmodel",
+        schemaVersion: 1,
+        id: crypto.randomUUID(),
+        title: "Empty Import",
+        slices: [],
+      },
+    },
+  });
+  expect(response.status()).toBe(201);
+  await page.goto("/app");
+  await page.getByRole("link", { name: "Empty Import", exact: true }).last().click();
+  await expect(
+    page.getByRole("heading", { name: "Empty Import", exact: true }),
+  ).toBeVisible();
+  await page.waitForLoadState("networkidle");
+}
+
 test("After clicking `New Slice` twice, clicking the first `New Slice` listitem and pressing ⌥⌘→ sets the last Slice `id` to the Slice that was first", async ({
   page,
 }) => {
-  await openUntitledModel(page);
+  await openImportedEmptyModel(page);
   await clickNewSlice(page);
   await clickNewSlice(page);
   const before = JSON.parse(

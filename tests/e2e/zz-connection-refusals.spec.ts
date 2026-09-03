@@ -511,11 +511,11 @@ test("Dragging from `Command port` onto the Timeline `Actor` listitem does not a
     page.getByRole("button", { name: "Command port", exact: true }),
   ).toBeVisible();
   await expect(
-    page.getByRole("listitem", { name: "Actor", exact: true }),
+    page.getByRole("listitem", { name: "Actor", exact: true }).last(),
   ).toBeVisible();
   await page
     .getByRole("button", { name: "Command port", exact: true })
-    .dragTo(page.getByRole("listitem", { name: "Actor", exact: true }));
+    .dragTo(page.getByRole("listitem", { name: "Actor", exact: true }).last());
   const json = await page.locator("#event-model-document").textContent();
   expect(JSON.parse(json ?? "{}").connections ?? []).toEqual([]);
 });
@@ -531,11 +531,11 @@ test("Dragging from `Command port` onto the Timeline `Actor` listitem shows the 
     page.getByRole("button", { name: "Command port", exact: true }),
   ).toBeVisible();
   await expect(
-    page.getByRole("listitem", { name: "Actor", exact: true }),
+    page.getByRole("listitem", { name: "Actor", exact: true }).last(),
   ).toBeVisible();
   await page
     .getByRole("button", { name: "Command port", exact: true })
-    .dragTo(page.getByRole("listitem", { name: "Actor", exact: true }));
+    .dragTo(page.getByRole("listitem", { name: "Actor", exact: true }).last());
   await expect(
     page.getByRole("listitem", { name: "Command", exact: true }),
   ).toContainText("An actor isn't a connection endpoint.");
@@ -552,11 +552,11 @@ test("Dragging from `Event Happened port` onto the Timeline `Actor` listitem sho
     page.getByRole("button", { name: "Event Happened port", exact: true }),
   ).toBeVisible();
   await expect(
-    page.getByRole("listitem", { name: "Actor", exact: true }),
+    page.getByRole("listitem", { name: "Actor", exact: true }).last(),
   ).toBeVisible();
   await page
     .getByRole("button", { name: "Event Happened port", exact: true })
-    .dragTo(page.getByRole("listitem", { name: "Actor", exact: true }));
+    .dragTo(page.getByRole("listitem", { name: "Actor", exact: true }).last());
   await expect(
     page.getByRole("listitem", { name: "Event Happened", exact: true }),
   ).toContainText("An actor isn't a connection endpoint.");
@@ -573,11 +573,11 @@ test("Dragging from `Read Model port` onto the Timeline `Actor` listitem shows t
     page.getByRole("button", { name: "Read Model port", exact: true }),
   ).toBeVisible();
   await expect(
-    page.getByRole("listitem", { name: "Actor", exact: true }),
+    page.getByRole("listitem", { name: "Actor", exact: true }).last(),
   ).toBeVisible();
   await page
     .getByRole("button", { name: "Read Model port", exact: true })
-    .dragTo(page.getByRole("listitem", { name: "Actor", exact: true }));
+    .dragTo(page.getByRole("listitem", { name: "Actor", exact: true }).last());
   await expect(
     page.getByRole("listitem", { name: "Read Model", exact: true }),
   ).toContainText("An actor isn't a connection endpoint.");

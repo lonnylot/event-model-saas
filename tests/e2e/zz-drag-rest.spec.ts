@@ -96,10 +96,44 @@ async function clickNewSlice(page: Page) {
   ).toHaveCount(count);
 }
 
+async function openImportedEmptyModel(page: Page) {
+  await page.goto("/app");
+  const createTeam = page.getByRole("textbox", {
+    name: "Team name",
+    exact: true,
+  });
+  if (await createTeam.isVisible()) {
+    await createTeam.fill("Library");
+    await page.getByRole("button", { name: "Create team", exact: true }).click();
+    await expect(
+      page.getByRole("heading", { name: "Library", exact: true }),
+    ).toBeVisible();
+  }
+  const teamId = new URL(page.url()).pathname.split("/")[3];
+  const response = await page.request.post(`/api/teams/${teamId}/imports`, {
+    data: {
+      document: {
+        format: "eventmodel",
+        schemaVersion: 1,
+        id: crypto.randomUUID(),
+        title: "Empty Import",
+        slices: [],
+      },
+    },
+  });
+  expect(response.status()).toBe(201);
+  await page.goto("/app");
+  await page.getByRole("link", { name: "Empty Import", exact: true }).last().click();
+  await expect(
+    page.getByRole("heading", { name: "Empty Import", exact: true }),
+  ).toBeVisible();
+  await page.waitForLoadState("networkidle");
+}
+
 test("After clicking `New Slice` twice then `Add Event`, dragging the Timeline `Event Happened` listitem onto the first Slices `New Slice` listitem sets the first Slice `events` to one Event and the last Slice `events` to `[]`", async ({
   page,
 }) => {
-  await openUntitledModel(page);
+  await openImportedEmptyModel(page);
   await clickNewSlice(page);
   await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Event", exact: true }).click();
@@ -123,7 +157,7 @@ test("After clicking `New Slice` twice then `Add Event`, dragging the Timeline `
 test("After clicking `New Slice` twice then `Add Read Model`, dragging the Timeline `Read Model` listitem onto the first Slices `New Slice` listitem sets the first Slice `readModels` to one Read Model and the last Slice `readModels` to `[]`", async ({
   page,
 }) => {
-  await openUntitledModel(page);
+  await openImportedEmptyModel(page);
   await clickNewSlice(page);
   await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
@@ -147,7 +181,7 @@ test("After clicking `New Slice` twice then `Add Read Model`, dragging the Timel
 test("After clicking `New Slice` twice then `Add Automation`, dragging the Timeline `Automation` listitem onto the first Slices `New Slice` listitem sets the first Slice `processors` to one Automation and the last Slice `processors` to `[]`", async ({
   page,
 }) => {
-  await openUntitledModel(page);
+  await openImportedEmptyModel(page);
   await clickNewSlice(page);
   await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Automation", exact: true }).click();
@@ -171,7 +205,7 @@ test("After clicking `New Slice` twice then `Add Automation`, dragging the Timel
 test("After clicking `New Slice` twice, dragging the first Timeline `New Slice` listitem onto the last Timeline `New Slice` listitem sets the first Slice `id` to the Slice that was last", async ({
   page,
 }) => {
-  await openUntitledModel(page);
+  await openImportedEmptyModel(page);
   await clickNewSlice(page);
   await clickNewSlice(page);
   const timelineSlices = page

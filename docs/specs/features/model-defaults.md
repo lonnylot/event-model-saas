@@ -4,7 +4,7 @@ Status: validated
 
 ## Problem
 
-POST Create model writes `{ title: "Untitled", slices: [] }`. The hosted editor opens on a blank timeline. The Mac app's `Slice()` default is one Slice titled `New Slice` of type `STATE_CHANGE` with one Actor named `Actor`. A member who clicks Create model cannot start modeling until they also click New Slice and Add Actor.
+POST Create model wrote `{ title: "Untitled", slices: [] }`. The hosted editor opened on a blank timeline. The Mac app's `Slice()` default is one Slice titled `New Slice` of type `STATE_CHANGE` with one Actor named `Actor`. A member who clicked Create model could not start modeling until they also clicked New Slice and Add Actor.
 
 ## Acceptance criteria
 
@@ -63,3 +63,4 @@ Renaming Untitled. Changing New Slice click defaults. Import. Sample Library Che
 - [connection-refusals.md](./connection-refusals.md) — ⌘Z four times after a refused duplicate Command → Event leaves the Create default `New Slice` (1 listitem). Count `0` is leftover unused.
 - [canvas-rest.md](./canvas-rest.md) — Restates of four-press undo still names Add Command on the stack; count `0` is leftover unused.
 - [undo-rest.md](./undo-rest.md) — Restates of four-press undo still names Add Event on the stack; count `0` is leftover unused. After clicking `New Slice` then `Add Actor`, ⌘Z leaves the Create default `Actor` (1 listitem); redo shows 2.
+- [delete-rest.md](./delete-rest.md) — Backspace/Delete of the first Timeline Actor after New Slice then Add Actor twice targets the last Slice.
