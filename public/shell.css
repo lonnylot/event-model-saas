@@ -879,7 +879,7 @@ body.landing footer a:has(img) {
     max-width: none;
   }
   body.landing .hero {
-    padding-top: 1.75rem;
+    padding-top: 56px;
     grid-template-columns: minmax(0, 1fr);
   }
   body.landing .hero h1,

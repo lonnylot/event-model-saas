@@ -192,3 +192,11 @@ test("GET `/` with `prefers-reduced-motion: reduce`, `.hero .product-shot` compu
     "none",
   );
 });
+
+test("GET `/` at viewport `390x844`, `.hero` computed `padding-top` is `56px`", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  await expect(page.locator(".hero")).toHaveCSS("padding-top", "56px");
+});
