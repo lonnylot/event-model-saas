@@ -34,6 +34,7 @@ export async function createModel(
             title: "New Slice",
             sliceType: "STATE_CHANGE",
             actors: [{ id: runtime.randomId(), name: "Actor" }],
+            commands: [],
           },
         ],
         connections: [],
