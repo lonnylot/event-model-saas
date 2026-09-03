@@ -645,6 +645,104 @@ body.landing .team-row:last-child {
 body.landing .team-row.on {
   box-shadow: 0 0 0 2px #0f766e, 0 8px 20px rgba(15, 23, 42, 0.06);
 }
+body.landing .slice-shot {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 18px 48px rgba(15, 23, 42, 0.1);
+  overflow: hidden;
+  padding: 0.85rem 0.9rem 1rem;
+}
+body.landing .slice-shot .shot-board {
+  display: flex;
+  align-items: stretch;
+}
+body.landing .slice-shot .shot-lane-rail {
+  display: flex;
+  flex-direction: column;
+  width: 5.6rem;
+  flex: 0 0 5.6rem;
+  padding: 0.15rem 0.35rem 0 0;
+  gap: 0;
+}
+body.landing .slice-shot .lane-label {
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #64748b;
+  min-height: 2.55rem;
+  display: flex;
+  align-items: center;
+}
+body.landing .slice-shot .lane-label:first-child {
+  min-height: 1.7rem;
+}
+body.landing .slice-shot .shot-col {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-left: 0.35rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+body.landing .slice-shot .slice-head {
+  padding: 0.35rem 0.45rem;
+  min-height: 1.7rem;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 0.74rem;
+  font-weight: 600;
+}
+body.landing .slice-shot .shot-lane {
+  padding: 0.28rem 0.35rem 0.38rem;
+  min-height: 2.55rem;
+}
+body.landing .slice-shot .shot-lane.actor {
+  background: rgba(245, 158, 11, 0.1);
+}
+body.landing .slice-shot .shot-lane.command {
+  background: rgba(37, 99, 235, 0.1);
+}
+body.landing .slice-shot .shot-lane.event {
+  background: rgba(234, 88, 12, 0.1);
+}
+body.landing .slice-shot .shot-lane.readmodel {
+  background: rgba(22, 163, 74, 0.1);
+}
+body.landing .slice-shot .shot-lane.automation {
+  background: rgba(124, 58, 237, 0.1);
+}
+body.landing .slice-shot .chip {
+  font-size: 0.62rem;
+  font-weight: 600;
+  padding: 0.28rem 0.4rem;
+  border-radius: 6px;
+  border-top: 3px solid;
+  display: inline-block;
+}
+body.landing .slice-shot .chip.actor {
+  background: #fef3c7;
+  border-top-color: #f59e0b;
+}
+body.landing .slice-shot .chip.command {
+  background: #dbeafe;
+  border-top-color: #2563eb;
+}
+body.landing .slice-shot .chip.event {
+  background: #ffedd5;
+  border-top-color: #ea580c;
+}
+body.landing .slice-shot .chip.readmodel {
+  background: #dcfce7;
+  border-top-color: #16a34a;
+}
+body.landing .slice-shot .chip.automation {
+  background: #ede9fe;
+  border-top-color: #7c3aed;
+}
 body.landing .bento p:last-child {
   margin-bottom: 0;
 }
