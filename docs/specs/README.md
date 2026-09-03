@@ -56,6 +56,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Admin nav | [features/admin-nav.md](./features/admin-nav.md) | released |
 | App chrome | [features/app-chrome.md](./features/app-chrome.md) | released |
 | Landing fold | [features/landing-fold.md](./features/landing-fold.md) | released |
-| Create model border | [features/create-model-border.md](./features/create-model-border.md) | validated |
+| Create model border | [features/create-model-border.md](./features/create-model-border.md) | released |
 
 Status: `draft` → `validated` → `released`.

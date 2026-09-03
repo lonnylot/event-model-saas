@@ -1,6 +1,6 @@
 # Create model border
 
-Status: validated
+Status: released
 
 ## Problem
 
