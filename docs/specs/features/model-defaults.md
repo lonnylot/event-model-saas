@@ -13,7 +13,7 @@ POST Create model writes `{ title: "Untitled", slices: [] }`. The hosted editor 
 - [x] POST `/api/teams/{id}/models` as a member writes a document whose `slices` length is `1`
 - [x] POST `/api/teams/{id}/models` as a member writes a document whose first Slice `title` is `New Slice`
 - [x] POST `/api/teams/{id}/models` as a member writes a document whose first Slice `sliceType` is `STATE_CHANGE`
-- [ ] POST `/api/teams/{id}/models` as a member writes a document whose first Slice `actors` length is `1`
+- [x] POST `/api/teams/{id}/models` as a member writes a document whose first Slice `actors` length is `1`
 - [ ] POST `/api/teams/{id}/models` as a member writes a document whose first Slice first Actor `name` is `Actor`
 - [ ] POST `/api/teams/{id}/models` as a member writes a document whose first Slice `commands` is `[]`
 - [ ] POST `/api/teams/{id}/models` as a member writes a document whose first Slice `events` is `[]`
