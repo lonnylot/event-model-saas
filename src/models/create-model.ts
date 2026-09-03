@@ -37,6 +37,7 @@ export async function createModel(
             commands: [],
             events: [],
             readModels: [],
+            processors: [],
           },
         ],
         connections: [],

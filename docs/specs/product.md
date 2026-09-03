@@ -50,7 +50,7 @@ Outbound mail uses Cloudflare Email. Login links come from `auth@event-model.lon
 
 ## Document flow
 
-- Create: one Slice on the current team, then open the editor ([features/model-defaults.md](./features/model-defaults.md)). Create is no longer an empty Event Model (valid schema, no slices).
+- Create: the default Slice on the current team, then open the editor ([features/model-defaults.md](./features/model-defaults.md)). Create is no longer an empty Event Model (valid schema, no slices).
 - Import: upload `.eventmodel` JSON; reject if it fails the schema; store the body in R2; metadata in D1 at version 1.
 - Open: member-only. Non-members receive **404** (no existence leak). Body is the current R2 object.
 - Edit: in-memory document, dirty flag. Undo of New Slice and of Command → Event is [features/canvas.md](./features/canvas.md). Undo Add Command is [features/canvas-rest.md](./features/canvas-rest.md). Undo Add Actor, undo Add Event, undo Add Read Model, undo Add Automation, undo of move, undo of delete, and redo (⇧⌘Z) are [features/undo-rest.md](./features/undo-rest.md). Nothing is written until Save.

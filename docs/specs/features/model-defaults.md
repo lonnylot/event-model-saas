@@ -18,7 +18,7 @@ POST Create model writes `{ title: "Untitled", slices: [] }`. The hosted editor 
 - [x] POST `/api/teams/{id}/models` as a member writes a document whose first Slice `commands` is `[]`
 - [x] POST `/api/teams/{id}/models` as a member writes a document whose first Slice `events` is `[]`
 - [x] POST `/api/teams/{id}/models` as a member writes a document whose first Slice `readModels` is `[]`
-- [ ] POST `/api/teams/{id}/models` as a member writes a document whose first Slice `processors` is `[]`
+- [x] POST `/api/teams/{id}/models` as a member writes a document whose first Slice `processors` is `[]`
 - [x] GET `/app/teams/{id}/models/{mid}` as a member after Create model shows a listitem whose accessible name is `New Slice`
 - [x] GET `/app/teams/{id}/models/{mid}` as a member after Create model shows a listitem whose accessible name is `Actor` in the Timeline region
 
