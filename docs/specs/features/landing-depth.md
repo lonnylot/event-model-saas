@@ -4,14 +4,13 @@ Status: released
 
 ## Problem
 
-GET `/` hero mesh is washed out, waitlist sits on a pale field next to the product frame, and the product frame is a flat CSS mock in document flow. A visitor cannot tell this is a layered SaaS landing. Centered hero stack and `.bento` `canvas-subtle` fill are leftover unused ([landing-modern.md](./landing-modern.md)).
+GET `/` hero mesh is washed out, waitlist sits on a pale field next to the product frame, and the product frame is a flat CSS mock in document flow. A visitor cannot tell this is a layered SaaS landing. Centered hero stack, `.bento` `canvas-subtle` fill, and article `box-shadow` not `none` are leftover unused ([landing-modern.md](./landing-modern.md)).
 
 ## Acceptance criteria
 
 - [x] GET `/` `.product-shot` computed `transform` is not `none`
 - [x] GET `/` `.hero figure` computed `margin-bottom` is a negative value
 - [x] GET `/` `.bento article` computed `background-color` is `rgb(255, 255, 255)`
-- [x] GET `/` `.bento article` computed `box-shadow` is not `none`
 - [x] GET `/` `.waitlist-band` computed `background-color` is `rgb(15, 23, 42)`
 - [x] GET `/` heading `Join the waitlist` computed `color` is `rgb(255, 255, 255)`
 - [x] GET `/` the text `Leave your email. If you already have access, use Sign in.` computed `color` is `rgb(255, 255, 255)`
@@ -42,7 +41,7 @@ Screens: Landing. Primitives: Page, Card, AppBar, Button primary, Field, Footer.
 - Playwright computed colors: `canvas` `#FFFFFF` → `rgb(255, 255, 255)`, `canvas-subtle` `#F8FAFC` → `rgb(248, 250, 252)`, `ink` `#0F172A` → `rgb(15, 23, 42)`.
 - Form `waitlist-form` is `id="waitlist-form"`. It stays a Card (`canvas` fill, `line` border) on the ink waitlist band.
 - Existing accessible names, waitlist POST, and body `canvas`/`ink` from [public-face.md](./public-face.md) remain. Header `Event Model` / `Sign in` / `Open app` locators stay that file.
-- GET `/` with a Session still does not show a link `Sign in` (header shows `Open app`). Footer Sign in / Open app are leftover unused ([landing-fold.md](./landing-fold.md)). Leftover unused `.hero` `min-height` not `0px` is [landing-fold.md](./landing-fold.md). Centered hero stack and `.bento` `canvas-subtle` fill are leftover unused ([landing-modern.md](./landing-modern.md)).
+- GET `/` with a Session still does not show a link `Sign in` (header shows `Open app`). Footer Sign in / Open app are leftover unused ([landing-fold.md](./landing-fold.md)). Leftover unused `.hero` `min-height` not `0px` is [landing-fold.md](./landing-fold.md). Centered hero stack, `.bento` `canvas-subtle` fill, and article `box-shadow` not `none` are leftover unused ([landing-modern.md](./landing-modern.md)).
 - `.hero`, `.product-shot`, `.bento`, `.waitlist-band` are the Landing section class names already on `public/index.html`.
 - `.bento article` computed proofs use the first article.
 - Negative `margin-bottom` on `.hero figure` is the overlap onto the next section.
@@ -53,7 +52,7 @@ Screens: Landing. Primitives: Page, Card, AppBar, Button primary, Field, Footer.
 
 ## Out of scope
 
-Dark mode. Public signup. Site admin waitlist table UI. Login restyle. Editor restyle. Mac window chrome. Editing behavior stays the released editor specs. Product-visual token *values* stay [product-visual.md](./product-visual.md). New product claims (pricing, SLA, "anyone can join"). Hosted-editor product frame on Landing (not Mac traffic lights) is [landing-saas-shot.md](./landing-saas-shot.md). Landing chrome depth (no URL bar; nav / waitlist / footer lift) is [landing-chrome-depth.md](./landing-chrome-depth.md). `.bento` lift is leftover unused ([landing-modern.md](./landing-modern.md)). First-screen product-shot visibility, leftover unused hero `min-height` not `0px`, and leftover unused footer Sign in / Open app are [landing-fold.md](./landing-fold.md). Split-hero grid, leftover unused centered hero stack, and leftover unused `.bento` `canvas-subtle` fill are [landing-modern.md](./landing-modern.md).
+Dark mode. Public signup. Site admin waitlist table UI. Login restyle. Editor restyle. Mac window chrome. Editing behavior stays the released editor specs. Product-visual token *values* stay [product-visual.md](./product-visual.md). New product claims (pricing, SLA, "anyone can join"). Hosted-editor product frame on Landing (not Mac traffic lights) is [landing-saas-shot.md](./landing-saas-shot.md). Landing chrome depth (no URL bar; nav / waitlist / footer lift) is [landing-chrome-depth.md](./landing-chrome-depth.md). `.bento` lift is leftover unused ([landing-modern.md](./landing-modern.md)). First-screen product-shot visibility, leftover unused hero `min-height` not `0px`, and leftover unused footer Sign in / Open app are [landing-fold.md](./landing-fold.md). Split-hero grid, leftover unused centered hero stack, leftover unused `.bento` `canvas-subtle` fill, and leftover unused article `box-shadow` not `none` are [landing-modern.md](./landing-modern.md).
 
 ## Restates
 

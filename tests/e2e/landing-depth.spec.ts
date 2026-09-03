@@ -27,16 +27,6 @@ test("GET `/` `.bento article` computed `background-color` is `rgb(255, 255, 255
   );
 });
 
-test("GET `/` `.bento article` computed `box-shadow` is not `none`", async ({
-  page,
-}) => {
-  await page.goto("/");
-  await expect(page.locator(".bento article").first()).not.toHaveCSS(
-    "box-shadow",
-    "none",
-  );
-});
-
 test("GET `/` `.waitlist-band` computed `background-color` is `rgb(15, 23, 42)`", async ({
   page,
 }) => {

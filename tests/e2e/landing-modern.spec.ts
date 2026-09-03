@@ -117,3 +117,25 @@ test("GET `/` at viewport `1440x900`, `.bento` computed `background-color` is `r
     "rgba(0, 0, 0, 0)",
   );
 });
+
+test("GET `/` at viewport `1440x900`, `.bento article` computed `box-shadow` is `none`", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/");
+  await expect(page.locator(".bento article").first()).toHaveCSS(
+    "box-shadow",
+    "none",
+  );
+});
+
+test("GET `/` at viewport `390x844`, `.bento article` computed `box-shadow` is `none`", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  await expect(page.locator(".bento article").first()).toHaveCSS(
+    "box-shadow",
+    "none",
+  );
+});
