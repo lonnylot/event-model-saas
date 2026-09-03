@@ -20,7 +20,7 @@ GET `/` is a centered brochure: stacked headline, pill CTA, product frame, three
 - [x] GET `/` at viewport `1440x900`, `.bento article` computed `box-shadow` is `none`
 - [x] GET `/` at viewport `1440x900`, `.bento article` computed `background-color` is `rgba(0, 0, 0, 0)`
 - [x] GET `/` at viewport `390x844`, `.bento article` computed `box-shadow` is `none`
-- [ ] GET `/` `.bento` first `article` has `.team-shot`
+- [x] GET `/` `.bento` first `article` has `.team-shot`
 - [ ] GET `/` `.bento` second `article` has `.slice-shot`
 - [ ] GET `/` `.bento` third `article` has `.invite-shot`
 - [ ] GET `/` `.hero .product-shot` computed `animation-name` is not `none`

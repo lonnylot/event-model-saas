@@ -150,3 +150,10 @@ test("GET `/` at viewport `1440x900`, `.bento article` computed `background-colo
     "rgba(0, 0, 0, 0)",
   );
 });
+
+test("GET `/` `.bento` first `article` has `.team-shot`", async ({ page }) => {
+  await page.goto("/");
+  await expect(
+    page.locator(".bento article").nth(0).locator(".team-shot"),
+  ).toHaveCount(1);
+});
