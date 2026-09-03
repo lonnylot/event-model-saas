@@ -29,6 +29,7 @@ export async function createModel(
         title: "Untitled",
         description: "",
         slices: [],
+        connections: [],
       }),
     );
   }

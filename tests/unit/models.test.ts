@@ -341,6 +341,12 @@ describe("create model", () => {
     expect(JSON.parse(body ?? "").description).toBe("");
   });
 
+  it("POST `/api/teams/{id}/models` as a member writes a document whose `connections` is `[]`", async () => {
+    const { env } = await createdUntitled();
+    const body = await env.documents.get("models/model-1.eventmodel");
+    expect(JSON.parse(body ?? "").connections).toEqual([]);
+  });
+
   it("GET `/app/teams/{id}` as a member with an Event Model titled `Untitled` shows a link whose accessible name is `Untitled`", async () => {
     const { env } = await createdUntitled();
     const response = await handleRequest(
