@@ -12,7 +12,6 @@ GET `/app/teams/{id}/models/{mid}` the Editor is slice rail | Timeline | Inspect
 - [x] After scrolling the Timeline region, `section[aria-label="Timeline"]` `getBoundingClientRect` does not intersect `section[aria-label="Inspector"]`
 - [x] Scrolling the Timeline region sets `.board` `style.transform` to a value that includes `translate(`
 - [x] After scrolling the Timeline region, `section[aria-label="Timeline"]` `style.transform` does not include `translate(`
-- [x] Clicking `Zoom in` on that page sets `.board` `style.transform` to a value that includes `scale(1.25)`
 - [x] After clicking `Zoom in` on that page, `section[aria-label="Timeline"]` `style.transform` does not include `scale(`
 
 ## Domain terms
@@ -39,7 +38,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-Replacing pan with native overflow scroll. Changing zoom factors. Landing. Mac window chrome. Copy changes. Asserting `.time-chrome` itself.
+Replacing pan with native overflow scroll. Changing zoom factors. Landing. Mac window chrome. Copy changes. Asserting `.time-chrome` itself. Toolbar Zoom in exact `.board` `scale(1.25)` stays [editor-shell.md](./editor-shell.md).
 
 ## Restates
 
