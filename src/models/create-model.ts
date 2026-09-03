@@ -36,6 +36,7 @@ export async function createModel(
             actors: [{ id: runtime.randomId(), name: "Actor" }],
             commands: [],
             events: [],
+            readModels: [],
           },
         ],
         connections: [],

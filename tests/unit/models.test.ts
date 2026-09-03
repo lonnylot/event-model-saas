@@ -464,6 +464,12 @@ describe("create model", () => {
     expect(JSON.parse(body ?? "").slices[0].events).toEqual([]);
   });
 
+  it("POST `/api/teams/{id}/models` as a member writes a document whose first Slice `readModels` is `[]`", async () => {
+    const { env } = await createdUntitled();
+    const body = await env.documents.get("models/model-1.eventmodel");
+    expect(JSON.parse(body ?? "").slices[0].readModels).toEqual([]);
+  });
+
   it("GET `/app/teams/{id}` as a member with an Event Model titled `Untitled` shows a link whose accessible name is `Untitled`", async () => {
     const { env } = await createdUntitled();
     const response = await handleRequest(
