@@ -768,16 +768,19 @@ test("After clicking `New Slice` then `Add Actor` then `Save` on that page, fill
   page,
 }) => {
   await openUntitledModel(page);
+  const count =
+    (await page.getByRole("listitem", { name: "New Slice", exact: true }).count()) +
+    2;
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
-    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
-  ).toBeVisible();
+    page.getByRole("listitem", { name: "New Slice", exact: true }),
+  ).toHaveCount(count);
   await page.getByRole("button", { name: "Add Actor", exact: true }).click();
   await expect(
     page
       .getByRole("region", { name: "Timeline", exact: true })
       .getByRole("listitem", { name: "Actor", exact: true }),
-  ).toBeVisible();
+  ).toHaveCount(2);
   await Promise.all([
     page.waitForResponse(
       (response) =>
@@ -790,6 +793,7 @@ test("After clicking `New Slice` then `Add Actor` then `Save` on that page, fill
   await page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Actor", exact: true })
+    .last()
     .click();
   await page
     .getByRole("region", { name: "Inspector", exact: true })
