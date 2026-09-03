@@ -6,6 +6,8 @@ Load with `playwright-e2e`. Portable procedure is `SKILL.md` (spec-loop). Weaker
 
 If the AC says the accessible name **is** `X`, the locator must fail a heading named `X` plus a suffix (`exact: true` or `/^X$/`). Substring `name: "X"` is a weaker reading.
 
+A listitem **in** the Timeline region is `getByRole("region", { name: "Timeline" }).getByRole("listitem", ...)`. Unit `/aria-label="Timeline"[\s\S]*Actor/` is the weaker reading (`testing`) — Inspector Actor after Timeline stays green.
+
 If the AC says listitem visible text **is** `X`, `/^X/` on the listitem is the weaker reading when Ports are descendants — prove the own text node. `toHaveText` on the listitem stays green only when descendant `Command port` is deleted.
 
 A "does not show a control named X" query that lists only `button` and `link` stays green for a checkbox or menuitem named X — query widget roles, or assert no accessible name X on any control.

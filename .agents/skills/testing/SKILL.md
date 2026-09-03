@@ -3,7 +3,8 @@ name: testing
 description: >
   Use when adding or placing tests, choosing seams, writing unit or
   Playwright tests, mapping acceptance criteria to tests, checking a
-  weaker-reading fixture, Playwright locator.focus of :focus-visible,
+  weaker-reading fixture, unit HTML [\s\S]* after a region label,
+  Playwright locator.focus of :focus-visible,
   splitting an "and" (any case) test name,
   an early-return "and" that should stay one criterion,
   a host-path constructor weaker fixture,
@@ -50,7 +51,7 @@ A criterion that names a screen, "shows", or "lists" is proven at the app or flo
    | "imported only from X" | A walk that skips a sibling directory or a new file in a claimed directory |
    | "a name the previous state did not list" | A name already on the previous fixture |
    | Non-empty placeholder | `/placeholder=/` on `placeholder=""` |
-   | One row's own text | Document-level `toContain` or `[\s\S]*` that can cross a tag |
+   | One row's own text | Document-level `toContain` or `[\s\S]*` that can cross a tag (including `/aria-label="R"[\s\S]*X/` into a later region) |
    | Packed "and" | One `it` covering independent cases |
    | `:focus-visible` | `locator.focus()` / programmatic focus (a `:focus` rule stays green) |
    | Architecture-named production adapter | Injected runtime stays green if the host path never constructs it |
