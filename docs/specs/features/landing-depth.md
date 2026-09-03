@@ -8,7 +8,6 @@ GET `/` is a centered white stack. Hero mesh is washed out, bento cards and the 
 
 ## Acceptance criteria
 
-- [x] GET `/` `.hero` computed `min-height` is not `0px`
 - [x] GET `/` `.product-shot` computed `transform` is not `none`
 - [x] GET `/` `.hero figure` computed `margin-bottom` is a negative value
 - [x] GET `/` `.bento` computed `background-color` is `rgb(248, 250, 252)`
@@ -59,7 +58,7 @@ Dark mode. Public signup. Site admin waitlist table UI. Login restyle. Editor re
 
 ## Restates
 
-- [public-face.md](./public-face.md) — Copy, routes, waitlist POST, body `canvas`/`ink` stay that file. GET `/` `header` wordmark / `Sign in` / `Open app` stay that file (locators pinned to `header`). Footer Sign in / Open app are leftover unused ([landing-fold.md](./landing-fold.md)). Landing depth (hero min-height, product-shot transform, figure overlap, bento band, ink waitlist band, footer) is this slice.
+- [public-face.md](./public-face.md) — Copy, routes, waitlist POST, body `canvas`/`ink` stay that file. GET `/` `header` wordmark / `Sign in` / `Open app` stay that file (locators pinned to `header`). Footer Sign in / Open app are leftover unused ([landing-fold.md](./landing-fold.md)). Landing depth (product-shot transform, figure overlap, bento band, ink waitlist band, footer) is this slice. Hero `min-height` not `0px` is leftover unused ([landing-fold.md](./landing-fold.md)).
 - [product-visual.md](./product-visual.md) — Token computed colors, waitlist Button primary, waitlist-form Card, and `header` link `Sign in` color stay that file. Landing depth is this slice.
 - [designed-surfaces.md](./designed-surfaces.md) — Viewport, flex header, padding, Inter, heading `56px`, `main` max-width `none`, and `header` link `Sign in` `:focus-visible` stay that file. Landing depth is this slice.
 - [design-system.md](../design-system.md) — Tokens stay that file. Footer primitive and `canvas-subtle` as a Landing band are this slice.

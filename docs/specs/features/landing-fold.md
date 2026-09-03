@@ -8,7 +8,7 @@ GET `/` spends the first viewport on a tall empty hero. The product frame is cut
 
 ## Acceptance criteria
 
-- [ ] GET `/` at viewport `1440x900`, `.product-shot` `getBoundingClientRect().bottom` is less than or equal to `window.innerHeight`
+- [x] GET `/` at viewport `1440x900`, `.product-shot` `getBoundingClientRect().bottom` is less than or equal to `window.innerHeight`
 - [x] GET `/` without a Session shows the text `A Team shares one Event Model: a timeline of slices, not a file you pass around.`
 - [x] GET `/` without a Session, `.hero` shows a link whose accessible name is `Sign in`
 - [x] GET `/` without a Session, the `.hero` link `Sign in` has `href` `/login`
@@ -25,10 +25,10 @@ GET `/` spends the first viewport on a tall empty hero. The product frame is cut
 - [x] GET `/` `.bento article` first article has exactly one `p`
 - [x] GET `/` `.bento article` second article has exactly one `p`
 - [x] GET `/` `.bento article` third article has exactly one `p`
-- [ ] GET `/` at viewport `1440x900`, `#waitlist-form` computed `flex-direction` is `row`
-- [ ] GET `/` at viewport `390x844`, `#waitlist-form` computed `flex-direction` is `column`
-- [ ] GET `/` at viewport `390x844`, `.product-shot` shows the text `Checkout`
-- [ ] GET `/` at viewport `390x844`, `.product-shot` does not show the text `Fulfillment`
+- [x] GET `/` at viewport `1440x900`, `#waitlist-form` computed `flex-direction` is `row`
+- [x] GET `/` at viewport `390x844`, `#waitlist-form` computed `flex-direction` is `column`
+- [x] GET `/` at viewport `390x844`, `.product-shot` shows the text `Checkout`
+- [x] GET `/` at viewport `390x844`, `.product-shot` does not show the text `Fulfillment`
 - [x] GET `/` `footer` has an `img` whose `src` is `/favicon.png`
 - [x] GET `/` without a Session, `footer` does not show a link whose accessible name is `Sign in`
 - [x] GET `/` with a Session, `footer` does not show a link whose accessible name is `Open app`

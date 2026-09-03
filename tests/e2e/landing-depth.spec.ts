@@ -1,10 +1,5 @@
 import { expect, test } from "@playwright/test";
 
-test("GET `/` `.hero` computed `min-height` is not `0px`", async ({ page }) => {
-  await page.goto("/");
-  await expect(page.locator(".hero")).not.toHaveCSS("min-height", "0px");
-});
-
 test("GET `/` `.product-shot` computed `transform` is not `none`", async ({
   page,
 }) => {

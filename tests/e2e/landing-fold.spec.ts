@@ -200,3 +200,65 @@ test("GET `/` `.product-shot` shows the text `Command → Event Happened`", asyn
     page.locator(".product-shot").getByText("Command → Event Happened"),
   ).toBeVisible();
 });
+
+test("GET `/` at viewport `1440x900`, `.product-shot` `getBoundingClientRect().bottom` is less than or equal to `window.innerHeight`", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/");
+  const { bottom, innerHeight } = await page.locator(".product-shot").evaluate(
+    (el) => ({
+      bottom: el.getBoundingClientRect().bottom,
+      innerHeight: window.innerHeight,
+    }),
+  );
+  expect(bottom).toBeLessThanOrEqual(innerHeight);
+});
+
+test("GET `/` at viewport `1440x900`, `#waitlist-form` computed `flex-direction` is `row`", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/");
+  await expect(page.locator("#waitlist-form")).toHaveCSS(
+    "flex-direction",
+    "row",
+  );
+});
+
+test("GET `/` at viewport `390x844`, `#waitlist-form` computed `flex-direction` is `column`", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  await expect(page.locator("#waitlist-form")).toHaveCSS(
+    "flex-direction",
+    "column",
+  );
+});
+
+test("GET `/` at viewport `390x844`, `.product-shot` shows the text `Checkout`", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  await expect(
+    page
+      .locator(".product-shot")
+      .getByText("Checkout", { exact: true })
+      .filter({ visible: true }),
+  ).not.toHaveCount(0);
+});
+
+test("GET `/` at viewport `390x844`, `.product-shot` does not show the text `Fulfillment`", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  await expect(
+    page
+      .locator(".product-shot")
+      .getByText("Fulfillment", { exact: true })
+      .filter({ visible: true }),
+  ).toHaveCount(0);
+});
