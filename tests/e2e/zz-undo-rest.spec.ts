@@ -432,8 +432,8 @@ test("After clicking `New Slice` then `Add Command` twice, clicking the first Ti
   const before = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  const firstId = before.slices[0].commands[0].id;
-  const lastId = before.slices[0].commands[1].id;
+  const firstId = before.slices.at(-1).commands[0].id;
+  const lastId = before.slices.at(-1).commands[1].id;
   await page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Command", exact: true })
@@ -446,13 +446,13 @@ test("After clicking `New Slice` then `Add Command` twice, clicking the first Ti
   const afterDelete = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  expect(afterDelete.slices[0].commands).toHaveLength(1);
-  expect(afterDelete.slices[0].commands[0].id).toBe(lastId);
+  expect(afterDelete.slices.at(-1).commands).toHaveLength(1);
+  expect(afterDelete.slices.at(-1).commands[0].id).toBe(lastId);
   await page.keyboard.press("ControlOrMeta+z");
   const afterUndo = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  expect(afterUndo.slices[0].commands[0].id).toBe(firstId);
+  expect(afterUndo.slices.at(-1).commands[0].id).toBe(firstId);
   await expect(
     page
       .getByRole("region", { name: "Timeline", exact: true })
@@ -470,7 +470,7 @@ test("After clicking `New Slice` then `Add Command` twice, clicking the first Ti
   const before = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  const lastId = before.slices[0].commands[1].id;
+  const lastId = before.slices.at(-1).commands[1].id;
   await page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Command", exact: true })
@@ -485,8 +485,8 @@ test("After clicking `New Slice` then `Add Command` twice, clicking the first Ti
   const afterRedo = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  expect(afterRedo.slices[0].commands).toHaveLength(1);
-  expect(afterRedo.slices[0].commands[0].id).toBe(lastId);
+  expect(afterRedo.slices.at(-1).commands).toHaveLength(1);
+  expect(afterRedo.slices.at(-1).commands[0].id).toBe(lastId);
 });
 
 test("After dragging from `Command port` onto `Event Happened port` twice, clicking the first Timeline text `Command → Event Happened` then the Timeline region, pressing Backspace, then pressing ⌘Z, the remaining connection `id` is the connection that was last and the first connection `id` is the connection that was first", async ({
@@ -651,8 +651,8 @@ test("After clicking `New Slice` then `Add Event` twice, clicking the first Time
   const before = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  const firstId = before.slices[0].events[0].id;
-  const lastId = before.slices[0].events[1].id;
+  const firstId = before.slices.at(-1).events[0].id;
+  const lastId = before.slices.at(-1).events[1].id;
   await page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Event Happened", exact: true })
@@ -663,13 +663,13 @@ test("After clicking `New Slice` then `Add Event` twice, clicking the first Time
   const afterDelete = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  expect(afterDelete.slices[0].events).toHaveLength(1);
-  expect(afterDelete.slices[0].events[0].id).toBe(lastId);
+  expect(afterDelete.slices.at(-1).events).toHaveLength(1);
+  expect(afterDelete.slices.at(-1).events[0].id).toBe(lastId);
   await page.keyboard.press("ControlOrMeta+z");
   const afterUndo = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  expect(afterUndo.slices[0].events[0].id).toBe(firstId);
+  expect(afterUndo.slices.at(-1).events[0].id).toBe(firstId);
   await expect(
     page
       .getByRole("region", { name: "Timeline", exact: true })
@@ -687,7 +687,7 @@ test("After clicking `New Slice` then `Add Event` twice, clicking the first Time
   const before = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  const lastId = before.slices[0].events[1].id;
+  const lastId = before.slices.at(-1).events[1].id;
   await page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Event Happened", exact: true })
@@ -700,8 +700,8 @@ test("After clicking `New Slice` then `Add Event` twice, clicking the first Time
   const afterRedo = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  expect(afterRedo.slices[0].events).toHaveLength(1);
-  expect(afterRedo.slices[0].events[0].id).toBe(lastId);
+  expect(afterRedo.slices.at(-1).events).toHaveLength(1);
+  expect(afterRedo.slices.at(-1).events[0].id).toBe(lastId);
 });
 
 test("After clicking `New Slice` then `Add Read Model` twice, clicking the first Timeline `Read Model` listitem then the Timeline region, pressing Backspace, then pressing ⌘Z, the remaining Read Model `id` is the Read Model that was last and the first Read Model `id` is the Read Model that was first", async ({
@@ -714,8 +714,8 @@ test("After clicking `New Slice` then `Add Read Model` twice, clicking the first
   const before = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  const firstId = before.slices[0].readModels[0].id;
-  const lastId = before.slices[0].readModels[1].id;
+  const firstId = before.slices.at(-1).readModels[0].id;
+  const lastId = before.slices.at(-1).readModels[1].id;
   await page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Read Model", exact: true })
@@ -726,13 +726,13 @@ test("After clicking `New Slice` then `Add Read Model` twice, clicking the first
   const afterDelete = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  expect(afterDelete.slices[0].readModels).toHaveLength(1);
-  expect(afterDelete.slices[0].readModels[0].id).toBe(lastId);
+  expect(afterDelete.slices.at(-1).readModels).toHaveLength(1);
+  expect(afterDelete.slices.at(-1).readModels[0].id).toBe(lastId);
   await page.keyboard.press("ControlOrMeta+z");
   const afterUndo = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  expect(afterUndo.slices[0].readModels[0].id).toBe(firstId);
+  expect(afterUndo.slices.at(-1).readModels[0].id).toBe(firstId);
   await expect(
     page
       .getByRole("region", { name: "Timeline", exact: true })
@@ -750,7 +750,7 @@ test("After clicking `New Slice` then `Add Read Model` twice, clicking the first
   const before = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  const lastId = before.slices[0].readModels[1].id;
+  const lastId = before.slices.at(-1).readModels[1].id;
   await page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Read Model", exact: true })
@@ -763,8 +763,8 @@ test("After clicking `New Slice` then `Add Read Model` twice, clicking the first
   const afterRedo = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  expect(afterRedo.slices[0].readModels).toHaveLength(1);
-  expect(afterRedo.slices[0].readModels[0].id).toBe(lastId);
+  expect(afterRedo.slices.at(-1).readModels).toHaveLength(1);
+  expect(afterRedo.slices.at(-1).readModels[0].id).toBe(lastId);
 });
 
 test("After clicking `New Slice` then `Add Automation` twice, clicking the first Timeline `Automation` listitem then the Timeline region, pressing Backspace, then pressing ⌘Z, the remaining Automation `id` is the Automation that was last and the first Automation `id` is the Automation that was first", async ({
@@ -777,8 +777,8 @@ test("After clicking `New Slice` then `Add Automation` twice, clicking the first
   const before = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  const firstId = before.slices[0].processors[0].id;
-  const lastId = before.slices[0].processors[1].id;
+  const firstId = before.slices.at(-1).processors[0].id;
+  const lastId = before.slices.at(-1).processors[1].id;
   await page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Automation", exact: true })
@@ -789,13 +789,13 @@ test("After clicking `New Slice` then `Add Automation` twice, clicking the first
   const afterDelete = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  expect(afterDelete.slices[0].processors).toHaveLength(1);
-  expect(afterDelete.slices[0].processors[0].id).toBe(lastId);
+  expect(afterDelete.slices.at(-1).processors).toHaveLength(1);
+  expect(afterDelete.slices.at(-1).processors[0].id).toBe(lastId);
   await page.keyboard.press("ControlOrMeta+z");
   const afterUndo = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  expect(afterUndo.slices[0].processors[0].id).toBe(firstId);
+  expect(afterUndo.slices.at(-1).processors[0].id).toBe(firstId);
   await expect(
     page
       .getByRole("region", { name: "Timeline", exact: true })
@@ -813,7 +813,7 @@ test("After clicking `New Slice` then `Add Automation` twice, clicking the first
   const before = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  const lastId = before.slices[0].processors[1].id;
+  const lastId = before.slices.at(-1).processors[1].id;
   await page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Automation", exact: true })
@@ -826,8 +826,8 @@ test("After clicking `New Slice` then `Add Automation` twice, clicking the first
   const afterRedo = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  expect(afterRedo.slices[0].processors).toHaveLength(1);
-  expect(afterRedo.slices[0].processors[0].id).toBe(lastId);
+  expect(afterRedo.slices.at(-1).processors).toHaveLength(1);
+  expect(afterRedo.slices.at(-1).processors[0].id).toBe(lastId);
 });
 
 test("After clicking `New Slice`, pressing ⌘Z, then pressing ⇧⌘Z, a listitem whose accessible name is `New Slice` is shown", async ({
