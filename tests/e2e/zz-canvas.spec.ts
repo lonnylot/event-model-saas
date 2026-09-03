@@ -191,7 +191,7 @@ test("After clicking `Zoom in` then scrolling the Timeline region, the Timeline 
   expect(transform).toContain("translate(");
 });
 
-test("After clicking `New Slice`, pressing ⌘Z does not show a listitem whose accessible name is `New Slice`", async ({
+test("After clicking `New Slice`, pressing ⌘Z shows 1 listitem whose accessible name is `New Slice`", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -199,7 +199,7 @@ test("After clicking `New Slice`, pressing ⌘Z does not show a listitem whose a
   await page.keyboard.press("ControlOrMeta+z");
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }),
-  ).toHaveCount(0);
+  ).toHaveCount(1);
 });
 
 test("After dragging `Command port` onto `Event Happened port`, pressing ⌘Z does not show the text `Command → Event Happened`", async ({

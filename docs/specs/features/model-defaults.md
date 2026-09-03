@@ -11,7 +11,7 @@ POST Create model writes `{ title: "Untitled", slices: [] }`. The hosted editor 
 - [x] POST `/api/teams/{id}/models` as a member writes a document whose `description` is `""`
 - [x] POST `/api/teams/{id}/models` as a member writes a document whose `connections` is `[]`
 - [x] POST `/api/teams/{id}/models` as a member writes a document whose `slices` length is `1`
-- [ ] POST `/api/teams/{id}/models` as a member writes a document whose first Slice `title` is `New Slice`
+- [x] POST `/api/teams/{id}/models` as a member writes a document whose first Slice `title` is `New Slice`
 - [ ] POST `/api/teams/{id}/models` as a member writes a document whose first Slice `sliceType` is `STATE_CHANGE`
 - [ ] POST `/api/teams/{id}/models` as a member writes a document whose first Slice `actors` length is `1`
 - [ ] POST `/api/teams/{id}/models` as a member writes a document whose first Slice first Actor `name` is `Actor`
@@ -19,7 +19,7 @@ POST Create model writes `{ title: "Untitled", slices: [] }`. The hosted editor 
 - [ ] POST `/api/teams/{id}/models` as a member writes a document whose first Slice `events` is `[]`
 - [ ] POST `/api/teams/{id}/models` as a member writes a document whose first Slice `readModels` is `[]`
 - [ ] POST `/api/teams/{id}/models` as a member writes a document whose first Slice `processors` is `[]`
-- [ ] GET `/app/teams/{id}/models/{mid}` as a member after Create model shows a listitem whose accessible name is `New Slice`
+- [x] GET `/app/teams/{id}/models/{mid}` as a member after Create model shows a listitem whose accessible name is `New Slice`
 - [ ] GET `/app/teams/{id}/models/{mid}` as a member after Create model shows a listitem whose accessible name is `Actor` in the Timeline region
 
 ## Domain terms
@@ -59,3 +59,7 @@ Renaming Untitled. Changing New Slice click defaults. Import. Sample Library Che
 - [product.md](../product.md) — Create is no longer “empty Event Model (valid schema, no slices)”; Create writes the default Slice in this slice, then opens the editor.
 - [architecture.md](../architecture.md) — `models` create still goes through `createModel`. Default Slice body is this slice.
 - [designed-surfaces.md](./designed-surfaces.md) — GET with no Slices shows `Start the timeline` stays that file for an imported empty document. Create is no longer that fixture.
+- [canvas.md](./canvas.md) — After clicking `New Slice`, pressing ⌘Z leaves the Create default `New Slice` (1 listitem). Count `0` is leftover unused.
+- [connection-refusals.md](./connection-refusals.md) — ⌘Z four times after a refused duplicate Command → Event leaves the Create default `New Slice` (1 listitem). Count `0` is leftover unused.
+- [canvas-rest.md](./canvas-rest.md) — Restates of four-press undo still names Add Command on the stack; count `0` is leftover unused.
+- [undo-rest.md](./undo-rest.md) — Restates of four-press undo still names Add Event on the stack; count `0` is leftover unused.

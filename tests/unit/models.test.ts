@@ -382,6 +382,12 @@ describe("create model", () => {
     expect(JSON.parse(body ?? "").slices).toHaveLength(1);
   });
 
+  it("POST `/api/teams/{id}/models` as a member writes a document whose first Slice `title` is `New Slice`", async () => {
+    const { env } = await createdUntitled();
+    const body = await env.documents.get("models/model-1.eventmodel");
+    expect(JSON.parse(body ?? "").slices[0].title).toBe("New Slice");
+  });
+
   it("GET `/app/teams/{id}` as a member with an Event Model titled `Untitled` shows a link whose accessible name is `Untitled`", async () => {
     const { env } = await createdUntitled();
     const response = await handleRequest(
@@ -514,6 +520,20 @@ describe("create model", () => {
       env,
     );
     expect(await response.text()).not.toMatch(/<li[^>]*>New Slice<\/li>/);
+  });
+
+  it("GET `/app/teams/{id}/models/{mid}` as a member after Create model shows a listitem whose accessible name is `New Slice`", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/app/teams/team-1/models/model-1",
+        { headers: { Cookie: "session=sess-admin" } },
+      ),
+      env,
+    );
+    expect(await response.text()).toMatch(
+      /<li[^>]*aria-label="New Slice"[^>]*>New Slice<\/li>/,
+    );
   });
 
   it("GET `/app/teams/{id}/models/{mid}` as a member with no Actors does not show a listitem whose accessible name is `Actor`", async () => {
