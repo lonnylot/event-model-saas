@@ -20,6 +20,7 @@ Load with `testing`. Portable procedure is `SKILL.md` (spec-loop).
 | YAML key / workflow event | Prefix match (`/pull_request:/` also hits `pull_request_target:`) |
 | "does not show a control named X" | Querying only `button` and `link` (checkbox/menuitem named X stays green) |
 | "does not show a listitem whose accessible name is X" (unit HTML) | `not.toContain("<li>X</li>")` (`<li aria-label="X">` stays green) |
+| Listitem **in** the Timeline region (unit HTML) | `/aria-label="Timeline"[\s\S]*<li...Actor/` (Inspector Actor after Timeline stays green) |
 | "Clicking X on that page appends …" | Unit call of a function production never imports (duplicate click-path object) |
 | "Dragging from X onto Y appends …" | Unit that passes `fromKind`/`toKind` already in the input and asserts those same values (`bindEditor` unused stays green) |
 | Same control, two selection sources (Name is `New Slice` vs `Actor`; Command vs Event / Read Model / Automation) | Tests that never select the other entity (first-click-wins / insert-if-missing stays green) |
@@ -43,6 +44,8 @@ Returning the same success status (200) as the happy path is not an early-return
 Waitlist `does not create a Person` / `does not set a Session cookie` on a POST that never created those has no unique production — fold into the insert / status-200 commit (TDD slice) or unsplit the bullet. Do not fold them into a unique-production regex commit.
 
 ## Seams
+
+A listitem **in** the Timeline region is unproven by `/aria-label="Timeline"[\s\S]*Actor/` — Inspector after Timeline stays green. Playwright region+listitem, or a unit slice of the Timeline `section`.
 
 A computed-color AC is unproven by stylesheet `toContain` — Playwright `toHaveCSS` of the unique declaration, or uncheck. Playwright `toHaveCSS` of a UA default (`input` white / Email Field canvas fill) or a color inherited from a parent/body AC (Landing heading ink after public-face `body.landing`; editor `Slices` after this slice's `body.app-editor` ink) is existing behavior — drop the bullet (`keeping-specs-current`).
 

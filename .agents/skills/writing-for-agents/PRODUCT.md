@@ -37,6 +37,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Restates omitting public-face leftover unused `.bento` fill/lift after this HEAD rewrote that Out of scope | `keeping-specs-current` |
 | Leftover unused `measure-landing` 36rem after restated main max-width none | `keeping-specs-current` |
 | Accessible name **is** X / Playwright substring; unit `toContain(">X<")` | `testing`, `playwright-e2e` |
+| Listitem **in** the Timeline region (unit HTML Timeline `[\s\S]*` Actor; Inspector after Timeline stays green) | `testing`, `tdd-loop`, `playwright-e2e` |
 | Playwright `toHaveCSS` of a computed color that is the UA default (Email Field canvas fill) or inherited from a parent/body AC (Landing heading ink after public-face `body.landing`; editor `Slices` heading after `body.app-editor` ink) | `testing`, `keeping-specs-current`, `tdd-loop`, `playwright-e2e`, `logical-commits` |
 | Playwright `locator.focus()` of `:focus-visible` (`Sign in` box-shadow) stays green for a `:focus` rule | `testing`, `tdd-loop`, `playwright-e2e` |
 | Spec tree location / vendor plan dirs / `docs/superpowers/` | this skill, `keeping-specs-current` |
