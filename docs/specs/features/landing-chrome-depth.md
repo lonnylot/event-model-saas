@@ -34,7 +34,7 @@ Screens: Landing. Primitives: Page, AppBar, Card, Footer. Look of Landing is `vi
 - `.product-shot` hosted editor names (`Save`, `Export`, `Sign out`, `New Slice`, `Model`, `Slices`, `Time`, `Inspector`) stay [landing-saas-shot.md](./landing-saas-shot.md). Decorative chrome stays `aria-hidden`.
 - `.browser-bar` / `.browser-url` and the text `event-model.lonnylot.com` inside `.product-shot` are leftover unused.
 - GET `/` `header` is the Landing AppBar (sticky). `footer` is the Landing Footer. `#waitlist-form` is `id="waitlist-form"`. `.bento` is the three-article band.
-- Header / footer `Sign in` / `Open app` locators stay [public-face.md](./public-face.md) / [landing-depth.md](./landing-depth.md). Footer mark `img` is [landing-fold.md](./landing-fold.md).
+- Header `Sign in` / `Open app` locators stay [public-face.md](./public-face.md). Footer Sign in / Open app are leftover unused. Footer mark `img` is [landing-fold.md](./landing-fold.md).
 - These ACs share one Landing stylesheet pass; Landing look is one `visual-design` pass (not one commit per CSS property).
 - **Look may grow:** on Landing, the implementer may add look chrome (stronger lift, glass nav, inset band highlights) by appending ACs in the same commit (`visual-design`). Do not add persistence, public signup, or claims Out of scope names. Do not halt for a new *validate*. Hero composition stays [landing-depth.md](./landing-depth.md) unless an AC in this file names it. Look-may-grow is not skip review.
 - Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).

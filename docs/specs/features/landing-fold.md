@@ -29,9 +29,9 @@ GET `/` spends the first viewport on a tall empty hero. The product frame is cut
 - [ ] GET `/` at viewport `390x844`, `#waitlist-form` computed `flex-direction` is `column`
 - [ ] GET `/` at viewport `390x844`, `.product-shot` shows the text `Checkout`
 - [ ] GET `/` at viewport `390x844`, `.product-shot` does not show the text `Fulfillment`
-- [ ] GET `/` `footer` has an `img` whose `src` is `/favicon.png`
-- [ ] GET `/` without a Session, `footer` does not show a link whose accessible name is `Sign in`
-- [ ] GET `/` with a Session, `footer` does not show a link whose accessible name is `Open app`
+- [x] GET `/` `footer` has an `img` whose `src` is `/favicon.png`
+- [x] GET `/` without a Session, `footer` does not show a link whose accessible name is `Sign in`
+- [x] GET `/` with a Session, `footer` does not show a link whose accessible name is `Open app`
 
 ## Domain terms
 

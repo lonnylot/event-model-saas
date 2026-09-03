@@ -97,3 +97,38 @@ test("GET `/` `.bento article` third article has exactly one `p`", async ({
     1,
   );
 });
+
+test("GET `/` `footer` has an `img` whose `src` is `/favicon.png`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator("footer").locator("img")).toHaveAttribute(
+    "src",
+    "/favicon.png",
+  );
+});
+
+test("GET `/` without a Session, `footer` does not show a link whose accessible name is `Sign in`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.locator("footer").getByRole("link", {
+      name: "Sign in",
+      exact: true,
+    }),
+  ).toHaveCount(0);
+});
+
+test("GET `/` with a Session, `footer` does not show a link whose accessible name is `Open app`", async ({
+  page,
+}) => {
+  await page.request.post("/api/test/non-admin-session");
+  await page.goto("/");
+  await expect(
+    page.locator("footer").getByRole("link", {
+      name: "Open app",
+      exact: true,
+    }),
+  ).toHaveCount(0);
+});

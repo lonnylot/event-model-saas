@@ -45,7 +45,7 @@ Screens: Landing. The product frame on Landing is a static picture of the Editor
 - These product-frame ACs share one `.product-shot` markup path; Landing look is one `visual-design` pass (not one commit per CSS property).
 - **Look may grow:** on Landing, the implementer may add look chrome (Imagine atmosphere in `public/hero-mesh.jpg` or extra public JPEGs, glow) by appending ACs in the same commit (`visual-design`). Do not add persistence, public signup, or claims Out of scope names. Do not halt for a new *validate*. Do not ship an Imagine bitmap of labeled editor UI as the product frame — labeled screens are HTML/CSS (`imagine` skill). Look-may-grow is not skip review.
 - Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).
-- Header / footer `Sign in` / `Open app` locators stay [public-face.md](./public-face.md) / [landing-depth.md](./landing-depth.md). Shot Connection copy `Command → Event Happened` and no personal email in `.product-shot` are [landing-fold.md](./landing-fold.md).
+- Header `Sign in` / `Open app` locators stay [public-face.md](./public-face.md). Footer Sign in / Open app are leftover unused ([landing-fold.md](./landing-fold.md)). Shot Connection copy `Command → Event Happened` and no personal email in `.product-shot` are [landing-fold.md](./landing-fold.md).
 
 ## Out of scope
 

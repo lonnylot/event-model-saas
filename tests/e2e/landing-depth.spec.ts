@@ -111,7 +111,7 @@ test("GET `/` without a Session, the `footer` link `Event Model` has `href` `/`"
   ).toHaveAttribute("href", "/");
 });
 
-test("GET `/` without a Session, `footer` shows a link whose accessible name is `Sign in`", async ({
+test("GET `/` without a Session, `footer` does not show a link whose accessible name is `Sign in`", async ({
   page,
 }) => {
   await page.goto("/");
@@ -120,22 +120,10 @@ test("GET `/` without a Session, `footer` shows a link whose accessible name is 
       name: "Sign in",
       exact: true,
     }),
-  ).toBeVisible();
+  ).toHaveCount(0);
 });
 
-test("GET `/` without a Session, the `footer` link `Sign in` has `href` `/login`", async ({
-  page,
-}) => {
-  await page.goto("/");
-  await expect(
-    page.locator("footer").getByRole("link", {
-      name: "Sign in",
-      exact: true,
-    }),
-  ).toHaveAttribute("href", "/login");
-});
-
-test("GET `/` with a Session, `footer` shows a link whose accessible name is `Open app`", async ({
+test("GET `/` with a Session, `footer` does not show a link whose accessible name is `Open app`", async ({
   page,
 }) => {
   await page.request.post("/api/test/non-admin-session");
@@ -145,18 +133,5 @@ test("GET `/` with a Session, `footer` shows a link whose accessible name is `Op
       name: "Open app",
       exact: true,
     }),
-  ).toBeVisible();
-});
-
-test("GET `/` with a Session, the `footer` link `Open app` has `href` `/app`", async ({
-  page,
-}) => {
-  await page.request.post("/api/test/non-admin-session");
-  await page.goto("/");
-  await expect(
-    page.locator("footer").getByRole("link", {
-      name: "Open app",
-      exact: true,
-    }),
-  ).toHaveAttribute("href", "/app");
+  ).toHaveCount(0);
 });

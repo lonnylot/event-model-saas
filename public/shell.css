@@ -639,9 +639,16 @@ body.landing footer a {
   letter-spacing: -0.02em;
   color: #0f172a;
 }
-body.landing footer a[href="/login"],
-body.landing footer a[href="/app"] {
-  color: #0f766e;
+body.landing footer img {
+  height: 1.75rem;
+  width: 1.75rem;
+  display: block;
+  flex-shrink: 0;
+}
+body.landing footer a:has(img) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
 }
 
 @media (max-width: 800px) {
