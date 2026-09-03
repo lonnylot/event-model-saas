@@ -24,7 +24,8 @@ Two or more specs in one session: load `parallel-feature-work` before this loop.
 ## Loop
 
 ```
-ingest → completeness → iterate until validated
+ingest → completeness → draft shown to the user
+  → user says Validate
   → worktree + feat/<slug> (using-git-worktrees)
   → dispatch spec-implementer in that worktree
       (resume that conversation for this spec)
@@ -49,7 +50,22 @@ Read the spec (or write `docs/specs/features/<slug>.md` from `_TEMPLATE.md` and 
 - [ ] UI screens/primitives named or added if the product inventories them
 - [ ] No open "TBD" that affects behavior
 
-If a box is no: revise the spec with the user (or a written assumption they accept). Status stays `draft`. Completion: all boxes yes → set status `validated` and update `docs/specs/README.md`. Do not commit that validated file as a spec-only dump of every AC (`logical-commits`). The spec hunk (checkboxes, restates) lands with the first production that implements it.
+If a box is no: revise the spec with the user (or a written assumption they accept). Status stays `draft`. Completion: all boxes yes. Status stays **`draft`**. Show the user the spec path. Do not set `validated`. Do not dispatch `spec-implementer`.
+
+### 2b. Human validate
+
+Status becomes `validated` only when the user says **Validate** or **Validated** (that word). Then update `docs/specs/README.md` and continue to step 3. Do not commit that validated file as a spec-only dump of every AC (`logical-commits`). The spec hunk (checkboxes, restates) lands with the first production that implements it.
+
+These are **not** Validate. They are ingest or completeness work. Status stays `draft`:
+
+- a bug report, screenshot, or "fix this" / "needs to be fixed"
+- "make it better" / "looks OK" / "deploy"
+- "Implement this" / "ship it" while status is still `draft`
+- completeness boxes all yes
+
+Look-may-grow skipping a *new* validate applies only to extra look chrome on a spec the user already Validated (`visual-design`). It does not validate a new spec.
+
+Completion: spec status is `validated` and the user's message contains `Validate` or `Validated`.
 
 ### 3. Isolate and dispatch
 
@@ -87,14 +103,16 @@ Add product gate rows (observability, design system) when those specs exist. Any
 | Excuse | Reality |
 |--------|---------|
 | "One flake, ship it" | The gate is zero errors. Fix or quarantine with a failing test that names the flake. |
-| "Spec is good enough" | Completeness boxes are the validate bar. Unchecked = `draft`. |
+| "Spec is good enough" | Completeness is the bar to *ask*. Unchecked = stay `draft`. |
+| "Fix this" / a screenshot is Validate | Ingest. Completeness may run. Status stays `draft` until the user says Validate. |
+| "Implement this" / "ship it" skips validate | If status is `draft`, still wait for Validate. |
 | "Types pass so it's released" | Types are one row. CI and review Approve still required. |
 | "I reviewed it myself" | Dispatch `spec-reviewer`. Self-review is not a gate row. |
 | "I'll just implement here, it's faster" | Dispatch `spec-implementer`. This session does not write production code. |
-| "Look-may-grow / screenshot-and-iterate here" | Dispatch `spec-implementer`. Look-may-grow skips a new validate, not `spec-review-loop`. |
+| "Look-may-grow / screenshot-and-iterate here" | Dispatch `spec-implementer` only after this spec is Validated. Look-may-grow skips a *new* validate of extra chrome, not the first Validate. |
 
 ## Red flags
 
-Calling the work done while status is `draft`. Skipping a red gate row. Claiming tests pass without a fresh command in this session. Merging without Approve. A spec-only commit that lists every AC after completeness. Implementing in the orchestrator session. Merging instead of dispatching `release-manager`.
+Calling the work done while status is `draft`. Setting `validated` without the user saying Validate. Dispatching `spec-implementer` while status is `draft`. Skipping a red gate row. Claiming tests pass without a fresh command in this session. Merging without Approve. A spec-only commit that lists every AC after completeness. Implementing in the orchestrator session. Merging instead of dispatching `release-manager`.
 
 **All of these mean: not released. Return to the loop.**

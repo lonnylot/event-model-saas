@@ -25,10 +25,10 @@ NO SHIP UNTIL CI IS GREEN, A SEPARATE REVIEWER APPROVES THIS HEAD, AND THE RELEA
 - Write or update the spec **before** production code.
 - Keep the spec **current**: if implementation teaching contradicts the spec, fix the spec in the same logical commit (or revert the code).
 - A stale spec is a defect. Discovering drift and leaving it is a failed task.
-- Status lives on the spec: `draft` → `validated` → `released`. Only `validated` specs may be implemented. Only `released` specs may be called done.
+- Status lives on the spec: `draft` → `validated` → `released`. Status stays `draft` until the user says **Validate**. A bug report, screenshot, or "fix this" is ingest, not Validate. Only `validated` specs may be implemented. Only `released` specs may be called done.
 - A spec change that changes **how work is done** updates the matching skill in the same change (`writing-for-agents`). Event Model instances of that procedure go in that skill's `PRODUCT.md`, not in the portable `SKILL.md`.
 
-**REQUIRED:** `keeping-specs-current` on every behavior change. **REQUIRED:** `releasing-a-spec` when taking a spec from idea to ship (orchestrator: validate, dispatch `spec-implementer`, review, dispatch `release-manager`). **REQUIRED:** `verification-before-completion` before any done/green/released claim. The orchestrator session does not write production code. Look-may-grow skips a new *validate* of look chrome, not `spec-review-loop` or `release-manager`. Screenshot-and-iterate is `spec-implementer`.
+**REQUIRED:** `keeping-specs-current` on every behavior change. **REQUIRED:** `releasing-a-spec` when taking a spec from idea to ship (orchestrator: completeness, wait for the user to say **Validate**, dispatch `spec-implementer`, review, dispatch `release-manager`). Completeness is not Validate. **REQUIRED:** `verification-before-completion` before any done/green/released claim. The orchestrator session does not write production code. Look-may-grow skips a new *validate* of look chrome on a spec already Validated, not `spec-review-loop` or `release-manager`. Screenshot-and-iterate is `spec-implementer` after Validate.
 
 ### Where truth lives
 
@@ -77,7 +77,7 @@ Handed a spec, or asked to implement/ship: `releasing-a-spec` (orchestrator). Tw
 
 Full procedure is in the skills above. The always-on rule:
 
-1. Orchestrator: validate the spec with the user. Stay on the default branch.
+1. Orchestrator: write the spec, keep status `draft`, show the path. Stay on the default branch. Dispatch `spec-implementer` only after the user says **Validate**.
 2. Worktree + `feat/<slug>` or `fix/<slug>` (`using-git-worktrees`). Dispatch `spec-implementer` there. Resume that conversation for this spec.
 3. Implementer: one logical commit per green criterion (spec + tests + code). Open a PR after the first green commit so CI runs on every push. Look-may-grow and screenshot-and-iterate are this step, not the orchestrator session.
 4. Orchestrator: dispatch a **separate** `spec-reviewer` on a **fresh** context every time, including look PRs after the first green commit. Same-session self-review does not count. Changes requested → resume the implementer (`receiving-code-review`).
