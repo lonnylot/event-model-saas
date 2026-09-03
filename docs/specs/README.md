@@ -55,6 +55,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Landing chrome depth | [features/landing-chrome-depth.md](./features/landing-chrome-depth.md) | released |
 | Admin nav | [features/admin-nav.md](./features/admin-nav.md) | released |
 | App chrome | [features/app-chrome.md](./features/app-chrome.md) | released |
-| Landing fold | [features/landing-fold.md](./features/landing-fold.md) | validated |
+| Landing fold | [features/landing-fold.md](./features/landing-fold.md) | released |
 
 Status: `draft` → `validated` → `released`.

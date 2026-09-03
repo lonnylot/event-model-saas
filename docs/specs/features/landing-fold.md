@@ -1,6 +1,6 @@
 # Landing fold
 
-Status: validated
+Status: released
 
 ## Problem
 
