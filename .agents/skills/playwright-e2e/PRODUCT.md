@@ -18,6 +18,8 @@ Playwright `toHaveCSS` of a computed color that is the UA default (`input` backg
 
 Playwright `locator.focus()` of `:focus-visible` (`Sign in` box-shadow) is the weaker reading (`testing`) — it stays green if the rule is only `:focus`.
 
+TIME chrome does not pan is unproven by Timeline `style.transform` does not include `translate(` — `.time-chrome` inside `.board` stays green (`testing`). That factor is an AC that asserts `.time-chrome`, or drop the claim (`keeping-specs-current`).
+
 ## Script
 
 Any script-existence test asserts the exact value `playwright test` (consecutive runner tokens), not `length > 0` and not unordered token inclusion. An AC that says the script "includes the tokens" is a weaker criterion — restate as the script **is** `playwright test` (`keeping-specs-current`).

@@ -33,13 +33,13 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 - Playwright unique checkout `PORT` / `INSPECTOR_PORT` and `TEST_MAIL=1` `workers` `1` stay [public-face.md](./public-face.md).
 - Pan is still scroll on the Timeline region ([canvas.md](./canvas.md)). The `translate(` lives on `.board`, not on `section[aria-label="Timeline"]`.
 - Zoom factors `scale(1.25)` / `scale(0.8)` / `scale(1)` stay [editor-shell.md](./editor-shell.md). Those scales live on `.board`. Keyboard zoom ([canvas-rest.md](./canvas-rest.md)) and pinch zoom ([pinch-zoom.md](./pinch-zoom.md)) use the same transform target.
-- TIME chrome stays in the Timeline column and does not pan.
+- TIME chrome is a sibling of `.board` inside the Timeline column (existing markup). Asserting `.time-chrome` itself is not this slice.
 - Create model still seeds a default Slice ([model-defaults.md](./model-defaults.md)); scroll proofs use that Editor.
 - Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).
 
 ## Out of scope
 
-Replacing pan with native overflow scroll. Changing zoom factors. Landing. Mac window chrome. Copy changes.
+Replacing pan with native overflow scroll. Changing zoom factors. Landing. Mac window chrome. Copy changes. Asserting `.time-chrome` itself.
 
 ## Restates
 
