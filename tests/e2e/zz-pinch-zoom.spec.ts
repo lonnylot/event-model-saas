@@ -86,7 +86,7 @@ async function openUntitledModel(page: Page) {
   await page.waitForLoadState("networkidle");
 }
 
-test("A ctrl+wheel on the Timeline region sets the Timeline `style.transform` to a `scale(` whose factor is not the unzoomed pan `1`", async ({
+test("A ctrl+wheel on the Timeline region sets `.board` `style.transform` to a `scale(` whose factor is not the unzoomed pan `1`", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -97,7 +97,7 @@ test("A ctrl+wheel on the Timeline region sets the Timeline `style.transform` to
   await page.keyboard.up("ControlOrMeta");
   await expect
     .poll(async () => {
-      const transform = await timeline.evaluate((el) => el.style.transform);
+      const transform = await page.locator(".board").evaluate((el) => el.style.transform);
       return Number(transform.match(/scale\(([^)]+)\)/)?.[1]);
     })
     .not.toBe(1);

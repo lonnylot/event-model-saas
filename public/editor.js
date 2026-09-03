@@ -276,16 +276,20 @@ export function onAddAutomationClick(root) {
 
 export function bindEditor(root) {
   const timeline = root.querySelector('[aria-label="Timeline"]');
+  const board =
+    timeline && typeof timeline.querySelector === "function"
+      ? timeline.querySelector(".board")
+      : null;
   let scale = 1;
   let panX = 0;
   let panY = 0;
   const applyTimelineTransform = () => {
-    if (!(timeline instanceof HTMLElement)) return;
+    if (!(board instanceof HTMLElement)) return;
     const parts = [`scale(${scale})`];
     if (panX !== 0 || panY !== 0) {
       parts.push(`translate(${panX}px, ${panY}px)`);
     }
-    timeline.style.transform = parts.join(" ");
+    board.style.transform = parts.join(" ");
   };
   if (timeline instanceof HTMLElement) {
     timeline.style.minHeight = "48px";

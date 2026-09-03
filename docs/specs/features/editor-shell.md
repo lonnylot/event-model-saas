@@ -28,9 +28,9 @@ The open Event Model page is Save, Export, and Sign out. Members cannot see a Sl
 - [x] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Zoom in`
 - [x] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Zoom out`
 - [x] GET `/app/teams/{id}/models/{mid}` as a member shows a button whose accessible name is `Reset zoom`
-- [x] Clicking `Zoom in` on that page sets the Timeline `style.transform` to `scale(1.25)`
-- [x] Clicking `Zoom out` on that page sets the Timeline `style.transform` to `scale(0.8)`
-- [x] Clicking `Reset zoom` after `Zoom in` on that page sets the Timeline `style.transform` to `scale(1)`
+- [x] Clicking `Zoom in` on that page sets `.board` `style.transform` to `scale(1.25)`
+- [x] Clicking `Zoom out` on that page sets `.board` `style.transform` to `scale(0.8)`
+- [x] Clicking `Reset zoom` after `Zoom in` on that page sets `.board` `style.transform` to `scale(1)`
 - [x] After a member creates a model, opens it, clicks `New Slice`, and Saves, a reload of that page shows a listitem whose accessible name is `New Slice`
 
 ## Domain terms
@@ -48,7 +48,7 @@ Event Model, Slice, Team, Person, Version
 - New Slice is in-memory until Save. Save still uses the version check from model-persistence.
 - GET `/app/teams/{id}/models/{mid}` as a member shows the Team name stays this file; that name is a link to the Team page ([app-chrome.md](./app-chrome.md)). Editor `nav` (Event Model href `/app`, Teams admin for site admin) is [app-chrome.md](./app-chrome.md).
 - Empty Slice JSON is `{ "id": "{uuid}", "title": "New Slice", "sliceType": "STATE_CHANGE", "actors": [], "commands": [], "events": [], "readModels": [], "processors": [] }`.
-- Zoom factors are `1.25` (in), `0.8` (out), `1` (reset). Toolbar zoom stays this file. Keyboard ⌘+/⌘-/⌘0 are [canvas-rest.md](./canvas-rest.md). Scroll pan and pinch pan are [canvas.md](./canvas.md).
+- Zoom factors are `1.25` (in), `0.8` (out), `1` (reset). Those scales live on `.board` ([timeline-clip.md](./timeline-clip.md)). `section[aria-label="Timeline"]` `style.transform` `scale(1.25)` / `scale(0.8)` / `scale(1)` are leftover unused. Toolbar zoom stays this file. Keyboard ⌘+/⌘-/⌘0 are [canvas-rest.md](./canvas-rest.md). Scroll pan and pinch pan are [canvas.md](./canvas.md).
 - GET Inspector chrome (heading, empty copy) is [designed-surfaces.md](./designed-surfaces.md); Slice and Actor Name are [chrome.md](./chrome.md). Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md). Slice type picker is [slice-type.md](./slice-type.md). Empty New Slice stays `STATE_CHANGE`.
 - The `TEST_MAIL=1` memory adapter does not count login attempts, so Playwright files can share one Worker without the production 5-per-hour cap.
 - GET `/app/teams/{id}/models/{mid}` as a member with no Slices is an imported empty document ([model-defaults.md](./model-defaults.md)). GET after Create shows `New Slice`.

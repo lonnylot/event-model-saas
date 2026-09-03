@@ -222,36 +222,33 @@ test("After clicking `New Slice` then `Add Command`, pressing ⌘Z shows a listi
   ).toBeVisible();
 });
 
-test("Pressing ⌘+ on the Event Model page sets the Timeline `style.transform` to a value that includes `scale(1.25)`", async ({
+test("Pressing ⌘+ on the Event Model page sets `.board` `style.transform` to a value that includes `scale(1.25)`", async ({
   page,
 }) => {
   await openUntitledModel(page);
   await page.keyboard.press("ControlOrMeta+Equal");
-  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
-  await expect.poll(async () => timeline.evaluate((el) => el.style.transform)).toContain(
+  await expect.poll(async () => page.locator(".board").evaluate((el) => el.style.transform)).toContain(
     "scale(1.25)",
   );
 });
 
-test("Pressing ⌘- on the Event Model page sets the Timeline `style.transform` to a value that includes `scale(0.8)`", async ({
+test("Pressing ⌘- on the Event Model page sets `.board` `style.transform` to a value that includes `scale(0.8)`", async ({
   page,
 }) => {
   await openUntitledModel(page);
   await page.keyboard.press("ControlOrMeta+Minus");
-  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
-  await expect.poll(async () => timeline.evaluate((el) => el.style.transform)).toContain(
+  await expect.poll(async () => page.locator(".board").evaluate((el) => el.style.transform)).toContain(
     "scale(0.8)",
   );
 });
 
-test("Pressing ⌘0 after ⌘+ on the Event Model page sets the Timeline `style.transform` to a value that includes `scale(1)`", async ({
+test("Pressing ⌘0 after ⌘+ on the Event Model page sets `.board` `style.transform` to a value that includes `scale(1)`", async ({
   page,
 }) => {
   await openUntitledModel(page);
   await page.keyboard.press("ControlOrMeta+Equal");
   await page.keyboard.press("ControlOrMeta+Digit0");
-  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
-  const transform = await timeline.evaluate((el) => el.style.transform);
+  const transform = await page.locator(".board").evaluate((el) => el.style.transform);
   expect(transform).toContain("scale(1)");
   expect(transform).not.toContain("1.25");
 });

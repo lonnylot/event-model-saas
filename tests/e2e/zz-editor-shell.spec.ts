@@ -130,29 +130,32 @@ test("After clicking `New Slice` then `Save` on that page, the page does not sho
   await expect(page.getByText("Unsaved changes.")).toHaveCount(0);
 });
 
-test("Clicking `Zoom in` on that page sets the Timeline `style.transform` to `scale(1.25)`", async ({ page }) => {
+test("Clicking `Zoom in` on that page sets `.board` `style.transform` to `scale(1.25)`", async ({ page }) => {
   await openUntitledModel(page);
   await page.getByRole("button", { name: "Zoom in", exact: true }).click();
-  await expect(
-    page.getByRole("region", { name: "Timeline", exact: true }),
-  ).toHaveJSProperty("style.transform", "scale(1.25)");
+  await expect(page.locator(".board")).toHaveJSProperty(
+    "style.transform",
+    "scale(1.25)",
+  );
 });
 
-test("Clicking `Zoom out` on that page sets the Timeline `style.transform` to `scale(0.8)`", async ({ page }) => {
+test("Clicking `Zoom out` on that page sets `.board` `style.transform` to `scale(0.8)`", async ({ page }) => {
   await openUntitledModel(page);
   await page.getByRole("button", { name: "Zoom out", exact: true }).click();
-  await expect(
-    page.getByRole("region", { name: "Timeline", exact: true }),
-  ).toHaveJSProperty("style.transform", "scale(0.8)");
+  await expect(page.locator(".board")).toHaveJSProperty(
+    "style.transform",
+    "scale(0.8)",
+  );
 });
 
-test("Clicking `Reset zoom` after `Zoom in` on that page sets the Timeline `style.transform` to `scale(1)`", async ({ page }) => {
+test("Clicking `Reset zoom` after `Zoom in` on that page sets `.board` `style.transform` to `scale(1)`", async ({ page }) => {
   await openUntitledModel(page);
   await page.getByRole("button", { name: "Zoom in", exact: true }).click();
   await page.getByRole("button", { name: "Reset zoom", exact: true }).click();
-  await expect(
-    page.getByRole("region", { name: "Timeline", exact: true }),
-  ).toHaveJSProperty("style.transform", "scale(1)");
+  await expect(page.locator(".board")).toHaveJSProperty(
+    "style.transform",
+    "scale(1)",
+  );
 });
 
 test("After a member creates a model, opens it, clicks `New Slice`, and Saves, a reload of that page shows a listitem whose accessible name is `New Slice`", async ({ page }) => {
