@@ -27,6 +27,7 @@ export async function createModel(
         schemaVersion: 1,
         id,
         title: "Untitled",
+        description: "",
         slices: [],
       }),
     );
