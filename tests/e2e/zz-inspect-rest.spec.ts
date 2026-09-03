@@ -344,6 +344,7 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add 
   await page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Actor", exact: true })
+    .last()
     .click();
   await page
     .getByRole("region", { name: "Inspector", exact: true })
@@ -361,6 +362,7 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add 
   await page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Actor", exact: true })
+    .last()
     .click();
   await expect(
     page

@@ -236,7 +236,7 @@ test("Clicking `Add Field` after selecting `Command` appends a Field whose `name
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.commands?.at(-1)?.fields?.[0]?.name,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.commands?.at(-1)?.fields?.[0]?.name,
   ).toBe("newField");
 });
 
@@ -258,7 +258,7 @@ test("Clicking `Add Field` after selecting `Command` appends a Field whose `type
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.commands?.at(-1)?.fields?.[0]?.type,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.commands?.at(-1)?.fields?.[0]?.type,
   ).toBe("String");
 });
 
@@ -284,7 +284,7 @@ test("Filling the Inspector `Field name` textbox with `orderId` after clicking `
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.commands?.at(-1)?.fields?.[0]?.name,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.commands?.at(-1)?.fields?.[0]?.name,
   ).toBe("orderId");
 });
 
@@ -319,6 +319,6 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add 
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.commands?.at(-1)?.fields?.[0]?.name,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.commands?.at(-1)?.fields?.[0]?.name,
   ).toBe("orderId");
 });

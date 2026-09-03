@@ -92,7 +92,7 @@ async function addTwoSlicesClickFirstFillCheckout(page: Page) {
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }),
-  ).toHaveCount(4);
+  ).toHaveCount(5);
   await page
     .getByRole("listitem", { name: "New Slice", exact: true })
     .first()
@@ -141,11 +141,11 @@ async function addTwoActorsClickFirstFillShopper(page: Page) {
     page
       .getByRole("region", { name: "Timeline", exact: true })
       .getByRole("listitem", { name: "Actor", exact: true }),
-  ).toHaveCount(2);
+  ).toHaveCount(3);
   await page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Actor", exact: true })
-    .first()
+    .nth(1)
     .click();
   await page
     .getByRole("region", { name: "Inspector", exact: true })
@@ -160,7 +160,7 @@ test("After clicking `New Slice` then `Add Actor` twice, clicking the first Time
   const json = await page
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
-  expect(JSON.parse(json ?? "{}").slices?.[0]?.actors?.[0]?.name).toBe(
+  expect(JSON.parse(json ?? "{}").slices?.at(-1)?.actors?.[0]?.name).toBe(
     "Shopper",
   );
 });
@@ -204,7 +204,7 @@ test("After clicking `New Slice` then `Add Event` twice, clicking the first Time
   const json = await page
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
-  expect(JSON.parse(json ?? "{}").slices?.[0]?.events?.[0]?.title).toBe(
+  expect(JSON.parse(json ?? "{}").slices?.at(-1)?.events?.[0]?.title).toBe(
     "Order Placed",
   );
 });
@@ -248,7 +248,7 @@ test("After clicking `New Slice` then `Add Read Model` twice, clicking the first
   const json = await page
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
-  expect(JSON.parse(json ?? "{}").slices?.[0]?.readModels?.[0]?.title).toBe(
+  expect(JSON.parse(json ?? "{}").slices?.at(-1)?.readModels?.[0]?.title).toBe(
     "Orders",
   );
 });
@@ -292,7 +292,7 @@ test("After clicking `New Slice` then `Add Automation` twice, clicking the first
   const json = await page
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
-  expect(JSON.parse(json ?? "{}").slices?.[0]?.processors?.[0]?.title).toBe(
+  expect(JSON.parse(json ?? "{}").slices?.at(-1)?.processors?.[0]?.title).toBe(
     "Send Email",
   );
 });
@@ -418,7 +418,7 @@ async function addTwoSlicesClickFirstFillDescription(page: Page) {
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }),
-  ).toHaveCount(4);
+  ).toHaveCount(5);
   await page
     .getByRole("listitem", { name: "New Slice", exact: true })
     .first()
@@ -467,7 +467,7 @@ test("After clicking `New Slice` then `Add Command` twice, clicking the first Ti
   const json = await page
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
-  expect(JSON.parse(json ?? "{}").slices?.[0]?.commands?.[0]?.description).toBe(
+  expect(JSON.parse(json ?? "{}").slices?.at(-1)?.commands?.[0]?.description).toBe(
     "Submit cart",
   );
 });
@@ -481,11 +481,11 @@ async function addTwoActorsClickFirstFillDescription(page: Page) {
     page
       .getByRole("region", { name: "Timeline", exact: true })
       .getByRole("listitem", { name: "Actor", exact: true }),
-  ).toHaveCount(2);
+  ).toHaveCount(3);
   await page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Actor", exact: true })
-    .first()
+    .nth(1)
     .click();
   await page
     .getByRole("region", { name: "Inspector", exact: true })
@@ -500,7 +500,7 @@ test("After clicking `New Slice` then `Add Actor` twice, clicking the first Time
   const json = await page
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
-  expect(JSON.parse(json ?? "{}").slices?.[0]?.actors?.[0]?.description).toBe(
+  expect(JSON.parse(json ?? "{}").slices?.at(-1)?.actors?.[0]?.description).toBe(
     "Librarian",
   );
 });
@@ -533,7 +533,7 @@ test("After clicking `New Slice` then `Add Event` twice, clicking the first Time
   const json = await page
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
-  expect(JSON.parse(json ?? "{}").slices?.[0]?.events?.[0]?.description).toBe(
+  expect(JSON.parse(json ?? "{}").slices?.at(-1)?.events?.[0]?.description).toBe(
     "It happened",
   );
 });
@@ -567,7 +567,7 @@ test("After clicking `New Slice` then `Add Read Model` twice, clicking the first
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.readModels?.[0]?.description,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.readModels?.[0]?.description,
   ).toBe("List view");
 });
 
@@ -600,7 +600,7 @@ test("After clicking `New Slice` then `Add Automation` twice, clicking the first
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.processors?.[0]?.description,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.processors?.[0]?.description,
   ).toBe("When paid");
 });
 
@@ -610,7 +610,7 @@ async function addTwoSlicesClickFirstSelectStateView(page: Page) {
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }),
-  ).toHaveCount(4);
+  ).toHaveCount(5);
   await page
     .getByRole("listitem", { name: "New Slice", exact: true })
     .first()
