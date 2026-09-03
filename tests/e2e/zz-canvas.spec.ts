@@ -199,19 +199,19 @@ test("After clicking `New Slice` twice, clicking the first `New Slice` listitem 
   expect(after.slices[0].id).toBe(lastId);
 });
 
-test("Scrolling the Timeline region sets the Timeline `style.transform` to a value that includes `translate(`", async ({
+test("Scrolling the Timeline region still pans", async ({
   page,
 }) => {
   await openUntitledModel(page);
   const timeline = page.getByRole("region", { name: "Timeline", exact: true });
   await timeline.hover();
   await page.mouse.wheel(0, 80);
-  await expect.poll(async () => timeline.evaluate((el) => el.style.transform)).toContain(
+  await expect.poll(async () => page.locator(".board").evaluate((el) => el.style.transform)).toContain(
     "translate(",
   );
 });
 
-test("After clicking `Zoom in` then scrolling the Timeline region, the Timeline `style.transform` includes `scale(1.25)` and `translate(`", async ({
+test("After clicking `Zoom in` then scrolling the Timeline region, `.board` `style.transform` includes `scale(1.25)` and `translate(`", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -220,7 +220,7 @@ test("After clicking `Zoom in` then scrolling the Timeline region, the Timeline 
   await timeline.evaluate((el) => {
     el.dispatchEvent(new WheelEvent("wheel", { deltaY: 80, bubbles: true }));
   });
-  const transform = await timeline.evaluate((el) => el.style.transform);
+  const transform = await page.locator(".board").evaluate((el) => el.style.transform);
   expect(transform).toContain("scale(1.25)");
   expect(transform).toContain("translate(");
 });

@@ -13,9 +13,9 @@ Canvas shipped ⌥⌘←, Actor drag, Slice Backspace, scroll pan, and undo of N
 - [x] After clicking `New Slice` twice then `Add Command`, dragging the Timeline `Command` listitem onto the first Slices `New Slice` listitem sets the last Slice `commands` to `[]`
 - [x] After clicking `New Slice` then `Add Command`, pressing ⌘Z does not show a listitem whose accessible name is `Command`
 - [x] After clicking `New Slice` then `Add Command`, pressing ⌘Z shows a listitem whose accessible name is `New Slice`
-- [x] Pressing ⌘+ on the Event Model page sets the Timeline `style.transform` to a value that includes `scale(1.25)`
-- [x] Pressing ⌘- on the Event Model page sets the Timeline `style.transform` to a value that includes `scale(0.8)`
-- [x] Pressing ⌘0 after ⌘+ on the Event Model page sets the Timeline `style.transform` to a value that includes `scale(1)`
+- [x] Pressing ⌘+ on the Event Model page sets `.board` `style.transform` to a value that includes `scale(1.25)`
+- [x] Pressing ⌘- on the Event Model page sets `.board` `style.transform` to a value that includes `scale(0.8)`
+- [x] Pressing ⌘0 after ⌘+ on the Event Model page sets `.board` `style.transform` to a value that includes `scale(1)`
 
 ## Domain terms
 
@@ -30,7 +30,7 @@ Event Model, Slice, Command, Team, Person, Version
 
 - Two `New Slice` listitems are first vs last. Sidebar drag uses the Slices list. Command drop target is the first Slices listitem. Command listitem drag is mousedown on the listitem, not on `Command port`. Port onto a Slice stays [connection-refusals.md](./connection-refusals.md). Add Command still targets the last Slice ([blocks.md](./blocks.md)).
 - ⌘Z is Playwright `ControlOrMeta+z`. Undo stack: Add Command is last, so one ⌘Z removes Command and leaves New Slice. Undo New Slice and undo Command → Event stay [canvas.md](./canvas.md).
-- ⌘+ is `ControlOrMeta+Equal`. ⌘- is `ControlOrMeta+Minus`. ⌘0 is `ControlOrMeta+Digit0`. Zoom factors stay `1.25` / `0.8` / `1` from [editor-shell.md](./editor-shell.md). Toolbar zoom stays that file.
+- ⌘+ is `ControlOrMeta+Equal`. ⌘- is `ControlOrMeta+Minus`. ⌘0 is `ControlOrMeta+Digit0`. Zoom factors stay `1.25` / `0.8` / `1` from [editor-shell.md](./editor-shell.md). Those scales live on `.board` ([timeline-clip.md](./timeline-clip.md)). `section[aria-label="Timeline"]` `style.transform` scale is leftover unused. Toolbar zoom stays that file.
 - Mutations are in-memory until Save. Save still uses the version check from model-persistence.
 - The `TEST_MAIL=1` memory adapter does not count login attempts, so Playwright files can share one Worker without the production 5-per-hour cap.
 
