@@ -46,7 +46,7 @@ Screens: Landing. Primitives: Page, Card, AppBar, Button primary, Field, Footer.
 - Playwright computed colors: `canvas` `#FFFFFF` → `rgb(255, 255, 255)`, `canvas-subtle` `#F8FAFC` → `rgb(248, 250, 252)`, `ink` `#0F172A` → `rgb(15, 23, 42)`.
 - Form `waitlist-form` is `id="waitlist-form"`. It stays a Card (`canvas` fill, `line` border) on the ink waitlist band.
 - Existing accessible names, waitlist POST, and body `canvas`/`ink` from [public-face.md](./public-face.md) remain. Header `Event Model` / `Sign in` / `Open app` locators stay that file.
-- GET `/` with a Session still does not show a link `Sign in` (header and footer both show `Open app`).
+- GET `/` with a Session still does not show a link `Sign in` (header and footer both show `Open app`). Leftover unused footer Sign in / Open app and leftover unused `.hero` `min-height` not `0px` are [landing-fold.md](./landing-fold.md).
 - `.hero`, `.product-shot`, `.bento`, `.waitlist-band` are the Landing section class names already on `public/index.html`.
 - `.bento article` computed proofs use the first article.
 - Negative `margin-bottom` on `.hero figure` is the overlap onto the next section.
@@ -57,7 +57,7 @@ Screens: Landing. Primitives: Page, Card, AppBar, Button primary, Field, Footer.
 
 ## Out of scope
 
-Dark mode. Public signup. Site admin waitlist table UI. Login restyle. Editor restyle. Mac window chrome. Editing behavior stays the released editor specs. Product-visual token *values* stay [product-visual.md](./product-visual.md). New product claims (pricing, SLA, "anyone can join"). Hosted-editor product frame on Landing (not Mac traffic lights) is [landing-saas-shot.md](./landing-saas-shot.md). Landing chrome depth (no URL bar; nav / bento / waitlist / footer lift) is [landing-chrome-depth.md](./landing-chrome-depth.md).
+Dark mode. Public signup. Site admin waitlist table UI. Login restyle. Editor restyle. Mac window chrome. Editing behavior stays the released editor specs. Product-visual token *values* stay [product-visual.md](./product-visual.md). New product claims (pricing, SLA, "anyone can join"). Hosted-editor product frame on Landing (not Mac traffic lights) is [landing-saas-shot.md](./landing-saas-shot.md). Landing chrome depth (no URL bar; nav / bento / waitlist / footer lift) is [landing-chrome-depth.md](./landing-chrome-depth.md). First-screen product-shot visibility, leftover unused hero `min-height` not `0px`, and leftover unused footer Sign in / Open app are [landing-fold.md](./landing-fold.md).
 
 ## Restates
 

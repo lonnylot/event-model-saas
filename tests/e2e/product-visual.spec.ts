@@ -116,12 +116,14 @@ test("GET `/` heading `Event Modeling for the whole team` computed `font-size` i
   ).toHaveCSS("font-size", "56px");
 });
 
-test("GET `/` the text `One Event Model, signed in. No passing files around.` computed `color` is `rgb(100, 116, 139)`", async ({
+test("GET `/` the text `A Team shares one Event Model: a timeline of slices, not a file you pass around.` computed `color` is `rgb(100, 116, 139)`", async ({
   page,
 }) => {
   await page.goto("/");
   await expect(
-    page.getByText("One Event Model, signed in. No passing files around."),
+    page.getByText(
+      "A Team shares one Event Model: a timeline of slices, not a file you pass around.",
+    ),
   ).toHaveCSS("color", "rgb(100, 116, 139)");
 });
 

@@ -44,12 +44,14 @@ test("GET `/` without a Session shows a heading whose accessible name is `Event 
   ).toBeVisible();
 });
 
-test("GET `/` without a Session shows the text `One Event Model, signed in. No passing files around.`", async ({
+test("GET `/` without a Session shows the text `A Team shares one Event Model: a timeline of slices, not a file you pass around.`", async ({
   page,
 }) => {
   await page.goto("/");
   await expect(
-    page.getByText("One Event Model, signed in. No passing files around."),
+    page.getByText(
+      "A Team shares one Event Model: a timeline of slices, not a file you pass around.",
+    ),
   ).toBeVisible();
 });
 

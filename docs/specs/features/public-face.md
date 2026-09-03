@@ -11,7 +11,7 @@ GET `/` is the login form. A visitor cannot tell what Event Model is. Paper-work
 - [x] `wrangler.jsonc` `run_worker_first` includes `/`
 - [x] `wrangler.jsonc` `run_worker_first` includes `/login`
 - [x] GET `/` without a Session shows a heading whose accessible name is `Event Modeling for the whole team`
-- [x] GET `/` without a Session shows the text `One Event Model, signed in. No passing files around.`
+- [x] GET `/` without a Session shows the text `A Team shares one Event Model: a timeline of slices, not a file you pass around.`
 - [x] GET `/` without a Session, `header` shows a link whose accessible name is `Event Model`
 - [x] GET `/` without a Session, the `header` link `Event Model` has `href` `/`
 - [x] GET `/` without a Session, `header` shows a link whose accessible name is `Sign in`
@@ -113,10 +113,11 @@ Screens: Landing, Login, Not found, Expired link. Primitives this slice composes
 - GET `/` with a Session uses an existing `TEST_MAIL=1` session helper (consume a magic link, or POST `/api/test/non-admin-session`).
 - Open Graph title stays `Event Model`.
 - Login heading is `Sign in`. The wordmark link `Event Model` is the Marketing header, not a second heading. Landing and Login header Mark (`img` `src` `/favicon.png`) is [app-chrome.md](./app-chrome.md).
+- GET `/` hero sentence is `A Team shares one Event Model: a timeline of slices, not a file you pass around.` `One Event Model, signed in. No passing files around.` is leftover unused ([landing-fold.md](./landing-fold.md)). Header `Sign in` / `Open app` locators stay this file. Extra `.hero` Sign in / Open app are [landing-fold.md](./landing-fold.md).
 
 ## Out of scope
 
-Site admin waitlist table UI. Dark mode. Public signup. Signed-in restyle, editor styling, Card, Field, `type`, `radius`, Landing `Join the waitlist` Button primary, and sticky-note lane colors are [product-visual.md](./product-visual.md). Composed look (spacing, AppBar flex, viewport, focus-visible, Google Fonts Inter) is [designed-surfaces.md](./designed-surfaces.md). Landing depth (hero min-height, product-shot transform, figure overlap, bento band, ink waitlist band, footer) is [landing-depth.md](./landing-depth.md). Landing product frame (hosted editor, not Mac window) is [landing-saas-shot.md](./landing-saas-shot.md). Landing chrome depth (no URL bar; nav / bento / waitlist / footer lift) is [landing-chrome-depth.md](./landing-chrome-depth.md).
+Site admin waitlist table UI. Dark mode. Public signup. Signed-in restyle, editor styling, Card, Field, `type`, `radius`, Landing `Join the waitlist` Button primary, and sticky-note lane colors are [product-visual.md](./product-visual.md). Composed look (spacing, AppBar flex, viewport, focus-visible, Google Fonts Inter) is [designed-surfaces.md](./designed-surfaces.md). Landing depth (hero min-height, product-shot transform, figure overlap, bento band, ink waitlist band, footer) is [landing-depth.md](./landing-depth.md). Landing product frame (hosted editor, not Mac window) is [landing-saas-shot.md](./landing-saas-shot.md). Landing chrome depth (no URL bar; nav / bento / waitlist / footer lift) is [landing-chrome-depth.md](./landing-chrome-depth.md). Hero sentence, bento bodies, `.hero` Sign in / Open app, and leftover unused `One Event Model, signed in. No passing files around.` are [landing-fold.md](./landing-fold.md).
 
 ## Restates
 
