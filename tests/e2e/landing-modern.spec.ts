@@ -106,3 +106,14 @@ test("GET `/` with a Session, `.hero` link `Open app` computed `border-top-width
     }),
   ).not.toHaveCSS("border-top-width", "0px");
 });
+
+test("GET `/` at viewport `1440x900`, `.bento` computed `background-color` is `rgba(0, 0, 0, 0)`", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/");
+  await expect(page.locator(".bento")).toHaveCSS(
+    "background-color",
+    "rgba(0, 0, 0, 0)",
+  );
+});

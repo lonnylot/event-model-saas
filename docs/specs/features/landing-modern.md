@@ -16,7 +16,7 @@ GET `/` is a centered brochure: stacked headline, pill CTA, product frame, three
 - [x] GET `/` without a Session, `.hero` link `Sign in` computed `border-top-width` is not `0px`
 - [x] GET `/` with a Session, `header` link `Open app` computed `border-top-width` is not `0px`
 - [x] GET `/` with a Session, `.hero` link `Open app` computed `border-top-width` is not `0px`
-- [ ] GET `/` at viewport `1440x900`, `.bento` computed `background-color` is `rgba(0, 0, 0, 0)`
+- [x] GET `/` at viewport `1440x900`, `.bento` computed `background-color` is `rgba(0, 0, 0, 0)`
 - [ ] GET `/` at viewport `1440x900`, `.bento article` computed `box-shadow` is `none`
 - [ ] GET `/` at viewport `1440x900`, `.bento article` computed `background-color` is `rgba(0, 0, 0, 0)`
 - [ ] GET `/` at viewport `390x844`, `.bento article` computed `box-shadow` is `none`

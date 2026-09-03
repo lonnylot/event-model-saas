@@ -17,16 +17,6 @@ test("GET `/` `.hero figure` computed `margin-bottom` is a negative value", asyn
   expect(parseFloat(marginBottom)).toBeLessThan(0);
 });
 
-test("GET `/` `.bento` computed `background-color` is `rgb(248, 250, 252)`", async ({
-  page,
-}) => {
-  await page.goto("/");
-  await expect(page.locator(".bento")).toHaveCSS(
-    "background-color",
-    "rgb(248, 250, 252)",
-  );
-});
-
 test("GET `/` `.bento article` computed `background-color` is `rgb(255, 255, 255)`", async ({
   page,
 }) => {
