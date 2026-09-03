@@ -158,4 +158,17 @@ describe("spec tree", () => {
     );
     expect(editor).not.toContain("empty named region");
   });
+
+  it("landing-fold Problem does not leave three bento cards as a current tell", () => {
+    const text = readFileSync(
+      "docs/specs/features/landing-fold.md",
+      "utf8",
+    );
+    const problem = text.split("## Acceptance criteria")[0];
+    expect(problem).not.toContain(
+      "The three bento cards are unbalanced glossary",
+    );
+    expect(problem).toContain("leftover unused");
+    expect(problem).toContain("landing-modern.md");
+  });
 });

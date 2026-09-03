@@ -4,7 +4,7 @@ Status: released
 
 ## Problem
 
-GET `/` spends the first viewport on a tall empty hero. The product frame is cut off. The three bento cards are unbalanced glossary. The mock shows a personal email and no Connection. The waitlist form is a stacked login card. Mobile crops the mock. Sign in lives only in the header. The footer repeats the header.
+GET `/` spends the first viewport on a tall empty hero. The product frame is cut off. The mock shows a personal email and no Connection. The waitlist form is a stacked login card. Mobile crops the mock. Sign in lives only in the header. The footer repeats the header. Three-card bento / caption-strip composition is leftover unused ([landing-modern.md](./landing-modern.md)).
 
 ## Acceptance criteria
 
@@ -65,7 +65,7 @@ Screens: Landing. Primitives: Page, AppBar, Card, Button primary, Field, Footer.
 
 ## Out of scope
 
-Dark mode. Public signup. Site admin waitlist table UI. Login restyle. Editor restyle. Mac window chrome. New product claims (pricing, SLA, "anyone can join"). Product-visual token *values* stay [product-visual.md](./product-visual.md). A second hero heading. Import button.
+Dark mode. Public signup. Site admin waitlist table UI. Login restyle. Editor restyle. Mac window chrome. New product claims (pricing, SLA, "anyone can join"). Product-visual token *values* stay [product-visual.md](./product-visual.md). A second hero heading. Import button. Stacked bento rows with product images, and leftover unused three-card / caption-strip composition, are [landing-modern.md](./landing-modern.md).
 
 ## Restates
 
