@@ -22,7 +22,7 @@ GET `/` is a centered brochure: stacked headline, pill CTA, product frame, three
 - [x] GET `/` at viewport `390x844`, `.bento article` computed `box-shadow` is `none`
 - [x] GET `/` `.bento` first `article` has `.team-shot`
 - [x] GET `/` `.bento` second `article` has `.slice-shot`
-- [ ] GET `/` `.bento` third `article` has `.invite-shot`
+- [x] GET `/` `.bento` third `article` has `.invite-shot`
 - [ ] GET `/` `.hero .product-shot` computed `animation-name` is not `none`
 - [ ] GET `/` with `prefers-reduced-motion: reduce`, `.hero .product-shot` computed `animation-name` is `none`
 - [x] GET `/` at viewport `390x844`, heading `Event Modeling for the whole team` computed `text-align` is `start`

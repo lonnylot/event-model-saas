@@ -164,3 +164,10 @@ test("GET `/` `.bento` second `article` has `.slice-shot`", async ({ page }) => 
     page.locator(".bento article").nth(1).locator(".slice-shot"),
   ).toHaveCount(1);
 });
+
+test("GET `/` `.bento` third `article` has `.invite-shot`", async ({ page }) => {
+  await page.goto("/");
+  await expect(
+    page.locator(".bento article").nth(2).locator(".invite-shot"),
+  ).toHaveCount(1);
+});
