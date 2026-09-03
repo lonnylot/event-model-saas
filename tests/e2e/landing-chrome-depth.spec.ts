@@ -23,13 +23,6 @@ test("GET `/` `header` computed `box-shadow` is not `none`", async ({
   await expect(page.locator("header")).not.toHaveCSS("box-shadow", "none");
 });
 
-test("GET `/` `.bento` computed `box-shadow` is not `none`", async ({
-  page,
-}) => {
-  await page.goto("/");
-  await expect(page.locator(".bento")).not.toHaveCSS("box-shadow", "none");
-});
-
 test("GET `/` `.waitlist-band` computed `box-shadow` is not `none`", async ({
   page,
 }) => {

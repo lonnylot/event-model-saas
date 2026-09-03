@@ -17,36 +17,6 @@ test("GET `/` `.hero figure` computed `margin-bottom` is a negative value", asyn
   expect(parseFloat(marginBottom)).toBeLessThan(0);
 });
 
-test("GET `/` `.bento` computed `background-color` is `rgb(248, 250, 252)`", async ({
-  page,
-}) => {
-  await page.goto("/");
-  await expect(page.locator(".bento")).toHaveCSS(
-    "background-color",
-    "rgb(248, 250, 252)",
-  );
-});
-
-test("GET `/` `.bento article` computed `background-color` is `rgb(255, 255, 255)`", async ({
-  page,
-}) => {
-  await page.goto("/");
-  await expect(page.locator(".bento article").first()).toHaveCSS(
-    "background-color",
-    "rgb(255, 255, 255)",
-  );
-});
-
-test("GET `/` `.bento article` computed `box-shadow` is not `none`", async ({
-  page,
-}) => {
-  await page.goto("/");
-  await expect(page.locator(".bento article").first()).not.toHaveCSS(
-    "box-shadow",
-    "none",
-  );
-});
-
 test("GET `/` `.waitlist-band` computed `background-color` is `rgb(15, 23, 42)`", async ({
   page,
 }) => {

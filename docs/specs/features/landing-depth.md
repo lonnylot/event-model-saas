@@ -4,15 +4,13 @@ Status: released
 
 ## Problem
 
-GET `/` is a centered white stack. Hero mesh is washed out, bento cards and the waitlist sit on the same pale field, and the product frame is a flat CSS mock in document flow. A visitor cannot tell this is a layered SaaS landing.
+GET `/` hero mesh is washed out, waitlist sits on a pale field next to the product frame, and the product frame is a flat CSS mock in document flow. A visitor cannot tell this is a layered SaaS landing. Centered hero stack, `.bento` `canvas-subtle` fill, article `canvas` fill, and article `box-shadow` not `none` are leftover unused ([landing-modern.md](./landing-modern.md)).
 
 ## Acceptance criteria
 
 - [x] GET `/` `.product-shot` computed `transform` is not `none`
 - [x] GET `/` `.hero figure` computed `margin-bottom` is a negative value
-- [x] GET `/` `.bento` computed `background-color` is `rgb(248, 250, 252)`
-- [x] GET `/` `.bento article` computed `background-color` is `rgb(255, 255, 255)`
-- [x] GET `/` `.bento article` computed `box-shadow` is not `none`
+
 - [x] GET `/` `.waitlist-band` computed `background-color` is `rgb(15, 23, 42)`
 - [x] GET `/` heading `Join the waitlist` computed `color` is `rgb(255, 255, 255)`
 - [x] GET `/` the text `Leave your email. If you already have access, use Sign in.` computed `color` is `rgb(255, 255, 255)`
@@ -43,7 +41,7 @@ Screens: Landing. Primitives: Page, Card, AppBar, Button primary, Field, Footer.
 - Playwright computed colors: `canvas` `#FFFFFF` → `rgb(255, 255, 255)`, `canvas-subtle` `#F8FAFC` → `rgb(248, 250, 252)`, `ink` `#0F172A` → `rgb(15, 23, 42)`.
 - Form `waitlist-form` is `id="waitlist-form"`. It stays a Card (`canvas` fill, `line` border) on the ink waitlist band.
 - Existing accessible names, waitlist POST, and body `canvas`/`ink` from [public-face.md](./public-face.md) remain. Header `Event Model` / `Sign in` / `Open app` locators stay that file.
-- GET `/` with a Session still does not show a link `Sign in` (header shows `Open app`). Footer Sign in / Open app are leftover unused ([landing-fold.md](./landing-fold.md)). Leftover unused `.hero` `min-height` not `0px` is [landing-fold.md](./landing-fold.md).
+- GET `/` with a Session still does not show a link `Sign in` (header shows `Open app`). Footer Sign in / Open app are leftover unused ([landing-fold.md](./landing-fold.md)). Leftover unused `.hero` `min-height` not `0px` is [landing-fold.md](./landing-fold.md). Centered hero stack, `.bento` `canvas-subtle` fill, article `canvas` fill, and article `box-shadow` not `none` are leftover unused ([landing-modern.md](./landing-modern.md)).
 - `.hero`, `.product-shot`, `.bento`, `.waitlist-band` are the Landing section class names already on `public/index.html`.
 - `.bento article` computed proofs use the first article.
 - Negative `margin-bottom` on `.hero figure` is the overlap onto the next section.
@@ -54,13 +52,13 @@ Screens: Landing. Primitives: Page, Card, AppBar, Button primary, Field, Footer.
 
 ## Out of scope
 
-Dark mode. Public signup. Site admin waitlist table UI. Login restyle. Editor restyle. Mac window chrome. Editing behavior stays the released editor specs. Product-visual token *values* stay [product-visual.md](./product-visual.md). New product claims (pricing, SLA, "anyone can join"). Hosted-editor product frame on Landing (not Mac traffic lights) is [landing-saas-shot.md](./landing-saas-shot.md). Landing chrome depth (no URL bar; nav / bento / waitlist / footer lift) is [landing-chrome-depth.md](./landing-chrome-depth.md). First-screen product-shot visibility, leftover unused hero `min-height` not `0px`, and leftover unused footer Sign in / Open app are [landing-fold.md](./landing-fold.md).
+Dark mode. Public signup. Site admin waitlist table UI. Login restyle. Editor restyle. Mac window chrome. Editing behavior stays the released editor specs. Product-visual token *values* stay [product-visual.md](./product-visual.md). New product claims (pricing, SLA, "anyone can join"). Hosted-editor product frame on Landing (not Mac traffic lights) is [landing-saas-shot.md](./landing-saas-shot.md). Landing chrome depth (no URL bar; nav / waitlist / footer lift) is [landing-chrome-depth.md](./landing-chrome-depth.md). `.bento` lift is leftover unused ([landing-modern.md](./landing-modern.md)). First-screen product-shot visibility, leftover unused hero `min-height` not `0px`, and leftover unused footer Sign in / Open app are [landing-fold.md](./landing-fold.md). Split-hero grid, leftover unused centered hero stack, leftover unused `.bento` `canvas-subtle` fill, leftover unused article `canvas` fill, and leftover unused article `box-shadow` not `none` are [landing-modern.md](./landing-modern.md).
 
 ## Restates
 
-- [public-face.md](./public-face.md) — Copy, routes, waitlist POST, body `canvas`/`ink` stay that file. GET `/` `header` wordmark / `Sign in` / `Open app` stay that file (locators pinned to `header`). Footer Sign in / Open app are leftover unused ([landing-fold.md](./landing-fold.md)). Landing depth (product-shot transform, figure overlap, bento band, ink waitlist band, footer) is this slice. Hero `min-height` not `0px` is leftover unused ([landing-fold.md](./landing-fold.md)).
+- [public-face.md](./public-face.md) — Copy, routes, waitlist POST, body `canvas`/`ink` stay that file. GET `/` `header` wordmark / `Sign in` / `Open app` stay that file (locators pinned to `header`). Footer Sign in / Open app are leftover unused ([landing-fold.md](./landing-fold.md)). Landing depth (product-shot transform, figure overlap, ink waitlist band, footer) is this slice. `.bento` `canvas-subtle` fill is leftover unused ([landing-modern.md](./landing-modern.md)). Hero `min-height` not `0px` is leftover unused ([landing-fold.md](./landing-fold.md)).
 - [product-visual.md](./product-visual.md) — Token computed colors, waitlist Button primary, waitlist-form Card, and `header` link `Sign in` color stay that file. Landing depth is this slice.
-- [designed-surfaces.md](./designed-surfaces.md) — Viewport, flex header, padding, Inter, heading `56px`, `main` max-width `none`, and `header` link `Sign in` `:focus-visible` stay that file. Landing depth is this slice.
-- [design-system.md](../design-system.md) — Tokens stay that file. Footer primitive and `canvas-subtle` as a Landing band are this slice.
+- [designed-surfaces.md](./designed-surfaces.md) — Viewport, flex header, padding, Inter, heading `72px` at `1440x900` ([landing-modern.md](./landing-modern.md)), `main` max-width `none`, and `header` link `Sign in` `:focus-visible` stay that file. Landing depth is this slice.
+- [design-system.md](../design-system.md) — Tokens stay that file. Footer primitive is this slice. `canvas-subtle` as a Landing `.bento` band is leftover unused ([landing-modern.md](./landing-modern.md)).
 - [product.md](../product.md) — Contemporary SaaS on public HTML includes Landing depth (this slice), not a white stack of equal fields.
 - [architecture.md](../architecture.md) — Public-face still applies public tokens; designed-surfaces still applies composed spacing/Inter. Landing depth (layered fields, overlapping product frame, footer) is this slice.

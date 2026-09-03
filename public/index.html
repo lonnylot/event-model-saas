@@ -17,7 +17,7 @@
     </header>
     <main>
       <section class="hero">
-        <h1>Event Modeling for the whole team</h1>
+        <h1>Event Modeling for <span>the whole team</span></h1>
         <p>A Team shares one Event Model: a timeline of slices, not a file you pass around.</p>
         <p>
           <a class="btn-primary" href="#waitlist">Join the waitlist</a>
@@ -127,16 +127,63 @@
       </section>
       <section class="bento">
         <article>
-          <h2>The model lives with the team</h2>
-          <p>Every Event Model belongs to one Team. Every Person on that Team may edit it.</p>
+          <div class="team-shot" aria-hidden="true">
+            <div class="shot-h">Event Models</div>
+            <div class="team-row on">Library Checkout</div>
+            <div class="team-row">Fulfillment</div>
+            <div class="team-row">Notify</div>
+          </div>
+          <div>
+            <h2>The model lives with the team</h2>
+            <p>Every Event Model belongs to one Team. Every Person on that Team may edit it.</p>
+          </div>
         </article>
         <article>
-          <h2>A timeline of slices</h2>
-          <p>Each Slice is one vertical feature: Actor, Command, Event, Read Model, Automation.</p>
+          <div class="slice-shot" aria-hidden="true">
+            <div class="shot-board">
+              <div class="shot-lane-rail">
+                <div class="lane-label">Slice</div>
+                <div class="lane-label actor">Actor</div>
+                <div class="lane-label command">Command</div>
+                <div class="lane-label event">Event</div>
+                <div class="lane-label readmodel">Read Model</div>
+                <div class="lane-label automation">Automation</div>
+              </div>
+              <div class="shot-col">
+                <div class="slice-head">Checkout</div>
+                <div class="shot-lane actor">
+                  <span class="chip actor">Shopper</span>
+                </div>
+                <div class="shot-lane command">
+                  <span class="chip command">Place Order</span>
+                </div>
+                <div class="shot-lane event">
+                  <span class="chip event">Order Placed</span>
+                </div>
+                <div class="shot-lane readmodel">
+                  <span class="chip readmodel">Orders</span>
+                </div>
+                <div class="shot-lane automation">
+                  <span class="chip automation">Send Email</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2>A timeline of slices</h2>
+            <p>Each Slice is one vertical feature: Actor, Command, Event, Read Model, Automation.</p>
+          </div>
         </article>
         <article>
-          <h2>Invite-only, version-checked saves</h2>
-          <p>Magic-link sign-in. No public signup. Site admin sends Invites. Save is explicit.</p>
+          <div class="invite-shot" aria-hidden="true">
+            <div class="shot-h">Invite email</div>
+            <div class="invite-field">alex@example.com</div>
+            <div class="invite-save">Save</div>
+          </div>
+          <div>
+            <h2>Invite-only, version-checked saves</h2>
+            <p>Magic-link sign-in. No public signup. Site admin sends Invites. Save is explicit.</p>
+          </div>
         </article>
       </section>
       <section class="waitlist-band" id="waitlist">

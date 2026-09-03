@@ -1,0 +1,224 @@
+import { expect, test } from "@playwright/test";
+
+test("GET `/` at viewport `1440x900`, `.hero` computed `display` is `grid`", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/");
+  await expect(page.locator(".hero")).toHaveCSS("display", "grid");
+});
+
+test("GET `/` at viewport `1440x900`, heading `Event Modeling for the whole team` computed `text-align` is `start`", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/");
+  await expect(
+    page.getByRole("heading", {
+      name: "Event Modeling for the whole team",
+      exact: true,
+    }),
+  ).toHaveCSS("text-align", "start");
+});
+
+test("GET `/` at viewport `390x844`, heading `Event Modeling for the whole team` computed `text-align` is `start`", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  await expect(
+    page.getByRole("heading", {
+      name: "Event Modeling for the whole team",
+      exact: true,
+    }),
+  ).toHaveCSS("text-align", "start");
+});
+
+test("GET `/` at viewport `1440x900`, heading `Event Modeling for the whole team` computed `font-size` is `72px`", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/");
+  await expect(
+    page.getByRole("heading", {
+      name: "Event Modeling for the whole team",
+      exact: true,
+    }),
+  ).toHaveCSS("font-size", "72px");
+});
+
+test("GET `/` `.hero h1 span` computed `color` is `rgb(15, 118, 110)`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator(".hero h1 span")).toHaveCSS(
+    "color",
+    "rgb(15, 118, 110)",
+  );
+});
+
+test("GET `/` `header` link `Sign in` computed `border-top-width` is not `0px`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.locator("header").getByRole("link", {
+      name: "Sign in",
+      exact: true,
+    }),
+  ).not.toHaveCSS("border-top-width", "0px");
+});
+
+test("GET `/` without a Session, `.hero` link `Sign in` computed `border-top-width` is not `0px`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.locator(".hero").getByRole("link", {
+      name: "Sign in",
+      exact: true,
+    }),
+  ).not.toHaveCSS("border-top-width", "0px");
+});
+
+test("GET `/` with a Session, `header` link `Open app` computed `border-top-width` is not `0px`", async ({
+  page,
+}) => {
+  await page.request.post("/api/test/non-admin-session");
+  await page.goto("/");
+  await expect(
+    page.locator("header").getByRole("link", {
+      name: "Open app",
+      exact: true,
+    }),
+  ).not.toHaveCSS("border-top-width", "0px");
+});
+
+test("GET `/` with a Session, `.hero` link `Open app` computed `border-top-width` is not `0px`", async ({
+  page,
+}) => {
+  await page.request.post("/api/test/non-admin-session");
+  await page.goto("/");
+  await expect(
+    page.locator(".hero").getByRole("link", {
+      name: "Open app",
+      exact: true,
+    }),
+  ).not.toHaveCSS("border-top-width", "0px");
+});
+
+test("GET `/` at viewport `1440x900`, `.bento` computed `background-color` is `rgba(0, 0, 0, 0)`", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/");
+  await expect(page.locator(".bento")).toHaveCSS(
+    "background-color",
+    "rgba(0, 0, 0, 0)",
+  );
+});
+
+test("GET `/` at viewport `1440x900`, `.bento article` computed `box-shadow` is `none`", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/");
+  await expect(page.locator(".bento article").first()).toHaveCSS(
+    "box-shadow",
+    "none",
+  );
+});
+
+test("GET `/` at viewport `390x844`, `.bento article` computed `box-shadow` is `none`", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  await expect(page.locator(".bento article").first()).toHaveCSS(
+    "box-shadow",
+    "none",
+  );
+});
+
+test("GET `/` at viewport `1440x900`, `.bento article` computed `background-color` is `rgba(0, 0, 0, 0)`", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/");
+  await expect(page.locator(".bento article").first()).toHaveCSS(
+    "background-color",
+    "rgba(0, 0, 0, 0)",
+  );
+});
+
+test("GET `/` `.bento` first `article` has `.team-shot`", async ({ page }) => {
+  await page.goto("/");
+  await expect(
+    page.locator(".bento article").nth(0).locator(".team-shot"),
+  ).toHaveCount(1);
+});
+
+test("GET `/` `.bento` second `article` has `.slice-shot`", async ({ page }) => {
+  await page.goto("/");
+  await expect(
+    page.locator(".bento article").nth(1).locator(".slice-shot"),
+  ).toHaveCount(1);
+});
+
+test("GET `/` `.bento` third `article` has `.invite-shot`", async ({ page }) => {
+  await page.goto("/");
+  await expect(
+    page.locator(".bento article").nth(2).locator(".invite-shot"),
+  ).toHaveCount(1);
+});
+
+test("GET `/` `.hero .product-shot` computed `animation-name` is not `none`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator(".hero .product-shot")).not.toHaveCSS(
+    "animation-name",
+    "none",
+  );
+});
+
+test("GET `/` with `prefers-reduced-motion: reduce`, `.hero .product-shot` computed `animation-name` is `none`", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  await expect(page.locator(".hero .product-shot")).toHaveCSS(
+    "animation-name",
+    "none",
+  );
+});
+
+test("GET `/` at viewport `390x844`, `.hero` computed `padding-top` is `56px`", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  await expect(page.locator(".hero")).toHaveCSS("padding-top", "56px");
+});
+
+test("GET `/` at viewport `390x844`, `.hero .product-shot .shot-col` computed `flex-grow` is `1`", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  await expect(page.locator(".hero .product-shot .shot-col").first()).toHaveCSS(
+    "flex-grow",
+    "1",
+  );
+});
+
+test("GET `/` at viewport `390x844`, `.hero .product-shot .shot-lane-rail` computed `display` is `flex`", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  await expect(page.locator(".hero .product-shot .shot-lane-rail")).toHaveCSS(
+    "display",
+    "flex",
+  );
+});
