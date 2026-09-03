@@ -139,3 +139,14 @@ test("GET `/` at viewport `390x844`, `.bento article` computed `box-shadow` is `
     "none",
   );
 });
+
+test("GET `/` at viewport `1440x900`, `.bento article` computed `background-color` is `rgba(0, 0, 0, 0)`", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/");
+  await expect(page.locator(".bento article").first()).toHaveCSS(
+    "background-color",
+    "rgba(0, 0, 0, 0)",
+  );
+});

@@ -603,12 +603,11 @@ body.landing .bento {
   box-shadow: none;
 }
 body.landing .bento article {
-  background: #ffffff;
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 14px;
-  padding: 1.4rem 1.35rem 1.2rem;
-  text-align: left;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  text-align: start;
   box-shadow: none;
 }
 body.landing .bento p:last-child {
