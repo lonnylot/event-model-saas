@@ -901,8 +901,7 @@ body.landing footer a:has(img) {
     grid-template-columns: minmax(0, 1fr);
   }
   .product-shot .shot-rail,
-  .product-shot .shot-inspector,
-  .product-shot .shot-lane-rail {
+  .product-shot .shot-inspector {
     display: none;
   }
   .product-shot .shot-col + .shot-col {

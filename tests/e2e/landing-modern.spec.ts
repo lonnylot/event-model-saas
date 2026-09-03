@@ -211,3 +211,14 @@ test("GET `/` at viewport `390x844`, `.hero .product-shot .shot-col` computed `f
     "1",
   );
 });
+
+test("GET `/` at viewport `390x844`, `.hero .product-shot .shot-lane-rail` computed `display` is `flex`", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  await expect(page.locator(".hero .product-shot .shot-lane-rail")).toHaveCSS(
+    "display",
+    "flex",
+  );
+});
