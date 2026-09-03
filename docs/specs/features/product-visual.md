@@ -107,7 +107,7 @@ Event Model, Person, Site admin, Session, Team, Slice, Actor, Command, Event, Re
 
 ## UI
 
-Screens: Landing, Login, Not found, Expired link, App, Team picker, Team, Teams admin, Editor. Primitives this slice composes: Page (`type` on Landing, Login, Not found, Expired link, site-admin no-teams `/app`, guest `/app`, picker, team, Teams admin, and Editor; `canvas` background on signed-in `/app` (site-admin no-teams, guest, picker), team, Teams admin, and Editor; `ink` text on site-admin no-teams `/app`, guest `/app`, picker, team, Teams admin, and Editor). Public Page `canvas` background and `ink` text are [public-face.md](./public-face.md). AppBar, Marketing header, Card, Field (`line` border and `radius`; not `canvas` fill), Button primary (`accent` / `on-accent` / `radius` on `Email me a link`, `Join the waitlist`, `Create team`, `Create model`, `Send invite`, `Save`, expired `Sign in`), sticky-note block fills. Inventory: [design-system.md](../design-system.md).
+Screens: Landing, Login, Not found, Expired link, App, Team picker, Team, Teams admin, Editor. Primitives this slice composes: Page (`type` on Landing, Login, Not found, Expired link, site-admin no-teams `/app`, guest `/app`, picker, team, Teams admin, and Editor; `canvas` background on signed-in `/app` (site-admin no-teams, guest, picker), team, Teams admin, and Editor; `ink` text on site-admin no-teams `/app`, guest `/app`, picker, team, Teams admin, and Editor). Public Page `canvas` background and `ink` text are [public-face.md](./public-face.md). AppBar, Marketing header, Card, Field (`line` border and `radius`; not `canvas` fill), Button primary (`accent` / `on-accent` / `radius` on `Email me a link`, `Join the waitlist`, `Create team`, `Create model`, `Send invite`, `Save`, expired `Sign in`; `Create model` `border-top-width` `0px` is [create-model-border.md](./create-model-border.md)), sticky-note block fills. Inventory: [design-system.md](../design-system.md).
 
 ## Assumptions
 
@@ -122,7 +122,7 @@ Screens: Landing, Login, Not found, Expired link, App, Team picker, Team, Teams 
 
 ## Out of scope
 
-Dark mode. Public signup. Site admin waitlist table UI. Mac window chrome. Editing behavior (New Slice, Save, drag, inspect) stays the released editor specs. Composed look (spacing, AppBar flex, Card padding, viewport, focus-visible, contrast proofs, Google Fonts Inter) is [designed-surfaces.md](./designed-surfaces.md). Landing depth is [landing-depth.md](./landing-depth.md). Muted color on the hero sentence `A Team shares one Event Model: a timeline of slices, not a file you pass around.` stays this file; `One Event Model, signed in. No passing files around.` is leftover unused ([landing-fold.md](./landing-fold.md)).
+Dark mode. Public signup. Site admin waitlist table UI. Mac window chrome. Editing behavior (New Slice, Save, drag, inspect) stays the released editor specs. Composed look (spacing, AppBar flex, Card padding, viewport, focus-visible, contrast proofs, Google Fonts Inter) is [designed-surfaces.md](./designed-surfaces.md). Landing depth is [landing-depth.md](./landing-depth.md). Muted color on the hero sentence `A Team shares one Event Model: a timeline of slices, not a file you pass around.` stays this file; `One Event Model, signed in. No passing files around.` is leftover unused ([landing-fold.md](./landing-fold.md)). Create model `border-top-width` `0px` is [create-model-border.md](./create-model-border.md).
 
 ## Restates
 

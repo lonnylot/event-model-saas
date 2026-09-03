@@ -48,7 +48,7 @@ Screens: Landing, Login, App, Team picker, Team, Teams admin, Editor. Primitives
 - Playwright unique checkout `PORT` / `INSPECTOR_PORT` and `TEST_MAIL=1` `workers` `1` stay [public-face.md](./public-face.md).
 - The Mac `AppIcon.appiconset` has no PNG files. The SaaS logo is the existing two-slice mark in `public/favicon.png` (ink, accent, canvas; no letters) from [public-face.md](./public-face.md) / [design-system.md](../design-system.md). Do not invent a second mark.
 - Header mark `img` is decorative (`alt=""`) so it does not compete with the wordmark `Event Model` or the Landing image `Event Model editor`.
-- GET `/app/teams/{id}` Create model and Untitled title links stay [model-persistence.md](./model-persistence.md). Team heading stays [teams-and-invites.md](./teams-and-invites.md).
+- GET `/app/teams/{id}` Create model and Untitled title links stay [model-persistence.md](./model-persistence.md). Team heading stays [teams-and-invites.md](./teams-and-invites.md). Create model `border-top-width` `0px` is [create-model-border.md](./create-model-border.md).
 - Editor Save, Export, Sign out, New Slice, zoom stay [editor-shell.md](./editor-shell.md) / [model-persistence.md](./model-persistence.md).
 - Editor `nav` Teams admin follows [admin-nav.md](./admin-nav.md): site admin only.
 - GET `/app/teams/{id}/models/{mid}` as a member shows the Team name stays [editor-shell.md](./editor-shell.md); this slice makes that name a link to the Team page.
@@ -58,7 +58,7 @@ Screens: Landing, Login, App, Team picker, Team, Teams admin, Editor. Primitives
 
 ## Out of scope
 
-Dark mode. Public signup. Site admin waitlist table UI. A new drawn mark (Imagine or otherwise). Mac window chrome. Import button on the Team page. Per-model ACLs. Landing hero restyle. Login form restyle beyond the header mark. Editor canvas restyle. New product claims (pricing, SLA, "anyone can join"). Product-visual token *values* stay [product-visual.md](./product-visual.md). Footer Mark on Landing is [landing-fold.md](./landing-fold.md).
+Dark mode. Public signup. Site admin waitlist table UI. A new drawn mark (Imagine or otherwise). Mac window chrome. Import button on the Team page. Per-model ACLs. Landing hero restyle. Login form restyle beyond the header mark. Editor canvas restyle. New product claims (pricing, SLA, "anyone can join"). Product-visual token *values* stay [product-visual.md](./product-visual.md). Footer Mark on Landing is [landing-fold.md](./landing-fold.md). Create model `border-top-width` `0px` is [create-model-border.md](./create-model-border.md).
 
 ## Restates
 
