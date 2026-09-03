@@ -182,3 +182,12 @@ test("GET `/` with a Session, the `.hero` link `Open app` has `href` `/app`", as
     }),
   ).toHaveAttribute("href", "/app");
 });
+
+test("GET `/` `.product-shot` does not show the text `lonny@lonnylot.com`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator(".product-shot")).not.toContainText(
+    "lonny@lonnylot.com",
+  );
+});

@@ -337,11 +337,6 @@ body.landing .hero figure::before {
   flex-wrap: nowrap;
   justify-content: flex-end;
 }
-.product-shot .shot-email {
-  font-size: 0.65rem;
-  color: #64748b;
-  margin: 0 0.2rem;
-}
 .product-shot .shot-btn {
   font-size: 0.65rem;
   font-weight: 500;
@@ -678,9 +673,6 @@ body.landing footer a:has(img) {
   }
   .product-shot {
     transform: rotateX(7deg);
-  }
-  .product-shot .shot-email {
-    display: none;
   }
   .product-shot .shot-toolbar {
     flex-wrap: wrap;

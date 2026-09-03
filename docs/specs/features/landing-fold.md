@@ -14,7 +14,7 @@ GET `/` spends the first viewport on a tall empty hero. The product frame is cut
 - [x] GET `/` without a Session, the `.hero` link `Sign in` has `href` `/login`
 - [x] GET `/` with a Session, `.hero` shows a link whose accessible name is `Open app`
 - [x] GET `/` with a Session, the `.hero` link `Open app` has `href` `/app`
-- [ ] GET `/` `.product-shot` does not show the text `lonny@lonnylot.com`
+- [x] GET `/` `.product-shot` does not show the text `lonny@lonnylot.com`
 - [ ] GET `/` `.product-shot` shows the text `Command → Event Happened`
 - [x] GET `/` without a Session shows the text `Every Event Model belongs to one Team. Every Person on that Team may edit it.`
 - [x] GET `/` without a Session shows the text `Each Slice is one vertical feature: Actor, Command, Event, Read Model, Automation.`
