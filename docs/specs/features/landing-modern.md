@@ -27,7 +27,7 @@ GET `/` is a centered brochure: stacked headline, pill CTA, product frame, three
 - [x] GET `/` with `prefers-reduced-motion: reduce`, `.hero .product-shot` computed `animation-name` is `none`
 - [x] GET `/` at viewport `390x844`, heading `Event Modeling for the whole team` computed `text-align` is `start`
 - [x] GET `/` at viewport `390x844`, `.hero` computed `padding-top` is `56px`
-- [ ] GET `/` at viewport `390x844`, `.hero .product-shot .shot-col` computed `flex-grow` is `1`
+- [x] GET `/` at viewport `390x844`, `.hero .product-shot .shot-col` computed `flex-grow` is `1`
 - [ ] GET `/` at viewport `390x844`, `.hero .product-shot .shot-lane-rail` computed `display` is `flex`
 
 ## Domain terms

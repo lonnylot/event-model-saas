@@ -908,6 +908,11 @@ body.landing footer a:has(img) {
   .product-shot .shot-col + .shot-col {
     display: none;
   }
+  .hero .product-shot .shot-col {
+    flex-grow: 1;
+    width: auto;
+    flex-basis: auto;
+  }
   body.landing #waitlist-form {
     flex-direction: column;
     align-items: stretch;
