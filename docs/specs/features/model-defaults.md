@@ -1,6 +1,6 @@
 # Model defaults
 
-Status: validated
+Status: released
 
 ## Problem
 
