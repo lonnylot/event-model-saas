@@ -33,7 +33,7 @@ export async function createModel(
             id: runtime.randomId(),
             title: "New Slice",
             sliceType: "STATE_CHANGE",
-            actors: [{ id: runtime.randomId() }],
+            actors: [{ id: runtime.randomId(), name: "Actor" }],
           },
         ],
         connections: [],

@@ -8,7 +8,7 @@ Status: released
 
 ## Acceptance criteria
 
-- [x] After clicking `New Slice` then `Add Actor`, pressing ⌘Z does not show a listitem whose accessible name is `Actor`
+- [x] After clicking `New Slice` then `Add Actor`, pressing ⌘Z shows 1 listitem whose accessible name is `Actor`
 - [x] After clicking `New Slice` then `Add Event`, pressing ⌘Z does not show a listitem whose accessible name is `Event Happened`
 - [x] After clicking `New Slice` then `Add Read Model`, pressing ⌘Z does not show a listitem whose accessible name is `Read Model`
 - [x] After clicking `New Slice` then `Add Automation`, pressing ⌘Z does not show a listitem whose accessible name is `Automation`
@@ -16,12 +16,12 @@ Status: released
 - [x] After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing Backspace, then pressing ⌘Z, the remaining Slice `id` is the Slice that was last and the first Slice `id` is the Slice that was first
 - [x] After clicking `New Slice` then `Add Command` twice, clicking the first Timeline `Command` listitem then the Timeline region, pressing Backspace, then pressing ⌘Z, the remaining Command `id` is the Command that was last and the first Command `id` is the Command that was first
 - [x] After dragging from `Command port` onto `Event Happened port` twice, clicking the first Timeline text `Command → Event Happened` then the Timeline region, pressing Backspace, then pressing ⌘Z, the remaining connection `id` is the connection that was last and the first connection `id` is the connection that was first
-- [x] After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem then the Timeline region, pressing Backspace, then pressing ⌘Z, the remaining Actor `id` is the Actor that was last and the first Actor `id` is the Actor that was first
+- [x] After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem on the last Slice then the Timeline region, pressing Backspace, then pressing ⌘Z, the remaining Actor `id` on the last Slice is the Actor that was last and the first Actor `id` is the Actor that was first
 - [x] After clicking `New Slice` then `Add Event` twice, clicking the first Timeline `Event Happened` listitem then the Timeline region, pressing Backspace, then pressing ⌘Z, the remaining Event `id` is the Event that was last and the first Event `id` is the Event that was first
 - [x] After clicking `New Slice` then `Add Read Model` twice, clicking the first Timeline `Read Model` listitem then the Timeline region, pressing Backspace, then pressing ⌘Z, the remaining Read Model `id` is the Read Model that was last and the first Read Model `id` is the Read Model that was first
 - [x] After clicking `New Slice` then `Add Automation` twice, clicking the first Timeline `Automation` listitem then the Timeline region, pressing Backspace, then pressing ⌘Z, the remaining Automation `id` is the Automation that was last and the first Automation `id` is the Automation that was first
 - [x] After clicking `New Slice` then `Add Command`, pressing ⌘Z, then pressing ⇧⌘Z, the Timeline region shows a listitem whose accessible name is `Command`
-- [x] After clicking `New Slice` then `Add Actor`, pressing ⌘Z, then pressing ⇧⌘Z, the Timeline region shows a listitem whose accessible name is `Actor`
+- [x] After clicking `New Slice` then `Add Actor`, pressing ⌘Z, then pressing ⇧⌘Z, the Timeline region shows 2 listitem whose accessible name is `Actor`
 - [x] After clicking `New Slice` then `Add Event`, pressing ⌘Z, then pressing ⇧⌘Z, the Timeline region shows a listitem whose accessible name is `Event Happened`
 - [x] After clicking `New Slice` then `Add Read Model`, pressing ⌘Z, then pressing ⇧⌘Z, the Timeline region shows a listitem whose accessible name is `Read Model`
 - [x] After clicking `New Slice` then `Add Automation`, pressing ⌘Z, then pressing ⇧⌘Z, the Timeline region shows a listitem whose accessible name is `Automation`
@@ -29,7 +29,7 @@ Status: released
 - [x] After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing Backspace, pressing ⌘Z, then pressing ⇧⌘Z, the remaining Slice `id` is the Slice that was last
 - [x] After clicking `New Slice` then `Add Command` twice, clicking the first Timeline `Command` listitem then the Timeline region, pressing Backspace, pressing ⌘Z, then pressing ⇧⌘Z, the remaining Command `id` is the Command that was last
 - [x] After dragging from `Command port` onto `Event Happened port` twice, clicking the first Timeline text `Command → Event Happened` then the Timeline region, pressing Backspace, pressing ⌘Z, then pressing ⇧⌘Z, the remaining connection `id` is the connection that was last
-- [x] After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem then the Timeline region, pressing Backspace, pressing ⌘Z, then pressing ⇧⌘Z, the remaining Actor `id` is the Actor that was last
+- [x] After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem on the last Slice then the Timeline region, pressing Backspace, pressing ⌘Z, then pressing ⇧⌘Z, the remaining Actor `id` on the last Slice is the Actor that was last
 - [x] After clicking `New Slice` then `Add Event` twice, clicking the first Timeline `Event Happened` listitem then the Timeline region, pressing Backspace, pressing ⌘Z, then pressing ⇧⌘Z, the remaining Event `id` is the Event that was last
 - [x] After clicking `New Slice` then `Add Read Model` twice, clicking the first Timeline `Read Model` listitem then the Timeline region, pressing Backspace, pressing ⌘Z, then pressing ⇧⌘Z, the remaining Read Model `id` is the Read Model that was last
 - [x] After clicking `New Slice` then `Add Automation` twice, clicking the first Timeline `Automation` listitem then the Timeline region, pressing Backspace, pressing ⌘Z, then pressing ⇧⌘Z, the remaining Automation `id` is the Automation that was last
@@ -61,6 +61,7 @@ Extra undo toolbar. Mac window chrome. Undo New Slice, undo Connection (without 
 
 ## Restates
 
+- [model-defaults.md](./model-defaults.md) — After clicking `New Slice` then `Add Actor`, ⌘Z leaves the Create default `Actor` (1 listitem). Redo shows 2. Count `0` is leftover unused.
 - [canvas-rest.md](./canvas-rest.md) — Undo Add Command stays that file. Undo of remaining Adds, move, delete, and redo are this slice.
 - [connection-refusals.md](./connection-refusals.md) — After a refused second Command → Event, ⌘Z four times shows 1 New Slice (Add Event is on the undo stack; Create default remains). Three presses no longer reach the clicked New Slice. Port onto a Slice stays that file.
 - [canvas.md](./canvas.md) — Undo of remaining Adds, move, delete, and redo are this slice. Undo New Slice and undo Connection without a prior delete stay that file.

@@ -94,3 +94,14 @@ test("GET `/app/teams/{id}/models/{mid}` as a member after Create model shows a 
     page.getByRole("listitem", { name: "New Slice", exact: true }),
   ).toBeVisible();
 });
+
+test("GET `/app/teams/{id}/models/{mid}` as a member after Create model shows a listitem whose accessible name is `Actor` in the Timeline region", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Actor", exact: true }),
+  ).toBeVisible();
+});

@@ -14,13 +14,13 @@ POST Create model writes `{ title: "Untitled", slices: [] }`. The hosted editor 
 - [x] POST `/api/teams/{id}/models` as a member writes a document whose first Slice `title` is `New Slice`
 - [x] POST `/api/teams/{id}/models` as a member writes a document whose first Slice `sliceType` is `STATE_CHANGE`
 - [x] POST `/api/teams/{id}/models` as a member writes a document whose first Slice `actors` length is `1`
-- [ ] POST `/api/teams/{id}/models` as a member writes a document whose first Slice first Actor `name` is `Actor`
+- [x] POST `/api/teams/{id}/models` as a member writes a document whose first Slice first Actor `name` is `Actor`
 - [ ] POST `/api/teams/{id}/models` as a member writes a document whose first Slice `commands` is `[]`
 - [ ] POST `/api/teams/{id}/models` as a member writes a document whose first Slice `events` is `[]`
 - [ ] POST `/api/teams/{id}/models` as a member writes a document whose first Slice `readModels` is `[]`
 - [ ] POST `/api/teams/{id}/models` as a member writes a document whose first Slice `processors` is `[]`
 - [x] GET `/app/teams/{id}/models/{mid}` as a member after Create model shows a listitem whose accessible name is `New Slice`
-- [ ] GET `/app/teams/{id}/models/{mid}` as a member after Create model shows a listitem whose accessible name is `Actor` in the Timeline region
+- [x] GET `/app/teams/{id}/models/{mid}` as a member after Create model shows a listitem whose accessible name is `Actor` in the Timeline region
 
 ## Domain terms
 
@@ -62,4 +62,4 @@ Renaming Untitled. Changing New Slice click defaults. Import. Sample Library Che
 - [canvas.md](./canvas.md) — After clicking `New Slice`, pressing ⌘Z leaves the Create default `New Slice` (1 listitem). Count `0` is leftover unused.
 - [connection-refusals.md](./connection-refusals.md) — ⌘Z four times after a refused duplicate Command → Event leaves the Create default `New Slice` (1 listitem). Count `0` is leftover unused.
 - [canvas-rest.md](./canvas-rest.md) — Restates of four-press undo still names Add Command on the stack; count `0` is leftover unused.
-- [undo-rest.md](./undo-rest.md) — Restates of four-press undo still names Add Event on the stack; count `0` is leftover unused.
+- [undo-rest.md](./undo-rest.md) — Restates of four-press undo still names Add Event on the stack; count `0` is leftover unused. After clicking `New Slice` then `Add Actor`, ⌘Z leaves the Create default `Actor` (1 listitem); redo shows 2.
