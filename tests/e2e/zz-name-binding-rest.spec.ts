@@ -445,13 +445,45 @@ test("After clicking `New Slice` then `Add Automation` then `Save` on that page,
 });
 
 async function addTwoSlicesClickFirstFillDescription(page: Page) {
-  await openUntitledModel(page);
+  await page.goto("/app");
+  const createTeam = page.getByRole("textbox", {
+    name: "Team name",
+    exact: true,
+  });
+  if (await createTeam.isVisible()) {
+    await createTeam.fill("Library");
+    await page.getByRole("button", { name: "Create team", exact: true }).click();
+    await expect(
+      page.getByRole("heading", { name: "Library", exact: true }),
+    ).toBeVisible();
+  }
+  const teamId = new URL(page.url()).pathname.split("/")[3];
+  const imported = await page.request.post(`/api/teams/${teamId}/imports`, {
+    data: {
+      document: {
+        format: "eventmodel",
+        schemaVersion: 1,
+        id: crypto.randomUUID(),
+        title: "Empty Import",
+        slices: [],
+      },
+    },
+  });
+  expect(imported.status()).toBe(201);
+  await page.goto("/app");
+  await page.getByRole("link", { name: "Empty Import", exact: true }).last().click();
+  await expect(
+    page.getByRole("heading", { name: "Empty Import", exact: true }),
+  ).toBeVisible();
+  await page.waitForLoadState("networkidle");
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }),
-  ).toHaveCount(5);
+  ).toHaveCount(4);
   await page
+    .locator("ul")
+    .first()
     .getByRole("listitem", { name: "New Slice", exact: true })
     .first()
     .click();
@@ -637,13 +669,45 @@ test("After clicking `New Slice` then `Add Automation` twice, clicking the first
 });
 
 async function addTwoSlicesClickFirstSelectStateView(page: Page) {
-  await openUntitledModel(page);
+  await page.goto("/app");
+  const createTeam = page.getByRole("textbox", {
+    name: "Team name",
+    exact: true,
+  });
+  if (await createTeam.isVisible()) {
+    await createTeam.fill("Library");
+    await page.getByRole("button", { name: "Create team", exact: true }).click();
+    await expect(
+      page.getByRole("heading", { name: "Library", exact: true }),
+    ).toBeVisible();
+  }
+  const teamId = new URL(page.url()).pathname.split("/")[3];
+  const imported = await page.request.post(`/api/teams/${teamId}/imports`, {
+    data: {
+      document: {
+        format: "eventmodel",
+        schemaVersion: 1,
+        id: crypto.randomUUID(),
+        title: "Empty Import",
+        slices: [],
+      },
+    },
+  });
+  expect(imported.status()).toBe(201);
+  await page.goto("/app");
+  await page.getByRole("link", { name: "Empty Import", exact: true }).last().click();
+  await expect(
+    page.getByRole("heading", { name: "Empty Import", exact: true }),
+  ).toBeVisible();
+  await page.waitForLoadState("networkidle");
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }),
-  ).toHaveCount(5);
+  ).toHaveCount(4);
   await page
+    .locator("ul")
+    .first()
     .getByRole("listitem", { name: "New Slice", exact: true })
     .first()
     .click();
