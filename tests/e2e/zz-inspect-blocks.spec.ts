@@ -87,10 +87,13 @@ async function openUntitledModel(page: Page) {
 }
 
 async function clickNewSlice(page: Page) {
+  const count =
+    (await page.getByRole("listitem", { name: "New Slice", exact: true }).count()) +
+    2;
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
-    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
-  ).toBeVisible();
+    page.getByRole("listitem", { name: "New Slice", exact: true }),
+  ).toHaveCount(count);
 }
 
 test("After clicking `New Slice` then `Add Command` on that page, clicking the Timeline `Command` listitem shows a textbox whose accessible name is `Name` in the Inspector region", async ({
@@ -144,7 +147,7 @@ test("Filling the Inspector `Name` textbox with `Place Order` after selecting `C
   const json = await page
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
-  expect(JSON.parse(json ?? "{}").slices?.[0]?.commands?.at(-1)?.title).toBe(
+  expect(JSON.parse(json ?? "{}").slices?.at(-1)?.commands?.at(-1)?.title).toBe(
     "Place Order",
   );
 });
@@ -226,7 +229,7 @@ test("Filling the Inspector `Name` textbox with `Order Placed` after selecting `
   const json = await page
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
-  expect(JSON.parse(json ?? "{}").slices?.[0]?.events?.at(-1)?.title).toBe(
+  expect(JSON.parse(json ?? "{}").slices?.at(-1)?.events?.at(-1)?.title).toBe(
     "Order Placed",
   );
 });
@@ -308,7 +311,7 @@ test("Filling the Inspector `Name` textbox with `Orders` after selecting `Read M
   const json = await page
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
-  expect(JSON.parse(json ?? "{}").slices?.[0]?.readModels?.at(-1)?.title).toBe(
+  expect(JSON.parse(json ?? "{}").slices?.at(-1)?.readModels?.at(-1)?.title).toBe(
     "Orders",
   );
 });
@@ -390,7 +393,7 @@ test("Filling the Inspector `Name` textbox with `Send Email` after selecting `Au
   const json = await page
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
-  expect(JSON.parse(json ?? "{}").slices?.[0]?.processors?.at(-1)?.title).toBe(
+  expect(JSON.parse(json ?? "{}").slices?.at(-1)?.processors?.at(-1)?.title).toBe(
     "Send Email",
   );
 });

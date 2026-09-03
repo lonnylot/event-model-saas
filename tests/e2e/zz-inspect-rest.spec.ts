@@ -87,10 +87,13 @@ async function openUntitledModel(page: Page) {
 }
 
 async function clickNewSlice(page: Page) {
+  const count =
+    (await page.getByRole("listitem", { name: "New Slice", exact: true }).count()) +
+    2;
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
-    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
-  ).toBeVisible();
+    page.getByRole("listitem", { name: "New Slice", exact: true }),
+  ).toHaveCount(count);
 }
 
 async function dragPort(page: Page, fromName: string, toName: string) {
@@ -193,7 +196,12 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks the `
 }) => {
   await openUntitledModel(page);
   await clickNewSlice(page);
-  await page.getByRole("listitem", { name: "New Slice", exact: true }).first().click();
+  await page
+    .locator("ul")
+    .first()
+    .getByRole("listitem", { name: "New Slice", exact: true })
+    .last()
+    .click();
   await page
     .getByRole("region", { name: "Inspector", exact: true })
     .getByRole("combobox", { name: "Type", exact: true })
@@ -207,7 +215,12 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks the `
     page.getByRole("button", { name: "Save", exact: true }).click(),
   ]);
   await page.reload();
-  await page.getByRole("listitem", { name: "New Slice", exact: true }).first().click();
+  await page
+    .locator("ul")
+    .first()
+    .getByRole("listitem", { name: "New Slice", exact: true })
+    .last()
+    .click();
   await expect(
     page
       .getByRole("region", { name: "Inspector", exact: true })
@@ -258,7 +271,12 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks the `
 }) => {
   await openUntitledModel(page);
   await clickNewSlice(page);
-  await page.getByRole("listitem", { name: "New Slice", exact: true }).first().click();
+  await page
+    .locator("ul")
+    .first()
+    .getByRole("listitem", { name: "New Slice", exact: true })
+    .last()
+    .click();
   await page
     .getByRole("region", { name: "Inspector", exact: true })
     .getByRole("textbox", { name: "Name", exact: true })
@@ -285,7 +303,12 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks the `
 }) => {
   await openUntitledModel(page);
   await clickNewSlice(page);
-  await page.getByRole("listitem", { name: "New Slice", exact: true }).first().click();
+  await page
+    .locator("ul")
+    .first()
+    .getByRole("listitem", { name: "New Slice", exact: true })
+    .last()
+    .click();
   await page
     .getByRole("region", { name: "Inspector", exact: true })
     .getByRole("textbox", { name: "Description", exact: true })
@@ -299,7 +322,12 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks the `
     page.getByRole("button", { name: "Save", exact: true }).click(),
   ]);
   await page.reload();
-  await page.getByRole("listitem", { name: "New Slice", exact: true }).first().click();
+  await page
+    .locator("ul")
+    .first()
+    .getByRole("listitem", { name: "New Slice", exact: true })
+    .last()
+    .click();
   await expect(
     page
       .getByRole("region", { name: "Inspector", exact: true })
@@ -316,6 +344,7 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add 
   await page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Actor", exact: true })
+    .last()
     .click();
   await page
     .getByRole("region", { name: "Inspector", exact: true })
@@ -333,6 +362,7 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add 
   await page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Actor", exact: true })
+    .last()
     .click();
   await expect(
     page

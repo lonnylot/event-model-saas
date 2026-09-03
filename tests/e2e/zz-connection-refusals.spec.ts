@@ -355,7 +355,7 @@ test("After dragging from `Command port` onto `Event Happened port`, dragging fr
   ).toContainText("That connection already exists.");
 });
 
-test("After dragging from `Command port` onto `Event Happened port`, dragging from `Command port` onto `Event Happened port` again, pressing ⌘Z four times does not show a listitem whose accessible name is `New Slice`", async ({
+test("After dragging from `Command port` onto `Event Happened port`, dragging from `Command port` onto `Event Happened port` again, pressing ⌘Z four times shows 1 listitem whose accessible name is `New Slice`", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -380,7 +380,7 @@ test("After dragging from `Command port` onto `Event Happened port`, dragging fr
   await page.keyboard.press("ControlOrMeta+z");
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }),
-  ).toHaveCount(0);
+  ).toHaveCount(1);
 });
 
 test("After dragging from `Event Happened port` onto `Read Model port`, dragging from `Event Happened port` onto `Read Model port` again shows the text `That connection already exists.` in the Event Happened listitem", async ({
@@ -511,11 +511,11 @@ test("Dragging from `Command port` onto the Timeline `Actor` listitem does not a
     page.getByRole("button", { name: "Command port", exact: true }),
   ).toBeVisible();
   await expect(
-    page.getByRole("listitem", { name: "Actor", exact: true }),
+    page.getByRole("listitem", { name: "Actor", exact: true }).last(),
   ).toBeVisible();
   await page
     .getByRole("button", { name: "Command port", exact: true })
-    .dragTo(page.getByRole("listitem", { name: "Actor", exact: true }));
+    .dragTo(page.getByRole("listitem", { name: "Actor", exact: true }).last());
   const json = await page.locator("#event-model-document").textContent();
   expect(JSON.parse(json ?? "{}").connections ?? []).toEqual([]);
 });
@@ -531,11 +531,11 @@ test("Dragging from `Command port` onto the Timeline `Actor` listitem shows the 
     page.getByRole("button", { name: "Command port", exact: true }),
   ).toBeVisible();
   await expect(
-    page.getByRole("listitem", { name: "Actor", exact: true }),
+    page.getByRole("listitem", { name: "Actor", exact: true }).last(),
   ).toBeVisible();
   await page
     .getByRole("button", { name: "Command port", exact: true })
-    .dragTo(page.getByRole("listitem", { name: "Actor", exact: true }));
+    .dragTo(page.getByRole("listitem", { name: "Actor", exact: true }).last());
   await expect(
     page.getByRole("listitem", { name: "Command", exact: true }),
   ).toContainText("An actor isn't a connection endpoint.");
@@ -552,11 +552,11 @@ test("Dragging from `Event Happened port` onto the Timeline `Actor` listitem sho
     page.getByRole("button", { name: "Event Happened port", exact: true }),
   ).toBeVisible();
   await expect(
-    page.getByRole("listitem", { name: "Actor", exact: true }),
+    page.getByRole("listitem", { name: "Actor", exact: true }).last(),
   ).toBeVisible();
   await page
     .getByRole("button", { name: "Event Happened port", exact: true })
-    .dragTo(page.getByRole("listitem", { name: "Actor", exact: true }));
+    .dragTo(page.getByRole("listitem", { name: "Actor", exact: true }).last());
   await expect(
     page.getByRole("listitem", { name: "Event Happened", exact: true }),
   ).toContainText("An actor isn't a connection endpoint.");
@@ -573,11 +573,11 @@ test("Dragging from `Read Model port` onto the Timeline `Actor` listitem shows t
     page.getByRole("button", { name: "Read Model port", exact: true }),
   ).toBeVisible();
   await expect(
-    page.getByRole("listitem", { name: "Actor", exact: true }),
+    page.getByRole("listitem", { name: "Actor", exact: true }).last(),
   ).toBeVisible();
   await page
     .getByRole("button", { name: "Read Model port", exact: true })
-    .dragTo(page.getByRole("listitem", { name: "Actor", exact: true }));
+    .dragTo(page.getByRole("listitem", { name: "Actor", exact: true }).last());
   await expect(
     page.getByRole("listitem", { name: "Read Model", exact: true }),
   ).toContainText("An actor isn't a connection endpoint.");
@@ -674,7 +674,7 @@ test("Dragging from `Command port` onto the first `New Slice` listitem does not 
   await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   const slice = page.getByRole("listitem", { name: "New Slice", exact: true });
-  await expect(slice).toHaveCount(4);
+  await expect(slice).toHaveCount(5);
   await expect(
     page.getByRole("button", { name: "Command port", exact: true }),
   ).toBeVisible();
@@ -693,7 +693,7 @@ test("Dragging from `Command port` onto the first `New Slice` listitem shows the
   await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   const slice = page.getByRole("listitem", { name: "New Slice", exact: true });
-  await expect(slice).toHaveCount(4);
+  await expect(slice).toHaveCount(5);
   await expect(
     page.getByRole("button", { name: "Command port", exact: true }),
   ).toBeVisible();
@@ -713,7 +713,7 @@ test("Dragging from `Event Happened port` onto the first `New Slice` listitem sh
   await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Event", exact: true }).click();
   const slice = page.getByRole("listitem", { name: "New Slice", exact: true });
-  await expect(slice).toHaveCount(4);
+  await expect(slice).toHaveCount(5);
   await expect(
     page.getByRole("button", { name: "Event Happened port", exact: true }),
   ).toBeVisible();
@@ -733,7 +733,7 @@ test("Dragging from `Read Model port` onto the first `New Slice` listitem shows 
   await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
   const slice = page.getByRole("listitem", { name: "New Slice", exact: true });
-  await expect(slice).toHaveCount(4);
+  await expect(slice).toHaveCount(5);
   await expect(
     page.getByRole("button", { name: "Read Model port", exact: true }),
   ).toBeVisible();

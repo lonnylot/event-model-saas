@@ -102,7 +102,7 @@ async function clickTimelineRegion(page: Page) {
     .click({ position: { x: 1, y: 1 } });
 }
 
-test("After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem then the Timeline region, pressing Backspace sets the remaining Actor `id` to the Actor that was last", async ({
+test("After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem on the last Slice then the Timeline region, pressing Backspace sets the remaining Actor `id` on the last Slice to the Actor that was last", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -112,22 +112,22 @@ test("After clicking `New Slice` then `Add Actor` twice, clicking the first Time
   const actors = page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Actor", exact: true });
-  await expect(actors).toHaveCount(2);
+  await expect(actors).toHaveCount(3);
   const before = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  const lastId = before.slices[0].actors[1].id;
-  await actors.first().click();
+  const lastId = before.slices.at(-1).actors[1].id;
+  await actors.nth(1).click();
   await clickTimelineRegion(page);
   await page.keyboard.press("Backspace");
   const after = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  expect(after.slices[0].actors).toHaveLength(1);
-  expect(after.slices[0].actors[0].id).toBe(lastId);
+  expect(after.slices.at(-1).actors).toHaveLength(1);
+  expect(after.slices.at(-1).actors[0].id).toBe(lastId);
 });
 
-test("After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem then the Timeline region, pressing Delete sets the remaining Actor `id` to the Actor that was last", async ({
+test("After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem on the last Slice then the Timeline region, pressing Delete sets the remaining Actor `id` on the last Slice to the Actor that was last", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -137,19 +137,19 @@ test("After clicking `New Slice` then `Add Actor` twice, clicking the first Time
   const actors = page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Actor", exact: true });
-  await expect(actors).toHaveCount(2);
+  await expect(actors).toHaveCount(3);
   const before = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  const lastId = before.slices[0].actors[1].id;
-  await actors.first().click();
+  const lastId = before.slices.at(-1).actors[1].id;
+  await actors.nth(1).click();
   await clickTimelineRegion(page);
   await page.keyboard.press("Delete");
   const after = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  expect(after.slices[0].actors).toHaveLength(1);
-  expect(after.slices[0].actors[0].id).toBe(lastId);
+  expect(after.slices.at(-1).actors).toHaveLength(1);
+  expect(after.slices.at(-1).actors[0].id).toBe(lastId);
 });
 
 test("After clicking `New Slice` then `Add Event` twice, clicking the first Timeline `Event Happened` listitem then the Timeline region, pressing Backspace sets the remaining Event `id` to the Event that was last", async ({
@@ -166,15 +166,15 @@ test("After clicking `New Slice` then `Add Event` twice, clicking the first Time
   const before = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  const lastId = before.slices[0].events[1].id;
+  const lastId = before.slices.at(-1).events[1].id;
   await events.first().click();
   await clickTimelineRegion(page);
   await page.keyboard.press("Backspace");
   const after = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  expect(after.slices[0].events).toHaveLength(1);
-  expect(after.slices[0].events[0].id).toBe(lastId);
+  expect(after.slices.at(-1).events).toHaveLength(1);
+  expect(after.slices.at(-1).events[0].id).toBe(lastId);
 });
 
 test("After clicking `New Slice` then `Add Read Model` twice, clicking the first Timeline `Read Model` listitem then the Timeline region, pressing Backspace sets the remaining Read Model `id` to the Read Model that was last", async ({
@@ -191,15 +191,15 @@ test("After clicking `New Slice` then `Add Read Model` twice, clicking the first
   const before = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  const lastId = before.slices[0].readModels[1].id;
+  const lastId = before.slices.at(-1).readModels[1].id;
   await readModels.first().click();
   await clickTimelineRegion(page);
   await page.keyboard.press("Backspace");
   const after = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  expect(after.slices[0].readModels).toHaveLength(1);
-  expect(after.slices[0].readModels[0].id).toBe(lastId);
+  expect(after.slices.at(-1).readModels).toHaveLength(1);
+  expect(after.slices.at(-1).readModels[0].id).toBe(lastId);
 });
 
 test("After clicking `New Slice` then `Add Automation` twice, clicking the first Timeline `Automation` listitem then the Timeline region, pressing Backspace sets the remaining Automation `id` to the Automation that was last", async ({
@@ -216,13 +216,13 @@ test("After clicking `New Slice` then `Add Automation` twice, clicking the first
   const before = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  const lastId = before.slices[0].processors[1].id;
+  const lastId = before.slices.at(-1).processors[1].id;
   await automations.first().click();
   await clickTimelineRegion(page);
   await page.keyboard.press("Backspace");
   const after = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  expect(after.slices[0].processors).toHaveLength(1);
-  expect(after.slices[0].processors[0].id).toBe(lastId);
+  expect(after.slices.at(-1).processors).toHaveLength(1);
+  expect(after.slices.at(-1).processors[0].id).toBe(lastId);
 });

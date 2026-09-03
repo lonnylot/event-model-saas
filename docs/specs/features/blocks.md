@@ -27,12 +27,12 @@ The editor shell has Slices, a Timeline, and Inspector, but members cannot put a
 - [x] Clicking `Add Automation` on that page after `New Slice` appends an Automation whose `title` is `Automation`
 - [x] Clicking `Add Automation` on that page after `New Slice` appends an Automation whose `type` is `AUTOMATION`
 - [x] Clicking `Add Automation` on that page after `New Slice` appends an Automation whose `fields` is `[]`
-- [x] After clicking `New Slice` then `Add Actor` on that page, the Timeline region shows a listitem whose accessible name is `Actor`
+- [x] After clicking `New Slice` then `Add Actor` on that page, the Timeline region shows 2 listitem whose accessible name is `Actor`
 - [x] After clicking `New Slice` then `Add Command` on that page, the Timeline region shows a listitem whose accessible name is `Command`
 - [x] After clicking `New Slice` then `Add Event` on that page, the Timeline region shows a listitem whose accessible name is `Event Happened`
 - [x] After clicking `New Slice` then `Add Read Model` on that page, the Timeline region shows a listitem whose accessible name is `Read Model`
 - [x] After clicking `New Slice` then `Add Automation` on that page, the Timeline region shows a listitem whose accessible name is `Automation`
-- [x] After a member creates a model, opens it, clicks `New Slice`, clicks `Add Actor`, and Saves, a reload of that page shows a listitem whose accessible name is `Actor` in the Timeline region
+- [x] After a member creates a model, opens it, clicks `New Slice`, clicks `Add Actor`, and Saves, a reload of that page shows 2 listitem whose accessible name is `Actor` in the Timeline region
 
 ## Domain terms
 
@@ -53,7 +53,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person,
 - Empty Event JSON is `{ "id": "{uuid}", "title": "Event Happened", "type": "EVENT", "fields": [] }`.
 - Empty Read Model JSON is `{ "id": "{uuid}", "title": "Read Model", "type": "READMODEL", "fields": [] }`.
 - Empty Automation JSON is `{ "id": "{uuid}", "title": "Automation", "type": "AUTOMATION", "fields": [] }` in the Slice `processors` array. The UI label is Automation.
-- New Slice still starts with empty `actors` / `commands` / `events` / `readModels` / `processors` (not a default Actor).
+- New Slice still starts with empty `actors` / `commands` / `events` / `readModels` / `processors` (not a default Actor). GET after Create shows `Actor` ([model-defaults.md](./model-defaults.md)). GET with no Actors is a Slice that has none (imported empty actors).
 - Add is in-memory until Save. Save still uses the version check from model-persistence.
 
 ## Out of scope
@@ -64,4 +64,5 @@ Dashed Add on a lane and keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane
 
 - [editor-shell.md](./editor-shell.md) — Out of scope no longer owns Actors, commands, events, read models, or automations; this slice owns adding those blocks. Keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane.md). Click-append from `Add Actor on lane` / `Add Event on lane` / `Add Read Model on lane` / `Add Automation on lane` and selected-Slice ⌥⌘1 / ⌥⌘3–5 are [add-on-lane-rest.md](./add-on-lane-rest.md). Moving Slices (⌥⌘←) is [canvas.md](./canvas.md). Timeline Slice drag is [drag-rest.md](./drag-rest.md). ⌥⌘→ is [move-slice-right.md](./move-slice-right.md). Connections are [connections.md](./connections.md). Slice and Actor Name are [chrome.md](./chrome.md).
 - [model-persistence.md](./model-persistence.md) — Out of scope no longer owns Actors, commands, events, read models, or automations; this slice owns adding those blocks.
+- [model-defaults.md](./model-defaults.md) — GET after Create shows `Actor`. GET with no Actors stays this file for a Slice that has none.
 - [product.md](../product.md) — Playwright path for this slice is open Event Model, New Slice, Add Actor, Save, reload still lists Actor on the Timeline. Command port drag is [connections.md](./connections.md). Dashed Add on a lane and keyboard ⌥⌘1–5 are [add-on-lane.md](./add-on-lane.md). Click-append from `Add Actor on lane` / `Add Event on lane` / `Add Read Model on lane` / `Add Automation on lane` and selected-Slice ⌥⌘1 / ⌥⌘3–5 are [add-on-lane-rest.md](./add-on-lane-rest.md).

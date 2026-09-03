@@ -27,7 +27,20 @@ export async function createModel(
         schemaVersion: 1,
         id,
         title: "Untitled",
-        slices: [],
+        description: "",
+        slices: [
+          {
+            id: runtime.randomId(),
+            title: "New Slice",
+            sliceType: "STATE_CHANGE",
+            actors: [{ id: runtime.randomId(), name: "Actor" }],
+            commands: [],
+            events: [],
+            readModels: [],
+            processors: [],
+          },
+        ],
+        connections: [],
       }),
     );
   }

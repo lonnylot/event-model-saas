@@ -51,6 +51,7 @@ Event Model, Slice, Team, Person, Version
 - Zoom factors are `1.25` (in), `0.8` (out), `1` (reset). Toolbar zoom stays this file. Keyboard ⌘+/⌘-/⌘0 are [canvas-rest.md](./canvas-rest.md). Scroll pan and pinch pan are [canvas.md](./canvas.md).
 - GET Inspector chrome (heading, empty copy) is [designed-surfaces.md](./designed-surfaces.md); Slice and Actor Name are [chrome.md](./chrome.md). Inspector Name for Command, Event, Read Model, and Automation is [inspect-blocks.md](./inspect-blocks.md). Slice type picker is [slice-type.md](./slice-type.md). Empty New Slice stays `STATE_CHANGE`.
 - The `TEST_MAIL=1` memory adapter does not count login attempts, so Playwright files can share one Worker without the production 5-per-hour cap.
+- GET `/app/teams/{id}/models/{mid}` as a member with no Slices is an imported empty document ([model-defaults.md](./model-defaults.md)). GET after Create shows `New Slice`.
 
 ## Out of scope
 

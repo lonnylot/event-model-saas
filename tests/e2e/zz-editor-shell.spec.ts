@@ -87,10 +87,13 @@ async function openUntitledModel(page: Page) {
 }
 
 async function clickNewSlice(page: Page) {
+  const count =
+    (await page.getByRole("listitem", { name: "New Slice", exact: true }).count()) +
+    2;
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
-    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
-  ).toBeVisible();
+    page.getByRole("listitem", { name: "New Slice", exact: true }),
+  ).toHaveCount(count);
 }
 
 test("Clicking `New Slice` on that page shows a listitem whose accessible name is `New Slice`", async ({ page }) => {

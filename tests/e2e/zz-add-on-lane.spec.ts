@@ -108,6 +108,40 @@ async function clickNewSlice(page: Page) {
   ).toHaveCount(lanes);
 }
 
+async function openImportedEmptyModel(page: Page) {
+  await page.goto("/app");
+  const createTeam = page.getByRole("textbox", {
+    name: "Team name",
+    exact: true,
+  });
+  if (await createTeam.isVisible()) {
+    await createTeam.fill("Library");
+    await page.getByRole("button", { name: "Create team", exact: true }).click();
+    await expect(
+      page.getByRole("heading", { name: "Library", exact: true }),
+    ).toBeVisible();
+  }
+  const teamId = new URL(page.url()).pathname.split("/")[3];
+  const response = await page.request.post(`/api/teams/${teamId}/imports`, {
+    data: {
+      document: {
+        format: "eventmodel",
+        schemaVersion: 1,
+        id: crypto.randomUUID(),
+        title: "Empty Import",
+        slices: [],
+      },
+    },
+  });
+  expect(response.status()).toBe(201);
+  await page.goto("/app");
+  await page.getByRole("link", { name: "Empty Import", exact: true }).last().click();
+  await expect(
+    page.getByRole("heading", { name: "Empty Import", exact: true }),
+  ).toBeVisible();
+  await page.waitForLoadState("networkidle");
+}
+
 test("After clicking `New Slice` on that page, the Timeline region shows a button whose accessible name is `Add Actor on lane`", async ({
   page,
 }) => {
@@ -171,7 +205,7 @@ test("After clicking `New Slice` on that page, the Timeline region shows a butto
 test("After clicking `New Slice` twice, clicking the first `Add Command on lane` appends a Command only on the first Slice", async ({
   page,
 }) => {
-  await openUntitledModel(page);
+  await openImportedEmptyModel(page);
   await clickNewSlice(page);
   await clickNewSlice(page);
   await page
@@ -192,7 +226,7 @@ test("After clicking `New Slice`, pressing ⌥⌘1 appends an Actor whose `name`
   await clickNewSlice(page);
   await page.keyboard.press("Alt+ControlOrMeta+Digit1");
   const json = await page.locator("#event-model-document").textContent();
-  expect(JSON.parse(json ?? "{}").slices[0].actors[0].name).toBe("Actor");
+  expect(JSON.parse(json ?? "{}").slices.at(-1).actors[0].name).toBe("Actor");
 });
 
 test("After clicking `New Slice`, pressing ⌥⌘2 appends a Command whose `title` is `Command`", async ({
@@ -202,7 +236,7 @@ test("After clicking `New Slice`, pressing ⌥⌘2 appends a Command whose `titl
   await clickNewSlice(page);
   await page.keyboard.press("Alt+ControlOrMeta+Digit2");
   const json = await page.locator("#event-model-document").textContent();
-  expect(JSON.parse(json ?? "{}").slices[0].commands[0].title).toBe("Command");
+  expect(JSON.parse(json ?? "{}").slices.at(-1).commands[0].title).toBe("Command");
 });
 
 test("After clicking `New Slice`, pressing ⌥⌘3 appends an Event whose `title` is `Event Happened`", async ({
@@ -212,7 +246,7 @@ test("After clicking `New Slice`, pressing ⌥⌘3 appends an Event whose `title
   await clickNewSlice(page);
   await page.keyboard.press("Alt+ControlOrMeta+Digit3");
   const json = await page.locator("#event-model-document").textContent();
-  expect(JSON.parse(json ?? "{}").slices[0].events[0].title).toBe(
+  expect(JSON.parse(json ?? "{}").slices.at(-1).events[0].title).toBe(
     "Event Happened",
   );
 });
@@ -224,7 +258,7 @@ test("After clicking `New Slice`, pressing ⌥⌘4 appends a Read Model whose `t
   await clickNewSlice(page);
   await page.keyboard.press("Alt+ControlOrMeta+Digit4");
   const json = await page.locator("#event-model-document").textContent();
-  expect(JSON.parse(json ?? "{}").slices[0].readModels[0].title).toBe(
+  expect(JSON.parse(json ?? "{}").slices.at(-1).readModels[0].title).toBe(
     "Read Model",
   );
 });
@@ -236,7 +270,7 @@ test("After clicking `New Slice`, pressing ⌥⌘5 appends an Automation whose `
   await clickNewSlice(page);
   await page.keyboard.press("Alt+ControlOrMeta+Digit5");
   const json = await page.locator("#event-model-document").textContent();
-  expect(JSON.parse(json ?? "{}").slices[0].processors[0].title).toBe(
+  expect(JSON.parse(json ?? "{}").slices.at(-1).processors[0].title).toBe(
     "Automation",
   );
 });
@@ -244,7 +278,7 @@ test("After clicking `New Slice`, pressing ⌥⌘5 appends an Automation whose `
 test("After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing ⌥⌘2 appends a Command only on the first Slice", async ({
   page,
 }) => {
-  await openUntitledModel(page);
+  await openImportedEmptyModel(page);
   await clickNewSlice(page);
   await clickNewSlice(page);
   await page.getByRole("listitem", { name: "New Slice", exact: true }).first().click();

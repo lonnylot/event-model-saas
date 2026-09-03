@@ -59,6 +59,29 @@ async function openUntitledModel(page: Page, request: APIRequestContext) {
   await page.waitForLoadState("networkidle");
 }
 
+async function openImportedEmptyModel(page: Page, request: APIRequestContext) {
+  await consumeAdminOnTeam(page, request);
+  const teamId = new URL(page.url()).pathname.split("/")[3];
+  const response = await page.request.post(`/api/teams/${teamId}/imports`, {
+    data: {
+      document: {
+        format: "eventmodel",
+        schemaVersion: 1,
+        id: "00000000-0000-4000-8000-000000000001",
+        title: "Empty Import",
+        slices: [],
+      },
+    },
+  });
+  expect(response.status()).toBe(201);
+  await page.goto("/app");
+  await page.getByRole("link", { name: "Empty Import", exact: true }).last().click();
+  await expect(
+    page.getByRole("heading", { name: "Empty Import", exact: true }),
+  ).toBeVisible();
+  await page.waitForLoadState("networkidle");
+}
+
 test("GET `/app/teams/{id}/models/{mid}` as a member `header` computed `display` is `flex`", async ({
   page,
   request,
@@ -107,7 +130,7 @@ test("GET `/app/teams/{id}/models/{mid}` as a member with no Slices shows a head
   page,
   request,
 }) => {
-  await openUntitledModel(page, request);
+  await openImportedEmptyModel(page, request);
   await expect(
     page.getByRole("heading", { name: "Start the timeline", exact: true }),
   ).toBeVisible();

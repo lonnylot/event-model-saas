@@ -87,13 +87,16 @@ async function openUntitledModel(page: Page) {
 }
 
 async function clickNewSlice(page: Page) {
+  const count =
+    (await page.getByRole("listitem", { name: "New Slice", exact: true }).count()) +
+    2;
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
-    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
-  ).toBeVisible();
+    page.getByRole("listitem", { name: "New Slice", exact: true }),
+  ).toHaveCount(count);
 }
 
-test("After clicking `New Slice` then `Add Actor` on that page, the Timeline region shows a listitem whose accessible name is `Actor`", async ({
+test("After clicking `New Slice` then `Add Actor` on that page, the Timeline region shows 2 listitem whose accessible name is `Actor`", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -103,7 +106,7 @@ test("After clicking `New Slice` then `Add Actor` on that page, the Timeline reg
     page
       .getByRole("region", { name: "Timeline", exact: true })
       .getByRole("listitem", { name: "Actor", exact: true }),
-  ).toBeVisible();
+  ).toHaveCount(2);
 });
 
 test("After clicking `New Slice` then `Add Command` on that page, the Timeline region shows a listitem whose accessible name is `Command`", async ({
@@ -158,7 +161,7 @@ test("After clicking `New Slice` then `Add Automation` on that page, the Timelin
   ).toBeVisible();
 });
 
-test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add Actor`, and Saves, a reload of that page shows a listitem whose accessible name is `Actor` in the Timeline region", async ({
+test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add Actor`, and Saves, a reload of that page shows 2 listitem whose accessible name is `Actor` in the Timeline region", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -177,5 +180,5 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add 
     page
       .getByRole("region", { name: "Timeline", exact: true })
       .getByRole("listitem", { name: "Actor", exact: true }),
-  ).toBeVisible();
+  ).toHaveCount(2);
 });

@@ -96,10 +96,44 @@ async function clickNewSlice(page: Page) {
   ).toHaveCount(count);
 }
 
+async function openImportedEmptyModel(page: Page) {
+  await page.goto("/app");
+  const createTeam = page.getByRole("textbox", {
+    name: "Team name",
+    exact: true,
+  });
+  if (await createTeam.isVisible()) {
+    await createTeam.fill("Library");
+    await page.getByRole("button", { name: "Create team", exact: true }).click();
+    await expect(
+      page.getByRole("heading", { name: "Library", exact: true }),
+    ).toBeVisible();
+  }
+  const teamId = new URL(page.url()).pathname.split("/")[3];
+  const response = await page.request.post(`/api/teams/${teamId}/imports`, {
+    data: {
+      document: {
+        format: "eventmodel",
+        schemaVersion: 1,
+        id: crypto.randomUUID(),
+        title: "Empty Import",
+        slices: [],
+      },
+    },
+  });
+  expect(response.status()).toBe(201);
+  await page.goto("/app");
+  await page.getByRole("link", { name: "Empty Import", exact: true }).last().click();
+  await expect(
+    page.getByRole("heading", { name: "Empty Import", exact: true }),
+  ).toBeVisible();
+  await page.waitForLoadState("networkidle");
+}
+
 test("After clicking `New Slice` twice, clicking the last `New Slice` listitem and pressing ⌥⌘← sets the first Slice `id` to the Slice that was last", async ({
   page,
 }) => {
-  await openUntitledModel(page);
+  await openImportedEmptyModel(page);
   await clickNewSlice(page);
   await clickNewSlice(page);
   const before = JSON.parse(
@@ -122,7 +156,7 @@ test("After clicking `New Slice` twice, clicking the last `New Slice` listitem a
 test("After clicking `New Slice` twice then `Add Actor`, dragging the Timeline `Actor` listitem onto the first Slices `New Slice` listitem sets the first Slice `actors` to one Actor and the last Slice `actors` to `[]`", async ({
   page,
 }) => {
-  await openUntitledModel(page);
+  await openImportedEmptyModel(page);
   await clickNewSlice(page);
   await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Actor", exact: true }).click();
@@ -145,7 +179,7 @@ test("After clicking `New Slice` twice then `Add Actor`, dragging the Timeline `
 test("After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing Backspace sets the remaining Slice `id` to the Slice that was last", async ({
   page,
 }) => {
-  await openUntitledModel(page);
+  await openImportedEmptyModel(page);
   await clickNewSlice(page);
   await clickNewSlice(page);
   const before = JSON.parse(
@@ -191,7 +225,7 @@ test("After clicking `Zoom in` then scrolling the Timeline region, the Timeline 
   expect(transform).toContain("translate(");
 });
 
-test("After clicking `New Slice`, pressing ⌘Z does not show a listitem whose accessible name is `New Slice`", async ({
+test("After clicking `New Slice`, pressing ⌘Z shows 1 listitem whose accessible name is `New Slice`", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -199,7 +233,7 @@ test("After clicking `New Slice`, pressing ⌘Z does not show a listitem whose a
   await page.keyboard.press("ControlOrMeta+z");
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }),
-  ).toHaveCount(0);
+  ).toHaveCount(1);
 });
 
 test("After dragging `Command port` onto `Event Happened port`, pressing ⌘Z does not show the text `Command → Event Happened`", async ({

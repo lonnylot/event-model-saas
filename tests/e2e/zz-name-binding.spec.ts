@@ -87,10 +87,13 @@ async function openUntitledModel(page: Page) {
 }
 
 async function clickNewSlice(page: Page) {
+  const count =
+    (await page.getByRole("listitem", { name: "New Slice", exact: true }).count()) +
+    2;
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
-    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
-  ).toBeVisible();
+    page.getByRole("listitem", { name: "New Slice", exact: true }),
+  ).toHaveCount(count);
 }
 
 test("After clicking `New Slice` then `Add Actor` then `Save` on that page, filling the Inspector `Name` textbox with `Shopper` after selecting `Actor` shows the text `Unsaved changes.`", async ({
@@ -111,6 +114,7 @@ test("After clicking `New Slice` then `Add Actor` then `Save` on that page, fill
   await page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Actor", exact: true })
+    .last()
     .click();
   await page
     .getByRole("region", { name: "Inspector", exact: true })
@@ -147,7 +151,7 @@ test("After clicking `New Slice` then `Add Command` twice, clicking the first Ti
   const json = await page
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
-  expect(JSON.parse(json ?? "{}").slices?.[0]?.commands?.[0]?.title).toBe(
+  expect(JSON.parse(json ?? "{}").slices?.at(-1)?.commands?.[0]?.title).toBe(
     "Place Order",
   );
 });
@@ -159,7 +163,7 @@ test("After clicking `New Slice` then `Add Command` twice, clicking the first Ti
   const json = await page
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
-  expect(JSON.parse(json ?? "{}").slices?.[0]?.commands?.at(-1)?.title).toBe(
+  expect(JSON.parse(json ?? "{}").slices?.at(-1)?.commands?.at(-1)?.title).toBe(
     "Command",
   );
 });

@@ -87,10 +87,13 @@ async function openUntitledModel(page: Page) {
 }
 
 async function clickNewSlice(page: Page) {
+  const count =
+    (await page.getByRole("listitem", { name: "New Slice", exact: true }).count()) +
+    2;
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
-    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
-  ).toBeVisible();
+    page.getByRole("listitem", { name: "New Slice", exact: true }),
+  ).toHaveCount(count);
 }
 
 test("After clicking `New Slice` then `Add Command` on that page, clicking the Timeline `Command` listitem shows a button whose accessible name is `Add Field` in the Inspector region", async ({
@@ -180,6 +183,7 @@ test("After clicking `New Slice` then `Add Command` then `Add Actor` on that pag
   await page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Actor", exact: true })
+    .last()
     .click();
   await expect(
     page.getByRole("button", { name: "Add Field", exact: true }),
@@ -207,6 +211,7 @@ test("After clicking `New Slice` then `Add Command` then `Add Actor` on that pag
   await page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Actor", exact: true })
+    .last()
     .click();
   await expect(
     page.getByRole("textbox", { name: "Field name", exact: true }),
@@ -231,7 +236,7 @@ test("Clicking `Add Field` after selecting `Command` appends a Field whose `name
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.commands?.at(-1)?.fields?.[0]?.name,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.commands?.at(-1)?.fields?.[0]?.name,
   ).toBe("newField");
 });
 
@@ -253,7 +258,7 @@ test("Clicking `Add Field` after selecting `Command` appends a Field whose `type
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.commands?.at(-1)?.fields?.[0]?.type,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.commands?.at(-1)?.fields?.[0]?.type,
   ).toBe("String");
 });
 
@@ -279,7 +284,7 @@ test("Filling the Inspector `Field name` textbox with `orderId` after clicking `
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.commands?.at(-1)?.fields?.[0]?.name,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.commands?.at(-1)?.fields?.[0]?.name,
   ).toBe("orderId");
 });
 
@@ -314,6 +319,6 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add 
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.commands?.at(-1)?.fields?.[0]?.name,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.commands?.at(-1)?.fields?.[0]?.name,
   ).toBe("orderId");
 });

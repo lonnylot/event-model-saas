@@ -87,13 +87,45 @@ async function openUntitledModel(page: Page) {
 }
 
 async function addTwoSlicesClickFirstFillCheckout(page: Page) {
-  await openUntitledModel(page);
+  await page.goto("/app");
+  const createTeam = page.getByRole("textbox", {
+    name: "Team name",
+    exact: true,
+  });
+  if (await createTeam.isVisible()) {
+    await createTeam.fill("Library");
+    await page.getByRole("button", { name: "Create team", exact: true }).click();
+    await expect(
+      page.getByRole("heading", { name: "Library", exact: true }),
+    ).toBeVisible();
+  }
+  const teamId = new URL(page.url()).pathname.split("/")[3];
+  const imported = await page.request.post(`/api/teams/${teamId}/imports`, {
+    data: {
+      document: {
+        format: "eventmodel",
+        schemaVersion: 1,
+        id: crypto.randomUUID(),
+        title: "Empty Import",
+        slices: [],
+      },
+    },
+  });
+  expect(imported.status()).toBe(201);
+  await page.goto("/app");
+  await page.getByRole("link", { name: "Empty Import", exact: true }).last().click();
+  await expect(
+    page.getByRole("heading", { name: "Empty Import", exact: true }),
+  ).toBeVisible();
+  await page.waitForLoadState("networkidle");
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }),
   ).toHaveCount(4);
   await page
+    .locator("ul")
+    .first()
     .getByRole("listitem", { name: "New Slice", exact: true })
     .first()
     .click();
@@ -141,11 +173,11 @@ async function addTwoActorsClickFirstFillShopper(page: Page) {
     page
       .getByRole("region", { name: "Timeline", exact: true })
       .getByRole("listitem", { name: "Actor", exact: true }),
-  ).toHaveCount(2);
+  ).toHaveCount(3);
   await page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Actor", exact: true })
-    .first()
+    .nth(1)
     .click();
   await page
     .getByRole("region", { name: "Inspector", exact: true })
@@ -160,7 +192,7 @@ test("After clicking `New Slice` then `Add Actor` twice, clicking the first Time
   const json = await page
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
-  expect(JSON.parse(json ?? "{}").slices?.[0]?.actors?.[0]?.name).toBe(
+  expect(JSON.parse(json ?? "{}").slices?.at(-1)?.actors?.[0]?.name).toBe(
     "Shopper",
   );
 });
@@ -204,7 +236,7 @@ test("After clicking `New Slice` then `Add Event` twice, clicking the first Time
   const json = await page
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
-  expect(JSON.parse(json ?? "{}").slices?.[0]?.events?.[0]?.title).toBe(
+  expect(JSON.parse(json ?? "{}").slices?.at(-1)?.events?.[0]?.title).toBe(
     "Order Placed",
   );
 });
@@ -248,7 +280,7 @@ test("After clicking `New Slice` then `Add Read Model` twice, clicking the first
   const json = await page
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
-  expect(JSON.parse(json ?? "{}").slices?.[0]?.readModels?.[0]?.title).toBe(
+  expect(JSON.parse(json ?? "{}").slices?.at(-1)?.readModels?.[0]?.title).toBe(
     "Orders",
   );
 });
@@ -292,7 +324,7 @@ test("After clicking `New Slice` then `Add Automation` twice, clicking the first
   const json = await page
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
-  expect(JSON.parse(json ?? "{}").slices?.[0]?.processors?.[0]?.title).toBe(
+  expect(JSON.parse(json ?? "{}").slices?.at(-1)?.processors?.[0]?.title).toBe(
     "Send Email",
   );
 });
@@ -413,13 +445,45 @@ test("After clicking `New Slice` then `Add Automation` then `Save` on that page,
 });
 
 async function addTwoSlicesClickFirstFillDescription(page: Page) {
-  await openUntitledModel(page);
+  await page.goto("/app");
+  const createTeam = page.getByRole("textbox", {
+    name: "Team name",
+    exact: true,
+  });
+  if (await createTeam.isVisible()) {
+    await createTeam.fill("Library");
+    await page.getByRole("button", { name: "Create team", exact: true }).click();
+    await expect(
+      page.getByRole("heading", { name: "Library", exact: true }),
+    ).toBeVisible();
+  }
+  const teamId = new URL(page.url()).pathname.split("/")[3];
+  const imported = await page.request.post(`/api/teams/${teamId}/imports`, {
+    data: {
+      document: {
+        format: "eventmodel",
+        schemaVersion: 1,
+        id: crypto.randomUUID(),
+        title: "Empty Import",
+        slices: [],
+      },
+    },
+  });
+  expect(imported.status()).toBe(201);
+  await page.goto("/app");
+  await page.getByRole("link", { name: "Empty Import", exact: true }).last().click();
+  await expect(
+    page.getByRole("heading", { name: "Empty Import", exact: true }),
+  ).toBeVisible();
+  await page.waitForLoadState("networkidle");
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }),
   ).toHaveCount(4);
   await page
+    .locator("ul")
+    .first()
     .getByRole("listitem", { name: "New Slice", exact: true })
     .first()
     .click();
@@ -467,7 +531,7 @@ test("After clicking `New Slice` then `Add Command` twice, clicking the first Ti
   const json = await page
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
-  expect(JSON.parse(json ?? "{}").slices?.[0]?.commands?.[0]?.description).toBe(
+  expect(JSON.parse(json ?? "{}").slices?.at(-1)?.commands?.[0]?.description).toBe(
     "Submit cart",
   );
 });
@@ -481,11 +545,11 @@ async function addTwoActorsClickFirstFillDescription(page: Page) {
     page
       .getByRole("region", { name: "Timeline", exact: true })
       .getByRole("listitem", { name: "Actor", exact: true }),
-  ).toHaveCount(2);
+  ).toHaveCount(3);
   await page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Actor", exact: true })
-    .first()
+    .nth(1)
     .click();
   await page
     .getByRole("region", { name: "Inspector", exact: true })
@@ -500,7 +564,7 @@ test("After clicking `New Slice` then `Add Actor` twice, clicking the first Time
   const json = await page
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
-  expect(JSON.parse(json ?? "{}").slices?.[0]?.actors?.[0]?.description).toBe(
+  expect(JSON.parse(json ?? "{}").slices?.at(-1)?.actors?.[0]?.description).toBe(
     "Librarian",
   );
 });
@@ -533,7 +597,7 @@ test("After clicking `New Slice` then `Add Event` twice, clicking the first Time
   const json = await page
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
-  expect(JSON.parse(json ?? "{}").slices?.[0]?.events?.[0]?.description).toBe(
+  expect(JSON.parse(json ?? "{}").slices?.at(-1)?.events?.[0]?.description).toBe(
     "It happened",
   );
 });
@@ -567,7 +631,7 @@ test("After clicking `New Slice` then `Add Read Model` twice, clicking the first
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.readModels?.[0]?.description,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.readModels?.[0]?.description,
   ).toBe("List view");
 });
 
@@ -600,18 +664,50 @@ test("After clicking `New Slice` then `Add Automation` twice, clicking the first
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
   expect(
-    JSON.parse(json ?? "{}").slices?.[0]?.processors?.[0]?.description,
+    JSON.parse(json ?? "{}").slices?.at(-1)?.processors?.[0]?.description,
   ).toBe("When paid");
 });
 
 async function addTwoSlicesClickFirstSelectStateView(page: Page) {
-  await openUntitledModel(page);
+  await page.goto("/app");
+  const createTeam = page.getByRole("textbox", {
+    name: "Team name",
+    exact: true,
+  });
+  if (await createTeam.isVisible()) {
+    await createTeam.fill("Library");
+    await page.getByRole("button", { name: "Create team", exact: true }).click();
+    await expect(
+      page.getByRole("heading", { name: "Library", exact: true }),
+    ).toBeVisible();
+  }
+  const teamId = new URL(page.url()).pathname.split("/")[3];
+  const imported = await page.request.post(`/api/teams/${teamId}/imports`, {
+    data: {
+      document: {
+        format: "eventmodel",
+        schemaVersion: 1,
+        id: crypto.randomUUID(),
+        title: "Empty Import",
+        slices: [],
+      },
+    },
+  });
+  expect(imported.status()).toBe(201);
+  await page.goto("/app");
+  await page.getByRole("link", { name: "Empty Import", exact: true }).last().click();
+  await expect(
+    page.getByRole("heading", { name: "Empty Import", exact: true }),
+  ).toBeVisible();
+  await page.waitForLoadState("networkidle");
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }),
   ).toHaveCount(4);
   await page
+    .locator("ul")
+    .first()
     .getByRole("listitem", { name: "New Slice", exact: true })
     .first()
     .click();
@@ -672,16 +768,19 @@ test("After clicking `New Slice` then `Add Actor` then `Save` on that page, fill
   page,
 }) => {
   await openUntitledModel(page);
+  const count =
+    (await page.getByRole("listitem", { name: "New Slice", exact: true }).count()) +
+    2;
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
-    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
-  ).toBeVisible();
+    page.getByRole("listitem", { name: "New Slice", exact: true }),
+  ).toHaveCount(count);
   await page.getByRole("button", { name: "Add Actor", exact: true }).click();
   await expect(
     page
       .getByRole("region", { name: "Timeline", exact: true })
       .getByRole("listitem", { name: "Actor", exact: true }),
-  ).toBeVisible();
+  ).toHaveCount(2);
   await Promise.all([
     page.waitForResponse(
       (response) =>
@@ -694,6 +793,7 @@ test("After clicking `New Slice` then `Add Actor` then `Save` on that page, fill
   await page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Actor", exact: true })
+    .last()
     .click();
   await page
     .getByRole("region", { name: "Inspector", exact: true })

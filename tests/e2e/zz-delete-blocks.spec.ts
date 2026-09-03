@@ -90,10 +90,13 @@ test("After clicking `New Slice` then `Add Command` twice, clicking the first Ti
   page,
 }) => {
   await openUntitledModel(page);
+  const count =
+    (await page.getByRole("listitem", { name: "New Slice", exact: true }).count()) +
+    2;
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
-    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
-  ).toBeVisible();
+    page.getByRole("listitem", { name: "New Slice", exact: true }),
+  ).toHaveCount(count);
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   const commands = page
@@ -103,7 +106,7 @@ test("After clicking `New Slice` then `Add Command` twice, clicking the first Ti
   const before = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  const lastId = before.slices[0].commands[1].id;
+  const lastId = before.slices.at(-1).commands[1].id;
   await commands.first().click();
   await page
     .getByRole("region", { name: "Timeline", exact: true })
@@ -112,8 +115,8 @@ test("After clicking `New Slice` then `Add Command` twice, clicking the first Ti
   const after = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  expect(after.slices[0].commands).toHaveLength(1);
-  expect(after.slices[0].commands[0].id).toBe(lastId);
+  expect(after.slices.at(-1).commands).toHaveLength(1);
+  expect(after.slices.at(-1).commands[0].id).toBe(lastId);
 });
 
 async function dragPort(page: Page, fromName: string, toName: string) {
@@ -132,10 +135,13 @@ test("After dragging from `Command port` onto `Event Happened port` then from `E
   page,
 }) => {
   await openUntitledModel(page);
+  const count =
+    (await page.getByRole("listitem", { name: "New Slice", exact: true }).count()) +
+    2;
   await page.getByRole("button", { name: "New Slice", exact: true }).click();
   await expect(
-    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
-  ).toBeVisible();
+    page.getByRole("listitem", { name: "New Slice", exact: true }),
+  ).toHaveCount(count);
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   await page.getByRole("button", { name: "Add Event", exact: true }).click();
   await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
