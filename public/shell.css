@@ -322,6 +322,17 @@ body.landing .hero figure::before {
   box-shadow: 0 28px 80px rgba(15, 23, 42, 0.18),
     0 0 0 1px rgba(255, 255, 255, 0.6);
 }
+@keyframes hero-shot-drift {
+  from {
+    transform: rotateX(8deg) rotateY(-3deg) translateY(0);
+  }
+  to {
+    transform: rotateX(8deg) rotateY(-3deg) translateY(-10px);
+  }
+}
+body.landing .hero .product-shot {
+  animation: hero-shot-drift 7s ease-in-out infinite alternate;
+}
 .product-shot .shot-header {
   display: flex;
   align-items: center;

@@ -171,3 +171,13 @@ test("GET `/` `.bento` third `article` has `.invite-shot`", async ({ page }) => 
     page.locator(".bento article").nth(2).locator(".invite-shot"),
   ).toHaveCount(1);
 });
+
+test("GET `/` `.hero .product-shot` computed `animation-name` is not `none`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator(".hero .product-shot")).not.toHaveCSS(
+    "animation-name",
+    "none",
+  );
+});
