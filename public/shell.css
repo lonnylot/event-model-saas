@@ -241,6 +241,9 @@ body.landing h1 {
   max-width: 14ch;
   margin: 0 0 1rem;
 }
+body.landing .hero h1 span {
+  color: #0f766e;
+}
 body.landing .hero > p:first-of-type {
   color: #64748b;
   font-size: 1.2rem;

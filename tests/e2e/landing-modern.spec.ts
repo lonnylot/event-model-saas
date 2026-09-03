@@ -46,3 +46,13 @@ test("GET `/` at viewport `1440x900`, heading `Event Modeling for the whole team
     }),
   ).toHaveCSS("font-size", "72px");
 });
+
+test("GET `/` `.hero h1 span` computed `color` is `rgb(15, 118, 110)`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator(".hero h1 span")).toHaveCSS(
+    "color",
+    "rgb(15, 118, 110)",
+  );
+});
