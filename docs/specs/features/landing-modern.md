@@ -1,6 +1,6 @@
 # Landing modern
 
-Status: validated
+Status: released
 
 ## Problem
 
