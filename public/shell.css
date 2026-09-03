@@ -816,6 +816,7 @@ body.app-picker h1 + p a {
   background-color: #0f766e;
   color: #ffffff;
   border-radius: 10px;
+  border: 0;
 }
 body.app-team .models-toolbar {
   display: flex;
