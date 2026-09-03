@@ -10,7 +10,7 @@ GET `/` is a centered brochure: stacked headline, pill CTA, product frame, three
 
 - [x] GET `/` at viewport `1440x900`, `.hero` computed `display` is `grid`
 - [x] GET `/` at viewport `1440x900`, heading `Event Modeling for the whole team` computed `text-align` is `start`
-- [ ] GET `/` at viewport `1440x900`, heading `Event Modeling for the whole team` computed `font-size` is `72px`
+- [x] GET `/` at viewport `1440x900`, heading `Event Modeling for the whole team` computed `font-size` is `72px`
 - [ ] GET `/` `.hero h1 span` computed `color` is `rgb(15, 118, 110)`
 - [ ] GET `/` `header` link `Sign in` computed `border-top-width` is not `0px`
 - [ ] GET `/` without a Session, `.hero` link `Sign in` computed `border-top-width` is not `0px`

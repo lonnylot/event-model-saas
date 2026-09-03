@@ -237,7 +237,7 @@ body.landing .hero > p {
   grid-column: 1;
 }
 body.landing h1 {
-  font-size: 56px;
+  font-size: 72px;
   max-width: 14ch;
   margin: 0 0 1rem;
 }

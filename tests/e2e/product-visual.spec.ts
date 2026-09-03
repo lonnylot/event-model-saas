@@ -104,16 +104,17 @@ test("GET `/` `header` link `Sign in` computed `color` is `rgb(15, 118, 110)`", 
   ).toHaveCSS("color", "rgb(15, 118, 110)");
 });
 
-test("GET `/` heading `Event Modeling for the whole team` computed `font-size` is `56px`", async ({
+test("GET `/` at viewport `1440x900`, heading `Event Modeling for the whole team` computed `font-size` is `72px`", async ({
   page,
 }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/");
   await expect(
     page.getByRole("heading", {
       name: "Event Modeling for the whole team",
       exact: true,
     }),
-  ).toHaveCSS("font-size", "56px");
+  ).toHaveCSS("font-size", "72px");
 });
 
 test("GET `/` the text `A Team shares one Event Model: a timeline of slices, not a file you pass around.` computed `color` is `rgb(100, 116, 139)`", async ({

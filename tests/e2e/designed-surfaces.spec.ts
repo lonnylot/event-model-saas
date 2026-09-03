@@ -79,16 +79,17 @@ test("GET `/` shows an image whose accessible name is `Event Model editor`", asy
   ).toBeVisible();
 });
 
-test("GET `/` heading `Event Modeling for the whole team` computed `font-size` is `56px`", async ({
+test("GET `/` at viewport `1440x900`, heading `Event Modeling for the whole team` computed `font-size` is `72px`", async ({
   page,
 }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/");
   await expect(
     page.getByRole("heading", {
       name: "Event Modeling for the whole team",
       exact: true,
     }),
-  ).toHaveCSS("font-size", "56px");
+  ).toHaveCSS("font-size", "72px");
 });
 
 test("GET `/` `main` computed `max-width` is `none`", async ({ page }) => {

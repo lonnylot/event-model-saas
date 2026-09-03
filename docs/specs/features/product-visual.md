@@ -11,7 +11,7 @@ Public pages have copy and body colors only. Signed-in pages are paper cream. Th
 - [x] GET `/` `body` computed `font-family` includes `system-ui`
 - [x] GET `/` `header` computed `border-bottom-color` is `rgb(226, 232, 240)`
 - [x] GET `/` `header` link `Sign in` computed `color` is `rgb(15, 118, 110)`
-- [x] GET `/` heading `Event Modeling for the whole team` computed `font-size` is `56px`
+- [x] GET `/` at viewport `1440x900`, heading `Event Modeling for the whole team` computed `font-size` is `72px`
 - [x] GET `/` the text `A Team shares one Event Model: a timeline of slices, not a file you pass around.` computed `color` is `rgb(100, 116, 139)`
 - [x] GET `/` `main` computed `max-width` is `none`
 - [x] GET `/` button `Join the waitlist` computed `background-color` is `rgb(15, 118, 110)`
@@ -113,7 +113,7 @@ Screens: Landing, Login, Not found, Expired link, App, Team picker, Team, Teams 
 
 - Playwright computed colors are the sRGB of `canvas` `#FFFFFF` → `rgb(255, 255, 255)`, `canvas-subtle` `#F8FAFC` → `rgb(248, 250, 252)`, `ink` `#0F172A` → `rgb(15, 23, 42)`, `muted` `#64748B` → `rgb(100, 116, 139)`, `line` `#E2E8F0` → `rgb(226, 232, 240)`, `accent` `#0F766E` → `rgb(15, 118, 110)`, `on-accent` `#FFFFFF` → `rgb(255, 255, 255)`.
 - Block fills: Actor `#FEF3C7` → `rgb(254, 243, 199)` border `#F59E0B` → `rgb(245, 158, 11)`; Command `#DBEAFE` → `rgb(219, 234, 254)` border `#2563EB` → `rgb(37, 99, 235)`; Event `#FFEDD5` → `rgb(255, 237, 213)` border `#EA580C` → `rgb(234, 88, 12)`; Read Model `#DCFCE7` → `rgb(220, 252, 231)` border `#16A34A` → `rgb(22, 163, 74)`; Automation `#EDE9FE` → `rgb(237, 233, 254)` border `#7C3AED` → `rgb(124, 58, 237)`.
-- `radius` `10px`. Landing `main` `max-width` `none`. Landing heading `Event Modeling for the whole team` `font-size` `56px`. 404 `Not found` `font-size` `36px`. Card / waitlist form `max-width` `24rem` → `384px`.
+- `radius` `10px`. Landing `main` `max-width` `none`. Landing heading `Event Modeling for the whole team` `font-size` `72px` at viewport `1440x900` ([landing-modern.md](./landing-modern.md)). 404 `Not found` `font-size` `36px`. Card / waitlist form `max-width` `24rem` → `384px`.
 - Quiet controls (`Sign out`, `Export`) use a transparent background `rgba(0, 0, 0, 0)`.
 - `TEST_MAIL=1` Playwright `workers` is `1`. Playwright `webServer` wrangler `--port` and `--inspector-port` are checkout-unique from a hash of `cwd`; worker fixtures read `E2E_PORT`.
 - POST `/api/test/reset-store` exists only when `TEST_MAIL` is `1`. It recreates the in-process fake store and mail so an empty-state file still sees no Teams after a mutating file. When `TEST_MAIL` is not `1`, that path is JSON 404.
