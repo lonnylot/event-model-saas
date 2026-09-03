@@ -161,16 +161,6 @@ test("After scrolling the Timeline region, `section[aria-label=\"Timeline\"]` `s
     .not.toContain("translate(");
 });
 
-test("Clicking `Zoom in` on that page sets `.board` `style.transform` to a value that includes `scale(1.25)`", async ({
-  page,
-}) => {
-  await openUntitledModel(page);
-  await page.getByRole("button", { name: "Zoom in", exact: true }).click();
-  await expect
-    .poll(async () => page.locator(".board").evaluate((el) => el.style.transform))
-    .toContain("scale(1.25)");
-});
-
 test("After clicking `Zoom in` on that page, `section[aria-label=\"Timeline\"]` `style.transform` does not include `scale(`", async ({
   page,
 }) => {

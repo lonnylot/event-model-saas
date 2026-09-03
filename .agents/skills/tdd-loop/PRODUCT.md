@@ -8,7 +8,7 @@ Product weaker readings: `testing/PRODUCT.md`. Product chrome / Restates: `keepi
 
 An empty `it` (setup, no assertion) is not RED — it stays green if production is deleted.
 
-A Playwright locator or unit fixture listed in `testing/PRODUCT.md` is the weaker reading — fix the test before writing production. Playwright `toHaveCSS` of UA-default Email Field canvas fill or inherited heading ink stays green if the unique declaration is deleted. Playwright `locator.focus()` of `:focus-visible` stays green if the rule is only `:focus`. Unit `/aria-label="Timeline"[\s\S]*Actor/` of an in-region AC stays green if Actor is in Inspector.
+A Playwright locator or unit fixture listed in `testing/PRODUCT.md` is the weaker reading — fix the test before writing production. Playwright `toHaveCSS` of UA-default Email Field canvas fill or inherited heading ink stays green if the unique declaration is deleted. Playwright `locator.focus()` of `:focus-visible` stays green if the rule is only `:focus`. Unit `/aria-label="Timeline"[\s\S]*Actor/` of an in-region AC stays green if Actor is in Inspector. Timeline `style.transform` does not include `translate(` of TIME chrome does not pan stays green if TIME chrome is inside `.board`.
 
 A targeting "only on the first Slice" packed "and" stays one `it`. Copy vs splice is not targeting — one `it` each.
 
