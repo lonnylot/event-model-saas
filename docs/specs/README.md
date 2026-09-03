@@ -59,6 +59,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Create model border | [features/create-model-border.md](./features/create-model-border.md) | released |
 | Landing modern | [features/landing-modern.md](./features/landing-modern.md) | released |
 | Model defaults | [features/model-defaults.md](./features/model-defaults.md) | released |
-| Timeline clip | [features/timeline-clip.md](./features/timeline-clip.md) | validated |
+| Timeline clip | [features/timeline-clip.md](./features/timeline-clip.md) | released |
 
 Status: `draft` → `validated` → `released`.

@@ -1,6 +1,6 @@
 # Timeline clip
 
-Status: validated
+Status: released
 
 ## Problem
 
