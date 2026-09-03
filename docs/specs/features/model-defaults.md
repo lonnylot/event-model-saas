@@ -10,7 +10,7 @@ POST Create model writes `{ title: "Untitled", slices: [] }`. The hosted editor 
 
 - [x] POST `/api/teams/{id}/models` as a member writes a document whose `description` is `""`
 - [x] POST `/api/teams/{id}/models` as a member writes a document whose `connections` is `[]`
-- [ ] POST `/api/teams/{id}/models` as a member writes a document whose `slices` length is `1`
+- [x] POST `/api/teams/{id}/models` as a member writes a document whose `slices` length is `1`
 - [ ] POST `/api/teams/{id}/models` as a member writes a document whose first Slice `title` is `New Slice`
 - [ ] POST `/api/teams/{id}/models` as a member writes a document whose first Slice `sliceType` is `STATE_CHANGE`
 - [ ] POST `/api/teams/{id}/models` as a member writes a document whose first Slice `actors` length is `1`
@@ -58,3 +58,4 @@ Renaming Untitled. Changing New Slice click defaults. Import. Sample Library Che
 - [blocks.md](./blocks.md) — GET with no Actors does not show listitem `Actor` stays that file for a Slice that has none. GET after Create shows `Actor` (this slice). Add Actor after New Slice stays that file.
 - [product.md](../product.md) — Create is no longer “empty Event Model (valid schema, no slices)”; Create writes the default Slice in this slice, then opens the editor.
 - [architecture.md](../architecture.md) — `models` create still goes through `createModel`. Default Slice body is this slice.
+- [designed-surfaces.md](./designed-surfaces.md) — GET with no Slices shows `Start the timeline` stays that file for an imported empty document. Create is no longer that fixture.

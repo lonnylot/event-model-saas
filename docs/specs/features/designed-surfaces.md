@@ -58,6 +58,7 @@ Screens: Landing, Login, Not found, Expired link, App, Team picker, Team, Teams 
 - Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).
 - Contrast proofs may be unit tests of the hex pairs; they must fail if a token changes below 4.5:1.
 - Timeline empty copy is a `p` in `.timeline-empty`. Connection lines are `p[data-kind="connection"]` so undo restore does not insert into the empty region.
+- GET `/app/teams/{id}/models/{mid}` as a member with no Slices is an imported empty document ([model-defaults.md](./model-defaults.md)). Create writes one Slice.
 
 ## Out of scope
 
@@ -72,3 +73,4 @@ Dark mode. Public signup. Site admin waitlist table UI. Mac window chrome. Editi
 - [product.md](../product.md) — Contemporary SaaS on public, team/admin, and editor HTML includes composed look ([ADR 0001](../../adr/0001-look-iteration.md), this slice), not token checkboxes alone.
 - [architecture.md](../architecture.md) — Public-face still applies public tokens; product-visual still applies type, Card, Field, Button primary, signed-in Page, and editor canvas styling. Composed look (spacing, AppBar flex, Card padding, viewport, focus-visible, Google Fonts Inter) is this slice.
 - [editor-shell.md](./editor-shell.md) — GET Inspector chrome (heading, empty copy) is this slice. Inspector region name, New Slice, zoom, and dirty copy stay that file. Slice and Actor Name stay [chrome.md](./chrome.md).
+- [model-defaults.md](./model-defaults.md) — GET with no Slices shows `Start the timeline` stays this file for an imported empty document. Create writes one Slice in that slice.

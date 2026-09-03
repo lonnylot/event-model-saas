@@ -28,7 +28,7 @@ export async function createModel(
         id,
         title: "Untitled",
         description: "",
-        slices: [],
+        slices: [{ id: runtime.randomId() }],
         connections: [],
       }),
     );

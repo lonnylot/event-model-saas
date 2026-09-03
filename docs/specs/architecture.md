@@ -37,7 +37,7 @@ A Cloudflare Worker serves signed-out and team/admin HTML, the editor canvas pag
 | `document` | Parse/validate schema, legal edges, mutations on an Event Model | Schema file only |
 | `auth` | Magic-link issue/consume, session cookie, unknown-email notify, waitlist join, rate limit, site-admin bootstrap | D1, Email, env |
 | `teams` | Create team (site admin), invite, membership, list teams for a Person | D1, Email |
-| `models` | Create/list/get/import/export/save with version check | D1, R2, `document` |
+| `models` | Create/list/get/import/export/save with version check. Create still goes through `createModel`; Create writes one Slice ([features/model-defaults.md](./features/model-defaults.md)) | D1, R2, `document` |
 | `api` | HTTP routes, 404 for non-members, 409 on version mismatch | `auth`, `teams`, `models` |
 | `web` | Landing, Login, waitlist form, team picker, model list, editor shell. AppBar Mark and Editor `nav` are [features/app-chrome.md](./features/app-chrome.md). Landing fold is [features/landing-fold.md](./features/landing-fold.md). Landing modern composition is [features/landing-modern.md](./features/landing-modern.md). Create model border is [features/create-model-border.md](./features/create-model-border.md) | `api` |
 

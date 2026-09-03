@@ -65,6 +65,41 @@ async function createdUntitled() {
   return ctx;
 }
 
+async function importedEmpty() {
+  const ctx = await memberEnv();
+  await handleRequest(
+    new Request("https://event-model.lonnylot.com/api/teams", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        Cookie: "session=sess-admin",
+      },
+      body: JSON.stringify({ name: "Library" }),
+    }),
+    ctx.env,
+  );
+  await handleRequest(
+    new Request("https://event-model.lonnylot.com/api/teams/team-1/imports", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        Cookie: "session=sess-admin",
+      },
+      body: JSON.stringify({
+        document: {
+          format: "eventmodel",
+          schemaVersion: 1,
+          id: "00000000-0000-4000-8000-000000000001",
+          title: "Untitled",
+          slices: [],
+        },
+      }),
+    }),
+    ctx.env,
+  );
+  return ctx;
+}
+
 describe("create model", () => {
   it("POST `/api/teams/{id}/models` as a member returns status 201", async () => {
     const { env } = await memberEnv();
@@ -317,12 +352,6 @@ describe("create model", () => {
     expect(JSON.parse(body ?? "").schemaVersion).toBe(1);
   });
 
-  it("POST `/api/teams/{id}/models` as a member writes a document whose `slices` is `[]`", async () => {
-    const { env } = await createdUntitled();
-    const body = await env.documents.get("models/model-1.eventmodel");
-    expect(JSON.parse(body ?? "").slices).toEqual([]);
-  });
-
   it("POST `/api/teams/{id}/models` as a member writes a document whose `id` is the Event Model id", async () => {
     const { env } = await createdUntitled();
     const body = await env.documents.get("models/model-1.eventmodel");
@@ -345,6 +374,12 @@ describe("create model", () => {
     const { env } = await createdUntitled();
     const body = await env.documents.get("models/model-1.eventmodel");
     expect(JSON.parse(body ?? "").connections).toEqual([]);
+  });
+
+  it("POST `/api/teams/{id}/models` as a member writes a document whose `slices` length is `1`", async () => {
+    const { env } = await createdUntitled();
+    const body = await env.documents.get("models/model-1.eventmodel");
+    expect(JSON.parse(body ?? "").slices).toHaveLength(1);
   });
 
   it("GET `/app/teams/{id}` as a member with an Event Model titled `Untitled` shows a link whose accessible name is `Untitled`", async () => {
@@ -470,7 +505,7 @@ describe("create model", () => {
   });
 
   it("GET `/app/teams/{id}/models/{mid}` as a member with no Slices does not show a listitem whose accessible name is `New Slice`", async () => {
-    const { env } = await createdUntitled();
+    const { env } = await importedEmpty();
     const response = await handleRequest(
       new Request(
         "https://event-model.lonnylot.com/app/teams/team-1/models/model-1",
@@ -518,7 +553,7 @@ describe("create model", () => {
   });
 
   it("GET `/app/teams/{id}/models/{mid}` as a member with no Slices shows a heading whose accessible name is `Start the timeline`", async () => {
-    const { env } = await createdUntitled();
+    const { env } = await importedEmpty();
     const response = await handleRequest(
       new Request(
         "https://event-model.lonnylot.com/app/teams/team-1/models/model-1",

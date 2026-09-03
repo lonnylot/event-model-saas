@@ -16,7 +16,6 @@ A Team has no Event Models. Members cannot create, open, import, export, or Save
 - [x] POST `/api/teams/{id}/models` as a member writes R2 object `models/{id}.eventmodel`
 - [x] POST `/api/teams/{id}/models` as a member writes a document whose `format` is `eventmodel`
 - [x] POST `/api/teams/{id}/models` as a member writes a document whose `schemaVersion` is `1`
-- [x] POST `/api/teams/{id}/models` as a member writes a document whose `slices` is `[]`
 - [x] POST `/api/teams/{id}/models` as a member writes a document whose `id` is the Event Model id
 - [x] POST `/api/teams/{id}/models` as a member writes a document whose `title` is `Untitled`
 - [x] GET `/app/teams/{id}` as a member shows a button whose accessible name is `Create model`
@@ -83,7 +82,7 @@ Event Model, Team, Person, Version, Slice
 
 - Create and import JSON fields are `title` (optional on create; default `Untitled`) and `document` (import only).
 - Save JSON fields are `version` and `document`.
-- Empty Event Model JSON is `{ "format": "eventmodel", "schemaVersion": 1, "id": "{uuid}", "title": "Untitled", "slices": [] }`.
+- Create `slices` `[]` is leftover unused ([model-defaults.md](./model-defaults.md)). Empty Event Model JSON `{ "format": "eventmodel", "schemaVersion": 1, "id": "{uuid}", "title": "Untitled", "slices": [] }` is leftover unused; Create writes one Slice in that slice. Import of `slices` `[]` still stores the submitted document.
 - Schema file is `schemas/eventmodel.schema.json`, copied from the Mac app and not diverged in this slice.
 - `run_worker_first` includes `/app` and `/app/*`.
 
