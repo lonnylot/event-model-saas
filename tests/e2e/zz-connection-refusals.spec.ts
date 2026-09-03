@@ -674,7 +674,7 @@ test("Dragging from `Command port` onto the first `New Slice` listitem does not 
   await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   const slice = page.getByRole("listitem", { name: "New Slice", exact: true });
-  await expect(slice).toHaveCount(6);
+  await expect(slice).toHaveCount(5);
   await expect(
     page.getByRole("button", { name: "Command port", exact: true }),
   ).toBeVisible();
@@ -693,7 +693,7 @@ test("Dragging from `Command port` onto the first `New Slice` listitem shows the
   await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   const slice = page.getByRole("listitem", { name: "New Slice", exact: true });
-  await expect(slice).toHaveCount(6);
+  await expect(slice).toHaveCount(5);
   await expect(
     page.getByRole("button", { name: "Command port", exact: true }),
   ).toBeVisible();
@@ -713,7 +713,7 @@ test("Dragging from `Event Happened port` onto the first `New Slice` listitem sh
   await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Event", exact: true }).click();
   const slice = page.getByRole("listitem", { name: "New Slice", exact: true });
-  await expect(slice).toHaveCount(6);
+  await expect(slice).toHaveCount(5);
   await expect(
     page.getByRole("button", { name: "Event Happened port", exact: true }),
   ).toBeVisible();
@@ -733,7 +733,7 @@ test("Dragging from `Read Model port` onto the first `New Slice` listitem shows 
   await clickNewSlice(page);
   await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
   const slice = page.getByRole("listitem", { name: "New Slice", exact: true });
-  await expect(slice).toHaveCount(6);
+  await expect(slice).toHaveCount(5);
   await expect(
     page.getByRole("button", { name: "Read Model port", exact: true }),
   ).toBeVisible();

@@ -911,6 +911,7 @@ test("After clicking `Add Field` on `Command` then the Timeline `Actor` listitem
   await page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Actor", exact: true })
+    .last()
     .click();
   await expect(
     page.getByRole("combobox", { name: "Field type", exact: true }),
@@ -938,6 +939,7 @@ test("After clicking `Add Field` on `Command` then the Timeline `Actor` listitem
   await page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Actor", exact: true })
+    .last()
     .click();
   await expect(
     page.getByRole("checkbox", { name: "Optional", exact: true }),
@@ -965,6 +967,7 @@ test("After clicking `Add Field` on `Command` then the Timeline `Actor` listitem
   await page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Actor", exact: true })
+    .last()
     .click();
   await expect(
     page.getByRole("textbox", { name: "Example", exact: true }),
@@ -992,6 +995,7 @@ test("After clicking `Add Field` on `Command` then the Timeline `Actor` listitem
   await page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Actor", exact: true })
+    .last()
     .click();
   await expect(
     page.getByRole("button", { name: "Delete Field", exact: true }),
