@@ -20,18 +20,18 @@ GET `/` is the login form. A visitor cannot tell what Event Model is. Paper-work
 - [x] GET `/` without a Session does not show a button whose accessible name is `Email me a link`
 - [x] GET `/` without a Session does not show a control whose accessible name is `Sign up`
 - [x] GET `/` without a Session shows a heading whose accessible name is `The model lives with the team`
-- [x] GET `/` without a Session shows the text `Here the Event Model belongs to a Team.`
+- [x] GET `/` without a Session shows the text `Every Event Model belongs to one Team. Every Person on that Team may edit it.`
 - [x] GET `/` without a Session shows a heading whose accessible name is `A timeline of slices`
-- [x] GET `/` without a Session shows the text `a vertical column on the timeline`
-- [x] GET `/` without a Session shows the text `intent, then a fact that happened`
-- [x] GET `/` without a Session shows the text `a view of state from events`
-- [x] GET `/` without a Session shows the text `a processor with no human actor`
-- [x] GET `/` without a Session shows the text `Commands connect to events. Events connect to read models.`
+- [x] GET `/` without a Session shows the text `Each Slice is one vertical feature: Actor, Command, Event, Read Model, Automation.`
+- [x] GET `/` without a Session does not show the text `intent, then a fact that happened`
+- [x] GET `/` without a Session does not show the text `a view of state from events`
+- [x] GET `/` without a Session does not show the text `a processor with no human actor`
+- [x] GET `/` without a Session does not show the text `Commands connect to events. Events connect to read models.`
 - [x] GET `/` without a Session shows a heading whose accessible name is `Invite-only, version-checked saves`
-- [x] GET `/` without a Session shows the text `The Mac app is local: one person, one .eventmodel file.`
-- [x] GET `/` without a Session shows the text `Magic-link sign-in. No password, no public signup.`
-- [x] GET `/` without a Session shows the text `Site admin creates Teams and sends Invites.`
-- [x] GET `/` without a Session shows the text `Save is explicit.`
+- [x] GET `/` without a Session does not show the text `The Mac app is local: one person, one .eventmodel file.`
+- [x] GET `/` without a Session shows the text `Magic-link sign-in. No public signup. Site admin sends Invites. Save is explicit.`
+- [x] GET `/` without a Session does not show the text `Magic-link sign-in. No password, no public signup.`
+- [x] GET `/` without a Session does not show the text `Site admin creates Teams and sends Invites.`
 - [x] GET `/` without a Session shows a heading whose accessible name is `Join the waitlist`
 - [x] GET `/` without a Session shows the text `Leave your email. If you already have access, use Sign in.`
 - [x] GET `/` without a Session shows a link whose accessible name is `Join the waitlist`
@@ -114,6 +114,7 @@ Screens: Landing, Login, Not found, Expired link. Primitives this slice composes
 - Open Graph title stays `Event Model`.
 - Login heading is `Sign in`. The wordmark link `Event Model` is the Marketing header, not a second heading. Landing and Login header Mark (`img` `src` `/favicon.png`) is [app-chrome.md](./app-chrome.md).
 - GET `/` hero sentence is `A Team shares one Event Model: a timeline of slices, not a file you pass around.` `One Event Model, signed in. No passing files around.` is leftover unused ([landing-fold.md](./landing-fold.md)). Header `Sign in` / `Open app` locators stay this file. Extra `.hero` Sign in / Open app are [landing-fold.md](./landing-fold.md).
+- Bento bodies are the three one-paragraph sentences in [landing-fold.md](./landing-fold.md). Leftover unused as separate bullets: `Here the Event Model belongs to a Team.`; `a vertical column on the timeline`; `intent, then a fact that happened`; `a view of state from events`; `a processor with no human actor`; `Commands connect to events. Events connect to read models.`; `The Mac app is local: one person, one .eventmodel file.`; `Magic-link sign-in. No password, no public signup.`; `Site admin creates Teams and sends Invites.`; `Save is explicit.` (those facts fold into the three paragraphs).
 
 ## Out of scope
 

@@ -16,15 +16,15 @@ GET `/` spends the first viewport on a tall empty hero. The product frame is cut
 - [ ] GET `/` with a Session, the `.hero` link `Open app` has `href` `/app`
 - [ ] GET `/` `.product-shot` does not show the text `lonny@lonnylot.com`
 - [ ] GET `/` `.product-shot` shows the text `Command → Event Happened`
-- [ ] GET `/` without a Session shows the text `Every Event Model belongs to one Team. Every Person on that Team may edit it.`
-- [ ] GET `/` without a Session shows the text `Each Slice is one vertical feature: Actor, Command, Event, Read Model, Automation.`
-- [ ] GET `/` without a Session shows the text `Magic-link sign-in. No public signup. Site admin sends Invites. Save is explicit.`
-- [ ] GET `/` without a Session does not show the text `Here the Event Model belongs to a Team.`
-- [ ] GET `/` without a Session does not show the text `a vertical column on the timeline`
-- [ ] GET `/` without a Session does not show the text `The Mac app is local: one person, one .eventmodel file.`
-- [ ] GET `/` `.bento article` first article has exactly one `p`
-- [ ] GET `/` `.bento article` second article has exactly one `p`
-- [ ] GET `/` `.bento article` third article has exactly one `p`
+- [x] GET `/` without a Session shows the text `Every Event Model belongs to one Team. Every Person on that Team may edit it.`
+- [x] GET `/` without a Session shows the text `Each Slice is one vertical feature: Actor, Command, Event, Read Model, Automation.`
+- [x] GET `/` without a Session shows the text `Magic-link sign-in. No public signup. Site admin sends Invites. Save is explicit.`
+- [x] GET `/` without a Session does not show the text `Here the Event Model belongs to a Team.`
+- [x] GET `/` without a Session does not show the text `a vertical column on the timeline`
+- [x] GET `/` without a Session does not show the text `The Mac app is local: one person, one .eventmodel file.`
+- [x] GET `/` `.bento article` first article has exactly one `p`
+- [x] GET `/` `.bento article` second article has exactly one `p`
+- [x] GET `/` `.bento article` third article has exactly one `p`
 - [ ] GET `/` at viewport `1440x900`, `#waitlist-form` computed `flex-direction` is `row`
 - [ ] GET `/` at viewport `390x844`, `#waitlist-form` computed `flex-direction` is `column`
 - [ ] GET `/` at viewport `390x844`, `.product-shot` shows the text `Checkout`
