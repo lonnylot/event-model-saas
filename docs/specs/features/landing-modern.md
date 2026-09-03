@@ -9,7 +9,7 @@ GET `/` is a centered brochure: stacked headline, pill CTA, product frame, three
 ## Acceptance criteria
 
 - [x] GET `/` at viewport `1440x900`, `.hero` computed `display` is `grid`
-- [ ] GET `/` at viewport `1440x900`, heading `Event Modeling for the whole team` computed `text-align` is `start`
+- [x] GET `/` at viewport `1440x900`, heading `Event Modeling for the whole team` computed `text-align` is `start`
 - [ ] GET `/` at viewport `1440x900`, heading `Event Modeling for the whole team` computed `font-size` is `72px`
 - [ ] GET `/` `.hero h1 span` computed `color` is `rgb(15, 118, 110)`
 - [ ] GET `/` `header` link `Sign in` computed `border-top-width` is not `0px`
@@ -23,7 +23,7 @@ GET `/` is a centered brochure: stacked headline, pill CTA, product frame, three
 - [ ] GET `/` `.bento` third `article` has `.invite-shot`
 - [ ] GET `/` `.hero .product-shot` computed `animation-name` is not `none`
 - [ ] GET `/` with `prefers-reduced-motion: reduce`, `.hero .product-shot` computed `animation-name` is `none`
-- [ ] GET `/` at viewport `390x844`, heading `Event Modeling for the whole team` computed `text-align` is `start`
+- [x] GET `/` at viewport `390x844`, heading `Event Modeling for the whole team` computed `text-align` is `start`
 - [ ] GET `/` at viewport `390x844`, `.hero` computed `padding-top` is `56px`
 - [ ] GET `/` at viewport `390x844`, `.hero .product-shot .shot-col` computed `flex-grow` is `1`
 - [ ] GET `/` at viewport `390x844`, `.hero .product-shot .shot-lane-rail` computed `display` is `flex`

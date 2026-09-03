@@ -229,7 +229,7 @@ body.landing .hero {
     url("/hero-mesh.jpg");
   background-size: cover;
   background-position: center top;
-  text-align: center;
+  text-align: start;
   padding: 2.25rem max(1.5rem, calc((100% - 72rem) / 2)) 0;
 }
 body.landing .hero h1,
@@ -239,13 +239,13 @@ body.landing .hero > p {
 body.landing h1 {
   font-size: 56px;
   max-width: 14ch;
-  margin: 0 auto 1rem;
+  margin: 0 0 1rem;
 }
 body.landing .hero > p:first-of-type {
   color: #64748b;
   font-size: 1.2rem;
   max-width: 32rem;
-  margin: 0 auto 1.75rem;
+  margin: 0 0 1.75rem;
 }
 body.landing a.btn-primary {
   display: inline-flex;
@@ -266,7 +266,7 @@ body.landing .hero > p:nth-of-type(2) {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1rem;
 }
 body.landing .hero > p:nth-of-type(2) a[href="/login"],
