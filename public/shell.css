@@ -257,6 +257,19 @@ body.landing a.btn-primary {
 body.landing a.btn-primary:focus-visible {
   box-shadow: 0 0 0 3px #0f766e, 0 8px 24px rgba(15, 118, 110, 0.28);
 }
+body.landing .hero > p:nth-of-type(2) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+body.landing .hero > p:nth-of-type(2) a[href="/login"],
+body.landing .hero > p:nth-of-type(2) a[href="/app"] {
+  color: #0f766e;
+  font-weight: 600;
+  text-decoration: none;
+}
 body.landing .hero figure {
   margin: auto auto -6.5rem;
   width: 100%;

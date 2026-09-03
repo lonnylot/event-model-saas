@@ -132,3 +132,53 @@ test("GET `/` with a Session, `footer` does not show a link whose accessible nam
     }),
   ).toHaveCount(0);
 });
+
+test("GET `/` without a Session, `.hero` shows a link whose accessible name is `Sign in`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.locator(".hero").getByRole("link", {
+      name: "Sign in",
+      exact: true,
+    }),
+  ).toBeVisible();
+});
+
+test("GET `/` without a Session, the `.hero` link `Sign in` has `href` `/login`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.locator(".hero").getByRole("link", {
+      name: "Sign in",
+      exact: true,
+    }),
+  ).toHaveAttribute("href", "/login");
+});
+
+test("GET `/` with a Session, `.hero` shows a link whose accessible name is `Open app`", async ({
+  page,
+}) => {
+  await page.request.post("/api/test/non-admin-session");
+  await page.goto("/");
+  await expect(
+    page.locator(".hero").getByRole("link", {
+      name: "Open app",
+      exact: true,
+    }),
+  ).toBeVisible();
+});
+
+test("GET `/` with a Session, the `.hero` link `Open app` has `href` `/app`", async ({
+  page,
+}) => {
+  await page.request.post("/api/test/non-admin-session");
+  await page.goto("/");
+  await expect(
+    page.locator(".hero").getByRole("link", {
+      name: "Open app",
+      exact: true,
+    }),
+  ).toHaveAttribute("href", "/app");
+});

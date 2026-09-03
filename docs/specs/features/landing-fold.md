@@ -10,10 +10,10 @@ GET `/` spends the first viewport on a tall empty hero. The product frame is cut
 
 - [ ] GET `/` at viewport `1440x900`, `.product-shot` `getBoundingClientRect().bottom` is less than or equal to `window.innerHeight`
 - [x] GET `/` without a Session shows the text `A Team shares one Event Model: a timeline of slices, not a file you pass around.`
-- [ ] GET `/` without a Session, `.hero` shows a link whose accessible name is `Sign in`
-- [ ] GET `/` without a Session, the `.hero` link `Sign in` has `href` `/login`
-- [ ] GET `/` with a Session, `.hero` shows a link whose accessible name is `Open app`
-- [ ] GET `/` with a Session, the `.hero` link `Open app` has `href` `/app`
+- [x] GET `/` without a Session, `.hero` shows a link whose accessible name is `Sign in`
+- [x] GET `/` without a Session, the `.hero` link `Sign in` has `href` `/login`
+- [x] GET `/` with a Session, `.hero` shows a link whose accessible name is `Open app`
+- [x] GET `/` with a Session, the `.hero` link `Open app` has `href` `/app`
 - [ ] GET `/` `.product-shot` does not show the text `lonny@lonnylot.com`
 - [ ] GET `/` `.product-shot` shows the text `Command → Event Happened`
 - [x] GET `/` without a Session shows the text `Every Event Model belongs to one Team. Every Person on that Team may edit it.`
