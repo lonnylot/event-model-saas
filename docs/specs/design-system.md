@@ -2,7 +2,7 @@
 
 Status: released
 
-Tokens and primitives for Event Model SaaS HTML including the editor canvas. [features/product-visual.md](./features/product-visual.md) applies token values. [features/designed-surfaces.md](./features/designed-surfaces.md) applies composed look. [features/landing-depth.md](./features/landing-depth.md) applies Landing depth. [features/landing-saas-shot.md](./features/landing-saas-shot.md) applies the Landing product frame as the hosted Editor. [features/landing-chrome-depth.md](./features/landing-chrome-depth.md) applies Landing chrome depth (no URL bar; nav / band / footer lift). This file does not own feature acceptance criteria.
+Tokens and primitives for Event Model SaaS HTML including the editor canvas. [features/product-visual.md](./features/product-visual.md) applies token values. [features/designed-surfaces.md](./features/designed-surfaces.md) applies composed look. [features/landing-depth.md](./features/landing-depth.md) applies Landing depth. [features/landing-saas-shot.md](./features/landing-saas-shot.md) applies the Landing product frame as the hosted Editor. [features/landing-chrome-depth.md](./features/landing-chrome-depth.md) applies Landing chrome depth (no URL bar; nav / band / footer lift). [features/landing-fold.md](./features/landing-fold.md) applies Landing fold (first screen, bento bodies, waitlist row, footer mark). This file does not own feature acceptance criteria.
 
 ## Look
 
@@ -40,7 +40,7 @@ Sticky-note block fills ([features/product-visual.md](./features/product-visual.
 | AppBar | Top bar: Mark (`img` `src` `/favicon.png`) next to the wordmark, then Sign in / Open app or email, optional Teams admin, Sign out. `line` bottom border. Wordmark `/` when signed out, `/app` when signed in. Signed-in admin screens put optional Teams admin in a `nav` landmark ([features/admin-nav.md](./features/admin-nav.md)). Editor AppBar includes that `nav` and the Mark ([features/app-chrome.md](./features/app-chrome.md)) |
 | Button primary | Background `accent`, color `on-accent`, `radius` |
 | Field | `line` border, `radius` |
-| Footer | Landmark on Landing: wordmark, then Sign in when signed out or Open app when signed in |
+| Footer | Landmark on Landing: Mark (`img` `src` `/favicon.png`) next to the wordmark. No Sign in / Open app ([features/landing-fold.md](./features/landing-fold.md)) |
 
 ## Screens
 

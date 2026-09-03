@@ -209,7 +209,6 @@ body.landing main {
   padding: 1px 0 0;
 }
 body.landing .hero {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -229,7 +228,7 @@ body.landing .hero {
   background-size: cover;
   background-position: center top;
   text-align: center;
-  padding: 5rem 1.5rem 0;
+  padding: 2.25rem 1.5rem 0;
 }
 body.landing h1 {
   font-size: 56px;
@@ -257,11 +256,24 @@ body.landing a.btn-primary {
 body.landing a.btn-primary:focus-visible {
   box-shadow: 0 0 0 3px #0f766e, 0 8px 24px rgba(15, 118, 110, 0.28);
 }
+body.landing .hero > p:nth-of-type(2) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+body.landing .hero > p:nth-of-type(2) a[href="/login"],
+body.landing .hero > p:nth-of-type(2) a[href="/app"] {
+  color: #0f766e;
+  font-weight: 600;
+  text-decoration: none;
+}
 body.landing .hero figure {
-  margin: auto auto -6.5rem;
+  margin: 1.25rem auto -6.5rem;
   width: 100%;
   max-width: 68rem;
-  padding: 3.5rem 1.25rem 0;
+  padding: 1.25rem 1.25rem 0;
   position: relative;
   z-index: 1;
   perspective: 1600px;
@@ -324,11 +336,6 @@ body.landing .hero figure::before {
   flex-wrap: nowrap;
   justify-content: flex-end;
 }
-.product-shot .shot-email {
-  font-size: 0.65rem;
-  color: #64748b;
-  margin: 0 0.2rem;
-}
 .product-shot .shot-btn {
   font-size: 0.65rem;
   font-weight: 500;
@@ -356,7 +363,7 @@ body.landing .hero figure::before {
 .product-shot .shot-main {
   display: grid;
   grid-template-columns: 8.4rem minmax(0, 1fr) 9rem;
-  min-height: 22rem;
+  min-height: 16rem;
 }
 .product-shot .shot-rail {
   background: #f8fafc;
@@ -520,6 +527,12 @@ body.landing .hero figure::before {
 .product-shot .chip.on {
   box-shadow: 0 0 0 2px #0f766e;
 }
+.product-shot .shot-connection {
+  font-size: 0.52rem;
+  font-weight: 600;
+  color: #0f766e;
+  letter-spacing: -0.01em;
+}
 .product-shot .chip.event {
   background: #ffedd5;
   border-top-color: #ea580c;
@@ -618,11 +631,24 @@ body.landing #waitlist-form {
   margin-top: 0.5rem;
   width: 100%;
   text-align: left;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+body.landing #waitlist-form label {
+  flex: 1 0 100%;
+}
+body.landing #waitlist-form input {
+  flex: 1 1 8rem;
+  min-width: 0;
+}
+body.landing #waitlist-form button {
+  flex: 0 0 auto;
 }
 body.landing footer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 1rem;
   padding: 1.15rem 1.75rem 1.4rem;
   background: #ffffff;
@@ -639,9 +665,16 @@ body.landing footer a {
   letter-spacing: -0.02em;
   color: #0f172a;
 }
-body.landing footer a[href="/login"],
-body.landing footer a[href="/app"] {
-  color: #0f766e;
+body.landing footer img {
+  height: 1.75rem;
+  width: 1.75rem;
+  display: block;
+  flex-shrink: 0;
+}
+body.landing footer a:has(img) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
 }
 
 @media (max-width: 800px) {
@@ -650,17 +683,13 @@ body.landing footer a[href="/app"] {
     max-width: none;
   }
   body.landing .hero {
-    min-height: 100svh;
-    padding-top: 3.5rem;
+    padding-top: 1.75rem;
   }
   body.landing .hero figure {
     margin-bottom: -3.5rem;
   }
   .product-shot {
     transform: rotateX(7deg);
-  }
-  .product-shot .shot-email {
-    display: none;
   }
   .product-shot .shot-toolbar {
     flex-wrap: wrap;
@@ -672,6 +701,13 @@ body.landing footer a[href="/app"] {
   .product-shot .shot-inspector,
   .product-shot .shot-lane-rail {
     display: none;
+  }
+  .product-shot .shot-col + .shot-col {
+    display: none;
+  }
+  body.landing #waitlist-form {
+    flex-direction: column;
+    align-items: stretch;
   }
   body.landing .bento {
     grid-template-columns: 1fr;

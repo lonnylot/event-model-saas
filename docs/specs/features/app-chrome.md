@@ -58,11 +58,11 @@ Screens: Landing, Login, App, Team picker, Team, Teams admin, Editor. Primitives
 
 ## Out of scope
 
-Dark mode. Public signup. Site admin waitlist table UI. A new drawn mark (Imagine or otherwise). Mac window chrome. Import button on the Team page. Per-model ACLs. Landing hero restyle. Login form restyle beyond the header mark. Editor canvas restyle. New product claims (pricing, SLA, "anyone can join"). Product-visual token *values* stay [product-visual.md](./product-visual.md).
+Dark mode. Public signup. Site admin waitlist table UI. A new drawn mark (Imagine or otherwise). Mac window chrome. Import button on the Team page. Per-model ACLs. Landing hero restyle. Login form restyle beyond the header mark. Editor canvas restyle. New product claims (pricing, SLA, "anyone can join"). Product-visual token *values* stay [product-visual.md](./product-visual.md). Footer Mark on Landing is [landing-fold.md](./landing-fold.md).
 
 ## Restates
 
-- [design-system.md](../design-system.md) — Mark pixels stay that file. The Mark is also the AppBar logo (`img` `src` `/favicon.png`) on Landing, Login, signed-in shells, and Editor.
+- [design-system.md](../design-system.md) — Mark pixels stay that file. The Mark is also the AppBar logo (`img` `src` `/favicon.png`) on Landing, Login, signed-in shells, and Editor. Footer Mark on Landing is [landing-fold.md](./landing-fold.md).
 - [public-face.md](./public-face.md) — Favicon and OG pixel rules stay that file. Landing and Login header compose the Mark next to the wordmark.
 - [visual-shell.md](./visual-shell.md) — AppBar `Event Model` href `/app` on App, picker, Team, Teams admin stays that file. Editor `header` link `Event Model` href `/app` is this slice.
 - [admin-nav.md](./admin-nav.md) — `nav` on App, picker, Team, Teams admin stays that file. Editor `nav` (and Teams admin on Editor for site admin) is this slice. Out of scope no longer parks Editor AppBar `nav`.

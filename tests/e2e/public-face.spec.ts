@@ -44,12 +44,14 @@ test("GET `/` without a Session shows a heading whose accessible name is `Event 
   ).toBeVisible();
 });
 
-test("GET `/` without a Session shows the text `One Event Model, signed in. No passing files around.`", async ({
+test("GET `/` without a Session shows the text `A Team shares one Event Model: a timeline of slices, not a file you pass around.`", async ({
   page,
 }) => {
   await page.goto("/");
   await expect(
-    page.getByText("One Event Model, signed in. No passing files around."),
+    page.getByText(
+      "A Team shares one Event Model: a timeline of slices, not a file you pass around.",
+    ),
   ).toBeVisible();
 });
 
@@ -229,12 +231,14 @@ test("GET `/` without a Session shows a heading whose accessible name is `The mo
   ).toBeVisible();
 });
 
-test("GET `/` without a Session shows the text `Here the Event Model belongs to a Team.`", async ({
+test("GET `/` without a Session shows the text `Every Event Model belongs to one Team. Every Person on that Team may edit it.`", async ({
   page,
 }) => {
   await page.goto("/");
   await expect(
-    page.getByText("Here the Event Model belongs to a Team."),
+    page.getByText(
+      "Every Event Model belongs to one Team. Every Person on that Team may edit it.",
+    ),
   ).toBeVisible();
 });
 
@@ -250,39 +254,43 @@ test("GET `/` without a Session shows a heading whose accessible name is `A time
   ).toBeVisible();
 });
 
-test("GET `/` without a Session shows the text `a vertical column on the timeline`", async ({
+test("GET `/` without a Session shows the text `Each Slice is one vertical feature: Actor, Command, Event, Read Model, Automation.`", async ({
   page,
 }) => {
   await page.goto("/");
   await expect(
-    page.getByText("a vertical column on the timeline"),
+    page.getByText(
+      "Each Slice is one vertical feature: Actor, Command, Event, Read Model, Automation.",
+    ),
   ).toBeVisible();
 });
 
-test("GET `/` without a Session shows the text `intent, then a fact that happened`", async ({
+test("GET `/` without a Session does not show the text `intent, then a fact that happened`", async ({
   page,
 }) => {
   await page.goto("/");
   await expect(
     page.getByText("intent, then a fact that happened"),
-  ).toBeVisible();
+  ).toHaveCount(0);
 });
 
-test("GET `/` without a Session shows the text `a view of state from events`", async ({
+test("GET `/` without a Session does not show the text `a view of state from events`", async ({
   page,
 }) => {
   await page.goto("/");
-  await expect(page.getByText("a view of state from events")).toBeVisible();
+  await expect(page.getByText("a view of state from events")).toHaveCount(0);
 });
 
-test("GET `/` without a Session shows the text `a processor with no human actor`", async ({
+test("GET `/` without a Session does not show the text `a processor with no human actor`", async ({
   page,
 }) => {
   await page.goto("/");
-  await expect(page.getByText("a processor with no human actor")).toBeVisible();
+  await expect(page.getByText("a processor with no human actor")).toHaveCount(
+    0,
+  );
 });
 
-test("GET `/` without a Session shows the text `Commands connect to events. Events connect to read models.`", async ({
+test("GET `/` without a Session does not show the text `Commands connect to events. Events connect to read models.`", async ({
   page,
 }) => {
   await page.goto("/");
@@ -290,7 +298,7 @@ test("GET `/` without a Session shows the text `Commands connect to events. Even
     page.getByText(
       "Commands connect to events. Events connect to read models.",
     ),
-  ).toBeVisible();
+  ).toHaveCount(0);
 });
 
 test("GET `/` without a Session shows a heading whose accessible name is `Invite-only, version-checked saves`", async ({
@@ -305,38 +313,42 @@ test("GET `/` without a Session shows a heading whose accessible name is `Invite
   ).toBeVisible();
 });
 
-test("GET `/` without a Session shows the text `The Mac app is local: one person, one .eventmodel file.`", async ({
+test("GET `/` without a Session shows the text `Magic-link sign-in. No public signup. Site admin sends Invites. Save is explicit.`", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByText(
+      "Magic-link sign-in. No public signup. Site admin sends Invites. Save is explicit.",
+    ),
+  ).toBeVisible();
+});
+
+test("GET `/` without a Session does not show the text `The Mac app is local: one person, one .eventmodel file.`", async ({
   page,
 }) => {
   await page.goto("/");
   await expect(
     page.getByText("The Mac app is local: one person, one .eventmodel file."),
-  ).toBeVisible();
+  ).toHaveCount(0);
 });
 
-test("GET `/` without a Session shows the text `Magic-link sign-in. No password, no public signup.`", async ({
+test("GET `/` without a Session does not show the text `Magic-link sign-in. No password, no public signup.`", async ({
   page,
 }) => {
   await page.goto("/");
   await expect(
     page.getByText("Magic-link sign-in. No password, no public signup."),
-  ).toBeVisible();
+  ).toHaveCount(0);
 });
 
-test("GET `/` without a Session shows the text `Site admin creates Teams and sends Invites.`", async ({
+test("GET `/` without a Session does not show the text `Site admin creates Teams and sends Invites.`", async ({
   page,
 }) => {
   await page.goto("/");
   await expect(
     page.getByText("Site admin creates Teams and sends Invites."),
-  ).toBeVisible();
-});
-
-test("GET `/` without a Session shows the text `Save is explicit.`", async ({
-  page,
-}) => {
-  await page.goto("/");
-  await expect(page.getByText("Save is explicit.")).toBeVisible();
+  ).toHaveCount(0);
 });
 
 test("GET `/` without a Session shows a heading whose accessible name is `Join the waitlist`", async ({

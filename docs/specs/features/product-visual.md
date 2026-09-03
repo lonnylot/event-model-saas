@@ -12,7 +12,7 @@ Public pages have copy and body colors only. Signed-in pages are paper cream. Th
 - [x] GET `/` `header` computed `border-bottom-color` is `rgb(226, 232, 240)`
 - [x] GET `/` `header` link `Sign in` computed `color` is `rgb(15, 118, 110)`
 - [x] GET `/` heading `Event Modeling for the whole team` computed `font-size` is `56px`
-- [x] GET `/` the text `One Event Model, signed in. No passing files around.` computed `color` is `rgb(100, 116, 139)`
+- [x] GET `/` the text `A Team shares one Event Model: a timeline of slices, not a file you pass around.` computed `color` is `rgb(100, 116, 139)`
 - [x] GET `/` `main` computed `max-width` is `none`
 - [x] GET `/` button `Join the waitlist` computed `background-color` is `rgb(15, 118, 110)`
 - [x] GET `/` button `Join the waitlist` computed `color` is `rgb(255, 255, 255)`
@@ -122,7 +122,7 @@ Screens: Landing, Login, Not found, Expired link, App, Team picker, Team, Teams 
 
 ## Out of scope
 
-Dark mode. Public signup. Site admin waitlist table UI. Mac window chrome. Editing behavior (New Slice, Save, drag, inspect) stays the released editor specs. Composed look (spacing, AppBar flex, Card padding, viewport, focus-visible, contrast proofs, Google Fonts Inter) is [designed-surfaces.md](./designed-surfaces.md). Landing depth is [landing-depth.md](./landing-depth.md).
+Dark mode. Public signup. Site admin waitlist table UI. Mac window chrome. Editing behavior (New Slice, Save, drag, inspect) stays the released editor specs. Composed look (spacing, AppBar flex, Card padding, viewport, focus-visible, contrast proofs, Google Fonts Inter) is [designed-surfaces.md](./designed-surfaces.md). Landing depth is [landing-depth.md](./landing-depth.md). Muted color on the hero sentence `A Team shares one Event Model: a timeline of slices, not a file you pass around.` stays this file; `One Event Model, signed in. No passing files around.` is leftover unused ([landing-fold.md](./landing-fold.md)).
 
 ## Restates
 
