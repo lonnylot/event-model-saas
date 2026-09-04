@@ -1870,17 +1870,17 @@ export function bindEditor(root) {
             entry.index,
           ),
         );
-        const timelineEl = root.querySelector('[aria-label="Timeline"]');
-        if (timelineEl && entry.connection) {
+        const board = boardMount(root);
+        if (board && entry.connection) {
           const p = root.createElement("p");
           p.textContent = "Command → Event Happened";
           p.setAttribute("data-kind", "connection");
           p.dataset.id = entry.connection.id;
           const before = [
-            ...timelineEl.querySelectorAll('p[data-kind="connection"]'),
+            ...board.querySelectorAll('p[data-kind="connection"]'),
           ][entry.index];
-          if (before) timelineEl.insertBefore(p, before);
-          else timelineEl.append(p);
+          if (before) board.insertBefore(p, before);
+          else board.append(p);
         }
         redoStack.push(entry);
         return;
