@@ -136,3 +136,15 @@ test("After pressing ⌥⌘4 on that page, the Timeline region shows a listitem 
     timeline.getByRole("listitem", { name: "Read Model", exact: true }),
   ).toBeVisible();
 });
+
+test("After pressing ⌥⌘5 on that page, the Timeline region shows a listitem whose accessible name is `Automation`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  await timeline.click();
+  await page.keyboard.press("Alt+ControlOrMeta+Digit5");
+  await expect(
+    timeline.getByRole("listitem", { name: "Automation", exact: true }),
+  ).toBeVisible();
+});

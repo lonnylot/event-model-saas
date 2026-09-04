@@ -12,7 +12,7 @@ Status: validated
 - [x] After pressing ⌥⌘2 on that page, the Timeline region shows a listitem whose accessible name is `Command`
 - [x] After pressing ⌥⌘3 on that page, the Timeline region shows a listitem whose accessible name is `Event Happened`
 - [x] After pressing ⌥⌘4 on that page, the Timeline region shows a listitem whose accessible name is `Read Model`
-- [ ] After pressing ⌥⌘5 on that page, the Timeline region shows a listitem whose accessible name is `Automation`
+- [x] After pressing ⌥⌘5 on that page, the Timeline region shows a listitem whose accessible name is `Automation`
 
 ## Domain terms
 

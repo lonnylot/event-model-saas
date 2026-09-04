@@ -2863,7 +2863,16 @@ export function bindEditor(root) {
     if (event.code === "Digit5") {
       const index =
         selectedSliceIndex ?? (model.slices?.length ?? 1) - 1;
-      holder.textContent = JSON.stringify(appendAutomation(model, index));
+      const next = appendAutomation(model, index);
+      holder.textContent = JSON.stringify(next);
+      const automation = next.slices?.[index]?.processors?.at(-1);
+      const list = lastLaneList(root, "automation");
+      if (list && automation) {
+        const item = root.createElement("li");
+        item.textContent = "Automation";
+        item.setAttribute("aria-label", "Automation");
+        list.append(item);
+      }
     }
   });
 }
