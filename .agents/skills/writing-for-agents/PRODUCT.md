@@ -33,6 +33,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Leftover Assumptions 576px/36px after restated landing heading 56px / main max-width none | `keeping-specs-current` |
 | Leftover landing-saas-shot Problem “browser chrome” after restated URL bar leftover unused | `keeping-specs-current` |
 | Leftover landing-fold Problem “three bento cards” / caption-strip after restated stacked product-image rows | `keeping-specs-current` |
+| Problem names only Command when ACs also cover Event / Read Model / Automation (hydrate-add-field; inspect-after-reload / inspect-fields / shortcut-shows name every kind) | `keeping-specs-current` |
 | Restates omitting released `editor-shell.md` leftover empty named Inspector after GET Inspector chrome | `keeping-specs-current` |
 | Restates omitting public-face leftover unused `.bento` fill/lift after this HEAD rewrote that Out of scope | `keeping-specs-current` |
 | Restates omitting released `hydrate-board.md` leftover Out of scope covering TIME chrome after this slice took covering TIME chrome | `keeping-specs-current` |

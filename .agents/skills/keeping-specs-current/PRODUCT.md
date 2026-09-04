@@ -75,6 +75,8 @@ Restating the landing-saas-shot URL-bar AC (`.product-shot` does not show `event
 
 Restating stacked bento rows (`landing-fold.md`) is unfinished until leftover Problem no longer lists “The three bento cards are unbalanced glossary” / caption-strip as a current tell. Rewriting landing-depth Problem for leftover unused card/band fills is not that rewrite. Look-may-grow restated composition still greps leftover Problem on every Restates path (`visual-design`).
 
+A new-spec Problem that names only Command when ACs also cover Event / Read Model / Automation is leftover-narrow Problem — name those kinds (`inspect-after-reload` / `inspect-fields` / `shortcut-shows` name every kind). The Command-only tell is incomplete, not a leftover deleted tell after restating.
+
 GET Inspector heading / empty copy vs leftover `editor-shell.md` “empty named region” when designed-surfaces Restates omits that file is leftover Restates. Filling a region another released spec still calls empty is unfinished until Restates that spec.
 
 Restates omitting `public-face.md` leftover unused `.bento` fill/lift when this HEAD rewrote that Out of scope is leftover Restates — listing without rewriting is the other direction.

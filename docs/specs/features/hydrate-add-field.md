@@ -4,7 +4,7 @@ Status: released
 
 ## Problem
 
-After Save and reload, clicking a GET-rendered Command shows Field name of a Field that already exists, but Inspector has no `Add Field`, so a member cannot append another Field without adding a new Command first.
+After Save and reload, clicking a GET-rendered Command, Event Happened, Read Model, or Automation shows Field name of a Field that already exists, but Inspector has no `Add Field`, so a member cannot append another Field without adding a new block of that kind first.
 
 ## Acceptance criteria
 
