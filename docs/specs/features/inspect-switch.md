@@ -1,6 +1,6 @@
 # Inspect switch
 
-Status: validated
+Status: released
 
 ## Problem
 
