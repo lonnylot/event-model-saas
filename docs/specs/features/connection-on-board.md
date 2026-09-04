@@ -30,7 +30,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 ## Assumptions
 
 - Playwright unique checkout `PORT` / `INSPECTOR_PORT` and `TEST_MAIL=1` `workers` `1` stay [public-face.md](./public-face.md).
-- Timeline region still shows `Command → Event Happened` ([connections.md](./connections.md)). That text living in `.board` is this slice. Timeline still shows `Event Happened → Read Model` ([inspect-rest.md](./inspect-rest.md)); that text living in `.board` is this slice. GET `data-id` on that node is [hydrate-connection-id.md](./hydrate-connection-id.md).
+- Timeline region still shows `Command → Event Happened` ([connections.md](./connections.md)). That text living in `.board` is this slice. GET `data-id` on that `Command → Event Happened` node is [hydrate-connection-id.md](./hydrate-connection-id.md). Timeline still shows `Event Happened → Read Model` ([inspect-rest.md](./inspect-rest.md)); that text living in `.board` is this slice. GET `Event Happened → Read Model` `data-id` stays [hydrate-connection-id.md](./hydrate-connection-id.md) Out of scope.
 - Create model still seeds a default Slice ([model-defaults.md](./model-defaults.md)). Toolbar Add still targets the last Slice ([blocks.md](./blocks.md)).
 - Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).
 
