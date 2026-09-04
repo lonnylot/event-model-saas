@@ -1454,6 +1454,7 @@ export function bindEditor(root) {
     if (line.textContent !== "Command → Event Happened") return;
     selected = "connection";
     selectedConnectionItem = line;
+    unbindType();
   });
   slicesList?.addEventListener("click", (event) => {
     const item = event.target?.closest?.("li");
