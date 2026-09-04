@@ -143,3 +143,15 @@ test("After pressing ⌥⌘4 on that page, the Timeline region shows a button wh
       .getByRole("button", { name: "Read Model port", exact: true }),
   ).toBeVisible();
 });
+
+test("After pressing ⌥⌘5 on that page, the Timeline listitem whose accessible name is `Automation` has `data-kind` `automation`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  await timeline.click();
+  await page.keyboard.press("Alt+ControlOrMeta+Digit5");
+  await expect(
+    timeline.getByRole("listitem", { name: "Automation", exact: true }),
+  ).toHaveAttribute("data-kind", "automation");
+});

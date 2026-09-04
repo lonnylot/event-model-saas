@@ -2933,6 +2933,7 @@ export function bindEditor(root) {
         const item = root.createElement("li");
         item.textContent = "Automation";
         item.setAttribute("aria-label", "Automation");
+        item.dataset.kind = "automation";
         list.append(item);
       }
     }
