@@ -101,3 +101,17 @@ test("After pressing ⌥⌘1 on that page, the new Timeline listitem whose acces
   await expect(actors).toHaveCount(2);
   await expect(actors.nth(1)).toHaveAttribute("data-kind", "actor");
 });
+
+test("After pressing ⌥⌘2 on that page, the Timeline region shows a button whose accessible name is `Command port` on the listitem whose accessible name is `Command`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  await timeline.click();
+  await page.keyboard.press("Alt+ControlOrMeta+Digit2");
+  await expect(
+    timeline
+      .getByRole("listitem", { name: "Command", exact: true })
+      .getByRole("button", { name: "Command port", exact: true }),
+  ).toBeVisible();
+});

@@ -9,7 +9,7 @@ Status: validated
 ## Acceptance criteria
 
 - [x] After pressing ⌥⌘1 on that page, the new Timeline listitem whose accessible name is `Actor` (in addition to the Create default Actor) has `data-kind` `actor`
-- [ ] After pressing ⌥⌘2 on that page, the Timeline region shows a button whose accessible name is `Command port` on the listitem whose accessible name is `Command`
+- [x] After pressing ⌥⌘2 on that page, the Timeline region shows a button whose accessible name is `Command port` on the listitem whose accessible name is `Command`
 - [ ] After pressing ⌥⌘3 on that page, the Timeline region shows a button whose accessible name is `Event Happened port` on the listitem whose accessible name is `Event Happened`
 - [ ] After pressing ⌥⌘4 on that page, the Timeline region shows a button whose accessible name is `Read Model port` on the listitem whose accessible name is `Read Model`
 - [ ] After pressing ⌥⌘5 on that page, the Timeline listitem whose accessible name is `Automation` has `data-kind` `automation`
