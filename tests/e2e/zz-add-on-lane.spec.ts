@@ -150,7 +150,8 @@ test("After clicking `New Slice` on that page, the Timeline region shows a butto
   await expect(
     page
       .getByRole("region", { name: "Timeline", exact: true })
-      .getByRole("button", { name: "Add Actor on lane", exact: true }),
+      .getByRole("button", { name: "Add Actor on lane", exact: true })
+      .first(),
   ).toBeVisible();
 });
 
@@ -162,7 +163,8 @@ test("After clicking `New Slice` on that page, the Timeline region shows a butto
   await expect(
     page
       .getByRole("region", { name: "Timeline", exact: true })
-      .getByRole("button", { name: "Add Command on lane", exact: true }),
+      .getByRole("button", { name: "Add Command on lane", exact: true })
+      .first(),
   ).toBeVisible();
 });
 
@@ -174,7 +176,8 @@ test("After clicking `New Slice` on that page, the Timeline region shows a butto
   await expect(
     page
       .getByRole("region", { name: "Timeline", exact: true })
-      .getByRole("button", { name: "Add Event on lane", exact: true }),
+      .getByRole("button", { name: "Add Event on lane", exact: true })
+      .first(),
   ).toBeVisible();
 });
 
@@ -186,7 +189,8 @@ test("After clicking `New Slice` on that page, the Timeline region shows a butto
   await expect(
     page
       .getByRole("region", { name: "Timeline", exact: true })
-      .getByRole("button", { name: "Add Read Model on lane", exact: true }),
+      .getByRole("button", { name: "Add Read Model on lane", exact: true })
+      .first(),
   ).toBeVisible();
 });
 
@@ -198,7 +202,8 @@ test("After clicking `New Slice` on that page, the Timeline region shows a butto
   await expect(
     page
       .getByRole("region", { name: "Timeline", exact: true })
-      .getByRole("button", { name: "Add Automation on lane", exact: true }),
+      .getByRole("button", { name: "Add Automation on lane", exact: true })
+      .first(),
   ).toBeVisible();
 });
 
