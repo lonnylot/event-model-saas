@@ -2864,6 +2864,7 @@ export function bindEditor(root) {
         const item = root.createElement("li");
         item.textContent = "Actor";
         item.setAttribute("aria-label", "Actor");
+        item.dataset.kind = "actor";
         list.append(item);
       }
     }
@@ -2878,6 +2879,11 @@ export function bindEditor(root) {
         const item = root.createElement("li");
         item.textContent = "Command";
         item.setAttribute("aria-label", "Command");
+        item.dataset.kind = "command";
+        const port = root.createElement("button");
+        port.type = "button";
+        port.textContent = "Command port";
+        item.append(port);
         list.append(item);
       }
     }
@@ -2892,6 +2898,10 @@ export function bindEditor(root) {
         const item = root.createElement("li");
         item.textContent = "Event Happened";
         item.setAttribute("aria-label", "Event Happened");
+        const port = root.createElement("button");
+        port.type = "button";
+        port.textContent = "Event Happened port";
+        item.append(port);
         list.append(item);
       }
     }
@@ -2906,6 +2916,10 @@ export function bindEditor(root) {
         const item = root.createElement("li");
         item.textContent = "Read Model";
         item.setAttribute("aria-label", "Read Model");
+        const port = root.createElement("button");
+        port.type = "button";
+        port.textContent = "Read Model port";
+        item.append(port);
         list.append(item);
       }
     }
@@ -2920,6 +2934,7 @@ export function bindEditor(root) {
         const item = root.createElement("li");
         item.textContent = "Automation";
         item.setAttribute("aria-label", "Automation");
+        item.dataset.kind = "automation";
         list.append(item);
       }
     }

@@ -219,4 +219,32 @@ describe("spec tree", () => {
     );
     expect(hydrate).not.toContain("Pan and Zoom covering TIME chrome");
   });
+
+  it("shortcut-kind Out of scope names last-column lastLaneList when changing which Slice the shortcut targets", () => {
+    const text = readFileSync(
+      "docs/specs/features/shortcut-kind.md",
+      "utf8",
+    );
+    const outOfScope = text.split("## Out of scope")[1]?.split("## Restates")[0] ?? "";
+    expect(outOfScope).not.toContain(
+      "Changing which Slice the shortcut targets.",
+    );
+    expect(outOfScope).toContain(
+      "Changing which Slice the shortcut targets (JSON still uses selected Slice; shortcut DOM is last-column `lastLaneList`).",
+    );
+  });
+
+  it("hydrate-kind-id Out of scope does not leave Shortcut listitems without data-kind", () => {
+    const hydrate = readFileSync(
+      "docs/specs/features/hydrate-kind-id.md",
+      "utf8",
+    );
+    expect(hydrate).not.toContain("Shortcut listitems without `data-kind`");
+    expect(hydrate).toContain("[shortcut-kind.md](./shortcut-kind.md)");
+    const restates =
+      readFileSync("docs/specs/features/shortcut-kind.md", "utf8").split(
+        "## Restates",
+      )[1] ?? "";
+    expect(restates).toContain("[hydrate-kind-id.md](./hydrate-kind-id.md)");
+  });
 });
