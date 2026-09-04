@@ -67,6 +67,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Connection on board | [features/connection-on-board.md](./features/connection-on-board.md) | released |
 | Hydrate add field | [features/hydrate-add-field.md](./features/hydrate-add-field.md) | released |
 | Inspect switch | [features/inspect-switch.md](./features/inspect-switch.md) | released |
-| Port wrap | [features/port-wrap.md](./features/port-wrap.md) | validated |
+| Port wrap | [features/port-wrap.md](./features/port-wrap.md) | released |
 
 Status: `draft` → `validated` → `released`.
