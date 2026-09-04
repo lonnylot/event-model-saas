@@ -10,7 +10,7 @@ Members can add Slices and blocks and zoom, but cannot reorder Slices, drag a bl
 
 - [x] After clicking `New Slice` twice, clicking the last `New Slice` listitem and pressing ⌥⌘← sets the first Slice `id` to the Slice that was last
 - [x] After clicking `New Slice` twice then `Add Actor`, dragging the Timeline `Actor` listitem onto the first Slices `New Slice` listitem sets the first Slice `actors` to one Actor and the last Slice `actors` to `[]`
-- [x] After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing Backspace sets the remaining Slice `id` to the Slice that was last
+- [x] After clicking `New Slice` twice, clicking the first `New Slice` listitem, pressing Backspace sets the remaining Slice `id` to the Slice that was last
 - [x] Scrolling the Timeline region still pans
 - [x] After clicking `Zoom in` then scrolling the Timeline region, `.board` `style.transform` includes `scale(1.25)` and `translate(`
 - [x] After clicking `New Slice`, pressing ⌘Z shows 2 listitems whose accessible name is `New Slice`
@@ -28,7 +28,7 @@ Event Model, Slice, Actor, Command, Event, Connection, Team, Person, Version
 ## Assumptions
 
 - Two `New Slice` listitems are distinguished as first vs last, not by renaming. Slice Name binds to the clicked Slice ([name-binding-rest.md](./name-binding-rest.md)). Actor / Event / Read Model / Automation multi-item Name is [name-binding-rest.md](./name-binding-rest.md). Command multi-item Name is [name-binding.md](./name-binding.md).
-- Slice selection for move and delete is a click on the Slices listitem. After that click, Inspector `Name` may have focus, so delete is Backspace after clicking the Timeline region (not while typing in `Name`).
+- Slice selection for move and delete is a click on the Slices listitem. After that click, Inspector `Name` may have focus, so delete is Backspace after clicking the selected listitem (focus leaves Inspector, selection stays), not after clicking TIME chrome or empty `.board` ([inspect-deselect.md](./inspect-deselect.md)).
 - Add Actor still targets the last Slice ([blocks.md](./blocks.md)). Clicking Add Actor with no Slice does not append a Timeline listitem.
 - Drag-between-Slices drop target is the first Slices listitem. Same lane on the canvas is that move.
 - ⌥⌘← is Playwright `Alt+Meta+ArrowLeft` (CI: `ControlOrMeta` for ⌘). ⌥⌘→ is [move-slice-right.md](./move-slice-right.md).

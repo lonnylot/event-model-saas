@@ -280,14 +280,13 @@ test("After clicking `New Slice`, pressing ⌥⌘5 appends an Automation whose `
   );
 });
 
-test("After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing ⌥⌘2 appends a Command only on the first Slice", async ({
+test("After clicking `New Slice` twice, clicking the first `New Slice` listitem, pressing ⌥⌘2 appends a Command only on the first Slice", async ({
   page,
 }) => {
   await openImportedEmptyModel(page);
   await clickNewSlice(page);
   await clickNewSlice(page);
   await page.getByRole("listitem", { name: "New Slice", exact: true }).first().click();
-  await page.getByRole("region", { name: "Timeline", exact: true }).click();
   await page.keyboard.press("Alt+ControlOrMeta+Digit2");
   const json = await page.locator("#event-model-document").textContent();
   const slices = JSON.parse(json ?? "{}").slices;

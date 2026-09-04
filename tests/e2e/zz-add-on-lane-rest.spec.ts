@@ -198,7 +198,7 @@ test("After clicking `New Slice` twice, clicking the first `Add Automation on la
   expect(slices.at(-1).processors).toEqual([]);
 });
 
-test("After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing ⌥⌘1 appends an Actor only on the first Slice", async ({
+test("After clicking `New Slice` twice, clicking the first `New Slice` listitem, pressing ⌥⌘1 appends an Actor only on the first Slice", async ({
   page,
 }) => {
   await openImportedEmptyModel(page);
@@ -208,7 +208,6 @@ test("After clicking `New Slice` twice, clicking the first `New Slice` listitem 
     .getByRole("listitem", { name: "New Slice", exact: true })
     .first()
     .click();
-  await page.getByRole("region", { name: "Timeline", exact: true }).click();
   await page.keyboard.press("Alt+ControlOrMeta+Digit1");
   const json = await page.locator("#event-model-document").textContent();
   const slices = JSON.parse(json ?? "{}").slices;
@@ -216,7 +215,7 @@ test("After clicking `New Slice` twice, clicking the first `New Slice` listitem 
   expect(slices.at(-1).actors).toEqual([]);
 });
 
-test("After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing ⌥⌘3 appends an Event only on the first Slice", async ({
+test("After clicking `New Slice` twice, clicking the first `New Slice` listitem, pressing ⌥⌘3 appends an Event only on the first Slice", async ({
   page,
 }) => {
   await openImportedEmptyModel(page);
@@ -226,7 +225,6 @@ test("After clicking `New Slice` twice, clicking the first `New Slice` listitem 
     .getByRole("listitem", { name: "New Slice", exact: true })
     .first()
     .click();
-  await page.getByRole("region", { name: "Timeline", exact: true }).click();
   await page.keyboard.press("Alt+ControlOrMeta+Digit3");
   const json = await page.locator("#event-model-document").textContent();
   const slices = JSON.parse(json ?? "{}").slices;
@@ -234,7 +232,7 @@ test("After clicking `New Slice` twice, clicking the first `New Slice` listitem 
   expect(slices.at(-1).events).toEqual([]);
 });
 
-test("After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing ⌥⌘4 appends a Read Model only on the first Slice", async ({
+test("After clicking `New Slice` twice, clicking the first `New Slice` listitem, pressing ⌥⌘4 appends a Read Model only on the first Slice", async ({
   page,
 }) => {
   await openImportedEmptyModel(page);
@@ -244,7 +242,6 @@ test("After clicking `New Slice` twice, clicking the first `New Slice` listitem 
     .getByRole("listitem", { name: "New Slice", exact: true })
     .first()
     .click();
-  await page.getByRole("region", { name: "Timeline", exact: true }).click();
   await page.keyboard.press("Alt+ControlOrMeta+Digit4");
   const json = await page.locator("#event-model-document").textContent();
   const slices = JSON.parse(json ?? "{}").slices;
@@ -252,7 +249,7 @@ test("After clicking `New Slice` twice, clicking the first `New Slice` listitem 
   expect(slices.at(-1).readModels).toEqual([]);
 });
 
-test("After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing ⌥⌘5 appends an Automation only on the first Slice", async ({
+test("After clicking `New Slice` twice, clicking the first `New Slice` listitem, pressing ⌥⌘5 appends an Automation only on the first Slice", async ({
   page,
 }) => {
   await openImportedEmptyModel(page);
@@ -262,7 +259,6 @@ test("After clicking `New Slice` twice, clicking the first `New Slice` listitem 
     .getByRole("listitem", { name: "New Slice", exact: true })
     .first()
     .click();
-  await page.getByRole("region", { name: "Timeline", exact: true }).click();
   await page.keyboard.press("Alt+ControlOrMeta+Digit5");
   const json = await page.locator("#event-model-document").textContent();
   const slices = JSON.parse(json ?? "{}").slices;

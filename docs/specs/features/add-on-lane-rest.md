@@ -12,10 +12,10 @@ Dashed lane buttons exist for every kind, and `Add Command on lane` plus selecte
 - [x] After clicking `New Slice` twice, clicking the first `Add Event on lane` appends an Event only on the first Slice
 - [x] After clicking `New Slice` twice, clicking the first `Add Read Model on lane` appends a Read Model only on the first Slice
 - [x] After clicking `New Slice` twice, clicking the first `Add Automation on lane` appends an Automation only on the first Slice
-- [x] After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing ⌥⌘1 appends an Actor only on the first Slice
-- [x] After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing ⌥⌘3 appends an Event only on the first Slice
-- [x] After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing ⌥⌘4 appends a Read Model only on the first Slice
-- [x] After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing ⌥⌘5 appends an Automation only on the first Slice
+- [x] After clicking `New Slice` twice, clicking the first `New Slice` listitem, pressing ⌥⌘1 appends an Actor only on the first Slice
+- [x] After clicking `New Slice` twice, clicking the first `New Slice` listitem, pressing ⌥⌘3 appends an Event only on the first Slice
+- [x] After clicking `New Slice` twice, clicking the first `New Slice` listitem, pressing ⌥⌘4 appends a Read Model only on the first Slice
+- [x] After clicking `New Slice` twice, clicking the first `New Slice` listitem, pressing ⌥⌘5 appends an Automation only on the first Slice
 
 ## Domain terms
 
@@ -31,7 +31,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person,
 - Lane button names stay `Add Actor on lane` / `Add Event on lane` / `Add Read Model on lane` / `Add Automation on lane` ([add-on-lane.md](./add-on-lane.md)). The first matching button is the first Slice's lane.
 - Two `New Slice` listitems are first vs last. Toolbar Add still targets the last Slice ([blocks.md](./blocks.md)). `Add Command on lane` and selected-Slice ⌥⌘2 stay [add-on-lane.md](./add-on-lane.md).
 - Empty JSON matches toolbar Add in [blocks.md](./blocks.md).
-- ⌥⌘1 Actor, ⌥⌘3 Event, ⌥⌘4 Read Model, ⌥⌘5 Automation. Playwright `Alt+ControlOrMeta+Digit1` / `Digit3` / `Digit4` / `Digit5`. After selecting a Slice, Inspector `Name` may have focus, so the key runs after clicking the Timeline region.
+- ⌥⌘1 Actor, ⌥⌘3 Event, ⌥⌘4 Read Model, ⌥⌘5 Automation. Playwright `Alt+ControlOrMeta+Digit1` / `Digit3` / `Digit4` / `Digit5`. After selecting a Slice, Inspector `Name` may have focus, so the key runs after clicking the selected listitem (focus leaves Inspector, selection stays), not after clicking TIME chrome or empty `.board` ([inspect-deselect.md](./inspect-deselect.md)).
 - Lane Add and keyboard Add are in-memory until Save. Save still uses the version check from model-persistence.
 - The `TEST_MAIL=1` memory adapter does not count login attempts, so Playwright files can share one Worker without the production 5-per-hour cap.
 

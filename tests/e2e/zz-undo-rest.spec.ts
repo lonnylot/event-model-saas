@@ -343,7 +343,7 @@ test("After clicking `New Slice` twice, clicking the last `New Slice` listitem, 
   expect(afterRedo.slices[0].id).toBe(lastId);
 });
 
-test("After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing Backspace, then pressing ⌘Z, the remaining Slice `id` is the Slice that was last and the first Slice `id` is the Slice that was first", async ({
+test("After clicking `New Slice` twice, clicking the first `New Slice` listitem, pressing Backspace, then pressing ⌘Z, the remaining Slice `id` is the Slice that was last and the first Slice `id` is the Slice that was first", async ({
   page,
 }) => {
   await openImportedEmptyModel(page);
@@ -358,7 +358,6 @@ test("After clicking `New Slice` twice, clicking the first `New Slice` listitem 
     .getByRole("listitem", { name: "New Slice", exact: true })
     .first()
     .click();
-  await page.getByRole("region", { name: "Timeline", exact: true }).click();
   await page.keyboard.press("Backspace");
   const afterDelete = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
@@ -372,7 +371,7 @@ test("After clicking `New Slice` twice, clicking the first `New Slice` listitem 
   expect(afterUndo.slices[0].id).toBe(firstId);
 });
 
-test("After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing Backspace, pressing ⌘Z, then pressing ⇧⌘Z, the remaining Slice `id` is the Slice that was last", async ({
+test("After clicking `New Slice` twice, clicking the first `New Slice` listitem, pressing Backspace, pressing ⌘Z, then pressing ⇧⌘Z, the remaining Slice `id` is the Slice that was last", async ({
   page,
 }) => {
   await openImportedEmptyModel(page);
@@ -386,7 +385,6 @@ test("After clicking `New Slice` twice, clicking the first `New Slice` listitem 
     .getByRole("listitem", { name: "New Slice", exact: true })
     .first()
     .click();
-  await page.getByRole("region", { name: "Timeline", exact: true }).click();
   await page.keyboard.press("Backspace");
   await page.keyboard.press("ControlOrMeta+z");
   await page.keyboard.press("Shift+ControlOrMeta+z");
@@ -422,7 +420,7 @@ test("After clicking `New Slice` then `Add Command`, pressing ⌘Z, then pressin
   ).toBeVisible();
 });
 
-test("After clicking `New Slice` then `Add Command` twice, clicking the first Timeline `Command` listitem then the Timeline region, pressing Backspace, then pressing ⌘Z, the remaining Command `id` is the Command that was last and the first Command `id` is the Command that was first", async ({
+test("After clicking `New Slice` then `Add Command` twice, clicking the first Timeline `Command` listitem, pressing Backspace, then pressing ⌘Z, the remaining Command `id` is the Command that was last and the first Command `id` is the Command that was first", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -439,9 +437,6 @@ test("After clicking `New Slice` then `Add Command` twice, clicking the first Ti
     .getByRole("listitem", { name: "Command", exact: true })
     .first()
     .click();
-  await page.getByRole("region", { name: "Timeline", exact: true }).click({
-    position: { x: 1, y: 1 },
-  });
   await page.keyboard.press("Backspace");
   const afterDelete = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
@@ -460,7 +455,7 @@ test("After clicking `New Slice` then `Add Command` twice, clicking the first Ti
   ).toHaveCount(2);
 });
 
-test("After clicking `New Slice` then `Add Command` twice, clicking the first Timeline `Command` listitem then the Timeline region, pressing Backspace, pressing ⌘Z, then pressing ⇧⌘Z, the remaining Command `id` is the Command that was last", async ({
+test("After clicking `New Slice` then `Add Command` twice, clicking the first Timeline `Command` listitem, pressing Backspace, pressing ⌘Z, then pressing ⇧⌘Z, the remaining Command `id` is the Command that was last", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -476,9 +471,6 @@ test("After clicking `New Slice` then `Add Command` twice, clicking the first Ti
     .getByRole("listitem", { name: "Command", exact: true })
     .first()
     .click();
-  await page.getByRole("region", { name: "Timeline", exact: true }).click({
-    position: { x: 1, y: 1 },
-  });
   await page.keyboard.press("Backspace");
   await page.keyboard.press("ControlOrMeta+z");
   await page.keyboard.press("Shift+ControlOrMeta+z");
@@ -489,7 +481,7 @@ test("After clicking `New Slice` then `Add Command` twice, clicking the first Ti
   expect(afterRedo.slices.at(-1).commands[0].id).toBe(lastId);
 });
 
-test("After dragging from `Command port` onto `Event Happened port` twice, clicking the first Timeline text `Command → Event Happened` then the Timeline region, pressing Backspace, then pressing ⌘Z, the remaining connection `id` is the connection that was last and the first connection `id` is the connection that was first", async ({
+test("After dragging from `Command port` onto `Event Happened port` twice, clicking the first Timeline text `Command → Event Happened`, pressing Backspace, then pressing ⌘Z, the remaining connection `id` is the connection that was last and the first connection `id` is the connection that was first", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -517,7 +509,6 @@ test("After dragging from `Command port` onto `Event Happened port` twice, click
   const lastId = before.connections[1].id;
   const timeline = page.getByRole("region", { name: "Timeline", exact: true });
   await timeline.locator("p").filter({ hasText: "Command → Event Happened" }).first().click();
-  await timeline.click({ position: { x: 1, y: 1 } });
   await page.keyboard.press("Backspace");
   const afterDelete = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
@@ -534,7 +525,7 @@ test("After dragging from `Command port` onto `Event Happened port` twice, click
   ).toHaveCount(2);
 });
 
-test("After dragging from `Command port` onto `Event Happened port` twice, clicking the first Timeline text `Command → Event Happened` then the Timeline region, pressing Backspace, pressing ⌘Z, then pressing ⇧⌘Z, the remaining connection `id` is the connection that was last", async ({
+test("After dragging from `Command port` onto `Event Happened port` twice, clicking the first Timeline text `Command → Event Happened`, pressing Backspace, pressing ⌘Z, then pressing ⇧⌘Z, the remaining connection `id` is the connection that was last", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -561,7 +552,6 @@ test("After dragging from `Command port` onto `Event Happened port` twice, click
   const lastId = before.connections[1].id;
   const timeline = page.getByRole("region", { name: "Timeline", exact: true });
   await timeline.locator("p").filter({ hasText: "Command → Event Happened" }).first().click();
-  await timeline.click({ position: { x: 1, y: 1 } });
   await page.keyboard.press("Backspace");
   await page.keyboard.press("ControlOrMeta+z");
   await page.keyboard.press("Shift+ControlOrMeta+z");
@@ -572,12 +562,7 @@ test("After dragging from `Command port` onto `Event Happened port` twice, click
   expect(afterRedo.connections[0].id).toBe(lastId);
 });
 
-async function clickTimelineAwayFromItems(page: Page) {
-  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
-  await timeline.click({ position: { x: 1, y: 1 } });
-}
-
-test("After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem on the last Slice then the Timeline region, pressing Backspace, then pressing ⌘Z, the remaining Actor `id` on the last Slice is the Actor that was last and the first Actor `id` is the Actor that was first", async ({
+test("After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem on the last Slice, pressing Backspace, then pressing ⌘Z, the remaining Actor `id` on the last Slice is the Actor that was last and the first Actor `id` is the Actor that was first", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -595,7 +580,6 @@ test("After clicking `New Slice` then `Add Actor` twice, clicking the first Time
     .getByRole("listitem", { name: "Actor", exact: true })
     .nth(1)
     .click();
-  await clickTimelineAwayFromItems(page);
   await page.keyboard.press("Backspace");
   const afterDelete = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
@@ -614,7 +598,7 @@ test("After clicking `New Slice` then `Add Actor` twice, clicking the first Time
   ).toHaveCount(3);
 });
 
-test("After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem on the last Slice then the Timeline region, pressing Backspace, pressing ⌘Z, then pressing ⇧⌘Z, the remaining Actor `id` on the last Slice is the Actor that was last", async ({
+test("After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem on the last Slice, pressing Backspace, pressing ⌘Z, then pressing ⇧⌘Z, the remaining Actor `id` on the last Slice is the Actor that was last", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -630,7 +614,6 @@ test("After clicking `New Slice` then `Add Actor` twice, clicking the first Time
     .getByRole("listitem", { name: "Actor", exact: true })
     .nth(1)
     .click();
-  await clickTimelineAwayFromItems(page);
   await page.keyboard.press("Backspace");
   await page.keyboard.press("ControlOrMeta+z");
   await page.keyboard.press("Shift+ControlOrMeta+z");
@@ -641,7 +624,7 @@ test("After clicking `New Slice` then `Add Actor` twice, clicking the first Time
   expect(afterRedo.slices.at(-1).actors[0].id).toBe(lastId);
 });
 
-test("After clicking `New Slice` then `Add Event` twice, clicking the first Timeline `Event Happened` listitem then the Timeline region, pressing Backspace, then pressing ⌘Z, the remaining Event `id` is the Event that was last and the first Event `id` is the Event that was first", async ({
+test("After clicking `New Slice` then `Add Event` twice, clicking the first Timeline `Event Happened` listitem, pressing Backspace, then pressing ⌘Z, the remaining Event `id` is the Event that was last and the first Event `id` is the Event that was first", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -658,7 +641,6 @@ test("After clicking `New Slice` then `Add Event` twice, clicking the first Time
     .getByRole("listitem", { name: "Event Happened", exact: true })
     .first()
     .click();
-  await clickTimelineAwayFromItems(page);
   await page.keyboard.press("Backspace");
   const afterDelete = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
@@ -677,7 +659,7 @@ test("After clicking `New Slice` then `Add Event` twice, clicking the first Time
   ).toHaveCount(2);
 });
 
-test("After clicking `New Slice` then `Add Event` twice, clicking the first Timeline `Event Happened` listitem then the Timeline region, pressing Backspace, pressing ⌘Z, then pressing ⇧⌘Z, the remaining Event `id` is the Event that was last", async ({
+test("After clicking `New Slice` then `Add Event` twice, clicking the first Timeline `Event Happened` listitem, pressing Backspace, pressing ⌘Z, then pressing ⇧⌘Z, the remaining Event `id` is the Event that was last", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -693,7 +675,6 @@ test("After clicking `New Slice` then `Add Event` twice, clicking the first Time
     .getByRole("listitem", { name: "Event Happened", exact: true })
     .first()
     .click();
-  await clickTimelineAwayFromItems(page);
   await page.keyboard.press("Backspace");
   await page.keyboard.press("ControlOrMeta+z");
   await page.keyboard.press("Shift+ControlOrMeta+z");
@@ -704,7 +685,7 @@ test("After clicking `New Slice` then `Add Event` twice, clicking the first Time
   expect(afterRedo.slices.at(-1).events[0].id).toBe(lastId);
 });
 
-test("After clicking `New Slice` then `Add Read Model` twice, clicking the first Timeline `Read Model` listitem then the Timeline region, pressing Backspace, then pressing ⌘Z, the remaining Read Model `id` is the Read Model that was last and the first Read Model `id` is the Read Model that was first", async ({
+test("After clicking `New Slice` then `Add Read Model` twice, clicking the first Timeline `Read Model` listitem, pressing Backspace, then pressing ⌘Z, the remaining Read Model `id` is the Read Model that was last and the first Read Model `id` is the Read Model that was first", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -721,7 +702,6 @@ test("After clicking `New Slice` then `Add Read Model` twice, clicking the first
     .getByRole("listitem", { name: "Read Model", exact: true })
     .first()
     .click();
-  await clickTimelineAwayFromItems(page);
   await page.keyboard.press("Backspace");
   const afterDelete = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
@@ -740,7 +720,7 @@ test("After clicking `New Slice` then `Add Read Model` twice, clicking the first
   ).toHaveCount(2);
 });
 
-test("After clicking `New Slice` then `Add Read Model` twice, clicking the first Timeline `Read Model` listitem then the Timeline region, pressing Backspace, pressing ⌘Z, then pressing ⇧⌘Z, the remaining Read Model `id` is the Read Model that was last", async ({
+test("After clicking `New Slice` then `Add Read Model` twice, clicking the first Timeline `Read Model` listitem, pressing Backspace, pressing ⌘Z, then pressing ⇧⌘Z, the remaining Read Model `id` is the Read Model that was last", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -756,7 +736,6 @@ test("After clicking `New Slice` then `Add Read Model` twice, clicking the first
     .getByRole("listitem", { name: "Read Model", exact: true })
     .first()
     .click();
-  await clickTimelineAwayFromItems(page);
   await page.keyboard.press("Backspace");
   await page.keyboard.press("ControlOrMeta+z");
   await page.keyboard.press("Shift+ControlOrMeta+z");
@@ -767,7 +746,7 @@ test("After clicking `New Slice` then `Add Read Model` twice, clicking the first
   expect(afterRedo.slices.at(-1).readModels[0].id).toBe(lastId);
 });
 
-test("After clicking `New Slice` then `Add Automation` twice, clicking the first Timeline `Automation` listitem then the Timeline region, pressing Backspace, then pressing ⌘Z, the remaining Automation `id` is the Automation that was last and the first Automation `id` is the Automation that was first", async ({
+test("After clicking `New Slice` then `Add Automation` twice, clicking the first Timeline `Automation` listitem, pressing Backspace, then pressing ⌘Z, the remaining Automation `id` is the Automation that was last and the first Automation `id` is the Automation that was first", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -784,7 +763,6 @@ test("After clicking `New Slice` then `Add Automation` twice, clicking the first
     .getByRole("listitem", { name: "Automation", exact: true })
     .first()
     .click();
-  await clickTimelineAwayFromItems(page);
   await page.keyboard.press("Backspace");
   const afterDelete = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
@@ -803,7 +781,7 @@ test("After clicking `New Slice` then `Add Automation` twice, clicking the first
   ).toHaveCount(2);
 });
 
-test("After clicking `New Slice` then `Add Automation` twice, clicking the first Timeline `Automation` listitem then the Timeline region, pressing Backspace, pressing ⌘Z, then pressing ⇧⌘Z, the remaining Automation `id` is the Automation that was last", async ({
+test("After clicking `New Slice` then `Add Automation` twice, clicking the first Timeline `Automation` listitem, pressing Backspace, pressing ⌘Z, then pressing ⇧⌘Z, the remaining Automation `id` is the Automation that was last", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -819,7 +797,6 @@ test("After clicking `New Slice` then `Add Automation` twice, clicking the first
     .getByRole("listitem", { name: "Automation", exact: true })
     .first()
     .click();
-  await clickTimelineAwayFromItems(page);
   await page.keyboard.press("Backspace");
   await page.keyboard.press("ControlOrMeta+z");
   await page.keyboard.press("Shift+ControlOrMeta+z");

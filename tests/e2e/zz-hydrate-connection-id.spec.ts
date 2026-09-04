@@ -132,7 +132,7 @@ test("After a member creates a model, opens it, clicks `Add Command`, clicks `Ad
   ).toHaveAttribute("data-id", /.+/);
 });
 
-test("After a member creates a model, opens it, clicks `Add Command`, clicks `Add Event`, drags `Command port` onto `Event Happened port`, and Saves, a reload of that page, clicking `Command → Event Happened` then the Timeline region, pressing Backspace sets Event Model `connections` to `[]`", async ({
+test("After a member creates a model, opens it, clicks `Add Command`, clicks `Add Event`, drags `Command port` onto `Event Happened port`, and Saves, a reload of that page, clicking `Command → Event Happened`, pressing Backspace sets Event Model `connections` to `[]`", async ({
   page,
 }) => {
   await saveReloadCommandEventConnection(page);
@@ -140,9 +140,6 @@ test("After a member creates a model, opens it, clicks `Add Command`, clicks `Ad
     .locator(".board")
     .getByText("Command → Event Happened", { exact: true })
     .click();
-  await page
-    .getByRole("region", { name: "Timeline", exact: true })
-    .click({ position: { x: 1, y: 1 } });
   await page.keyboard.press("Backspace");
   const json = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",

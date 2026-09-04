@@ -86,7 +86,7 @@ async function openUntitledModel(page: Page) {
   await page.waitForLoadState("networkidle");
 }
 
-test("After clicking `New Slice` then `Add Command` twice, clicking the first Timeline `Command` listitem then the Timeline region, pressing Backspace sets the remaining Command `id` to the Command that was last", async ({
+test("After clicking `New Slice` then `Add Command` twice, clicking the first Timeline `Command` listitem, pressing Backspace sets the remaining Command `id` to the Command that was last", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -108,9 +108,6 @@ test("After clicking `New Slice` then `Add Command` twice, clicking the first Ti
   );
   const lastId = before.slices.at(-1).commands[1].id;
   await commands.first().click();
-  await page
-    .getByRole("region", { name: "Timeline", exact: true })
-    .click({ position: { x: 1, y: 1 } });
   await page.keyboard.press("Backspace");
   const after = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
@@ -131,7 +128,7 @@ async function dragPort(page: Page, fromName: string, toName: string) {
     .dragTo(page.getByRole("button", { name: toName, exact: true }));
 }
 
-test("After dragging from `Command port` onto `Event Happened port` then from `Event Happened port` onto `Read Model port`, clicking the Timeline text `Command → Event Happened` then the Timeline region, pressing Backspace sets the remaining Connection `fromKind` to `EVENT`", async ({
+test("After dragging from `Command port` onto `Event Happened port` then from `Event Happened port` onto `Read Model port`, clicking the Timeline text `Command → Event Happened`, pressing Backspace sets the remaining Connection `fromKind` to `EVENT`", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -152,7 +149,6 @@ test("After dragging from `Command port` onto `Event Happened port` then from `E
     timeline.getByText("Command → Event Happened", { exact: true }),
   ).toBeVisible();
   await timeline.getByText("Command → Event Happened", { exact: true }).click();
-  await timeline.click({ position: { x: 1, y: 1 } });
   await page.keyboard.press("Backspace");
   const after = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",

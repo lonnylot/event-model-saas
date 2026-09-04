@@ -96,13 +96,7 @@ async function clickNewSlice(page: Page) {
   ).toHaveCount(count);
 }
 
-async function clickTimelineRegion(page: Page) {
-  await page
-    .getByRole("region", { name: "Timeline", exact: true })
-    .click({ position: { x: 1, y: 1 } });
-}
-
-test("After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem on the last Slice then the Timeline region, pressing Backspace sets the remaining Actor `id` on the last Slice to the Actor that was last", async ({
+test("After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem on the last Slice, pressing Backspace sets the remaining Actor `id` on the last Slice to the Actor that was last", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -118,7 +112,6 @@ test("After clicking `New Slice` then `Add Actor` twice, clicking the first Time
   );
   const lastId = before.slices.at(-1).actors[1].id;
   await actors.nth(1).click();
-  await clickTimelineRegion(page);
   await page.keyboard.press("Backspace");
   const after = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
@@ -127,7 +120,7 @@ test("After clicking `New Slice` then `Add Actor` twice, clicking the first Time
   expect(after.slices.at(-1).actors[0].id).toBe(lastId);
 });
 
-test("After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem on the last Slice then the Timeline region, pressing Delete sets the remaining Actor `id` on the last Slice to the Actor that was last", async ({
+test("After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem on the last Slice, pressing Delete sets the remaining Actor `id` on the last Slice to the Actor that was last", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -143,7 +136,6 @@ test("After clicking `New Slice` then `Add Actor` twice, clicking the first Time
   );
   const lastId = before.slices.at(-1).actors[1].id;
   await actors.nth(1).click();
-  await clickTimelineRegion(page);
   await page.keyboard.press("Delete");
   const after = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
@@ -152,7 +144,7 @@ test("After clicking `New Slice` then `Add Actor` twice, clicking the first Time
   expect(after.slices.at(-1).actors[0].id).toBe(lastId);
 });
 
-test("After clicking `New Slice` then `Add Event` twice, clicking the first Timeline `Event Happened` listitem then the Timeline region, pressing Backspace sets the remaining Event `id` to the Event that was last", async ({
+test("After clicking `New Slice` then `Add Event` twice, clicking the first Timeline `Event Happened` listitem, pressing Backspace sets the remaining Event `id` to the Event that was last", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -168,7 +160,6 @@ test("After clicking `New Slice` then `Add Event` twice, clicking the first Time
   );
   const lastId = before.slices.at(-1).events[1].id;
   await events.first().click();
-  await clickTimelineRegion(page);
   await page.keyboard.press("Backspace");
   const after = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
@@ -177,7 +168,7 @@ test("After clicking `New Slice` then `Add Event` twice, clicking the first Time
   expect(after.slices.at(-1).events[0].id).toBe(lastId);
 });
 
-test("After clicking `New Slice` then `Add Read Model` twice, clicking the first Timeline `Read Model` listitem then the Timeline region, pressing Backspace sets the remaining Read Model `id` to the Read Model that was last", async ({
+test("After clicking `New Slice` then `Add Read Model` twice, clicking the first Timeline `Read Model` listitem, pressing Backspace sets the remaining Read Model `id` to the Read Model that was last", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -193,7 +184,6 @@ test("After clicking `New Slice` then `Add Read Model` twice, clicking the first
   );
   const lastId = before.slices.at(-1).readModels[1].id;
   await readModels.first().click();
-  await clickTimelineRegion(page);
   await page.keyboard.press("Backspace");
   const after = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
@@ -202,7 +192,7 @@ test("After clicking `New Slice` then `Add Read Model` twice, clicking the first
   expect(after.slices.at(-1).readModels[0].id).toBe(lastId);
 });
 
-test("After clicking `New Slice` then `Add Automation` twice, clicking the first Timeline `Automation` listitem then the Timeline region, pressing Backspace sets the remaining Automation `id` to the Automation that was last", async ({
+test("After clicking `New Slice` then `Add Automation` twice, clicking the first Timeline `Automation` listitem, pressing Backspace sets the remaining Automation `id` to the Automation that was last", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -218,7 +208,6 @@ test("After clicking `New Slice` then `Add Automation` twice, clicking the first
   );
   const lastId = before.slices.at(-1).processors[1].id;
   await automations.first().click();
-  await clickTimelineRegion(page);
   await page.keyboard.press("Backspace");
   const after = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
