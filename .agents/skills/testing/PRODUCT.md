@@ -22,6 +22,8 @@ Load with `testing`. Portable procedure is `SKILL.md` (spec-loop).
 | "does not show a listitem whose accessible name is X" (unit HTML) | `not.toContain("<li>X</li>")` (`<li aria-label="X">` stays green) |
 | Listitem **in** the Timeline region (unit HTML) | `/aria-label="Timeline"[\s\S]*<li...Actor/` (Inspector Actor after Timeline stays green) |
 | TIME chrome does not pan / `.time-chrome` | Timeline `style.transform` does not include `translate(` (TIME chrome inside `.board` stays green) |
+| Event → Read Model copy on `.board` | Command → Event Happened `.board` tests (second kind-gated drag arm stays sibling) |
+| leftover unused sibling of `.board` / redo Connection copy | after-drag `.board` tests + undo-rest Timeline-shows (⇧⌘Z redo `timelineEl.append` stays green) |
 | "Clicking X on that page appends …" | Unit call of a function production never imports (duplicate click-path object) |
 | "Dragging from X onto Y appends …" | Unit that passes `fromKind`/`toKind` already in the input and asserts those same values (`bindEditor` unused stays green) |
 | Same control, two selection sources (Name is `New Slice` vs `Actor`; Command vs Event / Read Model / Automation) | Tests that never select the other entity (first-click-wins / insert-if-missing stays green) |
@@ -50,6 +52,10 @@ Waitlist `does not create a Person` / `does not set a Session cookie` on a POST 
 A listitem **in** the Timeline region is unproven by `/aria-label="Timeline"[\s\S]*Actor/` — Inspector after Timeline stays green. Playwright region+listitem, or a unit slice of the Timeline `section`.
 
 TIME chrome does not pan is unproven by Timeline `style.transform` does not include `translate(` — `.time-chrome` inside `.board` stays green. That factor is an AC that asserts `.time-chrome`, or drop the claim (`keeping-specs-current`).
+
+Event → Read Model copy on `.board` is unproven by Command → Event Happened `.board` tests — the second kind-gated drag arm stays sibling. That placement is an AC that asserts `.board` contains `Event Happened → Read Model`, or revert that arm (`keeping-specs-current`). GET `connectionCopy` stays the one reload AC.
+
+Leftover unused sibling of `.board` is unproven by after-drag `.board` + undo-rest Timeline-shows — ⇧⌘Z redo `timelineEl.append` stays green. Append redo on `.board` and name that criterion, or the leftover-unused sentence is false (`keeping-specs-current`).
 
 A computed-color AC is unproven by stylesheet `toContain` — Playwright `toHaveCSS` of the unique declaration, or uncheck. Playwright `toHaveCSS` of a UA default (`input` white / Email Field canvas fill) or a color inherited from a parent/body AC (Landing heading ink after public-face `body.landing`; editor `Slices` after this slice's `body.app-editor` ink) is existing behavior — drop the bullet (`keeping-specs-current`).
 
