@@ -140,3 +140,14 @@ test("GET `/app/teams/{id}/models/{mid}` as a member after Create model, the Tim
       .getByRole("button", { name: "Add Read Model on lane", exact: true }),
   ).toBeVisible();
 });
+
+test("GET `/app/teams/{id}/models/{mid}` as a member after Create model, the Timeline region shows a button whose accessible name is `Add Automation on lane`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("button", { name: "Add Automation on lane", exact: true }),
+  ).toBeVisible();
+});

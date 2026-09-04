@@ -700,6 +700,20 @@ describe("create model", () => {
     );
   });
 
+  it("GET `/app/teams/{id}/models/{mid}` as a member after Create model, the Timeline region shows a button whose accessible name is `Add Automation on lane`", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/app/teams/team-1/models/model-1",
+        { headers: { Cookie: "session=sess-admin" } },
+      ),
+      env,
+    );
+    expect(timelineMarkup(await response.text())).toMatch(
+      /<button type="button"[^>]*>Add Automation on lane<\/button>/,
+    );
+  });
+
   it("GET `/app/teams/{id}/models/{mid}` as a member with no Actors does not show a listitem whose accessible name is `Actor`", async () => {
     const { env } = await importedSliceWithoutActors();
     const response = await handleRequest(
