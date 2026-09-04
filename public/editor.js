@@ -364,6 +364,9 @@ export function bindEditor(root) {
         [...(inspector?.querySelectorAll("p") ?? [])]
           .find((p) => p.textContent === "From Event Happened")
           ?.remove();
+        [...(inspector?.querySelectorAll("p") ?? [])]
+          .find((p) => p.textContent === "To Read Model")
+          ?.remove();
         if (
           inspector &&
           !inspector.textContent?.includes("Connection")
