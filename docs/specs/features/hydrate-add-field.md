@@ -35,7 +35,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-GET ports after reload. Pan and Zoom. Connection placement. Landing. Mac window chrome. Copy changes.
+GET ports after reload stay [hydrate-board.md](./hydrate-board.md). Pan and Zoom. Connection placement. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 
