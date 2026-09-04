@@ -178,6 +178,34 @@ describe("spec tree", () => {
     expect(problem).toContain("landing-modern.md");
   });
 
+  it("port-wrap Out of scope GET ports after reload points at hydrate-board.md", () => {
+    const text = readFileSync("docs/specs/features/port-wrap.md", "utf8");
+    const out = text.split("## Out of scope")[1]?.split("## Restates")[0] ?? "";
+    expect(out).toContain(
+      "GET ports after reload stay [hydrate-board.md](./hydrate-board.md)",
+    );
+  });
+
+  it("port-wrap Restates port-fit and connections; those Out of scope name same-row as port-wrap", () => {
+    const restates =
+      readFileSync("docs/specs/features/port-wrap.md", "utf8").split(
+        "## Restates",
+      )[1] ?? "";
+    expect(restates).toContain("[port-fit.md](./port-fit.md)");
+    expect(restates).toContain("[connections.md](./connections.md)");
+    expect(restates).not.toContain("leftover unused");
+    const fitOut =
+      readFileSync("docs/specs/features/port-fit.md", "utf8")
+        .split("## Out of scope")[1]
+        ?.split("## Restates")[0] ?? "";
+    expect(fitOut).toContain("[port-wrap.md](./port-wrap.md)");
+    const connectionsOut =
+      readFileSync("docs/specs/features/connections.md", "utf8")
+        .split("## Out of scope")[1]
+        ?.split("## Restates")[0] ?? "";
+    expect(connectionsOut).toContain("[port-wrap.md](./port-wrap.md)");
+  });
+
   it("time-chrome-stay Restates hydrate-board; hydrate-board does not leave Pan and Zoom covering TIME chrome unowned", () => {
     const stay = readFileSync(
       "docs/specs/features/time-chrome-stay.md",

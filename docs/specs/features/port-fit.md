@@ -27,7 +27,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 ## Assumptions
 
 - Playwright unique checkout `PORT` / `INSPECTOR_PORT` and `TEST_MAIL=1` `workers` `1` stay [public-face.md](./public-face.md).
-- `Event Happened port` after `Add Event` stays [connections.md](./connections.md). That button fitting inside its `.slice-col` is this slice.
+- `Event Happened port` after `Add Event` stays [connections.md](./connections.md). That button fitting inside its `.slice-col` is this slice. That button wrapping onto a second line under the title, and staying on the same row as the Event Happened title, is [port-wrap.md](./port-wrap.md).
 - Create model still seeds a default Slice ([model-defaults.md](./model-defaults.md)). Toolbar Add still targets the last Slice ([blocks.md](./blocks.md)).
 - Overflow means the port's `getBoundingClientRect` `left`/`right`/`top`/`bottom` is outside that `.slice-col` box.
 - Intersect means the port box overlaps the title text node's `getBoundingClientRect` (`left`/`right`/`top`/`bottom`). The Event title clipped to `Event Happen` is that overlap.
@@ -36,7 +36,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-GET ports after reload. Connection copy on `.board`. Pan and Zoom. Changing port accessible names. Landing. Mac window chrome. Copy changes.
+GET ports after reload. Connection copy on `.board`. Pan and Zoom. Changing port accessible names. Landing. Mac window chrome. Copy changes. That button wrapping onto a second line under the title, and staying on the same row as the Event Happened title, is [port-wrap.md](./port-wrap.md).
 
 ## Restates
 
