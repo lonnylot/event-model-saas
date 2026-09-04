@@ -40,7 +40,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-GET Connection `data-id`. GET Inspector Description of the first of two Actors (last-of-kind helpers). GET Automation Name JSON. Shortcut listitem `data-kind` is [shortcut-kind.md](./shortcut-kind.md). Pan and Zoom. Landing. Mac window chrome. Copy changes.
+GET Connection `data-id` is [hydrate-connection-id.md](./hydrate-connection-id.md). GET Inspector Description of the first of two Actors (last-of-kind helpers). GET Automation Name JSON. Shortcut listitem `data-kind` is [shortcut-kind.md](./shortcut-kind.md). Pan and Zoom. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 
