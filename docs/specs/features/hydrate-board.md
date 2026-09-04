@@ -9,7 +9,7 @@ GET `/app/teams/{id}/models/{mid}` after Create model renders the seeded Slice a
 ## Acceptance criteria
 
 - [x] GET `/app/teams/{id}/models/{mid}` as a member after Create model, the Timeline region shows a listitem whose accessible name is `New Slice`
-- [ ] GET `/app/teams/{id}/models/{mid}` as a member after Create model, the Timeline region shows a button whose accessible name is `Add Actor on lane`
+- [x] GET `/app/teams/{id}/models/{mid}` as a member after Create model, the Timeline region shows a button whose accessible name is `Add Actor on lane`
 - [ ] GET `/app/teams/{id}/models/{mid}` as a member after Create model, the Timeline region shows a button whose accessible name is `Add Command on lane`
 - [ ] GET `/app/teams/{id}/models/{mid}` as a member after Create model, the Timeline region shows a button whose accessible name is `Add Event on lane`
 - [ ] GET `/app/teams/{id}/models/{mid}` as a member after Create model, the Timeline region shows a button whose accessible name is `Add Read Model on lane`
