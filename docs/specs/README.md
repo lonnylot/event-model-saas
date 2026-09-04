@@ -63,6 +63,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Hydrate board | [features/hydrate-board.md](./features/hydrate-board.md) | released |
 | Port fit | [features/port-fit.md](./features/port-fit.md) | released |
 | Shortcut shows | [features/shortcut-shows.md](./features/shortcut-shows.md) | released |
-| Time chrome stay | [features/time-chrome-stay.md](./features/time-chrome-stay.md) | validated |
+| Time chrome stay | [features/time-chrome-stay.md](./features/time-chrome-stay.md) | released |
 
 Status: `draft` → `validated` → `released`.

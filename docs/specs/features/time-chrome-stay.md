@@ -1,6 +1,6 @@
 # Time chrome stay
 
-Status: validated
+Status: released
 
 ## Problem
 
