@@ -247,3 +247,98 @@ test("After clicking the Timeline `Command` listitem, then clicking `Command →
     inspector.getByRole("button", { name: "Add Field", exact: true }),
   ).toHaveCount(0);
 });
+
+async function addFieldOnCommandThenClickConnection(page: Page) {
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  const inspector = page.getByRole("region", {
+    name: "Inspector",
+    exact: true,
+  });
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await dragPort(page, "Command port", "Event Happened port");
+  await expect(
+    timeline.getByText("Command → Event Happened", { exact: true }),
+  ).toBeVisible();
+  await timeline
+    .getByRole("listitem", { name: "Command", exact: true })
+    .click();
+  await inspector.getByRole("button", { name: "Add Field", exact: true }).click();
+  return { timeline, inspector };
+}
+
+test("After clicking the Timeline `Command` listitem, clicking `Add Field`, then clicking `Command → Event Happened`, the Inspector region does not show a textbox whose accessible name is `Field name`", async ({
+  page,
+}) => {
+  const { timeline, inspector } = await addFieldOnCommandThenClickConnection(
+    page,
+  );
+  await expect(
+    inspector.getByRole("textbox", { name: "Field name", exact: true }),
+  ).toBeVisible();
+  await timeline.getByText("Command → Event Happened", { exact: true }).click();
+  await expect(
+    inspector.getByRole("textbox", { name: "Field name", exact: true }),
+  ).toHaveCount(0);
+});
+
+test("After clicking the Timeline `Command` listitem, clicking `Add Field`, then clicking `Command → Event Happened`, the Inspector region does not show a combobox whose accessible name is `Field type`", async ({
+  page,
+}) => {
+  const { timeline, inspector } = await addFieldOnCommandThenClickConnection(
+    page,
+  );
+  await expect(
+    inspector.getByRole("combobox", { name: "Field type", exact: true }),
+  ).toBeVisible();
+  await timeline.getByText("Command → Event Happened", { exact: true }).click();
+  await expect(
+    inspector.getByRole("combobox", { name: "Field type", exact: true }),
+  ).toHaveCount(0);
+});
+
+test("After clicking the Timeline `Command` listitem, clicking `Add Field`, then clicking `Command → Event Happened`, the Inspector region does not show a checkbox whose accessible name is `Optional`", async ({
+  page,
+}) => {
+  const { timeline, inspector } = await addFieldOnCommandThenClickConnection(
+    page,
+  );
+  await expect(
+    inspector.getByRole("checkbox", { name: "Optional", exact: true }),
+  ).toBeVisible();
+  await timeline.getByText("Command → Event Happened", { exact: true }).click();
+  await expect(
+    inspector.getByRole("checkbox", { name: "Optional", exact: true }),
+  ).toHaveCount(0);
+});
+
+test("After clicking the Timeline `Command` listitem, clicking `Add Field`, then clicking `Command → Event Happened`, the Inspector region does not show a textbox whose accessible name is `Example`", async ({
+  page,
+}) => {
+  const { timeline, inspector } = await addFieldOnCommandThenClickConnection(
+    page,
+  );
+  await expect(
+    inspector.getByRole("textbox", { name: "Example", exact: true }),
+  ).toBeVisible();
+  await timeline.getByText("Command → Event Happened", { exact: true }).click();
+  await expect(
+    inspector.getByRole("textbox", { name: "Example", exact: true }),
+  ).toHaveCount(0);
+});
+
+test("After clicking the Timeline `Command` listitem, clicking `Add Field`, then clicking `Command → Event Happened`, the Inspector region does not show a button whose accessible name is `Delete Field`", async ({
+  page,
+}) => {
+  const { timeline, inspector } = await addFieldOnCommandThenClickConnection(
+    page,
+  );
+  await expect(
+    inspector.getByRole("button", { name: "Delete Field", exact: true }),
+  ).toBeVisible();
+  await timeline.getByText("Command → Event Happened", { exact: true }).click();
+  await expect(
+    inspector.getByRole("button", { name: "Delete Field", exact: true }),
+  ).toHaveCount(0);
+});

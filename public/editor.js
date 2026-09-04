@@ -1462,6 +1462,7 @@ export function bindEditor(root) {
     selectedConnectionItem = line;
     unbindType();
     unbindAddField();
+    unbindFieldRow();
   });
   timeline?.addEventListener("click", (event) => {
     const line = event.target?.closest?.("p");
