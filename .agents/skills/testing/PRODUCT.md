@@ -27,6 +27,7 @@ Load with `testing`. Portable procedure is `SKILL.md` (spec-loop).
 | Same control, two selection sources (Name is `New Slice` vs `Actor`; Command vs Event / Read Model / Automation) | Tests that never select the other entity (first-click-wins / insert-if-missing stays green) |
 | Shared Inspector textbox value after select (Description; empty omitted JSON) | Fill after selecting the other kind; `toBeVisible` (never-assign-value stays green) |
 | "that Slice" / "that Actor" / the clicked item / Backspace the selected Slice / "the first X" / first-vs-last | One-item fixture (`.at(-1)` / `.first()` / always-delete-last / only-last stays green). Two default-named Slices cannot use "does not show a listitem named New Slice" — remaining JSON id so last remains |
+| Shortcut-shown listitem after ⌥⌘ (JSON already `selectedSliceIndex`) | One-slice Create-default (DOM `lastLaneList` / last column stays green if selected-slice JSON and DOM diverge). Out of scope targeting does not license that split unless it names last-column DOM |
 | Host path (`run_worker_first`, assets routing) | Handler unit test that stays green if that host wiring is deleted |
 | Architecture-named production adapter (D1, Email, R2) | Injected `env.auth` / `env.documents` / handler unit that stays green if production `fetch` never constructs that adapter |
 | Write R2 current object / stored document body | Success status, version bump, or 409 UI that never asserts the saved body (deleting `documents.put` stays green) |
@@ -58,7 +59,7 @@ A hosted Worker path is unproven by a handler unit test when `run_worker_first` 
 
 Click/drag criteria are unproven by a unit call production never makes — prove the in-memory document after the click, or Playwright `dragTo` / the editor mouseup path.
 
-Inspect/delete after reload that requires `data-kind` / `data-id` GET HTML does not emit is unproven until that click after reload is an AC, or Out of scope names it.
+Inspect/delete after reload that requires `data-kind` / `data-id` GET HTML does not emit is unproven until that click after reload is an AC, or Out of scope names it. Inspect/delete on a new in-memory listitem path that omits `data-id` / `data-kind` when sibling toolbar Add emits them is unproven until that click is an AC, or Out of scope names inspect/delete on those listitems — GET after reload is leftover-narrow (`keeping-specs-current`).
 
 Mail subject, From display name, and other user-visible copy asserted in tests must be sentences in the spec.
 
