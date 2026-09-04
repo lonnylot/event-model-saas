@@ -363,5 +363,4 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add 
       .getByRole("region", { name: "Inspector", exact: true })
       .getByRole("textbox", { name: "Name", exact: true }),
   ).toHaveValue("Send Email");
-  await expectGetRenderedInspectOmitsAddField(page);
 });

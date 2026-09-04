@@ -1412,6 +1412,7 @@ export function bindEditor(root) {
           bindFieldName(automationFieldName);
           bindFieldType(lastAutomationFieldType());
         }
+        bindAddField();
         return;
       }
       bindAddField();
