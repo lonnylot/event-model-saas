@@ -1309,6 +1309,8 @@ body.app-editor .time-chrome {
   text-transform: uppercase;
   color: #64748b;
   flex: 0 0 auto;
+  position: relative;
+  z-index: 1;
 }
 body.app-editor .time-rule {
   flex: 1;
