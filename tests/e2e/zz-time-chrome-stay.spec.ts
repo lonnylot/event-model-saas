@@ -147,3 +147,18 @@ test("After scrolling the Timeline region, `.board` `getBoundingClientRect` does
     )
     .toBe(false);
 });
+
+test("After clicking `Zoom in` on that page, `.board` `getBoundingClientRect` does not intersect `.time-chrome`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "Zoom in", exact: true }).click();
+  await expect
+    .poll(async () =>
+      intersects(
+        await clientRect(page, ".board"),
+        await clientRect(page, ".time-chrome"),
+      ),
+    )
+    .toBe(false);
+});
