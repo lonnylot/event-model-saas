@@ -82,6 +82,8 @@ A Problem / Assumptions that name leftover Type after a Connection / switching s
 
 A Problem that names only Field name when ACs also drop Field type / Optional / Example / Delete Field is leftover-narrow Problem — name those leftover Field controls.
 
+A Problem that names Inspector Name on Actor and Automation when unique AC is GET Actor Name JSON is leftover-wide Problem — Out of scope GET Automation Name JSON, or add that AC.
+
 Restating architecture Front end as “Inspector unbind on selection change” when unique production is leftover Type after a Connection click / leftover From Event Happened after `Command → Event Happened` is leftover locked claim — restate to the ACs, or add ACs that unbind on the other selection changes that sentence names.
 
 GET Inspector heading / empty copy vs leftover `editor-shell.md` “empty named region” when designed-surfaces Restates omits that file is leftover Restates. Filling a region another released spec still calls empty is unfinished until Restates that spec.
