@@ -4,7 +4,7 @@ Status: validated
 
 ## Problem
 
-Clicking TIME chrome or empty `.board` after a Slice is selected leaves Inspector Name and Type. `Nothing Selected` does not return, so a member cannot clear the Inspector without picking another block.
+Clicking TIME chrome after the Timeline `New Slice` listitem is selected leaves Inspector Name and Type. Clicking empty `.board` after the Timeline `Actor` listitem is selected leaves Inspector Name. `Nothing Selected` does not return, so a member cannot clear the Inspector without picking another block.
 
 ## Acceptance criteria
 
