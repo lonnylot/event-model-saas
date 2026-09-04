@@ -53,7 +53,7 @@ A targeting packed "and" (first Slice has X and last is []) stays one “only on
 
 Out of scope "Changing which Slice the shortcut targets" is leftover-narrow when JSON uses `selectedSliceIndex` and this HEAD's DOM uses `lastLaneList` — restate last-column DOM, or AC the same index. One-slice Create-default stays green (`testing`).
 
-Inspect/delete after reload that requires `data-kind` / `data-id` GET HTML does not emit: add that AC, or Out of scope (inspect-after-reload family). Assumptions that claim Name JSON mutates by id when leftover last-of-kind / GET listitems have no `data-id` cannot both hold.
+Inspect/delete after reload that requires `data-kind` / `data-id` GET HTML does not emit: add that AC, or Out of scope (inspect-after-reload family). A new in-memory listitem path that omits `data-id` / `data-kind` when sibling toolbar Add emits them is the same miss for inspect/delete without reload — add that AC, or Out of scope inspect/delete on those listitems. Out of scope GET / inspect-after-reload is leftover-narrow. Assumptions that claim Name JSON mutates by id when leftover last-of-kind / GET listitems have no `data-id` cannot both hold.
 
 ## Restates and `product.md`
 

@@ -59,7 +59,7 @@ A hosted Worker path is unproven by a handler unit test when `run_worker_first` 
 
 Click/drag criteria are unproven by a unit call production never makes — prove the in-memory document after the click, or Playwright `dragTo` / the editor mouseup path.
 
-Inspect/delete after reload that requires `data-kind` / `data-id` GET HTML does not emit is unproven until that click after reload is an AC, or Out of scope names it.
+Inspect/delete after reload that requires `data-kind` / `data-id` GET HTML does not emit is unproven until that click after reload is an AC, or Out of scope names it. Inspect/delete on a new in-memory listitem path that omits `data-id` / `data-kind` when sibling toolbar Add emits them is unproven until that click is an AC, or Out of scope names inspect/delete on those listitems — GET after reload is leftover-narrow (`keeping-specs-current`).
 
 Mail subject, From display name, and other user-visible copy asserted in tests must be sentences in the spec.
 
