@@ -80,6 +80,8 @@ A new-spec Problem that names only Command when ACs also cover Event / Read Mode
 
 A Problem / Assumptions that name leftover Type after a Connection / switching selection when unique production unbinds Type only on `Command → Event Happened` is leftover-narrow — leftover Type after `Event Happened → Read Model` is extra chrome. Name both Connection kinds, or Out of scope leftover Type after `Event Happened → Read Model`.
 
+A Problem that names only Field name when ACs also drop Field type / Optional / Example / Delete Field is leftover-narrow Problem — name those leftover Field controls.
+
 Restating architecture Front end as “Inspector unbind on selection change” when unique production is leftover Type after a Connection click / leftover From Event Happened after `Command → Event Happened` is leftover locked claim — restate to the ACs, or add ACs that unbind on the other selection changes that sentence names.
 
 GET Inspector heading / empty copy vs leftover `editor-shell.md` “empty named region” when designed-surfaces Restates omits that file is leftover Restates. Filling a region another released spec still calls empty is unfinished until Restates that spec.
