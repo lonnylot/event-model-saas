@@ -68,5 +68,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Hydrate add field | [features/hydrate-add-field.md](./features/hydrate-add-field.md) | released |
 | Inspect switch | [features/inspect-switch.md](./features/inspect-switch.md) | released |
 | Port wrap | [features/port-wrap.md](./features/port-wrap.md) | released |
+| Hydrate kind id | [features/hydrate-kind-id.md](./features/hydrate-kind-id.md) | validated |
 
 Status: `draft` → `validated` → `released`.

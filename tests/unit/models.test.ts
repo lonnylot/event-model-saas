@@ -740,6 +740,20 @@ describe("create model", () => {
     );
   });
 
+  it("GET `/app/teams/{id}/models/{mid}` as a member after Create model, the Timeline `Actor` listitem has a non-empty `data-id`", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/app/teams/team-1/models/model-1",
+        { headers: { Cookie: "session=sess-admin" } },
+      ),
+      env,
+    );
+    expect(timelineMarkup(await response.text())).toMatch(
+      /<li[^>]*aria-label="Actor"[^>]*data-id="[^"]+"[^>]*>Actor<\/li>/,
+    );
+  });
+
   it("GET `/app/teams/{id}/models/{mid}` as a member shows a region whose accessible name is `Timeline`", async () => {
     const { env } = await createdUntitled();
     const response = await handleRequest(

@@ -73,7 +73,7 @@ export function modelPageHtml(
   slices: Array<{
     id?: string;
     title: string;
-    actors?: Array<{ name: string }>;
+    actors?: Array<{ id?: string; name: string }>;
     commands?: Array<{ id?: string; title: string }>;
     events?: Array<{ id?: string; title: string }>;
     readModels?: Array<{ id?: string; title: string }>;
@@ -93,10 +93,10 @@ export function modelPageHtml(
   const sliceColumns = slices
     .map((slice, index) => {
       const actors = (slice.actors ?? [])
-        .map(
-          (actor) =>
-            `<li aria-label="${actor.name}" data-kind="actor">${actor.name}</li>`,
-        )
+        .map((actor) => {
+          const id = actor.id ? ` data-id="${actor.id}"` : "";
+          return `<li aria-label="${actor.name}" data-kind="actor"${id}>${actor.name}</li>`;
+        })
         .join("");
       const commands = (slice.commands ?? [])
         .map((command) => {
