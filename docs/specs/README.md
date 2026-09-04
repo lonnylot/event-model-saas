@@ -62,5 +62,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Timeline clip | [features/timeline-clip.md](./features/timeline-clip.md) | released |
 | Hydrate board | [features/hydrate-board.md](./features/hydrate-board.md) | released |
 | Port fit | [features/port-fit.md](./features/port-fit.md) | released |
+| Shortcut shows | [features/shortcut-shows.md](./features/shortcut-shows.md) | validated |
 
 Status: `draft` → `validated` → `released`.

@@ -23,7 +23,7 @@ A Cloudflare Worker serves signed-out and team/admin HTML, the editor canvas pag
 | Metadata | D1 |
 | Document body | R2 object `models/{id}.eventmodel` (current JSON only) |
 | Mail | Cloudflare Email binding. From `auth@event-model.lonnylot.com` (display name `Event Model`). Admin notify to `SITE_ADMIN_EMAIL` (unknown login and waitlist). |
-| Front end | Worker HTML plus `public/` CSS for Landing (`/`), Login (`/login`), 404, expired link, signed-in team/admin screens, and the editor canvas page. Editor canvas is custom timeline TypeScript (no xyflow/React Flow) matching the Mac layout. Clip of pan/zoom to the Timeline column is [features/timeline-clip.md](./features/timeline-clip.md). GET hydrate of lane Add and ports is [features/hydrate-board.md](./features/hydrate-board.md). Editor look of the port in the Slice column is [features/port-fit.md](./features/port-fit.md). |
+| Front end | Worker HTML plus `public/` CSS for Landing (`/`), Login (`/login`), 404, expired link, signed-in team/admin screens, and the editor canvas page. Editor canvas is custom timeline TypeScript (no xyflow/React Flow) matching the Mac layout. Clip of pan/zoom to the Timeline column is [features/timeline-clip.md](./features/timeline-clip.md). GET hydrate of lane Add and ports is [features/hydrate-board.md](./features/hydrate-board.md). Editor look of the port in the Slice column is [features/port-fit.md](./features/port-fit.md). Shortcut-shown listitem DOM is [features/shortcut-shows.md](./features/shortcut-shows.md). |
 | Document language | `.eventmodel` schema v1, same as the Mac app |
 | Tests | Vitest (unit) + Playwright (flows) + GitHub Actions |
 | Auth session | httpOnly Secure SameSite=Lax cookie on `event-model.lonnylot.com` |

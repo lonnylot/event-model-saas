@@ -49,7 +49,7 @@ Screens: Team, Editor. Primitives: Page, Button primary (`Create model`). Look o
 
 ## Out of scope
 
-Renaming Untitled. Changing New Slice click defaults. Import. Sample Library Checkout content. Mac window chrome. Copy changes on Team / Editor chrome.
+Renaming Untitled. Changing New Slice click defaults. Import. Sample Library Checkout content. Mac window chrome. Copy changes on Team / Editor chrome. A second Actor listitem from ⌥⌘1 is [shortcut-shows.md](./shortcut-shows.md).
 
 ## Restates
 

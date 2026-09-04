@@ -2807,7 +2807,16 @@ export function bindEditor(root) {
     if (event.code === "Digit1") {
       const index =
         selectedSliceIndex ?? (model.slices?.length ?? 1) - 1;
-      holder.textContent = JSON.stringify(appendActor(model, index));
+      const next = appendActor(model, index);
+      holder.textContent = JSON.stringify(next);
+      const actor = next.slices?.[index]?.actors?.at(-1);
+      const list = lastLaneList(root, "actor");
+      if (list && actor) {
+        const item = root.createElement("li");
+        item.textContent = "Actor";
+        item.setAttribute("aria-label", "Actor");
+        list.append(item);
+      }
     }
     if (event.code === "Digit2") {
       const index =
