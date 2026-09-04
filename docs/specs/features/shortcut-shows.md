@@ -1,6 +1,6 @@
 # Shortcut shows
 
-Status: validated
+Status: released
 
 ## Problem
 
