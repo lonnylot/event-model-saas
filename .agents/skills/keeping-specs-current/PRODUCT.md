@@ -94,6 +94,8 @@ Restates listing `design-system.md` (“Tokens stay that file”) when this HEAD
 
 Restates listing inspect-connection / inspect-rest / slice-type / inspect-fields without rewriting leftover unused Type / From Event Happened / Add Field after a Connection click is leftover Restates.
 
+Restates listing `port-fit.md` / `connections.md` without rewriting wrapping / same-row as this slice is leftover Restates.
+
 Leftover unused `measure-landing` `36rem` after restated `main` max-width `none` — mark leftover unused or drop (same as leftover unused paper tokens).
 
 Restating leftover unused sibling of `.board` is unfinished until remaining Connection copy appends (⇧⌘Z redo `timelineEl.append`) no longer use the Timeline region. Undo-rest Timeline-shows stays green if redo still appends as a sibling. That remaining arm is unique production — add an AC + `it` named as that criterion so leftover unused holds, or the leftover-unused sentence is false.
