@@ -1387,6 +1387,7 @@ export function bindEditor(root) {
           bindFieldName(readModelFieldName);
           bindFieldType(lastReadModelFieldType());
         }
+        bindAddField();
         return;
       }
       bindAddField();
