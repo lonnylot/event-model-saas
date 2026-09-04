@@ -86,6 +86,8 @@ A Problem that names Inspector Name on Actor and Automation when unique AC is GE
 
 Restates inspect-after-reload “Name JSON and Backspace on those GET listitems” (Actor / Automation) while Out of scope parks GET Automation Name JSON cannot both hold — narrow Restates to GET Actor Name JSON and GET Actor / Automation Backspace.
 
+Restates / architecture / Assumptions assigning GET Connection `data-id` / GET Connection Backspace / GET `data-id` on that node when unique production is GET `Command → Event Happened` and Out of scope parks GET `Event Happened → Read Model` cannot both hold — `CONTEXT.md` Connection is both legal edges. Qualify to GET `Command → Event Happened`, or add the Event Happened → Read Model AC. “that node” after an Event Happened → Read Model sentence is that leftover locked claim.
+
 Restating architecture Front end as “Inspector unbind on selection change” when unique production is leftover Type after a Connection click / leftover From Event Happened after `Command → Event Happened` is leftover locked claim — restate to the ACs, or add ACs that unbind on the other selection changes that sentence names.
 
 GET Inspector heading / empty copy vs leftover `editor-shell.md` “empty named region” when designed-surfaces Restates omits that file is leftover Restates. Filling a region another released spec still calls empty is unfinished until Restates that spec.
