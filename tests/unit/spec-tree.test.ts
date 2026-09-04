@@ -177,4 +177,18 @@ describe("spec tree", () => {
     expect(problem).toContain("leftover unused");
     expect(problem).toContain("landing-modern.md");
   });
+
+  it("time-chrome-stay Restates hydrate-board; hydrate-board does not leave Pan and Zoom covering TIME chrome unowned", () => {
+    const stay = readFileSync(
+      "docs/specs/features/time-chrome-stay.md",
+      "utf8",
+    );
+    const restates = stay.split("## Restates")[1] ?? "";
+    expect(restates).toContain("[hydrate-board.md](./hydrate-board.md)");
+    const hydrate = readFileSync(
+      "docs/specs/features/hydrate-board.md",
+      "utf8",
+    );
+    expect(hydrate).not.toContain("Pan and Zoom covering TIME chrome");
+  });
 });

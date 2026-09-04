@@ -42,6 +42,7 @@ Changing zoom factors. Replacing pan with native overflow scroll. Landing. Mac w
 ## Restates
 
 - [timeline-clip.md](./timeline-clip.md) — Slice rail and Inspector clip stay that file. TIME chrome sibling markup stays that file. Board not covering TIME chrome after pan or Zoom in is this slice. Out of scope asserting `.time-chrome` itself is leftover unused for this coverage proof.
+- [hydrate-board.md](./hydrate-board.md) — GET hydrate of lane Add and ports stays that file. Board covering TIME chrome after pan or Zoom in is this slice.
 - [canvas.md](./canvas.md) — Scrolling the Timeline region still pans. `.board` `translate(` stays [timeline-clip.md](./timeline-clip.md). TIME chrome remaining the hit target after that pan is this slice.
 - [editor-shell.md](./editor-shell.md) — Toolbar Zoom in still sets `.board` `scale(1.25)`. TIME chrome remaining the hit target after that zoom is this slice.
 - [design-system.md](../design-system.md) — Tokens stay that file.
