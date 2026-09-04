@@ -1,6 +1,6 @@
 # Editor narrow
 
-Status: validated
+Status: released
 
 ## Problem
 
