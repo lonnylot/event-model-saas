@@ -4,7 +4,7 @@ Status: validated
 
 ## Problem
 
-⌥⌘2 shows a Timeline `Command` listitem with no `data-kind` and no `Command port`. Clicking that listitem opens Inspector Type as if it were a Slice, so a member who used the shortcut cannot inspect or connect that Command.
+⌥⌘1–5 show Timeline `Actor` / `Command` / `Event Happened` / `Read Model` / `Automation` listitems with no `data-kind` and no `Command port` / `Event Happened port` / `Read Model port`. Clicking a shortcut-shown Command opens Inspector Type as if it were a Slice, so a member who used the shortcut cannot inspect or connect that Command.
 
 ## Acceptance criteria
 
