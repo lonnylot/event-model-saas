@@ -361,6 +361,12 @@ export function bindEditor(root) {
       if (!connection || !timeline.contains(connection)) return;
       const inspector = root.querySelector('[aria-label="Inspector"]');
       if (connection.textContent === "Command → Event Happened") {
+        [...(inspector?.querySelectorAll("p") ?? [])]
+          .find((p) => p.textContent === "From Event Happened")
+          ?.remove();
+        [...(inspector?.querySelectorAll("p") ?? [])]
+          .find((p) => p.textContent === "To Read Model")
+          ?.remove();
         if (
           inspector &&
           !inspector.textContent?.includes("Connection")
@@ -1454,6 +1460,16 @@ export function bindEditor(root) {
     if (line.textContent !== "Command → Event Happened") return;
     selected = "connection";
     selectedConnectionItem = line;
+    unbindType();
+    unbindAddField();
+    unbindFieldRow();
+  });
+  timeline?.addEventListener("click", (event) => {
+    const line = event.target?.closest?.("p");
+    if (!line || !timeline.contains(line)) return;
+    if (line.textContent !== "Event Happened → Read Model") return;
+    selected = "connection";
+    unbindType();
   });
   slicesList?.addEventListener("click", (event) => {
     const item = event.target?.closest?.("li");
