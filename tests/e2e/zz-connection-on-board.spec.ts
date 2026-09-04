@@ -146,3 +146,23 @@ test("After a member creates a model, opens it, clicks `Add Command`, clicks `Ad
     "Command → Event Happened",
   );
 });
+
+test("After dragging `Command port` onto `Event Happened port`, pressing ⌘Z, then pressing ⇧⌘Z, `.board` contains the text `Command → Event Happened`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await dragPort(page, "Command port", "Event Happened port");
+  await expect(page.locator(".board")).toContainText(
+    "Command → Event Happened",
+  );
+  await page.keyboard.press("ControlOrMeta+z");
+  await expect(page.locator(".board")).not.toContainText(
+    "Command → Event Happened",
+  );
+  await page.keyboard.press("Shift+ControlOrMeta+z");
+  await expect(page.locator(".board")).toContainText(
+    "Command → Event Happened",
+  );
+});

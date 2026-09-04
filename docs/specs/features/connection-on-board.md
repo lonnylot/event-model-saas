@@ -11,6 +11,7 @@ Dragging `Command port` onto `Event Happened port` appends `Command → Event Ha
 - [x] After dragging `Command port` onto `Event Happened port`, `.board` contains the text `Command → Event Happened`
 - [x] After a member creates a model, opens it, clicks `Add Command`, clicks `Add Event`, drags `Command port` onto `Event Happened port`, and Saves, a reload of that page, `.board` contains the text `Command → Event Happened`
 - [x] After dragging `Event Happened port` onto `Read Model port`, `.board` contains the text `Event Happened → Read Model`
+- [x] After dragging `Command port` onto `Event Happened port`, pressing ⌘Z, then pressing ⇧⌘Z, `.board` contains the text `Command → Event Happened`
 
 ## Domain terms
 

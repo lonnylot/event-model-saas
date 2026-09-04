@@ -1566,14 +1566,14 @@ export function bindEditor(root) {
                 toKind: "EVENT",
               }),
             );
-            const timelineEl = root.querySelector('[aria-label="Timeline"]');
-            if (timelineEl) {
+            const board = boardMount(root);
+            if (board) {
               const stored = JSON.parse(holder.textContent || "{}");
               const connection = (stored.connections ?? []).at(-1);
               const p = root.createElement("p");
               p.textContent = "Command → Event Happened";
               if (connection) p.dataset.id = connection.id;
-              timelineEl.append(p);
+              board.append(p);
             }
             undoStack.push("connection");
           }
