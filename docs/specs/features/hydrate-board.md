@@ -43,7 +43,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-Board covering TIME chrome after pan or Zoom in is [time-chrome-stay.md](./time-chrome-stay.md). Changing Create JSON defaults. Drawing Connections as canvas lines. Landing. Mac window chrome. Copy changes.
+Board covering TIME chrome after pan or Zoom in is [time-chrome-stay.md](./time-chrome-stay.md). Changing Create JSON defaults. Drawing Connections as canvas lines. Landing. Mac window chrome. Copy changes. GET Actor / Automation `data-id` is [hydrate-kind-id.md](./hydrate-kind-id.md).
 
 ## Restates
 

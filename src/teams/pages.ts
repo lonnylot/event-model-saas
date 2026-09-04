@@ -73,11 +73,11 @@ export function modelPageHtml(
   slices: Array<{
     id?: string;
     title: string;
-    actors?: Array<{ name: string }>;
+    actors?: Array<{ id?: string; name: string }>;
     commands?: Array<{ id?: string; title: string }>;
     events?: Array<{ id?: string; title: string }>;
     readModels?: Array<{ id?: string; title: string }>;
-    processors?: Array<{ title: string }>;
+    processors?: Array<{ id?: string; title: string }>;
   }> = [],
   documentJson = "",
   connections: Array<{ fromKind: string; toKind: string }> = [],
@@ -93,10 +93,10 @@ export function modelPageHtml(
   const sliceColumns = slices
     .map((slice, index) => {
       const actors = (slice.actors ?? [])
-        .map(
-          (actor) =>
-            `<li aria-label="${actor.name}" data-kind="actor">${actor.name}</li>`,
-        )
+        .map((actor) => {
+          const id = actor.id ? ` data-id="${actor.id}"` : "";
+          return `<li aria-label="${actor.name}" data-kind="actor"${id}>${actor.name}</li>`;
+        })
         .join("");
       const commands = (slice.commands ?? [])
         .map((command) => {
@@ -119,10 +119,10 @@ export function modelPageHtml(
         })
         .join("");
       const automations = (slice.processors ?? [])
-        .map(
-          (automation) =>
-            `<li aria-label="${automation.title}" data-kind="automation">${automation.title}</li>`,
-        )
+        .map((automation) => {
+          const id = automation.id ? ` data-id="${automation.id}"` : "";
+          return `<li aria-label="${automation.title}" data-kind="automation"${id}>${automation.title}</li>`;
+        })
         .join("");
       return `<div class="slice-col" data-slice-index="${index}"><ul class="slice-head"><li aria-label="${slice.title}"${slice.id ? ` data-id="${slice.id}"` : ""}>${slice.title}</li></ul><div class="lane" data-lane="actor"><ul>${actors}</ul><button type="button" data-slice-index="${index}">Add Actor on lane</button></div><div class="lane" data-lane="command"><ul>${commands}</ul><button type="button" data-slice-index="${index}">Add Command on lane</button></div><div class="lane" data-lane="event"><ul>${events}</ul><button type="button" data-slice-index="${index}">Add Event on lane</button></div><div class="lane" data-lane="readmodel"><ul>${readModels}</ul><button type="button" data-slice-index="${index}">Add Read Model on lane</button></div><div class="lane" data-lane="automation"><ul>${automations}</ul><button type="button" data-slice-index="${index}">Add Automation on lane</button></div></div>`;
     })

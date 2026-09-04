@@ -62,7 +62,7 @@ Event Model, Slice, Slice type, Actor, Command, Event, Read Model, Automation, D
 
 ## Out of scope
 
-Mac window chrome. Command Name-by-id, Command visible text, and Actor dirty stay [name-binding.md](./name-binding.md). Last-Slice Type picker is [slice-type.md](./slice-type.md). Remaining Field type / optional / example / delete are [inspect-fields-rest.md](./inspect-fields-rest.md).
+Mac window chrome. Command Name-by-id, Command visible text, and Actor dirty stay [name-binding.md](./name-binding.md). Last-Slice Type picker is [slice-type.md](./slice-type.md). Remaining Field type / optional / example / delete are [inspect-fields-rest.md](./inspect-fields-rest.md). GET Actor Name JSON is [hydrate-kind-id.md](./hydrate-kind-id.md).
 
 ## Restates
 
