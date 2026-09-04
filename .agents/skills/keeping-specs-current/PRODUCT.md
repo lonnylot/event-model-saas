@@ -79,6 +79,8 @@ GET Inspector heading / empty copy vs leftover `editor-shell.md` “empty named 
 
 Restates omitting `public-face.md` leftover unused `.bento` fill/lift when this HEAD rewrote that Out of scope is leftover Restates — listing without rewriting is the other direction.
 
+Restates omitting released `hydrate-board.md` leftover Out of scope “Pan and Zoom covering TIME chrome” when this HEAD took covering TIME chrome (listed timeline-clip / canvas / editor-shell / architecture / design-system) is leftover Restates. Grep covering TIME chrome even when Restates already lists timeline-clip.
+
 Restates listing `design-system.md` (“Tokens stay that file”) when this HEAD does not rewrite that file is leftover Restates. UI inventory of `design-system.md` is not a rewrite (`timeline-clip.md` inventories it and does not list it; `create-model-border.md` listed it and rewrote Button primary inventory). Drop the Restates row, or rewrite a sentence in `design-system.md` that assigns this slice’s look and keep the row.
 
 Leftover unused `measure-landing` `36rem` after restated `main` max-width `none` — mark leftover unused or drop (same as leftover unused paper tokens).

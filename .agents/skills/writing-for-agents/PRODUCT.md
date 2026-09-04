@@ -35,6 +35,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Leftover landing-fold Problem “three bento cards” / caption-strip after restated stacked product-image rows | `keeping-specs-current` |
 | Restates omitting released `editor-shell.md` leftover empty named Inspector after GET Inspector chrome | `keeping-specs-current` |
 | Restates omitting public-face leftover unused `.bento` fill/lift after this HEAD rewrote that Out of scope | `keeping-specs-current` |
+| Restates omitting released `hydrate-board.md` leftover Out of scope covering TIME chrome after this slice took covering TIME chrome | `keeping-specs-current` |
 | Restates listing design-system.md Tokens stay that file when UI inventory is not a rewrite (timeline-clip inventories without listing) | `keeping-specs-current` |
 | Leftover unused `measure-landing` 36rem after restated main max-width none | `keeping-specs-current` |
 | Accessible name **is** X / Playwright substring; unit `toContain(">X<")` | `testing`, `playwright-e2e` |
