@@ -1471,6 +1471,13 @@ export function bindEditor(root) {
     selected = "connection";
     unbindType();
   });
+  timeline?.querySelector(".time-chrome")?.addEventListener("click", () => {
+    selected = null;
+    nameInput()?.closest("label")?.remove();
+    unbindDescription();
+    unbindType();
+    unbindFieldChrome();
+  });
   slicesList?.addEventListener("click", (event) => {
     const item = event.target?.closest?.("li");
     if (!item || !slicesList.contains(item)) return;
