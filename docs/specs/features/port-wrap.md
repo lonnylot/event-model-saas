@@ -37,6 +37,6 @@ GET ports after reload stay [hydrate-board.md](./hydrate-board.md). Connection c
 
 ## Restates
 
-- [port-fit.md](./port-fit.md) — `Event Happened port` still does not overflow `.slice-col` and still does not intersect the Event Happened title text node. That button wrapping onto a second line under the title is leftover unused; this slice keeps it on the same row.
+- [port-fit.md](./port-fit.md) — `Event Happened port` still does not overflow `.slice-col` and still does not intersect the Event Happened title text node. That button wrapping onto a second line under the title, and staying on the same row as the Event Happened title, is this slice.
 - [connections.md](./connections.md) — `Event Happened port` after `Add Event` stays that file. Same-row placement with the Event Happened title is this slice.
 - [architecture.md](../architecture.md) — Public-face still applies public tokens. Editor look of the port on the same row as the Event title is this slice.
