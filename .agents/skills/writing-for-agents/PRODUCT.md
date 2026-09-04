@@ -38,6 +38,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Problem names only Field name when ACs also drop Field type / Optional / Example / Delete Field | `keeping-specs-current` |
 | Problem names Inspector Name on Actor and Automation when unique AC is GET Actor Name JSON | `keeping-specs-current` |
 | Restates leftover Name JSON on those GET listitems vs Out of scope GET Automation Name JSON | `keeping-specs-current` |
+| Restates leftover GET Connection data-id / Backspace vs unique Command → Event Happened / parked Event Happened → Read Model | `keeping-specs-current` |
 | Leftover architecture Front end Inspector unbind on selection change vs leftover Type after a Connection click / leftover From after Command → Event Happened | `keeping-specs-current` |
 | Restates omitting released `editor-shell.md` leftover empty named Inspector after GET Inspector chrome | `keeping-specs-current` |
 | Restates omitting public-face leftover unused `.bento` fill/lift after this HEAD rewrote that Out of scope | `keeping-specs-current` |
@@ -59,6 +60,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Extra Timeline `toBeVisible` at 390 when released editor-shell already owns GET Timeline; `toBeVisible` stays green below the fold / stacked under `.slice-rail` | `logical-commits`, `testing`, `keeping-specs-current`, `tdd-loop`, `playwright-e2e` |
 | Leftover Out of scope GET ports after reload vs in-memory title-only shortcut listitems (toolbar Add still mounts `Command port`) | `keeping-specs-current` |
 | Unused cargo-cult Out of scope GET ports after reload on a slice with no new in-memory listitem path (hydrate-add-field Inspector Add Field; port-wrap CSS restyle of existing Add Event listitems); leftover-narrow is title-only in-memory | `keeping-specs-current` |
+| Unused cargo-cult Out of scope Inspector leftover Type on a slice that does not touch Type (hydrate-connection-id hydrates data-id); leftover-narrow is unique Command → Event Happened vs both Connection kinds | `keeping-specs-current` |
 | Leftover Out of scope targeting vs JSON `selectedSliceIndex` / DOM `lastLaneList`; dropping lastLaneList parenthetical because shortcut-shows.md / Assumptions already name last-column (`shortcut-kind`); one-slice Create-default stays green | `keeping-specs-current`, `testing`, `tdd-loop`, `playwright-e2e` |
 | GET after Create one seeded Actor / one Automation after Add+Save+reload (`json.slices[0].actors[0]` / `[]`) is that Actor one-item | `keeping-specs-current`, `testing`, `tdd-loop`, `playwright-e2e` |
 | Leftover Out of scope inspect-after-reload vs in-memory omit `data-id` / `data-kind` | `keeping-specs-current`, `testing` |
