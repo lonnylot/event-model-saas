@@ -54,6 +54,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Restates leftover unused sibling of `.board` vs remaining ⇧⌘Z redo `timelineEl.append`; undo-rest Timeline-shows stays green | `keeping-specs-current`, `testing`, `tdd-loop`, `playwright-e2e`, `logical-commits` |
 | leftover unused wrap vs deleted `flex-wrap: nowrap` (wrap production does not remain) | `keeping-specs-current` |
 | Extra Zoom in `includes scale(1.25)` when restated editor-shell already owns exact `.board` `scale(1.25)` | `logical-commits`, `keeping-specs-current` |
+| Extra Timeline `toBeVisible` at 390 when released editor-shell already owns GET Timeline; `toBeVisible` stays green below the fold / stacked under `.slice-rail` | `logical-commits`, `testing`, `keeping-specs-current`, `tdd-loop`, `playwright-e2e` |
 | Leftover Out of scope GET ports after reload vs in-memory title-only shortcut listitems (toolbar Add still mounts `Command port`) | `keeping-specs-current` |
 | Unused cargo-cult Out of scope GET ports after reload on a slice with no new in-memory listitem path (hydrate-add-field Inspector Add Field; port-wrap CSS restyle of existing Add Event listitems); leftover-narrow is title-only in-memory | `keeping-specs-current` |
 | Leftover Out of scope targeting vs JSON `selectedSliceIndex` / DOM `lastLaneList`; dropping lastLaneList parenthetical because shortcut-shows.md / Assumptions already name last-column (`shortcut-kind`); one-slice Create-default stays green | `keeping-specs-current`, `testing`, `tdd-loop`, `playwright-e2e` |

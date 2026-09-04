@@ -27,6 +27,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | After merge, learn from review | `post-merge-improvement`, `post-merge-improver` |
 | Two or more feat/ PRs at once; next-in-line / one current integrate | `parallel-feature-work`, `using-git-worktrees`, `releasing-a-spec` |
 | Playwright / flow CI / unique checkout port | `playwright-e2e`, `testing` |
+| Playwright `toBeVisible` of below-the-fold / overflow-clipped | `testing`, `playwright-e2e` |
 | Module / seam / adapter vocabulary | `codebase-design` |
 | Assumption vs acceptance criterion | `keeping-specs-current` |
 | Restated AC with leftover sections / leftover Problem / leftover test title / leftover Restates / leftover locked claims in a restated system spec / leftover Restates after restating Out of scope | `keeping-specs-current` |
