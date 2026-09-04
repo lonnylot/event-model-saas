@@ -247,4 +247,42 @@ describe("spec tree", () => {
       )[1] ?? "";
     expect(restates).toContain("[hydrate-kind-id.md](./hydrate-kind-id.md)");
   });
+
+  it("hydrate-connection-id does not assign unqualified GET Connection data-id or Backspace", () => {
+    const paths = [
+      "docs/specs/features/hydrate-connection-id.md",
+      "docs/specs/architecture.md",
+      "docs/specs/features/hydrate-kind-id.md",
+      "docs/specs/features/connections.md",
+      "docs/specs/features/inspect-rest.md",
+      "docs/specs/features/delete-blocks.md",
+      "docs/specs/features/connection-on-board.md",
+    ];
+    for (const path of paths) {
+      const text = readFileSync(path, "utf8");
+      expect(text, path).not.toContain("GET Connection `data-id`");
+      expect(text, path).not.toContain("GET Connection Backspace");
+    }
+    const inspect = readFileSync(
+      "docs/specs/features/inspect-rest.md",
+      "utf8",
+    );
+    expect(inspect).not.toMatch(
+      /Event Happened → Read Model` still opens Inspector From\/To\. That node living in `\.board` is that slice\. GET `data-id` on that node/,
+    );
+    const board = readFileSync(
+      "docs/specs/features/connection-on-board.md",
+      "utf8",
+    );
+    expect(board).not.toMatch(
+      /Event Happened → Read Model` \(\[inspect-rest\.md\]\(\.\/inspect-rest\.md\)\); that text living in `\.board` is this slice\. GET `data-id` on that node/,
+    );
+    const connections = readFileSync(
+      "docs/specs/features/connections.md",
+      "utf8",
+    );
+    expect(connections).not.toMatch(
+      /Event Happened → Read Model` as a sibling of `\.board` is leftover unused; `\.board` contains it is that slice\. GET `data-id` on that node/,
+    );
+  });
 });

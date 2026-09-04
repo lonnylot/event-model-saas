@@ -80,7 +80,7 @@ export function modelPageHtml(
     processors?: Array<{ id?: string; title: string }>;
   }> = [],
   documentJson = "",
-  connections: Array<{ fromKind: string; toKind: string }> = [],
+  connections: Array<{ id?: string; fromKind: string; toKind: string }> = [],
   isSiteAdmin = false,
   teamId = "",
 ): string {
@@ -133,7 +133,10 @@ export function modelPageHtml(
         (connection) =>
           connection.fromKind === "COMMAND" && connection.toKind === "EVENT",
       )
-      .map(() => '<p data-kind="connection">Command → Event Happened</p>'),
+      .map((connection) => {
+        const id = connection.id ? ` data-id="${connection.id}"` : "";
+        return `<p data-kind="connection"${id}>Command → Event Happened</p>`;
+      }),
     ...connections
       .filter(
         (connection) =>
