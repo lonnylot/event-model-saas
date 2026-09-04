@@ -1,6 +1,6 @@
 # Shortcut kind
 
-Status: validated
+Status: released
 
 ## Problem
 
