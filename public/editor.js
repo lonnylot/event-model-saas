@@ -1337,6 +1337,7 @@ export function bindEditor(root) {
           bindOptional(lastCommandFieldOptional());
           bindExample(lastCommandFieldExample());
         }
+        bindAddField();
         return;
       }
       bindAddField();

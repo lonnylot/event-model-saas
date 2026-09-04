@@ -1,0 +1,46 @@
+# Hydrate add field
+
+Status: validated
+
+## Problem
+
+After Save and reload, clicking a GET-rendered Command shows Field name of a Field that already exists, but Inspector has no `Add Field`, so a member cannot append another Field without adding a new Command first.
+
+## Acceptance criteria
+
+- [x] After a member creates a model, opens it, clicks `Add Command`, clicks the Timeline `Command` listitem, clicks `Add Field`, and Saves, a reload of that page, clicking the Timeline `Command` listitem shows a button whose accessible name is `Add Field` in the Inspector region
+- [ ] After a member creates a model, opens it, clicks `Add Event`, clicks the Timeline `Event Happened` listitem, clicks `Add Field`, and Saves, a reload of that page, clicking the Timeline `Event Happened` listitem shows a button whose accessible name is `Add Field` in the Inspector region
+- [ ] After a member creates a model, opens it, clicks `Add Read Model`, clicks the Timeline `Read Model` listitem, clicks `Add Field`, and Saves, a reload of that page, clicking the Timeline `Read Model` listitem shows a button whose accessible name is `Add Field` in the Inspector region
+- [ ] After a member creates a model, opens it, clicks `Add Automation`, clicks the Timeline `Automation` listitem, clicks `Add Field`, and Saves, a reload of that page, clicking the Timeline `Automation` listitem shows a button whose accessible name is `Add Field` in the Inspector region
+
+## Domain terms
+
+Event Model, Slice, Command, Event, Read Model, Automation, Field, Team, Person, Version
+
+## Seams
+
+- `bindEditor` in `public/editor.js` — Inspector `Add Field` on GET-rendered listitems
+- Browser — Playwright against `wrangler dev` with `TEST_MAIL=1`
+
+## UI
+
+Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001](../../adr/0001-look-iteration.md)). Inventory: [design-system.md](../design-system.md).
+
+## Assumptions
+
+- Playwright unique checkout `PORT` / `INSPECTOR_PORT` and `TEST_MAIL=1` `workers` `1` stay [public-face.md](./public-face.md).
+- `Add Field` after `New Slice` then Add stays [inspect-fields.md](./inspect-fields.md). Field name after reload stays [inspect-rest.md](./inspect-rest.md). `Add Field` after reload is this slice.
+- Create model still seeds a default Slice ([model-defaults.md](./model-defaults.md)). Toolbar Add still targets the last Slice ([blocks.md](./blocks.md)).
+- Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).
+
+## Out of scope
+
+GET ports after reload. Pan and Zoom. Connection placement. Landing. Mac window chrome. Copy changes.
+
+## Restates
+
+- [inspect-fields.md](./inspect-fields.md) — `Add Field` on a click-created Command / Event / Read Model / Automation stays that file. `Add Field` on those kinds after Save and reload is this slice.
+- [inspect-rest.md](./inspect-rest.md) — Field name / type / Optional / Example after reload stay that file. `Add Field` after reload is this slice.
+- [inspect-after-reload.md](./inspect-after-reload.md) — GET-rendered inspect still binds Inspector Name. Last-Command `Add Field` on click-created inspect stays [inspect-fields.md](./inspect-fields.md). `Add Field` after reload is this slice.
+- [inspect-fields-rest.md](./inspect-fields-rest.md) — In-session Field `type` / optional / example / delete and Add Field that appends on Event / Read Model / Automation stay that file. `Add Field` after reload is this slice.
+- [architecture.md](../architecture.md) — Editor canvas stays custom timeline TypeScript. GET `Add Field` is this slice.
