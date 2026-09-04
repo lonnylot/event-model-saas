@@ -51,6 +51,8 @@ Two default-named Slices cannot use “does not show a listitem named New Slice�
 
 A targeting packed "and" (first Slice has X and last is []) stays one “only on the first Slice” bullet. Independently revertible copy vs splice (Command drag) is not that bullet — split (`logical-commits`).
 
+Out of scope "Changing which Slice the shortcut targets" is leftover-narrow when JSON uses `selectedSliceIndex` and this HEAD's DOM uses `lastLaneList` — restate last-column DOM, or AC the same index. One-slice Create-default stays green (`testing`).
+
 Inspect/delete after reload that requires `data-kind` / `data-id` GET HTML does not emit: add that AC, or Out of scope (inspect-after-reload family). Assumptions that claim Name JSON mutates by id when leftover last-of-kind / GET listitems have no `data-id` cannot both hold.
 
 ## Restates and `product.md`

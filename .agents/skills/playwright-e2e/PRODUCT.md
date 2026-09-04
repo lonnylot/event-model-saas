@@ -12,7 +12,7 @@ If the AC says listitem visible text **is** `X`, `/^X/` on the listitem is the w
 
 A "does not show a control named X" query that lists only `button` and `link` stays green for a checkbox or menuitem named X — query widget roles, or assert no accessible name X on any control.
 
-A clicked-item / Backspace / first-vs-last / `the first New Slice listitem` flow with one `New Slice` is the weaker reading (`testing/PRODUCT.md`).
+A clicked-item / Backspace / first-vs-last / `the first New Slice listitem` flow with one `New Slice` is the weaker reading (`testing/PRODUCT.md`). One-slice Create-default after ⌥⌘1–5 stays green if shortcut DOM uses `lastLaneList` while JSON uses `selectedSliceIndex` (`testing/PRODUCT.md`).
 
 Playwright `toHaveCSS` of a computed color that is the UA default (`input` background `rgb(255, 255, 255)` / Email Field canvas fill) or inherited from a parent/body AC (Landing heading ink after public-face `body.landing`; editor `Slices` after `body.app-editor` ink) is the weaker reading (`testing`) — it stays green if the unique declaration is deleted.
 

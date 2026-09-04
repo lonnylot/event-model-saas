@@ -38,7 +38,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-Changing which Slice the shortcut targets. In-memory ports on shortcut-shown listitems (toolbar Add still mounts `Command port` / `Event Happened port` / `Read Model port`). GET ports after reload. Pan and Zoom. Landing. Mac window chrome. Copy changes.
+Changing which Slice the shortcut targets (JSON still uses selected Slice; shortcut DOM is last-column `lastLaneList`). In-memory ports on shortcut-shown listitems (toolbar Add still mounts `Command port` / `Event Happened port` / `Read Model port`). GET ports after reload. Pan and Zoom. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 
