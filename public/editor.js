@@ -2835,7 +2835,16 @@ export function bindEditor(root) {
     if (event.code === "Digit3") {
       const index =
         selectedSliceIndex ?? (model.slices?.length ?? 1) - 1;
-      holder.textContent = JSON.stringify(appendEvent(model, index));
+      const next = appendEvent(model, index);
+      holder.textContent = JSON.stringify(next);
+      const eventBlock = next.slices?.[index]?.events?.at(-1);
+      const list = lastLaneList(root, "event");
+      if (list && eventBlock) {
+        const item = root.createElement("li");
+        item.textContent = "Event Happened";
+        item.setAttribute("aria-label", "Event Happened");
+        list.append(item);
+      }
     }
     if (event.code === "Digit4") {
       const index =
