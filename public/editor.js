@@ -1362,6 +1362,7 @@ export function bindEditor(root) {
           bindFieldName(eventFieldName);
           bindFieldType(lastEventFieldType());
         }
+        bindAddField();
         return;
       }
       bindAddField();

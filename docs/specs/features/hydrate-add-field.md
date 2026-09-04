@@ -9,7 +9,7 @@ After Save and reload, clicking a GET-rendered Command shows Field name of a Fie
 ## Acceptance criteria
 
 - [x] After a member creates a model, opens it, clicks `Add Command`, clicks the Timeline `Command` listitem, clicks `Add Field`, and Saves, a reload of that page, clicking the Timeline `Command` listitem shows a button whose accessible name is `Add Field` in the Inspector region
-- [ ] After a member creates a model, opens it, clicks `Add Event`, clicks the Timeline `Event Happened` listitem, clicks `Add Field`, and Saves, a reload of that page, clicking the Timeline `Event Happened` listitem shows a button whose accessible name is `Add Field` in the Inspector region
+- [x] After a member creates a model, opens it, clicks `Add Event`, clicks the Timeline `Event Happened` listitem, clicks `Add Field`, and Saves, a reload of that page, clicking the Timeline `Event Happened` listitem shows a button whose accessible name is `Add Field` in the Inspector region
 - [ ] After a member creates a model, opens it, clicks `Add Read Model`, clicks the Timeline `Read Model` listitem, clicks `Add Field`, and Saves, a reload of that page, clicking the Timeline `Read Model` listitem shows a button whose accessible name is `Add Field` in the Inspector region
 - [ ] After a member creates a model, opens it, clicks `Add Automation`, clicks the Timeline `Automation` listitem, clicks `Add Field`, and Saves, a reload of that page, clicking the Timeline `Automation` listitem shows a button whose accessible name is `Add Field` in the Inspector region
 

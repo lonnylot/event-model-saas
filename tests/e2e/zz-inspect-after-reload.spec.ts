@@ -235,7 +235,6 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add 
       .getByRole("region", { name: "Inspector", exact: true })
       .getByRole("textbox", { name: "Name", exact: true }),
   ).toHaveValue("Order Placed");
-  await expectGetRenderedInspectOmitsAddField(page);
 });
 
 test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add Read Model`, clicks the Timeline `Read Model` listitem, fills `Name` with `Orders`, and Saves, a reload of that page shows a listitem whose accessible name is `Orders` in the Timeline region", async ({

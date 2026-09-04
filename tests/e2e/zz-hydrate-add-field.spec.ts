@@ -122,3 +122,40 @@ test("After a member creates a model, opens it, clicks `Add Command`, clicks the
       .getByRole("button", { name: "Add Field", exact: true }),
   ).toBeVisible();
 });
+
+test("After a member creates a model, opens it, clicks `Add Event`, clicks the Timeline `Event Happened` listitem, clicks `Add Field`, and Saves, a reload of that page, clicking the Timeline `Event Happened` listitem shows a button whose accessible name is `Add Field` in the Inspector region", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await expect(
+    page.getByRole("button", { name: "Event Happened port", exact: true }),
+  ).toBeVisible();
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Event Happened", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("button", { name: "Add Field", exact: true })
+    .click();
+  await Promise.all([
+    page.waitForResponse(
+      (response) =>
+        response.url().includes("/api/models/") &&
+        response.request().method() === "PUT",
+    ),
+    page.getByRole("button", { name: "Save", exact: true }).click(),
+  ]);
+  await page.reload();
+  await page.waitForLoadState("networkidle");
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Event Happened", exact: true })
+    .click();
+  await expect(
+    page
+      .getByRole("region", { name: "Inspector", exact: true })
+      .getByRole("button", { name: "Add Field", exact: true }),
+  ).toBeVisible();
+});
