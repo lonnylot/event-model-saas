@@ -1460,6 +1460,13 @@ export function bindEditor(root) {
     unbindType();
     unbindAddField();
   });
+  timeline?.addEventListener("click", (event) => {
+    const line = event.target?.closest?.("p");
+    if (!line || !timeline.contains(line)) return;
+    if (line.textContent !== "Event Happened → Read Model") return;
+    selected = "connection";
+    unbindType();
+  });
   slicesList?.addEventListener("click", (event) => {
     const item = event.target?.closest?.("li");
     if (!item || !slicesList.contains(item)) return;
