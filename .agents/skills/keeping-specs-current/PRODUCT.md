@@ -77,6 +77,8 @@ Restating stacked bento rows (`landing-fold.md`) is unfinished until leftover Pr
 
 A new-spec Problem that names only Command when ACs also cover Event / Read Model / Automation is leftover-narrow Problem — name those kinds (`inspect-after-reload` / `inspect-fields` / `shortcut-shows` name every kind). The Command-only tell is incomplete, not a leftover deleted tell after restating.
 
+A Problem / Assumptions that name leftover Type after a Connection / switching selection when unique production unbinds Type only on `Command → Event Happened` is leftover-narrow — leftover Type after `Event Happened → Read Model` is extra chrome. Name both Connection kinds, or Out of scope leftover Type after `Event Happened → Read Model`.
+
 GET Inspector heading / empty copy vs leftover `editor-shell.md` “empty named region” when designed-surfaces Restates omits that file is leftover Restates. Filling a region another released spec still calls empty is unfinished until Restates that spec.
 
 Restates omitting `public-face.md` leftover unused `.bento` fill/lift when this HEAD rewrote that Out of scope is leftover Restates — listing without rewriting is the other direction.
