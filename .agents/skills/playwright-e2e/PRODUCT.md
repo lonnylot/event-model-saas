@@ -20,6 +20,8 @@ Playwright `locator.focus()` of `:focus-visible` (`Sign in` box-shadow) is the w
 
 TIME chrome does not pan is unproven by Timeline `style.transform` does not include `translate(` — `.time-chrome` inside `.board` stays green (`testing`). That factor is an AC that asserts `.time-chrome`, or drop the claim (`keeping-specs-current`).
 
+Event → Read Model copy on `.board` is unproven by Command → Event Happened `.board` tests — the second kind-gated drag arm stays sibling (`testing`). That placement is an AC that asserts `.board` contains `Event Happened → Read Model`, or revert that arm (`keeping-specs-current`). GET `connectionCopy` stays the one reload AC.
+
 ## Script
 
 Any script-existence test asserts the exact value `playwright test` (consecutive runner tokens), not `length > 0` and not unordered token inclusion. An AC that says the script "includes the tokens" is a weaker criterion — restate as the script **is** `playwright test` (`keeping-specs-current`).

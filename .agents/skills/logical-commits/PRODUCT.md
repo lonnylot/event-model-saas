@@ -12,7 +12,7 @@ A `visual-design` look pass is one slice per named screen (or one stylesheet sev
 
 - fromKind vs toKind (or any copied field): land EVENT `toKind` only, then READMODEL with its test. The first commit must not already copy that field for every target.
 - Copy vs splice (Command drag onto another Slice): land copy/push first (last still lists it), then splice so last is `[]`. Packing both is grouping. Restating that drag as one targeting "only on the first Slice" bullet is the weaker packing (`testing`).
-- Two kind-gated `if (port.dataset.kind === …)` alreadyConnected arms: unique production per AC, not one kind-agnostic early return.
+- Two kind-gated `if (port.dataset.kind === …)` alreadyConnected arms: unique production per AC, not one kind-agnostic early return. Event → Read Model drag parent vs Command → Event Happened drag parent is the same split — the first AC must not already move every target's parent.
 - Status vs heading vs row vs R2; two workflow `on:` events vs a `run` step.
 - Four independently revertible ACs on GET `/app` (Team name, Create team, Sign out, Teams admin) are four commits. Five ACs on GET `/app/teams/{id}/models/{mid}` (heading, email, Save, Export, Sign out) are five.
 - Leftover-hide `unbindAddField` vs `unbindFieldName` is the same split.
@@ -26,6 +26,7 @@ Do not introduce a shared helper (`shell()`) only to keep two checkboxes in one 
 If the next checkbox stays green with no new production, fold the proof into the commit that wrote the field, or do not split the bullet.
 
 - GET already hydrates Slice `title` as the Slices listitem / Actor `name` as the Timeline listitem — a dedicated reload commit is tests-after.
+- GET `connectionCopy` is one HTML string — Command → Event Happened after reload is that AC; do not split Event → Read Model after reload.
 - Waitlist `does not create a Person` / `does not set a Session cookie` on a POST that never created those — fold into the insert / status-200 commit (TDD slice), not a unique-production regex commit.
 - Invalid-email status 200 when success 200 already landed is tests-after, not an early-return pack (`testing`).
 - Unknown-login waitlist proof when `request-link` never calls `insertWaitlist` — fold into the waitlist insert commit, or unsplit.
