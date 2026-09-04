@@ -45,7 +45,7 @@ GET Connection `data-id`. GET Inspector Description of the first of two Actors (
 ## Restates
 
 - [hydrate-board.md](./hydrate-board.md) — GET Command / Event / Read Model ports and Slice `data-id` stay that file. GET Actor / Automation `data-id` is this slice.
-- [inspect-after-reload.md](./inspect-after-reload.md) — Clicking GET Actor / Automation still opens Inspector Name. Name JSON and Backspace on those GET listitems are this slice.
+- [inspect-after-reload.md](./inspect-after-reload.md) — Clicking GET Actor / Automation still opens Inspector Name. GET Actor Name JSON and GET Actor / Automation Backspace are this slice.
 - [name-binding-rest.md](./name-binding-rest.md) — In-session Actor / Automation Name-by-id stays that file. GET Actor Name JSON is this slice.
 - [delete-rest.md](./delete-rest.md) — In-session Actor / Automation Backspace stays that file. GET Actor / Automation Backspace is this slice.
 - [model-defaults.md](./model-defaults.md) — Create still seeds one Actor named `Actor`. GET `data-id` on that listitem is this slice.
