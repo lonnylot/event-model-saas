@@ -2849,7 +2849,16 @@ export function bindEditor(root) {
     if (event.code === "Digit4") {
       const index =
         selectedSliceIndex ?? (model.slices?.length ?? 1) - 1;
-      holder.textContent = JSON.stringify(appendReadModel(model, index));
+      const next = appendReadModel(model, index);
+      holder.textContent = JSON.stringify(next);
+      const readModel = next.slices?.[index]?.readModels?.at(-1);
+      const list = lastLaneList(root, "readmodel");
+      if (list && readModel) {
+        const item = root.createElement("li");
+        item.textContent = "Read Model";
+        item.setAttribute("aria-label", "Read Model");
+        list.append(item);
+      }
     }
     if (event.code === "Digit5") {
       const index =
