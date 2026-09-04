@@ -13,8 +13,8 @@ Status: validated
 - [x] After pressing ⌥⌘3 on that page, the Timeline region shows a button whose accessible name is `Event Happened port` on the listitem whose accessible name is `Event Happened`
 - [x] After pressing ⌥⌘4 on that page, the Timeline region shows a button whose accessible name is `Read Model port` on the listitem whose accessible name is `Read Model`
 - [x] After pressing ⌥⌘5 on that page, the Timeline listitem whose accessible name is `Automation` has `data-kind` `automation`
-- [ ] After pressing ⌥⌘2 on that page, then clicking the Timeline `Command` listitem, the Inspector region shows a textbox whose accessible name is `Name` with the value `Command`
-- [ ] After pressing ⌥⌘2 on that page, then clicking the Timeline `Command` listitem, the Inspector region does not show a combobox whose accessible name is `Type`
+- [x] After pressing ⌥⌘2 on that page, then clicking the Timeline `Command` listitem, the Inspector region shows a textbox whose accessible name is `Name` with the value `Command`
+- [x] After pressing ⌥⌘2 on that page, then clicking the Timeline `Command` listitem, the Inspector region does not show a combobox whose accessible name is `Type`
 
 ## Domain terms
 

@@ -155,3 +155,37 @@ test("After pressing ⌥⌘5 on that page, the Timeline listitem whose accessibl
     timeline.getByRole("listitem", { name: "Automation", exact: true }),
   ).toHaveAttribute("data-kind", "automation");
 });
+
+test("After pressing ⌥⌘2 on that page, then clicking the Timeline `Command` listitem, the Inspector region shows a textbox whose accessible name is `Name` with the value `Command`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  await timeline.click();
+  await page.keyboard.press("Alt+ControlOrMeta+Digit2");
+  await timeline
+    .getByRole("listitem", { name: "Command", exact: true })
+    .click();
+  await expect(
+    page
+      .getByRole("region", { name: "Inspector", exact: true })
+      .getByRole("textbox", { name: "Name", exact: true }),
+  ).toHaveValue("Command");
+});
+
+test("After pressing ⌥⌘2 on that page, then clicking the Timeline `Command` listitem, the Inspector region does not show a combobox whose accessible name is `Type`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  await timeline.click();
+  await page.keyboard.press("Alt+ControlOrMeta+Digit2");
+  await timeline
+    .getByRole("listitem", { name: "Command", exact: true })
+    .click();
+  await expect(
+    page
+      .getByRole("region", { name: "Inspector", exact: true })
+      .getByRole("combobox", { name: "Type", exact: true }),
+  ).toHaveCount(0);
+});

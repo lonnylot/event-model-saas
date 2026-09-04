@@ -2879,6 +2879,7 @@ export function bindEditor(root) {
         const item = root.createElement("li");
         item.textContent = "Command";
         item.setAttribute("aria-label", "Command");
+        item.dataset.kind = "command";
         const port = root.createElement("button");
         port.type = "button";
         port.textContent = "Command port";
