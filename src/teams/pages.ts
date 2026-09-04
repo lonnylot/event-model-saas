@@ -121,7 +121,7 @@ export function modelPageHtml(
             `<li aria-label="${automation.title}" data-kind="automation">${automation.title}</li>`,
         )
         .join("");
-      return `<div class="slice-col" data-slice-index="${index}"><ul class="slice-head"><li aria-label="${slice.title}">${slice.title}</li></ul><div class="lane" data-lane="actor"><ul>${actors}</ul><button type="button" data-slice-index="${index}">Add Actor on lane</button></div><div class="lane" data-lane="command"><ul>${commands}</ul></div><div class="lane" data-lane="event"><ul>${events}</ul></div><div class="lane" data-lane="readmodel"><ul>${readModels}</ul></div><div class="lane" data-lane="automation"><ul>${automations}</ul></div></div>`;
+      return `<div class="slice-col" data-slice-index="${index}"><ul class="slice-head"><li aria-label="${slice.title}">${slice.title}</li></ul><div class="lane" data-lane="actor"><ul>${actors}</ul><button type="button" data-slice-index="${index}">Add Actor on lane</button></div><div class="lane" data-lane="command"><ul>${commands}</ul><button type="button" data-slice-index="${index}">Add Command on lane</button></div><div class="lane" data-lane="event"><ul>${events}</ul></div><div class="lane" data-lane="readmodel"><ul>${readModels}</ul></div><div class="lane" data-lane="automation"><ul>${automations}</ul></div></div>`;
     })
     .join("");
   const connectionCopy = [
