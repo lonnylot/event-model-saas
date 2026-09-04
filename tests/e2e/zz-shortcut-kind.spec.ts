@@ -115,3 +115,17 @@ test("After pressing ⌥⌘2 on that page, the Timeline region shows a button wh
       .getByRole("button", { name: "Command port", exact: true }),
   ).toBeVisible();
 });
+
+test("After pressing ⌥⌘3 on that page, the Timeline region shows a button whose accessible name is `Event Happened port` on the listitem whose accessible name is `Event Happened`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  await timeline.click();
+  await page.keyboard.press("Alt+ControlOrMeta+Digit3");
+  await expect(
+    timeline
+      .getByRole("listitem", { name: "Event Happened", exact: true })
+      .getByRole("button", { name: "Event Happened port", exact: true }),
+  ).toBeVisible();
+});

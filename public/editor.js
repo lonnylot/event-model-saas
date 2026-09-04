@@ -2897,6 +2897,10 @@ export function bindEditor(root) {
         const item = root.createElement("li");
         item.textContent = "Event Happened";
         item.setAttribute("aria-label", "Event Happened");
+        const port = root.createElement("button");
+        port.type = "button";
+        port.textContent = "Event Happened port";
+        item.append(port);
         list.append(item);
       }
     }
