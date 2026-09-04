@@ -9,7 +9,7 @@ Clicking TIME chrome or empty `.board` after a Slice is selected leaves Inspecto
 ## Acceptance criteria
 
 - [x] After clicking the Timeline `New Slice` listitem, then clicking `.time-chrome`, the Inspector region shows the text `Nothing Selected`
-- [ ] After clicking the Timeline `Actor` listitem, then clicking `.board` at a point that is not a listitem, the Inspector region shows the text `Nothing Selected`
+- [x] After clicking the Timeline `Actor` listitem, then clicking `.board` at a point that is not a listitem, the Inspector region shows the text `Nothing Selected`
 
 ## Domain terms
 

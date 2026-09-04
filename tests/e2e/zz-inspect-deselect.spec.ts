@@ -106,3 +106,24 @@ test("After clicking the Timeline `New Slice` listitem, then clicking `.time-chr
     inspector.getByText("Nothing Selected", { exact: true }),
   ).toBeVisible();
 });
+
+test("After clicking the Timeline `Actor` listitem, then clicking `.board` at a point that is not a listitem, the Inspector region shows the text `Nothing Selected`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  const inspector = page.getByRole("region", {
+    name: "Inspector",
+    exact: true,
+  });
+  await timeline
+    .getByRole("listitem", { name: "Actor", exact: true })
+    .click();
+  await expect(
+    inspector.getByRole("textbox", { name: "Name", exact: true }),
+  ).toBeVisible();
+  await page.locator(".board").click({ position: { x: 20, y: 20 } });
+  await expect(
+    inspector.getByText("Nothing Selected", { exact: true }),
+  ).toBeVisible();
+});
