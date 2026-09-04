@@ -96,6 +96,8 @@ Restates omitting released `hydrate-board.md` leftover Out of scope “Pan and Z
 
 Restates omitting released `port-wrap.md` leftover Out of scope “Narrow viewport” / `inspect-switch.md` leftover Out of scope “Narrow viewport layout” when this HEAD took narrow Editor layout (listed designed-surfaces / visual-shell / architecture) is leftover Restates. Grep Narrow viewport / Narrow viewport layout even when Restates already lists designed-surfaces.
 
+Restates “Narrow AppBar / Timeline clip” when released `timeline-clip.md` owns pan/zoom clip is leftover Restates — restate to “narrow Slice-inside-Timeline layout” so the two clips do not read as one owner.
+
 Restates listing `design-system.md` (“Tokens stay that file”) when this HEAD does not rewrite that file is leftover Restates. UI inventory of `design-system.md` is not a rewrite (`timeline-clip.md` inventories it and does not list it; `create-model-border.md` listed it and rewrote Button primary inventory). Drop the Restates row, or rewrite a sentence in `design-system.md` that assigns this slice’s look and keep the row.
 
 Restates listing inspect-connection / inspect-rest / slice-type / inspect-fields without rewriting leftover unused Type / From Event Happened / Add Field after a Connection click is leftover Restates.

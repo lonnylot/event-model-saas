@@ -38,7 +38,7 @@ Changing zoom factors. Connection caption placement. Inspector leftover Type. Sh
 ## Restates
 
 - [designed-surfaces.md](./designed-surfaces.md) — Desktop Editor `main` grid stays that file. Narrow viewport Slice inside Timeline is this slice.
-- [visual-shell.md](./visual-shell.md) — Editor shell tokens stay that file. Narrow AppBar / Timeline clip is this slice.
+- [visual-shell.md](./visual-shell.md) — Editor shell tokens stay that file. Narrow Slice-inside-Timeline layout is this slice.
 - [architecture.md](../architecture.md) — Editor canvas stays custom timeline TypeScript. Narrow Editor layout is this slice.
 - [port-wrap.md](./port-wrap.md) — `Event Happened port` same-row placement stays that file. Narrow viewport is this slice.
 - [inspect-switch.md](./inspect-switch.md) — Leftover Inspector chrome after a Connection click stays that file. Narrow viewport layout is this slice.
