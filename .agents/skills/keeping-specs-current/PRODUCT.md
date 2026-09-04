@@ -26,7 +26,7 @@ Extra visible chrome without an AC is unfinished — add the AC or omit it. Here
 - Page ink on Login/404/expired without color ACs; leftover paper `ink-paper` on `body.login` after restating Page (public) ink; leftover signed-in Page `ink`/`type` on guest/picker/team/Teams admin/editor without body ACs; leftover visual-shell background and color when this slice only proves `ink` on one route
 - Assigning a listitem's `textContent` so a released nested control (`Command port`) disappears
 
-A new in-memory listitem path that ships title-only while sibling toolbar Add still mounts `Command port` / `Event Happened port` / `Read Model port` is unfinished until Out of scope names **in-memory** ports, or those ports are ACs. Out of scope "GET ports after reload" is leftover-narrow — that names GET, not in-memory. Out of scope "GET ports after reload" on a slice with no new in-memory listitem path (`hydrate-add-field` Inspector `Add Field`) is unused cargo-cult — drop it or point at `hydrate-board.md`. Leftover-narrow is only when this HEAD ships title-only in-memory listitems.
+A new in-memory listitem path that ships title-only while sibling toolbar Add still mounts `Command port` / `Event Happened port` / `Read Model port` is unfinished until Out of scope names **in-memory** ports, or those ports are ACs. Out of scope "GET ports after reload" is leftover-narrow — that names GET, not in-memory. Out of scope "GET ports after reload" on a slice with no new in-memory listitem path (`hydrate-add-field` Inspector `Add Field`; `port-wrap` restyles existing toolbar `Add Event` listitems) is unused cargo-cult — drop it or point at `hydrate-board.md`. Leftover-narrow is only when this HEAD ships title-only in-memory listitems.
 
 Extra persistence (R2 `put`, D1 insert, store write after a refuse) without an AC that asserts the stored body is the same miss.
 
@@ -94,9 +94,13 @@ Restates listing `design-system.md` (“Tokens stay that file”) when this HEAD
 
 Restates listing inspect-connection / inspect-rest / slice-type / inspect-fields without rewriting leftover unused Type / From Event Happened / Add Field after a Connection click is leftover Restates.
 
+Restates listing `port-fit.md` / `connections.md` without rewriting wrapping / same-row as this slice is leftover Restates.
+
 Leftover unused `measure-landing` `36rem` after restated `main` max-width `none` — mark leftover unused or drop (same as leftover unused paper tokens).
 
 Restating leftover unused sibling of `.board` is unfinished until remaining Connection copy appends (⇧⌘Z redo `timelineEl.append`) no longer use the Timeline region. Undo-rest Timeline-shows stays green if redo still appends as a sibling. That remaining arm is unique production — add an AC + `it` named as that criterion so leftover unused holds, or the leftover-unused sentence is false.
+
+Calling wrap leftover unused after this HEAD deleted wrap (`flex-wrap: nowrap`) is leftover unused false — wrap production does not remain. Do not call wrap leftover unused unless wrap production remains.
 
 An AC "includes the tokens" rather than **is** the exact command, or "includes `scale(`" when canvas pan already writes `scale(1)`, is a weaker criterion (`testing`). A new AC `includes scale(1.25)` on `.board` when Restates already moved editor-shell Zoom in to exact `.board` `scale(1.25)` is extra — drop it (`logical-commits`); unique zoom proof is Timeline `style.transform` does not include `scale(`. An AC of a computed color that is the user-agent default (`input` background `rgb(255, 255, 255)` / Email Field canvas fill) is unproven — drop it unless deleting the unique declaration fails (`testing`). An AC of a computed color that inherits from a parent/body AC this slice or another spec already owns (Landing heading ink after public-face `body.landing`; editor `Slices` heading after this slice's body ink) is extra — drop it; do not fold into waitlist-form border, muted lead-copy, or body-ink (`logical-commits`).
 
