@@ -1,6 +1,6 @@
 # Hydrate kind id
 
-Status: validated
+Status: released
 
 ## Problem
 
