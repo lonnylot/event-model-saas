@@ -2821,7 +2821,16 @@ export function bindEditor(root) {
     if (event.code === "Digit2") {
       const index =
         selectedSliceIndex ?? (model.slices?.length ?? 1) - 1;
-      holder.textContent = JSON.stringify(appendCommand(model, index));
+      const next = appendCommand(model, index);
+      holder.textContent = JSON.stringify(next);
+      const command = next.slices?.[index]?.commands?.at(-1);
+      const list = lastLaneList(root, "command");
+      if (list && command) {
+        const item = root.createElement("li");
+        item.textContent = "Command";
+        item.setAttribute("aria-label", "Command");
+        list.append(item);
+      }
     }
     if (event.code === "Digit3") {
       const index =

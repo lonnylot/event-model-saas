@@ -100,3 +100,15 @@ test("After pressing ⌥⌘1 on that page, the Timeline region shows a listitem 
     timeline.getByRole("listitem", { name: "Actor", exact: true }),
   ).toHaveCount(2);
 });
+
+test("After pressing ⌥⌘2 on that page, the Timeline region shows a listitem whose accessible name is `Command`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  await timeline.click();
+  await page.keyboard.press("Alt+ControlOrMeta+Digit2");
+  await expect(
+    timeline.getByRole("listitem", { name: "Command", exact: true }),
+  ).toBeVisible();
+});
