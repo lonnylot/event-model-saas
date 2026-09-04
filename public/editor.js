@@ -2915,6 +2915,10 @@ export function bindEditor(root) {
         const item = root.createElement("li");
         item.textContent = "Read Model";
         item.setAttribute("aria-label", "Read Model");
+        const port = root.createElement("button");
+        port.type = "button";
+        port.textContent = "Read Model port";
+        item.append(port);
         list.append(item);
       }
     }
