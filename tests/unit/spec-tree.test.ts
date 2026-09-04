@@ -159,6 +159,12 @@ describe("spec tree", () => {
     expect(editor).not.toContain("empty named region");
   });
 
+  it("port-fit Restates does not list design-system.md", () => {
+    const text = readFileSync("docs/specs/features/port-fit.md", "utf8");
+    const restates = text.split("## Restates")[1] ?? "";
+    expect(restates).not.toContain("design-system.md");
+  });
+
   it("landing-fold Problem does not leave three bento cards as a current tell", () => {
     const text = readFileSync(
       "docs/specs/features/landing-fold.md",

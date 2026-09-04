@@ -41,5 +41,4 @@ GET ports after reload. Connection copy on `.board`. Pan and Zoom. Changing port
 ## Restates
 
 - [connections.md](./connections.md) — `Event Happened port` after `Add Event` stays that file. That button not overflowing `.slice-col`, and not intersecting the Event Happened title text, is this slice.
-- [design-system.md](../design-system.md) — Tokens stay that file.
 - [architecture.md](../architecture.md) — Public-face still applies public tokens. Editor look of the port in the Slice column is this slice.
