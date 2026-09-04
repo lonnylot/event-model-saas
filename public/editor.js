@@ -1471,13 +1471,15 @@ export function bindEditor(root) {
     selected = "connection";
     unbindType();
   });
-  timeline?.querySelector(".time-chrome")?.addEventListener("click", () => {
-    selected = null;
-    nameInput()?.closest("label")?.remove();
-    unbindDescription();
-    unbindType();
-    unbindFieldChrome();
-  });
+  if (timeline && typeof timeline.querySelector === "function") {
+    timeline.querySelector(".time-chrome")?.addEventListener("click", () => {
+      selected = null;
+      nameInput()?.closest("label")?.remove();
+      unbindDescription();
+      unbindType();
+      unbindFieldChrome();
+    });
+  }
   board?.addEventListener("click", (event) => {
     if (event.target?.closest?.("li")) return;
     if (event.target?.closest?.("[data-kind=connection]")) return;
