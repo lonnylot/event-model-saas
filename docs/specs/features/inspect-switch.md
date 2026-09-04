@@ -41,7 +41,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-Shortcut listitems without `data-kind`. Connection copy as a flex sibling of `.slice-col`. Narrow viewport layout. Landing. Mac window chrome. Copy changes.
+Shortcut listitem `data-kind` is [shortcut-kind.md](./shortcut-kind.md). Connection copy as a flex sibling of `.slice-col`. Narrow viewport layout. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 

@@ -2864,6 +2864,7 @@ export function bindEditor(root) {
         const item = root.createElement("li");
         item.textContent = "Actor";
         item.setAttribute("aria-label", "Actor");
+        item.dataset.kind = "actor";
         list.append(item);
       }
     }
