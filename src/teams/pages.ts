@@ -74,7 +74,7 @@ export function modelPageHtml(
     title: string;
     actors?: Array<{ name: string }>;
     commands?: Array<{ id?: string; title: string }>;
-    events?: Array<{ title: string }>;
+    events?: Array<{ id?: string; title: string }>;
     readModels?: Array<{ title: string }>;
     processors?: Array<{ title: string }>;
   }> = [],
@@ -106,10 +106,10 @@ export function modelPageHtml(
         })
         .join("");
       const events = (slice.events ?? [])
-        .map(
-          (event) =>
-            `<li aria-label="${event.title}" data-kind="event">${event.title}</li>`,
-        )
+        .map((event) => {
+          const id = event.id ? ` data-id="${event.id}"` : "";
+          return `<li aria-label="${event.title}" data-kind="event"${id}>${event.title}<button type="button"${id}${event.id ? ` data-kind="EVENT"` : ""}>Event Happened port</button></li>`;
+        })
         .join("");
       const readModels = (slice.readModels ?? [])
         .map(
