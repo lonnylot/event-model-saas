@@ -10,7 +10,7 @@ GET `/app/teams/{id}/models/{mid}` the Editor Timeline is TIME chrome above `.bo
 
 - [x] After scrolling the Timeline region, `document.elementFromPoint` at the center of `.time-chrome` is inside `.time-chrome`
 - [x] After clicking `Zoom in` on that page, `document.elementFromPoint` at the center of `.time-chrome` is inside `.time-chrome`
-- [ ] After scrolling the Timeline region, `.board` `getBoundingClientRect` does not intersect `.time-chrome`
+- [x] After scrolling the Timeline region, `.board` `getBoundingClientRect` does not intersect `.time-chrome`
 - [ ] After clicking `Zoom in` on that page, `.board` `getBoundingClientRect` does not intersect `.time-chrome`
 
 ## Domain terms

@@ -99,6 +99,20 @@ async function hitInsideTimeChrome(page: Page) {
   });
 }
 
+async function clientRect(page: Page, selector: string) {
+  return page.locator(selector).evaluate((el) => {
+    const r = el.getBoundingClientRect();
+    return { left: r.left, right: r.right, top: r.top, bottom: r.bottom };
+  });
+}
+
+function intersects(
+  a: { left: number; right: number; top: number; bottom: number },
+  b: { left: number; right: number; top: number; bottom: number },
+) {
+  return a.right > b.left && a.left < b.right && a.bottom > b.top && a.top < b.bottom;
+}
+
 test("After scrolling the Timeline region, `document.elementFromPoint` at the center of `.time-chrome` is inside `.time-chrome`", async ({
   page,
 }) => {
@@ -115,4 +129,21 @@ test("After clicking `Zoom in` on that page, `document.elementFromPoint` at the 
   await openUntitledModel(page);
   await page.getByRole("button", { name: "Zoom in", exact: true }).click();
   await expect.poll(async () => hitInsideTimeChrome(page)).toBe(true);
+});
+
+test("After scrolling the Timeline region, `.board` `getBoundingClientRect` does not intersect `.time-chrome`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  await timeline.hover();
+  await page.mouse.wheel(0, 80);
+  await expect
+    .poll(async () =>
+      intersects(
+        await clientRect(page, ".board"),
+        await clientRect(page, ".time-chrome"),
+      ),
+    )
+    .toBe(false);
 });

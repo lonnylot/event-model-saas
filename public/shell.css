@@ -1357,6 +1357,14 @@ body.app-editor section[aria-label="Timeline"]:has(.slice-col) .timeline-empty {
 body.app-editor section[aria-label="Timeline"]:has(.slice-col) .board {
   display: flex;
 }
+body.app-editor .board-pan {
+  display: flex;
+  align-items: stretch;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  gap: inherit;
+}
 body.app-editor .lane-rail {
   display: flex;
   flex-direction: column;
