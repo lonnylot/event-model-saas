@@ -1600,27 +1600,91 @@ body.app-editor form[action="/api/auth/sign-out"] button {
   background: transparent;
 }
 @media (max-width: 720px) {
+  html:has(body.app-editor) {
+    overflow: hidden;
+  }
   body.app-editor {
-    height: auto;
-    min-height: 100vh;
-    overflow: auto;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+  }
+  body.app-editor header {
+    min-width: 0;
+    gap: 0.5rem;
+  }
+  body.app-editor .editor-actions {
+    flex: 1 1 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin-left: 0;
+    min-width: 0;
+  }
+  body.app-editor .editor-toolbar {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    min-width: 0;
   }
   body.app-editor main {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto minmax(18rem, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto minmax(0, 1fr) auto;
     grid-template-areas:
       "banner"
       "slices"
       "timeline"
       "inspector";
+    min-width: 0;
   }
   body.app-editor .slice-rail {
     border-right: 0;
     border-bottom: 1px solid #e2e8f0;
-    max-height: 10rem;
+    max-height: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.65rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  body.app-editor .slice-rail h2 {
+    margin: 0;
+  }
+  body.app-editor .slice-rail ul {
+    flex-direction: row;
+  }
+  body.app-editor section[aria-label="Timeline"] {
+    min-width: 0;
+    min-height: 0;
+  }
+  body.app-editor .board {
+    padding: 0.5rem;
+    min-width: 0;
+  }
+  body.app-editor .lane-rail {
+    width: 4.25rem;
+    flex: 0 0 4.25rem;
+  }
+  body.app-editor .slice-col {
+    width: auto;
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 100%;
+    margin-left: 0.4rem;
+  }
+  body.app-editor .lane-label,
+  body.app-editor .lane {
+    min-height: 3.25rem;
+  }
+  body.app-editor .lane-label:first-child,
+  body.app-editor .slice-head {
+    min-height: 2.5rem;
   }
   body.app-editor section[aria-label="Inspector"] {
     border-left: 0;
     border-top: 1px solid #e2e8f0;
+    max-height: 7rem;
+    min-width: 0;
   }
 }
+
