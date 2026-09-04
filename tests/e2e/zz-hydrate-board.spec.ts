@@ -205,3 +205,30 @@ test("After a member creates a model, opens it, clicks `Add Event`, and Saves, a
       .getByRole("button", { name: "Event Happened port", exact: true }),
   ).toBeVisible();
 });
+
+test("After a member creates a model, opens it, clicks `Add Read Model`, and Saves, a reload of that page, the Timeline region shows a button whose accessible name is `Read Model port`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("listitem", { name: "Read Model", exact: true }),
+  ).toBeVisible();
+  await Promise.all([
+    page.waitForResponse(
+      (response) =>
+        response.url().includes("/api/models/") &&
+        response.request().method() === "PUT",
+    ),
+    page.getByRole("button", { name: "Save", exact: true }).click(),
+  ]);
+  await page.reload();
+  await page.waitForLoadState("networkidle");
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByRole("button", { name: "Read Model port", exact: true }),
+  ).toBeVisible();
+});

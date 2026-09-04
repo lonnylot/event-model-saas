@@ -75,7 +75,7 @@ export function modelPageHtml(
     actors?: Array<{ name: string }>;
     commands?: Array<{ id?: string; title: string }>;
     events?: Array<{ id?: string; title: string }>;
-    readModels?: Array<{ title: string }>;
+    readModels?: Array<{ id?: string; title: string }>;
     processors?: Array<{ title: string }>;
   }> = [],
   documentJson = "",
@@ -112,10 +112,10 @@ export function modelPageHtml(
         })
         .join("");
       const readModels = (slice.readModels ?? [])
-        .map(
-          (readModel) =>
-            `<li aria-label="${readModel.title}" data-kind="readmodel">${readModel.title}</li>`,
-        )
+        .map((readModel) => {
+          const id = readModel.id ? ` data-id="${readModel.id}"` : "";
+          return `<li aria-label="${readModel.title}" data-kind="readmodel"${id}>${readModel.title}<button type="button"${id}${readModel.id ? ` data-kind="READMODEL"` : ""}>Read Model port</button></li>`;
+        })
         .join("");
       const automations = (slice.processors ?? [])
         .map(
