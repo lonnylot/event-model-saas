@@ -42,6 +42,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Listitem **in** the Timeline region (unit HTML Timeline `[\s\S]*` Actor; Inspector after Timeline stays green) | `testing`, `tdd-loop`, `playwright-e2e` |
 | TIME chrome does not pan parked in Assumptions (no `.time-chrome` AC; Timeline no-translate stays green if TIME chrome is inside `.board`) | `keeping-specs-current`, `testing`, `tdd-loop`, `playwright-e2e` |
 | Event → Read Model copy parent parked in Assumptions (follows the same parent; unique kind-gated drag arm; Command → Event Happened `.board` stays green) | `keeping-specs-current`, `testing`, `tdd-loop`, `playwright-e2e`, `logical-commits` |
+| Restates leftover unused sibling of `.board` vs remaining ⇧⌘Z redo `timelineEl.append`; undo-rest Timeline-shows stays green | `keeping-specs-current`, `testing`, `tdd-loop`, `playwright-e2e`, `logical-commits` |
 | Extra Zoom in `includes scale(1.25)` when restated editor-shell already owns exact `.board` `scale(1.25)` | `logical-commits`, `keeping-specs-current` |
 | Leftover Out of scope GET ports after reload vs in-memory title-only shortcut listitems (toolbar Add still mounts `Command port`) | `keeping-specs-current` |
 | Leftover Out of scope targeting vs JSON `selectedSliceIndex` / DOM `lastLaneList`; one-slice Create-default stays green | `keeping-specs-current`, `testing`, `tdd-loop`, `playwright-e2e` |

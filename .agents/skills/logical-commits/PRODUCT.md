@@ -12,7 +12,7 @@ A `visual-design` look pass is one slice per named screen (or one stylesheet sev
 
 - fromKind vs toKind (or any copied field): land EVENT `toKind` only, then READMODEL with its test. The first commit must not already copy that field for every target.
 - Copy vs splice (Command drag onto another Slice): land copy/push first (last still lists it), then splice so last is `[]`. Packing both is grouping. Restating that drag as one targeting "only on the first Slice" bullet is the weaker packing (`testing`).
-- Two kind-gated `if (port.dataset.kind === …)` alreadyConnected arms: unique production per AC, not one kind-agnostic early return. Event → Read Model drag parent vs Command → Event Happened drag parent is the same split — the first AC must not already move every target's parent.
+- Two kind-gated `if (port.dataset.kind === …)` alreadyConnected arms: unique production per AC, not one kind-agnostic early return. Event → Read Model drag parent vs Command → Event Happened drag parent is the same split — the first AC must not already move every target's parent. ⇧⌘Z redo Connection copy parent vs drag Connection copy parent is unique production — Restates leftover unused sibling is false until that arm moves.
 - Status vs heading vs row vs R2; two workflow `on:` events vs a `run` step.
 - Four independently revertible ACs on GET `/app` (Team name, Create team, Sign out, Teams admin) are four commits. Five ACs on GET `/app/teams/{id}/models/{mid}` (heading, email, Save, Export, Sign out) are five.
 - Leftover-hide `unbindAddField` vs `unbindFieldName` is the same split.
