@@ -12,7 +12,7 @@ GET `/app/teams/{id}/models/{mid}` after Create model renders the seeded Slice a
 - [x] GET `/app/teams/{id}/models/{mid}` as a member after Create model, the Timeline region shows a button whose accessible name is `Add Actor on lane`
 - [x] GET `/app/teams/{id}/models/{mid}` as a member after Create model, the Timeline region shows a button whose accessible name is `Add Command on lane`
 - [x] GET `/app/teams/{id}/models/{mid}` as a member after Create model, the Timeline region shows a button whose accessible name is `Add Event on lane`
-- [ ] GET `/app/teams/{id}/models/{mid}` as a member after Create model, the Timeline region shows a button whose accessible name is `Add Read Model on lane`
+- [x] GET `/app/teams/{id}/models/{mid}` as a member after Create model, the Timeline region shows a button whose accessible name is `Add Read Model on lane`
 - [ ] GET `/app/teams/{id}/models/{mid}` as a member after Create model, the Timeline region shows a button whose accessible name is `Add Automation on lane`
 - [ ] GET `/app/teams/{id}/models/{mid}` as a member after Create model, clicking the Timeline `New Slice` listitem shows the Inspector `Name` textbox with the value `New Slice`
 - [ ] After a member creates a model, opens it, clicks `Add Command`, and Saves, a reload of that page, the Timeline region shows a button whose accessible name is `Command port`
