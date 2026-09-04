@@ -9,7 +9,7 @@ Dragging `Command port` onto `Event Happened port` appends `Command → Event Ha
 ## Acceptance criteria
 
 - [x] After dragging `Command port` onto `Event Happened port`, `.board` contains the text `Command → Event Happened`
-- [ ] After a member creates a model, opens it, clicks `Add Command`, clicks `Add Event`, drags `Command port` onto `Event Happened port`, and Saves, a reload of that page, `.board` contains the text `Command → Event Happened`
+- [x] After a member creates a model, opens it, clicks `Add Command`, clicks `Add Event`, drags `Command port` onto `Event Happened port`, and Saves, a reload of that page, `.board` contains the text `Command → Event Happened`
 
 ## Domain terms
 
