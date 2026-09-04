@@ -46,7 +46,7 @@ Do not write specs or plans under `docs/superpowers/` or any tree other than `do
 
 ## "that Slice" and targeting
 
-A “that Slice” / “that Actor” / clicked-item / Backspace-the-selected-Slice / “the first X” / first-vs-last AC is unfinished until a second item makes last-item mutation / `.first()` is not also last fail, or the bullet is restated to “the last Slice” / off “the first”.
+A “that Slice” / “that Actor” / clicked-item / Backspace-the-selected-Slice / “the first X” / first-vs-last AC is unfinished until a second item makes last-item mutation / `.first()` is not also last fail, or the bullet is restated to “the last Slice” / off “the first”. GET after Create one seeded Actor / one Automation after Add+Save+reload is that one-item fixture — `json.slices[0].actors[0]` and `[]` stay green for `.at(-1)` / `[0]`.
 
 Two default-named Slices cannot use “does not show a listitem named New Slice” as that proof.
 
@@ -82,6 +82,10 @@ A Problem / Assumptions that name leftover Type after a Connection / switching s
 
 A Problem that names only Field name when ACs also drop Field type / Optional / Example / Delete Field is leftover-narrow Problem — name those leftover Field controls.
 
+A Problem that names Inspector Name on Actor and Automation when unique AC is GET Actor Name JSON is leftover-wide Problem — Out of scope GET Automation Name JSON, or add that AC.
+
+Restates inspect-after-reload “Name JSON and Backspace on those GET listitems” (Actor / Automation) while Out of scope parks GET Automation Name JSON cannot both hold — narrow Restates to GET Actor Name JSON and GET Actor / Automation Backspace.
+
 Restating architecture Front end as “Inspector unbind on selection change” when unique production is leftover Type after a Connection click / leftover From Event Happened after `Command → Event Happened` is leftover locked claim — restate to the ACs, or add ACs that unbind on the other selection changes that sentence names.
 
 GET Inspector heading / empty copy vs leftover `editor-shell.md` “empty named region” when designed-surfaces Restates omits that file is leftover Restates. Filling a region another released spec still calls empty is unfinished until Restates that spec.
@@ -95,6 +99,8 @@ Restates listing `design-system.md` (“Tokens stay that file”) when this HEAD
 Restates listing inspect-connection / inspect-rest / slice-type / inspect-fields without rewriting leftover unused Type / From Event Happened / Add Field after a Connection click is leftover Restates.
 
 Restates listing `port-fit.md` / `connections.md` without rewriting wrapping / same-row as this slice is leftover Restates.
+
+Restates listing hydrate-board / inspect-after-reload / name-binding-rest / delete-rest / model-defaults without rewriting leftover GET Actor / Automation `data-id`, GET Actor Name JSON, GET Actor / Automation Backspace, leftover “Name JSON mutates the last of that kind” is leftover Restates.
 
 Leftover unused `measure-landing` `36rem` after restated `main` max-width `none` — mark leftover unused or drop (same as leftover unused paper tokens).
 

@@ -4,7 +4,7 @@ Status: draft
 
 ## Problem
 
-One paragraph: who, what, why. Restating an AC is unfinished until this paragraph no longer lists the deleted tell as current (`keeping-specs-current`). A Problem that names only Command when ACs also cover Event / Read Model / Automation is leftover-narrow (`keeping-specs-current`). A Problem that names leftover Type after a Connection when unique production unbinds Type only on `Command → Event Happened` is leftover-narrow (`keeping-specs-current`). A Problem that names only Field name when ACs also drop Field type / Optional / Example / Delete Field is leftover-narrow (`keeping-specs-current`).
+One paragraph: who, what, why. Restating an AC is unfinished until this paragraph no longer lists the deleted tell as current (`keeping-specs-current`). A Problem that names only Command when ACs also cover Event / Read Model / Automation is leftover-narrow (`keeping-specs-current`). A Problem that names leftover Type after a Connection when unique production unbinds Type only on `Command → Event Happened` is leftover-narrow (`keeping-specs-current`). A Problem that names only Field name when ACs also drop Field type / Optional / Example / Delete Field is leftover-narrow (`keeping-specs-current`). A Problem that names Inspector Name on Actor and Automation when unique AC is GET Actor Name JSON is leftover-wide (`keeping-specs-current`).
 
 ## Acceptance criteria
 
@@ -38,4 +38,4 @@ Explicit non-goals.
 
 ## Restates
 
-Released specs whose bullets this change rewrites. Listing a path without rewriting that file is unfinished. UI inventory of `design-system.md` is not a Restates rewrite (`keeping-specs-current`). Rewriting a released spec this HEAD without listing it is unfinished. After rebase, grep leftover paper Page / Page background assigned to visual-shell against every catalog-released spec (`keeping-specs-current`). Grep draft `architecture.md` for leftover token/CSS assignment even when Restates omitted it (`keeping-specs-current`). When Restates names a system spec, leftover locked claims this HEAD does not implement are rewritten or given ACs (`keeping-specs-current`).
+Released specs whose bullets this change rewrites. Listing a path without rewriting that file is unfinished. Restating Out of scope is unfinished until leftover Restates no longer describes the parked behavior (`keeping-specs-current`). UI inventory of `design-system.md` is not a Restates rewrite (`keeping-specs-current`). Rewriting a released spec this HEAD without listing it is unfinished. After rebase, grep leftover paper Page / Page background assigned to visual-shell against every catalog-released spec (`keeping-specs-current`). Grep draft `architecture.md` for leftover token/CSS assignment even when Restates omitted it (`keeping-specs-current`). When Restates names a system spec, leftover locked claims this HEAD does not implement are rewritten or given ACs (`keeping-specs-current`).

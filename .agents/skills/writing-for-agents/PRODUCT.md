@@ -36,6 +36,8 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Problem names only Command when ACs also cover Event / Read Model / Automation (hydrate-add-field; inspect-after-reload / inspect-fields / shortcut-shows name every kind) | `keeping-specs-current` |
 | Problem names Connection leftover Type when unique production unbinds Type only on Command → Event Happened (inspect-switch leftover Type after Event Happened → Read Model) | `keeping-specs-current` |
 | Problem names only Field name when ACs also drop Field type / Optional / Example / Delete Field | `keeping-specs-current` |
+| Problem names Inspector Name on Actor and Automation when unique AC is GET Actor Name JSON | `keeping-specs-current` |
+| Restates leftover Name JSON on those GET listitems vs Out of scope GET Automation Name JSON | `keeping-specs-current` |
 | Leftover architecture Front end Inspector unbind on selection change vs leftover Type after a Connection click / leftover From after Command → Event Happened | `keeping-specs-current` |
 | Restates omitting released `editor-shell.md` leftover empty named Inspector after GET Inspector chrome | `keeping-specs-current` |
 | Restates omitting public-face leftover unused `.bento` fill/lift after this HEAD rewrote that Out of scope | `keeping-specs-current` |
@@ -43,6 +45,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Restates listing design-system.md Tokens stay that file when UI inventory is not a rewrite (timeline-clip inventories without listing) | `keeping-specs-current` |
 | Restates lists inspect-connection / inspect-rest / slice-type / inspect-fields without rewriting leftover unused after a Connection click | `keeping-specs-current` |
 | Restates lists port-fit.md / connections.md without rewriting wrapping / same-row as this slice | `keeping-specs-current` |
+| Restates lists hydrate-board / inspect-after-reload / name-binding-rest / delete-rest / model-defaults without rewriting leftover GET Actor Name JSON / data-id / Backspace / last-of-kind | `keeping-specs-current` |
 | Leftover unused `measure-landing` 36rem after restated main max-width none | `keeping-specs-current` |
 | Accessible name **is** X / Playwright substring; unit `toContain(">X<")` | `testing`, `playwright-e2e` |
 | Listitem **in** the Timeline region (unit HTML Timeline `[\s\S]*` Actor; Inspector after Timeline stays green) | `testing`, `tdd-loop`, `playwright-e2e` |
@@ -54,6 +57,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Leftover Out of scope GET ports after reload vs in-memory title-only shortcut listitems (toolbar Add still mounts `Command port`) | `keeping-specs-current` |
 | Unused cargo-cult Out of scope GET ports after reload on a slice with no new in-memory listitem path (hydrate-add-field Inspector Add Field; port-wrap CSS restyle of existing Add Event listitems); leftover-narrow is title-only in-memory | `keeping-specs-current` |
 | Leftover Out of scope targeting vs JSON `selectedSliceIndex` / DOM `lastLaneList`; one-slice Create-default stays green | `keeping-specs-current`, `testing`, `tdd-loop`, `playwright-e2e` |
+| GET after Create one seeded Actor / one Automation after Add+Save+reload (`json.slices[0].actors[0]` / `[]`) is that Actor one-item | `keeping-specs-current`, `testing`, `tdd-loop`, `playwright-e2e` |
 | Leftover Out of scope inspect-after-reload vs in-memory omit `data-id` / `data-kind` | `keeping-specs-current`, `testing` |
 | Playwright `toHaveCSS` of a computed color that is the UA default (Email Field canvas fill) or inherited from a parent/body AC (Landing heading ink after public-face `body.landing`; editor `Slices` heading after `body.app-editor` ink) | `testing`, `keeping-specs-current`, `tdd-loop`, `playwright-e2e`, `logical-commits` |
 | Playwright `locator.focus()` of `:focus-visible` (`Sign in` box-shadow) stays green for a `:focus` rule | `testing`, `tdd-loop`, `playwright-e2e` |
