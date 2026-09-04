@@ -9,10 +9,10 @@ GET `/app/teams/{id}/models/{mid}` hydrates Command, Event, and Read Model listi
 ## Acceptance criteria
 
 - [x] GET `/app/teams/{id}/models/{mid}` as a member after Create model, the Timeline `Actor` listitem has a non-empty `data-id`
-- [ ] After a member creates a model, opens it, clicks `Add Automation`, and Saves, a reload of that page, the Timeline `Automation` listitem has a non-empty `data-id`
+- [x] After a member creates a model, opens it, clicks `Add Automation`, and Saves, a reload of that page, the Timeline `Automation` listitem has a non-empty `data-id`
 - [x] GET `/app/teams/{id}/models/{mid}` as a member after Create model, clicking the Timeline `Actor` listitem, filling Inspector `Name` with `Shopper` sets that Actor `name` to `Shopper`
 - [x] GET `/app/teams/{id}/models/{mid}` as a member after Create model, clicking the Timeline `Actor` listitem then the Timeline region, pressing Backspace sets that Slice `actors` to `[]`
-- [ ] After a member creates a model, opens it, clicks `Add Automation`, and Saves, a reload of that page, clicking the Timeline `Automation` listitem then the Timeline region, pressing Backspace sets that Slice `processors` to `[]`
+- [x] After a member creates a model, opens it, clicks `Add Automation`, and Saves, a reload of that page, clicking the Timeline `Automation` listitem then the Timeline region, pressing Backspace sets that Slice `processors` to `[]`
 
 ## Domain terms
 
