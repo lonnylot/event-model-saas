@@ -71,6 +71,7 @@ export function modelPageHtml(
   version: number,
   teamName: string,
   slices: Array<{
+    id?: string;
     title: string;
     actors?: Array<{ name: string }>;
     commands?: Array<{ id?: string; title: string }>;
@@ -86,7 +87,7 @@ export function modelPageHtml(
   const items = slices
     .map(
       (slice) =>
-        `<li aria-label="${slice.title}">${slice.title}</li>`,
+        `<li aria-label="${slice.title}"${slice.id ? ` data-id="${slice.id}"` : ""}>${slice.title}</li>`,
     )
     .join("");
   const sliceColumns = slices
@@ -123,7 +124,7 @@ export function modelPageHtml(
             `<li aria-label="${automation.title}" data-kind="automation">${automation.title}</li>`,
         )
         .join("");
-      return `<div class="slice-col" data-slice-index="${index}"><ul class="slice-head"><li aria-label="${slice.title}">${slice.title}</li></ul><div class="lane" data-lane="actor"><ul>${actors}</ul><button type="button" data-slice-index="${index}">Add Actor on lane</button></div><div class="lane" data-lane="command"><ul>${commands}</ul><button type="button" data-slice-index="${index}">Add Command on lane</button></div><div class="lane" data-lane="event"><ul>${events}</ul><button type="button" data-slice-index="${index}">Add Event on lane</button></div><div class="lane" data-lane="readmodel"><ul>${readModels}</ul><button type="button" data-slice-index="${index}">Add Read Model on lane</button></div><div class="lane" data-lane="automation"><ul>${automations}</ul><button type="button" data-slice-index="${index}">Add Automation on lane</button></div></div>`;
+      return `<div class="slice-col" data-slice-index="${index}"><ul class="slice-head"><li aria-label="${slice.title}"${slice.id ? ` data-id="${slice.id}"` : ""}>${slice.title}</li></ul><div class="lane" data-lane="actor"><ul>${actors}</ul><button type="button" data-slice-index="${index}">Add Actor on lane</button></div><div class="lane" data-lane="command"><ul>${commands}</ul><button type="button" data-slice-index="${index}">Add Command on lane</button></div><div class="lane" data-lane="event"><ul>${events}</ul><button type="button" data-slice-index="${index}">Add Event on lane</button></div><div class="lane" data-lane="readmodel"><ul>${readModels}</ul><button type="button" data-slice-index="${index}">Add Read Model on lane</button></div><div class="lane" data-lane="automation"><ul>${automations}</ul><button type="button" data-slice-index="${index}">Add Automation on lane</button></div></div>`;
     })
     .join("");
   const connectionCopy = [

@@ -232,3 +232,18 @@ test("After a member creates a model, opens it, clicks `Add Read Model`, and Sav
       .getByRole("button", { name: "Read Model port", exact: true }),
   ).toBeVisible();
 });
+
+test("GET `/app/teams/{id}/models/{mid}` as a member after Create model, clicking the Timeline `New Slice` listitem shows the Inspector `Name` textbox with the value `New Slice`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "New Slice", exact: true })
+    .click();
+  await expect(
+    page
+      .getByRole("region", { name: "Inspector", exact: true })
+      .getByRole("textbox", { name: "Name", exact: true }),
+  ).toHaveValue("New Slice");
+});
