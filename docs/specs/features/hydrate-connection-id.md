@@ -1,6 +1,6 @@
 # Hydrate connection id
 
-Status: validated
+Status: released
 
 ## Problem
 
