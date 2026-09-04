@@ -113,6 +113,18 @@ test("After dragging `Command port` onto `Event Happened port`, `.board` contain
   );
 });
 
+test("After dragging `Event Happened port` onto `Read Model port`, `.board` contains the text `Event Happened → Read Model`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  await dragPort(page, "Event Happened port", "Read Model port");
+  await expect(page.locator(".board")).toContainText(
+    "Event Happened → Read Model",
+  );
+});
+
 test("After a member creates a model, opens it, clicks `Add Command`, clicks `Add Event`, drags `Command port` onto `Event Happened port`, and Saves, a reload of that page, `.board` contains the text `Command → Event Happened`", async ({
   page,
 }) => {

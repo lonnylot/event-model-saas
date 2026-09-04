@@ -10,10 +10,11 @@ Dragging `Command port` onto `Event Happened port` appends `Command → Event Ha
 
 - [x] After dragging `Command port` onto `Event Happened port`, `.board` contains the text `Command → Event Happened`
 - [x] After a member creates a model, opens it, clicks `Add Command`, clicks `Add Event`, drags `Command port` onto `Event Happened port`, and Saves, a reload of that page, `.board` contains the text `Command → Event Happened`
+- [x] After dragging `Event Happened port` onto `Read Model port`, `.board` contains the text `Event Happened → Read Model`
 
 ## Domain terms
 
-Event Model, Slice, Command, Event, Connection, Team, Person, Version
+Event Model, Slice, Command, Event, Read Model, Connection, Team, Person, Version
 
 ## Seams
 
@@ -28,8 +29,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 ## Assumptions
 
 - Playwright unique checkout `PORT` / `INSPECTOR_PORT` and `TEST_MAIL=1` `workers` `1` stay [public-face.md](./public-face.md).
-- Timeline region still shows `Command → Event Happened` ([connections.md](./connections.md)). That text living in `.board` is this slice.
-- `Event Happened → Read Model` copy follows the same parent as `Command → Event Happened`.
+- Timeline region still shows `Command → Event Happened` ([connections.md](./connections.md)). That text living in `.board` is this slice. Timeline still shows `Event Happened → Read Model` ([inspect-rest.md](./inspect-rest.md)); that text living in `.board` is this slice.
 - Create model still seeds a default Slice ([model-defaults.md](./model-defaults.md)). Toolbar Add still targets the last Slice ([blocks.md](./blocks.md)).
 - Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).
 
@@ -39,6 +39,6 @@ Drawing Connections as canvas lines between ports. Pan and Zoom covering TIME ch
 
 ## Restates
 
-- [connections.md](./connections.md) — Timeline still shows `Command → Event Happened`. That text as a sibling of `.board` is leftover unused; `.board` contains it is this slice. Reload still shows that text; inside `.board` is this slice.
-- [inspect-rest.md](./inspect-rest.md) — Clicking Timeline text `Command → Event Happened` still opens Inspector From/To. That node living in `.board` is this slice.
+- [connections.md](./connections.md) — Timeline still shows `Command → Event Happened`. That text as a sibling of `.board` is leftover unused; `.board` contains it is this slice. Reload still shows that text; inside `.board` is this slice. `Event Happened → Read Model` as a sibling of `.board` is leftover unused; `.board` contains it is this slice.
+- [inspect-rest.md](./inspect-rest.md) — Clicking Timeline text `Command → Event Happened` still opens Inspector From/To. That node living in `.board` is this slice. Clicking Timeline text `Event Happened → Read Model` still opens Inspector From/To. That node living in `.board` is this slice.
 - [architecture.md](../architecture.md) — Editor canvas stays custom timeline TypeScript. Connection copy on `.board` is this slice.

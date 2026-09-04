@@ -38,7 +38,7 @@ Event Model, Slice, Command, Event, Read Model, Actor, Automation, Connection, T
 - Connections live on the Event Model `connections` array, not on the Slice.
 - Toolbar Add still targets the last Slice. There is no Slice selection in this slice. `Add Command on lane` on a non-last Slice is [add-on-lane.md](./add-on-lane.md).
 - Connect is in-memory until Save. Save still uses the version check from model-persistence. `Command port` / `Event Happened port` / `Read Model port` after `New Slice` then Add stay this file. Those ports after Save and reload (no extra `New Slice` click) are [hydrate-board.md](./hydrate-board.md).
-- Timeline still shows `Command → Event Happened`. That text as a sibling of `.board` is leftover unused; `.board` contains it is [connection-on-board.md](./connection-on-board.md). Reload still shows that text; inside `.board` is that slice.
+- Timeline still shows `Command → Event Happened`. That text as a sibling of `.board` is leftover unused; `.board` contains it is [connection-on-board.md](./connection-on-board.md). Reload still shows that text; inside `.board` is that slice. `Event Happened → Read Model` as a sibling of `.board` is leftover unused; `.board` contains it is that slice.
 
 ## Out of scope
 
