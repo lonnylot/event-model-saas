@@ -1,6 +1,6 @@
 # Hydrate board
 
-Status: validated
+Status: released
 
 ## Problem
 
