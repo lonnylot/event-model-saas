@@ -49,4 +49,5 @@ Changing which Slice the shortcut targets (JSON still uses selected Slice; short
 - [connections.md](./connections.md) — Toolbar Add still mounts `Command port` / `Event Happened port` / `Read Model port`. Shortcut-shown ports are this slice.
 - [inspect-blocks.md](./inspect-blocks.md) — Clicking a click-created Command still opens Inspector Name. Clicking a shortcut-shown Command is this slice.
 - [inspect-switch.md](./inspect-switch.md) — Leftover Inspector Type after a Connection click stays that file. Shortcut listitem `data-kind` is this slice.
+- [hydrate-kind-id.md](./hydrate-kind-id.md) — GET Actor / Automation `data-id` stays that file. Shortcut listitem `data-kind` is this slice.
 - [architecture.md](../architecture.md) — Editor canvas stays custom timeline TypeScript. Shortcut `data-kind` / ports are this slice.

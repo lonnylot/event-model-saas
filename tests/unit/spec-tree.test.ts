@@ -233,4 +233,18 @@ describe("spec tree", () => {
       "Changing which Slice the shortcut targets (JSON still uses selected Slice; shortcut DOM is last-column `lastLaneList`).",
     );
   });
+
+  it("hydrate-kind-id Out of scope does not leave Shortcut listitems without data-kind", () => {
+    const hydrate = readFileSync(
+      "docs/specs/features/hydrate-kind-id.md",
+      "utf8",
+    );
+    expect(hydrate).not.toContain("Shortcut listitems without `data-kind`");
+    expect(hydrate).toContain("[shortcut-kind.md](./shortcut-kind.md)");
+    const restates =
+      readFileSync("docs/specs/features/shortcut-kind.md", "utf8").split(
+        "## Restates",
+      )[1] ?? "";
+    expect(restates).toContain("[hydrate-kind-id.md](./hydrate-kind-id.md)");
+  });
 });
