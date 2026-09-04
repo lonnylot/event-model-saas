@@ -1566,14 +1566,14 @@ export function bindEditor(root) {
                 toKind: "EVENT",
               }),
             );
-            const timelineEl = root.querySelector('[aria-label="Timeline"]');
-            if (timelineEl) {
+            const board = boardMount(root);
+            if (board) {
               const stored = JSON.parse(holder.textContent || "{}");
               const connection = (stored.connections ?? []).at(-1);
               const p = root.createElement("p");
               p.textContent = "Command → Event Happened";
               if (connection) p.dataset.id = connection.id;
-              timelineEl.append(p);
+              board.append(p);
             }
             undoStack.push("connection");
           }
@@ -1870,17 +1870,17 @@ export function bindEditor(root) {
             entry.index,
           ),
         );
-        const timelineEl = root.querySelector('[aria-label="Timeline"]');
-        if (timelineEl && entry.connection) {
+        const board = boardMount(root);
+        if (board && entry.connection) {
           const p = root.createElement("p");
           p.textContent = "Command → Event Happened";
           p.setAttribute("data-kind", "connection");
           p.dataset.id = entry.connection.id;
           const before = [
-            ...timelineEl.querySelectorAll('p[data-kind="connection"]'),
+            ...board.querySelectorAll('p[data-kind="connection"]'),
           ][entry.index];
-          if (before) timelineEl.insertBefore(p, before);
-          else timelineEl.append(p);
+          if (before) board.insertBefore(p, before);
+          else board.append(p);
         }
         redoStack.push(entry);
         return;
@@ -2618,8 +2618,8 @@ export function bindEditor(root) {
         sourcePort.dataset.kind === "COMMAND" &&
         target.dataset.kind === "EVENT"
       ) {
-        const timeline = root.querySelector('[aria-label="Timeline"]');
-        if (timeline) {
+        const board = boardMount(root);
+        if (board) {
           const line = root.createElement("p");
           line.textContent = "Command → Event Happened";
           line.setAttribute("data-kind", "connection");
@@ -2627,7 +2627,7 @@ export function bindEditor(root) {
             holder?.textContent || "{}",
           ).connections?.at(-1);
           if (connection) line.setAttribute("data-id", connection.id);
-          timeline.append(line);
+          board.append(line);
         }
         undoStack.push("connection");
       }
@@ -2636,12 +2636,12 @@ export function bindEditor(root) {
         sourcePort.dataset.kind === "EVENT" &&
         target.dataset.kind === "READMODEL"
       ) {
-        const timelineRegion = root.querySelector('[aria-label="Timeline"]');
+        const board = boardMount(root);
         if (
-          timelineRegion &&
-          !timelineRegion.textContent?.includes("Event Happened → Read Model")
+          board &&
+          !board.textContent?.includes("Event Happened → Read Model")
         ) {
-          timelineRegion.insertAdjacentHTML(
+          board.insertAdjacentHTML(
             "beforeend",
             '<p data-kind="connection">Event Happened → Read Model</p>',
           );

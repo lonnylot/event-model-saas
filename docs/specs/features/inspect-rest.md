@@ -46,7 +46,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Connection, F
 
 ## Assumptions
 
-- Command → Event inspect From/To on a click-created Connection stays [inspect-connection.md](./inspect-connection.md) when that spec is present. Event → Read Model summary text is `Event Happened → Read Model` (Add defaults). GET-rendered Connection summary text is `Command → Event Happened` or `Event Happened → Read Model`.
+- Command → Event inspect From/To on a click-created Connection stays [inspect-connection.md](./inspect-connection.md) when that spec is present. Event → Read Model summary text is `Event Happened → Read Model` (Add defaults). GET-rendered Connection summary text is `Command → Event Happened` or `Event Happened → Read Model`. Clicking Timeline text `Command → Event Happened` still opens Inspector From/To. That node living in `.board` is [connection-on-board.md](./connection-on-board.md). Clicking Timeline text `Event Happened → Read Model` still opens Inspector From/To. That node living in `.board` is that slice.
 - Description / Type / Field / Connection / Slice Name / heading Name after reload is a click on the GET-rendered listitem or heading, same as [inspect-blocks.md](./inspect-blocks.md) / [chrome.md](./chrome.md) for Name. Field type / Optional / Example after reload is a click on that GET-rendered listitem. GET after Create hydrates Timeline `New Slice` as well as the sidebar listitem ([hydrate-board.md](./hydrate-board.md)). Clicking `Checkout` after reload uses the first matching listitem. A unique `Checkout` listitem is leftover unused.
 - Delete Connection is Backspace. No extra Inspector delete button.
 - Heading click to open model Inspector stays [model-inspector.md](./model-inspector.md) when that spec is present. This slice owns the click after reload. No ⇧⌘I.
@@ -55,7 +55,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Connection, F
 
 ## Out of scope
 
-Mac inspector captions (naming hints, Slice type help). Mac Model Info ⇧⌘I. Inspector Delete Connection button. Model inspector counts, connection roster, and format line. Extra zoom percentages. Mac window chrome (`NSDocument`, native menus, welcome window). Click-created Command → Event inspect is [inspect-connection.md](./inspect-connection.md). Name after reload on Actor / Command / Event / Read Model / Automation is [inspect-after-reload.md](./inspect-after-reload.md). In-session heading-click model inspect, Optional / Example after reload on Event / Read Model / Automation, and Backspace delete Connection stay those specs.
+That node living in `.board` is [connection-on-board.md](./connection-on-board.md). Mac inspector captions (naming hints, Slice type help). Mac Model Info ⇧⌘I. Inspector Delete Connection button. Model inspector counts, connection roster, and format line. Extra zoom percentages. Mac window chrome (`NSDocument`, native menus, welcome window). Click-created Command → Event inspect is [inspect-connection.md](./inspect-connection.md). Name after reload on Actor / Command / Event / Read Model / Automation is [inspect-after-reload.md](./inspect-after-reload.md). In-session heading-click model inspect, Optional / Example after reload on Event / Read Model / Automation, and Backspace delete Connection stay those specs.
 
 ## Restates
 
