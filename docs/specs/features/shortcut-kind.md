@@ -40,7 +40,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-Changing which Slice the shortcut targets. GET ports after reload stay [hydrate-board.md](./hydrate-board.md). Inspector leftover Type after switching from a Slice to a Connection stays later. Inspect/delete on shortcut-shown Event Happened / Read Model listitems. Delete on shortcut-shown Actor / Command / Automation. Pan and Zoom. Landing. Mac window chrome. Copy changes.
+Changing which Slice the shortcut targets (JSON still uses selected Slice; shortcut DOM is last-column `lastLaneList`). GET ports after reload stay [hydrate-board.md](./hydrate-board.md). Inspector leftover Type after switching from a Slice to a Connection stays later. Inspect/delete on shortcut-shown Event Happened / Read Model listitems. Delete on shortcut-shown Actor / Command / Automation. Pan and Zoom. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 

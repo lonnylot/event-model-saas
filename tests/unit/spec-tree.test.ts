@@ -219,4 +219,18 @@ describe("spec tree", () => {
     );
     expect(hydrate).not.toContain("Pan and Zoom covering TIME chrome");
   });
+
+  it("shortcut-kind Out of scope names last-column lastLaneList when changing which Slice the shortcut targets", () => {
+    const text = readFileSync(
+      "docs/specs/features/shortcut-kind.md",
+      "utf8",
+    );
+    const outOfScope = text.split("## Out of scope")[1]?.split("## Restates")[0] ?? "";
+    expect(outOfScope).not.toContain(
+      "Changing which Slice the shortcut targets.",
+    );
+    expect(outOfScope).toContain(
+      "Changing which Slice the shortcut targets (JSON still uses selected Slice; shortcut DOM is last-column `lastLaneList`).",
+    );
+  });
 });
