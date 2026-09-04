@@ -36,7 +36,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-GET Actor / Automation `data-id`. GET `Event Happened → Read Model` `data-id`. Connection caption as a flex sibling of `.slice-col`. Inspector leftover Type. Drawing Connections as canvas lines. Landing. Mac window chrome. Copy changes.
+GET Actor / Automation `data-id`. GET `Event Happened → Read Model` `data-id`. Connection caption as a flex sibling of `.slice-col`. Inspector leftover Type is [inspect-switch.md](./inspect-switch.md). Drawing Connections as canvas lines. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 
