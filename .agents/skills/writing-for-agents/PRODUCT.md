@@ -33,6 +33,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Leftover Assumptions 576px/36px after restated landing heading 56px / main max-width none | `keeping-specs-current` |
 | Leftover landing-saas-shot Problem “browser chrome” after restated URL bar leftover unused | `keeping-specs-current` |
 | Leftover landing-fold Problem “three bento cards” / caption-strip after restated stacked product-image rows | `keeping-specs-current` |
+| Problem names only Command when ACs also cover Event / Read Model / Automation (hydrate-add-field; inspect-after-reload / inspect-fields / shortcut-shows name every kind) | `keeping-specs-current` |
 | Restates omitting released `editor-shell.md` leftover empty named Inspector after GET Inspector chrome | `keeping-specs-current` |
 | Restates omitting public-face leftover unused `.bento` fill/lift after this HEAD rewrote that Out of scope | `keeping-specs-current` |
 | Restates omitting released `hydrate-board.md` leftover Out of scope covering TIME chrome after this slice took covering TIME chrome | `keeping-specs-current` |
@@ -45,6 +46,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Restates leftover unused sibling of `.board` vs remaining ⇧⌘Z redo `timelineEl.append`; undo-rest Timeline-shows stays green | `keeping-specs-current`, `testing`, `tdd-loop`, `playwright-e2e`, `logical-commits` |
 | Extra Zoom in `includes scale(1.25)` when restated editor-shell already owns exact `.board` `scale(1.25)` | `logical-commits`, `keeping-specs-current` |
 | Leftover Out of scope GET ports after reload vs in-memory title-only shortcut listitems (toolbar Add still mounts `Command port`) | `keeping-specs-current` |
+| Unused cargo-cult Out of scope GET ports after reload on a slice with no new in-memory listitem path (hydrate-add-field Inspector Add Field); leftover-narrow is title-only in-memory | `keeping-specs-current` |
 | Leftover Out of scope targeting vs JSON `selectedSliceIndex` / DOM `lastLaneList`; one-slice Create-default stays green | `keeping-specs-current`, `testing`, `tdd-loop`, `playwright-e2e` |
 | Leftover Out of scope inspect-after-reload vs in-memory omit `data-id` / `data-kind` | `keeping-specs-current`, `testing` |
 | Playwright `toHaveCSS` of a computed color that is the UA default (Email Field canvas fill) or inherited from a parent/body AC (Landing heading ink after public-face `body.landing`; editor `Slices` heading after `body.app-editor` ink) | `testing`, `keeping-specs-current`, `tdd-loop`, `playwright-e2e`, `logical-commits` |

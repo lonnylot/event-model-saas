@@ -4,7 +4,7 @@ Status: released
 
 ## Problem
 
-After Save and reload, clicking a GET-rendered Command shows Field name of a Field that already exists, but Inspector has no `Add Field`, so a member cannot append another Field without adding a new Command first.
+After Save and reload, clicking a GET-rendered Command, Event Happened, Read Model, or Automation shows Field name of a Field that already exists, but Inspector has no `Add Field`, so a member cannot append another Field without adding a new block of that kind first.
 
 ## Acceptance criteria
 
@@ -35,7 +35,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-GET ports after reload. Pan and Zoom. Connection placement. Landing. Mac window chrome. Copy changes.
+GET ports after reload stay [hydrate-board.md](./hydrate-board.md). Pan and Zoom. Connection placement. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 

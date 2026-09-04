@@ -25,7 +25,7 @@ Extra visible chrome without an AC is unfinished — add the AC or omit it. Here
 - Page ink on Login/404/expired without color ACs; leftover paper `ink-paper` on `body.login` after restating Page (public) ink; leftover signed-in Page `ink`/`type` on guest/picker/team/Teams admin/editor without body ACs; leftover visual-shell background and color when this slice only proves `ink` on one route
 - Assigning a listitem's `textContent` so a released nested control (`Command port`) disappears
 
-A new in-memory listitem path that ships title-only while sibling toolbar Add still mounts `Command port` / `Event Happened port` / `Read Model port` is unfinished until Out of scope names **in-memory** ports, or those ports are ACs. Out of scope "GET ports after reload" is leftover-narrow — that names GET, not in-memory.
+A new in-memory listitem path that ships title-only while sibling toolbar Add still mounts `Command port` / `Event Happened port` / `Read Model port` is unfinished until Out of scope names **in-memory** ports, or those ports are ACs. Out of scope "GET ports after reload" is leftover-narrow — that names GET, not in-memory. Out of scope "GET ports after reload" on a slice with no new in-memory listitem path (`hydrate-add-field` Inspector `Add Field`) is unused cargo-cult — drop it or point at `hydrate-board.md`. Leftover-narrow is only when this HEAD ships title-only in-memory listitems.
 
 Extra persistence (R2 `put`, D1 insert, store write after a refuse) without an AC that asserts the stored body is the same miss.
 
@@ -74,6 +74,8 @@ Restating landing heading `56px` / `main` max-width `none` is unfinished until l
 Restating the landing-saas-shot URL-bar AC (`.product-shot` does not show `event-model.lonnylot.com`; `.browser-bar` leftover unused) is unfinished until leftover Problem no longer lists “browser chrome” as a hosted-editor tell.
 
 Restating stacked bento rows (`landing-fold.md`) is unfinished until leftover Problem no longer lists “The three bento cards are unbalanced glossary” / caption-strip as a current tell. Rewriting landing-depth Problem for leftover unused card/band fills is not that rewrite. Look-may-grow restated composition still greps leftover Problem on every Restates path (`visual-design`).
+
+A new-spec Problem that names only Command when ACs also cover Event / Read Model / Automation is leftover-narrow Problem — name those kinds (`inspect-after-reload` / `inspect-fields` / `shortcut-shows` name every kind). The Command-only tell is incomplete, not a leftover deleted tell after restating.
 
 GET Inspector heading / empty copy vs leftover `editor-shell.md` “empty named region” when designed-surfaces Restates omits that file is leftover Restates. Filling a region another released spec still calls empty is unfinished until Restates that spec.
 

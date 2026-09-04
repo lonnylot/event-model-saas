@@ -4,7 +4,7 @@ Status: draft
 
 ## Problem
 
-One paragraph: who, what, why. Restating an AC is unfinished until this paragraph no longer lists the deleted tell as current (`keeping-specs-current`).
+One paragraph: who, what, why. Restating an AC is unfinished until this paragraph no longer lists the deleted tell as current (`keeping-specs-current`). A Problem that names only Command when ACs also cover Event / Read Model / Automation is leftover-narrow (`keeping-specs-current`).
 
 ## Acceptance criteria
 
