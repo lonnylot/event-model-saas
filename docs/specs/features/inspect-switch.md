@@ -19,7 +19,7 @@ Event Model, Slice, Command, Event, Read Model, Connection, Team, Person
 
 ## Seams
 
-- `bindEditor` in `public/editor.js` — Inspector bind/unbind on selection change
+- `bindEditor` in `public/editor.js` — leftover Inspector Type after a Connection click; leftover From Event Happened and leftover Add Field after `Command → Event Happened`
 - Browser — Playwright against `wrangler dev` with `TEST_MAIL=1`
 
 ## UI
@@ -29,7 +29,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 ## Assumptions
 
 - Playwright unique checkout `PORT` / `INSPECTOR_PORT` and `TEST_MAIL=1` `workers` `1` stay [public-face.md](./public-face.md).
-- Clicking Timeline `New Slice` still shows Inspector Type ([slice-type.md](./slice-type.md)). Clicking `Command → Event Happened` still shows Connection / From Command / To Event Happened ([inspect-connection.md](./inspect-connection.md)). Clicking `Event Happened → Read Model` still shows From Event Happened ([inspect-rest.md](./inspect-rest.md)). Clicking Command still shows `Add Field` ([inspect-fields.md](./inspect-fields.md)). Leftover Type / leftover From / leftover Add Field after switching selection is this slice.
+- Clicking Timeline `New Slice` still shows Inspector Type ([slice-type.md](./slice-type.md)). Clicking `Command → Event Happened` still shows Connection / From Command / To Event Happened ([inspect-connection.md](./inspect-connection.md)). Clicking `Event Happened → Read Model` still shows From Event Happened ([inspect-rest.md](./inspect-rest.md)). Clicking Command still shows `Add Field` ([inspect-fields.md](./inspect-fields.md)). Leftover Type after a Connection click, leftover From Event Happened and leftover Add Field after `Command → Event Happened` is this slice.
 - Create model still seeds a default Slice ([model-defaults.md](./model-defaults.md)). Toolbar Add still targets the last Slice ([blocks.md](./blocks.md)).
 - Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).
 
@@ -43,4 +43,4 @@ Shortcut listitems without `data-kind`. Connection copy as a flex sibling of `.s
 - [inspect-rest.md](./inspect-rest.md) — Clicking `Event Happened → Read Model` still shows From Event Happened. That text remaining after a later click on `Command → Event Happened` is leftover unused; this slice drops it.
 - [slice-type.md](./slice-type.md) — Clicking Timeline `New Slice` still shows Type. Type after switching to a Connection is this slice.
 - [inspect-fields.md](./inspect-fields.md) — Clicking Command still shows `Add Field`. `Add Field` after switching to a Connection is this slice.
-- [architecture.md](../architecture.md) — Editor canvas stays custom timeline TypeScript. Inspector unbind on selection change is this slice.
+- [architecture.md](../architecture.md) — Editor canvas stays custom timeline TypeScript. Leftover Inspector Type after a Connection click, leftover From Event Happened and leftover Add Field after `Command → Event Happened` click is this slice.
