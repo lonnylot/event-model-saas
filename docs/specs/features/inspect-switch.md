@@ -10,7 +10,7 @@ Clicking a Connection after a Slice leaves Inspector Type on screen. Clicking `C
 
 - [x] After clicking the Timeline `New Slice` listitem, then dragging `Command port` onto `Event Happened port`, clicking `Command → Event Happened`, the Inspector region does not show a combobox whose accessible name is `Type`
 - [x] After dragging `Event Happened port` onto `Read Model port`, clicking `Event Happened → Read Model`, then dragging `Command port` onto `Event Happened port`, clicking `Command → Event Happened`, the Inspector region does not show the text `From Event Happened`
-- [ ] After clicking the Timeline `Command` listitem, then clicking `Command → Event Happened`, the Inspector region does not show a button whose accessible name is `Add Field`
+- [x] After clicking the Timeline `Command` listitem, then clicking `Command → Event Happened`, the Inspector region does not show a button whose accessible name is `Add Field`
 
 ## Domain terms
 

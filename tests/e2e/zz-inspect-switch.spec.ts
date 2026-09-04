@@ -159,3 +159,30 @@ test("After dragging `Event Happened port` onto `Read Model port`, clicking `Eve
     inspector.getByText("From Event Happened", { exact: true }),
   ).toHaveCount(0);
 });
+
+test("After clicking the Timeline `Command` listitem, then clicking `Command → Event Happened`, the Inspector region does not show a button whose accessible name is `Add Field`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  const inspector = page.getByRole("region", {
+    name: "Inspector",
+    exact: true,
+  });
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await dragPort(page, "Command port", "Event Happened port");
+  await expect(
+    timeline.getByText("Command → Event Happened", { exact: true }),
+  ).toBeVisible();
+  await timeline
+    .getByRole("listitem", { name: "Command", exact: true })
+    .click();
+  await expect(
+    inspector.getByRole("button", { name: "Add Field", exact: true }),
+  ).toBeVisible();
+  await timeline.getByText("Command → Event Happened", { exact: true }).click();
+  await expect(
+    inspector.getByRole("button", { name: "Add Field", exact: true }),
+  ).toHaveCount(0);
+});

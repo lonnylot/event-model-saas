@@ -1458,6 +1458,7 @@ export function bindEditor(root) {
     selected = "connection";
     selectedConnectionItem = line;
     unbindType();
+    unbindAddField();
   });
   slicesList?.addEventListener("click", (event) => {
     const item = event.target?.closest?.("li");
