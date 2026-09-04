@@ -1,6 +1,6 @@
 # Hydrate add field
 
-Status: validated
+Status: released
 
 ## Problem
 
