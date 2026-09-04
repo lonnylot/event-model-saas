@@ -1,6 +1,6 @@
 # Connection on board
 
-Status: validated
+Status: released
 
 ## Problem
 
