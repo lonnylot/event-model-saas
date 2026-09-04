@@ -127,3 +127,35 @@ test("After clicking the Timeline `New Slice` listitem, then dragging `Command p
     inspector.getByRole("combobox", { name: "Type", exact: true }),
   ).toHaveCount(0);
 });
+
+test("After dragging `Event Happened port` onto `Read Model port`, clicking `Event Happened → Read Model`, then dragging `Command port` onto `Event Happened port`, clicking `Command → Event Happened`, the Inspector region does not show the text `From Event Happened`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  const inspector = page.getByRole("region", {
+    name: "Inspector",
+    exact: true,
+  });
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  await dragPort(page, "Event Happened port", "Read Model port");
+  await expect(
+    timeline.getByText("Event Happened → Read Model", { exact: true }),
+  ).toBeVisible();
+  await timeline
+    .getByText("Event Happened → Read Model", { exact: true })
+    .click();
+  await expect(
+    inspector.getByText("From Event Happened", { exact: true }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await dragPort(page, "Command port", "Event Happened port");
+  await expect(
+    timeline.getByText("Command → Event Happened", { exact: true }),
+  ).toBeVisible();
+  await timeline.getByText("Command → Event Happened", { exact: true }).click();
+  await expect(
+    inspector.getByText("From Event Happened", { exact: true }),
+  ).toHaveCount(0);
+});

@@ -361,6 +361,9 @@ export function bindEditor(root) {
       if (!connection || !timeline.contains(connection)) return;
       const inspector = root.querySelector('[aria-label="Inspector"]');
       if (connection.textContent === "Command → Event Happened") {
+        [...(inspector?.querySelectorAll("p") ?? [])]
+          .find((p) => p.textContent === "From Event Happened")
+          ?.remove();
         if (
           inspector &&
           !inspector.textContent?.includes("Connection")
