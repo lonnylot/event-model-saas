@@ -83,13 +83,35 @@ function lastLaneList(root, kind) {
   );
 }
 
+function boardMount(root) {
+  const timeline = timelineEl(root);
+  if (!timeline || typeof timeline.querySelector !== "function") return timeline;
+  return (
+    timeline.querySelector(".board-pan") ??
+    timeline.querySelector(".board") ??
+    timeline
+  );
+}
+
+function ensurePanLayer(board) {
+  if (!(board instanceof HTMLElement) || typeof board.querySelector !== "function") {
+    return null;
+  }
+  let layer = board.querySelector(":scope > .board-pan");
+  if (layer) return layer;
+  const doc = board.ownerDocument;
+  if (!doc) return null;
+  layer = doc.createElement("div");
+  layer.className = "board-pan";
+  while (board.firstChild) layer.append(board.firstChild);
+  board.append(layer);
+  return layer;
+}
+
 function mountSliceColumn(root, slice, sliceIndex) {
   const timeline = timelineEl(root);
   if (!timeline) return;
-  const board =
-    typeof timeline.querySelector === "function"
-      ? (timeline.querySelector(".board") ?? timeline)
-      : timeline;
+  const board = boardMount(root);
   const col = root.createElement("div");
   if (typeof col.append !== "function") return;
   col.className = "slice-col";
@@ -290,7 +312,14 @@ export function bindEditor(root) {
       parts.push(`translate(${panX}px, ${panY}px)`);
     }
     board.style.transform = parts.join(" ");
+    const lift = panY < 0 ? -panY : 0;
+    board.style.marginTop = lift ? `${lift}px` : "";
+    const layer = ensurePanLayer(board);
+    if (layer instanceof HTMLElement) {
+      layer.style.transform = lift ? `translate(0px, ${panY}px)` : "";
+    }
   };
+  ensurePanLayer(board);
   if (timeline instanceof HTMLElement) {
     timeline.style.minHeight = "48px";
     timeline.addEventListener(

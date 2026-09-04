@@ -1309,6 +1309,8 @@ body.app-editor .time-chrome {
   text-transform: uppercase;
   color: #64748b;
   flex: 0 0 auto;
+  position: relative;
+  z-index: 1;
 }
 body.app-editor .time-rule {
   flex: 1;
@@ -1348,12 +1350,21 @@ body.app-editor .board {
   align-items: stretch;
   gap: 0;
   padding: 1.1rem;
+  transform-origin: 0 0;
 }
 body.app-editor section[aria-label="Timeline"]:has(.slice-col) .timeline-empty {
   display: none;
 }
 body.app-editor section[aria-label="Timeline"]:has(.slice-col) .board {
   display: flex;
+}
+body.app-editor .board-pan {
+  display: flex;
+  align-items: stretch;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  gap: inherit;
 }
 body.app-editor .lane-rail {
   display: flex;

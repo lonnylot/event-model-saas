@@ -43,7 +43,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-Pan and Zoom covering TIME chrome. Changing Create JSON defaults. Drawing Connections as canvas lines. Landing. Mac window chrome. Copy changes.
+Board covering TIME chrome after pan or Zoom in is [time-chrome-stay.md](./time-chrome-stay.md). Changing Create JSON defaults. Drawing Connections as canvas lines. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 
