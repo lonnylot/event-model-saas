@@ -103,13 +103,34 @@ test("GET `/app/teams/{id}/models/{mid}` as a member after Create model, the Tim
   ).toHaveAttribute("data-id", /.+/);
 });
 
-test("GET `/app/teams/{id}/models/{mid}` as a member after Create model, clicking the Timeline `Actor` listitem, filling Inspector `Name` with `Shopper` sets that Actor `name` to `Shopper`", async ({
+async function saveReloadTwoActors(page: Page) {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "Add Actor", exact: true }).click();
+  const actors = page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Actor", exact: true });
+  await expect(actors).toHaveCount(2);
+  await Promise.all([
+    page.waitForResponse(
+      (response) =>
+        response.url().includes("/api/models/") &&
+        response.request().method() === "PUT",
+    ),
+    page.getByRole("button", { name: "Save", exact: true }).click(),
+  ]);
+  await page.reload();
+  await page.waitForLoadState("networkidle");
+  await expect(actors).toHaveCount(2);
+}
+
+test("After a member creates a model, opens it, clicks `Add Actor`, and Saves, a reload of that page, clicking the first Timeline `Actor` listitem, filling Inspector `Name` with `Shopper` sets the first Actor `name` to `Shopper` and the last Actor `name` to `Actor`", async ({
   page,
 }) => {
-  await openUntitledModel(page);
+  await saveReloadTwoActors(page);
   await page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Actor", exact: true })
+    .first()
     .click();
   await page
     .getByRole("region", { name: "Inspector", exact: true })
@@ -119,22 +140,29 @@ test("GET `/app/teams/{id}/models/{mid}` as a member after Create model, clickin
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
   expect(json.slices[0].actors[0].name).toBe("Shopper");
+  expect(json.slices[0].actors.at(-1).name).toBe("Actor");
 });
 
-test("GET `/app/teams/{id}/models/{mid}` as a member after Create model, clicking the Timeline `Actor` listitem then the Timeline region, pressing Backspace sets that Slice `actors` to `[]`", async ({
+test("After a member creates a model, opens it, clicks `Add Actor`, and Saves, a reload of that page, clicking the first Timeline `Actor` listitem then the Timeline region, pressing Backspace sets the remaining Actor `id` to the Actor that was last", async ({
   page,
 }) => {
-  await openUntitledModel(page);
+  await saveReloadTwoActors(page);
+  const before = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  const lastId = before.slices[0].actors[1].id;
   await page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Actor", exact: true })
+    .first()
     .click();
   await clickTimelineRegion(page);
   await page.keyboard.press("Backspace");
   const json = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  expect(json.slices[0].actors).toEqual([]);
+  expect(json.slices[0].actors).toHaveLength(1);
+  expect(json.slices[0].actors[0].id).toBe(lastId);
 });
 
 test("After a member creates a model, opens it, clicks `Add Automation`, and Saves, a reload of that page, the Timeline `Automation` listitem has a non-empty `data-id`", async ({
@@ -164,16 +192,16 @@ test("After a member creates a model, opens it, clicks `Add Automation`, and Sav
   ).toHaveAttribute("data-id", /.+/);
 });
 
-test("After a member creates a model, opens it, clicks `Add Automation`, and Saves, a reload of that page, clicking the Timeline `Automation` listitem then the Timeline region, pressing Backspace sets that Slice `processors` to `[]`", async ({
+test("After a member creates a model, opens it, clicks `Add Automation` twice, and Saves, a reload of that page, clicking the first Timeline `Automation` listitem then the Timeline region, pressing Backspace sets the remaining Automation `id` to the Automation that was last", async ({
   page,
 }) => {
   await openUntitledModel(page);
   await page.getByRole("button", { name: "Add Automation", exact: true }).click();
-  await expect(
-    page
-      .getByRole("region", { name: "Timeline", exact: true })
-      .getByRole("listitem", { name: "Automation", exact: true }),
-  ).toBeVisible();
+  await page.getByRole("button", { name: "Add Automation", exact: true }).click();
+  const automations = page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByRole("listitem", { name: "Automation", exact: true });
+  await expect(automations).toHaveCount(2);
   await Promise.all([
     page.waitForResponse(
       (response) =>
@@ -184,14 +212,17 @@ test("After a member creates a model, opens it, clicks `Add Automation`, and Sav
   ]);
   await page.reload();
   await page.waitForLoadState("networkidle");
-  await page
-    .getByRole("region", { name: "Timeline", exact: true })
-    .getByRole("listitem", { name: "Automation", exact: true })
-    .click();
+  await expect(automations).toHaveCount(2);
+  const before = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  const lastId = before.slices[0].processors[1].id;
+  await automations.first().click();
   await clickTimelineRegion(page);
   await page.keyboard.press("Backspace");
   const json = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
-  expect(json.slices[0].processors).toEqual([]);
+  expect(json.slices[0].processors).toHaveLength(1);
+  expect(json.slices[0].processors[0].id).toBe(lastId);
 });
