@@ -65,5 +65,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Shortcut shows | [features/shortcut-shows.md](./features/shortcut-shows.md) | released |
 | Time chrome stay | [features/time-chrome-stay.md](./features/time-chrome-stay.md) | released |
 | Connection on board | [features/connection-on-board.md](./features/connection-on-board.md) | released |
+| Hydrate add field | [features/hydrate-add-field.md](./features/hydrate-add-field.md) | validated |
 
 Status: `draft` → `validated` → `released`.

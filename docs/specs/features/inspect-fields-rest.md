@@ -76,7 +76,7 @@ Event Model, Slice, Command, Event, Read Model, Automation, Field, Team, Person,
 
 ## Out of scope
 
-Actor Fields (Mac has none). Mac window chrome. Last-Command Add Field and last-Command Field name stay [inspect-fields.md](./inspect-fields.md). Field after reload, Field type after reload, and Optional / Example after reload on Command are [inspect-rest.md](./inspect-rest.md).
+Actor Fields (Mac has none). Mac window chrome. Last-Command Add Field and last-Command Field name stay [inspect-fields.md](./inspect-fields.md). Field after reload, Field type after reload, and Optional / Example after reload on Command are [inspect-rest.md](./inspect-rest.md). `Add Field` after reload is [hydrate-add-field.md](./hydrate-add-field.md).
 
 ## Restates
 

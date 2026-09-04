@@ -1337,6 +1337,7 @@ export function bindEditor(root) {
           bindOptional(lastCommandFieldOptional());
           bindExample(lastCommandFieldExample());
         }
+        bindAddField();
         return;
       }
       bindAddField();
@@ -1361,6 +1362,7 @@ export function bindEditor(root) {
           bindFieldName(eventFieldName);
           bindFieldType(lastEventFieldType());
         }
+        bindAddField();
         return;
       }
       bindAddField();
@@ -1385,6 +1387,7 @@ export function bindEditor(root) {
           bindFieldName(readModelFieldName);
           bindFieldType(lastReadModelFieldType());
         }
+        bindAddField();
         return;
       }
       bindAddField();
@@ -1409,6 +1412,7 @@ export function bindEditor(root) {
           bindFieldName(automationFieldName);
           bindFieldType(lastAutomationFieldType());
         }
+        bindAddField();
         return;
       }
       bindAddField();
