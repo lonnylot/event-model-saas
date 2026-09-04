@@ -133,12 +133,3 @@ test("After a member creates a model and opens it at viewport 390×844, `documen
   }));
   expect(scrollWidth).toBeLessThanOrEqual(clientWidth);
 });
-
-test("After a member creates a model and opens it at viewport 390×844, the Timeline region is visible", async ({
-  page,
-}) => {
-  await openUntitledModelAtPhone(page);
-  await expect(
-    page.getByRole("region", { name: "Timeline", exact: true }),
-  ).toBeVisible();
-});

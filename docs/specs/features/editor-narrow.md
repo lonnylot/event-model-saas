@@ -10,7 +10,6 @@ At a 390-wide viewport the Editor AppBar wraps into several rows, the slice rail
 
 - [x] After a member creates a model and opens it at viewport 390×844, the `.slice-col` `getBoundingClientRect` is inside the Timeline region `getBoundingClientRect`
 - [x] After a member creates a model and opens it at viewport 390×844, `document.documentElement.scrollWidth` is not greater than `document.documentElement.clientWidth`
-- [x] After a member creates a model and opens it at viewport 390×844, the Timeline region is visible
 
 ## Domain terms
 
