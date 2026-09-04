@@ -56,5 +56,7 @@ Pan and Zoom covering TIME chrome. Changing Create JSON defaults. Drawing Connec
 - [canvas.md](./canvas.md) — After clicking `New Slice`, pressing ⌘Z leaves the Create default `New Slice` (2 listitems: sidebar + Timeline). Count `1` is leftover unused.
 - [connection-refusals.md](./connection-refusals.md) — ⌘Z four times after a refused duplicate Command → Event leaves the Create default `New Slice` (2 listitems). Count `1` is leftover unused.
 - [canvas-rest.md](./canvas-rest.md) — Restates of four-press undo still names Add Command on the stack; count `1` is leftover unused.
-- [undo-rest.md](./undo-rest.md) — Restates of four-press undo still names Add Event on the stack; count `1` is leftover unused.
+- [undo-rest.md](./undo-rest.md) — Restates of four-press undo still names Add Event on the stack; count `1` is leftover unused. After clicking `New Slice`, ⌘Z then ⇧⌘Z leaves Timeline `New Slice` listitems at the Create default plus the restored click-created Slice. Count `0` after undo is leftover unused.
+- [inspect-rest.md](./inspect-rest.md) — GET after Create hydrates Timeline `New Slice` as well as the sidebar listitem. Clicking `Checkout` after reload uses the first matching listitem. A unique `Checkout` listitem is leftover unused.
+- [chrome.md](./chrome.md) — GET after Create hydrates Timeline `New Slice` as well as the sidebar listitem. A unique `Checkout` listitem after reload is leftover unused.
 - [product.md](../product.md) — Playwright leftover Mac pairs path: refused second Command → Event then ⌘Z four times shows 2 New Slice. Count `1` is leftover unused.

@@ -91,7 +91,7 @@ test("GET `/app/teams/{id}/models/{mid}` as a member after Create model shows a 
 }) => {
   await openUntitledModel(page);
   await expect(
-    page.getByRole("listitem", { name: "New Slice", exact: true }),
+    page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
   ).toBeVisible();
 });
 

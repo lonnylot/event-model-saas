@@ -838,11 +838,11 @@ test("After clicking `New Slice`, pressing ⌘Z, then pressing ⇧⌘Z, a listit
   const timelineSlice = page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "New Slice", exact: true });
-  await expect(timelineSlice).toBeVisible();
+  await expect(timelineSlice).toHaveCount(2);
   await page.keyboard.press("ControlOrMeta+z");
-  await expect(timelineSlice).toHaveCount(0);
+  await expect(timelineSlice).toHaveCount(1);
   await page.keyboard.press("Shift+ControlOrMeta+z");
-  await expect(timelineSlice).toBeVisible();
+  await expect(timelineSlice).toHaveCount(2);
 });
 
 test("After dragging from `Command port` onto `Event Happened port`, pressing ⌘Z, then pressing ⇧⌘Z, the Timeline region shows the text `Command → Event Happened`", async ({

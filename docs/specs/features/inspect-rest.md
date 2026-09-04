@@ -47,7 +47,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Connection, F
 ## Assumptions
 
 - Command → Event inspect From/To on a click-created Connection stays [inspect-connection.md](./inspect-connection.md) when that spec is present. Event → Read Model summary text is `Event Happened → Read Model` (Add defaults). GET-rendered Connection summary text is `Command → Event Happened` or `Event Happened → Read Model`.
-- Description / Type / Field / Connection / Slice Name / heading Name after reload is a click on the GET-rendered listitem or heading, same as [inspect-blocks.md](./inspect-blocks.md) / [chrome.md](./chrome.md) for Name. Field type / Optional / Example after reload is a click on that GET-rendered listitem.
+- Description / Type / Field / Connection / Slice Name / heading Name after reload is a click on the GET-rendered listitem or heading, same as [inspect-blocks.md](./inspect-blocks.md) / [chrome.md](./chrome.md) for Name. Field type / Optional / Example after reload is a click on that GET-rendered listitem. GET after Create hydrates Timeline `New Slice` as well as the sidebar listitem ([hydrate-board.md](./hydrate-board.md)). Clicking `Checkout` after reload uses the first matching listitem. A unique `Checkout` listitem is leftover unused.
 - Delete Connection is Backspace. No extra Inspector delete button.
 - Heading click to open model Inspector stays [model-inspector.md](./model-inspector.md) when that spec is present. This slice owns the click after reload. No ⇧⌘I.
 - Add Field that appends `newField` on Event / Read Model / Automation stays [inspect-fields-rest.md](./inspect-fields-rest.md). This slice owns the Field name after reload inspect.
