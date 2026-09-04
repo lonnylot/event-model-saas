@@ -4,7 +4,7 @@ Status: validated
 
 ## Problem
 
-Clicking a Connection after a Slice leaves Inspector Type on screen. Clicking `Command → Event Happened` after `Event Happened → Read Model` leaves `From Event Happened` stacked above `From Command` and `To Read Model` stacked next to `To Event Happened`. Clicking `Command → Event Happened` after Command `Add Field` leaves Field name, so Inspector no longer matches the selected Connection.
+Clicking a Connection after a Slice leaves Inspector Type on screen. Clicking `Command → Event Happened` after `Event Happened → Read Model` leaves `From Event Happened` stacked above `From Command` and `To Read Model` stacked next to `To Event Happened`. Clicking `Command → Event Happened` after Command `Add Field` leaves Field name, Field type, Optional, Example, and Delete Field, so Inspector no longer matches the selected Connection.
 
 ## Acceptance criteria
 
