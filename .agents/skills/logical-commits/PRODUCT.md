@@ -15,7 +15,7 @@ A `visual-design` look pass is one slice per named screen (or one stylesheet sev
 - Two kind-gated `if (port.dataset.kind === …)` alreadyConnected arms: unique production per AC, not one kind-agnostic early return. Event → Read Model drag parent vs Command → Event Happened drag parent is the same split — the first AC must not already move every target's parent. ⇧⌘Z redo Connection copy parent vs drag Connection copy parent is unique production — Restates leftover unused sibling is false until that arm moves.
 - Status vs heading vs row vs R2; two workflow `on:` events vs a `run` step.
 - Four independently revertible ACs on GET `/app` (Team name, Create team, Sign out, Teams admin) are four commits. Five ACs on GET `/app/teams/{id}/models/{mid}` (heading, email, Save, Export, Sign out) are five.
-- Leftover-hide `unbindAddField` vs `unbindFieldName` is the same split.
+- Leftover-hide `unbindAddField` vs `unbindFieldName` is the same split. From Event Happened remove vs To Read Model remove is that split.
 - Client `fetch` in `public/*.js` that a Playwright flow needs is that flow's production.
 - Restates leftover rewrite vs unique production restore of a different path are two commits: Card/Field stay later vs PNG mark pixels; leftover Restates public-face Field not-canvas-fill / public Page `canvas`/`ink` / design-system Page `type`/`canvas`/`ink` vs unique Send invite radius. A subject that names two review threads with "and" has not addressed either.
 

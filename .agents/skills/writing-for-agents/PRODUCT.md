@@ -57,4 +57,5 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Spec tree location / vendor plan dirs / `docs/superpowers/` | this skill, `keeping-specs-current` |
 | Architecture adapter constructed only under a test flag / injected `env.documents` | `testing`, `codebase-design`, `keeping-specs-current` |
 | Independently revertible fromKind vs toKind / GET already hydrates | `logical-commits` |
+| Leftover To Read Model after a narrower From Event Happened remove | `keeping-specs-current`, `logical-commits` |
 | Restates leftover rewrite with a production restore of a different path (leftover Restates public-face Field / Page `canvas`/`ink` / design-system Page `type`/`canvas`/`ink` vs unique Send invite radius) | `logical-commits` |
