@@ -2807,27 +2807,72 @@ export function bindEditor(root) {
     if (event.code === "Digit1") {
       const index =
         selectedSliceIndex ?? (model.slices?.length ?? 1) - 1;
-      holder.textContent = JSON.stringify(appendActor(model, index));
+      const next = appendActor(model, index);
+      holder.textContent = JSON.stringify(next);
+      const actor = next.slices?.[index]?.actors?.at(-1);
+      const list = lastLaneList(root, "actor");
+      if (list && actor) {
+        const item = root.createElement("li");
+        item.textContent = "Actor";
+        item.setAttribute("aria-label", "Actor");
+        list.append(item);
+      }
     }
     if (event.code === "Digit2") {
       const index =
         selectedSliceIndex ?? (model.slices?.length ?? 1) - 1;
-      holder.textContent = JSON.stringify(appendCommand(model, index));
+      const next = appendCommand(model, index);
+      holder.textContent = JSON.stringify(next);
+      const command = next.slices?.[index]?.commands?.at(-1);
+      const list = lastLaneList(root, "command");
+      if (list && command) {
+        const item = root.createElement("li");
+        item.textContent = "Command";
+        item.setAttribute("aria-label", "Command");
+        list.append(item);
+      }
     }
     if (event.code === "Digit3") {
       const index =
         selectedSliceIndex ?? (model.slices?.length ?? 1) - 1;
-      holder.textContent = JSON.stringify(appendEvent(model, index));
+      const next = appendEvent(model, index);
+      holder.textContent = JSON.stringify(next);
+      const eventBlock = next.slices?.[index]?.events?.at(-1);
+      const list = lastLaneList(root, "event");
+      if (list && eventBlock) {
+        const item = root.createElement("li");
+        item.textContent = "Event Happened";
+        item.setAttribute("aria-label", "Event Happened");
+        list.append(item);
+      }
     }
     if (event.code === "Digit4") {
       const index =
         selectedSliceIndex ?? (model.slices?.length ?? 1) - 1;
-      holder.textContent = JSON.stringify(appendReadModel(model, index));
+      const next = appendReadModel(model, index);
+      holder.textContent = JSON.stringify(next);
+      const readModel = next.slices?.[index]?.readModels?.at(-1);
+      const list = lastLaneList(root, "readmodel");
+      if (list && readModel) {
+        const item = root.createElement("li");
+        item.textContent = "Read Model";
+        item.setAttribute("aria-label", "Read Model");
+        list.append(item);
+      }
     }
     if (event.code === "Digit5") {
       const index =
         selectedSliceIndex ?? (model.slices?.length ?? 1) - 1;
-      holder.textContent = JSON.stringify(appendAutomation(model, index));
+      const next = appendAutomation(model, index);
+      holder.textContent = JSON.stringify(next);
+      const automation = next.slices?.[index]?.processors?.at(-1);
+      const list = lastLaneList(root, "automation");
+      if (list && automation) {
+        const item = root.createElement("li");
+        item.textContent = "Automation";
+        item.setAttribute("aria-label", "Automation");
+        list.append(item);
+      }
     }
   });
 }
