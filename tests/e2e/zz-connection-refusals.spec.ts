@@ -355,7 +355,7 @@ test("After dragging from `Command port` onto `Event Happened port`, dragging fr
   ).toContainText("That connection already exists.");
 });
 
-test("After dragging from `Command port` onto `Event Happened port`, dragging from `Command port` onto `Event Happened port` again, pressing ⌘Z four times shows 1 listitem whose accessible name is `New Slice`", async ({
+test("After dragging from `Command port` onto `Event Happened port`, dragging from `Command port` onto `Event Happened port` again, pressing ⌘Z four times shows 2 listitems whose accessible name is `New Slice`", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -380,7 +380,7 @@ test("After dragging from `Command port` onto `Event Happened port`, dragging fr
   await page.keyboard.press("ControlOrMeta+z");
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }),
-  ).toHaveCount(1);
+  ).toHaveCount(2);
 });
 
 test("After dragging from `Event Happened port` onto `Read Model port`, dragging from `Event Happened port` onto `Read Model port` again shows the text `That connection already exists.` in the Event Happened listitem", async ({

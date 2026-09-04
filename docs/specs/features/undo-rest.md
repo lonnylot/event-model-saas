@@ -63,7 +63,7 @@ Extra undo toolbar. Mac window chrome. Undo New Slice, undo Connection (without 
 
 - [model-defaults.md](./model-defaults.md) — After clicking `New Slice` then `Add Actor`, ⌘Z leaves the Create default `Actor` (1 listitem). Redo shows 2. Count `0` is leftover unused.
 - [canvas-rest.md](./canvas-rest.md) — Undo Add Command stays that file. Undo of remaining Adds, move, delete, and redo are this slice.
-- [connection-refusals.md](./connection-refusals.md) — After a refused second Command → Event, ⌘Z four times shows 1 New Slice (Add Event is on the undo stack; Create default remains). Three presses no longer reach the clicked New Slice. Port onto a Slice stays that file.
+- [connection-refusals.md](./connection-refusals.md) — After a refused second Command → Event, ⌘Z four times shows 2 New Slice (Add Event is on the undo stack; Create default remains). Count `1` is leftover unused. Three presses no longer reach the clicked New Slice. Port onto a Slice stays that file. Timeline `New Slice` listitem on GET after Create is [hydrate-board.md](./hydrate-board.md).
 - [canvas.md](./canvas.md) — Undo of remaining Adds, move, delete, and redo are this slice. Undo New Slice and undo Connection without a prior delete stay that file.
 - [blocks.md](./blocks.md) — Undo of remaining Adds, move, delete, and redo are this slice. Undo New Slice stays [canvas.md](./canvas.md). Undo Add Command stays [canvas-rest.md](./canvas-rest.md).
 - [chrome.md](./chrome.md) — Undo of remaining Adds, move, delete, and redo are this slice. Undo New Slice stays [canvas.md](./canvas.md). Undo Add Command stays [canvas-rest.md](./canvas-rest.md).
