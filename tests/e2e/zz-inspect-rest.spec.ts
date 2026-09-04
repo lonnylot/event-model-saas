@@ -290,7 +290,7 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks the `
     page.getByRole("button", { name: "Save", exact: true }).click(),
   ]);
   await page.reload();
-  await page.getByRole("listitem", { name: "Checkout", exact: true }).click();
+  await page.getByRole("listitem", { name: "Checkout", exact: true }).first().click();
   await expect(
     page
       .getByRole("region", { name: "Inspector", exact: true })

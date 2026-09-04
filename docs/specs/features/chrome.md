@@ -31,7 +31,7 @@ Event Model, Slice, Actor, Team, Person, Version
 
 ## Assumptions
 
-- Slice selection is a click on the Slices listitem. Actor selection is a click on the Timeline Actor listitem.
+- Slice selection is a click on the Slices listitem. Actor selection is a click on the Timeline Actor listitem. GET after Create hydrates Timeline `New Slice` as well as the sidebar listitem ([hydrate-board.md](./hydrate-board.md)). A unique `Checkout` listitem after reload is leftover unused.
 - Slice and Actor Name bind to the clicked Slice or Actor ([name-binding-rest.md](./name-binding-rest.md)). Command multi-item Name is [name-binding.md](./name-binding.md).
 - Inspect is a click on a click-created listitem. Inspect after reload is [inspect-after-reload.md](./inspect-after-reload.md).
 - The Inspector `Name` textbox edits Slice `title` or Actor `name`. The JSON keys stay `title` and `name`.

@@ -71,11 +71,12 @@ export function modelPageHtml(
   version: number,
   teamName: string,
   slices: Array<{
+    id?: string;
     title: string;
     actors?: Array<{ name: string }>;
-    commands?: Array<{ title: string }>;
-    events?: Array<{ title: string }>;
-    readModels?: Array<{ title: string }>;
+    commands?: Array<{ id?: string; title: string }>;
+    events?: Array<{ id?: string; title: string }>;
+    readModels?: Array<{ id?: string; title: string }>;
     processors?: Array<{ title: string }>;
   }> = [],
   documentJson = "",
@@ -86,7 +87,7 @@ export function modelPageHtml(
   const items = slices
     .map(
       (slice) =>
-        `<li aria-label="${slice.title}">${slice.title}</li>`,
+        `<li aria-label="${slice.title}"${slice.id ? ` data-id="${slice.id}"` : ""}>${slice.title}</li>`,
     )
     .join("");
   const sliceColumns = slices
@@ -98,22 +99,24 @@ export function modelPageHtml(
         )
         .join("");
       const commands = (slice.commands ?? [])
-        .map(
-          (command) =>
-            `<li aria-label="${command.title}" data-kind="command">${command.title}</li>`,
-        )
+        .map((command) => {
+          const id = command.id
+            ? ` data-id="${command.id}"`
+            : "";
+          return `<li aria-label="${command.title}" data-kind="command"${id}>${command.title}<button type="button"${id}${command.id ? ` data-kind="COMMAND"` : ""}>Command port</button></li>`;
+        })
         .join("");
       const events = (slice.events ?? [])
-        .map(
-          (event) =>
-            `<li aria-label="${event.title}" data-kind="event">${event.title}</li>`,
-        )
+        .map((event) => {
+          const id = event.id ? ` data-id="${event.id}"` : "";
+          return `<li aria-label="${event.title}" data-kind="event"${id}>${event.title}<button type="button"${id}${event.id ? ` data-kind="EVENT"` : ""}>Event Happened port</button></li>`;
+        })
         .join("");
       const readModels = (slice.readModels ?? [])
-        .map(
-          (readModel) =>
-            `<li aria-label="${readModel.title}" data-kind="readmodel">${readModel.title}</li>`,
-        )
+        .map((readModel) => {
+          const id = readModel.id ? ` data-id="${readModel.id}"` : "";
+          return `<li aria-label="${readModel.title}" data-kind="readmodel"${id}>${readModel.title}<button type="button"${id}${readModel.id ? ` data-kind="READMODEL"` : ""}>Read Model port</button></li>`;
+        })
         .join("");
       const automations = (slice.processors ?? [])
         .map(
@@ -121,7 +124,7 @@ export function modelPageHtml(
             `<li aria-label="${automation.title}" data-kind="automation">${automation.title}</li>`,
         )
         .join("");
-      return `<div class="slice-col" data-slice-index="${index}"><div class="slice-head">${slice.title}</div><div class="lane" data-lane="actor"><ul>${actors}</ul></div><div class="lane" data-lane="command"><ul>${commands}</ul></div><div class="lane" data-lane="event"><ul>${events}</ul></div><div class="lane" data-lane="readmodel"><ul>${readModels}</ul></div><div class="lane" data-lane="automation"><ul>${automations}</ul></div></div>`;
+      return `<div class="slice-col" data-slice-index="${index}"><ul class="slice-head"><li aria-label="${slice.title}"${slice.id ? ` data-id="${slice.id}"` : ""}>${slice.title}</li></ul><div class="lane" data-lane="actor"><ul>${actors}</ul><button type="button" data-slice-index="${index}">Add Actor on lane</button></div><div class="lane" data-lane="command"><ul>${commands}</ul><button type="button" data-slice-index="${index}">Add Command on lane</button></div><div class="lane" data-lane="event"><ul>${events}</ul><button type="button" data-slice-index="${index}">Add Event on lane</button></div><div class="lane" data-lane="readmodel"><ul>${readModels}</ul><button type="button" data-slice-index="${index}">Add Read Model on lane</button></div><div class="lane" data-lane="automation"><ul>${automations}</ul><button type="button" data-slice-index="${index}">Add Automation on lane</button></div></div>`;
     })
     .join("");
   const connectionCopy = [

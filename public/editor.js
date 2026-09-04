@@ -1393,6 +1393,17 @@ export function bindEditor(root) {
       }
       return;
     }
+    if (!item.dataset.kind) {
+      selected = "slice";
+      selectedSliceItem = item;
+      const indexAttr = item.closest(".slice-col")?.getAttribute("data-slice-index");
+      selectedSliceIndex = indexAttr == null ? null : Number(indexAttr);
+      bindName(item.getAttribute("aria-label") ?? "New Slice");
+      bindDescription(lastSliceDescription());
+      bindType(lastSliceTypeLabel());
+      unbindFieldChrome();
+      return;
+    }
     if (item.dataset.kind !== "actor") return;
     selected = "actor";
     selectedActorItem = item;

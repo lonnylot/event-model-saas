@@ -32,7 +32,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person,
 
 ## Assumptions
 
-- Toolbar `Add Actor` / `Add Command` / `Add Event` / `Add Read Model` / `Add Automation` still target the last Slice ([blocks.md](./blocks.md)). Lane buttons are a different accessible name so those tests stay green.
+- Toolbar `Add Actor` / `Add Command` / `Add Event` / `Add Read Model` / `Add Automation` still target the last Slice ([blocks.md](./blocks.md)). Lane buttons are a different accessible name so those tests stay green. After clicking `New Slice`, dashed lane Add stays this file. GET after Create showing those buttons is [hydrate-board.md](./hydrate-board.md). After clicking `New Slice` on a Create default, Timeline has two named lane buttons (Create + click-created). A unique lane button is leftover unused.
 - Two `New Slice` listitems are first vs last. Chrome Name still mutates the last Slice.
 - The first `Add Command on lane` is the first matching button in the Timeline (the first Slice's command lane).
 - Empty JSON for lane Add and ⌥⌘1–5 is the same as toolbar Add in [blocks.md](./blocks.md).

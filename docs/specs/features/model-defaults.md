@@ -44,7 +44,7 @@ Screens: Team, Editor. Primitives: Page, Button primary (`Create model`). Look o
 - First Slice `id` and first Actor `id` are new UUIDs (`runtime.randomId` / `crypto.randomUUID`).
 - Clicking `New Slice` still appends `actors` `[]` ([editor-shell.md](./editor-shell.md)). That click path is not this slice.
 - Import still stores the submitted document ([model-persistence.md](./model-persistence.md)). An imported document with `slices` `[]` still has no Slices.
-- GET `/app/teams/{id}/models/{mid}` as a member with no Slices does not show a listitem `New Slice` stays [editor-shell.md](./editor-shell.md) for an imported empty document.
+- GET `/app/teams/{id}/models/{mid}` as a member with no Slices does not show a listitem `New Slice` stays [editor-shell.md](./editor-shell.md) for an imported empty document. Sidebar `New Slice` listitem on GET after Create stays this file. Timeline `New Slice` listitem on GET after Create is [hydrate-board.md](./hydrate-board.md).
 - Architecture adapter `documents` is still constructed only under the production Worker path / `TEST_MAIL` not `1` ([architecture.md](../architecture.md), [model-persistence.md](./model-persistence.md)).
 
 ## Out of scope
@@ -59,8 +59,8 @@ Renaming Untitled. Changing New Slice click defaults. Import. Sample Library Che
 - [product.md](../product.md) — Create is no longer “empty Event Model (valid schema, no slices)”; Create writes the default Slice in this slice, then opens the editor.
 - [architecture.md](../architecture.md) — `models` create still goes through `createModel`. Default Slice body is this slice.
 - [designed-surfaces.md](./designed-surfaces.md) — GET with no Slices shows `Start the timeline` stays that file for an imported empty document. Create is no longer that fixture.
-- [canvas.md](./canvas.md) — After clicking `New Slice`, pressing ⌘Z leaves the Create default `New Slice` (1 listitem). Count `0` is leftover unused.
-- [connection-refusals.md](./connection-refusals.md) — ⌘Z four times after a refused duplicate Command → Event leaves the Create default `New Slice` (1 listitem). Count `0` is leftover unused.
+- [canvas.md](./canvas.md) — After clicking `New Slice`, pressing ⌘Z leaves the Create default `New Slice` (2 listitems: sidebar + Timeline). Count `1` is leftover unused. Timeline `New Slice` listitem on GET after Create is [hydrate-board.md](./hydrate-board.md).
+- [connection-refusals.md](./connection-refusals.md) — ⌘Z four times after a refused duplicate Command → Event leaves the Create default `New Slice` (2 listitems). Count `1` is leftover unused. Timeline `New Slice` listitem on GET after Create is [hydrate-board.md](./hydrate-board.md).
 - [canvas-rest.md](./canvas-rest.md) — Restates of four-press undo still names Add Command on the stack; count `0` is leftover unused.
 - [undo-rest.md](./undo-rest.md) — Restates of four-press undo still names Add Event on the stack; count `0` is leftover unused. After clicking `New Slice` then `Add Actor`, ⌘Z leaves the Create default `Actor` (1 listitem); redo shows 2.
 - [delete-rest.md](./delete-rest.md) — Backspace/Delete of the first Timeline Actor after New Slice then Add Actor twice targets the last Slice.

@@ -4,6 +4,12 @@ import type { AuthRuntime } from "../../src/auth/types.ts";
 import { createMemoryDocuments } from "../../src/models/documents.ts";
 import { handleRequest } from "../../src/index.ts";
 
+function timelineMarkup(html: string): string {
+  const start = html.indexOf('<section aria-label="Timeline">');
+  const end = html.indexOf('<section aria-label="Inspector">');
+  return html.slice(start, end);
+}
+
 async function memberEnv() {
   const store = createMemoryStore();
   let n = 0;
@@ -621,6 +627,90 @@ describe("create model", () => {
     );
     expect(await response.text()).toMatch(
       /<li[^>]*aria-label="New Slice"[^>]*>New Slice<\/li>/,
+    );
+  });
+
+  it("GET `/app/teams/{id}/models/{mid}` as a member after Create model, the Timeline region shows a listitem whose accessible name is `New Slice`", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/app/teams/team-1/models/model-1",
+        { headers: { Cookie: "session=sess-admin" } },
+      ),
+      env,
+    );
+    expect(timelineMarkup(await response.text())).toMatch(
+      /<li[^>]*aria-label="New Slice"[^>]*>New Slice<\/li>/,
+    );
+  });
+
+  it("GET `/app/teams/{id}/models/{mid}` as a member after Create model, the Timeline region shows a button whose accessible name is `Add Actor on lane`", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/app/teams/team-1/models/model-1",
+        { headers: { Cookie: "session=sess-admin" } },
+      ),
+      env,
+    );
+    expect(timelineMarkup(await response.text())).toMatch(
+      /<button type="button"[^>]*>Add Actor on lane<\/button>/,
+    );
+  });
+
+  it("GET `/app/teams/{id}/models/{mid}` as a member after Create model, the Timeline region shows a button whose accessible name is `Add Command on lane`", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/app/teams/team-1/models/model-1",
+        { headers: { Cookie: "session=sess-admin" } },
+      ),
+      env,
+    );
+    expect(timelineMarkup(await response.text())).toMatch(
+      /<button type="button"[^>]*>Add Command on lane<\/button>/,
+    );
+  });
+
+  it("GET `/app/teams/{id}/models/{mid}` as a member after Create model, the Timeline region shows a button whose accessible name is `Add Event on lane`", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/app/teams/team-1/models/model-1",
+        { headers: { Cookie: "session=sess-admin" } },
+      ),
+      env,
+    );
+    expect(timelineMarkup(await response.text())).toMatch(
+      /<button type="button"[^>]*>Add Event on lane<\/button>/,
+    );
+  });
+
+  it("GET `/app/teams/{id}/models/{mid}` as a member after Create model, the Timeline region shows a button whose accessible name is `Add Read Model on lane`", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/app/teams/team-1/models/model-1",
+        { headers: { Cookie: "session=sess-admin" } },
+      ),
+      env,
+    );
+    expect(timelineMarkup(await response.text())).toMatch(
+      /<button type="button"[^>]*>Add Read Model on lane<\/button>/,
+    );
+  });
+
+  it("GET `/app/teams/{id}/models/{mid}` as a member after Create model, the Timeline region shows a button whose accessible name is `Add Automation on lane`", async () => {
+    const { env } = await createdUntitled();
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/app/teams/team-1/models/model-1",
+        { headers: { Cookie: "session=sess-admin" } },
+      ),
+      env,
+    );
+    expect(timelineMarkup(await response.text())).toMatch(
+      /<button type="button"[^>]*>Add Automation on lane<\/button>/,
     );
   });
 

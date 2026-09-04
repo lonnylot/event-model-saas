@@ -60,5 +60,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Landing modern | [features/landing-modern.md](./features/landing-modern.md) | released |
 | Model defaults | [features/model-defaults.md](./features/model-defaults.md) | released |
 | Timeline clip | [features/timeline-clip.md](./features/timeline-clip.md) | released |
+| Hydrate board | [features/hydrate-board.md](./features/hydrate-board.md) | validated |
 
 Status: `draft` → `validated` → `released`.

@@ -223,7 +223,7 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks the `
   ]);
   await page.reload();
   await expect(
-    page.getByRole("listitem", { name: "Checkout", exact: true }),
+    page.getByRole("listitem", { name: "Checkout", exact: true }).first(),
   ).toBeVisible();
 });
 
