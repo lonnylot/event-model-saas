@@ -1460,7 +1460,7 @@ body.app-editor .lane[data-lane="automation"] {
 }
 body.app-editor section[aria-label="Timeline"] li {
   position: relative;
-  padding: 0.5rem 1.85rem 0.55rem 0.65rem;
+  padding: 0.5rem 0.5rem 0.55rem 0.65rem;
   min-width: 0;
   border-top-width: 3px;
   border-top-style: solid;
@@ -1469,10 +1469,16 @@ body.app-editor section[aria-label="Timeline"] li {
   font-weight: 600;
   border-radius: 10px;
 }
+body.app-editor section[aria-label="Timeline"] li:has(button) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.35rem;
+}
 body.app-editor section[aria-label="Timeline"] li button {
-  position: absolute;
-  right: 0.35rem;
-  top: 0.35rem;
+  position: static;
+  flex: 0 0 auto;
   width: auto;
   margin: 0;
   font: inherit;
