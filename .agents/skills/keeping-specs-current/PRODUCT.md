@@ -113,6 +113,8 @@ Restates omitting released `hydrate-board.md` leftover Out of scope “Pan and Z
 
 Restates omitting released `editor-bind-split.md` leftover Out of scope `⌘S Save.` when this HEAD took ⌘S Save (listed editor-shell / product.md / architecture.md) is leftover Restates. Grep `⌘S Save` even when Restates already lists editor-shell. Search hits for `Unsaved changes.` do not include that park.
 
+Restates omitting released `editor-shell.md` leftover Out of scope unqualified `Slice type after reload` parked on inspect-rest when this HEAD took GET Type of the first of two Slices (listed inspect-rest / slice-type / name-binding-rest) is leftover Restates. Grep `Slice type after reload` even when Restates already lists inspect-rest. Same omit in add-on-lane / blocks / canvas / chrome / connection-feedback / connections / inspect-blocks / inspect-connection / inspect-description / inspect-fields / model-persistence.
+
 Restates omitting released `port-wrap.md` leftover Out of scope “Narrow viewport” / `inspect-switch.md` leftover Out of scope “Narrow viewport layout” when this HEAD took narrow Editor layout (listed designed-surfaces / visual-shell / architecture) is leftover Restates. Grep Narrow viewport / Narrow viewport layout even when Restates already lists designed-surfaces.
 
 Restates “Narrow AppBar / Timeline clip” when released `timeline-clip.md` owns pan/zoom clip is leftover Restates — restate to “narrow Slice-inside-Timeline layout” so the two clips do not read as one owner.
