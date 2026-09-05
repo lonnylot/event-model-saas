@@ -39,3 +39,4 @@ Autosave. TIME click empty Inspector. Landing. Mac window chrome. Copy changes.
 - [editor-shell.md](./editor-shell.md) — Clicking Save still clears `Unsaved changes.`. ⌘S Save is this slice.
 - [product.md](../product.md) — Explicit Save (⌘S), not autosave, is this slice's keyboard path. The Save button stays [editor-shell.md](./editor-shell.md).
 - [architecture.md](../architecture.md) — Editor canvas stays custom timeline TypeScript. ⌘S Save is this slice.
+- [editor-bind-split.md](./editor-bind-split.md) — `bindKeyboard` import stays that file. ⌘S Save is this slice.
