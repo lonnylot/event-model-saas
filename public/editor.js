@@ -1339,6 +1339,9 @@ export function bindEditor(root) {
       [...(inspector?.querySelectorAll("p") ?? [])]
         .find((p) => p.textContent === "To Event Happened")
         ?.remove();
+      [...(inspector?.querySelectorAll("p") ?? [])]
+        .find((p) => p.textContent === "Connection")
+        ?.remove();
       bindName(item.getAttribute("aria-label") ?? "Command");
       if (omitGetRenderedInspectChrome(item)) {
         bindDescription(lastCommandDescription());

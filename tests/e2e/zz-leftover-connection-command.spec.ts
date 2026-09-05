@@ -147,3 +147,18 @@ test("After dragging `Command port` onto `Event Happened port`, clicking `Comman
     inspector.getByText("To Event Happened", { exact: true }),
   ).toHaveCount(0);
 });
+
+test("After dragging `Command port` onto `Event Happened port`, clicking `Command → Event Happened`, then clicking the Timeline `Command` listitem, the Inspector region does not show the text `Connection`", async ({
+  page,
+}) => {
+  const { timeline, inspector } = await clickConnectionThenCommand(page);
+  await expect(
+    inspector.getByText("Connection", { exact: true }),
+  ).toBeVisible();
+  await timeline
+    .getByRole("listitem", { name: "Command", exact: true })
+    .click();
+  await expect(
+    inspector.getByText("Connection", { exact: true }),
+  ).toHaveCount(0);
+});
