@@ -37,6 +37,8 @@ If the next checkbox stays green with no new production, fold the proof into the
 
 Click-path production that lands after field AC tests of an unused module is tests-after — rebase so each field AC's test and the production the click uses land together.
 
+When GET HTML is already `${sliceColumns}${connectionCopy}` (later sibling on main; no net `pages.ts` wrapping), wrap CSS (`.board-pan { flex-wrap }` / `flex-basis: 100%`) is GET caption production. GET Command checkbox + `it` land in that wrap-CSS commit. Deleting leftover `.slice-stack` CSS or persist-then-400 of the Event HTML filter is not the production that made the rect true — the `it` would pass on the wrap-CSS commit if it existed there.
+
 A restated weaker fixture after that AC's production landed (one-item Backspace → two-item; `includes scale(` → factor is not pan `1`; widget-role Sign up after a checked AC with no `it`) reconstructs into that production commit. A tests-only follow-up is tests-after.
 
 A tests-only wait-after-open helper, or tests-only locator/fixture after production added a second matching `New Slice`, reconstructs into the production that needed it — not a tests-only commit on HEAD *in this slice*.
