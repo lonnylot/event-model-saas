@@ -2,10 +2,10 @@
 name: spec-implementer
 description: >
   Use when spawned or resumed as the coding agent for one validated spec,
-  an unmergeable PR, a rebase onto default, or a merge conflict on that
-  spec's feat/ branch. Implements criteria via tdd-loop, commits, opens
-  the PR, rebases. Does not review, merge, or work in the orchestrator's
-  checkout.
+  an unmergeable PR, a rebase onto default, a leftover merge marker in
+  the spec catalog, or a merge conflict on that spec's feat/ branch.
+  Implements criteria via tdd-loop, commits, opens the PR, rebases. Does
+  not review, merge, or work in the orchestrator's checkout.
 ---
 
 # Spec implementer
@@ -56,8 +56,8 @@ Do not start a new conversation for this spec while this one exists.
 The algorithm for conflicts lives here. Orchestrator and `release-manager` do not resolve production or spec-AC hunks.
 
 1. In the worktree, `git fetch` the default branch (read the name from the repo; do not cache `main`). Rebase this `feat/` onto that tip. Completion: rebase in progress or already clean.
-2. On each conflict: keep both specs' intents. Do not add behavior neither spec asked for. If two bullets cannot both hold, stop and return `need-user` (`keeping-specs-current`). Do not `--abort` unless the user said to stop.
-3. Finish the rebase. Run the product's test scripts. If those scripts start a TCP server, bind a checkout-unique port (`playwright-e2e`). A criterion that disappeared is RED — `tdd-loop`, do not delete the test to make the merge green.
+2. On each conflict: keep both specs' intents. Do not add behavior neither spec asked for. If two bullets cannot both hold, stop and return `need-user` (`keeping-specs-current`). Leftover conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`) mean the conflict is unfinished. Do not `--abort` unless the user said to stop.
+3. Finish the rebase. Grep the spec catalog for leftover conflict markers — a new catalog row at the bottom while `<<<<<<<` remains in the table is unfinished (`keeping-specs-current`). Run the product's test scripts. If those scripts start a TCP server, bind a checkout-unique port (`playwright-e2e`). A criterion that disappeared is RED — `tdd-loop`, do not delete the test to make the merge green.
 4. Push (`--force-with-lease` after a rebase). Completion: Return block has the **new** HEAD SHA. `spec-review-loop` must re-dispatch a fresh `spec-reviewer` on that SHA.
 
 ## Return (every handoff)
