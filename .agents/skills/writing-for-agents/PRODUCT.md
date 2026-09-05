@@ -32,6 +32,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Restates omitting draft `architecture.md` that still assigns token/CSS to restated slices (public-face / product-visual apply type/Card/Field/Page/editor CSS after composed look moved to designed-surfaces) | `keeping-specs-current` |
 | Leftover Assumptions 576px/36px after restated landing heading 56px / main max-width none | `keeping-specs-current` |
 | Leftover Assumptions after restating Out of scope Connection delete stay delete-blocks (`delete-rest.md`) | `keeping-specs-current` |
+| leftover inspect-rest Type AC after restating GET Type of one Slice / first of two (Create + New Slice + the New Slice listitem vs one Slice) | `keeping-specs-current` |
 | Leftover landing-saas-shot Problem “browser chrome” after restated URL bar leftover unused | `keeping-specs-current` |
 | Leftover landing-fold Problem “three bento cards” / caption-strip after restated stacked product-image rows | `keeping-specs-current` |
 | Problem names only Command when ACs also cover Event / Read Model / Automation (hydrate-add-field; inspect-after-reload / inspect-fields / shortcut-shows name every kind) | `keeping-specs-current` |
