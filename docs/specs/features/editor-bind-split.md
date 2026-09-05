@@ -10,7 +10,7 @@ Status: validated
 
 - [x] GET `/app/teams/{id}/models/{mid}` as a member includes a script whose `src` is `/editor.js`
 - [x] `bindInspect` is imported only from `public/editor-inspect.js`
-- [ ] `bindKeyboard` is imported only from `public/editor-keyboard.js`
+- [x] `bindKeyboard` is imported only from `public/editor-keyboard.js`
 - [ ] `bindPointer` is imported only from `public/editor-pointer.js`
 - [ ] `bindCanvas` is imported only from `public/editor-canvas.js`
 

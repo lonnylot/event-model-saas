@@ -131,4 +131,12 @@ describe("editor bind split", () => {
     expect(sources.every((source) => source === expected)).toBe(true);
     expect(declarationFilesOf("bindInspect")).toEqual([expected]);
   });
+
+  it("`bindKeyboard` is imported only from `public/editor-keyboard.js`", () => {
+    const expected = resolve("public/editor-keyboard.js");
+    const sources = importSourcesOf("bindKeyboard");
+    expect(sources.length).toBeGreaterThan(0);
+    expect(sources.every((source) => source === expected)).toBe(true);
+    expect(declarationFilesOf("bindKeyboard")).toEqual([expected]);
+  });
 });
