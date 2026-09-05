@@ -89,5 +89,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Inspect get read model | [features/inspect-get-read-model.md](./features/inspect-get-read-model.md) | released |
 | Inspect get actor | [features/inspect-get-actor.md](./features/inspect-get-actor.md) | released |
 | Inspect get automation | [features/inspect-get-automation.md](./features/inspect-get-automation.md) | released |
+| Shortcut target | [features/shortcut-target.md](./features/shortcut-target.md) | validated |
 
 Status: `draft` → `validated` → `released`.
