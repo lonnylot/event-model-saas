@@ -1,6 +1,6 @@
 # Cmd s save
 
-Status: validated
+Status: released
 
 ## Problem
 
