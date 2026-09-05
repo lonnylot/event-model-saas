@@ -38,7 +38,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-Replacing pan with native overflow scroll. Changing zoom factors. Landing. Mac window chrome. Copy changes. Board covering TIME chrome after pan or Zoom in is [time-chrome-stay.md](./time-chrome-stay.md). Toolbar Zoom in exact `.board` `scale(1.25)` stays [editor-shell.md](./editor-shell.md). Asserting `.time-chrome` itself is leftover unused.
+Replacing pan with native overflow scroll. Changing zoom factors. Landing. Mac window chrome. Copy changes. Board covering TIME chrome after pan or Zoom in is [time-chrome-stay.md](./time-chrome-stay.md). Toolbar Zoom in exact `.board` `scale(1.25)` stays [editor-shell.md](./editor-shell.md). Asserting `.time-chrome` itself is leftover unused. Unzoomed 800-wide Slice inside Timeline is [editor-midwidth.md](./editor-midwidth.md).
 
 ## Restates
 
