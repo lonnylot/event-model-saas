@@ -75,6 +75,8 @@ Grep draft `architecture.md` for leftover token/CSS assignment to restated slice
 
 Restating landing heading `56px` / `main` max-width `none` is unfinished until leftover Assumptions in the same `product-visual.md` file no longer say `36px` / `576px`. Look-may-grow restated ACs still grep leftover Assumptions (`visual-design`).
 
+Restating `delete-rest.md` Out of scope so Event → Read Model Backspace is this slice is unfinished until leftover Assumptions no longer say Connection delete stay `delete-blocks.md`. Two bullets in that file cannot both hold.
+
 Restating the landing-saas-shot URL-bar AC (`.product-shot` does not show `event-model.lonnylot.com`; `.browser-bar` leftover unused) is unfinished until leftover Problem no longer lists “browser chrome” as a hosted-editor tell.
 
 Restating stacked bento rows (`landing-fold.md`) is unfinished until leftover Problem no longer lists “The three bento cards are unbalanced glossary” / caption-strip as a current tell. Rewriting landing-depth Problem for leftover unused card/band fills is not that rewrite. Look-may-grow restated composition still greps leftover Problem on every Restates path (`visual-design`).
