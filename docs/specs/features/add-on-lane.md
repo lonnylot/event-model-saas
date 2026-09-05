@@ -19,7 +19,7 @@ Members can Add from the toolbar onto the last Slice only. They cannot Add on a 
 - [x] After clicking `New Slice`, pressing ⌥⌘3 appends an Event whose `title` is `Event Happened`
 - [x] After clicking `New Slice`, pressing ⌥⌘4 appends a Read Model whose `title` is `Read Model`
 - [x] After clicking `New Slice`, pressing ⌥⌘5 appends an Automation whose `title` is `Automation`
-- [x] After clicking `New Slice` twice, clicking the first `New Slice` listitem then the Timeline region, pressing ⌥⌘2 appends a Command only on the first Slice
+- [x] After clicking `New Slice` twice, clicking the first `New Slice` listitem, pressing ⌥⌘2 appends a Command only on the first Slice
 
 ## Domain terms
 
@@ -37,7 +37,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person,
 - The first `Add Command on lane` is the first matching button in the Timeline (the first Slice's command lane).
 - Empty JSON for lane Add and ⌥⌘1–5 is the same as toolbar Add in [blocks.md](./blocks.md).
 - ⌥⌘1 Actor, ⌥⌘2 Command, ⌥⌘3 Event, ⌥⌘4 Read Model, ⌥⌘5 Automation. Playwright `Alt+Meta+Digit1` … `Digit5` (CI: `ControlOrMeta` for ⌘). Playwright waits for `networkidle` after open so `bindEditor` is attached, then for the New Slice listitem after click and for the named lane buttons, before asserting lane Add or pressing ⌥⌘1–5.
-- After selecting a Slice, Inspector `Name` may have focus, so selected-Slice ⌥⌘2 runs after clicking the Timeline region (not while typing in `Name`). With no Slice selected, ⌥⌘2 targets the last Slice.
+- After selecting a Slice, Inspector `Name` may have focus, so selected-Slice ⌥⌘2 runs after clicking the selected listitem (focus leaves Inspector, selection stays), not after clicking TIME chrome or empty `.board` ([inspect-deselect.md](./inspect-deselect.md)). With no Slice selected, ⌥⌘2 targets the last Slice.
 - Lane Add and keyboard Add are in-memory until Save. Save still uses the version check from model-persistence.
 - The `TEST_MAIL=1` memory adapter does not count login attempts, so Playwright files can share one Worker without the production 5-per-hour cap.
 

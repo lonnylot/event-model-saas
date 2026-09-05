@@ -9,7 +9,7 @@ GET `/app/teams/{id}/models/{mid}` after Save of `Command → Event Happened` hy
 ## Acceptance criteria
 
 - [x] After a member creates a model, opens it, clicks `Add Command`, clicks `Add Event`, drags `Command port` onto `Event Happened port`, and Saves, a reload of that page, the `.board` `Command → Event Happened` node has a non-empty `data-id`
-- [x] After a member creates a model, opens it, clicks `Add Command`, clicks `Add Event`, drags `Command port` onto `Event Happened port`, and Saves, a reload of that page, clicking `Command → Event Happened` then the Timeline region, pressing Backspace sets Event Model `connections` to `[]`
+- [x] After a member creates a model, opens it, clicks `Add Command`, clicks `Add Event`, drags `Command port` onto `Event Happened port`, and Saves, a reload of that page, clicking `Command → Event Happened`, pressing Backspace sets Event Model `connections` to `[]`
 
 ## Domain terms
 
@@ -29,7 +29,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 - Playwright unique checkout `PORT` / `INSPECTOR_PORT` and `TEST_MAIL=1` `workers` `1` stay [public-face.md](./public-face.md).
 - `.board` still contains `Command → Event Happened` ([connection-on-board.md](./connection-on-board.md)). GET From/To inspect stays [inspect-rest.md](./inspect-rest.md). In-session Connection Backspace stays [delete-blocks.md](./delete-blocks.md). GET `data-id` and Backspace on that `Command → Event Happened` node are this slice. GET `Event Happened → Read Model` `data-id` stays Out of scope.
-- After selection, Inspector may have focus, so delete is Backspace after clicking the Timeline region.
+- After selection, Inspector may have focus, so delete is Backspace after clicking the selected Connection text (focus leaves Inspector, selection stays), not after clicking TIME chrome or empty `.board` ([inspect-deselect.md](./inspect-deselect.md)).
 - Create model still seeds a default Slice ([model-defaults.md](./model-defaults.md)). Toolbar Add still targets the last Slice ([blocks.md](./blocks.md)).
 - Delete is in-memory until Save. Save still uses the version check from model-persistence.
 - Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).

@@ -8,11 +8,11 @@ Backspace deletes a selected Slice, Command, or Connection. Members cannot delet
 
 ## Acceptance criteria
 
-- [x] After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem on the last Slice then the Timeline region, pressing Backspace sets the remaining Actor `id` on the last Slice to the Actor that was last
-- [x] After clicking `New Slice` then `Add Event` twice, clicking the first Timeline `Event Happened` listitem then the Timeline region, pressing Backspace sets the remaining Event `id` to the Event that was last
-- [x] After clicking `New Slice` then `Add Read Model` twice, clicking the first Timeline `Read Model` listitem then the Timeline region, pressing Backspace sets the remaining Read Model `id` to the Read Model that was last
-- [x] After clicking `New Slice` then `Add Automation` twice, clicking the first Timeline `Automation` listitem then the Timeline region, pressing Backspace sets the remaining Automation `id` to the Automation that was last
-- [x] After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem on the last Slice then the Timeline region, pressing Delete sets the remaining Actor `id` on the last Slice to the Actor that was last
+- [x] After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem on the last Slice, pressing Backspace sets the remaining Actor `id` on the last Slice to the Actor that was last
+- [x] After clicking `New Slice` then `Add Event` twice, clicking the first Timeline `Event Happened` listitem, pressing Backspace sets the remaining Event `id` to the Event that was last
+- [x] After clicking `New Slice` then `Add Read Model` twice, clicking the first Timeline `Read Model` listitem, pressing Backspace sets the remaining Read Model `id` to the Read Model that was last
+- [x] After clicking `New Slice` then `Add Automation` twice, clicking the first Timeline `Automation` listitem, pressing Backspace sets the remaining Automation `id` to the Automation that was last
+- [x] After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem on the last Slice, pressing Delete sets the remaining Actor `id` on the last Slice to the Actor that was last
 
 ## Domain terms
 
@@ -25,7 +25,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person,
 
 ## Assumptions
 
-- Two listitems of the same default name are first vs last. After selection, Inspector `Name` may have focus, so delete is Backspace or Delete after clicking the Timeline region.
+- Two listitems of the same default name are first vs last. After selection, Inspector `Name` may have focus, so delete is Backspace or Delete after clicking the selected listitem (focus leaves Inspector, selection stays), not after clicking TIME chrome or empty `.board` ([inspect-deselect.md](./inspect-deselect.md)).
 - Slice / Command / Connection delete stay [canvas.md](./canvas.md) and [delete-blocks.md](./delete-blocks.md). Delete is the same path as Backspace (Mac `onDeleteCommand`).
 - Delete is in-memory until Save.
 - The `TEST_MAIL=1` memory adapter does not count login attempts, so Playwright files can share one Worker without the production 5-per-hour cap.

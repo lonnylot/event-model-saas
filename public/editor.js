@@ -1471,6 +1471,24 @@ export function bindEditor(root) {
     selected = "connection";
     unbindType();
   });
+  if (timeline && typeof timeline.querySelector === "function") {
+    timeline.querySelector(".time-chrome")?.addEventListener("click", () => {
+      selected = null;
+      nameInput()?.closest("label")?.remove();
+      unbindDescription();
+      unbindType();
+      unbindFieldChrome();
+    });
+  }
+  board?.addEventListener("click", (event) => {
+    if (event.target?.closest?.("li")) return;
+    if (event.target?.closest?.("[data-kind=connection]")) return;
+    selected = null;
+    nameInput()?.closest("label")?.remove();
+    unbindDescription();
+    unbindType();
+    unbindFieldChrome();
+  });
   slicesList?.addEventListener("click", (event) => {
     const item = event.target?.closest?.("li");
     if (!item || !slicesList.contains(item)) return;

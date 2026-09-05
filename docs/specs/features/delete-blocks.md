@@ -8,8 +8,8 @@ Backspace deletes the selected Slice. Members cannot delete a selected Command o
 
 ## Acceptance criteria
 
-- [x] After clicking `New Slice` then `Add Command` twice, clicking the first Timeline `Command` listitem then the Timeline region, pressing Backspace sets the remaining Command `id` to the Command that was last
-- [x] After dragging from `Command port` onto `Event Happened port` then from `Event Happened port` onto `Read Model port`, clicking the Timeline text `Command → Event Happened` then the Timeline region, pressing Backspace sets the remaining Connection `fromKind` to `EVENT`
+- [x] After clicking `New Slice` then `Add Command` twice, clicking the first Timeline `Command` listitem, pressing Backspace sets the remaining Command `id` to the Command that was last
+- [x] After dragging from `Command port` onto `Event Happened port` then from `Event Happened port` onto `Read Model port`, clicking the Timeline text `Command → Event Happened`, pressing Backspace sets the remaining Connection `fromKind` to `EVENT`
 
 ## Domain terms
 
@@ -23,7 +23,7 @@ Event Model, Slice, Command, Event, Read Model, Connection, Team, Person, Versio
 ## Assumptions
 
 - Two Timeline `Command` listitems are first vs last. Command Name mutates the last Command only when that Command is selected. Command multi-item Name is [name-binding.md](./name-binding.md).
-- Command selection is a click on the Timeline listitem. Connection selection is a click on the Timeline text `Command → Event Happened`. After that click, Inspector `Name` may have focus, so delete is Backspace after clicking the Timeline region (not while typing in `Name`). In-session Connection Backspace is this slice. GET `Command → Event Happened` Backspace is [hydrate-connection-id.md](./hydrate-connection-id.md). GET `Event Happened → Read Model` Backspace stays [hydrate-connection-id.md](./hydrate-connection-id.md) Out of scope.
+- Command selection is a click on the Timeline listitem. Connection selection is a click on the Timeline text `Command → Event Happened`. After that click, Inspector `Name` may have focus, so delete is Backspace after clicking the selected listitem or Connection text (focus leaves Inspector, selection stays), not after clicking TIME chrome or empty `.board` ([inspect-deselect.md](./inspect-deselect.md)). In-session Connection Backspace is this slice. GET `Command → Event Happened` Backspace is [hydrate-connection-id.md](./hydrate-connection-id.md). GET `Event Happened → Read Model` Backspace stays [hydrate-connection-id.md](./hydrate-connection-id.md) Out of scope.
 - Add still targets the last Slice. Add Command twice then Add Event and Add Read Model for the two Connections.
 - Remaining Connection after deleting `Command → Event Happened` is Event → Read Model (`fromKind` `EVENT`).
 - Slice Backspace stays [canvas.md](./canvas.md). Delete of Actor, Event, Read Model, and Automation is [delete-rest.md](./delete-rest.md).

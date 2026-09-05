@@ -86,12 +86,6 @@ async function openUntitledModel(page: Page) {
   await page.waitForLoadState("networkidle");
 }
 
-async function clickTimelineRegion(page: Page) {
-  await page
-    .getByRole("region", { name: "Timeline", exact: true })
-    .click({ position: { x: 1, y: 1 } });
-}
-
 test("GET `/app/teams/{id}/models/{mid}` as a member after Create model, the Timeline `Actor` listitem has a non-empty `data-id`", async ({
   page,
 }) => {
@@ -143,7 +137,7 @@ test("After a member creates a model, opens it, clicks `Add Actor`, and Saves, a
   expect(json.slices[0].actors.at(-1).name).toBe("Actor");
 });
 
-test("After a member creates a model, opens it, clicks `Add Actor`, and Saves, a reload of that page, clicking the first Timeline `Actor` listitem then the Timeline region, pressing Backspace sets the remaining Actor `id` to the Actor that was last", async ({
+test("After a member creates a model, opens it, clicks `Add Actor`, and Saves, a reload of that page, clicking the first Timeline `Actor` listitem, pressing Backspace sets the remaining Actor `id` to the Actor that was last", async ({
   page,
 }) => {
   await saveReloadTwoActors(page);
@@ -156,7 +150,6 @@ test("After a member creates a model, opens it, clicks `Add Actor`, and Saves, a
     .getByRole("listitem", { name: "Actor", exact: true })
     .first()
     .click();
-  await clickTimelineRegion(page);
   await page.keyboard.press("Backspace");
   const json = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
@@ -192,7 +185,7 @@ test("After a member creates a model, opens it, clicks `Add Automation`, and Sav
   ).toHaveAttribute("data-id", /.+/);
 });
 
-test("After a member creates a model, opens it, clicks `Add Automation` twice, and Saves, a reload of that page, clicking the first Timeline `Automation` listitem then the Timeline region, pressing Backspace sets the remaining Automation `id` to the Automation that was last", async ({
+test("After a member creates a model, opens it, clicks `Add Automation` twice, and Saves, a reload of that page, clicking the first Timeline `Automation` listitem, pressing Backspace sets the remaining Automation `id` to the Automation that was last", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -218,7 +211,6 @@ test("After a member creates a model, opens it, clicks `Add Automation` twice, a
   );
   const lastId = before.slices[0].processors[1].id;
   await automations.first().click();
-  await clickTimelineRegion(page);
   await page.keyboard.press("Backspace");
   const json = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
