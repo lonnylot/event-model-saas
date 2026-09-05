@@ -69,7 +69,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Playwright `toHaveCSS` of a computed color that is the UA default (Email Field canvas fill) or inherited from a parent/body AC (Landing heading ink after public-face `body.landing`; editor `Slices` heading after `body.app-editor` ink) | `testing`, `keeping-specs-current`, `tdd-loop`, `playwright-e2e`, `logical-commits` |
 | Playwright `locator.focus()` of `:focus-visible` (`Sign in` box-shadow) stays green for a `:focus` rule | `testing`, `tdd-loop`, `playwright-e2e` |
 | Spec tree location / vendor plan dirs / `docs/superpowers/` | this skill, `keeping-specs-current` |
-| Leftover `<<<<<<< Updated upstream` in docs/specs/README.md (new catalog row at the bottom) | `keeping-specs-current`, `spec-implementer` |
+| Leftover `<<<<<<< Updated upstream` in docs/specs/README.md (new catalog row at the bottom; Connection caption after Editor bind split; Inspect event read after Inspect switch) | `keeping-specs-current`, `spec-implementer` |
 | Architecture adapter constructed only under a test flag / injected `env.documents` | `testing`, `codebase-design`, `keeping-specs-current` |
 | Independently revertible fromKind vs toKind / GET already hydrates | `logical-commits` |
 | GET `/editor.js` lock vs bindInspect extract (lock already existed; no production hunk) | `logical-commits` |
