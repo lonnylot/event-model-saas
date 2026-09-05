@@ -38,6 +38,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Problem names only Field name when ACs also drop Field type / Optional / Example / Delete Field | `keeping-specs-current` |
 | Problem names only Slice leftover Name/Type when ACs also cover Actor leftover Name after empty `.board` (inspect-deselect) | `keeping-specs-current` |
 | Problem names Inspector Name on Actor and Automation when unique AC is GET Actor Name JSON | `keeping-specs-current` |
+| Problem names leftover Add Field vs unique Nothing Selected (`:has(label)` empty copy; Add Field is a button) | `keeping-specs-current`, `testing`, `tdd-loop`, `playwright-e2e` |
 | Restates leftover Name JSON on those GET listitems vs Out of scope GET Automation Name JSON | `keeping-specs-current` |
 | Restates leftover GET Connection data-id / Backspace vs unique Command → Event Happened / parked Event Happened → Read Model | `keeping-specs-current` |
 | Leftover architecture Front end Inspector unbind on selection change vs leftover Type after a Connection click / leftover From after Command → Event Happened | `keeping-specs-current` |

@@ -19,6 +19,7 @@ Load with `testing`. Portable procedure is `SKILL.md` (spec-loop).
 | "includes `scale(`" / `toContain("scale(")` | Canvas pan already writes `scale(1)`; deleting the unique ctrl/meta branch stays green |
 | YAML key / workflow event | Prefix match (`/pull_request:/` also hits `pull_request_target:`) |
 | "does not show a control named X" | Querying only `button` and `link` (checkbox/menuitem named X stays green) |
+| Inspector `Nothing Selected` / `:has(label)` empty copy | Leftover Add Field is a `button`; `section[aria-label="Inspector"]:has(label) .inspector-empty` hides empty copy only when a `label` remains. Nothing Selected `toBeVisible` stays green if `unbindFieldChrome()` is deleted. inspect-switch leftover Add Field is its own does-not-show-button AC |
 | "does not show a listitem whose accessible name is X" (unit HTML) | `not.toContain("<li>X</li>")` (`<li aria-label="X">` stays green) |
 | Listitem **in** the Timeline region (unit HTML) | `/aria-label="Timeline"[\s\S]*<li...Actor/` (Inspector Actor after Timeline stays green) |
 | TIME chrome does not pan / `.time-chrome` | Timeline `style.transform` does not include `translate(` (TIME chrome inside `.board` stays green) |
@@ -67,6 +68,8 @@ Look of named screens is `visual-design`. Do not prove look as a pile of compute
 A hosted Worker path is unproven by a handler unit test when `run_worker_first` can be deleted without failing that test.
 
 Click/drag criteria are unproven by a unit call production never makes — prove the in-memory document after the click, or Playwright `dragTo` / the editor mouseup path.
+
+Inspector `Nothing Selected` is unproven for leftover Add Field — empty copy is `section[aria-label="Inspector"]:has(label) .inspector-empty`. Add Field is a `button`. Deleting `unbindFieldChrome()` stays green. That leftover is its own “does not show a button whose accessible name is `Add Field`” AC (`inspect-switch.md`), or drop Add Field from Problem (`keeping-specs-current`).
 
 Inspect/delete after reload that requires `data-kind` / `data-id` GET HTML does not emit is unproven until that click after reload is an AC, or Out of scope names it. Inspect/delete on a new in-memory listitem path that omits `data-id` / `data-kind` when sibling toolbar Add emits them is unproven until that click is an AC, or Out of scope names inspect/delete on those listitems — GET after reload is leftover-narrow (`keeping-specs-current`).
 

@@ -19,7 +19,7 @@ Extra visible chrome without an AC is unfinished — add the AC or omit it. Here
 - Hardcoded create-title Name after fill heading
 - Extra Delete key when ACs or `product.md` name only Backspace (canvas: Delete is the same path — name it)
 - Inspector Name (or other inspect chrome) on a kind Out of scope names inspecting (Command / Event / Read Model / Automation)
-- Leftover Add Field / Field name / Field type / Optional / Example / Delete Field after a narrower unbind
+- Leftover Add Field / Field name / Field type / Optional / Example / Delete Field after a narrower unbind. Nothing Selected / `:has(label)` empty copy does not prove leftover Add Field — Add Field is a `button`
 - Leftover To Read Model after a narrower From Event Happened remove
 - GET-rendered Description / Add Field when ACs only name Name
 - UI / Restates that claim compose of primitives (Card, Field, Page `type`, Button `radius`) this HEAD does not ship; leftover Field `canvas` fill after dropped Email fill AC; leftover Card `padding` with no AC; leftover Button primary `radius` on `Send invite`; leftover design-system waitlist Card lift when ACs lift `.waitlist-band`; leftover design-system Page on every listed screen; leftover Unique look picker / team / Teams admin / guest `/app` lead `<p><a href="/app">Event Model</a></p>` after those screens wrap wordmark in `header` (`visual-design/PRODUCT.md`)
@@ -85,6 +85,8 @@ A Problem that names only Field name when ACs also drop Field type / Optional / 
 A Problem that names only Slice leftover Name and Type when ACs also cover Actor leftover Name after empty `.board` is leftover-narrow Problem — name leftover Inspector Name after Timeline `Actor` then empty `.board`, as well as leftover Name and Type after Timeline `New Slice` then TIME chrome. Empty `.board` is not a Slice-only tell (`inspect-deselect`).
 
 A Problem that names Inspector Name on Actor and Automation when unique AC is GET Actor Name JSON is leftover-wide Problem — Out of scope GET Automation Name JSON, or add that AC.
+
+A Problem that names leftover Add Field when unique AC is Inspector `Nothing Selected` is leftover-wide Problem — Add Field is a `button`; `:has(label)` empty copy stays green if `unbindFieldChrome()` is deleted. Add the does-not-show-button AC (`inspect-switch.md` leftover Add Field), or drop Add Field from Problem.
 
 Restates inspect-after-reload “Name JSON and Backspace on those GET listitems” (Actor / Automation) while Out of scope parks GET Automation Name JSON cannot both hold — narrow Restates to GET Actor Name JSON and GET Actor / Automation Backspace.
 
