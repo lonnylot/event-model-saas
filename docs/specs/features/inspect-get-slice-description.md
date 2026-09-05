@@ -41,3 +41,16 @@ GET Type of the first of two Slices stays [inspect-get-slice-type.md](./inspect-
 - [editor-bind-split.md](./editor-bind-split.md) — `bindInspect` stays `public/editor-inspect.js`. GET Inspector for Command, Event, Read Model, Actor, or Automation stays that file's Out of scope. GET Description of the first of two Slices is this slice.
 - [inspect-get-slice-type.md](./inspect-get-slice-type.md) — GET Inspector for Description no longer stays [editor-bind-split.md](./editor-bind-split.md) Out of scope. GET Description of the first of two Slices is this slice. GET Type of the first of two Slices stays that file.
 - [architecture.md](../architecture.md) — Editor canvas stays custom timeline TypeScript. GET first-of-two Slice Description is this slice.
+- [editor-shell.md](./editor-shell.md) — Description after reload of one Slice stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Slices is this slice.
+- [add-on-lane.md](./add-on-lane.md) — Description after reload of one Slice stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Slices is this slice.
+- [blocks.md](./blocks.md) — Description after reload of one Slice stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Slices is this slice.
+- [canvas.md](./canvas.md) — Description after reload of one Slice stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Slices is this slice.
+- [chrome.md](./chrome.md) — Description after reload of one Slice stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Slices is this slice.
+- [connection-feedback.md](./connection-feedback.md) — Description after reload of one Slice stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Slices is this slice.
+- [connections.md](./connections.md) — Description after reload of one Slice stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Slices is this slice.
+- [inspect-blocks.md](./inspect-blocks.md) — Description after reload of one Slice stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Slices is this slice.
+- [inspect-connection.md](./inspect-connection.md) — Description after reload of one Slice stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Slices is this slice.
+- [inspect-description.md](./inspect-description.md) — Description after reload of one Slice stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Slices is this slice.
+- [inspect-fields.md](./inspect-fields.md) — Description after reload of one Slice stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Slices is this slice.
+- [model-persistence.md](./model-persistence.md) — Description after reload of one Slice stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Slices is this slice.
+- [slice-type.md](./slice-type.md) — Description after reload of one Slice stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Slices is this slice.
