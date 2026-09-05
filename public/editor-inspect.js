@@ -1099,6 +1099,7 @@ export function bindInspect(root, ctx) {
     unbindType();
     unbindAddField();
     unbindFieldName();
+    unbindFieldType();
   });
   if (timeline && typeof timeline.querySelector === "function") {
     timeline.querySelector(".time-chrome")?.addEventListener("click", () => {
