@@ -109,6 +109,8 @@ Restates omitting `public-face.md` leftover unused `.bento` fill/lift when this 
 
 Restates omitting released `hydrate-board.md` leftover Out of scope “Pan and Zoom covering TIME chrome” when this HEAD took covering TIME chrome (listed timeline-clip / canvas / editor-shell / architecture / design-system) is leftover Restates. Grep covering TIME chrome even when Restates already lists timeline-clip.
 
+Restates omitting released `editor-bind-split.md` leftover Out of scope `⌘S Save.` when this HEAD took ⌘S Save (listed editor-shell / product.md / architecture.md) is leftover Restates. Grep `⌘S Save` even when Restates already lists editor-shell. Search hits for `Unsaved changes.` do not include that park.
+
 Restates omitting released `port-wrap.md` leftover Out of scope “Narrow viewport” / `inspect-switch.md` leftover Out of scope “Narrow viewport layout” when this HEAD took narrow Editor layout (listed designed-surfaces / visual-shell / architecture) is leftover Restates. Grep Narrow viewport / Narrow viewport layout even when Restates already lists designed-surfaces.
 
 Restates “Narrow AppBar / Timeline clip” when released `timeline-clip.md` owns pan/zoom clip is leftover Restates — restate to “narrow Slice-inside-Timeline layout” so the two clips do not read as one owner.
