@@ -51,6 +51,7 @@ GET Type of the first of two Slices stays [inspect-get-slice-type.md](./inspect-
 - [inspect-blocks.md](./inspect-blocks.md) — Description after reload of one Slice stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Slices is this slice.
 - [inspect-connection.md](./inspect-connection.md) — Description after reload of one Slice stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Slices is this slice.
 - [inspect-description.md](./inspect-description.md) — Description after reload of one Slice stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Slices is this slice.
+- [inspect-after-reload.md](./inspect-after-reload.md) — Description after reload of one Slice stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Slices is this slice.
 - [inspect-fields.md](./inspect-fields.md) — Description after reload of one Slice stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Slices is this slice.
 - [model-persistence.md](./model-persistence.md) — Description after reload of one Slice stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Slices is this slice.
 - [slice-type.md](./slice-type.md) — Description after reload of one Slice stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Slices is this slice.

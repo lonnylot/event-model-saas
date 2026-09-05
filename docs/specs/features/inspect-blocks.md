@@ -40,7 +40,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person,
 - Command, Event, Read Model, and Automation selection is a click on the Timeline listitem. The Inspector `Name` textbox is one control; selecting another of those kinds in the same session updates that `Name` value.
 - Toolbar Add still targets the last Slice. Clicking Add Command, Add Event, Add Read Model, or Add Automation with no Slice does not append a Timeline listitem.
 - This slice is one in-session Command. Command Name mutates the last Command only when that Command is selected. Command multi-item Name is [name-binding.md](./name-binding.md). Event / Read Model / Automation Name binds to the clicked Event, Read Model, or Automation ([name-binding-rest.md](./name-binding-rest.md)).
-- Inspect is a click on a click-created listitem. Inspect after reload is [inspect-after-reload.md](./inspect-after-reload.md). Description after reload of one Slice is [inspect-rest.md](./inspect-rest.md).
+- Inspect is a click on a click-created listitem. Inspect after reload is [inspect-after-reload.md](./inspect-after-reload.md). Description after reload of one Slice is [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Slices is [inspect-get-slice-description.md](./inspect-get-slice-description.md).
 - The Inspector `Name` textbox edits Command, Event, Read Model, or Automation `title`. The JSON key stays `title`.
 - Name edits are in-memory until Save. Save still uses the version check from model-persistence.
 - The `TEST_MAIL=1` memory adapter does not count login attempts, so Playwright files can share one Worker without the production 5-per-hour cap.

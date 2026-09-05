@@ -35,7 +35,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Description, 
 
 - Selection is the same click as Name ([chrome.md](./chrome.md), [inspect-blocks.md](./inspect-blocks.md)). The Inspector `Description` textbox is one control; selecting another of those kinds in the same session updates that `Description` value.
 - Add still targets the last Slice. This slice is one in-session item of each kind. Description JSON mutates the last of that kind. Description-by-id of two items is [name-binding-rest.md](./name-binding-rest.md).
-- Inspect is a click on a click-created listitem. Name inspect after reload is [inspect-after-reload.md](./inspect-after-reload.md). Description after reload of one Slice / Actor / Event / Read Model / Automation is [inspect-rest.md](./inspect-rest.md).
+- Inspect is a click on a click-created listitem. Name inspect after reload is [inspect-after-reload.md](./inspect-after-reload.md). Description after reload of one Slice / Actor / Event / Read Model / Automation is [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Slices is [inspect-get-slice-description.md](./inspect-get-slice-description.md).
 - Empty JSON may omit `description`. Filling Description writes the `description` key. The JSON key stays `description`.
 - Description edits are in-memory until Save. Save still uses the version check from model-persistence.
 - Reload proof reads `#event-model-document` after GET hydrates the saved body. It does not click Inspector after reload.
