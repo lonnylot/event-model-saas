@@ -110,3 +110,28 @@ test("After clicking `Add Command`, clicking the Timeline `Command` listitem, pr
     inspector.getByText("Nothing Selected", { exact: true }),
   ).toBeVisible();
 });
+
+test("After clicking `Add Command`, clicking the Timeline `Command` listitem, pressing Backspace, the Inspector region does not show a button whose accessible name is `Add Field`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  const inspector = page.getByRole("region", {
+    name: "Inspector",
+    exact: true,
+  });
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  const command = timeline.getByRole("listitem", {
+    name: "Command",
+    exact: true,
+  });
+  await expect(command).toBeVisible();
+  await command.click();
+  await expect(
+    inspector.getByRole("button", { name: "Add Field", exact: true }),
+  ).toBeVisible();
+  await page.keyboard.press("Backspace");
+  await expect(
+    inspector.getByRole("button", { name: "Add Field", exact: true }),
+  ).toHaveCount(0);
+});

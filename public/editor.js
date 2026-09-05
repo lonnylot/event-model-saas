@@ -2265,6 +2265,7 @@ export function bindEditor(root) {
       nameInput()?.closest("label")?.remove();
       unbindDescription();
       unbindType();
+      unbindFieldChrome();
       return;
     }
     const sliceId = selectedSliceItem?.dataset?.id;

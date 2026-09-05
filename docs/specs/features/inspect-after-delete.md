@@ -9,6 +9,7 @@ Backspace deletes a selected Command. Inspector still shows Name, Add Field, and
 ## Acceptance criteria
 
 - [x] After clicking `Add Command`, clicking the Timeline `Command` listitem, pressing Backspace, the Inspector region shows the text `Nothing Selected`
+- [x] After clicking `Add Command`, clicking the Timeline `Command` listitem, pressing Backspace, the Inspector region does not show a button whose accessible name is `Add Field`
 
 ## Domain terms
 
