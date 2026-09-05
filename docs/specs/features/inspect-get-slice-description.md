@@ -1,6 +1,6 @@
 # Inspect get slice description
 
-Status: validated
+Status: released
 
 ## Problem
 
