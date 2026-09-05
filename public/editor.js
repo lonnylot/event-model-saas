@@ -1,6 +1,7 @@
 import { bindPointer } from "./editor-pointer.js";
 import { bindKeyboard } from "./editor-keyboard.js";
 import { bindInspect } from "./editor-inspect.js";
+import { bindCanvas } from "./editor-canvas.js";
 import { appendSlice } from "./append-slice.js";
 import { appendActor } from "./append-actor.js";
 import { appendCommand } from "./append-command.js";
@@ -43,21 +44,6 @@ function boardMount(root) {
     timeline.querySelector(".board") ??
     timeline
   );
-}
-
-function ensurePanLayer(board) {
-  if (!(board instanceof HTMLElement) || typeof board.querySelector !== "function") {
-    return null;
-  }
-  let layer = board.querySelector(":scope > .board-pan");
-  if (layer) return layer;
-  const doc = board.ownerDocument;
-  if (!doc) return null;
-  layer = doc.createElement("div");
-  layer.className = "board-pan";
-  while (board.firstChild) layer.append(board.firstChild);
-  board.append(layer);
-  return layer;
 }
 
 function mountSliceColumn(root, slice, sliceIndex) {
@@ -254,41 +240,7 @@ export function bindEditor(root) {
     timeline && typeof timeline.querySelector === "function"
       ? timeline.querySelector(".board")
       : null;
-  let scale = 1;
-  let panX = 0;
-  let panY = 0;
-  const applyTimelineTransform = () => {
-    if (!(board instanceof HTMLElement)) return;
-    const parts = [`scale(${scale})`];
-    if (panX !== 0 || panY !== 0) {
-      parts.push(`translate(${panX}px, ${panY}px)`);
-    }
-    board.style.transform = parts.join(" ");
-    const lift = panY < 0 ? -panY : 0;
-    board.style.marginTop = lift ? `${lift}px` : "";
-    const layer = ensurePanLayer(board);
-    if (layer instanceof HTMLElement) {
-      layer.style.transform = lift ? `translate(0px, ${panY}px)` : "";
-    }
-  };
-  ensurePanLayer(board);
   if (timeline instanceof HTMLElement) {
-    timeline.style.minHeight = "48px";
-    timeline.addEventListener(
-      "wheel",
-      (event) => {
-        if (event.ctrlKey || event.metaKey) {
-          event.preventDefault();
-          scale *= Math.exp(-event.deltaY * 0.01);
-          applyTimelineTransform();
-          return;
-        }
-        panX -= event.deltaX;
-        panY -= event.deltaY;
-        applyTimelineTransform();
-      },
-      { passive: false },
-    );
     timeline.addEventListener("click", (event) => {
       const button = event.target?.closest?.("button");
       const holder = root.getElementById("event-model-document");
@@ -310,24 +262,6 @@ export function bindEditor(root) {
     });
   }
   root.querySelectorAll("button").forEach((button) => {
-    if (button.textContent === "Zoom in") {
-      button.addEventListener("click", () => {
-        scale = 1.25;
-        applyTimelineTransform();
-      });
-    }
-    if (button.textContent === "Zoom out") {
-      button.addEventListener("click", () => {
-        scale = 0.8;
-        applyTimelineTransform();
-      });
-    }
-    if (button.textContent === "Reset zoom") {
-      button.addEventListener("click", () => {
-        scale = 1;
-        applyTimelineTransform();
-      });
-    }
     if (button.textContent === "New Slice") {
       button.addEventListener("click", () => onNewSliceClick(root));
     }
@@ -384,6 +318,7 @@ export function bindEditor(root) {
     get selectedConnectionNode() { return selectedConnectionNode; },
     set selectedConnectionNode(v) { selectedConnectionNode = v; },
   };
+  bindCanvas(root, ctx);
   bindInspect(root, ctx);
   ctx.undoStack = undoStack;
   ctx.redoStack = redoStack;
@@ -396,12 +331,6 @@ export function bindEditor(root) {
   ctx.onAddEventClick = () => onAddEventClick(root);
   ctx.onAddReadModelClick = () => onAddReadModelClick(root);
   ctx.onAddAutomationClick = () => onAddAutomationClick(root);
-  Object.defineProperty(ctx, "scale", {
-    get() { return scale; },
-    set(v) { scale = v; },
-    configurable: true,
-  });
-  ctx.applyTimelineTransform = applyTimelineTransform;
   bindKeyboard(root, ctx);
   bindPointer(root, ctx);
 }

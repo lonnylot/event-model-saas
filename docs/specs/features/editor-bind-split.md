@@ -12,7 +12,7 @@ Status: validated
 - [x] `bindInspect` is imported only from `public/editor-inspect.js`
 - [x] `bindKeyboard` is imported only from `public/editor-keyboard.js`
 - [x] `bindPointer` is imported only from `public/editor-pointer.js`
-- [ ] `bindCanvas` is imported only from `public/editor-canvas.js`
+- [x] `bindCanvas` is imported only from `public/editor-canvas.js`
 
 ## Domain terms
 

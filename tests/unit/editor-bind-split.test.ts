@@ -147,4 +147,12 @@ describe("editor bind split", () => {
     expect(sources.every((source) => source === expected)).toBe(true);
     expect(declarationFilesOf("bindPointer")).toEqual([expected]);
   });
+
+  it("`bindCanvas` is imported only from `public/editor-canvas.js`", () => {
+    const expected = resolve("public/editor-canvas.js");
+    const sources = importSourcesOf("bindCanvas");
+    expect(sources.length).toBeGreaterThan(0);
+    expect(sources.every((source) => source === expected)).toBe(true);
+    expect(declarationFilesOf("bindCanvas")).toEqual([expected]);
+  });
 });
