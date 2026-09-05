@@ -2,7 +2,7 @@
 
 Load with `tdd-loop`. Portable procedure is `SKILL.md` (spec-loop).
 
-Product weaker readings: `testing/PRODUCT.md`. Product chrome / Restates: `keeping-specs-current/PRODUCT.md`. Commit grouping: `logical-commits/PRODUCT.md`.
+Product weaker readings: `testing/PRODUCT.md`. Product chrome / Restates: `keeping-specs-current/PRODUCT.md`. Commit grouping: `logical-commits/PRODUCT.md`. Leftover-hide From Command vs To Event Happened vs Connection is independently revertible — not one `unbindConnectionCopy` loop.
 
 ## RED
 

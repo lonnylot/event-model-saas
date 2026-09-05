@@ -15,11 +15,11 @@ A `visual-design` look pass is one slice per named screen (or one stylesheet sev
 - Two kind-gated `if (port.dataset.kind === …)` alreadyConnected arms: unique production per AC, not one kind-agnostic early return. Event → Read Model drag parent vs Command → Event Happened drag parent is the same split — the first AC must not already move every target's parent. ⇧⌘Z redo Connection copy parent vs drag Connection copy parent is unique production — Restates leftover unused sibling is false until that arm moves.
 - Status vs heading vs row vs R2; two workflow `on:` events vs a `run` step.
 - Four independently revertible ACs on GET `/app` (Team name, Create team, Sign out, Teams admin) are four commits. Five ACs on GET `/app/teams/{id}/models/{mid}` (heading, email, Save, Export, Sign out) are five.
-- Leftover-hide `unbindAddField` vs `unbindFieldName` is the same split. From Event Happened remove vs To Read Model remove is that split.
+- Leftover-hide `unbindAddField` vs `unbindFieldName` is the same split. From Event Happened remove vs To Read Model remove is that split. From Command remove vs To Event Happened remove vs Connection remove is that split — a shared `unbindConnectionCopy` loop is the `shell()` helper, not one production path.
 - Client `fetch` in `public/*.js` that a Playwright flow needs is that flow's production.
 - Restates leftover rewrite vs unique production restore of a different path are two commits: Card/Field stay later vs PNG mark pixels; leftover Restates public-face Field not-canvas-fill / public Page `canvas`/`ink` / design-system Page `type`/`canvas`/`ink` vs unique Send invite radius. A subject that names two review threads with "and" has not addressed either.
 
-Do not introduce a shared helper (`shell()`) only to keep two checkboxes in one commit. A stylesheet commit must not already apply paper (Login-only selector, not global `body { background-color }`). When splitting status vs content-type, the status commit must not already send that header.
+Do not introduce a shared helper (`shell()` / `unbindConnectionCopy` looping leftover Inspector strings) only to keep two checkboxes in one commit. A stylesheet commit must not already apply paper (Login-only selector, not global `body { background-color }`). When splitting status vs content-type, the status commit must not already send that header.
 
 ## No unique production — fold or unsplit
 
