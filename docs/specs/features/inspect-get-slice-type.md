@@ -1,6 +1,6 @@
 # Inspect get slice type
 
-Status: validated
+Status: released
 
 ## Problem
 

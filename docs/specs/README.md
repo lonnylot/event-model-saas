@@ -82,6 +82,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Connection caption | [features/connection-caption.md](./features/connection-caption.md) | released |
 | Inspect event read fields | [features/inspect-event-read-fields.md](./features/inspect-event-read-fields.md) | released |
 | Cmd s save | [features/cmd-s-save.md](./features/cmd-s-save.md) | released |
-| Inspect get slice type | [features/inspect-get-slice-type.md](./features/inspect-get-slice-type.md) | validated |
+| Inspect get slice type | [features/inspect-get-slice-type.md](./features/inspect-get-slice-type.md) | released |
 
 Status: `draft` → `validated` → `released`.
