@@ -2,7 +2,7 @@
 
 Load with `tdd-loop`. Portable procedure is `SKILL.md` (spec-loop).
 
-Product weaker readings: `testing/PRODUCT.md`. Product chrome / Restates: `keeping-specs-current/PRODUCT.md`. Commit grouping: `logical-commits/PRODUCT.md`. Leftover-hide From Command vs To Event Happened vs Connection is independently revertible — not one `unbindConnectionCopy` loop. Leftover-hide `unbindFieldChrome` vs Name/Description/Type unbind (`:has(label)` empty copy / Nothing Selected) is independently revertible — not one Command Backspace path. GET `/editor.js` lock vs `bindInspect` extract is independently revertible — not one page-bind commit. GET Command → Event Happened caption vs GET Event Happened → Read Model caption is independently revertible when this slice changes wrapping — not one HTML string.
+Product weaker readings: `testing/PRODUCT.md`. Product chrome / Restates: `keeping-specs-current/PRODUCT.md`. Commit grouping: `logical-commits/PRODUCT.md`. Leftover-hide From Command vs To Event Happened vs Connection is independently revertible — not one `unbindConnectionCopy` loop. Leftover-hide `unbindFieldChrome` vs Name/Description/Type unbind (`:has(label)` empty copy / Nothing Selected) is independently revertible — not one Command Backspace path. Event → Read Model Backspace JSON `connections` [] vs `.board` caption `node?.remove()` is independently revertible — persist-then analog: JSON commit must not already remove the caption. GET `/editor.js` lock vs `bindInspect` extract is independently revertible — not one page-bind commit. GET Command → Event Happened caption vs GET Event Happened → Read Model caption is independently revertible when this slice changes wrapping — not one HTML string.
 
 ## RED
 
@@ -22,4 +22,4 @@ No extra R2/D1 write without a stored-body AC. Architecture adapters constructed
 
 ## TDD slice
 
-When restating a weaker fixture after production landed, reconstruct into that production commit (`logical-commits/PRODUCT.md`). After the PR is open, spec-loop owns the slice: one review/CI commit on HEAD. Extra leftover-hide production that already landed without its AC (`unbindFieldChrome()` in Nothing Selected) is still tests-after — rebase so that call is not in the earlier commit (`logical-commits/PRODUCT.md`).
+When restating a weaker fixture after production landed, reconstruct into that production commit (`logical-commits/PRODUCT.md`). After the PR is open, spec-loop owns the slice: one review/CI commit on HEAD. Extra leftover-hide production that already landed without its AC (`unbindFieldChrome()` in Nothing Selected) is still tests-after — rebase so that call is not in the earlier commit (`logical-commits/PRODUCT.md`). Extra caption `node?.remove()` that already landed in the JSON `connections` [] commit is still tests-after — rebase so JSON does not remove the caption (`logical-commits/PRODUCT.md`).
