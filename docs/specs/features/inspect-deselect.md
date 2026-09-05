@@ -42,7 +42,7 @@ Leftover Type after a Connection click. GET last-of-kind Description. Shortcut p
 - [slice-type.md](./slice-type.md) — Clicking Timeline `New Slice` still shows Type. Type after TIME click is this slice.
 - [architecture.md](../architecture.md) — Editor canvas stays custom timeline TypeScript. Inspector empty state after TIME or empty board click is this slice.
 - [canvas.md](./canvas.md) — Slice Backspace after clicking the selected listitem stays that file. Timeline click no longer blurs without deselecting; TIME chrome / empty `.board` deselect is this slice.
-- [delete-blocks.md](./delete-blocks.md) — Command / Connection Backspace after clicking the selected listitem or Connection text stays that file. Timeline click no longer blurs without deselecting.
+- [delete-blocks.md](./delete-blocks.md) — Command / Command → Event Connection Backspace after clicking the selected listitem or Connection text stays that file. Event → Read Model Backspace after clicking the selected Connection then the Timeline region is [delete-event-read.md](./delete-event-read.md). Timeline click no longer blurs without deselecting.
 - [delete-rest.md](./delete-rest.md) — Actor / Event / Read Model / Automation Backspace after clicking the selected listitem stays that file. Timeline click no longer blurs without deselecting.
 - [hydrate-kind-id.md](./hydrate-kind-id.md) — GET Actor / Automation Backspace after clicking the selected listitem stays that file. Timeline click no longer blurs without deselecting.
 - [undo-rest.md](./undo-rest.md) — Backspace then ⌘Z / ⇧⌘Z after clicking the selected listitem stays that file. Timeline click no longer blurs without deselecting.
