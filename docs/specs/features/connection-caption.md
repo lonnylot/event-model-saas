@@ -9,7 +9,7 @@ Dragging `Command port` onto `Event Happened port` puts `Command → Event Happe
 ## Acceptance criteria
 
 - [x] After dragging `Command port` onto `Event Happened port`, `Command → Event Happened` `getBoundingClientRect.top` is greater than or equal to the `.slice-col` that contains `Command` `getBoundingClientRect.bottom`
-- [ ] After dragging `Event Happened port` onto `Read Model port`, `Event Happened → Read Model` `getBoundingClientRect.top` is greater than or equal to the `.slice-col` that contains `Read Model` `getBoundingClientRect.bottom`
+- [x] After dragging `Event Happened port` onto `Read Model port`, `Event Happened → Read Model` `getBoundingClientRect.top` is greater than or equal to the `.slice-col` that contains `Read Model` `getBoundingClientRect.bottom`
 - [ ] After a member creates a model, opens it, clicks `Add Command`, clicks `Add Event`, drags `Command port` onto `Event Happened port`, and Saves, a reload of that page, `Command → Event Happened` `getBoundingClientRect.top` is greater than or equal to the `.slice-col` that contains `Command` `getBoundingClientRect.bottom`
 - [ ] After a member creates a model, opens it, clicks `Add Event`, clicks `Add Read Model`, drags `Event Happened port` onto `Read Model port`, and Saves, a reload of that page, `Event Happened → Read Model` `getBoundingClientRect.top` is greater than or equal to the `.slice-col` that contains `Read Model` `getBoundingClientRect.bottom`
 

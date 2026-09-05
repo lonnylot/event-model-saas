@@ -349,10 +349,22 @@ export function bindPointer(root, ctx) {
           board &&
           !board.textContent?.includes("Event Happened → Read Model")
         ) {
-          board.insertAdjacentHTML(
-            "beforeend",
-            '<p data-kind="connection">Event Happened → Read Model</p>',
-          );
+          const line = root.createElement("p");
+          line.textContent = "Event Happened → Read Model";
+          line.setAttribute("data-kind", "connection");
+          const sliceCol = target.closest(".slice-col");
+          if (sliceCol) {
+            let stack = sliceCol.parentElement;
+            if (!stack.classList.contains("slice-stack")) {
+              stack = root.createElement("div");
+              stack.className = "slice-stack";
+              sliceCol.replaceWith(stack);
+              stack.append(sliceCol);
+            }
+            stack.append(line);
+          } else {
+            board.append(line);
+          }
         }
       }
       if (

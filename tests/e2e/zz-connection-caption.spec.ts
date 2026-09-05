@@ -123,3 +123,27 @@ test("After dragging `Command port` onto `Event Happened port`, `Command → Eve
   );
   expect(captionTop).toBeGreaterThanOrEqual(colBottom);
 });
+
+test("After dragging `Event Happened port` onto `Read Model port`, `Event Happened → Read Model` `getBoundingClientRect.top` is greater than or equal to the `.slice-col` that contains `Read Model` `getBoundingClientRect.bottom`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  await dragPort(page, "Event Happened port", "Read Model port");
+  const caption = page.locator(".board").getByText(
+    "Event Happened → Read Model",
+    { exact: true },
+  );
+  await expect(caption).toBeVisible();
+  const sliceCol = page.locator(".slice-col").filter({
+    has: page.getByRole("listitem", { name: "Read Model", exact: true }),
+  });
+  const captionTop = await caption.evaluate((el) =>
+    el.getBoundingClientRect().top,
+  );
+  const colBottom = await sliceCol.evaluate((el) =>
+    el.getBoundingClientRect().bottom,
+  );
+  expect(captionTop).toBeGreaterThanOrEqual(colBottom);
+});
