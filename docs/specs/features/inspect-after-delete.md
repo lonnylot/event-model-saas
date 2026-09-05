@@ -1,6 +1,6 @@
 # Inspect after delete
 
-Status: validated
+Status: released
 
 ## Problem
 

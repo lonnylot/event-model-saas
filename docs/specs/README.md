@@ -74,6 +74,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Hydrate connection id | [features/hydrate-connection-id.md](./features/hydrate-connection-id.md) | released |
 | Inspect deselect | [features/inspect-deselect.md](./features/inspect-deselect.md) | released |
 | Leftover connection command | [features/leftover-connection-command.md](./features/leftover-connection-command.md) | released |
-| Inspect after delete | [features/inspect-after-delete.md](./features/inspect-after-delete.md) | validated |
+| Inspect after delete | [features/inspect-after-delete.md](./features/inspect-after-delete.md) | released |
 
 Status: `draft` → `validated` → `released`.
