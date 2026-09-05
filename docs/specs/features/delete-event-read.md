@@ -52,3 +52,5 @@ GET `Event Happened → Read Model` `data-id`. Leftover Add Field after that cli
 - [add-on-lane.md](./add-on-lane.md) — Lane Add and ⌥⌘2 stay that file. Command → Event Delete Connection stays [delete-blocks.md](./delete-blocks.md). Event → Read Model Backspace is this slice.
 - [connection-feedback.md](./connection-feedback.md) — Highlighting legal targets stays that file. Command → Event Delete Connection stays [delete-blocks.md](./delete-blocks.md). Event → Read Model Backspace is this slice.
 - [inspect-description.md](./inspect-description.md) — Last-item Description stays that file. Command → Event Delete Connection stays [delete-blocks.md](./delete-blocks.md). Event → Read Model Backspace is this slice.
+- [name-binding-rest.md](./name-binding-rest.md) — Description-by-id stays that file. Command → Event Connection Backspace stays [delete-blocks.md](./delete-blocks.md). Event → Read Model Backspace is this slice.
+- [undo-rest.md](./undo-rest.md) — Undo of remaining delete stays that file. Command → Event Delete Connection stays [delete-blocks.md](./delete-blocks.md). Event → Read Model Backspace is this slice.
