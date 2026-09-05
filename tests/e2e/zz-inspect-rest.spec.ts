@@ -191,16 +191,14 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks `Add 
   ).toHaveValue("Customer submits cart");
 });
 
-test("After a member creates a model, opens it, clicks `New Slice`, clicks the `New Slice` listitem, selects `State View` in `Type`, and Saves, a reload of that page, clicking the `New Slice` listitem shows Inspector `Type` with the value `State View`", async ({
+test("After a member creates a model, opens it, clicks the `New Slice` listitem, selects `State View` in `Type`, and Saves, a reload of that page, clicking the `New Slice` listitem shows Inspector `Type` with the value `State View`", async ({
   page,
 }) => {
   await openUntitledModel(page);
-  await clickNewSlice(page);
   await page
     .locator("ul")
     .first()
     .getByRole("listitem", { name: "New Slice", exact: true })
-    .last()
     .click();
   await page
     .getByRole("region", { name: "Inspector", exact: true })
@@ -219,7 +217,6 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks the `
     .locator("ul")
     .first()
     .getByRole("listitem", { name: "New Slice", exact: true })
-    .last()
     .click();
   await expect(
     page

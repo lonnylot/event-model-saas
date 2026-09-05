@@ -332,7 +332,11 @@ export function bindInspect(root, ctx) {
   const lastSliceTypeLabel = () => {
     const holder = root.getElementById("event-model-document");
     const model = JSON.parse(holder?.textContent || "{}");
-    const sliceType = model.slices?.at(-1)?.sliceType;
+    const id = ctx.selectedSliceItem?.dataset?.id;
+    const slice = id
+      ? model.slices?.find((s) => s.id === id)
+      : model.slices?.at(-1);
+    const sliceType = slice?.sliceType;
     if (sliceType === "STATE_VIEW") return "State View";
     if (sliceType === "AUTOMATION") return "Automation";
     return "State Change";
