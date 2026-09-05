@@ -82,6 +82,8 @@ A Problem / Assumptions that name leftover Type after a Connection / switching s
 
 A Problem that names only Field name when ACs also drop Field type / Optional / Example / Delete Field is leftover-narrow Problem — name those leftover Field controls.
 
+A Problem that names only Slice leftover Name and Type when ACs also cover Actor leftover Name after empty `.board` is leftover-narrow Problem — name leftover Inspector Name after Timeline `Actor` then empty `.board`, as well as leftover Name and Type after Timeline `New Slice` then TIME chrome. Empty `.board` is not a Slice-only tell (`inspect-deselect`).
+
 A Problem that names Inspector Name on Actor and Automation when unique AC is GET Actor Name JSON is leftover-wide Problem — Out of scope GET Automation Name JSON, or add that AC.
 
 Restates inspect-after-reload “Name JSON and Backspace on those GET listitems” (Actor / Automation) while Out of scope parks GET Automation Name JSON cannot both hold — narrow Restates to GET Actor Name JSON and GET Actor / Automation Backspace.
