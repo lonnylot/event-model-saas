@@ -1,0 +1,43 @@
+# Inspect get slice type
+
+Status: validated
+
+## Problem
+
+GET `/app/teams/{id}/models/{mid}` after two Slices, one with Type `State View`, clicking the first Timeline `New Slice` listitem shows Inspector Type `State View`. Type binds `slices.at(-1)`, so a member who reopens a model cannot inspect the first Slice's Type.
+
+## Acceptance criteria
+
+- [x] After a member creates a model, opens it, clicks `New Slice`, clicks the last Timeline `New Slice` listitem, selects `State View` in `Type`, and Saves, a reload of that page, clicking the first Timeline `New Slice` listitem shows Inspector `Type` with the value `State Change`
+
+## Domain terms
+
+Event Model, Slice, Slice type, Team, Person, Version
+
+## Seams
+
+- `bindInspect` in `public/editor-inspect.js` — GET Slice Type bind by the clicked listitem
+- Browser — Playwright against `wrangler dev` with `TEST_MAIL=1`
+
+## UI
+
+Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001](../../adr/0001-look-iteration.md)). Inventory: [design-system.md](../design-system.md).
+
+## Assumptions
+
+- Playwright unique checkout `PORT` / `INSPECTOR_PORT` and `TEST_MAIL=1` `workers` `1` stay [public-face.md](./public-face.md).
+- Create model still seeds a default Slice whose Type is State Change ([model-defaults.md](./model-defaults.md)). Clicking `New Slice` still appends a Slice ([editor-shell.md](./editor-shell.md)). Last-Slice Type picker stays [slice-type.md](./slice-type.md). Slice type-by-id in-session stays [name-binding-rest.md](./name-binding-rest.md). GET Type of one Slice stays [inspect-rest.md](./inspect-rest.md). GET Type of the first of two Slices is this slice.
+- Two `New Slice` listitems are first vs last. The first Timeline `New Slice` is the Create default.
+- Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).
+
+## Out of scope
+
+GET Command Description of the first of two Commands. TIME click empty Inspector. GET Actor / Automation `data-id`. Landing. Mac window chrome. Copy changes.
+
+## Restates
+
+- [inspect-rest.md](./inspect-rest.md) — GET Type of one Slice still shows the saved Type. GET Type of the first of two Slices is this slice.
+- [slice-type.md](./slice-type.md) — Last-Slice Type picker stays that file. GET first-of-two Type is this slice.
+- [name-binding-rest.md](./name-binding-rest.md) — In-session Slice type-by-id stays that file. GET first-of-two Type is this slice.
+- [editor-bind-split.md](./editor-bind-split.md) — `bindInspect` stays `public/editor-inspect.js`. GET Inspector for Description, Command, Event, Read Model, Actor, or Automation stays that file's Out of scope. GET Type of the first of two Slices is this slice.
+- [architecture.md](../architecture.md) — Editor canvas stays custom timeline TypeScript. GET first-of-two Slice Type is this slice.
