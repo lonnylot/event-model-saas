@@ -4,7 +4,7 @@ Status: draft
 
 ## Problem
 
-One paragraph: who, what, why. Restating an AC is unfinished until this paragraph no longer lists the deleted tell as current (`keeping-specs-current`). A Problem that names only Command when ACs also cover Event / Read Model / Automation is leftover-narrow (`keeping-specs-current`). A Problem that names leftover Type after a Connection when unique production unbinds Type only on `Command → Event Happened` is leftover-narrow (`keeping-specs-current`). A Problem that names only Field name when ACs also drop Field type / Optional / Example / Delete Field is leftover-narrow (`keeping-specs-current`). A Problem that names Inspector Name on Actor and Automation when unique AC is GET Actor Name JSON is leftover-wide (`keeping-specs-current`).
+One paragraph: who, what, why. Restating an AC is unfinished until this paragraph no longer lists the deleted tell as current (`keeping-specs-current`). A Problem that names only Command when ACs also cover Event / Read Model / Automation is leftover-narrow (`keeping-specs-current`). A Problem that names leftover Type after a Connection when unique production unbinds Type only on `Command → Event Happened` is leftover-narrow (`keeping-specs-current`). A Problem that names only Field name when ACs also drop Field type / Optional / Example / Delete Field is leftover-narrow (`keeping-specs-current`). A Problem that names only Slice leftover Name and Type when ACs also cover Actor leftover Name after empty `.board` is leftover-narrow (`keeping-specs-current`). A Problem that names Inspector Name on Actor and Automation when unique AC is GET Actor Name JSON is leftover-wide (`keeping-specs-current`).
 
 ## Acceptance criteria
 
