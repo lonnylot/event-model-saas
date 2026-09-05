@@ -1333,6 +1333,15 @@ export function bindEditor(root) {
     if (item.dataset.kind === "command") {
       selected = "command";
       selectedCommandItem = item;
+      [...(inspector?.querySelectorAll("p") ?? [])]
+        .find((p) => p.textContent === "From Command")
+        ?.remove();
+      [...(inspector?.querySelectorAll("p") ?? [])]
+        .find((p) => p.textContent === "To Event Happened")
+        ?.remove();
+      [...(inspector?.querySelectorAll("p") ?? [])]
+        .find((p) => p.textContent === "Connection")
+        ?.remove();
       bindName(item.getAttribute("aria-label") ?? "Command");
       if (omitGetRenderedInspectChrome(item)) {
         bindDescription(lastCommandDescription());
