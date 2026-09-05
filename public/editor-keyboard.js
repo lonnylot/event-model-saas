@@ -41,6 +41,16 @@ export function bindKeyboard(root, ctx) {
       return;
     }
     if (
+      (event.metaKey || event.ctrlKey) &&
+      !event.altKey &&
+      !event.shiftKey &&
+      (event.key === "s" || event.key === "S")
+    ) {
+      event.preventDefault();
+      root.getElementById("save-model")?.requestSubmit();
+      return;
+    }
+    if (
       event.altKey &&
       (event.metaKey || event.ctrlKey) &&
       event.key === "ArrowLeft"
