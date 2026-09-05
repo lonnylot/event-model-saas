@@ -729,6 +729,25 @@ export function bindKeyboard(root, ctx) {
       ctx.selected = null;
       return;
     }
+    if (holder && ctx.selected === "connection") {
+      const model = JSON.parse(holder.textContent || "{}");
+      const connection = (model.connections ?? []).find(
+        (item) =>
+          item.fromKind === "EVENT" && item.toKind === "READMODEL",
+      );
+      if (connection) {
+        holder.textContent = JSON.stringify(
+          deleteConnection(model, connection.id),
+        );
+        const board = ctx.boardMount();
+        const node = [...(board?.querySelectorAll?.("p") ?? [])].find(
+          (p) => p.textContent === "Event Happened → Read Model",
+        );
+        node?.remove();
+        ctx.selected = null;
+        return;
+      }
+    }
     if (holder && ctx.selected === "command" && ctx.selectedCommandItem) {
       const commandId = ctx.selectedCommandItem.dataset.id;
       const model = JSON.parse(holder.textContent || "{}");
