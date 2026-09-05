@@ -26,6 +26,8 @@ Leftover unused sibling of `.board` is unproven by after-drag `.board` + undo-re
 
 Playwright `toBeVisible` of the Timeline region at 390 is the weaker reading (`testing`) — released editor-shell GET Timeline stays green; overflow-clipped / stacked under `.slice-rail` stays green. Extra overlapping AC: drop it (`logical-commits`).
 
+Inspector `Nothing Selected` `toBeVisible` is the weaker reading of leftover Add Field (`testing`) — empty copy is `:has(label)`; Add Field is a `button`. That leftover is `getByRole("button", { name: "Add Field", exact: true })` `toHaveCount(0)`.
+
 ## Script
 
 Any script-existence test asserts the exact value `playwright test` (consecutive runner tokens), not `length > 0` and not unordered token inclusion. An AC that says the script "includes the tokens" is a weaker criterion — restate as the script **is** `playwright test` (`keeping-specs-current`).

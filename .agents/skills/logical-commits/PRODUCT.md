@@ -2,7 +2,7 @@
 
 Load with `logical-commits`. Portable procedure is `SKILL.md` (spec-loop).
 
-Spec-loop owns **after the PR is open**: a missing or weaker test found in review or CI is one review/CI commit on HEAD. Do not reconstruct it into an earlier AC. Rows below that say reconstruct apply only in the **TDD slice** (before the PR is the review unit).
+Spec-loop owns **after the PR is open**: a missing or weaker test found in review or CI is one review/CI commit on HEAD. Do not reconstruct it into an earlier AC. Rows below that say reconstruct apply only in the **TDD slice** (before the PR is the review unit). Extra independently revertible leftover-hide production that already landed without its AC is not a missing test of the earlier AC — a tests-only HEAD commit that leaves `unbindFieldChrome()` in the Nothing Selected commit is still tests-after. Rebase so Nothing Selected does not call `unbindFieldChrome()`, and the Add Field commit is spec + `it` + `unbindFieldChrome()` together.
 
 ## Look pass
 
@@ -15,7 +15,7 @@ A `visual-design` look pass is one slice per named screen (or one stylesheet sev
 - Two kind-gated `if (port.dataset.kind === …)` alreadyConnected arms: unique production per AC, not one kind-agnostic early return. Event → Read Model drag parent vs Command → Event Happened drag parent is the same split — the first AC must not already move every target's parent. ⇧⌘Z redo Connection copy parent vs drag Connection copy parent is unique production — Restates leftover unused sibling is false until that arm moves.
 - Status vs heading vs row vs R2; two workflow `on:` events vs a `run` step.
 - Four independently revertible ACs on GET `/app` (Team name, Create team, Sign out, Teams admin) are four commits. Five ACs on GET `/app/teams/{id}/models/{mid}` (heading, email, Save, Export, Sign out) are five.
-- Leftover-hide `unbindAddField` vs `unbindFieldName` is the same split. From Event Happened remove vs To Read Model remove is that split. From Command remove vs To Event Happened remove vs Connection remove is that split — a shared `unbindConnectionCopy` loop is the `shell()` helper, not one production path.
+- Leftover-hide `unbindAddField` vs `unbindFieldName` is the same split. Leftover-hide `unbindFieldChrome` (Add Field button) vs Name/Description/Type unbind (`:has(label)` empty copy / Nothing Selected) is that split. From Event Happened remove vs To Read Model remove is that split. From Command remove vs To Event Happened remove vs Connection remove is that split — a shared `unbindConnectionCopy` loop is the `shell()` helper, not one production path.
 - Client `fetch` in `public/*.js` that a Playwright flow needs is that flow's production.
 - Restates leftover rewrite vs unique production restore of a different path are two commits: Card/Field stay later vs PNG mark pixels; leftover Restates public-face Field not-canvas-fill / public Page `canvas`/`ink` / design-system Page `type`/`canvas`/`ink` vs unique Send invite radius. A subject that names two review threads with "and" has not addressed either.
 
