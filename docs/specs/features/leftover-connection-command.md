@@ -9,7 +9,7 @@ Clicking a Timeline `Command` listitem after `Command → Event Happened` leaves
 ## Acceptance criteria
 
 - [x] After dragging `Command port` onto `Event Happened port`, clicking `Command → Event Happened`, then clicking the Timeline `Command` listitem, the Inspector region does not show the text `From Command`
-- [ ] After dragging `Command port` onto `Event Happened port`, clicking `Command → Event Happened`, then clicking the Timeline `Command` listitem, the Inspector region does not show the text `To Event Happened`
+- [x] After dragging `Command port` onto `Event Happened port`, clicking `Command → Event Happened`, then clicking the Timeline `Command` listitem, the Inspector region does not show the text `To Event Happened`
 - [ ] After dragging `Command port` onto `Event Happened port`, clicking `Command → Event Happened`, then clicking the Timeline `Command` listitem, the Inspector region does not show the text `Connection`
 
 ## Domain terms
