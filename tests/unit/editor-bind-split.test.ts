@@ -1,8 +1,56 @@
+import { readdirSync, readFileSync, statSync } from "node:fs";
+import { dirname, join, resolve } from "node:path";
 import { describe, expect, it, vi } from "vitest";
 import { createMemoryStore } from "../../src/auth/memory-store.ts";
 import type { AuthRuntime } from "../../src/auth/types.ts";
 import { handleRequest } from "../../src/index.ts";
 import { createMemoryDocuments } from "../../src/models/documents.ts";
+
+const ROOT = resolve(".");
+const SKIP_DIRS = new Set(["node_modules", ".git"]);
+
+function walkSourceFiles(dir: string): string[] {
+  const out: string[] = [];
+  for (const name of readdirSync(dir)) {
+    if (SKIP_DIRS.has(name)) continue;
+    const path = join(dir, name);
+    if (statSync(path).isDirectory()) {
+      out.push(...walkSourceFiles(path));
+      continue;
+    }
+    if (/\.(js|ts|mjs|cjs)$/.test(name)) out.push(path);
+  }
+  return out;
+}
+
+function importSourcesOf(name: string): string[] {
+  const namedImport = new RegExp(
+    String.raw`(?:import|export)\s+\{[^}]*\b${name}\b[^}]*\}\s+from\s+["']([^"']+)["']`,
+    "g",
+  );
+  const sources: string[] = [];
+  for (const file of walkSourceFiles(ROOT)) {
+    const text = readFileSync(file, "utf8");
+    for (const match of text.matchAll(namedImport)) {
+      const specifier = match[1];
+      if (!specifier.startsWith(".")) continue;
+      sources.push(resolve(dirname(file), specifier));
+    }
+  }
+  return sources;
+}
+
+function declarationFilesOf(name: string): string[] {
+  const declaration = new RegExp(
+    String.raw`(?:export\s+)?(?:async\s+)?function\s+${name}\b|(?:export\s+)?(?:const|let|var)\s+${name}\s*=`,
+  );
+  const files: string[] = [];
+  for (const file of walkSourceFiles(ROOT)) {
+    const text = readFileSync(file, "utf8");
+    if (declaration.test(text)) files.push(resolve(file));
+  }
+  return files;
+}
 
 async function createdUntitled() {
   const store = createMemoryStore();
@@ -74,5 +122,13 @@ describe("editor bind split", () => {
       return src?.[1];
     });
     expect(srcs).toContain("/editor.js");
+  });
+
+  it("`bindInspect` is imported only from `public/editor-inspect.js`", () => {
+    const expected = resolve("public/editor-inspect.js");
+    const sources = importSourcesOf("bindInspect");
+    expect(sources.length).toBeGreaterThan(0);
+    expect(sources.every((source) => source === expected)).toBe(true);
+    expect(declarationFilesOf("bindInspect")).toEqual([expected]);
   });
 });

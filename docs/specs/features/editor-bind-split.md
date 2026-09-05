@@ -9,7 +9,7 @@ Status: validated
 ## Acceptance criteria
 
 - [x] GET `/app/teams/{id}/models/{mid}` as a member includes a script whose `src` is `/editor.js`
-- [ ] `bindInspect` is imported only from `public/editor-inspect.js`
+- [x] `bindInspect` is imported only from `public/editor-inspect.js`
 - [ ] `bindKeyboard` is imported only from `public/editor-keyboard.js`
 - [ ] `bindPointer` is imported only from `public/editor-pointer.js`
 - [ ] `bindCanvas` is imported only from `public/editor-canvas.js`
