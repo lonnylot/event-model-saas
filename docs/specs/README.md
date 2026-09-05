@@ -72,6 +72,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Shortcut kind | [features/shortcut-kind.md](./features/shortcut-kind.md) | released |
 | Editor narrow | [features/editor-narrow.md](./features/editor-narrow.md) | released |
 | Hydrate connection id | [features/hydrate-connection-id.md](./features/hydrate-connection-id.md) | released |
-| Inspect deselect | [features/inspect-deselect.md](./features/inspect-deselect.md) | validated |
+| Inspect deselect | [features/inspect-deselect.md](./features/inspect-deselect.md) | released |
 
 Status: `draft` → `validated` → `released`.

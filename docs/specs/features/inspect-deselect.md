@@ -1,6 +1,6 @@
 # Inspect deselect
 
-Status: validated
+Status: released
 
 ## Problem
 
