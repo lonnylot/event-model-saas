@@ -6,6 +6,12 @@ describe("spec tree", () => {
     expect(existsSync("docs/superpowers")).toBe(false);
   });
 
+  it("docs/specs/README.md does not contain a git conflict marker", () => {
+    const text = readFileSync("docs/specs/README.md", "utf8");
+    expect(text).not.toContain("<<<<<<<");
+    expect(text).not.toContain(">>>>>>>");
+  });
+
   it("CONTEXT.md **Term** headings are unique", () => {
     const text = readFileSync("CONTEXT.md", "utf8");
     const headings = [...text.matchAll(/^\*\*[^*]+\*\*:/gm)].map((m) => m[0]);
