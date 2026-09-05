@@ -9,7 +9,7 @@ Clicking `Event Happened → Read Model` after Command `Add Field` leaves Inspec
 ## Acceptance criteria
 
 - [x] After clicking the Timeline `Command` listitem, clicking `Add Field`, dragging `Event Happened port` onto `Read Model port`, clicking `Event Happened → Read Model`, the Inspector region does not show a button whose accessible name is `Add Field`
-- [ ] After clicking the Timeline `Command` listitem, clicking `Add Field`, dragging `Event Happened port` onto `Read Model port`, clicking `Event Happened → Read Model`, the Inspector region does not show a textbox whose accessible name is `Field name`
+- [x] After clicking the Timeline `Command` listitem, clicking `Add Field`, dragging `Event Happened port` onto `Read Model port`, clicking `Event Happened → Read Model`, the Inspector region does not show a textbox whose accessible name is `Field name`
 
 ## Domain terms
 
@@ -38,8 +38,8 @@ Leftover Type after a Connection. Leftover Field type / Optional / Example / Del
 ## Restates
 
 - [inspect-switch.md](./inspect-switch.md) — Leftover Type after a Connection click and leftover Add Field / Field chrome after `Command → Event Happened` stay that file. Leftover Add Field / Field name after `Event Happened → Read Model` is this slice.
-- [inspect-fields.md](./inspect-fields.md) — Clicking Command still shows `Add Field`. `Add Field` after `Event Happened → Read Model` is this slice.
-- [inspect-rest.md](./inspect-rest.md) — Clicking `Event Happened → Read Model` still shows From Event Happened / To Read Model. Leftover Add Field after that click is this slice.
-- [leftover-connection-command.md](./leftover-connection-command.md) — Leftover Connection copy after Command click stays that file. Leftover Add Field after `Event Happened → Read Model` is this slice.
-- [editor-bind-split.md](./editor-bind-split.md) — `bindInspect` stays `public/editor-inspect.js`. Leftover Add Field after `Event Happened → Read Model` is this slice. Leftover Field name / Field type / Optional / Example / Delete Field after that click stay that file's Out of scope.
-- [architecture.md](../architecture.md) — Editor canvas stays custom timeline TypeScript. Leftover Add Field after `Event Happened → Read Model` is this slice.
+- [inspect-fields.md](./inspect-fields.md) — Clicking Command still shows `Add Field`. `Add Field` / Field name after `Event Happened → Read Model` is this slice.
+- [inspect-rest.md](./inspect-rest.md) — Clicking `Event Happened → Read Model` still shows From Event Happened / To Read Model. Leftover Add Field / Field name after that click is this slice.
+- [leftover-connection-command.md](./leftover-connection-command.md) — Leftover Connection copy after Command click stays that file. Leftover Add Field / Field name after `Event Happened → Read Model` is this slice.
+- [editor-bind-split.md](./editor-bind-split.md) — `bindInspect` stays `public/editor-inspect.js`. Leftover Add Field / Field name after `Event Happened → Read Model` is this slice. Leftover Field type / Optional / Example / Delete Field after that click stay that file's Out of scope.
+- [architecture.md](../architecture.md) — Editor canvas stays custom timeline TypeScript. Leftover Add Field / Field name after `Event Happened → Read Model` is this slice.

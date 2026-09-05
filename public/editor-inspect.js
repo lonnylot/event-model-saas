@@ -1098,6 +1098,7 @@ export function bindInspect(root, ctx) {
     ctx.selected = "connection";
     unbindType();
     unbindAddField();
+    unbindFieldName();
   });
   if (timeline && typeof timeline.querySelector === "function") {
     timeline.querySelector(".time-chrome")?.addEventListener("click", () => {
