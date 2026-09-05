@@ -58,6 +58,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Event → Read Model copy parent parked in Assumptions (follows the same parent; unique kind-gated drag arm; Command → Event Happened `.board` stays green) | `keeping-specs-current`, `testing`, `tdd-loop`, `playwright-e2e`, `logical-commits` |
 | Restates leftover unused sibling of `.board` vs remaining ⇧⌘Z redo `timelineEl.append`; undo-rest Timeline-shows stays green | `keeping-specs-current`, `testing`, `tdd-loop`, `playwright-e2e`, `logical-commits` |
 | leftover unused wrap vs deleted `flex-wrap: nowrap` (wrap production does not remain) | `keeping-specs-current` |
+| leftover GET `.slice-stack` vs Assumptions later sibling of `.slice-col` on `.board-pan`; GET caption rect stays green if wrap CSS is deleted | `keeping-specs-current`, `testing`, `tdd-loop`, `playwright-e2e` |
 | Extra Zoom in `includes scale(1.25)` when restated editor-shell already owns exact `.board` `scale(1.25)` | `logical-commits`, `keeping-specs-current` |
 | Extra Timeline `toBeVisible` at 390 when released editor-shell already owns GET Timeline; `toBeVisible` stays green below the fold / stacked under `.slice-rail` | `logical-commits`, `testing`, `keeping-specs-current`, `tdd-loop`, `playwright-e2e` |
 | Leftover Out of scope GET ports after reload vs in-memory title-only shortcut listitems (toolbar Add still mounts `Command port`) | `keeping-specs-current` |

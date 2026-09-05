@@ -24,6 +24,8 @@ Event → Read Model copy on `.board` is unproven by Command → Event Happened 
 
 Leftover unused sibling of `.board` is unproven by after-drag `.board` + undo-rest Timeline-shows — ⇧⌘Z redo `timelineEl.append` stays green (`testing`). Append redo on `.board` so leftover unused holds (`keeping-specs-current`).
 
+GET Connection caption wrapping below the Slice is unproven by a bounding rect after reload — leftover GET `.slice-stack` already stacks, so deleting `.board-pan { flex-wrap }` / `flex-basis: 100%` stays green (`testing`). Assert the caption parent is `.board-pan` (later sibling of `.slice-col`) and the rect (`keeping-specs-current`).
+
 Playwright `toBeVisible` of the Timeline region at 390 is the weaker reading (`testing`) — released editor-shell GET Timeline stays green; overflow-clipped / stacked under `.slice-rail` stays green. Extra overlapping AC: drop it (`logical-commits`).
 
 Inspector `Nothing Selected` `toBeVisible` is the weaker reading of leftover Add Field (`testing`) — empty copy is `:has(label)`; Add Field is a `button`. That leftover is `getByRole("button", { name: "Add Field", exact: true })` `toHaveCount(0)`.
