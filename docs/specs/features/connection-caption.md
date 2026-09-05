@@ -1,6 +1,6 @@
 # Connection caption
 
-Status: validated
+Status: released
 
 ## Problem
 
