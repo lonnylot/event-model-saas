@@ -32,7 +32,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-390-wide stacked layout. Changing zoom factors. Connection caption placement. Inspector leftover Type. Shortcut ports. Landing. Mac window chrome. Copy changes. Timeline region name stays [editor-shell.md](./editor-shell.md).
+390-wide stacked layout. Changing zoom factors. Connection caption placement is [connection-caption.md](./connection-caption.md). Inspector leftover Type. Shortcut ports. Landing. Mac window chrome. Copy changes. Timeline region name stays [editor-shell.md](./editor-shell.md).
 
 ## Restates
 

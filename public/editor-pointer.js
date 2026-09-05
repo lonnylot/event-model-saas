@@ -323,7 +323,19 @@ export function bindPointer(root, ctx) {
             holder?.textContent || "{}",
           ).connections?.at(-1);
           if (connection) line.setAttribute("data-id", connection.id);
-          board.append(line);
+          const sliceCol = sourcePort.closest(".slice-col");
+          if (sliceCol) {
+            let stack = sliceCol.parentElement;
+            if (!stack.classList.contains("slice-stack")) {
+              stack = root.createElement("div");
+              stack.className = "slice-stack";
+              sliceCol.replaceWith(stack);
+              stack.append(sliceCol);
+            }
+            stack.append(line);
+          } else {
+            board.append(line);
+          }
         }
         ctx.undoStack.push("connection");
       }

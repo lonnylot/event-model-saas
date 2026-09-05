@@ -33,7 +33,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-Changing zoom factors. Connection caption placement. Inspector leftover Type. Shortcut ports. Landing. Mac window chrome. Copy changes.
+Changing zoom factors. Connection caption placement is [connection-caption.md](./connection-caption.md). Inspector leftover Type. Shortcut ports. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 

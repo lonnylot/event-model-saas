@@ -42,7 +42,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-React, xyflow/React Flow, a store/framework rewrite, or a new `bindEditor` page seam. Leftover Add Field / Field name after `Event Happened → Read Model` is [inspect-event-read.md](./inspect-event-read.md). Leftover Field type / Optional / Example / Delete Field after that click. `Event Happened → Read Model` Backspace. ⌘S Save. GET Inspector for Slice type, Description, Command, Event, Read Model, Actor, or Automation. Connection caption placement. Shortcut listitem column. Mid-width Editor layout. CI job split. Landing. Mac window chrome. Copy changes.
+React, xyflow/React Flow, a store/framework rewrite, or a new `bindEditor` page seam. Leftover Add Field / Field name after `Event Happened → Read Model` is [inspect-event-read.md](./inspect-event-read.md). Leftover Field type / Optional / Example / Delete Field after that click. `Event Happened → Read Model` Backspace. ⌘S Save. GET Inspector for Slice type, Description, Command, Event, Read Model, Actor, or Automation. Connection caption placement is [connection-caption.md](./connection-caption.md). Shortcut listitem column. Mid-width Editor layout. CI job split. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 
