@@ -22,6 +22,8 @@ TIME chrome does not pan is unproven by Timeline `style.transform` does not incl
 
 Event → Read Model copy on `.board` is unproven by Command → Event Happened `.board` tests — the second kind-gated drag arm stays sibling (`testing`). That placement is an AC that asserts `.board` contains `Event Happened → Read Model`, or revert that arm (`keeping-specs-current`). GET `connectionCopy` stays the one reload AC when this slice does not change wrapping. Caption placement wrapping is independently revertible GET Command vs GET Event (`logical-commits`).
 
+Event → Read Model Backspace JSON `connections` [] is unproven for the `.board` caption (`testing`) — deleting `node?.remove()` stays green. Caption AC is `.board` `getByText("Event Happened → Read Model", { exact: true })` `toHaveCount(0)`, not folded into the JSON `it`.
+
 Leftover unused sibling of `.board` is unproven by after-drag `.board` + undo-rest Timeline-shows — ⇧⌘Z redo `timelineEl.append` stays green (`testing`). Append redo on `.board` so leftover unused holds (`keeping-specs-current`).
 
 GET Connection caption wrapping below the Slice is unproven by a bounding rect after reload — leftover GET `.slice-stack` already stacks, so deleting `.board-pan { flex-wrap }` / `flex-basis: 100%` stays green (`testing`). Assert the caption parent is `.board-pan` (later sibling of `.slice-col`) and the rect (`keeping-specs-current`). That Playwright `it` lands in the wrap-CSS commit when GET HTML is already later-sibling (`logical-commits`).
