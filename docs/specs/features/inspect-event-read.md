@@ -1,6 +1,6 @@
 # Inspect event read
 
-Status: validated
+Status: released
 
 ## Problem
 
