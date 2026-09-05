@@ -21,6 +21,7 @@ Extra visible chrome without an AC is unfinished — add the AC or omit it. Here
 - Inspector Name (or other inspect chrome) on a kind Out of scope names inspecting (Command / Event / Read Model / Automation)
 - Leftover Add Field / Field name / Field type / Optional / Example / Delete Field after a narrower unbind. Nothing Selected / `:has(label)` empty copy does not prove leftover Add Field — Add Field is a `button`
 - Leftover To Read Model after a narrower From Event Happened remove
+- Event → Read Model Backspace JSON `connections` [] when Problem names JSON **and** the caption on `.board`; `node?.remove()` of `Event Happened → Read Model` is extra until a dedicated caption AC
 - GET-rendered Description / Add Field when ACs only name Name
 - UI / Restates that claim compose of primitives (Card, Field, Page `type`, Button `radius`) this HEAD does not ship; leftover Field `canvas` fill after dropped Email fill AC; leftover Card `padding` with no AC; leftover Button primary `radius` on `Send invite`; leftover design-system waitlist Card lift when ACs lift `.waitlist-band`; leftover design-system Page on every listed screen; leftover Unique look picker / team / Teams admin / guest `/app` lead `<p><a href="/app">Event Model</a></p>` after those screens wrap wordmark in `header` (`visual-design/PRODUCT.md`)
 - Page ink on Login/404/expired without color ACs; leftover paper `ink-paper` on `body.login` after restating Page (public) ink; leftover signed-in Page `ink`/`type` on guest/picker/team/Teams admin/editor without body ACs; leftover visual-shell background and color when this slice only proves `ink` on one route
@@ -74,6 +75,8 @@ Grep draft `architecture.md` for leftover token/CSS assignment to restated slice
 
 Restating landing heading `56px` / `main` max-width `none` is unfinished until leftover Assumptions in the same `product-visual.md` file no longer say `36px` / `576px`. Look-may-grow restated ACs still grep leftover Assumptions (`visual-design`).
 
+Restating `delete-rest.md` Out of scope so Event → Read Model Backspace is this slice is unfinished until leftover Assumptions no longer say Connection delete stay `delete-blocks.md`. Two bullets in that file cannot both hold.
+
 Restating the landing-saas-shot URL-bar AC (`.product-shot` does not show `event-model.lonnylot.com`; `.browser-bar` leftover unused) is unfinished until leftover Problem no longer lists “browser chrome” as a hosted-editor tell.
 
 Restating stacked bento rows (`landing-fold.md`) is unfinished until leftover Problem no longer lists “The three bento cards are unbalanced glossary” / caption-strip as a current tell. Rewriting landing-depth Problem for leftover unused card/band fills is not that rewrite. Look-may-grow restated composition still greps leftover Problem on every Restates path (`visual-design`).
@@ -90,9 +93,13 @@ A Problem that names Inspector Name on Actor and Automation when unique AC is GE
 
 A Problem that names leftover Add Field when unique AC is Inspector `Nothing Selected` is leftover-wide Problem — Add Field is a `button`; `:has(label)` empty copy stays green if `unbindFieldChrome()` is deleted. Add the does-not-show-button AC (`inspect-switch.md` leftover Add Field), or drop Add Field from Problem.
 
+A Problem that names Event → Read Model Backspace JSON **and** the caption on `.board` when unique AC is `connections` to `[]` is leftover-wide Problem — `node?.remove()` of `Event Happened → Read Model` is extra chrome. Add the caption AC, or omit the remove (`testing`).
+
 Restates inspect-after-reload “Name JSON and Backspace on those GET listitems” (Actor / Automation) while Out of scope parks GET Automation Name JSON cannot both hold — narrow Restates to GET Actor Name JSON and GET Actor / Automation Backspace.
 
 Restates / architecture / Assumptions assigning GET Connection `data-id` / GET Connection Backspace / GET `data-id` on that node when unique production is GET `Command → Event Happened` and Out of scope parks GET `Event Happened → Read Model` cannot both hold — `CONTEXT.md` Connection is both legal edges. Qualify to GET `Command → Event Happened`, or add the Event Happened → Read Model AC. “that node” after an Event Happened → Read Model sentence is that leftover locked claim.
+
+Shipping Event → Read Model Backspace is unfinished until Restates includes `product.md` and rewrites leftover “the selected Connection (Backspace)” so Command → Event stays `delete-blocks.md` and Event → Read Model Backspace is this slice; add this slice’s Playwright path (JSON and caption). Released specs that still assign all Delete Connection / Connection Backspace to `delete-blocks.md` (`add-on-lane.md`, `connection-feedback.md`, `inspect-description.md`, `inspect-deselect.md` Restates of delete-blocks, `name-binding-rest.md`, `undo-rest.md`) must be Restates-rewritten the same way. Dropping `product.md` from Restates does not make leftover locked words hold.
 
 Restating architecture Front end as “Inspector unbind on selection change” when unique production is leftover Type after a Connection click / leftover From Event Happened after `Command → Event Happened` is leftover locked claim — restate to the ACs, or add ACs that unbind on the other selection changes that sentence names.
 

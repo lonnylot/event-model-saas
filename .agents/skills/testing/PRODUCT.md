@@ -6,7 +6,7 @@ Load with `testing`. Portable procedure is `SKILL.md` (spec-loop).
 
 | Criterion shape | Weaker fixture that must not stay green |
 |-----------------|-----------------------------------------|
-| Packed "and" | One `it` covering independent cases (status vs heading vs content-type vs body vs row vs R2; `pull_request` vs `push` vs a `run` step) |
+| Packed "and" | One `it` covering independent cases (status vs heading vs content-type vs body vs row vs R2; `pull_request` vs `push` vs a `run` step; Event → Read Model Backspace JSON `connections` [] vs `.board` caption) |
 | Targeting "only on the first Slice" (first has X and last is []) | Packed `and` title; two `it`s that each drop one side (append-to-both / append-to-neither stay green) |
 | Independently revertible copy vs splice (Command drag) | One `it` packing first has X **and** last is [] (copy without splice stays green on the first assertion). Not targeting. |
 | Accessible name **is** `X` | Playwright `name: "X"` without `exact: true` (matches `Xyz`) |
@@ -24,6 +24,7 @@ Load with `testing`. Portable procedure is `SKILL.md` (spec-loop).
 | Listitem **in** the Timeline region (unit HTML) | `/aria-label="Timeline"[\s\S]*<li...Actor/` (Inspector Actor after Timeline stays green) |
 | TIME chrome does not pan / `.time-chrome` | Timeline `style.transform` does not include `translate(` (TIME chrome inside `.board` stays green) |
 | Event → Read Model copy on `.board` | Command → Event Happened `.board` tests (second kind-gated drag arm stays sibling) |
+| Event → Read Model Backspace JSON `connections` [] vs `.board` caption | One `it` packing JSON **and** caption (`node?.remove()` stays green if only JSON is asserted) |
 | leftover unused sibling of `.board` / redo Connection copy | after-drag `.board` tests + undo-rest Timeline-shows (⇧⌘Z redo `timelineEl.append` stays green) |
 | GET Connection caption below Slice / later sibling of `.slice-col` | Playwright rect only (GET leftover `.slice-stack` already stacks; deleting `.board-pan { flex-wrap }` / `flex-basis: 100%` stays green) |
 | Timeline region visible at 390 / not below the fold | Playwright `toBeVisible` (released editor-shell GET Timeline stays green; overflow-clipped / stacked under `.slice-rail` stays green) |
@@ -57,6 +58,8 @@ A listitem **in** the Timeline region is unproven by `/aria-label="Timeline"[\s\
 TIME chrome does not pan is unproven by Timeline `style.transform` does not include `translate(` — `.time-chrome` inside `.board` stays green. That factor is an AC that asserts `.time-chrome`, or drop the claim (`keeping-specs-current`).
 
 Event → Read Model copy on `.board` is unproven by Command → Event Happened `.board` tests — the second kind-gated drag arm stays sibling. That placement is an AC that asserts `.board` contains `Event Happened → Read Model`, or revert that arm (`keeping-specs-current`). GET `connectionCopy` stays the one reload AC when this slice does not change wrapping. Caption placement wrapping is independently revertible GET Command vs GET Event (`logical-commits`).
+
+Event → Read Model Backspace JSON `connections` [] is unproven for the `.board` caption — deleting `node?.remove()` stays green. That caption is its own AC (`keeping-specs-current`). Independently revertible (`logical-commits`).
 
 Leftover unused sibling of `.board` is unproven by after-drag `.board` + undo-rest Timeline-shows — ⇧⌘Z redo `timelineEl.append` stays green. Append redo on `.board` and name that criterion, or the leftover-unused sentence is false (`keeping-specs-current`).
 
