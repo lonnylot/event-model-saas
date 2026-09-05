@@ -139,4 +139,12 @@ describe("editor bind split", () => {
     expect(sources.every((source) => source === expected)).toBe(true);
     expect(declarationFilesOf("bindKeyboard")).toEqual([expected]);
   });
+
+  it("`bindPointer` is imported only from `public/editor-pointer.js`", () => {
+    const expected = resolve("public/editor-pointer.js");
+    const sources = importSourcesOf("bindPointer");
+    expect(sources.length).toBeGreaterThan(0);
+    expect(sources.every((source) => source === expected)).toBe(true);
+    expect(declarationFilesOf("bindPointer")).toEqual([expected]);
+  });
 });
