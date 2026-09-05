@@ -1097,6 +1097,7 @@ export function bindInspect(root, ctx) {
     if (line.textContent !== "Event Happened → Read Model") return;
     ctx.selected = "connection";
     unbindType();
+    unbindAddField();
   });
   if (timeline && typeof timeline.querySelector === "function") {
     timeline.querySelector(".time-chrome")?.addEventListener("click", () => {

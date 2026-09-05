@@ -67,6 +67,7 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Connection on board | [features/connection-on-board.md](./features/connection-on-board.md) | released |
 | Hydrate add field | [features/hydrate-add-field.md](./features/hydrate-add-field.md) | released |
 | Inspect switch | [features/inspect-switch.md](./features/inspect-switch.md) | released |
+<<<<<<< Updated upstream
 | Port wrap | [features/port-wrap.md](./features/port-wrap.md) | released |
 | Hydrate kind id | [features/hydrate-kind-id.md](./features/hydrate-kind-id.md) | released |
 | Shortcut kind | [features/shortcut-kind.md](./features/shortcut-kind.md) | released |
@@ -77,5 +78,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Inspect after delete | [features/inspect-after-delete.md](./features/inspect-after-delete.md) | released |
 | Editor midwidth | [features/editor-midwidth.md](./features/editor-midwidth.md) | released |
 | Editor bind split | [features/editor-bind-split.md](./features/editor-bind-split.md) | released |
+| Inspect event read | [features/inspect-event-read.md](./features/inspect-event-read.md) | validated |
 
 Status: `draft` → `validated` → `released`.
