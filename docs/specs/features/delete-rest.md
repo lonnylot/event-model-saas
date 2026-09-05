@@ -32,17 +32,17 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person,
 
 ## Out of scope
 
-Undo of delete is [undo-rest.md](./undo-rest.md). Inspector Delete Connection button. Mac window chrome. Slice Backspace stays [canvas.md](./canvas.md). Command / Connection Backspace stay [delete-blocks.md](./delete-blocks.md). GET Actor / Automation Backspace is [hydrate-kind-id.md](./hydrate-kind-id.md).
+Undo of delete is [undo-rest.md](./undo-rest.md). Inspector Delete Connection button. Mac window chrome. Slice Backspace stays [canvas.md](./canvas.md). Command / Command → Event Connection Backspace stay [delete-blocks.md](./delete-blocks.md). Event → Read Model Backspace is [delete-event-read.md](./delete-event-read.md). GET Actor / Automation Backspace is [hydrate-kind-id.md](./hydrate-kind-id.md).
 
 ## Restates
 
-- [delete-blocks.md](./delete-blocks.md) — Out of scope no longer owns delete of Actor, Event, Read Model, or Automation; this slice owns those. Command and Connection Backspace stay that file.
-- [canvas.md](./canvas.md) — Delete of Actor, Event, Read Model, and Automation is this slice. Slice Backspace stays this file. Delete Command / Connection stay [delete-blocks.md](./delete-blocks.md).
-- [blocks.md](./blocks.md) — Delete of Actor, Event, Read Model, and Automation is this slice. Delete Command / Connection stay [delete-blocks.md](./delete-blocks.md).
+- [delete-blocks.md](./delete-blocks.md) — Out of scope no longer owns delete of Actor, Event, Read Model, or Automation; this slice owns those. Command and Command → Event Connection Backspace stay that file. Event → Read Model Backspace is [delete-event-read.md](./delete-event-read.md).
+- [canvas.md](./canvas.md) — Delete of Actor, Event, Read Model, and Automation is this slice. Slice Backspace stays this file. Delete Command / Command → Event Connection stay [delete-blocks.md](./delete-blocks.md). Event → Read Model Backspace is [delete-event-read.md](./delete-event-read.md).
+- [blocks.md](./blocks.md) — Delete of Actor, Event, Read Model, and Automation is this slice. Delete Command / Command → Event Connection stay [delete-blocks.md](./delete-blocks.md). Event → Read Model Backspace is [delete-event-read.md](./delete-event-read.md).
 - [chrome.md](./chrome.md) — Delete of Actor, Event, Read Model, and Automation is this slice. Slice Backspace stays [canvas.md](./canvas.md). Delete Command stays [delete-blocks.md](./delete-blocks.md).
-- [connections.md](./connections.md) — Delete of Actor, Event, Read Model, and Automation is this slice. Delete Connection stays [delete-blocks.md](./delete-blocks.md).
+- [connections.md](./connections.md) — Delete of Actor, Event, Read Model, and Automation is this slice. Command → Event Delete Connection stays [delete-blocks.md](./delete-blocks.md). Event → Read Model Backspace is [delete-event-read.md](./delete-event-read.md).
 - [inspect-blocks.md](./inspect-blocks.md) — Delete of Actor, Event, Read Model, and Automation is this slice. Delete Command stays [delete-blocks.md](./delete-blocks.md).
-- [add-on-lane.md](./add-on-lane.md) — Delete of Actor, Event, Read Model, and Automation is this slice. Delete Command / Connection stay [delete-blocks.md](./delete-blocks.md).
-- [connection-feedback.md](./connection-feedback.md) — Delete of Actor, Event, Read Model, and Automation is this slice. Delete Command / Connection stay [delete-blocks.md](./delete-blocks.md).
-- [inspect-description.md](./inspect-description.md) — Delete of Actor, Event, Read Model, and Automation is this slice. Delete Command / Connection stay [delete-blocks.md](./delete-blocks.md).
-- [product.md](../product.md) — Delete the selected Actor, Event, Read Model, or Automation (Backspace/Delete). Delete Command / Connection stay [delete-blocks.md](./delete-blocks.md). Playwright path for this slice adds: two of each kind, Backspace the first; Delete on Actor.
+- [add-on-lane.md](./add-on-lane.md) — Delete of Actor, Event, Read Model, and Automation is this slice. Delete Command / Command → Event Connection stay [delete-blocks.md](./delete-blocks.md). Event → Read Model Backspace is [delete-event-read.md](./delete-event-read.md).
+- [connection-feedback.md](./connection-feedback.md) — Delete of Actor, Event, Read Model, and Automation is this slice. Delete Command / Command → Event Connection stay [delete-blocks.md](./delete-blocks.md). Event → Read Model Backspace is [delete-event-read.md](./delete-event-read.md).
+- [inspect-description.md](./inspect-description.md) — Delete of Actor, Event, Read Model, and Automation is this slice. Delete Command / Command → Event Connection stay [delete-blocks.md](./delete-blocks.md). Event → Read Model Backspace is [delete-event-read.md](./delete-event-read.md).
+- [product.md](../product.md) — Delete the selected Actor, Event, Read Model, or Automation (Backspace/Delete). Delete Command / Command → Event Connection stay [delete-blocks.md](./delete-blocks.md). Event → Read Model Backspace is [delete-event-read.md](./delete-event-read.md). Playwright path for this slice adds: two of each kind, Backspace the first; Delete on Actor.
