@@ -739,6 +739,11 @@ export function bindKeyboard(root, ctx) {
         holder.textContent = JSON.stringify(
           deleteConnection(model, connection.id),
         );
+        const board = ctx.boardMount();
+        const node = [...(board?.querySelectorAll?.("p") ?? [])].find(
+          (p) => p.textContent === "Event Happened → Read Model",
+        );
+        node?.remove();
         ctx.selected = null;
         return;
       }

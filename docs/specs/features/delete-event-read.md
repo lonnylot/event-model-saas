@@ -9,6 +9,7 @@ Clicking `Event Happened → Read Model` then Backspace leaves the Connection in
 ## Acceptance criteria
 
 - [x] After dragging `Event Happened port` onto `Read Model port`, clicking `Event Happened → Read Model` then the Timeline region, pressing Backspace sets Event Model `connections` to `[]`
+- [x] After dragging `Event Happened port` onto `Read Model port`, clicking `Event Happened → Read Model` then the Timeline region, pressing Backspace, `.board` does not show the text `Event Happened → Read Model`
 
 ## Domain terms
 
@@ -47,7 +48,7 @@ GET `Event Happened → Read Model` `data-id`. Leftover Add Field after that cli
 - [delete-rest.md](./delete-rest.md) — Actor / Event / Read Model / Automation Backspace stays that file. Command → Event Backspace stays [delete-blocks.md](./delete-blocks.md). Event → Read Model Backspace is this slice.
 - [canvas.md](./canvas.md) — Slice Backspace stays that file. Command → Event Delete Connection stays [delete-blocks.md](./delete-blocks.md). Event → Read Model Backspace is this slice.
 - [inspect-fields-rest.md](./inspect-fields-rest.md) — Field type / optional / example / delete stay that file. Command → Event Delete Connection stays [delete-blocks.md](./delete-blocks.md). Event → Read Model Backspace is this slice.
-- [product.md](../product.md) — Delete the selected Command → Event Connection (Backspace) stays [delete-blocks.md](./delete-blocks.md). Event → Read Model Backspace is this slice. Playwright path for this slice adds: drag Event Happened port onto Read Model port, click `Event Happened → Read Model` then the Timeline region, Backspace sets connections to [].
+- [product.md](../product.md) — Delete the selected Command → Event Connection (Backspace) stays [delete-blocks.md](./delete-blocks.md). Event → Read Model Backspace is this slice. Playwright path for this slice adds: drag Event Happened port onto Read Model port, click `Event Happened → Read Model` then the Timeline region, Backspace sets connections to [], `.board` does not show `Event Happened → Read Model`.
 - [add-on-lane.md](./add-on-lane.md) — Lane Add and ⌥⌘2 stay that file. Command → Event Delete Connection stays [delete-blocks.md](./delete-blocks.md). Event → Read Model Backspace is this slice.
 - [connection-feedback.md](./connection-feedback.md) — Highlighting legal targets stays that file. Command → Event Delete Connection stays [delete-blocks.md](./delete-blocks.md). Event → Read Model Backspace is this slice.
 - [inspect-description.md](./inspect-description.md) — Last-item Description stays that file. Command → Event Delete Connection stays [delete-blocks.md](./delete-blocks.md). Event → Read Model Backspace is this slice.

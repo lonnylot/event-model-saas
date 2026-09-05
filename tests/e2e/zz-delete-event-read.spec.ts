@@ -101,9 +101,7 @@ async function dragPort(page: Page, fromName: string, toName: string) {
     .dragTo(page.getByRole("button", { name: toName, exact: true }));
 }
 
-test("After dragging `Event Happened port` onto `Read Model port`, clicking `Event Happened → Read Model` then the Timeline region, pressing Backspace sets Event Model `connections` to `[]`", async ({
-  page,
-}) => {
+async function backspaceEventReadConnection(page: Page) {
   await openUntitledModel(page);
   await page.getByRole("button", { name: "Add Event", exact: true }).click();
   await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
@@ -125,8 +123,25 @@ test("After dragging `Event Happened port` onto `Read Model port`, clicking `Eve
     },
   });
   await page.keyboard.press("Backspace");
+}
+
+test("After dragging `Event Happened port` onto `Read Model port`, clicking `Event Happened → Read Model` then the Timeline region, pressing Backspace sets Event Model `connections` to `[]`", async ({
+  page,
+}) => {
+  await backspaceEventReadConnection(page);
   const json = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
   expect(json.connections).toEqual([]);
+});
+
+test("After dragging `Event Happened port` onto `Read Model port`, clicking `Event Happened → Read Model` then the Timeline region, pressing Backspace, `.board` does not show the text `Event Happened → Read Model`", async ({
+  page,
+}) => {
+  await backspaceEventReadConnection(page);
+  await expect(
+    page.locator(".board").getByText("Event Happened → Read Model", {
+      exact: true,
+    }),
+  ).toHaveCount(0);
 });
