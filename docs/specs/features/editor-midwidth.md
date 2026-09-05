@@ -1,6 +1,6 @@
 # Editor midwidth
 
-Status: validated
+Status: released
 
 ## Problem
 
