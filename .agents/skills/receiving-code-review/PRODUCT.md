@@ -11,3 +11,7 @@ A reply that keeps Playwright `locator.focus()` as the proof of `:focus-visible`
 A reply that keeps unit GET Actor `/aria-label="Timeline"[\s\S]*Actor/` as the proof of an in-region AC has not addressed the thread (`testing/PRODUCT.md`).
 
 A reply that adds leftover Add Field AC/`it` without moving `unbindFieldChrome()` out of the Nothing Selected commit has not addressed the thread (`logical-commits/PRODUCT.md`). Spec+test only after review is still tests-after of that leftover-hide.
+
+A reply that cites GET `connectionCopy` is one HTML string to keep GET Command caption and GET Event caption in one commit has not addressed the thread when this slice changes wrapping (`logical-commits/PRODUCT.md`).
+
+A reply that lands GET Command `it` after wrap CSS (`.board-pan { flex-wrap }` / `flex-basis: 100%`), or says leftover `.slice-stack` delete / persist-then-400 of the Event filter is the production that made the rect true, has not addressed tests-after (`logical-commits/PRODUCT.md`).

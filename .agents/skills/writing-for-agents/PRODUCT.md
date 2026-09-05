@@ -58,6 +58,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Event → Read Model copy parent parked in Assumptions (follows the same parent; unique kind-gated drag arm; Command → Event Happened `.board` stays green) | `keeping-specs-current`, `testing`, `tdd-loop`, `playwright-e2e`, `logical-commits` |
 | Restates leftover unused sibling of `.board` vs remaining ⇧⌘Z redo `timelineEl.append`; undo-rest Timeline-shows stays green | `keeping-specs-current`, `testing`, `tdd-loop`, `playwright-e2e`, `logical-commits` |
 | leftover unused wrap vs deleted `flex-wrap: nowrap` (wrap production does not remain) | `keeping-specs-current` |
+| leftover GET `.slice-stack` vs Assumptions later sibling of `.slice-col` on `.board-pan`; GET caption rect stays green if wrap CSS is deleted | `keeping-specs-current`, `testing`, `tdd-loop`, `playwright-e2e` |
 | Extra Zoom in `includes scale(1.25)` when restated editor-shell already owns exact `.board` `scale(1.25)` | `logical-commits`, `keeping-specs-current` |
 | Extra Timeline `toBeVisible` at 390 when released editor-shell already owns GET Timeline; `toBeVisible` stays green below the fold / stacked under `.slice-rail` | `logical-commits`, `testing`, `keeping-specs-current`, `tdd-loop`, `playwright-e2e` |
 | Leftover Out of scope GET ports after reload vs in-memory title-only shortcut listitems (toolbar Add still mounts `Command port`) | `keeping-specs-current` |
@@ -69,9 +70,11 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Playwright `toHaveCSS` of a computed color that is the UA default (Email Field canvas fill) or inherited from a parent/body AC (Landing heading ink after public-face `body.landing`; editor `Slices` heading after `body.app-editor` ink) | `testing`, `keeping-specs-current`, `tdd-loop`, `playwright-e2e`, `logical-commits` |
 | Playwright `locator.focus()` of `:focus-visible` (`Sign in` box-shadow) stays green for a `:focus` rule | `testing`, `tdd-loop`, `playwright-e2e` |
 | Spec tree location / vendor plan dirs / `docs/superpowers/` | this skill, `keeping-specs-current` |
-| Leftover `<<<<<<< Updated upstream` in docs/specs/README.md (new catalog row at the bottom) | `keeping-specs-current`, `spec-implementer` |
+| Leftover `<<<<<<< Updated upstream` in docs/specs/README.md (new catalog row at the bottom; Connection caption after Editor bind split; Inspect event read after Inspect switch) | `keeping-specs-current`, `spec-implementer` |
 | Architecture adapter constructed only under a test flag / injected `env.documents` | `testing`, `codebase-design`, `keeping-specs-current` |
 | Independently revertible fromKind vs toKind / GET already hydrates | `logical-commits` |
+| GET Command → Event Happened caption vs GET Event Happened → Read Model caption when this slice changes wrapping (persist-then-400 of the Event HTML filter); one HTML string unsplit is leftover-wrong | `logical-commits` |
+| wrap CSS (`.board-pan { flex-wrap }` / `flex-basis: 100%`) is GET caption production when GET HTML is already later-sibling; GET Command `it` after that CSS is tests-after | `logical-commits`, `playwright-e2e` |
 | GET `/editor.js` lock vs bindInspect extract (lock already existed; no production hunk) | `logical-commits` |
 | Leftover To Read Model after a narrower From Event Happened remove | `keeping-specs-current`, `logical-commits` |
 | Leftover Field name after a narrower unbindAddField | `keeping-specs-current`, `logical-commits` |
