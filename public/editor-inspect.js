@@ -257,7 +257,11 @@ export function bindInspect(root, ctx) {
   const lastSliceDescription = () => {
     const holder = root.getElementById("event-model-document");
     const model = JSON.parse(holder?.textContent || "{}");
-    return model.slices?.at(-1)?.description ?? "";
+    const id = ctx.selectedSliceItem?.dataset?.id;
+    const slice = id
+      ? model.slices?.find((s) => s.id === id)
+      : model.slices?.at(-1);
+    return slice?.description ?? "";
   };
   const lastActorDescription = () => {
     const holder = root.getElementById("event-model-document");
