@@ -291,4 +291,18 @@ describe("spec tree", () => {
       /Event Happened → Read Model` as a sibling of `\.board` is leftover unused; `\.board` contains it is that slice\. GET `data-id` on that node/,
     );
   });
+
+  it("editor-bind-split Out of scope does not park ⌘S Save as later work", () => {
+    const bind = readFileSync(
+      "docs/specs/features/editor-bind-split.md",
+      "utf8",
+    );
+    const out = (bind.split("## Out of scope")[1] ?? "").split(
+      "## Restates",
+    )[0];
+    expect(out).not.toContain("⌘S Save.");
+    expect(out).toContain("[cmd-s-save.md](./cmd-s-save.md)");
+    const cmd = readFileSync("docs/specs/features/cmd-s-save.md", "utf8");
+    expect(cmd).toContain("[editor-bind-split.md](./editor-bind-split.md)");
+  });
 });
