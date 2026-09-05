@@ -134,6 +134,9 @@ async function addFieldOnCommandThenClickEventRead(page: Page) {
   await expect(
     inspector.getByRole("textbox", { name: "Example", exact: true }),
   ).toBeVisible();
+  await expect(
+    inspector.getByRole("button", { name: "Delete Field", exact: true }),
+  ).toBeVisible();
   await timeline
     .getByText("Event Happened → Read Model", { exact: true })
     .click();
@@ -164,5 +167,14 @@ test("After clicking the Timeline `Command` listitem, clicking `Add Field`, drag
   const { inspector } = await addFieldOnCommandThenClickEventRead(page);
   await expect(
     inspector.getByRole("textbox", { name: "Example", exact: true }),
+  ).toHaveCount(0);
+});
+
+test("After clicking the Timeline `Command` listitem, clicking `Add Field`, dragging `Event Happened port` onto `Read Model port`, clicking `Event Happened → Read Model`, the Inspector region does not show a button whose accessible name is `Delete Field`", async ({
+  page,
+}) => {
+  const { inspector } = await addFieldOnCommandThenClickEventRead(page);
+  await expect(
+    inspector.getByRole("button", { name: "Delete Field", exact: true }),
   ).toHaveCount(0);
 });

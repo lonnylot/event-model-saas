@@ -1102,6 +1102,7 @@ export function bindInspect(root, ctx) {
     unbindFieldType();
     unbindOptional();
     unbindExample();
+    deleteFieldButton()?.remove();
   });
   if (timeline && typeof timeline.querySelector === "function") {
     timeline.querySelector(".time-chrome")?.addEventListener("click", () => {
