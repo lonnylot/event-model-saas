@@ -1360,6 +1360,7 @@ body.app-editor section[aria-label="Timeline"]:has(.slice-col) .board {
 }
 body.app-editor .board-pan {
   display: flex;
+  flex-wrap: wrap;
   align-items: stretch;
   flex: 1;
   min-width: 0;
@@ -1522,6 +1523,9 @@ body.app-editor section[aria-label="Timeline"] p[data-kind="connection"] {
   margin: 0.65rem 1rem 0.85rem;
   font-size: 0.75rem;
   color: #64748b;
+}
+body.app-editor .board-pan > p[data-kind="connection"] {
+  flex-basis: 100%;
 }
 body.app-editor section[aria-label="Inspector"] {
   grid-area: inspector;

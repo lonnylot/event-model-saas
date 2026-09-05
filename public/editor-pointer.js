@@ -337,10 +337,10 @@ export function bindPointer(root, ctx) {
           board &&
           !board.textContent?.includes("Event Happened → Read Model")
         ) {
-          board.insertAdjacentHTML(
-            "beforeend",
-            '<p data-kind="connection">Event Happened → Read Model</p>',
-          );
+          const line = root.createElement("p");
+          line.textContent = "Event Happened → Read Model";
+          line.setAttribute("data-kind", "connection");
+          board.append(line);
         }
       }
       if (
