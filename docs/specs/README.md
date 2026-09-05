@@ -80,6 +80,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Inspect event read | [features/inspect-event-read.md](./features/inspect-event-read.md) | released |
 | Delete event read | [features/delete-event-read.md](./features/delete-event-read.md) | released |
 | Connection caption | [features/connection-caption.md](./features/connection-caption.md) | released |
-| Inspect event read fields | [features/inspect-event-read-fields.md](./features/inspect-event-read-fields.md) | validated |
+| Inspect event read fields | [features/inspect-event-read-fields.md](./features/inspect-event-read-fields.md) | released |
 
 Status: `draft` → `validated` → `released`.
