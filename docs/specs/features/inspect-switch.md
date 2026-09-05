@@ -35,13 +35,13 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 ## Assumptions
 
 - Playwright unique checkout `PORT` / `INSPECTOR_PORT` and `TEST_MAIL=1` `workers` `1` stay [public-face.md](./public-face.md).
-- Clicking Timeline `New Slice` still shows Inspector Type ([slice-type.md](./slice-type.md)). Clicking `Command → Event Happened` still shows Connection / From Command / To Event Happened ([inspect-connection.md](./inspect-connection.md)). Clicking `Event Happened → Read Model` still shows From Event Happened and To Read Model ([inspect-rest.md](./inspect-rest.md)). Clicking Command still shows `Add Field` ([inspect-fields.md](./inspect-fields.md)). Leftover Type after a Connection click, leftover From Event Happened, leftover To Read Model, leftover Add Field, leftover Field name, leftover Field type, leftover Optional, leftover Example, and leftover Delete Field after `Command → Event Happened` is this slice.
+- Clicking Timeline `New Slice` still shows Inspector Type ([slice-type.md](./slice-type.md)). Clicking `Command → Event Happened` still shows Connection / From Command / To Event Happened ([inspect-connection.md](./inspect-connection.md)). Clicking `Event Happened → Read Model` still shows From Event Happened and To Read Model ([inspect-rest.md](./inspect-rest.md)). Clicking Command still shows `Add Field` ([inspect-fields.md](./inspect-fields.md)). Leftover Type after a Connection click, leftover From Event Happened, leftover To Read Model, leftover Add Field, leftover Field name, leftover Field type, leftover Optional, leftover Example, and leftover Delete Field after `Command → Event Happened` is this slice. Leftover Connection copy after clicking Command is [leftover-connection-command.md](./leftover-connection-command.md).
 - Create model still seeds a default Slice ([model-defaults.md](./model-defaults.md)). Toolbar Add still targets the last Slice ([blocks.md](./blocks.md)).
 - Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).
 
 ## Out of scope
 
-Shortcut listitem `data-kind` is [shortcut-kind.md](./shortcut-kind.md). Connection copy as a flex sibling of `.slice-col`. Narrow viewport layout is [editor-narrow.md](./editor-narrow.md). Landing. Mac window chrome. Copy changes.
+Shortcut listitem `data-kind` is [shortcut-kind.md](./shortcut-kind.md). Connection copy as a flex sibling of `.slice-col`. Narrow viewport layout is [editor-narrow.md](./editor-narrow.md). Leftover Connection copy after clicking Command is [leftover-connection-command.md](./leftover-connection-command.md). Landing. Mac window chrome. Copy changes.
 
 ## Restates
 
