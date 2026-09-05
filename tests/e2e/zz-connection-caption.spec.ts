@@ -147,3 +147,41 @@ test("After dragging `Event Happened port` onto `Read Model port`, `Event Happen
   );
   expect(captionTop).toBeGreaterThanOrEqual(colBottom);
 });
+
+test("After a member creates a model, opens it, clicks `Add Command`, clicks `Add Event`, drags `Command port` onto `Event Happened port`, and Saves, a reload of that page, `Command → Event Happened` `getBoundingClientRect.top` is greater than or equal to the `.slice-col` that contains `Command` `getBoundingClientRect.bottom`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await dragPort(page, "Command port", "Event Happened port");
+  await Promise.all([
+    page.waitForResponse(
+      (response) =>
+        response.url().includes("/api/models/") &&
+        response.request().method() === "PUT",
+    ),
+    page.getByRole("button", { name: "Save", exact: true }).click(),
+  ]);
+  await page.reload();
+  await page.waitForLoadState("networkidle");
+  const caption = page.locator(".board").getByText("Command → Event Happened", {
+    exact: true,
+  });
+  await expect(caption).toBeVisible();
+  expect(
+    await caption.evaluate((el) =>
+      Boolean(el.parentElement?.classList.contains("board-pan")),
+    ),
+  ).toBe(true);
+  const sliceCol = page.locator(".slice-col").filter({
+    has: page.getByRole("listitem", { name: "Command", exact: true }),
+  });
+  const captionTop = await caption.evaluate((el) =>
+    el.getBoundingClientRect().top,
+  );
+  const colBottom = await sliceCol.evaluate((el) =>
+    el.getBoundingClientRect().bottom,
+  );
+  expect(captionTop).toBeGreaterThanOrEqual(colBottom);
+});

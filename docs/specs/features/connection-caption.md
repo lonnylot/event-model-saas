@@ -10,7 +10,7 @@ Dragging `Command port` onto `Event Happened port` puts `Command → Event Happe
 
 - [x] After dragging `Command port` onto `Event Happened port`, `Command → Event Happened` `getBoundingClientRect.top` is greater than or equal to the `.slice-col` that contains `Command` `getBoundingClientRect.bottom`
 - [x] After dragging `Event Happened port` onto `Read Model port`, `Event Happened → Read Model` `getBoundingClientRect.top` is greater than or equal to the `.slice-col` that contains `Read Model` `getBoundingClientRect.bottom`
-- [ ] After a member creates a model, opens it, clicks `Add Command`, clicks `Add Event`, drags `Command port` onto `Event Happened port`, and Saves, a reload of that page, `Command → Event Happened` `getBoundingClientRect.top` is greater than or equal to the `.slice-col` that contains `Command` `getBoundingClientRect.bottom`
+- [x] After a member creates a model, opens it, clicks `Add Command`, clicks `Add Event`, drags `Command port` onto `Event Happened port`, and Saves, a reload of that page, `Command → Event Happened` `getBoundingClientRect.top` is greater than or equal to the `.slice-col` that contains `Command` `getBoundingClientRect.bottom`
 - [ ] After a member creates a model, opens it, clicks `Add Event`, clicks `Add Read Model`, drags `Event Happened port` onto `Read Model port`, and Saves, a reload of that page, `Event Happened → Read Model` `getBoundingClientRect.top` is greater than or equal to the `.slice-col` that contains `Read Model` `getBoundingClientRect.bottom`
 
 ## Domain terms
@@ -30,21 +30,21 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 ## Assumptions
 
 - Playwright unique checkout `PORT` / `INSPECTOR_PORT` and `TEST_MAIL=1` `workers` `1` stay [public-face.md](./public-face.md).
-- `.board` still contains `Command → Event Happened` ([connection-on-board.md](./connection-on-board.md)). That text as a later flex sibling of `.slice-col` is leftover unused; below the Slice column is this slice.
+- `.board` still contains `Command → Event Happened` ([connection-on-board.md](./connection-on-board.md)). Sitting beside the Slice as an extra column is leftover unused; wrapping below the Slice column is this slice. Connection copy stays a later sibling of `.slice-col` so undo insertBefore on `.board-pan` still holds ([undo-rest.md](./undo-rest.md)).
 - Create model still seeds a default Slice ([model-defaults.md](./model-defaults.md)). Toolbar Add still targets the last Slice ([blocks.md](./blocks.md)).
 - Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).
 
 ## Out of scope
 
-Drawing Connections as canvas lines between ports. Inspector leftover Type. Shortcut ports. Narrow viewport. ⇧⌘Z redo Connection copy parent stays [undo-rest.md](./undo-rest.md). Landing. Mac window chrome. Copy changes.
+Drawing Connections as canvas lines between ports. Inspector leftover Type. Shortcut ports. Narrow viewport. Undo/⇧⌘Z redo Connection copy parent stays [undo-rest.md](./undo-rest.md). Landing. Mac window chrome. Copy changes.
 
 ## Restates
 
-- [connection-on-board.md](./connection-on-board.md) — `.board` still contains `Command → Event Happened`. That copy as a later flex sibling of `.slice-col` is leftover unused; below the Slice is this slice.
+- [connection-on-board.md](./connection-on-board.md) — `.board` still contains `Command → Event Happened`. Sitting beside the Slice as an extra column is leftover unused; wrapping below the Slice is this slice.
 - [connections.md](./connections.md) — Timeline still shows `Command → Event Happened`. Caption placement on `.board` is this slice.
 - [architecture.md](../architecture.md) — Editor canvas stays custom timeline TypeScript. Connection caption placement is this slice.
-- [hydrate-connection-id.md](./hydrate-connection-id.md) — GET `Command → Event Happened` `data-id` stays that file. Connection caption as a flex sibling of `.slice-col` is leftover unused; below the Slice is this slice.
-- [inspect-switch.md](./inspect-switch.md) — Leftover Inspector Type after a Connection click stays that file. Connection copy as a flex sibling of `.slice-col` is leftover unused; below the Slice is this slice.
+- [hydrate-connection-id.md](./hydrate-connection-id.md) — GET `Command → Event Happened` `data-id` stays that file. Connection caption sitting beside the Slice as an extra column is leftover unused; wrapping below the Slice is this slice.
+- [inspect-switch.md](./inspect-switch.md) — Leftover Inspector Type after a Connection click stays that file. Connection copy sitting beside the Slice as an extra column is leftover unused; wrapping below the Slice is this slice.
 - [editor-bind-split.md](./editor-bind-split.md) — `bindPointer` import stays that file. Connection caption placement is this slice.
 - [editor-narrow.md](./editor-narrow.md) — Narrow viewport Slice inside Timeline stays that file. Connection caption placement is this slice.
 - [editor-midwidth.md](./editor-midwidth.md) — 800-wide Slice inside Timeline stays that file. Connection caption placement is this slice.

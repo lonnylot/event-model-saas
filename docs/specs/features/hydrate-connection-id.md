@@ -36,7 +36,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-GET Actor / Automation `data-id`. GET `Event Happened → Read Model` `data-id`. Connection caption as a later flex sibling of `.slice-col` is leftover unused; below the Slice is [connection-caption.md](./connection-caption.md). Inspector leftover Type is [inspect-switch.md](./inspect-switch.md). Drawing Connections as canvas lines. Landing. Mac window chrome. Copy changes.
+GET Actor / Automation `data-id`. GET `Event Happened → Read Model` `data-id`. Connection caption sitting beside the Slice as an extra column is leftover unused; wrapping below the Slice is [connection-caption.md](./connection-caption.md). Inspector leftover Type is [inspect-switch.md](./inspect-switch.md). Drawing Connections as canvas lines. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 

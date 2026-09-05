@@ -41,7 +41,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-Shortcut listitem `data-kind` is [shortcut-kind.md](./shortcut-kind.md). Connection copy as a later flex sibling of `.slice-col` is leftover unused; below the Slice is [connection-caption.md](./connection-caption.md). Narrow viewport layout is [editor-narrow.md](./editor-narrow.md). Leftover Connection copy after clicking Command is [leftover-connection-command.md](./leftover-connection-command.md). Leftover Add Field / Field name after `Event Happened → Read Model` is [inspect-event-read.md](./inspect-event-read.md). Landing. Mac window chrome. Copy changes.
+Shortcut listitem `data-kind` is [shortcut-kind.md](./shortcut-kind.md). Connection copy sitting beside the Slice as an extra column is leftover unused; wrapping below the Slice is [connection-caption.md](./connection-caption.md). Narrow viewport layout is [editor-narrow.md](./editor-narrow.md). Leftover Connection copy after clicking Command is [leftover-connection-command.md](./leftover-connection-command.md). Leftover Add Field / Field name after `Event Happened → Read Model` is [inspect-event-read.md](./inspect-event-read.md). Landing. Mac window chrome. Copy changes.
 
 ## Restates
 
