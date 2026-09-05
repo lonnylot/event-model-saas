@@ -185,3 +185,42 @@ test("After a member creates a model, opens it, clicks `Add Command`, clicks `Ad
   );
   expect(captionTop).toBeGreaterThanOrEqual(colBottom);
 });
+
+test("After a member creates a model, opens it, clicks `Add Event`, clicks `Add Read Model`, drags `Event Happened port` onto `Read Model port`, and Saves, a reload of that page, `Event Happened → Read Model` `getBoundingClientRect.top` is greater than or equal to the `.slice-col` that contains `Read Model` `getBoundingClientRect.bottom`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  await dragPort(page, "Event Happened port", "Read Model port");
+  await Promise.all([
+    page.waitForResponse(
+      (response) =>
+        response.url().includes("/api/models/") &&
+        response.request().method() === "PUT",
+    ),
+    page.getByRole("button", { name: "Save", exact: true }).click(),
+  ]);
+  await page.reload();
+  await page.waitForLoadState("networkidle");
+  const caption = page.locator(".board").getByText(
+    "Event Happened → Read Model",
+    { exact: true },
+  );
+  await expect(caption).toBeVisible();
+  expect(
+    await caption.evaluate((el) =>
+      Boolean(el.parentElement?.classList.contains("board-pan")),
+    ),
+  ).toBe(true);
+  const sliceCol = page.locator(".slice-col").filter({
+    has: page.getByRole("listitem", { name: "Read Model", exact: true }),
+  });
+  const captionTop = await caption.evaluate((el) =>
+    el.getBoundingClientRect().top,
+  );
+  const colBottom = await sliceCol.evaluate((el) =>
+    el.getBoundingClientRect().bottom,
+  );
+  expect(captionTop).toBeGreaterThanOrEqual(colBottom);
+});
