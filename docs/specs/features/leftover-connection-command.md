@@ -34,11 +34,11 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-Leftover Add Field / Field name after `Event Happened → Read Model` is [inspect-event-read.md](./inspect-event-read.md). Leftover Field type / Optional after `Event Happened → Read Model` is [inspect-event-read-fields.md](./inspect-event-read-fields.md). TIME click empty Inspector is [inspect-deselect.md](./inspect-deselect.md). Inspector empty after Command Backspace is [inspect-after-delete.md](./inspect-after-delete.md). Landing. Mac window chrome. Copy changes.
+Leftover Add Field / Field name after `Event Happened → Read Model` is [inspect-event-read.md](./inspect-event-read.md). Leftover Field type / Optional / Example after `Event Happened → Read Model` is [inspect-event-read-fields.md](./inspect-event-read-fields.md). TIME click empty Inspector is [inspect-deselect.md](./inspect-deselect.md). Inspector empty after Command Backspace is [inspect-after-delete.md](./inspect-after-delete.md). Landing. Mac window chrome. Copy changes.
 
 ## Restates
 
 - [inspect-connection.md](./inspect-connection.md) — Clicking `Command → Event Happened` still shows Connection / From Command / To Event Happened. Those texts remaining after a later Command click are leftover unused; this slice drops them.
-- [inspect-switch.md](./inspect-switch.md) — Leftover Type / leftover Add Field / leftover Field chrome after `Command → Event Happened` stay that file. Leftover Add Field / Field name after `Event Happened → Read Model` is [inspect-event-read.md](./inspect-event-read.md). Leftover Field type / Optional after `Event Happened → Read Model` is [inspect-event-read-fields.md](./inspect-event-read-fields.md). Leftover Connection copy after Command click is this slice.
+- [inspect-switch.md](./inspect-switch.md) — Leftover Type / leftover Add Field / leftover Field chrome after `Command → Event Happened` stay that file. Leftover Add Field / Field name after `Event Happened → Read Model` is [inspect-event-read.md](./inspect-event-read.md). Leftover Field type / Optional / Example after `Event Happened → Read Model` is [inspect-event-read-fields.md](./inspect-event-read-fields.md). Leftover Connection copy after Command click is this slice.
 - [inspect-blocks.md](./inspect-blocks.md) — Clicking Command still opens Inspector Name. Leftover Connection copy after that click is this slice.
 - [architecture.md](../architecture.md) — Editor canvas stays custom timeline TypeScript. Leftover Connection copy after Command click is this slice.
