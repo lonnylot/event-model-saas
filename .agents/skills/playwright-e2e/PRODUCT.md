@@ -20,7 +20,7 @@ Playwright `locator.focus()` of `:focus-visible` (`Sign in` box-shadow) is the w
 
 TIME chrome does not pan is unproven by Timeline `style.transform` does not include `translate(` — `.time-chrome` inside `.board` stays green (`testing`). That factor is an AC that asserts `.time-chrome`, or drop the claim (`keeping-specs-current`).
 
-Event → Read Model copy on `.board` is unproven by Command → Event Happened `.board` tests — the second kind-gated drag arm stays sibling (`testing`). That placement is an AC that asserts `.board` contains `Event Happened → Read Model`, or revert that arm (`keeping-specs-current`). GET `connectionCopy` stays the one reload AC.
+Event → Read Model copy on `.board` is unproven by Command → Event Happened `.board` tests — the second kind-gated drag arm stays sibling (`testing`). That placement is an AC that asserts `.board` contains `Event Happened → Read Model`, or revert that arm (`keeping-specs-current`). GET `connectionCopy` stays the one reload AC when this slice does not change wrapping. Caption placement wrapping is independently revertible GET Command vs GET Event (`logical-commits`).
 
 Leftover unused sibling of `.board` is unproven by after-drag `.board` + undo-rest Timeline-shows — ⇧⌘Z redo `timelineEl.append` stays green (`testing`). Append redo on `.board` so leftover unused holds (`keeping-specs-current`).
 

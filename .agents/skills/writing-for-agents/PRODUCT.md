@@ -73,6 +73,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Leftover `<<<<<<< Updated upstream` in docs/specs/README.md (new catalog row at the bottom; Connection caption after Editor bind split; Inspect event read after Inspect switch) | `keeping-specs-current`, `spec-implementer` |
 | Architecture adapter constructed only under a test flag / injected `env.documents` | `testing`, `codebase-design`, `keeping-specs-current` |
 | Independently revertible fromKind vs toKind / GET already hydrates | `logical-commits` |
+| GET Command → Event Happened caption vs GET Event Happened → Read Model caption when this slice changes wrapping (persist-then-400 of the Event HTML filter); one HTML string unsplit is leftover-wrong | `logical-commits` |
 | GET `/editor.js` lock vs bindInspect extract (lock already existed; no production hunk) | `logical-commits` |
 | Leftover To Read Model after a narrower From Event Happened remove | `keeping-specs-current`, `logical-commits` |
 | Leftover Field name after a narrower unbindAddField | `keeping-specs-current`, `logical-commits` |

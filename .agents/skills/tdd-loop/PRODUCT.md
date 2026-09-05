@@ -2,7 +2,7 @@
 
 Load with `tdd-loop`. Portable procedure is `SKILL.md` (spec-loop).
 
-Product weaker readings: `testing/PRODUCT.md`. Product chrome / Restates: `keeping-specs-current/PRODUCT.md`. Commit grouping: `logical-commits/PRODUCT.md`. Leftover-hide From Command vs To Event Happened vs Connection is independently revertible — not one `unbindConnectionCopy` loop. Leftover-hide `unbindFieldChrome` vs Name/Description/Type unbind (`:has(label)` empty copy / Nothing Selected) is independently revertible — not one Command Backspace path. GET `/editor.js` lock vs `bindInspect` extract is independently revertible — not one page-bind commit.
+Product weaker readings: `testing/PRODUCT.md`. Product chrome / Restates: `keeping-specs-current/PRODUCT.md`. Commit grouping: `logical-commits/PRODUCT.md`. Leftover-hide From Command vs To Event Happened vs Connection is independently revertible — not one `unbindConnectionCopy` loop. Leftover-hide `unbindFieldChrome` vs Name/Description/Type unbind (`:has(label)` empty copy / Nothing Selected) is independently revertible — not one Command Backspace path. GET `/editor.js` lock vs `bindInspect` extract is independently revertible — not one page-bind commit. GET Command → Event Happened caption vs GET Event Happened → Read Model caption is independently revertible when this slice changes wrapping — not one HTML string.
 
 ## RED
 
