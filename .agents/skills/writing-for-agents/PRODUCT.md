@@ -32,6 +32,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Restates omitting draft `architecture.md` that still assigns token/CSS to restated slices (public-face / product-visual apply type/Card/Field/Page/editor CSS after composed look moved to designed-surfaces) | `keeping-specs-current` |
 | Leftover Assumptions 576px/36px after restated landing heading 56px / main max-width none | `keeping-specs-current` |
 | Leftover Assumptions after restating Out of scope Connection delete stay delete-blocks (`delete-rest.md`) | `keeping-specs-current` |
+| leftover inspect-rest Type AC after restating GET Type of one Slice / first of two (Create + New Slice + the New Slice listitem vs one Slice) | `keeping-specs-current` |
 | Leftover landing-saas-shot Problem “browser chrome” after restated URL bar leftover unused | `keeping-specs-current` |
 | Leftover landing-fold Problem “three bento cards” / caption-strip after restated stacked product-image rows | `keeping-specs-current` |
 | Problem names only Command when ACs also cover Event / Read Model / Automation (hydrate-add-field; inspect-after-reload / inspect-fields / shortcut-shows name every kind) | `keeping-specs-current` |
@@ -49,6 +50,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Restates omitting public-face leftover unused `.bento` fill/lift after this HEAD rewrote that Out of scope | `keeping-specs-current` |
 | Restates omitting released `hydrate-board.md` leftover Out of scope covering TIME chrome after this slice took covering TIME chrome | `keeping-specs-current` |
 | Restates omitting released `editor-bind-split.md` leftover Out of scope ⌘S Save after this slice took ⌘S Save | `keeping-specs-current` |
+| Restates omitting released `editor-shell.md` leftover Out of scope unqualified Slice type after reload parked on inspect-rest after this slice took GET Type of the first of two Slices | `keeping-specs-current` |
 | Restates omitting released `port-wrap.md` / `inspect-switch.md` leftover Out of scope Narrow viewport / Narrow viewport layout after this slice took narrow Editor layout | `keeping-specs-current` |
 | Restates Narrow AppBar / Timeline clip overlapping released timeline-clip.md pan/zoom clip | `keeping-specs-current` |
 | Restates listing design-system.md Tokens stay that file when UI inventory is not a rewrite (timeline-clip inventories without listing) | `keeping-specs-current` |
