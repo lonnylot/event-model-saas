@@ -76,6 +76,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Leftover connection command | [features/leftover-connection-command.md](./features/leftover-connection-command.md) | released |
 | Inspect after delete | [features/inspect-after-delete.md](./features/inspect-after-delete.md) | released |
 | Editor midwidth | [features/editor-midwidth.md](./features/editor-midwidth.md) | released |
-| Editor bind split | [features/editor-bind-split.md](./features/editor-bind-split.md) | validated |
+| Editor bind split | [features/editor-bind-split.md](./features/editor-bind-split.md) | released |
 
 Status: `draft` → `validated` → `released`.

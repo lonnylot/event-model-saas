@@ -1,6 +1,6 @@
 # Editor bind split
 
-Status: validated
+Status: released
 
 ## Problem
 
