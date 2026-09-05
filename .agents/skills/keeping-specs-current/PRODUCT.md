@@ -66,6 +66,8 @@ Restating one phrase in a `product.md` bullet is unfinished until you re-read th
 
 Two-dot vs current default deleting a catalog-released spec, Playwright file, or catalog row is blocking — three-dot from a stale merge-base hides that drop.
 
+Leftover `<<<<<<<` in `docs/specs/README.md` is not a feature row — a new Inspect event read row at the bottom while `<<<<<<< Updated upstream` remains between Inspect switch and Port wrap is unfinished. The catalog conflict-marker unit test is architecture Spec tree (same home as no `docs/superpowers/`).
+
 After rebase onto default, grep leftover paper Page / Page background assigned to visual-shell against every catalog-released spec on HEAD, not only Restates already listed — files that landed in the rebase are the usual omit (`teams-and-invites.md` / `magic-link-auth.md`). Listing `teams-and-invites.md` in Restates without rewriting leftover Page background still assigned to visual-shell, leftover paper Page on expired in `magic-link-auth.md`, or product-visual Restates that omits those files, is unfinished.
 
 Grep draft `architecture.md` for leftover token/CSS assignment to restated slices even when Restates omitted it — public-face / product-visual apply type/Card/Field/Page/editor CSS after composed look moved to designed-surfaces is that omit. Draft is not a skip.

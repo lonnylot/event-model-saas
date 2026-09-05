@@ -15,6 +15,7 @@ description: >
   a Domain terms line names a word CONTEXT.md does not define, when
   tightening a fake or test-double parse, when adding an operator CLI,
   host-path construction of an architecture-named adapter,
+  leftover merge marker / `<<<<<<<` in the spec catalog,
   or whenever CONTEXT.md, docs/specs, or docs/adr may be missing or stale.
 ---
 
@@ -27,6 +28,7 @@ Specs are the product. Code implements them. A change with no matching spec upda
 - Any behavior change, including "tiny" ones
 - New feature, bug, or refactor that alters what the system does
 - Suspected drift between code and `docs/specs/`
+- Leftover git conflict marker in the spec catalog
 
 ## Iron law
 
@@ -39,7 +41,7 @@ Status on every spec: `draft` → `validated` → `released`.
 
 ## Steps
 
-1. **Name the spec.** Open `docs/specs/README.md`. Identify the system spec and/or `docs/specs/features/<slug>.md` this change implements. Completion: you can point at a path. If none exists, create it from `docs/specs/features/_TEMPLATE.md` and add a catalog row **before** code.
+1. **Name the spec.** Open `docs/specs/README.md`. Identify the system spec and/or `docs/specs/features/<slug>.md` this change implements. Completion: you can point at a path. If none exists, create it from `docs/specs/features/_TEMPLATE.md` and add a catalog row **before** code. Leftover `<<<<<<<` / `=======` / `>>>>>>>` in that file is not a feature row — grep those markers empty after adding the row (including after rebase).
 
 2. **Read before edit.** Read that spec, `CONTEXT.md` (terms), and any linked system spec. When the change adds a caller, npm script, or CLI that reuses a constructor, search other feature specs for exclusive "only X" / "constructed only" bullets the new caller would falsify. Completion: you can quote the criterion you are implementing and every exclusive bound the new caller touches.
 
@@ -85,6 +87,7 @@ Status on every spec: `draft` → `validated` → `released`.
 - New synonym for a `CONTEXT.md` term
 - A Domain terms line names a word `CONTEXT.md` does not define
 - Catalog has no row for a new feature file
+- Leftover git conflict marker in the spec catalog (`<<<<<<<` still in the table while the new row is at the bottom)
 - A new operator CLI or npm script lives only under Assumptions
 - Host-path construction of an architecture-named adapter lives only under Assumptions
 - Exclusive "only script X" wording still stands after a second script calls the same constructor
