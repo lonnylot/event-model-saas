@@ -1599,6 +1599,31 @@ body.app-editor #export-model button,
 body.app-editor form[action="/api/auth/sign-out"] button {
   background: transparent;
 }
+@media (max-width: 800px) and (min-width: 721px) {
+  body.app-editor .board {
+    padding: 0.5rem;
+    min-width: 0;
+  }
+  body.app-editor .lane-rail {
+    width: 4.25rem;
+    flex: 0 0 4.25rem;
+  }
+  body.app-editor .slice-col {
+    width: auto;
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 100%;
+    margin-left: 0.4rem;
+  }
+  body.app-editor .lane-label,
+  body.app-editor .lane {
+    min-height: 3.25rem;
+  }
+  body.app-editor .lane-label:first-child,
+  body.app-editor .slice-head {
+    min-height: 2.5rem;
+  }
+}
 @media (max-width: 720px) {
   html:has(body.app-editor) {
     overflow: hidden;

@@ -42,7 +42,7 @@ Event Model, Person, Team, Site admin, Session, Magic link
 
 ## UI
 
-Screens: App, Team picker, Team, Teams admin. Primitives this slice composes: AppBar (`Event Model` href `/app`). AppBar layout (flex, padding) is [designed-surfaces.md](./designed-surfaces.md). Narrow Editor Slice-inside-Timeline layout is [editor-narrow.md](./editor-narrow.md). Page `canvas` background and `ink` color on those screens are [product-visual.md](./product-visual.md). Public Page, Login Button primary, Landing, Login, Not found, and Expired link are [public-face.md](./public-face.md). AppBar Mark and Editor `header` link `Event Model` href `/app` are [app-chrome.md](./app-chrome.md). Inventory: [design-system.md](../design-system.md).
+Screens: App, Team picker, Team, Teams admin. Primitives this slice composes: AppBar (`Event Model` href `/app`). AppBar layout (flex, padding) is [designed-surfaces.md](./designed-surfaces.md). Narrow Editor Slice-inside-Timeline layout is [editor-narrow.md](./editor-narrow.md). 800-wide Slice inside Timeline is [editor-midwidth.md](./editor-midwidth.md). Page `canvas` background and `ink` color on those screens are [product-visual.md](./product-visual.md). Public Page, Login Button primary, Landing, Login, Not found, and Expired link are [public-face.md](./public-face.md). AppBar Mark and Editor `header` link `Event Model` href `/app` are [app-chrome.md](./app-chrome.md). Inventory: [design-system.md](../design-system.md).
 
 ## Assumptions
 
@@ -56,7 +56,7 @@ Screens: App, Team picker, Team, Teams admin. Primitives this slice composes: Ap
 
 ## Out of scope
 
-Dark mode. Public Page, Login, Landing, Marketing header, expired `Sign in`, and Login Button primary are [public-face.md](./public-face.md). Card, Field, font `type`, `radius`, Landing `Join the waitlist` Button primary, signed-in Page colors, editor stylesheet, and sticky-note colors are [product-visual.md](./product-visual.md). Extra “Request a new one” heading on the expired page stays out. AppBar layout (flex, padding), GET `/` viewport, composed look, and Google Fonts Inter are [designed-surfaces.md](./designed-surfaces.md). Narrow Slice-inside-Timeline layout is [editor-narrow.md](./editor-narrow.md). Viewport meta on 404 stays. Signed-in AppBar `nav` is [admin-nav.md](./admin-nav.md). AppBar Mark and Editor `header` link `Event Model` href `/app` are [app-chrome.md](./app-chrome.md).
+Dark mode. Public Page, Login, Landing, Marketing header, expired `Sign in`, and Login Button primary are [public-face.md](./public-face.md). Card, Field, font `type`, `radius`, Landing `Join the waitlist` Button primary, signed-in Page colors, editor stylesheet, and sticky-note colors are [product-visual.md](./product-visual.md). Extra “Request a new one” heading on the expired page stays out. AppBar layout (flex, padding), GET `/` viewport, composed look, and Google Fonts Inter are [designed-surfaces.md](./designed-surfaces.md). Narrow Slice-inside-Timeline layout is [editor-narrow.md](./editor-narrow.md). 800-wide Slice inside Timeline is [editor-midwidth.md](./editor-midwidth.md). Viewport meta on 404 stays. Signed-in AppBar `nav` is [admin-nav.md](./admin-nav.md). AppBar Mark and Editor `header` link `Event Model` href `/app` are [app-chrome.md](./app-chrome.md).
 
 ## Restates
 
