@@ -2262,6 +2262,9 @@ export function bindEditor(root) {
       }
       selectedCommandItem = null;
       selected = null;
+      nameInput()?.closest("label")?.remove();
+      unbindDescription();
+      unbindType();
       return;
     }
     const sliceId = selectedSliceItem?.dataset?.id;
