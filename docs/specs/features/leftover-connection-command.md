@@ -1,6 +1,6 @@
 # Leftover connection command
 
-Status: validated
+Status: released
 
 ## Problem
 
