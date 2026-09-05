@@ -2,7 +2,7 @@
 
 Load with `tdd-loop`. Portable procedure is `SKILL.md` (spec-loop).
 
-Product weaker readings: `testing/PRODUCT.md`. Product chrome / Restates: `keeping-specs-current/PRODUCT.md`. Commit grouping: `logical-commits/PRODUCT.md`. Leftover-hide From Command vs To Event Happened vs Connection is independently revertible — not one `unbindConnectionCopy` loop.
+Product weaker readings: `testing/PRODUCT.md`. Product chrome / Restates: `keeping-specs-current/PRODUCT.md`. Commit grouping: `logical-commits/PRODUCT.md`. Leftover-hide From Command vs To Event Happened vs Connection is independently revertible — not one `unbindConnectionCopy` loop. Leftover-hide `unbindFieldChrome` vs Name/Description/Type unbind (`:has(label)` empty copy / Nothing Selected) is independently revertible — not one Command Backspace path.
 
 ## RED
 
@@ -22,4 +22,4 @@ No extra R2/D1 write without a stored-body AC. Architecture adapters constructed
 
 ## TDD slice
 
-When restating a weaker fixture after production landed, reconstruct into that production commit (`logical-commits/PRODUCT.md`). After the PR is open, spec-loop owns the slice: one review/CI commit on HEAD.
+When restating a weaker fixture after production landed, reconstruct into that production commit (`logical-commits/PRODUCT.md`). After the PR is open, spec-loop owns the slice: one review/CI commit on HEAD. Extra leftover-hide production that already landed without its AC (`unbindFieldChrome()` in Nothing Selected) is still tests-after — rebase so that call is not in the earlier commit (`logical-commits/PRODUCT.md`).
