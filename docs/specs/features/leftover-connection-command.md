@@ -28,13 +28,13 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 ## Assumptions
 
 - Playwright unique checkout `PORT` / `INSPECTOR_PORT` and `TEST_MAIL=1` `workers` `1` stay [public-face.md](./public-face.md).
-- Clicking `Command → Event Happened` still shows Connection / From Command / To Event Happened ([inspect-connection.md](./inspect-connection.md)). Leftover Type / leftover Add Field after that click stays [inspect-switch.md](./inspect-switch.md). Leftover Connection / From Command / To Event Happened after clicking Command is this slice.
+- Clicking `Command → Event Happened` still shows Connection / From Command / To Event Happened ([inspect-connection.md](./inspect-connection.md)). Leftover Type / leftover Add Field after that click stays [inspect-switch.md](./inspect-switch.md). Leftover Connection / From Command / To Event Happened after clicking Command is this slice. Inspector empty after Command Backspace is [inspect-after-delete.md](./inspect-after-delete.md).
 - Create model still seeds a default Slice ([model-defaults.md](./model-defaults.md)). Toolbar Add still targets the last Slice ([blocks.md](./blocks.md)).
 - Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).
 
 ## Out of scope
 
-Leftover Add Field after `Event Happened → Read Model`. TIME click empty Inspector is [inspect-deselect.md](./inspect-deselect.md). Inspector after Backspace. Landing. Mac window chrome. Copy changes.
+Leftover Add Field after `Event Happened → Read Model`. TIME click empty Inspector is [inspect-deselect.md](./inspect-deselect.md). Inspector empty after Command Backspace is [inspect-after-delete.md](./inspect-after-delete.md). Landing. Mac window chrome. Copy changes.
 
 ## Restates
 
