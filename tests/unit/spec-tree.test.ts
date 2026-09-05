@@ -246,6 +246,20 @@ describe("spec tree", () => {
     );
   });
 
+  it("shortcut-target Out of scope does not park Inspector leftover Type or GET ports after reload as unowned later work", () => {
+    const target = readFileSync(
+      "docs/specs/features/shortcut-target.md",
+      "utf8",
+    );
+    const out = (target.split("## Out of scope")[1] ?? "").split(
+      "## Restates",
+    )[0];
+    expect(out).not.toContain("Inspector leftover Type.");
+    expect(out).not.toContain("GET ports after reload.");
+    expect(out).toContain("[inspect-switch.md](./inspect-switch.md)");
+    expect(out).toContain("[hydrate-board.md](./hydrate-board.md)");
+  });
+
   it("editor-bind-split Out of scope does not park Shortcut listitem column as later work", () => {
     const bind = readFileSync(
       "docs/specs/features/editor-bind-split.md",

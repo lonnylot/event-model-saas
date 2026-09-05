@@ -34,7 +34,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-⌥⌘1 / ⌥⌘3–5 listitem column (those keys' DOM is still last-column `lastLaneList`). Shortcut ports and `data-kind`. Inspector leftover Type. GET ports after reload. Pan and Zoom. Landing. Mac window chrome. Copy changes.
+⌥⌘1 / ⌥⌘3–5 listitem column (those keys' DOM is still last-column `lastLaneList`). Shortcut ports and `data-kind`. Inspector leftover Type is [inspect-switch.md](./inspect-switch.md). GET ports after reload stay [hydrate-board.md](./hydrate-board.md). Pan and Zoom. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 
