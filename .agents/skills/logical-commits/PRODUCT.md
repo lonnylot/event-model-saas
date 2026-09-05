@@ -15,6 +15,7 @@ A `visual-design` look pass is one slice per named screen (or one stylesheet sev
 - Two kind-gated `if (port.dataset.kind === …)` alreadyConnected arms: unique production per AC, not one kind-agnostic early return. Event → Read Model drag parent vs Command → Event Happened drag parent is the same split — the first AC must not already move every target's parent. ⇧⌘Z redo Connection copy parent vs drag Connection copy parent is unique production — Restates leftover unused sibling is false until that arm moves.
 - Status vs heading vs row vs R2; two workflow `on:` events vs a `run` step.
 - Four independently revertible ACs on GET `/app` (Team name, Create team, Sign out, Teams admin) are four commits. Five ACs on GET `/app/teams/{id}/models/{mid}` (heading, email, Save, Export, Sign out) are five.
+- GET `/editor.js` lock vs `bindInspect` extract: the GET script `src` lock already existed. First: spec + GET `it` (GET checked, `bindInspect` unchecked). Then: spec checkbox + `bindInspect` `it` + `public/editor-inspect.js` + `bindEditor` import. Folding the GET lock into the extract is grouping. Reverting the extract leaves the GET lock green; reverting the GET test leaves `bindInspect` imported from `public/editor-inspect.js`.
 - Leftover-hide `unbindAddField` vs `unbindFieldName` is the same split. Leftover-hide `unbindFieldChrome` (Add Field button) vs Name/Description/Type unbind (`:has(label)` empty copy / Nothing Selected) is that split. From Event Happened remove vs To Read Model remove is that split. From Command remove vs To Event Happened remove vs Connection remove is that split — a shared `unbindConnectionCopy` loop is the `shell()` helper, not one production path.
 - Client `fetch` in `public/*.js` that a Playwright flow needs is that flow's production.
 - Restates leftover rewrite vs unique production restore of a different path are two commits: Card/Field stay later vs PNG mark pixels; leftover Restates public-face Field not-canvas-fill / public Page `canvas`/`ink` / design-system Page `type`/`canvas`/`ink` vs unique Send invite radius. A subject that names two review threads with "and" has not addressed either.
@@ -23,7 +24,7 @@ Do not introduce a shared helper (`shell()` / `unbindConnectionCopy` looping lef
 
 ## No unique production — fold or unsplit
 
-If the next checkbox stays green with no new production, fold the proof into the commit that wrote the field, or do not split the bullet.
+If the next checkbox stays green with no new production, fold the proof into the commit that wrote the field, or do not split the bullet. A lock of already-true behavior that is this spec's own checkbox is not that fold — GET `/editor.js` script `src` already served vs `bindInspect` extract (Independently revertible here).
 
 - GET already hydrates Slice `title` as the Slices listitem / Actor `name` as the Timeline listitem — a dedicated reload commit is tests-after.
 - GET `connectionCopy` is one HTML string — Command → Event Happened after reload is that AC; do not split Event → Read Model after reload.

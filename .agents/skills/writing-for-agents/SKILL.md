@@ -32,7 +32,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Assumption vs acceptance criterion | `keeping-specs-current` |
 | Restated AC with leftover sections / leftover Problem / leftover test title / leftover Restates / leftover locked claims in a restated system spec / leftover Restates after restating Out of scope | `keeping-specs-current` |
 | Domain terms line without a `CONTEXT.md` entry | `keeping-specs-current`, `domain-modeling` |
-| Independently revertible ACs / grouping by screen / spec-only / reconstruct after tests-after in the TDD slice / review-thread or CI-fix commit on HEAD / unsplit leftover checkboxes | `logical-commits` |
+| Independently revertible ACs / grouping by screen / spec-only / reconstruct after tests-after in the TDD slice / review-thread or CI-fix commit on HEAD / unsplit leftover checkboxes / lock of already-true vs first extract | `logical-commits` |
 | Extra visible chrome without an AC | `keeping-specs-current` |
 | Look / spacing / type / layout of named screens; look may grow | `visual-design` |
 | Unique-look markup of named screens (wrapping a lead in `header`) | `visual-design` |
