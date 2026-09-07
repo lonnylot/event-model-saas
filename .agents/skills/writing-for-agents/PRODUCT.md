@@ -54,6 +54,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Restates omitting released `inspect-after-reload.md` leftover Description after reload parked on inspect-rest after this slice took GET Description of the first of two Slices | `keeping-specs-current` |
 | Restates omitting released `inspect-after-reload.md` leftover unqualified Command Description after reload / Command Field after reload parked on inspect-rest after this slice took GET Description / Field of the first of two Commands | `keeping-specs-current` |
 | Restates omitting rewritten `model-defaults.md` / cargo-cult park of GET first-of-two Automation Description on Create's seeded-Actor spec (inspect-get-read-model did not rewrite that file) | `keeping-specs-current` |
+| Restates editor-bind-split Out of scope GET Field of first of two Read Models twice in the same paragraph (Description first-of-two vs of-one Field) | `keeping-specs-current` |
 | Restates omitting released `port-wrap.md` / `inspect-switch.md` leftover Out of scope Narrow viewport / Narrow viewport layout after this slice took narrow Editor layout | `keeping-specs-current` |
 | Restates Narrow AppBar / Timeline clip overlapping released timeline-clip.md pan/zoom clip | `keeping-specs-current` |
 | Restates listing design-system.md Tokens stay that file when UI inventory is not a rewrite (timeline-clip inventories without listing) | `keeping-specs-current` |

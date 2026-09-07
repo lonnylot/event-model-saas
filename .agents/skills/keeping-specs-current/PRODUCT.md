@@ -121,6 +121,8 @@ Restates omitting released `inspect-after-reload.md` leftover unqualified `Comma
 
 Rewriting released `model-defaults.md` Out of scope to park GET Description of the first of two Automations when this HEAD took that GET is unused cargo-cult — Create seeds Actor, not Automation; inspect-get-read-model did not rewrite that file. Listing it in Restates is not the fix; revert the hunk. Restates omitting that rewrite is leftover Restates only if Create owns leftover first-of-two of that kind (inspect-get-actor listed it when it rewrote seeded-Actor Description). Grep `model-defaults.md` in this HEAD's diff even when Restates already lists inspect-get-actor / hydrate-kind-id.
 
+Rewriting `editor-bind-split.md` Out of scope to add GET Field of the first of two Read Models next to Description first-of-two **and** again next to of-one Field is leftover Restates. Grep that paragraph for `inspect-get-read-model-field.md`; count is 1. Both sentences holding is not a skip — drop the duplicate.
+
 Restates omitting released `port-wrap.md` leftover Out of scope “Narrow viewport” / `inspect-switch.md` leftover Out of scope “Narrow viewport layout” when this HEAD took narrow Editor layout (listed designed-surfaces / visual-shell / architecture) is leftover Restates. Grep Narrow viewport / Narrow viewport layout even when Restates already lists designed-surfaces.
 
 Restates “Narrow AppBar / Timeline clip” when released `timeline-clip.md` owns pan/zoom clip is leftover Restates — restate to “narrow Slice-inside-Timeline layout” so the two clips do not read as one owner.
