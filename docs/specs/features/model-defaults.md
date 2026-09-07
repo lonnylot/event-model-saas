@@ -49,7 +49,7 @@ Screens: Team, Editor. Primitives: Page, Button primary (`Create model`). Look o
 
 ## Out of scope
 
-Renaming Untitled. Changing New Slice click defaults. Import. Sample Library Checkout content. Mac window chrome. Copy changes on Team / Editor chrome. A second Actor listitem from ⌥⌘1 is [shortcut-shows.md](./shortcut-shows.md). GET Actor / Automation `data-id` is [hydrate-kind-id.md](./hydrate-kind-id.md). GET Description of the first of two Actors is [inspect-get-actor.md](./inspect-get-actor.md). GET Description of the first of two Automations is [inspect-get-automation.md](./inspect-get-automation.md).
+Renaming Untitled. Changing New Slice click defaults. Import. Sample Library Checkout content. Mac window chrome. Copy changes on Team / Editor chrome. A second Actor listitem from ⌥⌘1 is [shortcut-shows.md](./shortcut-shows.md). GET Actor / Automation `data-id` is [hydrate-kind-id.md](./hydrate-kind-id.md). GET Description of the first of two Actors is [inspect-get-actor.md](./inspect-get-actor.md).
 
 ## Restates
 

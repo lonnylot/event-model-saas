@@ -371,6 +371,14 @@ describe("spec tree", () => {
     }
   });
 
+  it("inspect-get-automation does not rewrite model-defaults first-of-two Automation Description", () => {
+    const defaults = readFileSync(
+      "docs/specs/features/model-defaults.md",
+      "utf8",
+    );
+    expect(defaults).not.toContain("inspect-get-automation.md");
+  });
+
   it("inspect-get-automation Restates paths do not assign unqualified Automation Description after reload to inspect-rest", () => {
     const paths = [
       "docs/specs/features/inspect-get-automation.md",
