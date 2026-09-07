@@ -32,13 +32,13 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-GET Type of the first of two Slices stays [inspect-get-slice-type.md](./inspect-get-slice-type.md). GET Command Description of the first of two Commands. TIME click empty Inspector. Landing. Mac window chrome. Copy changes.
+GET Type of the first of two Slices stays [inspect-get-slice-type.md](./inspect-get-slice-type.md). GET Command Description of the first of two Commands is [inspect-get-command.md](./inspect-get-command.md). TIME click empty Inspector. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 
 - [inspect-rest.md](./inspect-rest.md) — GET Description of one Slice still shows the saved value. GET Description of the first of two Slices is this slice.
 - [name-binding-rest.md](./name-binding-rest.md) — In-session Slice Description-by-id stays that file. GET first-of-two Slice Description is this slice.
-- [editor-bind-split.md](./editor-bind-split.md) — `bindInspect` stays `public/editor-inspect.js`. GET Inspector for Command, Event, Read Model, Actor, or Automation stays that file's Out of scope. GET Description of the first of two Slices is this slice.
+- [editor-bind-split.md](./editor-bind-split.md) — `bindInspect` stays `public/editor-inspect.js`. GET Inspector for Command Description of one Command stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Commands is [inspect-get-command.md](./inspect-get-command.md). GET Inspector for Event, Read Model, Actor, or Automation stays that file's Out of scope. GET Description of the first of two Slices is this slice.
 - [inspect-get-slice-type.md](./inspect-get-slice-type.md) — GET Inspector for Description no longer stays [editor-bind-split.md](./editor-bind-split.md) Out of scope. GET Description of the first of two Slices is this slice. GET Type of the first of two Slices stays that file.
 - [architecture.md](../architecture.md) — Editor canvas stays custom timeline TypeScript. GET first-of-two Slice Description is this slice.
 - [editor-shell.md](./editor-shell.md) — Description after reload of one Slice stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Slices is this slice.

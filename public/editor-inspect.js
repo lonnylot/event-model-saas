@@ -252,7 +252,11 @@ export function bindInspect(root, ctx) {
   const lastCommandDescription = () => {
     const holder = root.getElementById("event-model-document");
     const model = JSON.parse(holder?.textContent || "{}");
-    return model.slices?.at(-1)?.commands?.at(-1)?.description ?? "";
+    const id = ctx.selectedCommandItem?.dataset?.id;
+    const command = id
+      ? model.slices?.flatMap((s) => s.commands ?? []).find((c) => c.id === id)
+      : model.slices?.at(-1)?.commands?.at(-1);
+    return command?.description ?? "";
   };
   const lastSliceDescription = () => {
     const holder = root.getElementById("event-model-document");

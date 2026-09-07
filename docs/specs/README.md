@@ -84,5 +84,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Cmd s save | [features/cmd-s-save.md](./features/cmd-s-save.md) | released |
 | Inspect get slice type | [features/inspect-get-slice-type.md](./features/inspect-get-slice-type.md) | released |
 | Inspect get slice description | [features/inspect-get-slice-description.md](./features/inspect-get-slice-description.md) | released |
+| Inspect get command | [features/inspect-get-command.md](./features/inspect-get-command.md) | validated |
 
 Status: `draft` → `validated` → `released`.
