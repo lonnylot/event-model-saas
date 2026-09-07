@@ -1,6 +1,6 @@
 # Inspect get actor
 
-Status: validated
+Status: released
 
 ## Problem
 
