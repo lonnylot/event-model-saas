@@ -34,7 +34,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-GET `Event Happened → Read Model` `data-id`. Leftover Add Field after that click. Landing. Mac window chrome. Copy changes.
+GET `Event Happened → Read Model` `data-id` is [hydrate-event-read-id.md](./hydrate-event-read-id.md). Leftover Add Field after that click. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 
