@@ -43,7 +43,7 @@ GET Type of the first of two Slices stays [inspect-get-slice-type.md](./inspect-
 - [inspect-get-command.md](./inspect-get-command.md) — GET Description of the first of two Commands stays that file. GET Field of the first of two Commands stays that file. GET Field of the first of two Read Models is this slice.
 - [inspect-get-event.md](./inspect-get-event.md) — GET Description of the first of two Events stays that file. GET Field of the first of two Events stays that file. GET Field of the first of two Read Models is this slice.
 - [inspect-get-actor.md](./inspect-get-actor.md) — GET Description of the first of two Actors stays that file. GET Field of the first of two Read Models is this slice.
-- [inspect-get-automation.md](./inspect-get-automation.md) — GET Description of the first of two Automations stays that file. GET Field of the first of two Read Models is this slice.
+- [inspect-get-automation.md](./inspect-get-automation.md) — GET Description of the first of two Automations stays that file. GET Field of the first of two Read Models is this slice. GET Field of the first of two Automations is [inspect-get-automation-field.md](./inspect-get-automation-field.md).
 - [inspect-get-slice-description.md](./inspect-get-slice-description.md) — GET Description of the first of two Slices stays that file. GET Field of the first of two Read Models is this slice.
 - [inspect-get-slice-type.md](./inspect-get-slice-type.md) — GET Type of the first of two Slices stays that file. GET Field of the first of two Read Models is this slice.
 - [name-binding-rest.md](./name-binding-rest.md) — In-session Read Model Description-by-id stays that file. GET Field of the first of two Read Models is this slice.
