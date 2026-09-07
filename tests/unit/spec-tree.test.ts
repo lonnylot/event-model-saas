@@ -292,6 +292,45 @@ describe("spec tree", () => {
     );
   });
 
+  it("inspect-get-command Restates paths do not assign unqualified Command Description or Field after reload to inspect-rest", () => {
+    const paths = [
+      "docs/specs/features/inspect-get-command.md",
+      "docs/specs/features/inspect-after-reload.md",
+      "docs/specs/features/inspect-rest.md",
+      "docs/specs/features/inspect-fields-rest.md",
+      "docs/specs/features/name-binding-rest.md",
+      "docs/specs/features/editor-bind-split.md",
+      "docs/specs/features/inspect-get-slice-description.md",
+      "docs/specs/features/inspect-get-slice-type.md",
+      "docs/specs/architecture.md",
+      "docs/specs/features/editor-shell.md",
+      "docs/specs/features/add-on-lane.md",
+      "docs/specs/features/blocks.md",
+      "docs/specs/features/canvas.md",
+      "docs/specs/features/chrome.md",
+      "docs/specs/features/connection-feedback.md",
+      "docs/specs/features/connections.md",
+      "docs/specs/features/inspect-blocks.md",
+      "docs/specs/features/inspect-connection.md",
+      "docs/specs/features/inspect-description.md",
+      "docs/specs/features/inspect-fields.md",
+      "docs/specs/features/model-persistence.md",
+      "docs/specs/features/slice-type.md",
+    ];
+    for (const path of paths) {
+      const text = readFileSync(path, "utf8");
+      expect(text, path).not.toMatch(
+        /Command Description after reload(?! of one Command)/,
+      );
+      expect(text, path).not.toMatch(
+        /Command Field name after reload(?! of one Command)/,
+      );
+      expect(text, path).not.toMatch(
+        /Command Field after reload(?! of one Command)/,
+      );
+    }
+  });
+
   it("editor-bind-split Out of scope does not park ⌘S Save as later work", () => {
     const bind = readFileSync(
       "docs/specs/features/editor-bind-split.md",
