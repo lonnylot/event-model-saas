@@ -1,0 +1,60 @@
+# Inspect get event
+
+Status: validated
+
+## Problem
+
+GET `/app/teams/{id}/models/{mid}` after two Events, clicking `Order Placed` (the first) shows Inspector Description `It cancelled` (the last Event) and does not show Field name `eventId`. Description and Field bind `events.at(-1)`, so a member who reopens a model cannot inspect the first Event's Description or Field.
+
+## Acceptance criteria
+
+- [x] After a member creates a model, opens it, clicks `Add Event`, clicks the Timeline `Event Happened` listitem, clicks `Add Field`, fills `Field name` with `eventId`, fills `Name` with `Order Placed`, fills `Description` with `It happened`, clicks `Add Event`, clicks the last Timeline `Event Happened` listitem, fills `Name` with `Pinged`, fills `Description` with `It cancelled`, and Saves, a reload of that page, clicking the Timeline `Order Placed` listitem shows the Inspector `Description` textbox with the value `It happened`
+- [x] After a member creates a model, opens it, clicks `Add Event`, clicks the Timeline `Event Happened` listitem, clicks `Add Field`, fills `Field name` with `eventId`, fills `Name` with `Order Placed`, fills `Description` with `It happened`, clicks `Add Event`, clicks the last Timeline `Event Happened` listitem, fills `Name` with `Pinged`, fills `Description` with `It cancelled`, and Saves, a reload of that page, clicking the Timeline `Order Placed` listitem shows Inspector `Field name` with the value `eventId`
+
+## Domain terms
+
+Event Model, Slice, Event, Field, Description, Team, Person, Version
+
+## Seams
+
+- `bindInspect` in `public/editor-inspect.js` — GET Event Description and Field bind by the clicked listitem
+- Browser — Playwright against `wrangler dev` with `TEST_MAIL=1`
+
+## UI
+
+Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001](../../adr/0001-look-iteration.md)). Inventory: [design-system.md](../design-system.md).
+
+## Assumptions
+
+- Playwright unique checkout `PORT` / `INSPECTOR_PORT` and `TEST_MAIL=1` `workers` `1` stay [public-face.md](./public-face.md).
+- GET Name of `Order Placed` still opens Inspector Name ([inspect-after-reload.md](./inspect-after-reload.md)). GET Description of one Event stays [inspect-rest.md](./inspect-rest.md). In-session Event Description-by-id stays [name-binding-rest.md](./name-binding-rest.md). GET Description of the first of two Events is this slice. Field name on the clicked Event of two in-session stays [inspect-fields-rest.md](./inspect-fields-rest.md). GET Field of one Event stays [inspect-rest.md](./inspect-rest.md). GET Field of the first of two Events is this slice.
+- Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).
+
+## Out of scope
+
+GET Type of the first of two Slices stays [inspect-get-slice-type.md](./inspect-get-slice-type.md). GET Description of the first of two Slices stays [inspect-get-slice-description.md](./inspect-get-slice-description.md). GET Description of the first of two Commands stays [inspect-get-command.md](./inspect-get-command.md). GET Field of the first of two Commands stays [inspect-get-command.md](./inspect-get-command.md). TIME click empty Inspector. GET Actor Description of the first of two Actors. Landing. Mac window chrome. Copy changes.
+
+## Restates
+
+- [inspect-rest.md](./inspect-rest.md) — GET Description of one Event still shows the saved value. GET Description of the first of two Events is this slice. GET Field of one Event still shows the saved value. GET Field of the first of two Events is this slice.
+- [inspect-after-reload.md](./inspect-after-reload.md) — GET Name of `Order Placed` still opens Inspector Name. GET Description of that listitem is this slice. GET Field of that listitem is this slice.
+- [inspect-fields-rest.md](./inspect-fields-rest.md) — In-session Field name on the clicked Event of two stays that file. GET Field of the first of two Events is this slice.
+- [name-binding-rest.md](./name-binding-rest.md) — In-session Event Description-by-id stays that file. GET first-of-two Event Description is this slice.
+- [editor-bind-split.md](./editor-bind-split.md) — `bindInspect` stays `public/editor-inspect.js`. GET Inspector for Event Description of one Event stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Events is this slice. GET Inspector for Event Field of one Event stays [inspect-rest.md](./inspect-rest.md). GET Field of the first of two Events is this slice. GET Inspector for Read Model, Actor, or Automation stays that file's Out of scope.
+- [inspect-get-command.md](./inspect-get-command.md) — GET Description of the first of two Commands stays that file. GET Field of the first of two Commands stays that file. GET Description of the first of two Events is this slice. GET Field of the first of two Events is this slice.
+- [inspect-get-slice-description.md](./inspect-get-slice-description.md) — GET Description of the first of two Slices stays that file. GET Description of the first of two Events is this slice. GET Field of the first of two Events is this slice.
+- [inspect-get-slice-type.md](./inspect-get-slice-type.md) — GET Type of the first of two Slices stays that file. GET Inspector for Event Description of one Event stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Events is this slice. GET Inspector for Event Field of one Event stays [inspect-rest.md](./inspect-rest.md). GET Field of the first of two Events is this slice.
+- [architecture.md](../architecture.md) — Editor canvas stays custom timeline TypeScript. GET first-of-two Event Description is this slice. GET first-of-two Event Field is this slice.
+- [editor-shell.md](./editor-shell.md) — Event Description after reload of one Event stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Events is this slice. Event Field after reload of one Event stays [inspect-rest.md](./inspect-rest.md). GET Field of the first of two Events is this slice.
+- [add-on-lane.md](./add-on-lane.md) — Event Description after reload of one Event stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Events is this slice. Event Field after reload of one Event stays [inspect-rest.md](./inspect-rest.md). GET Field of the first of two Events is this slice.
+- [blocks.md](./blocks.md) — Event Description after reload of one Event stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Events is this slice. Event Field after reload of one Event stays [inspect-rest.md](./inspect-rest.md). GET Field of the first of two Events is this slice.
+- [canvas.md](./canvas.md) — Event Description after reload of one Event stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Events is this slice. Event Field after reload of one Event stays [inspect-rest.md](./inspect-rest.md). GET Field of the first of two Events is this slice.
+- [chrome.md](./chrome.md) — Event Description after reload of one Event stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Events is this slice. Event Field after reload of one Event stays [inspect-rest.md](./inspect-rest.md). GET Field of the first of two Events is this slice.
+- [connection-feedback.md](./connection-feedback.md) — Event Description after reload of one Event stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Events is this slice. Event Field after reload of one Event stays [inspect-rest.md](./inspect-rest.md). GET Field of the first of two Events is this slice.
+- [connections.md](./connections.md) — Event Description after reload of one Event stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Events is this slice. Event Field after reload of one Event stays [inspect-rest.md](./inspect-rest.md). GET Field of the first of two Events is this slice.
+- [inspect-blocks.md](./inspect-blocks.md) — Event Description after reload of one Event stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Events is this slice. Event Field after reload of one Event stays [inspect-rest.md](./inspect-rest.md). GET Field of the first of two Events is this slice.
+- [inspect-connection.md](./inspect-connection.md) — Event Description after reload of one Event stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Events is this slice. Event Field after reload of one Event stays [inspect-rest.md](./inspect-rest.md). GET Field of the first of two Events is this slice.
+- [inspect-description.md](./inspect-description.md) — Event Description after reload of one Event stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Events is this slice. Event Field after reload of one Event stays [inspect-rest.md](./inspect-rest.md). GET Field of the first of two Events is this slice.
+- [inspect-fields.md](./inspect-fields.md) — Event Description after reload of one Event stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Events is this slice. Event Field after reload of one Event stays [inspect-rest.md](./inspect-rest.md). GET Field of the first of two Events is this slice.
+- [model-persistence.md](./model-persistence.md) — Event Description after reload of one Event stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Events is this slice. Event Field after reload of one Event stays [inspect-rest.md](./inspect-rest.md). GET Field of the first of two Events is this slice.
+- [slice-type.md](./slice-type.md) — Event Description after reload of one Event stays [inspect-rest.md](./inspect-rest.md). GET Description of the first of two Events is this slice. Event Field after reload of one Event stays [inspect-rest.md](./inspect-rest.md). GET Field of the first of two Events is this slice.
