@@ -87,5 +87,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Inspect get command | [features/inspect-get-command.md](./features/inspect-get-command.md) | released |
 | Inspect get event | [features/inspect-get-event.md](./features/inspect-get-event.md) | released |
 | Inspect get read model | [features/inspect-get-read-model.md](./features/inspect-get-read-model.md) | released |
+| Inspect get actor | [features/inspect-get-actor.md](./features/inspect-get-actor.md) | validated |
 
 Status: `draft` → `validated` → `released`.
