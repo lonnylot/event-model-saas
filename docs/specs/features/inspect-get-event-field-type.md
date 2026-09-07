@@ -35,6 +35,7 @@ GET Type of the first of two Slices stays [inspect-get-slice-type.md](./inspect-
 
 ## Restates
 
+- [inspect-get-command-optional.md](./inspect-get-command-optional.md) — GET Optional of the first of two Commands is that file. GET Field type of the first of two Events stays this file.
 - [inspect-get-automation-field-type.md](./inspect-get-automation-field-type.md) — GET Field type of the first of two Automations is that file. GET Field type of the first of two Events stays this file.
 - [inspect-get-read-model-field-type.md](./inspect-get-read-model-field-type.md) — GET Field type of the first of two Read Models is that file. GET Field type of the first of two Events stays this file.
 - [inspect-rest.md](./inspect-rest.md) — GET Field type of one Event still shows the saved value. GET Field type of the first of two Events is this slice.
