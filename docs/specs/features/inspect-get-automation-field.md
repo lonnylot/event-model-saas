@@ -62,3 +62,4 @@ GET Type of the first of two Slices stays [inspect-get-slice-type.md](./inspect-
 - [model-persistence.md](./model-persistence.md) — Automation Field after reload of one Automation stays [inspect-rest.md](./inspect-rest.md). GET Field of the first of two Automations is this slice.
 - [slice-type.md](./slice-type.md) — Automation Field after reload of one Automation stays [inspect-rest.md](./inspect-rest.md). GET Field of the first of two Automations is this slice.
 - [product.md](../product.md) — After Save and reload, clicking the GET-rendered Automation shows Inspector Field name of one Automation stays [inspect-rest.md](./inspect-rest.md). GET Field of the first of two Automations is this slice.
+- [inspect-get-command-field-type.md](./inspect-get-command-field-type.md) — GET Field type of the first of two Commands is that file. GET Field of the first of two Automations stays this file.
