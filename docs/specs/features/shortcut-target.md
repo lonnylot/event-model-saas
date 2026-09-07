@@ -1,6 +1,6 @@
 # Shortcut target
 
-Status: validated
+Status: released
 
 ## Problem
 
