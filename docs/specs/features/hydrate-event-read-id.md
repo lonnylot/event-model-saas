@@ -36,7 +36,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-GET `Command → Event Happened` `data-id` is [hydrate-connection-id.md](./hydrate-connection-id.md). GET Actor / Automation `data-id` is [hydrate-kind-id.md](./hydrate-kind-id.md). Connection caption as a flex sibling of `.slice-col`. Leftover Add Field after `Event Happened → Read Model`. Landing. Mac window chrome. Copy changes.
+GET `Command → Event Happened` `data-id` is [hydrate-connection-id.md](./hydrate-connection-id.md). GET Actor / Automation `data-id` is [hydrate-kind-id.md](./hydrate-kind-id.md). Connection caption as a flex sibling of `.slice-col`. Leftover Add Field after `Event Happened → Read Model` is [inspect-event-read.md](./inspect-event-read.md). Landing. Mac window chrome. Copy changes.
 
 ## Restates
 
