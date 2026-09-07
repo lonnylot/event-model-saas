@@ -1,6 +1,6 @@
 # Hydrate event read id
 
-Status: validated
+Status: released
 
 ## Problem
 

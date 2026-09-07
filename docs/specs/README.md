@@ -90,6 +90,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Inspect get actor | [features/inspect-get-actor.md](./features/inspect-get-actor.md) | released |
 | Inspect get automation | [features/inspect-get-automation.md](./features/inspect-get-automation.md) | released |
 | Shortcut target | [features/shortcut-target.md](./features/shortcut-target.md) | released |
-| Hydrate event read id | [features/hydrate-event-read-id.md](./features/hydrate-event-read-id.md) | validated |
+| Hydrate event read id | [features/hydrate-event-read-id.md](./features/hydrate-event-read-id.md) | released |
 
 Status: `draft` → `validated` → `released`.
