@@ -284,7 +284,11 @@ export function bindInspect(root, ctx) {
   const lastReadModelDescription = () => {
     const holder = root.getElementById("event-model-document");
     const model = JSON.parse(holder?.textContent || "{}");
-    return model.slices?.at(-1)?.readModels?.at(-1)?.description ?? "";
+    const id = ctx.selectedReadModelItem?.dataset?.id;
+    const readModel = id
+      ? model.slices?.flatMap((s) => s.readModels ?? []).find((r) => r.id === id)
+      : model.slices?.at(-1)?.readModels?.at(-1);
+    return readModel?.description ?? "";
   };
   const lastAutomationDescription = () => {
     const holder = root.getElementById("event-model-document");
