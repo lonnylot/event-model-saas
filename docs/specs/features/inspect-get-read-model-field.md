@@ -1,6 +1,6 @@
 # Inspect get read model field
 
-Status: validated
+Status: released
 
 ## Problem
 
