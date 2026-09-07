@@ -378,7 +378,11 @@ export function bindInspect(root, ctx) {
   const lastCommandFieldOptional = () => {
     const holder = root.getElementById("event-model-document");
     const model = JSON.parse(holder?.textContent || "{}");
-    return model.slices?.at(-1)?.commands?.at(-1)?.fields?.[0]?.optional === true;
+    const id = ctx.selectedCommandItem?.dataset?.id;
+    const command = id
+      ? model.slices?.flatMap((s) => s.commands ?? []).find((c) => c.id === id)
+      : model.slices?.at(-1)?.commands?.at(-1);
+    return command?.fields?.[0]?.optional === true;
   };
   const lastCommandFieldExample = () => {
     const holder = root.getElementById("event-model-document");
