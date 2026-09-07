@@ -131,3 +131,29 @@ test("After a member creates a model, opens it, clicks `Add Event`, clicks `Add 
     }),
   ).toHaveAttribute("data-id", /.+/);
 });
+
+test("After a member creates a model, opens it, clicks `Add Event`, clicks `Add Read Model`, drags `Event Happened port` onto `Read Model port`, and Saves, a reload of that page, clicking `Event Happened → Read Model` then the Timeline region, pressing Backspace sets Event Model `connections` to `[]`", async ({
+  page,
+}) => {
+  await saveReloadEventReadConnection(page);
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  const caption = timeline.getByText("Event Happened → Read Model", {
+    exact: true,
+  });
+  await caption.click();
+  const captionBox = await caption.boundingBox();
+  const timelineBox = await timeline.boundingBox();
+  expect(captionBox).not.toBeNull();
+  expect(timelineBox).not.toBeNull();
+  await timeline.click({
+    position: {
+      x: captionBox!.x - timelineBox!.x + captionBox!.width / 2,
+      y: captionBox!.y - timelineBox!.y + captionBox!.height / 2,
+    },
+  });
+  await page.keyboard.press("Backspace");
+  const json = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  expect(json.connections).toEqual([]);
+});

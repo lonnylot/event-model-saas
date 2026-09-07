@@ -42,7 +42,8 @@ GET `Event Happened → Read Model` `data-id` is [hydrate-event-read-id.md](./hy
 - [inspect-rest.md](./inspect-rest.md) — Clicking `Event Happened → Read Model` still shows From/To. Backspace on that click-created node is this slice.
 - [connections.md](./connections.md) — Timeline still shows `Event Happened → Read Model`. Deleting that Connection is this slice.
 - [architecture.md](../architecture.md) — Editor canvas stays custom timeline TypeScript. Event → Read Model Backspace is this slice.
-- [hydrate-connection-id.md](./hydrate-connection-id.md) — GET `Command → Event Happened` Backspace stays that file. GET `Event Happened → Read Model` Backspace stays Out of scope. In-session Event → Read Model Backspace is this slice.
+- [hydrate-connection-id.md](./hydrate-connection-id.md) — GET `Command → Event Happened` Backspace stays that file. GET `Event Happened → Read Model` Backspace is [hydrate-event-read-id.md](./hydrate-event-read-id.md). In-session Event → Read Model Backspace is this slice.
+- [hydrate-event-read-id.md](./hydrate-event-read-id.md) — GET `Event Happened → Read Model` `data-id` and GET `Event Happened → Read Model` Backspace are that file. In-session Event → Read Model Backspace is this slice.
 - [inspect-connection.md](./inspect-connection.md) — Command → Event inspect stays that file. Command → Event Delete Connection stays [delete-blocks.md](./delete-blocks.md). Event → Read Model Backspace is this slice.
 - [inspect-deselect.md](./inspect-deselect.md) — TIME chrome / empty `.board` deselect stays that file. In-session Event → Read Model Backspace after clicking the selected Connection then the Timeline region is this slice.
 - [delete-rest.md](./delete-rest.md) — Actor / Event / Read Model / Automation Backspace stays that file. Command → Event Backspace stays [delete-blocks.md](./delete-blocks.md). Event → Read Model Backspace is this slice.

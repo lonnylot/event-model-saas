@@ -9,7 +9,7 @@ GET `/app/teams/{id}/models/{mid}` after Save of `Event Happened → Read Model`
 ## Acceptance criteria
 
 - [x] After a member creates a model, opens it, clicks `Add Event`, clicks `Add Read Model`, drags `Event Happened port` onto `Read Model port`, and Saves, a reload of that page, the `.board` `Event Happened → Read Model` node has a non-empty `data-id`
-- [ ] After a member creates a model, opens it, clicks `Add Event`, clicks `Add Read Model`, drags `Event Happened port` onto `Read Model port`, and Saves, a reload of that page, clicking `Event Happened → Read Model` then the Timeline region, pressing Backspace sets Event Model `connections` to `[]`
+- [x] After a member creates a model, opens it, clicks `Add Event`, clicks `Add Read Model`, drags `Event Happened port` onto `Read Model port`, and Saves, a reload of that page, clicking `Event Happened → Read Model` then the Timeline region, pressing Backspace sets Event Model `connections` to `[]`
 
 ## Domain terms
 
@@ -18,7 +18,7 @@ Event Model, Slice, Event, Read Model, Connection, Team, Person, Version
 ## Seams
 
 - `modelPageHtml` in `src/teams/pages.ts` — hydrates Event → Read Model copy with `data-id`
-- `bindEditor` in `public/editor.js` — Backspace on that GET node
+- `bindKeyboard` in `public/editor-keyboard.js` — Backspace on that GET node
 - Browser — Playwright against `wrangler dev` with `TEST_MAIL=1`
 
 ## UI
@@ -43,8 +43,8 @@ GET `Command → Event Happened` `data-id` is [hydrate-connection-id.md](./hydra
 - [connection-on-board.md](./connection-on-board.md) — `.board` still contains `Event Happened → Read Model`. GET `data-id` on that node is this slice.
 - [inspect-rest.md](./inspect-rest.md) — Clicking GET `Event Happened → Read Model` still shows From/To. Backspace on that GET node is this slice.
 - [delete-blocks.md](./delete-blocks.md) — In-session Command → Event Backspace stays that file. In-session Event → Read Model Backspace is [delete-event-read.md](./delete-event-read.md). GET `Event Happened → Read Model` Backspace is this slice.
-- [connections.md](./connections.md) — Timeline still shows `Event Happened → Read Model` after reload. GET `data-id` is this slice.
-- [architecture.md](../architecture.md) — Editor canvas stays custom timeline TypeScript. GET `Event Happened → Read Model` `data-id` is this slice.
-- [hydrate-connection-id.md](./hydrate-connection-id.md) — GET `Command → Event Happened` `data-id` stays that file. GET `Event Happened → Read Model` `data-id` is this slice.
+- [connections.md](./connections.md) — Timeline still shows `Event Happened → Read Model` after reload. GET `data-id` and GET `Event Happened → Read Model` Backspace are this slice.
+- [architecture.md](../architecture.md) — Editor canvas stays custom timeline TypeScript. GET `Event Happened → Read Model` `data-id` is this slice. GET `Event Happened → Read Model` Backspace is this slice.
+- [hydrate-connection-id.md](./hydrate-connection-id.md) — GET `Command → Event Happened` `data-id` and GET `Command → Event Happened` Backspace stay that file. GET `Event Happened → Read Model` `data-id` and GET `Event Happened → Read Model` Backspace are this slice.
 - [hydrate-kind-id.md](./hydrate-kind-id.md) — GET Actor / Automation `data-id` stays that file. GET `Event Happened → Read Model` `data-id` is this slice.
-- [delete-event-read.md](./delete-event-read.md) — In-session Event → Read Model Backspace stays that file. GET `Event Happened → Read Model` `data-id` is this slice.
+- [delete-event-read.md](./delete-event-read.md) — In-session Event → Read Model Backspace stays that file. GET `Event Happened → Read Model` `data-id` and GET `Event Happened → Read Model` Backspace are this slice.
