@@ -270,7 +270,11 @@ export function bindInspect(root, ctx) {
   const lastActorDescription = () => {
     const holder = root.getElementById("event-model-document");
     const model = JSON.parse(holder?.textContent || "{}");
-    return model.slices?.at(-1)?.actors?.at(-1)?.description ?? "";
+    const id = ctx.selectedActorItem?.dataset?.id;
+    const actor = id
+      ? model.slices?.flatMap((s) => s.actors ?? []).find((a) => a.id === id)
+      : model.slices?.at(-1)?.actors?.at(-1);
+    return actor?.description ?? "";
   };
   const lastEventDescription = () => {
     const holder = root.getElementById("event-model-document");
