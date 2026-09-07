@@ -40,7 +40,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-GET `Command → Event Happened` `data-id` is [hydrate-connection-id.md](./hydrate-connection-id.md). GET `Event Happened → Read Model` `data-id` stays [hydrate-connection-id.md](./hydrate-connection-id.md) Out of scope. GET Description of the first of two Actors is [inspect-get-actor.md](./inspect-get-actor.md). GET Description of the first of two Automations is [inspect-get-automation.md](./inspect-get-automation.md). GET Automation Name JSON. Shortcut listitem `data-kind` is [shortcut-kind.md](./shortcut-kind.md). Pan and Zoom. Landing. Mac window chrome. Copy changes.
+GET `Command → Event Happened` `data-id` is [hydrate-connection-id.md](./hydrate-connection-id.md). GET `Event Happened → Read Model` `data-id` is [hydrate-event-read-id.md](./hydrate-event-read-id.md). GET Description of the first of two Actors is [inspect-get-actor.md](./inspect-get-actor.md). GET Description of the first of two Automations is [inspect-get-automation.md](./inspect-get-automation.md). GET Automation Name JSON. Shortcut listitem `data-kind` is [shortcut-kind.md](./shortcut-kind.md). Pan and Zoom. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 

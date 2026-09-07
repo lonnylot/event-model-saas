@@ -142,7 +142,10 @@ export function modelPageHtml(
         (connection) =>
           connection.fromKind === "EVENT" && connection.toKind === "READMODEL",
       )
-      .map(() => '<p data-kind="connection">Event Happened → Read Model</p>'),
+      .map((connection) => {
+        const id = connection.id ? ` data-id="${connection.id}"` : "";
+        return `<p data-kind="connection"${id}>Event Happened → Read Model</p>`;
+      }),
   ].join("");
   const admin = isSiteAdmin
     ? `<a href="/app/admin/teams">Teams admin</a>`
