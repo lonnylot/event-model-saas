@@ -1,6 +1,6 @@
 # Inspect get automation field
 
-Status: validated
+Status: released
 
 ## Problem
 
