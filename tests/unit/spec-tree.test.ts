@@ -235,9 +235,46 @@ describe("spec tree", () => {
     expect(outOfScope).not.toContain(
       "Changing which Slice the shortcut targets.",
     );
-    expect(outOfScope).toContain(
+    expect(outOfScope).not.toContain(
       "Changing which Slice the shortcut targets (JSON still uses selected Slice; shortcut DOM is last-column `lastLaneList`).",
     );
+    expect(outOfScope).toContain(
+      "Changing which Slice ⌥⌘1 / ⌥⌘3–5 target (JSON still uses selected Slice; those keys' DOM is last-column `lastLaneList`).",
+    );
+    expect(outOfScope).toContain(
+      "[shortcut-target.md](./shortcut-target.md)",
+    );
+  });
+
+  it("shortcut-target Out of scope does not park Inspector leftover Type or GET ports after reload as unowned later work", () => {
+    const target = readFileSync(
+      "docs/specs/features/shortcut-target.md",
+      "utf8",
+    );
+    const out = (target.split("## Out of scope")[1] ?? "").split(
+      "## Restates",
+    )[0];
+    expect(out).not.toContain("Inspector leftover Type.");
+    expect(out).not.toContain("GET ports after reload.");
+    expect(out).toContain("[inspect-switch.md](./inspect-switch.md)");
+    expect(out).toContain("[hydrate-board.md](./hydrate-board.md)");
+  });
+
+  it("editor-bind-split Out of scope does not park Shortcut listitem column as later work", () => {
+    const bind = readFileSync(
+      "docs/specs/features/editor-bind-split.md",
+      "utf8",
+    );
+    const out = (bind.split("## Out of scope")[1] ?? "").split(
+      "## Restates",
+    )[0];
+    expect(out).not.toContain("Shortcut listitem column.");
+    expect(out).toContain("[shortcut-target.md](./shortcut-target.md)");
+    const target = readFileSync(
+      "docs/specs/features/shortcut-target.md",
+      "utf8",
+    );
+    expect(target).toContain("[editor-bind-split.md](./editor-bind-split.md)");
   });
 
   it("hydrate-kind-id Out of scope does not leave Shortcut listitems without data-kind", () => {

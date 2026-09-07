@@ -906,7 +906,8 @@ export function bindKeyboard(root, ctx) {
       const next = appendCommand(model, index);
       holder.textContent = JSON.stringify(next);
       const command = next.slices?.[index]?.commands?.at(-1);
-      const list = ctx.lastLaneList("command");
+      const cols = ctx.timelineList?.querySelectorAll(".slice-col") ?? [];
+      const list = cols[index]?.querySelector('[data-lane="command"] ul');
       if (list && command) {
         const item = root.createElement("li");
         item.textContent = "Command";

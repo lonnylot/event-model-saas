@@ -38,11 +38,11 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-Changing which Slice the shortcut targets (JSON still uses selected Slice; shortcut DOM is last-column `lastLaneList`). In-memory ports and `data-kind` / inspect on shortcut-shown listitems are [shortcut-kind.md](./shortcut-kind.md). GET ports after reload stay [hydrate-board.md](./hydrate-board.md). Pan and Zoom. Landing. Mac window chrome. Copy changes.
+Changing which Slice ⌥⌘1 / ⌥⌘3–5 target (JSON still uses selected Slice; those keys' DOM is last-column `lastLaneList`). ⌥⌘2 listitem column is [shortcut-target.md](./shortcut-target.md). In-memory ports and `data-kind` / inspect on shortcut-shown listitems are [shortcut-kind.md](./shortcut-kind.md). GET ports after reload stay [hydrate-board.md](./hydrate-board.md). Pan and Zoom. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 
-- [add-on-lane.md](./add-on-lane.md) — ⌥⌘1–5 still append JSON on the last Slice (or selected Slice for ⌥⌘2). Timeline listitem from those keys is this slice.
+- [add-on-lane.md](./add-on-lane.md) — ⌥⌘1–5 still append JSON on the last Slice (or selected Slice for ⌥⌘2). Timeline listitem from those keys is this slice. ⌥⌘2 listitem column is [shortcut-target.md](./shortcut-target.md).
 - [blocks.md](./blocks.md) — Toolbar Add still shows listitems. Shortcut-shown listitems are this slice.
 - [model-defaults.md](./model-defaults.md) — Create still seeds one Actor. A second Actor listitem from ⌥⌘1 is this slice.
-- [architecture.md](../architecture.md) — Editor canvas stays custom timeline TypeScript. Shortcut DOM is this slice.
+- [architecture.md](../architecture.md) — Editor canvas stays custom timeline TypeScript. Shortcut DOM is this slice. ⌥⌘2 listitem column is [shortcut-target.md](./shortcut-target.md).

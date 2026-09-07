@@ -35,16 +35,16 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 - ⌥⌘1–5 still show Timeline listitems ([shortcut-shows.md](./shortcut-shows.md)). Toolbar Add still mounts ports ([blocks.md](./blocks.md) / [connections.md](./connections.md)). Shortcut ports and `data-kind` so inspect binds are this slice.
 - Create model still seeds one Actor named `Actor` ([model-defaults.md](./model-defaults.md)). ⌥⌘1 adds a second Actor listitem.
 - ⌥⌘1 Actor, ⌥⌘2 Command, ⌥⌘3 Event, ⌥⌘4 Read Model, ⌥⌘5 Automation. Playwright `Alt+ControlOrMeta+Digit1` … `Digit5`. After open, wait for `networkidle` so `bindEditor` is attached, then click the Timeline region before the keys.
-- JSON still uses selected Slice; shortcut DOM is last-column `lastLaneList` ([shortcut-shows.md](./shortcut-shows.md)). Targeting is not this slice.
+- JSON still uses selected Slice. ⌥⌘1 / ⌥⌘3–5 DOM is last-column `lastLaneList` ([shortcut-shows.md](./shortcut-shows.md)). ⌥⌘2 listitem column is [shortcut-target.md](./shortcut-target.md).
 - Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).
 
 ## Out of scope
 
-Changing which Slice the shortcut targets (JSON still uses selected Slice; shortcut DOM is last-column `lastLaneList`). GET ports after reload stay [hydrate-board.md](./hydrate-board.md). Inspector leftover Type after switching from a Slice to a Connection stays later. Inspect/delete on shortcut-shown Event Happened / Read Model listitems. Delete on shortcut-shown Actor / Command / Automation. Pan and Zoom. Landing. Mac window chrome. Copy changes.
+Changing which Slice ⌥⌘1 / ⌥⌘3–5 target (JSON still uses selected Slice; those keys' DOM is last-column `lastLaneList`). ⌥⌘2 listitem column is [shortcut-target.md](./shortcut-target.md). GET ports after reload stay [hydrate-board.md](./hydrate-board.md). Inspector leftover Type after switching from a Slice to a Connection stays later. Inspect/delete on shortcut-shown Event Happened / Read Model listitems. Delete on shortcut-shown Actor / Command / Automation. Pan and Zoom. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 
-- [shortcut-shows.md](./shortcut-shows.md) — ⌥⌘1–5 still show Timeline listitems. In-memory ports and `data-kind` / inspect on those listitems were leftover-narrow Out of scope; this slice owns them. JSON still uses selected Slice; shortcut DOM is last-column `lastLaneList` stays that file.
+- [shortcut-shows.md](./shortcut-shows.md) — ⌥⌘1–5 still show Timeline listitems. In-memory ports and `data-kind` / inspect on those listitems were leftover-narrow Out of scope; this slice owns them. ⌥⌘1 / ⌥⌘3–5 DOM is last-column `lastLaneList` stays that file. ⌥⌘2 listitem column is [shortcut-target.md](./shortcut-target.md).
 - [add-on-lane.md](./add-on-lane.md) — ⌥⌘1–5 still append JSON. Shortcut ports and inspect are this slice.
 - [connections.md](./connections.md) — Toolbar Add still mounts `Command port` / `Event Happened port` / `Read Model port`. Shortcut-shown ports are this slice.
 - [inspect-blocks.md](./inspect-blocks.md) — Clicking a click-created Command still opens Inspector Name. Clicking a shortcut-shown Command is this slice.
