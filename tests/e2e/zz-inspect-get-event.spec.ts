@@ -155,3 +155,15 @@ test("After a member creates a model, opens it, clicks `Add Event`, clicks the T
       .getByRole("textbox", { name: "Description", exact: true }),
   ).toHaveValue("It happened");
 });
+
+test("After a member creates a model, opens it, clicks `Add Event`, clicks the Timeline `Event Happened` listitem, clicks `Add Field`, fills `Field name` with `eventId`, fills `Name` with `Order Placed`, fills `Description` with `It happened`, clicks `Add Event`, clicks the last Timeline `Event Happened` listitem, fills `Name` with `Pinged`, fills `Description` with `It cancelled`, and Saves, a reload of that page, clicking the Timeline `Order Placed` listitem shows Inspector `Field name` with the value `eventId`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await saveTwoEvents(page);
+  await expect(
+    page
+      .getByRole("region", { name: "Inspector", exact: true })
+      .getByRole("textbox", { name: "Field name", exact: true }),
+  ).toHaveValue("eventId");
+});

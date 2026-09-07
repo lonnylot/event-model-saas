@@ -331,11 +331,12 @@ describe("spec tree", () => {
     }
   });
 
-  it("inspect-get-event Restates paths do not assign unqualified Event Description after reload to inspect-rest", () => {
+  it("inspect-get-event Restates paths do not assign unqualified Event Description or Field after reload to inspect-rest", () => {
     const paths = [
       "docs/specs/features/inspect-get-event.md",
       "docs/specs/features/inspect-after-reload.md",
       "docs/specs/features/inspect-rest.md",
+      "docs/specs/features/inspect-fields-rest.md",
       "docs/specs/features/name-binding-rest.md",
       "docs/specs/features/editor-bind-split.md",
       "docs/specs/features/inspect-get-command.md",
@@ -360,6 +361,12 @@ describe("spec tree", () => {
       const text = readFileSync(path, "utf8");
       expect(text, path).not.toMatch(
         /Event Description after reload(?! of one Event)/,
+      );
+      expect(text, path).not.toMatch(
+        /Event Field name after reload(?! of one Event)/,
+      );
+      expect(text, path).not.toMatch(
+        /Event Field after reload(?! of one Event)/,
       );
     }
   });

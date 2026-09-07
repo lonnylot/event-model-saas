@@ -303,7 +303,11 @@ export function bindInspect(root, ctx) {
   const lastEventFieldName = () => {
     const holder = root.getElementById("event-model-document");
     const model = JSON.parse(holder?.textContent || "{}");
-    return model.slices?.at(-1)?.events?.at(-1)?.fields?.[0]?.name;
+    const id = ctx.selectedEventItem?.dataset?.id;
+    const event = id
+      ? model.slices?.flatMap((s) => s.events ?? []).find((e) => e.id === id)
+      : model.slices?.at(-1)?.events?.at(-1);
+    return event?.fields?.[0]?.name;
   };
   const lastReadModelFieldName = () => {
     const holder = root.getElementById("event-model-document");
