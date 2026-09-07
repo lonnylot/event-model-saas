@@ -360,7 +360,11 @@ export function bindInspect(root, ctx) {
   const lastReadModelFieldType = () => {
     const holder = root.getElementById("event-model-document");
     const model = JSON.parse(holder?.textContent || "{}");
-    return model.slices?.at(-1)?.readModels?.at(-1)?.fields?.[0]?.type;
+    const id = ctx.selectedReadModelItem?.dataset?.id;
+    const readModel = id
+      ? model.slices?.flatMap((s) => s.readModels ?? []).find((r) => r.id === id)
+      : model.slices?.at(-1)?.readModels?.at(-1);
+    return readModel?.fields?.[0]?.type;
   };
   const lastAutomationFieldType = () => {
     const holder = root.getElementById("event-model-document");

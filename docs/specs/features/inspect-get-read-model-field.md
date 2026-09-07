@@ -35,6 +35,7 @@ GET Type of the first of two Slices stays [inspect-get-slice-type.md](./inspect-
 
 ## Restates
 
+- [inspect-get-read-model-field-type.md](./inspect-get-read-model-field-type.md) — GET Field type of the first of two Read Models is that file. GET Field of the first of two Read Models stays this file.
 - [inspect-get-event-field-type.md](./inspect-get-event-field-type.md) — GET Field type of the first of two Events is that file. GET Field of the first of two Read Models stays this file.
 - [inspect-rest.md](./inspect-rest.md) — GET Field of one Read Model still shows the saved value. GET Field of the first of two Read Models is this slice.
 - [inspect-after-reload.md](./inspect-after-reload.md) — GET Name of `Orders` still opens Inspector Name. GET Field of that listitem is this slice.
