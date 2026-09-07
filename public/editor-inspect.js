@@ -297,7 +297,11 @@ export function bindInspect(root, ctx) {
   const lastAutomationDescription = () => {
     const holder = root.getElementById("event-model-document");
     const model = JSON.parse(holder?.textContent || "{}");
-    return model.slices?.at(-1)?.processors?.at(-1)?.description ?? "";
+    const id = ctx.selectedAutomationItem?.dataset?.id;
+    const automation = id
+      ? model.slices?.flatMap((s) => s.processors ?? []).find((p) => p.id === id)
+      : model.slices?.at(-1)?.processors?.at(-1);
+    return automation?.description ?? "";
   };
   const lastCommandFieldName = () => {
     const holder = root.getElementById("event-model-document");
