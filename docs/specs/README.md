@@ -96,5 +96,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Inspect get command field type | [features/inspect-get-command-field-type.md](./features/inspect-get-command-field-type.md) | released |
 | Inspect get event field type | [features/inspect-get-event-field-type.md](./features/inspect-get-event-field-type.md) | released |
 | Inspect get read model field type | [features/inspect-get-read-model-field-type.md](./features/inspect-get-read-model-field-type.md) | released |
+| Inspect get automation field type | [features/inspect-get-automation-field-type.md](./features/inspect-get-automation-field-type.md) | validated |
 
 Status: `draft` → `validated` → `released`.
