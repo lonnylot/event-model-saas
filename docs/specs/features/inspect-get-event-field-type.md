@@ -1,6 +1,6 @@
 # Inspect get event field type
 
-Status: validated
+Status: released
 
 ## Problem
 
