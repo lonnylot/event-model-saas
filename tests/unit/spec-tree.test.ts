@@ -462,6 +462,61 @@ describe("spec tree", () => {
     ).toBe(1);
   });
 
+  it("inspect-get-event-field-type Restates paths do not assign unqualified Event Field type after reload to inspect-rest", () => {
+    const paths = [
+      "docs/specs/features/inspect-get-event-field-type.md",
+      "docs/specs/features/inspect-get-event.md",
+      "docs/specs/features/inspect-after-reload.md",
+      "docs/specs/features/inspect-rest.md",
+      "docs/specs/features/inspect-fields-rest.md",
+      "docs/specs/features/editor-bind-split.md",
+      "docs/specs/features/inspect-get-command.md",
+      "docs/specs/features/inspect-get-read-model.md",
+      "docs/specs/features/inspect-get-actor.md",
+      "docs/specs/features/inspect-get-automation.md",
+      "docs/specs/features/inspect-get-slice-description.md",
+      "docs/specs/features/inspect-get-slice-type.md",
+      "docs/specs/features/inspect-get-read-model-field.md",
+      "docs/specs/features/inspect-get-automation-field.md",
+      "docs/specs/features/inspect-get-command-field-type.md",
+      "docs/specs/architecture.md",
+      "docs/specs/features/editor-shell.md",
+      "docs/specs/features/add-on-lane.md",
+      "docs/specs/features/blocks.md",
+      "docs/specs/features/canvas.md",
+      "docs/specs/features/chrome.md",
+      "docs/specs/features/connection-feedback.md",
+      "docs/specs/features/connections.md",
+      "docs/specs/features/inspect-blocks.md",
+      "docs/specs/features/inspect-connection.md",
+      "docs/specs/features/inspect-description.md",
+      "docs/specs/features/inspect-fields.md",
+      "docs/specs/features/model-persistence.md",
+      "docs/specs/features/slice-type.md",
+      "docs/specs/product.md",
+    ];
+    for (const path of paths) {
+      const text = readFileSync(path, "utf8");
+      expect(text, path).not.toMatch(
+        /Event Field type after reload(?! of one Event)/,
+      );
+    }
+  });
+
+  it("editor-bind-split Out of scope names GET Field type of the first of two Events once", () => {
+    const oos = readFileSync(
+      "docs/specs/features/editor-bind-split.md",
+      "utf8",
+    )
+      .split("## Out of scope")[1]
+      .split("## Restates")[0];
+    expect(
+      oos.split(
+        "GET Field type of the first of two Events is [inspect-get-event-field-type.md](./inspect-get-event-field-type.md).",
+      ).length - 1,
+    ).toBe(1);
+  });
+
   it("inspect-get-automation-field Restates paths do not assign unqualified Automation Field after reload to inspect-rest", () => {
     const paths = [
       "docs/specs/features/inspect-get-automation-field.md",

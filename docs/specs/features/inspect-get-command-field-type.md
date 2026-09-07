@@ -35,6 +35,7 @@ GET Type of the first of two Slices stays [inspect-get-slice-type.md](./inspect-
 
 ## Restates
 
+- [inspect-get-event-field-type.md](./inspect-get-event-field-type.md) — GET Field type of the first of two Events is that file. GET Field type of the first of two Commands stays this file.
 - [inspect-rest.md](./inspect-rest.md) — GET Field type of one Command still shows the saved value. GET Field type of the first of two Commands is this slice.
 - [inspect-after-reload.md](./inspect-after-reload.md) — GET Name of `Place Order` still opens Inspector Name. GET Field type of that listitem is this slice.
 - [inspect-fields-rest.md](./inspect-fields-rest.md) — In-session Field type on the clicked Command of two stays that file. GET Field type of the first of two Commands is this slice.

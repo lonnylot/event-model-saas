@@ -35,6 +35,7 @@ GET Type of the first of two Slices stays [inspect-get-slice-type.md](./inspect-
 
 ## Restates
 
+- [inspect-get-event-field-type.md](./inspect-get-event-field-type.md) — GET Field type of the first of two Events is that file. GET Field of the first of two Automations stays this file.
 - [inspect-rest.md](./inspect-rest.md) — GET Field of one Automation still shows the saved value. GET Field of the first of two Automations is this slice.
 - [inspect-after-reload.md](./inspect-after-reload.md) — GET Name of `Send Email` still opens Inspector Name. GET Field of that listitem is this slice.
 - [inspect-fields-rest.md](./inspect-fields-rest.md) — In-session Field name on the clicked Automation of two stays that file. GET Field of the first of two Automations is this slice.
