@@ -150,3 +150,15 @@ test("After a member creates a model, opens it, clicks `Add Command`, clicks the
       .getByRole("textbox", { name: "Description", exact: true }),
   ).toHaveValue("");
 });
+
+test("After a member creates a model, opens it, clicks `Add Command`, clicks the Timeline `Command` listitem, clicks `Add Field`, fills `Field name` with `orderId`, fills `Name` with `Place Order`, clicks `Add Command`, clicks the last Timeline `Command` listitem, fills `Name` with `Cancel Order`, fills `Description` with `Cancel it`, and Saves, a reload of that page, clicking the Timeline `Place Order` listitem shows Inspector `Field name` with the value `orderId`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await saveTwoCommands(page);
+  await expect(
+    page
+      .getByRole("region", { name: "Inspector", exact: true })
+      .getByRole("textbox", { name: "Field name", exact: true }),
+  ).toHaveValue("orderId");
+});
