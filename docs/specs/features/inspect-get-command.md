@@ -1,6 +1,6 @@
 # Inspect get command
 
-Status: validated
+Status: released
 
 ## Problem
 
