@@ -438,6 +438,15 @@ export function bindInspect(root, ctx) {
       : model.slices?.at(-1)?.readModels?.at(-1);
     return readModel?.fields?.[0]?.example ?? "";
   };
+  const lastAutomationFieldExample = () => {
+    const holder = root.getElementById("event-model-document");
+    const model = JSON.parse(holder?.textContent || "{}");
+    const id = ctx.selectedAutomationItem?.dataset?.id;
+    const automation = id
+      ? model.slices?.flatMap((s) => s.processors ?? []).find((p) => p.id === id)
+      : model.slices?.at(-1)?.processors?.at(-1);
+    return automation?.fields?.[0]?.example ?? "";
+  };
   const lastSliceTypeLabel = () => {
     const holder = root.getElementById("event-model-document");
     const model = JSON.parse(holder?.textContent || "{}");
@@ -634,7 +643,8 @@ export function bindInspect(root, ctx) {
       !inspector ||
       (ctx.selected !== "command" &&
         ctx.selected !== "event" &&
-        ctx.selected !== "readmodel")
+        ctx.selected !== "readmodel" &&
+        ctx.selected !== "automation")
     ) {
       unbindExample();
       return;
@@ -668,6 +678,15 @@ export function bindInspect(root, ctx) {
               JSON.parse(holder.textContent || "{}"),
               input.value,
               "readmodel",
+            ),
+          );
+        }
+        if (holder && ctx.selected === "automation") {
+          holder.textContent = JSON.stringify(
+            setFieldExample(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+              "automation",
             ),
           );
         }
@@ -1222,6 +1241,7 @@ export function bindInspect(root, ctx) {
           bindFieldName(automationFieldName);
           bindFieldType(lastAutomationFieldType());
           bindOptional(lastAutomationFieldOptional());
+          bindExample(lastAutomationFieldExample());
         }
         bindAddField();
         return;
@@ -1233,6 +1253,7 @@ export function bindInspect(root, ctx) {
         bindFieldName(automationFieldName);
         bindFieldType(lastAutomationFieldType());
         bindOptional(lastAutomationFieldOptional());
+        bindExample(lastAutomationFieldExample());
       } else {
         unbindFieldRow();
       }
