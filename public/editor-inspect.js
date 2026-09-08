@@ -697,7 +697,9 @@ export function bindInspect(root, ctx) {
   const bindDeleteField = () => {
     if (
       !inspector ||
-      (ctx.selected !== "command" && ctx.selected !== "event")
+      (ctx.selected !== "command" &&
+        ctx.selected !== "event" &&
+        ctx.selected !== "readmodel")
     ) {
       deleteFieldButton()?.remove();
       return;
@@ -716,7 +718,9 @@ export function bindInspect(root, ctx) {
             ctx.selected,
             ctx.selected === "event"
               ? ctx.selectedEventItem?.dataset?.id
-              : ctx.selectedCommandItem?.dataset?.id,
+              : ctx.selected === "readmodel"
+                ? ctx.selectedReadModelItem?.dataset?.id
+                : ctx.selectedCommandItem?.dataset?.id,
           ),
         );
       }
@@ -1243,6 +1247,7 @@ export function bindInspect(root, ctx) {
           bindFieldType(lastReadModelFieldType());
           bindOptional(lastReadModelFieldOptional());
           bindExample(lastReadModelFieldExample());
+          bindDeleteField();
         }
         bindAddField();
         return;
