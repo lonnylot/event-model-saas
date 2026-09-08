@@ -1,6 +1,6 @@
 # Inspect get second field
 
-Status: validated
+Status: released
 
 ## Problem
 

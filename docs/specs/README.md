@@ -109,6 +109,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Inspect get delete field event | [features/inspect-get-delete-field-event.md](./features/inspect-get-delete-field-event.md) | released |
 | Inspect get delete field read model | [features/inspect-get-delete-field-read-model.md](./features/inspect-get-delete-field-read-model.md) | released |
 | Inspect get delete field automation | [features/inspect-get-delete-field-automation.md](./features/inspect-get-delete-field-automation.md) | released |
-| Inspect get second field | [features/inspect-get-second-field.md](./features/inspect-get-second-field.md) | validated |
+| Inspect get second field | [features/inspect-get-second-field.md](./features/inspect-get-second-field.md) | released |
 
 Status: `draft` → `validated` → `released`.
