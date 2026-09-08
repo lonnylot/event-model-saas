@@ -880,6 +880,49 @@ describe("spec tree", () => {
     ).toBe(1);
   });
 
+  it("inspect-get-read-model-optional Restates paths do not park Optional after reload of one Read Model as stay later", () => {
+    const paths = [
+      "docs/specs/features/inspect-get-read-model-optional.md",
+      "docs/specs/features/inspect-rest.md",
+      "docs/specs/features/inspect-after-reload.md",
+      "docs/specs/features/inspect-fields-rest.md",
+      "docs/specs/features/inspect-fields.md",
+      "docs/specs/features/inspect-get-event-optional.md",
+      "docs/specs/features/inspect-get-event-example.md",
+      "docs/specs/features/hydrate-add-field.md",
+      "docs/specs/features/editor-bind-split.md",
+      "docs/specs/architecture.md",
+      "docs/specs/product.md",
+      "docs/specs/features/editor-shell.md",
+      "docs/specs/features/blocks.md",
+      "docs/specs/features/inspect-blocks.md",
+      "docs/specs/features/model-persistence.md",
+    ];
+    for (const path of paths) {
+      const text = readFileSync(path, "utf8");
+      expect(text, path).not.toMatch(
+        /Optional \/ Example after reload on Read Model \//,
+      );
+      expect(text, path).not.toMatch(
+        /Optional after reload of one Read Model \/ Automation stay later/,
+      );
+    }
+  });
+
+  it("editor-bind-split Out of scope names GET Inspector for Read Model Optional of one Read Model once", () => {
+    const oos = readFileSync(
+      "docs/specs/features/editor-bind-split.md",
+      "utf8",
+    )
+      .split("## Out of scope")[1]
+      .split("## Restates")[0];
+    expect(
+      oos.split(
+        "GET Inspector for Read Model Optional of one Read Model is [inspect-get-read-model-optional.md](./inspect-get-read-model-optional.md).",
+      ).length - 1,
+    ).toBe(1);
+  });
+
   it("inspect-get-automation-field Restates paths do not assign unqualified Automation Field after reload to inspect-rest", () => {
     const paths = [
       "docs/specs/features/inspect-get-automation-field.md",
