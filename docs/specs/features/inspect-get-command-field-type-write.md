@@ -1,6 +1,6 @@
 # Inspect get command field type write
 
-Status: validated
+Status: released
 
 ## Problem
 
