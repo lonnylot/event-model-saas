@@ -227,7 +227,13 @@ export function bindInspect(root, ctx) {
       (button) => button.textContent === "Delete Field",
     );
   const unbindAddField = () => addFieldButton()?.remove();
-  const unbindFieldName = () => fieldNameLabel()?.remove();
+  const unbindFieldName = () => {
+    for (const label of [...(inspector?.querySelectorAll("label") ?? [])].filter(
+      (label) => label.textContent?.includes("Field name"),
+    )) {
+      label.remove();
+    }
+  };
   const unbindFieldRow = () => {
     unbindFieldName();
     fieldTypeLabel()?.remove();
@@ -311,6 +317,15 @@ export function bindInspect(root, ctx) {
       ? model.slices?.flatMap((s) => s.commands ?? []).find((c) => c.id === id)
       : model.slices?.at(-1)?.commands?.at(-1);
     return command?.fields?.[0]?.name;
+  };
+  const lastCommandSecondFieldName = () => {
+    const holder = root.getElementById("event-model-document");
+    const model = JSON.parse(holder?.textContent || "{}");
+    const id = ctx.selectedCommandItem?.dataset?.id;
+    const command = id
+      ? model.slices?.flatMap((s) => s.commands ?? []).find((c) => c.id === id)
+      : model.slices?.at(-1)?.commands?.at(-1);
+    return command?.fields?.[1]?.name;
   };
   const lastEventFieldName = () => {
     const holder = root.getElementById("event-model-document");
@@ -797,6 +812,18 @@ export function bindInspect(root, ctx) {
     }
     if (input) input.value = value;
   };
+  const bindSecondFieldName = (value) => {
+    if (!inspector || ctx.selected !== "command") return;
+    inspector.insertAdjacentHTML(
+      "beforeend",
+      "<label>Field name <input /></label>",
+    );
+    const inputs = [...inspector.querySelectorAll("input")].filter((el) =>
+      el.closest("label")?.textContent?.includes("Field name"),
+    );
+    const input = inputs[1];
+    if (input) input.value = value;
+  };
   const unbindFieldChrome = () => {
     unbindAddField();
     unbindFieldRow();
@@ -1189,6 +1216,10 @@ export function bindInspect(root, ctx) {
         const fieldName = lastCommandFieldName();
         if (fieldName) {
           bindFieldName(fieldName);
+          const secondFieldName = lastCommandSecondFieldName();
+          if (secondFieldName) {
+            bindSecondFieldName(secondFieldName);
+          }
           bindFieldType(lastCommandFieldType());
           bindOptional(lastCommandFieldOptional());
           bindExample(lastCommandFieldExample());
