@@ -699,7 +699,8 @@ export function bindInspect(root, ctx) {
       !inspector ||
       (ctx.selected !== "command" &&
         ctx.selected !== "event" &&
-        ctx.selected !== "readmodel")
+        ctx.selected !== "readmodel" &&
+        ctx.selected !== "automation")
     ) {
       deleteFieldButton()?.remove();
       return;
@@ -720,7 +721,9 @@ export function bindInspect(root, ctx) {
               ? ctx.selectedEventItem?.dataset?.id
               : ctx.selected === "readmodel"
                 ? ctx.selectedReadModelItem?.dataset?.id
-                : ctx.selectedCommandItem?.dataset?.id,
+                : ctx.selected === "automation"
+                  ? ctx.selectedAutomationItem?.dataset?.id
+                  : ctx.selectedCommandItem?.dataset?.id,
           ),
         );
       }
@@ -1277,6 +1280,7 @@ export function bindInspect(root, ctx) {
           bindFieldType(lastAutomationFieldType());
           bindOptional(lastAutomationFieldOptional());
           bindExample(lastAutomationFieldExample());
+          bindDeleteField();
         }
         bindAddField();
         return;
