@@ -695,7 +695,10 @@ export function bindInspect(root, ctx) {
     if (input) input.value = value ?? "";
   };
   const bindDeleteField = () => {
-    if (!inspector || ctx.selected !== "command") {
+    if (
+      !inspector ||
+      (ctx.selected !== "command" && ctx.selected !== "event")
+    ) {
       deleteFieldButton()?.remove();
       return;
     }
@@ -711,7 +714,9 @@ export function bindInspect(root, ctx) {
           deleteField(
             JSON.parse(holder.textContent || "{}"),
             ctx.selected,
-            ctx.selectedCommandItem?.dataset?.id,
+            ctx.selected === "event"
+              ? ctx.selectedEventItem?.dataset?.id
+              : ctx.selectedCommandItem?.dataset?.id,
           ),
         );
       }
@@ -1208,6 +1213,7 @@ export function bindInspect(root, ctx) {
           bindFieldType(lastEventFieldType());
           bindOptional(lastEventFieldOptional());
           bindExample(lastEventFieldExample());
+          bindDeleteField();
         }
         bindAddField();
         return;
