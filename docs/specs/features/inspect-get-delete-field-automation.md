@@ -1,6 +1,6 @@
 # Inspect get delete field automation
 
-Status: validated
+Status: released
 
 ## Problem
 
