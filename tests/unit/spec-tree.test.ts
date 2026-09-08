@@ -808,6 +808,78 @@ describe("spec tree", () => {
     ).toBe(1);
   });
 
+  it("inspect-get-event-example Restates does not list inspect-blocks.md or inspect-fields.md", () => {
+    const restates = readFileSync(
+      "docs/specs/features/inspect-get-event-example.md",
+      "utf8",
+    ).split("## Restates")[1];
+    expect(restates).not.toContain(
+      "[inspect-blocks.md](./inspect-blocks.md)",
+    );
+    expect(restates).not.toContain(
+      "[inspect-fields.md](./inspect-fields.md)",
+    );
+  });
+
+  it("inspect-get-event-example Restates paths do not park Example after reload of one Event as stay later", () => {
+    const paths = [
+      "docs/specs/features/inspect-get-event-example.md",
+      "docs/specs/features/inspect-get-command.md",
+      "docs/specs/features/inspect-after-reload.md",
+      "docs/specs/features/inspect-rest.md",
+      "docs/specs/features/inspect-fields-rest.md",
+      "docs/specs/features/editor-bind-split.md",
+      "docs/specs/features/inspect-get-event.md",
+      "docs/specs/features/inspect-get-read-model.md",
+      "docs/specs/features/inspect-get-actor.md",
+      "docs/specs/features/inspect-get-automation.md",
+      "docs/specs/features/inspect-get-slice-description.md",
+      "docs/specs/features/inspect-get-slice-type.md",
+      "docs/specs/features/inspect-get-read-model-field.md",
+      "docs/specs/features/inspect-get-automation-field.md",
+      "docs/specs/features/inspect-get-command-field-type.md",
+      "docs/specs/features/inspect-get-event-field-type.md",
+      "docs/specs/features/inspect-get-read-model-field-type.md",
+      "docs/specs/features/inspect-get-automation-field-type.md",
+      "docs/specs/features/inspect-get-command-optional.md",
+      "docs/specs/features/inspect-get-command-example.md",
+      "docs/specs/features/inspect-get-event-optional.md",
+      "docs/specs/architecture.md",
+      "docs/specs/features/editor-shell.md",
+      "docs/specs/features/add-on-lane.md",
+      "docs/specs/features/blocks.md",
+      "docs/specs/features/canvas.md",
+      "docs/specs/features/chrome.md",
+      "docs/specs/features/connection-feedback.md",
+      "docs/specs/features/connections.md",
+      "docs/specs/features/inspect-connection.md",
+      "docs/specs/features/inspect-description.md",
+      "docs/specs/features/model-persistence.md",
+      "docs/specs/features/slice-type.md",
+      "docs/specs/product.md",
+    ];
+    for (const path of paths) {
+      const text = readFileSync(path, "utf8");
+      expect(text, path).not.toMatch(
+        /Example after reload of one Event stay later/,
+      );
+    }
+  });
+
+  it("editor-bind-split Out of scope names GET Inspector for Event Example of one Event once", () => {
+    const oos = readFileSync(
+      "docs/specs/features/editor-bind-split.md",
+      "utf8",
+    )
+      .split("## Out of scope")[1]
+      .split("## Restates")[0];
+    expect(
+      oos.split(
+        "GET Inspector for Event Example of one Event is [inspect-get-event-example.md](./inspect-get-event-example.md).",
+      ).length - 1,
+    ).toBe(1);
+  });
+
   it("inspect-get-automation-field Restates paths do not assign unqualified Automation Field after reload to inspect-rest", () => {
     const paths = [
       "docs/specs/features/inspect-get-automation-field.md",

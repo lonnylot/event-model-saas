@@ -402,6 +402,15 @@ export function bindInspect(root, ctx) {
       : model.slices?.at(-1)?.commands?.at(-1);
     return command?.fields?.[0]?.example ?? "";
   };
+  const lastEventFieldExample = () => {
+    const holder = root.getElementById("event-model-document");
+    const model = JSON.parse(holder?.textContent || "{}");
+    const id = ctx.selectedEventItem?.dataset?.id;
+    const event = id
+      ? model.slices?.flatMap((s) => s.events ?? []).find((e) => e.id === id)
+      : model.slices?.at(-1)?.events?.at(-1);
+    return event?.fields?.[0]?.example ?? "";
+  };
   const lastSliceTypeLabel = () => {
     const holder = root.getElementById("event-model-document");
     const model = JSON.parse(holder?.textContent || "{}");
@@ -573,7 +582,10 @@ export function bindInspect(root, ctx) {
     );
   const unbindExample = () => exampleInput()?.closest("label")?.remove();
   const bindExample = (value) => {
-    if (!inspector || ctx.selected !== "command") {
+    if (
+      !inspector ||
+      (ctx.selected !== "command" && ctx.selected !== "event")
+    ) {
       unbindExample();
       return;
     }
@@ -589,6 +601,15 @@ export function bindInspect(root, ctx) {
         if (holder && ctx.selected === "command") {
           holder.textContent = JSON.stringify(
             setFieldExample(JSON.parse(holder.textContent || "{}"), input.value),
+          );
+        }
+        if (holder && ctx.selected === "event") {
+          holder.textContent = JSON.stringify(
+            setFieldExample(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+              "event",
+            ),
           );
         }
       });
@@ -1084,6 +1105,7 @@ export function bindInspect(root, ctx) {
           bindFieldName(eventFieldName);
           bindFieldType(lastEventFieldType());
           bindOptional(lastEventFieldOptional());
+          bindExample(lastEventFieldExample());
         }
         bindAddField();
         return;
@@ -1095,6 +1117,7 @@ export function bindInspect(root, ctx) {
         bindFieldName(eventFieldName);
         bindFieldType(lastEventFieldType());
         bindOptional(lastEventFieldOptional());
+        bindExample(lastEventFieldExample());
       } else {
         unbindFieldRow();
       }
