@@ -546,7 +546,12 @@ export function bindInspect(root, ctx) {
         const holder = root.getElementById("event-model-document");
         if (holder && ctx.selected === "command") {
           holder.textContent = JSON.stringify(
-            setFieldType(JSON.parse(holder.textContent || "{}"), select.value),
+            setFieldType(
+              JSON.parse(holder.textContent || "{}"),
+              select.value,
+              "command",
+              ctx.selectedCommandItem?.dataset?.id,
+            ),
           );
         }
         if (holder && ctx.selected === "event") {
