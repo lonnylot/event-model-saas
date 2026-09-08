@@ -393,6 +393,15 @@ export function bindInspect(root, ctx) {
       : model.slices?.at(-1)?.events?.at(-1);
     return event?.fields?.[0]?.optional === true;
   };
+  const lastReadModelFieldOptional = () => {
+    const holder = root.getElementById("event-model-document");
+    const model = JSON.parse(holder?.textContent || "{}");
+    const id = ctx.selectedReadModelItem?.dataset?.id;
+    const readModel = id
+      ? model.slices?.flatMap((s) => s.readModels ?? []).find((r) => r.id === id)
+      : model.slices?.at(-1)?.readModels?.at(-1);
+    return readModel?.fields?.[0]?.optional === true;
+  };
   const lastCommandFieldExample = () => {
     const holder = root.getElementById("event-model-document");
     const model = JSON.parse(holder?.textContent || "{}");
@@ -539,7 +548,9 @@ export function bindInspect(root, ctx) {
   const bindOptional = (checked) => {
     if (
       !inspector ||
-      (ctx.selected !== "command" && ctx.selected !== "event")
+      (ctx.selected !== "command" &&
+        ctx.selected !== "event" &&
+        ctx.selected !== "readmodel")
     ) {
       unbindOptional();
       return;
@@ -567,6 +578,15 @@ export function bindInspect(root, ctx) {
               JSON.parse(holder.textContent || "{}"),
               input.checked,
               "event",
+            ),
+          );
+        }
+        if (holder && ctx.selected === "readmodel") {
+          holder.textContent = JSON.stringify(
+            setFieldOptional(
+              JSON.parse(holder.textContent || "{}"),
+              input.checked,
+              "readmodel",
             ),
           );
         }
@@ -1133,6 +1153,7 @@ export function bindInspect(root, ctx) {
         if (readModelFieldName) {
           bindFieldName(readModelFieldName);
           bindFieldType(lastReadModelFieldType());
+          bindOptional(lastReadModelFieldOptional());
         }
         bindAddField();
         return;
@@ -1143,6 +1164,7 @@ export function bindInspect(root, ctx) {
       if (readModelFieldName) {
         bindFieldName(readModelFieldName);
         bindFieldType(lastReadModelFieldType());
+        bindOptional(lastReadModelFieldOptional());
       } else {
         unbindFieldRow();
       }
