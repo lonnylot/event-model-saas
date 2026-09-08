@@ -808,6 +808,19 @@ describe("spec tree", () => {
     ).toBe(1);
   });
 
+  it("inspect-get-event-example Restates does not list inspect-blocks.md or inspect-fields.md", () => {
+    const restates = readFileSync(
+      "docs/specs/features/inspect-get-event-example.md",
+      "utf8",
+    ).split("## Restates")[1];
+    expect(restates).not.toContain(
+      "[inspect-blocks.md](./inspect-blocks.md)",
+    );
+    expect(restates).not.toContain(
+      "[inspect-fields.md](./inspect-fields.md)",
+    );
+  });
+
   it("inspect-get-event-example Restates paths do not park Example after reload of one Event as stay later", () => {
     const paths = [
       "docs/specs/features/inspect-get-event-example.md",
@@ -839,10 +852,8 @@ describe("spec tree", () => {
       "docs/specs/features/chrome.md",
       "docs/specs/features/connection-feedback.md",
       "docs/specs/features/connections.md",
-      "docs/specs/features/inspect-blocks.md",
       "docs/specs/features/inspect-connection.md",
       "docs/specs/features/inspect-description.md",
-      "docs/specs/features/inspect-fields.md",
       "docs/specs/features/model-persistence.md",
       "docs/specs/features/slice-type.md",
       "docs/specs/product.md",
