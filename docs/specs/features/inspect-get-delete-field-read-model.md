@@ -1,6 +1,6 @@
 # Inspect get delete field read model
 
-Status: validated
+Status: released
 
 ## Problem
 
