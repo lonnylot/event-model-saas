@@ -101,6 +101,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Inspect get command example | [features/inspect-get-command-example.md](./features/inspect-get-command-example.md) | released |
 | Inspect get event optional | [features/inspect-get-event-optional.md](./features/inspect-get-event-optional.md) | released |
 | Inspect get event example | [features/inspect-get-event-example.md](./features/inspect-get-event-example.md) | released |
-| Inspect get read model optional | [features/inspect-get-read-model-optional.md](./features/inspect-get-read-model-optional.md) | validated |
+| Inspect get read model optional | [features/inspect-get-read-model-optional.md](./features/inspect-get-read-model-optional.md) | released |
 
 Status: `draft` → `validated` → `released`.
