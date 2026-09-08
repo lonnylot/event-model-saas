@@ -31,7 +31,7 @@ When the file is a skill, also read [SKILL-MECHANICS.md](SKILL-MECHANICS.md).
 | Playwright `toBeVisible` of below-the-fold / overflow-clipped | `testing`, `playwright-e2e` |
 | Module / seam / adapter vocabulary | `codebase-design` |
 | Assumption vs acceptance criterion | `keeping-specs-current` |
-| Restated AC with leftover sections / leftover AC / leftover Problem / leftover test title / leftover Restates / leftover locked claims in a restated system spec / leftover Restates after restating Out of scope / leftover Assumptions after restating Out of scope / duplicate Out of scope pointer in the same paragraph | `keeping-specs-current` |
+| Restated AC with leftover sections / leftover AC / leftover Problem / leftover test title / leftover Restates / leftover locked claims in a restated system spec / leftover Restates after restating Out of scope / leftover Assumptions after restating Out of scope / duplicate Out of scope pointer in the same paragraph / Restates path this HEAD did not rewrite | `keeping-specs-current` |
 | Domain terms line without a `CONTEXT.md` entry | `keeping-specs-current`, `domain-modeling` |
 | Independently revertible ACs / grouping by screen / spec-only / reconstruct after tests-after in the TDD slice / review-thread or CI-fix commit on HEAD / unsplit leftover checkboxes / lock of already-true vs first extract | `logical-commits` |
 | Extra visible chrome without an AC | `keeping-specs-current` |
