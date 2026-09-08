@@ -1,6 +1,6 @@
 # Inspect get delete field
 
-Status: validated
+Status: released
 
 ## Problem
 
