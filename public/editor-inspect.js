@@ -384,6 +384,15 @@ export function bindInspect(root, ctx) {
       : model.slices?.at(-1)?.commands?.at(-1);
     return command?.fields?.[0]?.optional === true;
   };
+  const lastEventFieldOptional = () => {
+    const holder = root.getElementById("event-model-document");
+    const model = JSON.parse(holder?.textContent || "{}");
+    const id = ctx.selectedEventItem?.dataset?.id;
+    const event = id
+      ? model.slices?.flatMap((s) => s.events ?? []).find((e) => e.id === id)
+      : model.slices?.at(-1)?.events?.at(-1);
+    return event?.fields?.[0]?.optional === true;
+  };
   const lastCommandFieldExample = () => {
     const holder = root.getElementById("event-model-document");
     const model = JSON.parse(holder?.textContent || "{}");
@@ -519,7 +528,10 @@ export function bindInspect(root, ctx) {
     );
   const unbindOptional = () => optionalInput()?.closest("label")?.remove();
   const bindOptional = (checked) => {
-    if (!inspector || ctx.selected !== "command") {
+    if (
+      !inspector ||
+      (ctx.selected !== "command" && ctx.selected !== "event")
+    ) {
       unbindOptional();
       return;
     }
@@ -537,6 +549,15 @@ export function bindInspect(root, ctx) {
             setFieldOptional(
               JSON.parse(holder.textContent || "{}"),
               input.checked,
+            ),
+          );
+        }
+        if (holder && ctx.selected === "event") {
+          holder.textContent = JSON.stringify(
+            setFieldOptional(
+              JSON.parse(holder.textContent || "{}"),
+              input.checked,
+              "event",
             ),
           );
         }
@@ -1062,6 +1083,7 @@ export function bindInspect(root, ctx) {
         if (eventFieldName) {
           bindFieldName(eventFieldName);
           bindFieldType(lastEventFieldType());
+          bindOptional(lastEventFieldOptional());
         }
         bindAddField();
         return;
@@ -1072,6 +1094,7 @@ export function bindInspect(root, ctx) {
       if (eventFieldName) {
         bindFieldName(eventFieldName);
         bindFieldType(lastEventFieldType());
+        bindOptional(lastEventFieldOptional());
       } else {
         unbindFieldRow();
       }
