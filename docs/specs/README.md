@@ -99,6 +99,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Inspect get automation field type | [features/inspect-get-automation-field-type.md](./features/inspect-get-automation-field-type.md) | released |
 | Inspect get command optional | [features/inspect-get-command-optional.md](./features/inspect-get-command-optional.md) | released |
 | Inspect get command example | [features/inspect-get-command-example.md](./features/inspect-get-command-example.md) | released |
-| Inspect get event optional | [features/inspect-get-event-optional.md](./features/inspect-get-event-optional.md) | validated |
+| Inspect get event optional | [features/inspect-get-event-optional.md](./features/inspect-get-event-optional.md) | released |
 
 Status: `draft` → `validated` → `released`.
