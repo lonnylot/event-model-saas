@@ -1,6 +1,6 @@
 # Inspect get event example
 
-Status: validated
+Status: released
 
 ## Problem
 
