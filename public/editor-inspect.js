@@ -694,6 +694,29 @@ export function bindInspect(root, ctx) {
     }
     if (input) input.value = value ?? "";
   };
+  const bindDeleteField = () => {
+    if (!inspector || ctx.selected !== "command") {
+      deleteFieldButton()?.remove();
+      return;
+    }
+    if (deleteFieldButton()) return;
+    inspector.insertAdjacentHTML(
+      "beforeend",
+      '<button type="button">Delete Field</button>',
+    );
+    deleteFieldButton()?.addEventListener("click", () => {
+      const holder = root.getElementById("event-model-document");
+      if (holder) {
+        holder.textContent = JSON.stringify(
+          deleteField(
+            JSON.parse(holder.textContent || "{}"),
+            ctx.selected,
+            ctx.selectedCommandItem?.dataset?.id,
+          ),
+        );
+      }
+    });
+  };
   const fieldNameInput = () =>
     [...(inspector?.querySelectorAll("input") ?? [])].find((el) =>
       el.closest("label")?.textContent?.includes("Field name"),
@@ -1157,6 +1180,7 @@ export function bindInspect(root, ctx) {
           bindFieldType(lastCommandFieldType());
           bindOptional(lastCommandFieldOptional());
           bindExample(lastCommandFieldExample());
+          bindDeleteField();
         }
         bindAddField();
         return;
