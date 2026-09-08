@@ -35,17 +35,17 @@ Example after reload of one Read Model is [inspect-get-read-model-example.md](./
 
 ## Restates
 
-- [inspect-rest.md](./inspect-rest.md) — Optional after reload of one Read Model is this slice. Optional after reload of one Automation stays later.
-- [inspect-after-reload.md](./inspect-after-reload.md) — GET Name still opens Inspector Name. Optional after reload of one Read Model is this slice. Optional after reload of one Automation stays later.
-- [inspect-fields-rest.md](./inspect-fields-rest.md) — In-session Field type / optional / example / delete stay that file. Optional after reload of one Read Model is this slice. Optional after reload of one Automation stays later.
-- [inspect-fields.md](./inspect-fields.md) — Last-Command Add Field and Field name stay that file. Optional after reload of one Read Model is this slice. Optional after reload of one Automation stays later.
-- [inspect-get-event-optional.md](./inspect-get-event-optional.md) — Optional after reload of one Event stays that file. Optional after reload of one Read Model is this slice. Optional after reload of one Automation stays later.
-- [inspect-get-event-example.md](./inspect-get-event-example.md) — Example after reload of one Event stays that file. Optional after reload of one Read Model is this slice. Optional after reload of one Automation stays later.
-- [hydrate-add-field.md](./hydrate-add-field.md) — `Add Field` after reload stays that file. Optional after reload of one Read Model is this slice. Optional after reload of one Automation stays later.
-- [editor-bind-split.md](./editor-bind-split.md) — `bindInspect` stays `public/editor-inspect.js`. Optional after reload of one Read Model is this slice. Optional after reload of one Automation stays later.
-- [architecture.md](../architecture.md) — Editor canvas stays custom timeline TypeScript. Optional after reload of one Read Model is this slice. Optional after reload of one Automation stays later.
-- [product.md](../product.md) — Optional after reload of one Read Model is this slice. Optional after reload of one Automation stays later.
-- [editor-shell.md](./editor-shell.md) — Optional after reload of one Read Model is this slice. Optional after reload of one Automation stays later.
-- [blocks.md](./blocks.md) — Optional after reload of one Read Model is this slice. Optional after reload of one Automation stays later.
-- [inspect-blocks.md](./inspect-blocks.md) — Optional after reload of one Read Model is this slice. Optional after reload of one Automation stays later.
-- [model-persistence.md](./model-persistence.md) — Optional after reload of one Read Model is this slice. Optional after reload of one Automation stays later.
+- [inspect-rest.md](./inspect-rest.md) — Optional after reload of one Read Model is this slice. Optional after reload of one Automation is [inspect-get-automation-optional.md](./inspect-get-automation-optional.md).
+- [inspect-after-reload.md](./inspect-after-reload.md) — GET Name still opens Inspector Name. Optional after reload of one Read Model is this slice. Optional after reload of one Automation is [inspect-get-automation-optional.md](./inspect-get-automation-optional.md).
+- [inspect-fields-rest.md](./inspect-fields-rest.md) — In-session Field type / optional / example / delete stay that file. Optional after reload of one Read Model is this slice. Optional after reload of one Automation is [inspect-get-automation-optional.md](./inspect-get-automation-optional.md).
+- [inspect-fields.md](./inspect-fields.md) — Last-Command Add Field and Field name stay that file. Optional after reload of one Read Model is this slice. Optional after reload of one Automation is [inspect-get-automation-optional.md](./inspect-get-automation-optional.md).
+- [inspect-get-event-optional.md](./inspect-get-event-optional.md) — Optional after reload of one Event stays that file. Optional after reload of one Read Model is this slice. Optional after reload of one Automation is [inspect-get-automation-optional.md](./inspect-get-automation-optional.md).
+- [inspect-get-event-example.md](./inspect-get-event-example.md) — Example after reload of one Event stays that file. Optional after reload of one Read Model is this slice. Optional after reload of one Automation is [inspect-get-automation-optional.md](./inspect-get-automation-optional.md).
+- [hydrate-add-field.md](./hydrate-add-field.md) — `Add Field` after reload stays that file. Optional after reload of one Read Model is this slice. Optional after reload of one Automation is [inspect-get-automation-optional.md](./inspect-get-automation-optional.md).
+- [editor-bind-split.md](./editor-bind-split.md) — `bindInspect` stays `public/editor-inspect.js`. Optional after reload of one Read Model is this slice. Optional after reload of one Automation is [inspect-get-automation-optional.md](./inspect-get-automation-optional.md).
+- [architecture.md](../architecture.md) — Editor canvas stays custom timeline TypeScript. Optional after reload of one Read Model is this slice. Optional after reload of one Automation is [inspect-get-automation-optional.md](./inspect-get-automation-optional.md).
+- [product.md](../product.md) — Optional after reload of one Read Model is this slice. Optional after reload of one Automation is [inspect-get-automation-optional.md](./inspect-get-automation-optional.md).
+- [editor-shell.md](./editor-shell.md) — Optional after reload of one Read Model is this slice. Optional after reload of one Automation is [inspect-get-automation-optional.md](./inspect-get-automation-optional.md).
+- [blocks.md](./blocks.md) — Optional after reload of one Read Model is this slice. Optional after reload of one Automation is [inspect-get-automation-optional.md](./inspect-get-automation-optional.md).
+- [inspect-blocks.md](./inspect-blocks.md) — Optional after reload of one Read Model is this slice. Optional after reload of one Automation is [inspect-get-automation-optional.md](./inspect-get-automation-optional.md).
+- [model-persistence.md](./model-persistence.md) — Optional after reload of one Read Model is this slice. Optional after reload of one Automation is [inspect-get-automation-optional.md](./inspect-get-automation-optional.md).
