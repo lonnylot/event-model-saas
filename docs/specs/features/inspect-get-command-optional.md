@@ -52,6 +52,7 @@ GET Type of the first of two Slices stays [inspect-get-slice-type.md](./inspect-
 - [inspect-get-event-field-type.md](./inspect-get-event-field-type.md) — GET Field type of the first of two Events stays that file. GET Optional of the first of two Commands is this slice.
 - [inspect-get-read-model-field-type.md](./inspect-get-read-model-field-type.md) — GET Field type of the first of two Read Models stays that file. GET Optional of the first of two Commands is this slice.
 - [inspect-get-automation-field-type.md](./inspect-get-automation-field-type.md) — GET Field type of the first of two Automations stays that file. GET Optional of the first of two Commands is this slice.
+- [inspect-get-command-example.md](./inspect-get-command-example.md) — GET Example of the first of two Commands is that file. GET Optional of the first of two Commands stays this file.
 - [architecture.md](../architecture.md) — Editor canvas stays custom timeline TypeScript. GET first-of-two Command Optional is this slice.
 - [editor-shell.md](./editor-shell.md) — Command Optional after reload of one Command stays [inspect-rest.md](./inspect-rest.md). GET Optional of the first of two Commands is this slice.
 - [add-on-lane.md](./add-on-lane.md) — Command Optional after reload of one Command stays [inspect-rest.md](./inspect-rest.md). GET Optional of the first of two Commands is this slice.
