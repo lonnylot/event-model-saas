@@ -35,17 +35,17 @@ Optional after reload of one Read Model is [inspect-get-read-model-optional.md](
 
 ## Restates
 
-- [inspect-rest.md](./inspect-rest.md) — Example after reload of one Read Model is this slice. Example after reload of one Automation stays later.
-- [inspect-after-reload.md](./inspect-after-reload.md) — GET Name still opens Inspector Name. Example after reload of one Read Model is this slice. Example after reload of one Automation stays later.
-- [inspect-fields-rest.md](./inspect-fields-rest.md) — In-session Field type / optional / example / delete stay that file. Example after reload of one Read Model is this slice. Example after reload of one Automation stays later.
-- [inspect-fields.md](./inspect-fields.md) — Last-Command Add Field and Field name stay that file. Example after reload of one Read Model is this slice. Example after reload of one Automation stays later.
-- [inspect-get-event-optional.md](./inspect-get-event-optional.md) — Optional after reload of one Event stays that file. Example after reload of one Read Model is this slice. Example after reload of one Automation stays later.
-- [inspect-get-event-example.md](./inspect-get-event-example.md) — Example after reload of one Event stays that file. Example after reload of one Read Model is this slice. Example after reload of one Automation stays later.
-- [hydrate-add-field.md](./hydrate-add-field.md) — `Add Field` after reload stays that file. Example after reload of one Read Model is this slice. Example after reload of one Automation stays later.
-- [editor-bind-split.md](./editor-bind-split.md) — `bindInspect` stays `public/editor-inspect.js`. Example after reload of one Read Model is this slice. Example after reload of one Automation stays later.
-- [architecture.md](../architecture.md) — Editor canvas stays custom timeline TypeScript. Example after reload of one Read Model is this slice. Example after reload of one Automation stays later.
-- [product.md](../product.md) — Example after reload of one Read Model is this slice. Example after reload of one Automation stays later.
-- [editor-shell.md](./editor-shell.md) — Example after reload of one Read Model is this slice. Example after reload of one Automation stays later.
-- [blocks.md](./blocks.md) — Example after reload of one Read Model is this slice. Example after reload of one Automation stays later.
-- [inspect-blocks.md](./inspect-blocks.md) — Example after reload of one Read Model is this slice. Example after reload of one Automation stays later.
-- [model-persistence.md](./model-persistence.md) — Example after reload of one Read Model is this slice. Example after reload of one Automation stays later.
+- [inspect-rest.md](./inspect-rest.md) — Example after reload of one Read Model is this slice. Example after reload of one Automation is [inspect-get-automation-example.md](./inspect-get-automation-example.md).
+- [inspect-after-reload.md](./inspect-after-reload.md) — GET Name still opens Inspector Name. Example after reload of one Read Model is this slice. Example after reload of one Automation is [inspect-get-automation-example.md](./inspect-get-automation-example.md).
+- [inspect-fields-rest.md](./inspect-fields-rest.md) — In-session Field type / optional / example / delete stay that file. Example after reload of one Read Model is this slice. Example after reload of one Automation is [inspect-get-automation-example.md](./inspect-get-automation-example.md).
+- [inspect-fields.md](./inspect-fields.md) — Last-Command Add Field and Field name stay that file. Example after reload of one Read Model is this slice. Example after reload of one Automation is [inspect-get-automation-example.md](./inspect-get-automation-example.md).
+- [inspect-get-event-optional.md](./inspect-get-event-optional.md) — Optional after reload of one Event stays that file. Example after reload of one Read Model is this slice. Example after reload of one Automation is [inspect-get-automation-example.md](./inspect-get-automation-example.md).
+- [inspect-get-event-example.md](./inspect-get-event-example.md) — Example after reload of one Event stays that file. Example after reload of one Read Model is this slice. Example after reload of one Automation is [inspect-get-automation-example.md](./inspect-get-automation-example.md).
+- [hydrate-add-field.md](./hydrate-add-field.md) — `Add Field` after reload stays that file. Example after reload of one Read Model is this slice. Example after reload of one Automation is [inspect-get-automation-example.md](./inspect-get-automation-example.md).
+- [editor-bind-split.md](./editor-bind-split.md) — `bindInspect` stays `public/editor-inspect.js`. Example after reload of one Read Model is this slice. Example after reload of one Automation is [inspect-get-automation-example.md](./inspect-get-automation-example.md).
+- [architecture.md](../architecture.md) — Editor canvas stays custom timeline TypeScript. Example after reload of one Read Model is this slice. Example after reload of one Automation is [inspect-get-automation-example.md](./inspect-get-automation-example.md).
+- [product.md](../product.md) — Example after reload of one Read Model is this slice. Example after reload of one Automation is [inspect-get-automation-example.md](./inspect-get-automation-example.md).
+- [editor-shell.md](./editor-shell.md) — Example after reload of one Read Model is this slice. Example after reload of one Automation is [inspect-get-automation-example.md](./inspect-get-automation-example.md).
+- [blocks.md](./blocks.md) — Example after reload of one Read Model is this slice. Example after reload of one Automation is [inspect-get-automation-example.md](./inspect-get-automation-example.md).
+- [inspect-blocks.md](./inspect-blocks.md) — Example after reload of one Read Model is this slice. Example after reload of one Automation is [inspect-get-automation-example.md](./inspect-get-automation-example.md).
+- [model-persistence.md](./model-persistence.md) — Example after reload of one Read Model is this slice. Example after reload of one Automation is [inspect-get-automation-example.md](./inspect-get-automation-example.md).
