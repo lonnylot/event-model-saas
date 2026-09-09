@@ -123,6 +123,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Inspect second field name write | [features/inspect-second-field-name-write.md](./features/inspect-second-field-name-write.md) | released |
 | New Slice default Actor | [features/new-slice-default-actor.md](./features/new-slice-default-actor.md) | released |
 | Connection event issue copy | [features/connection-event-issue-copy.md](./features/connection-event-issue-copy.md) | released |
-| Port highlight hovered Event | [features/port-highlight-hovered-event.md](./features/port-highlight-hovered-event.md) | validated |
+| Port highlight hovered Event | [features/port-highlight-hovered-event.md](./features/port-highlight-hovered-event.md) | released |
 
 Status: `draft` → `validated` → `released`.
