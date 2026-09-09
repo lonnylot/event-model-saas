@@ -1,6 +1,6 @@
 # Inspect command optional write
 
-Status: validated
+Status: released
 
 ## Problem
 
