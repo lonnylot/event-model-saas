@@ -35,16 +35,16 @@ Toolbar Add Command on the selected first of two Slices is [add-toolbar-selected
 
 ## Restates
 
-- [inspect-rest.md](./inspect-rest.md) — GET Optional write of the first of two Commands is this slice. GET Example write of the first of two Commands stays later.
-- [inspect-after-reload.md](./inspect-after-reload.md) — GET Optional write of the first of two Commands is this slice. GET Example write of the first of two Commands stays later.
-- [inspect-fields-rest.md](./inspect-fields-rest.md) — GET Optional write of the first of two Commands is this slice. GET Example write of the first of two Commands stays later.
-- [inspect-fields.md](./inspect-fields.md) — GET Optional write of the first of two Commands is this slice. GET Example write of the first of two Commands stays later.
-- [hydrate-add-field.md](./hydrate-add-field.md) — GET Optional write of the first of two Commands is this slice. GET Example write of the first of two Commands stays later.
-- [editor-bind-split.md](./editor-bind-split.md) — GET Optional write of the first of two Commands is this slice. GET Example write of the first of two Commands stays later.
-- [architecture.md](../architecture.md) — GET Optional write of the first of two Commands is this slice. GET Example write of the first of two Commands stays later.
-- [product.md](../product.md) — GET Optional write of the first of two Commands is this slice. GET Example write of the first of two Commands stays later.
-- [editor-shell.md](./editor-shell.md) — GET Optional write of the first of two Commands is this slice. GET Example write of the first of two Commands stays later.
-- [blocks.md](./blocks.md) — GET Optional write of the first of two Commands is this slice. GET Example write of the first of two Commands stays later.
-- [inspect-blocks.md](./inspect-blocks.md) — GET Optional write of the first of two Commands is this slice. GET Example write of the first of two Commands stays later.
-- [model-persistence.md](./model-persistence.md) — GET Optional write of the first of two Commands is this slice. GET Example write of the first of two Commands stays later.
+- [inspect-rest.md](./inspect-rest.md) — GET Optional write of the first of two Commands is this slice. GET Example write of the first of two Commands is [inspect-command-example-write.md](./inspect-command-example-write.md).
+- [inspect-after-reload.md](./inspect-after-reload.md) — GET Optional write of the first of two Commands is this slice. GET Example write of the first of two Commands is [inspect-command-example-write.md](./inspect-command-example-write.md).
+- [inspect-fields-rest.md](./inspect-fields-rest.md) — GET Optional write of the first of two Commands is this slice. GET Example write of the first of two Commands is [inspect-command-example-write.md](./inspect-command-example-write.md).
+- [inspect-fields.md](./inspect-fields.md) — GET Optional write of the first of two Commands is this slice. GET Example write of the first of two Commands is [inspect-command-example-write.md](./inspect-command-example-write.md).
+- [hydrate-add-field.md](./hydrate-add-field.md) — GET Optional write of the first of two Commands is this slice. GET Example write of the first of two Commands is [inspect-command-example-write.md](./inspect-command-example-write.md).
+- [editor-bind-split.md](./editor-bind-split.md) — GET Optional write of the first of two Commands is this slice. GET Example write of the first of two Commands is [inspect-command-example-write.md](./inspect-command-example-write.md).
+- [architecture.md](../architecture.md) — GET Optional write of the first of two Commands is this slice. GET Example write of the first of two Commands is [inspect-command-example-write.md](./inspect-command-example-write.md).
+- [product.md](../product.md) — GET Optional write of the first of two Commands is this slice. GET Example write of the first of two Commands is [inspect-command-example-write.md](./inspect-command-example-write.md).
+- [editor-shell.md](./editor-shell.md) — GET Optional write of the first of two Commands is this slice. GET Example write of the first of two Commands is [inspect-command-example-write.md](./inspect-command-example-write.md).
+- [blocks.md](./blocks.md) — GET Optional write of the first of two Commands is this slice. GET Example write of the first of two Commands is [inspect-command-example-write.md](./inspect-command-example-write.md).
+- [inspect-blocks.md](./inspect-blocks.md) — GET Optional write of the first of two Commands is this slice. GET Example write of the first of two Commands is [inspect-command-example-write.md](./inspect-command-example-write.md).
+- [model-persistence.md](./model-persistence.md) — GET Optional write of the first of two Commands is this slice. GET Example write of the first of two Commands is [inspect-command-example-write.md](./inspect-command-example-write.md).
 - [inspect-get-command-optional.md](./inspect-get-command-optional.md) — GET Optional display of the first of two Commands stays that file. GET Optional write of the first of two Commands is this slice.
