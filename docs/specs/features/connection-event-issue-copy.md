@@ -1,6 +1,6 @@
 # Connection event issue copy
 
-Status: validated
+Status: released
 
 ## Problem
 
