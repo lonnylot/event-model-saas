@@ -1,6 +1,6 @@
 # New Slice default Actor
 
-Status: validated
+Status: released
 
 ## Problem
 
