@@ -43,5 +43,6 @@ Inserting New Slice after the selected Slice. New Slice title `Slice N`. Toolbar
 - [undo-rest.md](./undo-rest.md) — After `New Slice` then `Add Actor`, ⌘Z leaves 2 `Actor` listitems (Create + New Slice default). Redo shows 3. Count `1` / redo `2` is leftover unused. First-vs-last on the last Slice is `New Slice` then `Add Actor` (New Slice already seeds the first). `Add Actor` twice is leftover unused.
 - [delete-rest.md](./delete-rest.md) — First-vs-last Actor Backspace/Delete on the last Slice is `New Slice` then `Add Actor`. `Add Actor` twice is leftover unused.
 - [new-slice-shortcut.md](./new-slice-shortcut.md) — ⇧⌘N still appends title `New Slice`. Empty Slice JSON is leftover unused. Default Actor is this slice.
+- [add-on-lane.md](./add-on-lane.md) — After `New Slice`, ⌥⌘1 last Slice `actors` length is `2` and last Actor is `actors.at(-1)`. `actors[0]` is leftover unused.
 - [add-on-lane-rest.md](./add-on-lane-rest.md) — First `Add Actor on lane` / ⌥⌘1 still target the first Slice. Last `actors` `[]` is leftover unused (New Slice already seeds one).
 - [chrome.md](./chrome.md) — Last Actor Name is `actors.at(-1)`. `actors[0]` after `New Slice` then `Add Actor` is leftover unused.

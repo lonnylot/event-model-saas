@@ -53,7 +53,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person,
 - Empty Event JSON is `{ "id": "{uuid}", "title": "Event Happened", "type": "EVENT", "fields": [] }`.
 - Empty Read Model JSON is `{ "id": "{uuid}", "title": "Read Model", "type": "READMODEL", "fields": [] }`.
 - Empty Automation JSON is `{ "id": "{uuid}", "title": "Automation", "type": "AUTOMATION", "fields": [] }` in the Slice `processors` array. The UI label is Automation.
-- Toolbar New Slice default Actor is [new-slice-default-actor.md](./new-slice-default-actor.md). New Slice still starts with empty `commands` / `events` / `readModels` / `processors`. GET after Create shows `Actor` ([model-defaults.md](./model-defaults.md)). GET with no Actors is a Slice that has none (imported empty actors).
+- Toolbar New Slice default Actor is [new-slice-default-actor.md](./new-slice-default-actor.md). After `New Slice` then `Add Actor`, last Slice `actors` length is `2` and last Actor is `actors.at(-1)`; `actors[0]` is leftover unused. New Slice still starts with empty `commands` / `events` / `readModels` / `processors`. GET after Create shows `Actor` ([model-defaults.md](./model-defaults.md)). GET with no Actors is a Slice that has none (imported empty actors).
 - Add is in-memory until Save. Save still uses the version check from model-persistence.
 
 ## Out of scope
