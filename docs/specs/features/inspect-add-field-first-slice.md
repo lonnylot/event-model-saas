@@ -1,6 +1,6 @@
 # Inspect add field first slice
 
-Status: validated
+Status: released
 
 ## Problem
 
