@@ -4,9 +4,13 @@ export function deleteField(model, target = "command", id) {
   if (!slice) return model;
   if (target === "event") {
     const events = [...(slice.events ?? [])];
-    const event = events.at(-1);
+    const index = id
+      ? events.findIndex((event) => event.id === id)
+      : events.length - 1;
+    if (index < 0) return model;
+    const event = events[index];
     if (!event) return model;
-    events[events.length - 1] = { ...event, fields: [] };
+    events[index] = { ...event, fields: [] };
     slices[slices.length - 1] = { ...slice, events };
     return { ...model, slices };
   }
