@@ -190,6 +190,27 @@ export function bindPointer(root, ctx) {
         sourcePort = null;
         return;
       }
+      if (
+        holder &&
+        sliceItem &&
+        ctx.timelineList?.contains(sliceItem) &&
+        sliceItem.dataset.kind === "command" &&
+        dragCommandItem.dataset.id &&
+        sliceItem.dataset.id &&
+        dragCommandItem !== sliceItem
+      ) {
+        holder.textContent = JSON.stringify(
+          moveCommandToSlice(
+            JSON.parse(holder.textContent || "{}"),
+            dragCommandItem.dataset.id,
+            sliceItem.dataset.id,
+            sliceItem.dataset.id,
+          ),
+        );
+        dragCommandItem = null;
+        sourcePort = null;
+        return;
+      }
       dragCommandItem = null;
     }
     if (dragEventItem) {

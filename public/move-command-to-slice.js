@@ -1,4 +1,4 @@
-export function moveCommandToSlice(model, commandId, sliceId) {
+export function moveCommandToSlice(model, commandId, sliceId, before) {
   const slices = (model.slices ?? []).map((slice) => ({
     ...slice,
     commands: [...(slice.commands ?? [])],
@@ -13,6 +13,15 @@ export function moveCommandToSlice(model, commandId, sliceId) {
     }
   }
   if (!command) return model;
+  if (before) {
+    const target = slices.find((slice) =>
+      slice.commands.some((item) => item.id === before),
+    );
+    if (!target) return model;
+    const beforeIndex = target.commands.findIndex((item) => item.id === before);
+    target.commands.splice(beforeIndex, 0, command);
+    return { ...model, slices };
+  }
   const target = slices.find((slice) => slice.id === sliceId);
   if (!target) return model;
   target.commands.push(command);
