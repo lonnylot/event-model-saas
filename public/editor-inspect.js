@@ -655,6 +655,8 @@ export function bindInspect(root, ctx) {
             setFieldOptional(
               JSON.parse(holder.textContent || "{}"),
               input.checked,
+              "command",
+              ctx.selectedCommandItem?.dataset?.id,
             ),
           );
         }
@@ -1006,6 +1008,12 @@ export function bindInspect(root, ctx) {
           }
         });
       }
+      const leftoverOptional = [...(inspector?.querySelectorAll("input") ?? [])].find(
+        (el) =>
+          el.type === "checkbox" &&
+          el.closest("label")?.textContent?.includes("Optional"),
+      );
+      if (leftoverOptional) leftoverOptional.checked = false;
       if (
         inspector &&
         (ctx.selected === "command" ||
