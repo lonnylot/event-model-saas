@@ -655,6 +655,8 @@ export function bindInspect(root, ctx) {
             setFieldOptional(
               JSON.parse(holder.textContent || "{}"),
               input.checked,
+              "command",
+              ctx.selectedCommandItem?.dataset?.id,
             ),
           );
         }
@@ -1279,6 +1281,8 @@ export function bindInspect(root, ctx) {
         bindFieldType(lastCommandFieldType());
         bindOptional(lastCommandFieldOptional());
         bindExample(lastCommandFieldExample());
+      } else {
+        unbindOptional();
       }
       return;
     }
