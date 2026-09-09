@@ -31,7 +31,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Field, Team, 
 ## Assumptions
 
 - Selection is the same click as Name ([inspect-blocks.md](./inspect-blocks.md)).
-- Add still targets the last Slice. This slice is one in-session Command. Field JSON mutates the last Command. Clicked-of-two Field-by-id is [inspect-fields-rest.md](./inspect-fields-rest.md).
+- Toolbar Add Command on the selected first of two Slices is [add-toolbar-selected-slice.md](./add-toolbar-selected-slice.md). Toolbar Add Actor / Event / Read Model / Automation still targets the last Slice. This slice is one in-session Command. Field JSON mutates the last Command. Clicked-of-two Field-by-id is [inspect-fields-rest.md](./inspect-fields-rest.md).
 - Empty Field JSON is `{ "id": "{uuid}", "name": "newField", "type": "String" }` matching the Mac `Field(name: "newField")` default.
 - The Field name textbox accessible name is `Field name` so it is not the Inspector `Name` textbox.
 - Field edits are in-memory until Save. Save still uses the version check from model-persistence.

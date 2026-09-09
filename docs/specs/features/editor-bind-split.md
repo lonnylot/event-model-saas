@@ -37,7 +37,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 - Playwright unique checkout `PORT` / `INSPECTOR_PORT` and `TEST_MAIL=1` `workers` `1` stay [public-face.md](./public-face.md).
 - `bindEditor(root)` remains the page bind. GET Editor still boots that bind from `/editor.js`. This slice does not add a second page script entry.
 - Inspector Name still [inspect-blocks.md](./inspect-blocks.md). Command Backspace still [delete-blocks.md](./delete-blocks.md). Command port drag still [connections.md](./connections.md). Timeline pan still [canvas.md](./canvas.md). Toolbar zoom still [editor-shell.md](./editor-shell.md). Those behaviors stay those files; this slice owns where the bind is imported from.
-- Create model still seeds a default Slice ([model-defaults.md](./model-defaults.md)). Toolbar Add still targets the last Slice ([blocks.md](./blocks.md)).
+- Create model still seeds a default Slice ([model-defaults.md](./model-defaults.md)). Toolbar Add Command on the selected first of two Slices is [add-toolbar-selected-slice.md](./add-toolbar-selected-slice.md). Toolbar Add Actor / Event / Read Model / Automation still targets the last Slice ([blocks.md](./blocks.md)).
 - Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).
 
 ## Out of scope

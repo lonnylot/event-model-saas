@@ -86,8 +86,8 @@ export function modelPageHtml(
 ): string {
   const items = slices
     .map(
-      (slice) =>
-        `<li aria-label="${slice.title}"${slice.id ? ` data-id="${slice.id}"` : ""}>${slice.title}</li>`,
+      (slice, index) =>
+        `<li aria-label="${slice.title}"${slice.id ? ` data-id="${slice.id}"` : ""} data-slice-index="${index}">${slice.title}</li>`,
     )
     .join("");
   const sliceColumns = slices

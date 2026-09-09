@@ -28,7 +28,7 @@ Event Model, Slice, Command, Team, Person, Version
 
 ## Assumptions
 
-- Two `New Slice` listitems are first vs last. Sidebar drag uses the Slices list. Command drop target is the first Slices listitem. Command listitem drag is mousedown on the listitem, not on `Command port`. Port onto a Slice stays [connection-refusals.md](./connection-refusals.md). Add Command still targets the last Slice ([blocks.md](./blocks.md)).
+- Two `New Slice` listitems are first vs last. Sidebar drag uses the Slices list. Command drop target is the first Slices listitem. Command listitem drag is mousedown on the listitem, not on `Command port`. Port onto a Slice stays [connection-refusals.md](./connection-refusals.md). Toolbar Add Command on the selected first of two Slices is [add-toolbar-selected-slice.md](./add-toolbar-selected-slice.md). With no Slice selected, toolbar Add Command still targets the last Slice ([blocks.md](./blocks.md)).
 - ⌘Z is Playwright `ControlOrMeta+z`. Undo stack: Add Command is last, so one ⌘Z removes Command and leaves New Slice. Undo New Slice and undo Command → Event stay [canvas.md](./canvas.md).
 - ⌘+ is `ControlOrMeta+Equal`. ⌘- is `ControlOrMeta+Minus`. ⌘0 is `ControlOrMeta+Digit0`. Zoom factors stay `1.25` / `0.8` / `1` from [editor-shell.md](./editor-shell.md). Those scales live on `.board` ([timeline-clip.md](./timeline-clip.md)). `section[aria-label="Timeline"]` `style.transform` scale is leftover unused. Toolbar zoom stays that file.
 - Mutations are in-memory until Save. Save still uses the version check from model-persistence.
