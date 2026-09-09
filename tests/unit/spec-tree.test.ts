@@ -1559,6 +1559,49 @@ describe("spec tree", () => {
     }
   });
 
+  it("inspect-in-session-delete-field Restates paths do not park in-session Command re-click Delete Field as stay later", () => {
+    const paths = [
+      "docs/specs/features/inspect-in-session-delete-field.md",
+      "docs/specs/features/inspect-rest.md",
+      "docs/specs/features/inspect-after-reload.md",
+      "docs/specs/features/inspect-fields-rest.md",
+      "docs/specs/features/inspect-fields.md",
+      "docs/specs/features/hydrate-add-field.md",
+      "docs/specs/features/editor-bind-split.md",
+      "docs/specs/architecture.md",
+      "docs/specs/product.md",
+      "docs/specs/features/editor-shell.md",
+      "docs/specs/features/blocks.md",
+      "docs/specs/features/inspect-blocks.md",
+      "docs/specs/features/model-persistence.md",
+      "docs/specs/features/inspect-get-delete-field.md",
+      "docs/specs/features/inspect-delete-field-event-write.md",
+    ];
+    for (const path of paths) {
+      const text = readFileSync(path, "utf8");
+      expect(text, path).not.toMatch(
+        /In-session Delete Field after re-click of a Command that already has a Field stay later/,
+      );
+      expect(text, path).not.toMatch(
+        /In-session Delete Field after re-click of a Command that already has a Field stays later/,
+      );
+    }
+  });
+
+  it("editor-bind-split Out of scope names in-session Command re-click Delete Field once", () => {
+    const oos = readFileSync(
+      "docs/specs/features/editor-bind-split.md",
+      "utf8",
+    )
+      .split("## Out of scope")[1]
+      .split("## Restates")[0];
+    expect(
+      oos.split(
+        "In-session Delete Field after re-click of a Command that already has a Field is [inspect-in-session-delete-field.md](./inspect-in-session-delete-field.md).",
+      ).length - 1,
+    ).toBe(1);
+  });
+
   it("editor-bind-split Out of scope names Delete Field write of the first of two Events once", () => {
     const oos = readFileSync(
       "docs/specs/features/editor-bind-split.md",
