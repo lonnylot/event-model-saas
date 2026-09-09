@@ -875,7 +875,23 @@ export function bindInspect(root, ctx) {
       el.closest("label")?.textContent?.includes("Field name"),
     );
     const input = inputs[1];
-    if (input) input.value = value;
+    if (input) {
+      input.value = value;
+      input.addEventListener("input", () => {
+        const holder = root.getElementById("event-model-document");
+        if (holder && ctx.selected === "command") {
+          holder.textContent = JSON.stringify(
+            setFieldName(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+              ctx.selectedCommandItem?.dataset?.id,
+              "command",
+              1,
+            ),
+          );
+        }
+      });
+    }
   };
   const unbindFieldChrome = () => {
     unbindAddField();
