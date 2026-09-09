@@ -121,5 +121,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Inspect delete field event write | [features/inspect-delete-field-event-write.md](./features/inspect-delete-field-event-write.md) | released |
 | Inspect in-session delete field | [features/inspect-in-session-delete-field.md](./features/inspect-in-session-delete-field.md) | released |
 | Inspect second field name write | [features/inspect-second-field-name-write.md](./features/inspect-second-field-name-write.md) | released |
+| New Slice default Actor | [features/new-slice-default-actor.md](./features/new-slice-default-actor.md) | validated |
 
 Status: `draft` → `validated` → `released`.

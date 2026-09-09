@@ -173,7 +173,7 @@ async function addTwoActorsClickFirstFillShopper(page: Page) {
     page
       .getByRole("region", { name: "Timeline", exact: true })
       .getByRole("listitem", { name: "Actor", exact: true }),
-  ).toHaveCount(3);
+  ).toHaveCount(4);
   await page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Actor", exact: true })
@@ -545,7 +545,7 @@ async function addTwoActorsClickFirstFillDescription(page: Page) {
     page
       .getByRole("region", { name: "Timeline", exact: true })
       .getByRole("listitem", { name: "Actor", exact: true }),
-  ).toHaveCount(3);
+  ).toHaveCount(4);
   await page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Actor", exact: true })
@@ -780,7 +780,7 @@ test("After clicking `New Slice` then `Add Actor` then `Save` on that page, fill
     page
       .getByRole("region", { name: "Timeline", exact: true })
       .getByRole("listitem", { name: "Actor", exact: true }),
-  ).toHaveCount(2);
+  ).toHaveCount(3);
   await Promise.all([
     page.waitForResponse(
       (response) =>

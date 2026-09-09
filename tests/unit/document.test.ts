@@ -126,11 +126,6 @@ describe("clicking New Slice", () => {
     expect(appendSlice(empty).slices[0]?.sliceType).toBe("STATE_CHANGE");
   });
 
-  it("Clicking `New Slice` on that page appends a Slice whose `actors` is `[]`", () => {
-    expect(clickedSlice().actors).toEqual([]);
-    expect(appendSlice(empty).slices[0]?.actors).toEqual([]);
-  });
-
   it("Clicking `New Slice` on that page appends a Slice whose `commands` is `[]`", () => {
     expect(clickedSlice().commands).toEqual([]);
     expect(appendSlice(empty).slices[0]?.commands).toEqual([]);

@@ -96,12 +96,11 @@ async function clickNewSlice(page: Page) {
   ).toHaveCount(count);
 }
 
-test("After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem on the last Slice, pressing Backspace sets the remaining Actor `id` on the last Slice to the Actor that was last", async ({
+test("After clicking `New Slice` then `Add Actor`, clicking the first Timeline `Actor` listitem on the last Slice, pressing Backspace sets the remaining Actor `id` on the last Slice to the Actor that was last", async ({
   page,
 }) => {
   await openUntitledModel(page);
   await clickNewSlice(page);
-  await page.getByRole("button", { name: "Add Actor", exact: true }).click();
   await page.getByRole("button", { name: "Add Actor", exact: true }).click();
   const actors = page
     .getByRole("region", { name: "Timeline", exact: true })
@@ -120,12 +119,11 @@ test("After clicking `New Slice` then `Add Actor` twice, clicking the first Time
   expect(after.slices.at(-1).actors[0].id).toBe(lastId);
 });
 
-test("After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem on the last Slice, pressing Delete sets the remaining Actor `id` on the last Slice to the Actor that was last", async ({
+test("After clicking `New Slice` then `Add Actor`, clicking the first Timeline `Actor` listitem on the last Slice, pressing Delete sets the remaining Actor `id` on the last Slice to the Actor that was last", async ({
   page,
 }) => {
   await openUntitledModel(page);
   await clickNewSlice(page);
-  await page.getByRole("button", { name: "Add Actor", exact: true }).click();
   await page.getByRole("button", { name: "Add Actor", exact: true }).click();
   const actors = page
     .getByRole("region", { name: "Timeline", exact: true })
