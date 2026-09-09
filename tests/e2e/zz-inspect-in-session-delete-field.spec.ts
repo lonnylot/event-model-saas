@@ -86,7 +86,7 @@ async function openUntitledModel(page: Page) {
   await page.waitForLoadState("networkidle");
 }
 
-test("After a member creates a model, opens it, clicks `Add Command`, clicks the Timeline `Command` listitem, clicks `Add Field`, clicks the Timeline `Command` listitem, the Inspector region shows a button whose accessible name is `Delete Field`", async ({
+test("After a member creates a model, opens it, clicks `Add Command`, clicks the Timeline `Command` listitem, clicks `Add Field`, clicks the Timeline `Actor` listitem, clicks the Timeline `Command` listitem, the Inspector region shows a button whose accessible name is `Delete Field`", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -103,6 +103,15 @@ test("After a member creates a model, opens it, clicks `Add Command`, clicks the
     .getByRole("listitem", { name: "Command", exact: true })
     .click();
   await inspector.getByRole("button", { name: "Add Field", exact: true }).click();
+  await expect(
+    inspector.getByRole("button", { name: "Delete Field", exact: true }),
+  ).toBeVisible();
+  await timeline
+    .getByRole("listitem", { name: "Actor", exact: true })
+    .click();
+  await expect(
+    inspector.getByRole("button", { name: "Delete Field", exact: true }),
+  ).toHaveCount(0);
   await timeline
     .getByRole("listitem", { name: "Command", exact: true })
     .click();

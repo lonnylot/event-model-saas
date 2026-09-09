@@ -1295,6 +1295,7 @@ export function bindInspect(root, ctx) {
         bindFieldType(lastCommandFieldType());
         bindOptional(lastCommandFieldOptional());
         bindExample(lastCommandFieldExample());
+        bindDeleteField();
       }
       return;
     }
