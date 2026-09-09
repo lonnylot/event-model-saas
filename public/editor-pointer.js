@@ -73,16 +73,18 @@ export function bindPointer(root, ctx) {
     if (port) {
       sourcePort = port;
       if (port.dataset.kind === "COMMAND") {
-        const eventPort = root.querySelector('[data-kind="EVENT"]');
+        const eventPorts = root.querySelectorAll('[data-kind="EVENT"]');
         const holder = root.getElementById("event-model-document");
         const model = JSON.parse(holder?.textContent || "{}");
-        const alreadyConnected = (model.connections ?? []).some(
-          (connection) =>
-            connection.fromID === port.dataset.id &&
-            connection.toID === eventPort?.dataset.id,
-        );
-        if (eventPort && !alreadyConnected) {
-          eventPort.setAttribute("aria-current", "true");
+        for (const eventPort of eventPorts) {
+          const alreadyConnected = (model.connections ?? []).some(
+            (connection) =>
+              connection.fromID === port.dataset.id &&
+              connection.toID === eventPort.dataset.id,
+          );
+          if (!alreadyConnected) {
+            eventPort.setAttribute("aria-current", "true");
+          }
         }
       }
       if (port.dataset.kind === "EVENT") {

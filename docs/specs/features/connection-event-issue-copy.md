@@ -31,13 +31,13 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-Other refusal sentences. Port highlight of the hovered Event. Live Connection titles. TIME click empty Inspector. Landing. Mac window chrome.
+Other refusal sentences. Port highlight of the last of two Events is [port-highlight-hovered-event.md](./port-highlight-hovered-event.md). Live Connection titles. TIME click empty Inspector. Landing. Mac window chrome.
 
 ## Restates
 
 - [connection-feedback.md](./connection-feedback.md) — Event → Command still does not append. Copy `An event can't trigger a command.` and the leftover `test()` title that quotes those words are this slice (`An event can't issue a command.`).
-- [product.md](../product.md) — Event → Command copy is `An event can't issue a command.` Highlighting legal targets, snap-back, Command → Read Model copy, and Event → Command (no edge) stay [connection-feedback.md](./connection-feedback.md).
+- [product.md](../product.md) — Event → Command copy is `An event can't issue a command.` Highlighting legal targets of one Event, snap-back, Command → Read Model copy, and Event → Command (no edge) stay [connection-feedback.md](./connection-feedback.md). Last of two Event ports lit is [port-highlight-hovered-event.md](./port-highlight-hovered-event.md).
 - [connection-refusals.md](./connection-refusals.md) — Leftover `trigger` copy is this slice (`An event can't issue a command.`). Event → Command no-append stays [connection-feedback.md](./connection-feedback.md). Other refusal sentences stay this file.
-- [connections.md](./connections.md) — Highlighting legal targets, snap-back, Command → Read Model copy, and Event → Command (no edge) stay [connection-feedback.md](./connection-feedback.md). Event → Command copy is this slice (`An event can't issue a command.`).
-- [canvas.md](./canvas.md) — Highlighting legal targets, snap-back, Command → Read Model copy, and Event → Command (no edge) stay [connection-feedback.md](./connection-feedback.md). Event → Command copy is this slice (`An event can't issue a command.`).
+- [connections.md](./connections.md) — Highlighting legal targets of one Event, snap-back, Command → Read Model copy, and Event → Command (no edge) stay [connection-feedback.md](./connection-feedback.md). Last of two Event ports lit is [port-highlight-hovered-event.md](./port-highlight-hovered-event.md). Event → Command copy is this slice (`An event can't issue a command.`).
+- [canvas.md](./canvas.md) — Highlighting legal targets of one Event, snap-back, Command → Read Model copy, and Event → Command (no edge) stay [connection-feedback.md](./connection-feedback.md). Last of two Event ports lit is [port-highlight-hovered-event.md](./port-highlight-hovered-event.md). Event → Command copy is this slice (`An event can't issue a command.`).
 - [blocks.md](./blocks.md) — Event → Command (no edge) stays [connection-feedback.md](./connection-feedback.md). Event → Command copy is this slice (`An event can't issue a command.`).
