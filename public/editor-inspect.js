@@ -1008,6 +1008,12 @@ export function bindInspect(root, ctx) {
           }
         });
       }
+      const leftoverOptional = [...(inspector?.querySelectorAll("input") ?? [])].find(
+        (el) =>
+          el.type === "checkbox" &&
+          el.closest("label")?.textContent?.includes("Optional"),
+      );
+      if (leftoverOptional) leftoverOptional.checked = false;
       if (
         inspector &&
         (ctx.selected === "command" ||
@@ -1281,8 +1287,6 @@ export function bindInspect(root, ctx) {
         bindFieldType(lastCommandFieldType());
         bindOptional(lastCommandFieldOptional());
         bindExample(lastCommandFieldExample());
-      } else {
-        unbindOptional();
       }
       return;
     }
