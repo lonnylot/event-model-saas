@@ -96,7 +96,7 @@ async function clickNewSlice(page: Page) {
   ).toHaveCount(count);
 }
 
-test("After clicking `New Slice`, clicking the Timeline `New Slice` listitem, selecting `State View` in `Type`, selecting `State Change` in `Type` sets that Slice `sliceType` to `STATE_CHANGE`", async ({
+test("After clicking `New Slice`, clicking the last Timeline `New Slice` listitem, selecting `State View` in `Type`, selecting `State Change` in `Type` sets the last Slice `sliceType` to `STATE_CHANGE`", async ({
   page,
 }) => {
   await openUntitledModel(page);

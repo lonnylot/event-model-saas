@@ -4,11 +4,11 @@ Status: validated
 
 ## Problem
 
-Inspector Type can set `STATE_VIEW` and `AUTOMATION`. Selecting `State Change` after `State View` maps to null and returns. Mac `Picker` writes `STATE_CHANGE`. A member cannot mark that Slice as a State Change again.
+Inspector Type can set `STATE_VIEW` and `AUTOMATION`. Selecting `State Change` after `State View` maps to null and returns. Mac `Picker` writes `STATE_CHANGE`. A member cannot mark the last Slice as a State Change again.
 
 ## Acceptance criteria
 
-- [x] After clicking `New Slice`, clicking the Timeline `New Slice` listitem, selecting `State View` in `Type`, selecting `State Change` in `Type` sets that Slice `sliceType` to `STATE_CHANGE`
+- [x] After clicking `New Slice`, clicking the last Timeline `New Slice` listitem, selecting `State View` in `Type`, selecting `State Change` in `Type` sets the last Slice `sliceType` to `STATE_CHANGE`
 
 ## Domain terms
 
