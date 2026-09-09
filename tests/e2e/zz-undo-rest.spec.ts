@@ -130,7 +130,7 @@ async function openImportedEmptyModel(page: Page) {
   await page.waitForLoadState("networkidle");
 }
 
-test("After clicking `New Slice` then `Add Actor`, pressing ⌘Z shows 1 listitem whose accessible name is `Actor`", async ({
+test("After clicking `New Slice` then `Add Actor`, pressing ⌘Z shows 2 listitem whose accessible name is `Actor`", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -138,14 +138,14 @@ test("After clicking `New Slice` then `Add Actor`, pressing ⌘Z shows 1 listite
   await page.getByRole("button", { name: "Add Actor", exact: true }).click();
   await expect(
     page.getByRole("listitem", { name: "Actor", exact: true }),
-  ).toHaveCount(2);
+  ).toHaveCount(3);
   await page.keyboard.press("ControlOrMeta+z");
   await expect(
     page.getByRole("listitem", { name: "Actor", exact: true }),
-  ).toHaveCount(1);
+  ).toHaveCount(2);
 });
 
-test("After clicking `New Slice` then `Add Actor`, pressing ⌘Z, then pressing ⇧⌘Z, the Timeline region shows 2 listitem whose accessible name is `Actor`", async ({
+test("After clicking `New Slice` then `Add Actor`, pressing ⌘Z, then pressing ⇧⌘Z, the Timeline region shows 3 listitem whose accessible name is `Actor`", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -155,19 +155,19 @@ test("After clicking `New Slice` then `Add Actor`, pressing ⌘Z, then pressing 
     page
       .getByRole("region", { name: "Timeline", exact: true })
       .getByRole("listitem", { name: "Actor", exact: true }),
-  ).toHaveCount(2);
+  ).toHaveCount(3);
   await page.keyboard.press("ControlOrMeta+z");
   await expect(
     page
       .getByRole("region", { name: "Timeline", exact: true })
       .getByRole("listitem", { name: "Actor", exact: true }),
-  ).toHaveCount(1);
+  ).toHaveCount(2);
   await page.keyboard.press("Shift+ControlOrMeta+z");
   await expect(
     page
       .getByRole("region", { name: "Timeline", exact: true })
       .getByRole("listitem", { name: "Actor", exact: true }),
-  ).toHaveCount(2);
+  ).toHaveCount(3);
 });
 
 test("After clicking `New Slice` then `Add Event`, pressing ⌘Z does not show a listitem whose accessible name is `Event Happened`", async ({
@@ -562,12 +562,11 @@ test("After dragging from `Command port` onto `Event Happened port` twice, click
   expect(afterRedo.connections[0].id).toBe(lastId);
 });
 
-test("After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem on the last Slice, pressing Backspace, then pressing ⌘Z, the remaining Actor `id` on the last Slice is the Actor that was last and the first Actor `id` is the Actor that was first", async ({
+test("After clicking `New Slice` then `Add Actor`, clicking the first Timeline `Actor` listitem on the last Slice, pressing Backspace, then pressing ⌘Z, the remaining Actor `id` on the last Slice is the Actor that was last and the first Actor `id` is the Actor that was first", async ({
   page,
 }) => {
   await openUntitledModel(page);
   await clickNewSlice(page);
-  await page.getByRole("button", { name: "Add Actor", exact: true }).click();
   await page.getByRole("button", { name: "Add Actor", exact: true }).click();
   const before = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
@@ -598,12 +597,11 @@ test("After clicking `New Slice` then `Add Actor` twice, clicking the first Time
   ).toHaveCount(3);
 });
 
-test("After clicking `New Slice` then `Add Actor` twice, clicking the first Timeline `Actor` listitem on the last Slice, pressing Backspace, pressing ⌘Z, then pressing ⇧⌘Z, the remaining Actor `id` on the last Slice is the Actor that was last", async ({
+test("After clicking `New Slice` then `Add Actor`, clicking the first Timeline `Actor` listitem on the last Slice, pressing Backspace, pressing ⌘Z, then pressing ⇧⌘Z, the remaining Actor `id` on the last Slice is the Actor that was last", async ({
   page,
 }) => {
   await openUntitledModel(page);
   await clickNewSlice(page);
-  await page.getByRole("button", { name: "Add Actor", exact: true }).click();
   await page.getByRole("button", { name: "Add Actor", exact: true }).click();
   const before = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",

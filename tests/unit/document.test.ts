@@ -126,11 +126,6 @@ describe("clicking New Slice", () => {
     expect(appendSlice(empty).slices[0]?.sliceType).toBe("STATE_CHANGE");
   });
 
-  it("Clicking `New Slice` on that page appends a Slice whose `actors` is `[]`", () => {
-    expect(clickedSlice().actors).toEqual([]);
-    expect(appendSlice(empty).slices[0]?.actors).toEqual([]);
-  });
-
   it("Clicking `New Slice` on that page appends a Slice whose `commands` is `[]`", () => {
     expect(clickedSlice().commands).toEqual([]);
     expect(appendSlice(empty).slices[0]?.commands).toEqual([]);
@@ -170,15 +165,17 @@ function clickedActor() {
   };
   onNewSliceClick(root);
   onAddActorClick(root);
-  return JSON.parse(holder.textContent).slices[0].actors[0];
+  const actors = JSON.parse(holder.textContent).slices[0].actors;
+  expect(actors).toHaveLength(2);
+  return actors.at(-1);
 }
 
 describe("clicking Add Actor", () => {
   it("Clicking `Add Actor` on that page after `New Slice` appends an Actor whose `name` is `Actor`", () => {
     expect(clickedActor().name).toBe("Actor");
-    expect(appendActor(appendSlice(empty)).slices[0]?.actors[0]?.name).toBe(
-      "Actor",
-    );
+    const actors = appendActor(appendSlice(empty)).slices[0]?.actors;
+    expect(actors).toHaveLength(2);
+    expect(actors?.at(-1)?.name).toBe("Actor");
   });
 });
 

@@ -279,7 +279,9 @@ test("Filling the Inspector `Name` textbox with `Shopper` after selecting `Actor
     .getByRole("textbox", { name: "Name", exact: true })
     .fill("Shopper");
   const json = await page.locator("#event-model-document").textContent();
-  expect(JSON.parse(json ?? "{}").slices.at(-1).actors[0].name).toBe("Shopper");
+  expect(JSON.parse(json ?? "{}").slices.at(-1).actors.at(-1).name).toBe(
+    "Shopper",
+  );
 });
 
 test("Filling the Inspector `Name` textbox with `Shopper` after selecting `Actor` shows a Timeline listitem whose accessible name is `Shopper`", async ({

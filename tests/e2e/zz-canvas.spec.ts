@@ -153,24 +153,24 @@ test("After clicking `New Slice` twice, clicking the last `New Slice` listitem a
   expect(after.slices[0].id).toBe(lastId);
 });
 
-test("After clicking `New Slice` twice then `Add Actor`, dragging the Timeline `Actor` listitem onto the first Slices `New Slice` listitem sets the first Slice `actors` to one Actor and the last Slice `actors` to `[]`", async ({
+test("After clicking `New Slice` twice, dragging the last Timeline `Actor` listitem onto the first Slices `New Slice` listitem sets the first Slice `actors` to two Actors and the last Slice `actors` to `[]`", async ({
   page,
 }) => {
   await openImportedEmptyModel(page);
   await clickNewSlice(page);
   await clickNewSlice(page);
-  await page.getByRole("button", { name: "Add Actor", exact: true }).click();
   const actor = page
     .getByRole("region", { name: "Timeline", exact: true })
     .getByRole("listitem", { name: "Actor", exact: true });
-  await expect(actor).toBeVisible();
-  await actor.dragTo(
+  await expect(actor).toHaveCount(2);
+  await actor.last().dragTo(
     page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
   );
   const after = JSON.parse(
     (await page.locator("#event-model-document").textContent()) ?? "{}",
   );
   expect(after.slices[0].actors).toEqual([
+    expect.objectContaining({ name: "Actor" }),
     expect.objectContaining({ name: "Actor" }),
   ]);
   expect(after.slices.at(-1).actors).toEqual([]);

@@ -75,6 +75,16 @@ function mountSliceColumn(root, slice, sliceIndex) {
     lane.setAttribute("data-lane", kind);
     const list = root.createElement("ul");
     lane.append(list);
+    if (kind === "actor") {
+      for (const actor of slice?.actors ?? []) {
+        const item = root.createElement("li");
+        item.textContent = "Actor";
+        item.setAttribute("aria-label", "Actor");
+        item.setAttribute("data-kind", "actor");
+        if (actor.id) item.setAttribute("data-id", actor.id);
+        list.append(item);
+      }
+    }
     const button = root.createElement("button");
     button.type = "button";
     button.textContent = label;

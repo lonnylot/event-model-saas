@@ -231,7 +231,9 @@ test("After clicking `New Slice`, pressing ⌥⌘1 appends an Actor whose `name`
   await clickNewSlice(page);
   await page.keyboard.press("Alt+ControlOrMeta+Digit1");
   const json = await page.locator("#event-model-document").textContent();
-  expect(JSON.parse(json ?? "{}").slices.at(-1).actors[0].name).toBe("Actor");
+  const actors = JSON.parse(json ?? "{}").slices.at(-1).actors;
+  expect(actors).toHaveLength(2);
+  expect(actors.at(-1).name).toBe("Actor");
 });
 
 test("After clicking `New Slice`, pressing ⌥⌘2 appends a Command whose `title` is `Command`", async ({

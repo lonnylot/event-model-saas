@@ -143,8 +143,8 @@ test("After clicking `New Slice` twice, clicking the first `Add Actor on lane` a
     .click();
   const json = await page.locator("#event-model-document").textContent();
   const slices = JSON.parse(json ?? "{}").slices;
-  expect(slices[0].actors).toHaveLength(1);
-  expect(slices.at(-1).actors).toEqual([]);
+  expect(slices[0].actors).toHaveLength(2);
+  expect(slices.at(-1).actors).toHaveLength(1);
 });
 
 test("After clicking `New Slice` twice, clicking the first `Add Event on lane` appends an Event only on the first Slice", async ({
@@ -211,8 +211,8 @@ test("After clicking `New Slice` twice, clicking the first `New Slice` listitem,
   await page.keyboard.press("Alt+ControlOrMeta+Digit1");
   const json = await page.locator("#event-model-document").textContent();
   const slices = JSON.parse(json ?? "{}").slices;
-  expect(slices[0].actors).toHaveLength(1);
-  expect(slices.at(-1).actors).toEqual([]);
+  expect(slices[0].actors).toHaveLength(2);
+  expect(slices.at(-1).actors).toHaveLength(1);
 });
 
 test("After clicking `New Slice` twice, clicking the first `New Slice` listitem, pressing ⌥⌘3 appends an Event only on the first Slice", async ({
