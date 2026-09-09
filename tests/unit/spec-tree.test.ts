@@ -1234,6 +1234,47 @@ describe("spec tree", () => {
     }
   });
 
+  it("inspect-second-field-name-write Restates paths do not park GET second Field name write as stay later", () => {
+    const paths = [
+      "docs/specs/features/inspect-second-field-name-write.md",
+      "docs/specs/features/inspect-rest.md",
+      "docs/specs/features/inspect-after-reload.md",
+      "docs/specs/features/inspect-fields-rest.md",
+      "docs/specs/features/inspect-fields.md",
+      "docs/specs/features/hydrate-add-field.md",
+      "docs/specs/features/editor-bind-split.md",
+      "docs/specs/architecture.md",
+      "docs/specs/product.md",
+      "docs/specs/features/editor-shell.md",
+      "docs/specs/features/blocks.md",
+      "docs/specs/features/inspect-blocks.md",
+      "docs/specs/features/model-persistence.md",
+      "docs/specs/features/inspect-get-second-field.md",
+      "docs/specs/features/inspect-in-session-delete-field.md",
+    ];
+    for (const path of paths) {
+      const text = readFileSync(path, "utf8");
+      expect(text, path).not.toMatch(/Second Field name write stays later/);
+      expect(text, path).not.toMatch(
+        /GET second Field name write of two Fields on one Command stay later/,
+      );
+    }
+  });
+
+  it("editor-bind-split Out of scope names GET second Field name write of two Fields on one Command once", () => {
+    const oos = readFileSync(
+      "docs/specs/features/editor-bind-split.md",
+      "utf8",
+    )
+      .split("## Out of scope")[1]
+      .split("## Restates")[0];
+    expect(
+      oos.split(
+        "GET second Field name write of two Fields on one Command is [inspect-second-field-name-write.md](./inspect-second-field-name-write.md).",
+      ).length - 1,
+    ).toBe(1);
+  });
+
   it("inspect-command-example-write Restates paths do not park GET Example write of the first of two Commands as stay later", () => {
     const paths = [
       "docs/specs/features/inspect-command-example-write.md",

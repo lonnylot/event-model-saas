@@ -1,4 +1,4 @@
-export function setFieldName(model, name, id, target = "command") {
+export function setFieldName(model, name, id, target = "command", fieldIndex = 0) {
   const slices = [...(model.slices ?? [])];
   const slice = slices.at(-1);
   if (!slice) return model;
@@ -55,8 +55,8 @@ export function setFieldName(model, name, id, target = "command") {
   const command = commands[index];
   if (!command) return model;
   const fields = [...(command.fields ?? [])];
-  if (!fields.length) return model;
-  fields[0] = { ...fields[0], name };
+  if (!fields[fieldIndex]) return model;
+  fields[fieldIndex] = { ...fields[fieldIndex], name };
   commands[index] = { ...command, fields };
   slices[slices.length - 1] = { ...slice, commands };
   return { ...model, slices };
