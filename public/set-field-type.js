@@ -19,12 +19,16 @@ export function setFieldType(model, type, target = "command", id) {
   }
   if (target === "readmodel") {
     const readModels = [...(slice.readModels ?? [])];
-    const readModel = readModels.at(-1);
+    const index = id
+      ? readModels.findIndex((readModel) => readModel.id === id)
+      : readModels.length - 1;
+    if (index < 0) return model;
+    const readModel = readModels[index];
     if (!readModel) return model;
     const fields = [...(readModel.fields ?? [])];
     if (!fields.length) return model;
     fields[0] = { ...fields[0], type };
-    readModels[readModels.length - 1] = { ...readModel, fields };
+    readModels[index] = { ...readModel, fields };
     slices[slices.length - 1] = { ...slice, readModels };
     return { ...model, slices };
   }

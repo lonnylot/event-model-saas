@@ -35,17 +35,17 @@ Toolbar Add Command on the selected first of two Slices is [add-toolbar-selected
 
 ## Restates
 
-- [inspect-rest.md](./inspect-rest.md) — GET Field type write of the first of two Events is this slice. GET Field type write of the first of two Read Models stays later.
-- [inspect-after-reload.md](./inspect-after-reload.md) — GET Field type write of the first of two Events is this slice. GET Field type write of the first of two Read Models stays later.
-- [inspect-fields-rest.md](./inspect-fields-rest.md) — GET Field type write of the first of two Events is this slice. GET Field type write of the first of two Read Models stays later.
-- [inspect-fields.md](./inspect-fields.md) — GET Field type write of the first of two Events is this slice. GET Field type write of the first of two Read Models stays later.
-- [hydrate-add-field.md](./hydrate-add-field.md) — GET Field type write of the first of two Events is this slice. GET Field type write of the first of two Read Models stays later.
-- [editor-bind-split.md](./editor-bind-split.md) — GET Field type write of the first of two Events is this slice. GET Field type write of the first of two Read Models stays later.
-- [architecture.md](../architecture.md) — GET Field type write of the first of two Events is this slice. GET Field type write of the first of two Read Models stays later.
-- [product.md](../product.md) — GET Field type write of the first of two Events is this slice. GET Field type write of the first of two Read Models stays later.
-- [editor-shell.md](./editor-shell.md) — GET Field type write of the first of two Events is this slice. GET Field type write of the first of two Read Models stays later.
-- [blocks.md](./blocks.md) — GET Field type write of the first of two Events is this slice. GET Field type write of the first of two Read Models stays later.
-- [inspect-blocks.md](./inspect-blocks.md) — GET Field type write of the first of two Events is this slice. GET Field type write of the first of two Read Models stays later.
-- [model-persistence.md](./model-persistence.md) — GET Field type write of the first of two Events is this slice. GET Field type write of the first of two Read Models stays later.
+- [inspect-rest.md](./inspect-rest.md) — GET Field type write of the first of two Events is this slice. GET Field type write of the first of two Read Models is [inspect-read-model-field-type-write.md](./inspect-read-model-field-type-write.md).
+- [inspect-after-reload.md](./inspect-after-reload.md) — GET Field type write of the first of two Events is this slice. GET Field type write of the first of two Read Models is [inspect-read-model-field-type-write.md](./inspect-read-model-field-type-write.md).
+- [inspect-fields-rest.md](./inspect-fields-rest.md) — GET Field type write of the first of two Events is this slice. GET Field type write of the first of two Read Models is [inspect-read-model-field-type-write.md](./inspect-read-model-field-type-write.md).
+- [inspect-fields.md](./inspect-fields.md) — GET Field type write of the first of two Events is this slice. GET Field type write of the first of two Read Models is [inspect-read-model-field-type-write.md](./inspect-read-model-field-type-write.md).
+- [hydrate-add-field.md](./hydrate-add-field.md) — GET Field type write of the first of two Events is this slice. GET Field type write of the first of two Read Models is [inspect-read-model-field-type-write.md](./inspect-read-model-field-type-write.md).
+- [editor-bind-split.md](./editor-bind-split.md) — GET Field type write of the first of two Events is this slice. GET Field type write of the first of two Read Models is [inspect-read-model-field-type-write.md](./inspect-read-model-field-type-write.md).
+- [architecture.md](../architecture.md) — GET Field type write of the first of two Events is this slice. GET Field type write of the first of two Read Models is [inspect-read-model-field-type-write.md](./inspect-read-model-field-type-write.md).
+- [product.md](../product.md) — GET Field type write of the first of two Events is this slice. GET Field type write of the first of two Read Models is [inspect-read-model-field-type-write.md](./inspect-read-model-field-type-write.md).
+- [editor-shell.md](./editor-shell.md) — GET Field type write of the first of two Events is this slice. GET Field type write of the first of two Read Models is [inspect-read-model-field-type-write.md](./inspect-read-model-field-type-write.md).
+- [blocks.md](./blocks.md) — GET Field type write of the first of two Events is this slice. GET Field type write of the first of two Read Models is [inspect-read-model-field-type-write.md](./inspect-read-model-field-type-write.md).
+- [inspect-blocks.md](./inspect-blocks.md) — GET Field type write of the first of two Events is this slice. GET Field type write of the first of two Read Models is [inspect-read-model-field-type-write.md](./inspect-read-model-field-type-write.md).
+- [model-persistence.md](./model-persistence.md) — GET Field type write of the first of two Events is this slice. GET Field type write of the first of two Read Models is [inspect-read-model-field-type-write.md](./inspect-read-model-field-type-write.md).
 - [inspect-get-event-field-type.md](./inspect-get-event-field-type.md) — GET Field type display of the first of two Events stays that file. GET Field type write of the first of two Events is this slice.
-- [inspect-command-example-write.md](./inspect-command-example-write.md) — GET Field type write of the first of two Events is this slice. GET Field type write of the first of two Read Models stays later.
+- [inspect-command-example-write.md](./inspect-command-example-write.md) — GET Field type write of the first of two Events is this slice. GET Field type write of the first of two Read Models is [inspect-read-model-field-type-write.md](./inspect-read-model-field-type-write.md).
