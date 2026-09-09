@@ -1,6 +1,6 @@
 # Inspect read model field type write
 
-Status: validated
+Status: released
 
 ## Problem
 
