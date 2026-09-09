@@ -36,7 +36,7 @@ Inserting New Slice after the selected Slice. New Slice title `Slice N`. Toolbar
 ## Restates
 
 - [editor-shell.md](./editor-shell.md) — Clicking `New Slice` still appends title `New Slice` and `sliceType` `STATE_CHANGE`. `actors: []` is this slice.
-- [model-defaults.md](./model-defaults.md) — POST Create model still seeds one Slice with one Actor. Toolbar New Slice Actor is this slice.
+- [model-defaults.md](./model-defaults.md) — POST Create model still seeds one Slice with one Actor. Toolbar New Slice Actor is this slice. Leftover undo-rest Restates ⌘Z 1 listitem / redo 2, and leftover delete-rest Restates `Add Actor` twice, are leftover unused.
 - [product.md](../product.md) — Toolbar New Slice seeds one Actor named `Actor`.
 - [blocks.md](./blocks.md) — Toolbar New Slice Actor is this slice. Toolbar Add Actor still last Slice. After `New Slice` then `Add Actor`, Timeline shows 3 `Actor` listitems (Create + New Slice default + Add Actor). Count `2` is leftover unused.
 - [canvas.md](./canvas.md) — After two `New Slice` on an imported empty document, dragging the last Timeline `Actor` onto the first Slice sets last `actors` to `[]`. `then Add Actor` / first has one Actor is leftover unused.
