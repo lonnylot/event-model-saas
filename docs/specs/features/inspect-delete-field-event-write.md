@@ -1,6 +1,6 @@
 # Inspect delete field event write
 
-Status: validated
+Status: released
 
 ## Problem
 
