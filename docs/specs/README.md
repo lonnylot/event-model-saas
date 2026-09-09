@@ -117,6 +117,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Inspect command example write | [features/inspect-command-example-write.md](./features/inspect-command-example-write.md) | released |
 | Inspect event field type write | [features/inspect-event-field-type-write.md](./features/inspect-event-field-type-write.md) | released |
 | Inspect read model field type write | [features/inspect-read-model-field-type-write.md](./features/inspect-read-model-field-type-write.md) | released |
-| Inspect automation field type write | [features/inspect-automation-field-type-write.md](./features/inspect-automation-field-type-write.md) | validated |
+| Inspect automation field type write | [features/inspect-automation-field-type-write.md](./features/inspect-automation-field-type-write.md) | released |
 
 Status: `draft` → `validated` → `released`.

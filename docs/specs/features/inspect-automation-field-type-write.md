@@ -1,6 +1,6 @@
 # Inspect automation field type write
 
-Status: validated
+Status: released
 
 ## Problem
 
