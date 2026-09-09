@@ -608,6 +608,7 @@ export function bindInspect(root, ctx) {
               JSON.parse(holder.textContent || "{}"),
               select.value,
               "readmodel",
+              ctx.selectedReadModelItem?.dataset?.id,
             ),
           );
         }
