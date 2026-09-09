@@ -112,5 +112,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Inspect get second field | [features/inspect-get-second-field.md](./features/inspect-get-second-field.md) | released |
 | Inspect get command field type write | [features/inspect-get-command-field-type-write.md](./features/inspect-get-command-field-type-write.md) | released |
 | Add toolbar selected slice | [features/add-toolbar-selected-slice.md](./features/add-toolbar-selected-slice.md) | released |
+| Inspect add field first slice | [features/inspect-add-field-first-slice.md](./features/inspect-add-field-first-slice.md) | validated |
 
 Status: `draft` → `validated` → `released`.
