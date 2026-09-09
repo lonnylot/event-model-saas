@@ -119,6 +119,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Inspect read model field type write | [features/inspect-read-model-field-type-write.md](./features/inspect-read-model-field-type-write.md) | released |
 | Inspect automation field type write | [features/inspect-automation-field-type-write.md](./features/inspect-automation-field-type-write.md) | released |
 | Inspect delete field event write | [features/inspect-delete-field-event-write.md](./features/inspect-delete-field-event-write.md) | released |
-| Inspect in-session delete field | [features/inspect-in-session-delete-field.md](./features/inspect-in-session-delete-field.md) | validated |
+| Inspect in-session delete field | [features/inspect-in-session-delete-field.md](./features/inspect-in-session-delete-field.md) | released |
 
 Status: `draft` → `validated` → `released`.
