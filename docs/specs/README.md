@@ -122,5 +122,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Inspect in-session delete field | [features/inspect-in-session-delete-field.md](./features/inspect-in-session-delete-field.md) | released |
 | Inspect second field name write | [features/inspect-second-field-name-write.md](./features/inspect-second-field-name-write.md) | released |
 | New Slice default Actor | [features/new-slice-default-actor.md](./features/new-slice-default-actor.md) | released |
+| Connection event issue copy | [features/connection-event-issue-copy.md](./features/connection-event-issue-copy.md) | validated |
 
 Status: `draft` → `validated` → `released`.

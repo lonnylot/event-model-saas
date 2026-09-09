@@ -367,11 +367,11 @@ export function bindPointer(root, ctx) {
         const eventItem = sourcePort.closest("li");
         if (
           eventItem &&
-          !eventItem.textContent?.includes("An event can't trigger a command.")
+          !eventItem.textContent?.includes("An event can't issue a command.")
         ) {
           eventItem.insertAdjacentHTML(
             "beforeend",
-            "<p>An event can't trigger a command.</p>",
+            "<p>An event can't issue a command.</p>",
           );
         }
       }
