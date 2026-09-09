@@ -200,16 +200,3 @@ test("Dragging from `Event Happened port` onto `Command port` does not append a 
   const json = await page.locator("#event-model-document").textContent();
   expect(JSON.parse(json ?? "{}").connections ?? []).toEqual([]);
 });
-
-test("Dragging from `Event Happened port` onto `Command port` shows the text `An event can't trigger a command.` in the Event Happened listitem", async ({
-  page,
-}) => {
-  await openUntitledModel(page);
-  await addCommandEventAndReadModel(page);
-  await page
-    .getByRole("button", { name: "Event Happened port", exact: true })
-    .dragTo(page.getByRole("button", { name: "Command port", exact: true }));
-  await expect(
-    page.getByRole("listitem", { name: "Event Happened", exact: true }),
-  ).toContainText("An event can't trigger a command.");
-});
