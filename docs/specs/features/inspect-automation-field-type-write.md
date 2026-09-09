@@ -35,17 +35,17 @@ Toolbar Add Command on the selected first of two Slices is [add-toolbar-selected
 
 ## Restates
 
-- [inspect-rest.md](./inspect-rest.md) — GET Field type write of the first of two Automations is this slice. Delete Field write of the first of two Events stays later.
-- [inspect-after-reload.md](./inspect-after-reload.md) — GET Field type write of the first of two Automations is this slice. Delete Field write of the first of two Events stays later.
-- [inspect-fields-rest.md](./inspect-fields-rest.md) — GET Field type write of the first of two Automations is this slice. Delete Field write of the first of two Events stays later.
-- [inspect-fields.md](./inspect-fields.md) — GET Field type write of the first of two Automations is this slice. Delete Field write of the first of two Events stays later.
-- [hydrate-add-field.md](./hydrate-add-field.md) — GET Field type write of the first of two Automations is this slice. Delete Field write of the first of two Events stays later.
-- [editor-bind-split.md](./editor-bind-split.md) — GET Field type write of the first of two Automations is this slice. Delete Field write of the first of two Events stays later.
-- [architecture.md](../architecture.md) — GET Field type write of the first of two Automations is this slice. Delete Field write of the first of two Events stays later.
-- [product.md](../product.md) — GET Field type write of the first of two Automations is this slice. Delete Field write of the first of two Events stays later.
-- [editor-shell.md](./editor-shell.md) — GET Field type write of the first of two Automations is this slice. Delete Field write of the first of two Events stays later.
-- [blocks.md](./blocks.md) — GET Field type write of the first of two Automations is this slice. Delete Field write of the first of two Events stays later.
-- [inspect-blocks.md](./inspect-blocks.md) — GET Field type write of the first of two Automations is this slice. Delete Field write of the first of two Events stays later.
-- [model-persistence.md](./model-persistence.md) — GET Field type write of the first of two Automations is this slice. Delete Field write of the first of two Events stays later.
+- [inspect-rest.md](./inspect-rest.md) — GET Field type write of the first of two Automations is this slice. Delete Field write of the first of two Events is [inspect-delete-field-event-write.md](./inspect-delete-field-event-write.md).
+- [inspect-after-reload.md](./inspect-after-reload.md) — GET Field type write of the first of two Automations is this slice. Delete Field write of the first of two Events is [inspect-delete-field-event-write.md](./inspect-delete-field-event-write.md).
+- [inspect-fields-rest.md](./inspect-fields-rest.md) — GET Field type write of the first of two Automations is this slice. Delete Field write of the first of two Events is [inspect-delete-field-event-write.md](./inspect-delete-field-event-write.md).
+- [inspect-fields.md](./inspect-fields.md) — GET Field type write of the first of two Automations is this slice. Delete Field write of the first of two Events is [inspect-delete-field-event-write.md](./inspect-delete-field-event-write.md).
+- [hydrate-add-field.md](./hydrate-add-field.md) — GET Field type write of the first of two Automations is this slice. Delete Field write of the first of two Events is [inspect-delete-field-event-write.md](./inspect-delete-field-event-write.md).
+- [editor-bind-split.md](./editor-bind-split.md) — GET Field type write of the first of two Automations is this slice. Delete Field write of the first of two Events is [inspect-delete-field-event-write.md](./inspect-delete-field-event-write.md).
+- [architecture.md](../architecture.md) — GET Field type write of the first of two Automations is this slice. Delete Field write of the first of two Events is [inspect-delete-field-event-write.md](./inspect-delete-field-event-write.md).
+- [product.md](../product.md) — GET Field type write of the first of two Automations is this slice. Delete Field write of the first of two Events is [inspect-delete-field-event-write.md](./inspect-delete-field-event-write.md).
+- [editor-shell.md](./editor-shell.md) — GET Field type write of the first of two Automations is this slice. Delete Field write of the first of two Events is [inspect-delete-field-event-write.md](./inspect-delete-field-event-write.md).
+- [blocks.md](./blocks.md) — GET Field type write of the first of two Automations is this slice. Delete Field write of the first of two Events is [inspect-delete-field-event-write.md](./inspect-delete-field-event-write.md).
+- [inspect-blocks.md](./inspect-blocks.md) — GET Field type write of the first of two Automations is this slice. Delete Field write of the first of two Events is [inspect-delete-field-event-write.md](./inspect-delete-field-event-write.md).
+- [model-persistence.md](./model-persistence.md) — GET Field type write of the first of two Automations is this slice. Delete Field write of the first of two Events is [inspect-delete-field-event-write.md](./inspect-delete-field-event-write.md).
 - [inspect-get-automation-field-type.md](./inspect-get-automation-field-type.md) — GET Field type display of the first of two Automations stays that file. GET Field type write of the first of two Automations is this slice.
 - [inspect-read-model-field-type-write.md](./inspect-read-model-field-type-write.md) — GET Field type write of the first of two Read Models stays that file. GET Field type write of the first of two Automations is this slice.
