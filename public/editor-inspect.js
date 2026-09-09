@@ -11,6 +11,7 @@ import { setReadModelTitle } from "./set-read-model-title.js";
 import { setReadModelDescription } from "./set-read-model-description.js";
 import { setAutomationTitle } from "./set-automation-title.js";
 import { setAutomationDescription } from "./set-automation-description.js";
+import { appendCommand } from "./append-command.js";
 import { appendField } from "./append-field.js";
 import { setFieldName } from "./set-field-name.js";
 import { setFieldType } from "./set-field-type.js";
@@ -25,6 +26,43 @@ export function bindInspect(root, ctx) {
   const board = ctx.board;
   const timelineList = timeline;
   const slicesList = ctx.slicesList;
+  timeline?.addEventListener("click", (event) => {
+    const button = event.target?.closest?.("button");
+    if (!button || button.textContent !== "Add Command on lane") return;
+    const index = Number(button.getAttribute("data-slice-index"));
+    if (Number.isNaN(index)) return;
+    const holder = root.getElementById("event-model-document");
+    if (!holder) return;
+    const model = JSON.parse(holder.textContent || "{}");
+    const cols = timeline.querySelectorAll?.(".slice-col") ?? [];
+    const list = cols[index]?.querySelector('[data-lane="command"] ul');
+    const painted = list?.querySelectorAll('[data-kind="command"]').length ?? 0;
+    const jsonCount = model.slices?.[index]?.commands?.length ?? 0;
+    let next = model;
+    if (jsonCount === painted) {
+      next = appendCommand(model, index);
+      holder.textContent = JSON.stringify(next);
+    }
+    const command = next.slices?.[index]?.commands?.at(-1);
+    if (
+      list &&
+      command &&
+      painted < (next.slices?.[index]?.commands?.length ?? 0)
+    ) {
+      const item = root.createElement("li");
+      item.textContent = "Command";
+      item.setAttribute("aria-label", "Command");
+      item.dataset.kind = "command";
+      item.setAttribute("data-id", command.id);
+      const port = root.createElement("button");
+      port.type = "button";
+      port.textContent = "Command port";
+      port.dataset.id = command.id;
+      port.dataset.kind = "COMMAND";
+      item.append(port);
+      list.append(item);
+    }
+  });
   timeline?.addEventListener("click", (event) => {
       const connection = event.target?.closest?.("[data-kind=connection]");
       if (!connection || !timeline.contains(connection)) return;
