@@ -1487,6 +1487,49 @@ describe("spec tree", () => {
     ).toBe(1);
   });
 
+  it("inspect-automation-field-type-write Restates paths do not park GET Field type write of the first of two Automations as stay later", () => {
+    const paths = [
+      "docs/specs/features/inspect-automation-field-type-write.md",
+      "docs/specs/features/inspect-get-automation-field-type.md",
+      "docs/specs/features/inspect-rest.md",
+      "docs/specs/features/inspect-after-reload.md",
+      "docs/specs/features/inspect-fields-rest.md",
+      "docs/specs/features/inspect-fields.md",
+      "docs/specs/features/hydrate-add-field.md",
+      "docs/specs/features/editor-bind-split.md",
+      "docs/specs/architecture.md",
+      "docs/specs/product.md",
+      "docs/specs/features/editor-shell.md",
+      "docs/specs/features/blocks.md",
+      "docs/specs/features/inspect-blocks.md",
+      "docs/specs/features/model-persistence.md",
+      "docs/specs/features/inspect-read-model-field-type-write.md",
+    ];
+    for (const path of paths) {
+      const text = readFileSync(path, "utf8");
+      expect(text, path).not.toMatch(
+        /Field type write of the first of two Automations stay later/,
+      );
+      expect(text, path).not.toMatch(
+        /GET Field type write of the first of two Automations stay later/,
+      );
+    }
+  });
+
+  it("editor-bind-split Out of scope names GET Field type write of the first of two Automations once", () => {
+    const oos = readFileSync(
+      "docs/specs/features/editor-bind-split.md",
+      "utf8",
+    )
+      .split("## Out of scope")[1]
+      .split("## Restates")[0];
+    expect(
+      oos.split(
+        "GET Field type write of the first of two Automations is [inspect-automation-field-type-write.md](./inspect-automation-field-type-write.md).",
+      ).length - 1,
+    ).toBe(1);
+  });
+
   it("editor-bind-split Out of scope names GET Inspector of the second Field on one Command once", () => {
     const oos = readFileSync(
       "docs/specs/features/editor-bind-split.md",

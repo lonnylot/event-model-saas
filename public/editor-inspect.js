@@ -618,6 +618,7 @@ export function bindInspect(root, ctx) {
               JSON.parse(holder.textContent || "{}"),
               select.value,
               "automation",
+              ctx.selectedAutomationItem?.dataset?.id,
             ),
           );
         }
