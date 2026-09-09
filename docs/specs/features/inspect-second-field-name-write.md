@@ -1,6 +1,6 @@
 # Inspect second field name write
 
-Status: validated
+Status: released
 
 ## Problem
 
