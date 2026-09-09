@@ -124,6 +124,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | New Slice default Actor | [features/new-slice-default-actor.md](./features/new-slice-default-actor.md) | released |
 | Connection event issue copy | [features/connection-event-issue-copy.md](./features/connection-event-issue-copy.md) | released |
 | Port highlight hovered Event | [features/port-highlight-hovered-event.md](./features/port-highlight-hovered-event.md) | released |
-| Drag insert before Command | [features/drag-insert-before-command.md](./features/drag-insert-before-command.md) | validated |
+| Drag insert before Command | [features/drag-insert-before-command.md](./features/drag-insert-before-command.md) | released |
 
 Status: `draft` → `validated` → `released`.

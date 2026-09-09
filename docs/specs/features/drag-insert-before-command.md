@@ -1,6 +1,6 @@
 # Drag insert before Command
 
-Status: validated
+Status: released
 
 ## Problem
 
