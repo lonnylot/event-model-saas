@@ -138,12 +138,19 @@ export function onAddActorClick(root) {
   undoStack.push("actor");
 }
 
-export function onAddCommandClick(root) {
+export function onAddCommandClick(root, sliceIndex) {
   const holder = root.getElementById("event-model-document");
-  const next = appendCommand(JSON.parse(holder?.textContent || "{}"));
+  const next = appendCommand(
+    JSON.parse(holder?.textContent || "{}"),
+    sliceIndex,
+  );
   if (holder) holder.textContent = JSON.stringify(next);
-  const command = next.slices?.at(-1)?.commands?.at(-1);
-  const list = lastLaneList(root, "command");
+  const index = sliceIndex ?? (next.slices?.length ?? 1) - 1;
+  const command = next.slices?.[index]?.commands?.at(-1);
+  const cols = timelineEl(root)?.querySelectorAll?.(".slice-col") ?? [];
+  const list =
+    cols[index]?.querySelector('[data-lane="command"] ul') ??
+    lastLaneList(root, "command");
   if (list && command) {
     const item = root.createElement("li");
     item.textContent = "Command";
@@ -240,6 +247,16 @@ export function bindEditor(root) {
     timeline && typeof timeline.querySelector === "function"
       ? timeline.querySelector(".board")
       : null;
+  let selected = null;
+  let selectedSliceItem = null;
+  let selectedSliceIndex = null;
+  let selectedActorItem = null;
+  let selectedCommandItem = null;
+  let selectedEventItem = null;
+  let selectedReadModelItem = null;
+  let selectedAutomationItem = null;
+  let selectedConnectionItem = null;
+  let selectedConnectionNode = null;
   if (timeline instanceof HTMLElement) {
     timeline.addEventListener("click", (event) => {
       const button = event.target?.closest?.("button");
@@ -269,7 +286,9 @@ export function bindEditor(root) {
       button.addEventListener("click", () => onAddActorClick(root));
     }
     if (button.textContent === "Add Command") {
-      button.addEventListener("click", () => onAddCommandClick(root));
+      button.addEventListener("click", () =>
+        onAddCommandClick(root, selectedSliceIndex),
+      );
     }
     if (button.textContent === "Add Event") {
       button.addEventListener("click", () => onAddEventClick(root));
@@ -283,16 +302,6 @@ export function bindEditor(root) {
   });
   const timelineList = timeline;
   const slicesList = sidebarList(root);
-  let selected = null;
-  let selectedSliceItem = null;
-  let selectedSliceIndex = null;
-  let selectedActorItem = null;
-  let selectedCommandItem = null;
-  let selectedEventItem = null;
-  let selectedReadModelItem = null;
-  let selectedAutomationItem = null;
-  let selectedConnectionItem = null;
-  let selectedConnectionNode = null;
   const ctx = {
     timeline,
     board,
@@ -327,7 +336,7 @@ export function bindEditor(root) {
   ctx.boardMount = () => boardMount(root);
   ctx.onNewSliceClick = () => onNewSliceClick(root);
   ctx.onAddActorClick = () => onAddActorClick(root);
-  ctx.onAddCommandClick = () => onAddCommandClick(root);
+  ctx.onAddCommandClick = () => onAddCommandClick(root, selectedSliceIndex);
   ctx.onAddEventClick = () => onAddEventClick(root);
   ctx.onAddReadModelClick = () => onAddReadModelClick(root);
   ctx.onAddAutomationClick = () => onAddAutomationClick(root);

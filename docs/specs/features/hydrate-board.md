@@ -38,7 +38,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 - Create model still seeds one `New Slice` with one Actor named `Actor` ([model-defaults.md](./model-defaults.md)). Sidebar `New Slice` listitem stays that file. Timeline `New Slice` listitem is this slice.
 - Lane button names stay `Add Actor on lane` / `Add Command on lane` / `Add Event on lane` / `Add Read Model on lane` / `Add Automation on lane` ([add-on-lane.md](./add-on-lane.md)). Those ACs stay “after clicking `New Slice`”. GET after Create without that click is this slice.
 - `Command port` / `Event Happened port` after `New Slice` then Add stay [connections.md](./connections.md). Those ports after Save and reload (no extra `New Slice` click) are this slice.
-- Toolbar Add still targets the last Slice ([blocks.md](./blocks.md)).
+- Toolbar Add Command on the selected first of two Slices is [add-toolbar-selected-slice.md](./add-toolbar-selected-slice.md). Toolbar Add Actor / Event / Read Model / Automation still targets the last Slice ([blocks.md](./blocks.md)).
 - Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).
 
 ## Out of scope

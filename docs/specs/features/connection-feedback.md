@@ -33,7 +33,7 @@ Event Model, Slice, Command, Event, Read Model, Connection, Team, Person, Versio
 - Highlight is `aria-current="true"` on a legal target Port only while the pointer is down on a source Port.
 - Snap-back is: after mouseup on an illegal Port, no Port still has `aria-current` `true`, and no Connection is appended (Command → Read Model still does not append, [connections.md](./connections.md)).
 - Reason on the source is the illegal-pair copy inside the source listitem (Command listitem for Command → Read Model; Event Happened listitem for Event → Command), not a page-level paragraph.
-- Toolbar Add still targets the last Slice. Highlight and illegal-pair tests add Command, Event, and Read Model on that Slice as needed.
+- Toolbar Add Command on the selected first of two Slices is [add-toolbar-selected-slice.md](./add-toolbar-selected-slice.md). Toolbar Add Actor / Event / Read Model / Automation still targets the last Slice. Highlight and illegal-pair tests add Command, Event, and Read Model on that Slice as needed.
 - Connect is in-memory until Save. Save still uses the version check from model-persistence.
 - The `TEST_MAIL=1` memory adapter does not count login attempts, so Playwright files can share one Worker without the production 5-per-hour cap.
 

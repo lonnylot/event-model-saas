@@ -22,7 +22,7 @@ Event Model, Slice, Command, Event, Connection, Team, Person, Version
 
 ## Assumptions
 
-- Connect is still a drag from a Port onto a Port ([connections.md](./connections.md)). Add still targets the last Slice.
+- Connect is still a drag from a Port onto a Port ([connections.md](./connections.md)). Toolbar Add Command on the selected first of two Slices is [add-toolbar-selected-slice.md](./add-toolbar-selected-slice.md). Toolbar Add Actor / Event / Read Model / Automation still targets the last Slice.
 - Connection selection is a click on the Timeline text `Command → Event Happened`.
 - Inspect is a click on a click-created Connection. Inspect after reload of a Connection is [inspect-rest.md](./inspect-rest.md). Name inspect after reload is [inspect-after-reload.md](./inspect-after-reload.md).
 - Inspector From / To use the Command `title` and Event `title` (`Command` and `Event Happened` at Add defaults).

@@ -24,7 +24,7 @@ Event Model, Slice, Command, Event, Read Model, Connection, Team, Person, Versio
 
 - Two Timeline `Command` listitems are first vs last. Command Name mutates the last Command only when that Command is selected. Command multi-item Name is [name-binding.md](./name-binding.md).
 - Command selection is a click on the Timeline listitem. Connection selection is a click on the Timeline text `Command → Event Happened`. After that click, Inspector `Name` may have focus, so delete is Backspace after clicking the selected listitem or Connection text (focus leaves Inspector, selection stays), not after clicking TIME chrome or empty `.board` ([inspect-deselect.md](./inspect-deselect.md)). In-session Command → Event Backspace is this slice. In-session Event → Read Model Backspace is [delete-event-read.md](./delete-event-read.md). GET `Command → Event Happened` Backspace is [hydrate-connection-id.md](./hydrate-connection-id.md). GET `Event Happened → Read Model` Backspace is [hydrate-event-read-id.md](./hydrate-event-read-id.md).
-- Add still targets the last Slice. Add Command twice then Add Event and Add Read Model for the two Connections.
+- Toolbar Add Command on the selected first of two Slices is [add-toolbar-selected-slice.md](./add-toolbar-selected-slice.md). With no Slice selected, toolbar Add Command still targets the last Slice. Add Command twice then Add Event and Add Read Model for the two Connections.
 - Remaining Connection after deleting `Command → Event Happened` is Event → Read Model (`fromKind` `EVENT`).
 - Slice Backspace stays [canvas.md](./canvas.md). Delete of Actor, Event, Read Model, and Automation is [delete-rest.md](./delete-rest.md).
 - Delete is in-memory until Save. Save still uses the version check from model-persistence.
