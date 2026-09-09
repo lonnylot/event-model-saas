@@ -35,17 +35,17 @@ Toolbar Add Command on the selected first of two Slices is [add-toolbar-selected
 
 ## Restates
 
-- [inspect-rest.md](./inspect-rest.md) — GET Example write of the first of two Commands is this slice. GET Field type write of the first of two Events stays later.
-- [inspect-after-reload.md](./inspect-after-reload.md) — GET Example write of the first of two Commands is this slice. GET Field type write of the first of two Events stays later.
-- [inspect-fields-rest.md](./inspect-fields-rest.md) — GET Example write of the first of two Commands is this slice. GET Field type write of the first of two Events stays later.
-- [inspect-fields.md](./inspect-fields.md) — GET Example write of the first of two Commands is this slice. GET Field type write of the first of two Events stays later.
-- [hydrate-add-field.md](./hydrate-add-field.md) — GET Example write of the first of two Commands is this slice. GET Field type write of the first of two Events stays later.
-- [editor-bind-split.md](./editor-bind-split.md) — GET Example write of the first of two Commands is this slice. GET Field type write of the first of two Events stays later.
-- [architecture.md](../architecture.md) — GET Example write of the first of two Commands is this slice. GET Field type write of the first of two Events stays later.
-- [product.md](../product.md) — GET Example write of the first of two Commands is this slice. GET Field type write of the first of two Events stays later.
-- [editor-shell.md](./editor-shell.md) — GET Example write of the first of two Commands is this slice. GET Field type write of the first of two Events stays later.
-- [blocks.md](./blocks.md) — GET Example write of the first of two Commands is this slice. GET Field type write of the first of two Events stays later.
-- [inspect-blocks.md](./inspect-blocks.md) — GET Example write of the first of two Commands is this slice. GET Field type write of the first of two Events stays later.
-- [model-persistence.md](./model-persistence.md) — GET Example write of the first of two Commands is this slice. GET Field type write of the first of two Events stays later.
+- [inspect-rest.md](./inspect-rest.md) — GET Example write of the first of two Commands is this slice. GET Field type write of the first of two Events is [inspect-event-field-type-write.md](./inspect-event-field-type-write.md).
+- [inspect-after-reload.md](./inspect-after-reload.md) — GET Example write of the first of two Commands is this slice. GET Field type write of the first of two Events is [inspect-event-field-type-write.md](./inspect-event-field-type-write.md).
+- [inspect-fields-rest.md](./inspect-fields-rest.md) — GET Example write of the first of two Commands is this slice. GET Field type write of the first of two Events is [inspect-event-field-type-write.md](./inspect-event-field-type-write.md).
+- [inspect-fields.md](./inspect-fields.md) — GET Example write of the first of two Commands is this slice. GET Field type write of the first of two Events is [inspect-event-field-type-write.md](./inspect-event-field-type-write.md).
+- [hydrate-add-field.md](./hydrate-add-field.md) — GET Example write of the first of two Commands is this slice. GET Field type write of the first of two Events is [inspect-event-field-type-write.md](./inspect-event-field-type-write.md).
+- [editor-bind-split.md](./editor-bind-split.md) — GET Example write of the first of two Commands is this slice. GET Field type write of the first of two Events is [inspect-event-field-type-write.md](./inspect-event-field-type-write.md).
+- [architecture.md](../architecture.md) — GET Example write of the first of two Commands is this slice. GET Field type write of the first of two Events is [inspect-event-field-type-write.md](./inspect-event-field-type-write.md).
+- [product.md](../product.md) — GET Example write of the first of two Commands is this slice. GET Field type write of the first of two Events is [inspect-event-field-type-write.md](./inspect-event-field-type-write.md).
+- [editor-shell.md](./editor-shell.md) — GET Example write of the first of two Commands is this slice. GET Field type write of the first of two Events is [inspect-event-field-type-write.md](./inspect-event-field-type-write.md).
+- [blocks.md](./blocks.md) — GET Example write of the first of two Commands is this slice. GET Field type write of the first of two Events is [inspect-event-field-type-write.md](./inspect-event-field-type-write.md).
+- [inspect-blocks.md](./inspect-blocks.md) — GET Example write of the first of two Commands is this slice. GET Field type write of the first of two Events is [inspect-event-field-type-write.md](./inspect-event-field-type-write.md).
+- [model-persistence.md](./model-persistence.md) — GET Example write of the first of two Commands is this slice. GET Field type write of the first of two Events is [inspect-event-field-type-write.md](./inspect-event-field-type-write.md).
 - [inspect-get-command-example.md](./inspect-get-command-example.md) — GET Example display of the first of two Commands stays that file. GET Example write of the first of two Commands is this slice.
 - [inspect-command-optional-write.md](./inspect-command-optional-write.md) — GET Optional write of the first of two Commands stays that file. GET Example write of the first of two Commands is this slice.

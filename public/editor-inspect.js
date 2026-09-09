@@ -598,6 +598,7 @@ export function bindInspect(root, ctx) {
               JSON.parse(holder.textContent || "{}"),
               select.value,
               "event",
+              ctx.selectedEventItem?.dataset?.id,
             ),
           );
         }
