@@ -115,6 +115,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Inspect add field first slice | [features/inspect-add-field-first-slice.md](./features/inspect-add-field-first-slice.md) | released |
 | Inspect command optional write | [features/inspect-command-optional-write.md](./features/inspect-command-optional-write.md) | released |
 | Inspect command example write | [features/inspect-command-example-write.md](./features/inspect-command-example-write.md) | released |
-| Inspect event field type write | [features/inspect-event-field-type-write.md](./features/inspect-event-field-type-write.md) | validated |
+| Inspect event field type write | [features/inspect-event-field-type-write.md](./features/inspect-event-field-type-write.md) | released |
 
 Status: `draft` → `validated` → `released`.
