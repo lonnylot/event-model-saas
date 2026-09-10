@@ -130,5 +130,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Inspect connection live titles | [features/inspect-connection-live-titles.md](./features/inspect-connection-live-titles.md) | released |
 | Inspect in-session delete field event | [features/inspect-in-session-delete-field-event.md](./features/inspect-in-session-delete-field-event.md) | released |
 | Inspect command field name first slice | [features/inspect-command-field-name-first-slice.md](./features/inspect-command-field-name-first-slice.md) | released |
+| Inspect command field type first slice | [features/inspect-command-field-type-first-slice.md](./features/inspect-command-field-type-first-slice.md) | validated |
 
 Status: `draft` → `validated` → `released`.

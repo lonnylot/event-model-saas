@@ -31,7 +31,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-GET Field type write of a Command on the first of two Slices. Event / Read Model / Automation Field name on the first of two Slices. TIME click empty Inspector. Landing. Mac window chrome. Copy changes.
+GET Field type write of a Command on the first of two Slices is [inspect-command-field-type-first-slice.md](./inspect-command-field-type-first-slice.md). Event / Read Model / Automation Field name on the first of two Slices. TIME click empty Inspector. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 
