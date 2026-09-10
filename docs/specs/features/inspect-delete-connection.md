@@ -1,6 +1,6 @@
 # Inspect delete connection
 
-Status: validated
+Status: released
 
 ## Problem
 
