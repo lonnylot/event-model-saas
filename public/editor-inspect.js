@@ -1473,6 +1473,9 @@ export function bindInspect(root, ctx) {
       unbindDescription();
       unbindType();
       unbindFieldChrome();
+      [...(inspector?.querySelectorAll("button") ?? [])]
+        .find((button) => button.textContent === "Delete Connection")
+        ?.remove();
     });
   }
   board?.addEventListener("click", (event) => {

@@ -189,3 +189,28 @@ test("After dragging from `Command port` onto `Event Happened port`, dragging fr
     inspector.getByRole("button", { name: "Delete Connection", exact: true }),
   ).toHaveCount(0);
 });
+
+test("After dragging from `Command port` onto `Event Happened port`, clicking the Timeline text `Command → Event Happened`, then clicking `.time-chrome`, the Inspector region does not show a button whose accessible name is `Delete Connection`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await dragPort(page, "Command port", "Event Happened port");
+  const inspector = page.getByRole("region", {
+    name: "Inspector",
+    exact: true,
+  });
+  await page
+    .getByRole("region", { name: "Timeline", exact: true })
+    .getByText("Command → Event Happened", { exact: true })
+    .click();
+  await expect(
+    inspector.getByRole("button", { name: "Delete Connection", exact: true }),
+  ).toBeVisible();
+  await page.locator(".time-chrome").click();
+  await expect(
+    inspector.getByRole("button", { name: "Delete Connection", exact: true }),
+  ).toHaveCount(0);
+});
