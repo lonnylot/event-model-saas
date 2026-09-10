@@ -125,6 +125,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Connection event issue copy | [features/connection-event-issue-copy.md](./features/connection-event-issue-copy.md) | released |
 | Port highlight hovered Event | [features/port-highlight-hovered-event.md](./features/port-highlight-hovered-event.md) | released |
 | Drag insert before Command | [features/drag-insert-before-command.md](./features/drag-insert-before-command.md) | released |
-| Slice type State Change write | [features/slice-type-state-change-write.md](./features/slice-type-state-change-write.md) | validated |
+| Slice type State Change write | [features/slice-type-state-change-write.md](./features/slice-type-state-change-write.md) | released |
 
 Status: `draft` → `validated` → `released`.

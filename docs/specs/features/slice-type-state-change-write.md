@@ -1,6 +1,6 @@
 # Slice type State Change write
 
-Status: validated
+Status: released
 
 ## Problem
 
