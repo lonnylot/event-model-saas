@@ -1938,4 +1938,19 @@ describe("spec tree", () => {
       );
     }
   });
+
+  it("inspect-delete-connection Restates of product.md leftover-hide after Command listitem is on the Playwright path", () => {
+    const restates =
+      readFileSync(
+        "docs/specs/features/inspect-delete-connection.md",
+        "utf8",
+      ).split("## Restates")[1] ?? "";
+    expect(restates).toContain(
+      "After that click then the Timeline `Command` listitem, Inspector does not show Delete Connection",
+    );
+    const product = readFileSync("docs/specs/product.md", "utf8");
+    expect(product).toContain(
+      "click the Timeline `Command` listitem, Inspector does not show Delete Connection",
+    );
+  });
 });
