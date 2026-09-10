@@ -92,6 +92,17 @@ export function bindInspect(root, ctx) {
         ) {
           inspector.insertAdjacentHTML("beforeend", "<p>To Event Happened</p>");
         }
+        if (
+          inspector &&
+          ![...(inspector.querySelectorAll("button") ?? [])].some(
+            (button) => button.textContent === "Delete Connection",
+          )
+        ) {
+          inspector.insertAdjacentHTML(
+            "beforeend",
+            '<button type="button">Delete Connection</button>',
+          );
+        }
         return;
       }
       if (connection.textContent !== "Event Happened → Read Model") return;
