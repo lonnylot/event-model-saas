@@ -100,7 +100,8 @@ export function bindInspect(root, ctx) {
       const connection = event.target?.closest?.("[data-kind=connection]");
       if (!connection || !timeline.contains(connection)) return;
       const inspector = root.querySelector('[aria-label="Inspector"]');
-      if (connection.textContent === "Command → Event Happened") {
+      const titles = commandEventTitles(connection);
+      if (titles) {
         [...(inspector?.querySelectorAll("p") ?? [])]
           .find((p) => p.textContent === "From Event Happened")
           ?.remove();
@@ -113,11 +114,9 @@ export function bindInspect(root, ctx) {
         ) {
           inspector.insertAdjacentHTML("beforeend", "<p>Connection</p>");
         }
-        if (
-          inspector &&
-          !inspector.textContent?.includes("From Command")
-        ) {
-          inspector.insertAdjacentHTML("beforeend", "<p>From Command</p>");
+        const fromCopy = `From ${titles.fromTitle}`;
+        if (inspector && !inspector.textContent?.includes(fromCopy)) {
+          inspector.insertAdjacentHTML("beforeend", `<p>${fromCopy}</p>`);
         }
         if (
           inspector &&

@@ -9,7 +9,7 @@ Inspector From / To and Timeline Connection text stay the Add defaults `Command`
 ## Acceptance criteria
 
 - [x] After dragging from `Command port` onto `Event Happened port`, filling the Timeline `Command` listitem Inspector `Name` with `Place Order`, filling the Timeline `Event Happened` listitem Inspector `Name` with `Order Placed`, the Timeline region shows the text `Place Order → Order Placed`
-- [ ] After dragging from `Command port` onto `Event Happened port`, filling the Timeline `Command` listitem Inspector `Name` with `Place Order`, filling the Timeline `Event Happened` listitem Inspector `Name` with `Order Placed`, clicking the Timeline text `Place Order → Order Placed` shows the text `From Place Order` in the Inspector region
+- [x] After dragging from `Command port` onto `Event Happened port`, filling the Timeline `Command` listitem Inspector `Name` with `Place Order`, filling the Timeline `Event Happened` listitem Inspector `Name` with `Order Placed`, clicking the Timeline text `Place Order → Order Placed` shows the text `From Place Order` in the Inspector region
 - [ ] After dragging from `Command port` onto `Event Happened port`, filling the Timeline `Command` listitem Inspector `Name` with `Place Order`, filling the Timeline `Event Happened` listitem Inspector `Name` with `Order Placed`, clicking the Timeline text `Place Order → Order Placed` shows the text `To Order Placed` in the Inspector region
 
 ## Domain terms
