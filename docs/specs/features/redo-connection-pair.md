@@ -1,6 +1,6 @@
 # Redo connection pair
 
-Status: validated
+Status: released
 
 ## Problem
 
