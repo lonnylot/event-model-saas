@@ -31,7 +31,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-Hovered Read Model port among two. Event → Command copy. Connection redo. TIME click empty Inspector. Landing. Mac window chrome. Copy changes.
+Hovered Read Model port among two. Event → Command copy. Connection redo of a selected pair is [redo-connection-pair.md](./redo-connection-pair.md). TIME click empty Inspector. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 

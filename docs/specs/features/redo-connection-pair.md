@@ -38,3 +38,5 @@ Redo of Event → Read Model. Undo last-slice Add. Live Connection titles. TIME 
 - [undo-rest.md](./undo-rest.md) — Redo of Add Command / Add Event stays that file. Redo of a selected Connection pair is this slice.
 - [canvas.md](./canvas.md) — Undo Command → Event stays that file. Redo of that pair's ids is this slice.
 - [product.md](../product.md) — Connection redo restores the undone fromID and toID.
+- [inspect-connection-live-titles.md](./inspect-connection-live-titles.md) — Out of scope no longer parks Connection redo of a selected pair; that pair's ids are this slice.
+- [port-highlight-hovered-event.md](./port-highlight-hovered-event.md) — Out of scope no longer parks Connection redo; that pair's ids are this slice.

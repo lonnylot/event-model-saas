@@ -33,7 +33,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-Delete Connection button. Event → Read Model live titles. Connection redo of a selected pair. Port highlight of the hovered Event. TIME click empty Inspector. Landing. Mac window chrome. Copy changes other than these titles.
+Delete Connection button. Event → Read Model live titles. Connection redo of a selected pair is [redo-connection-pair.md](./redo-connection-pair.md). Port highlight of the hovered Event. TIME click empty Inspector. Landing. Mac window chrome. Copy changes other than these titles.
 
 ## Restates
 
