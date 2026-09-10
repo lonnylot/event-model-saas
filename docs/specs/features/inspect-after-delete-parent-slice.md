@@ -1,6 +1,6 @@
 # Inspect after delete parent slice
 
-Status: validated
+Status: released
 
 ## Problem
 
