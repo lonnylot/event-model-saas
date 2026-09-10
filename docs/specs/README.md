@@ -131,5 +131,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Inspect in-session delete field event | [features/inspect-in-session-delete-field-event.md](./features/inspect-in-session-delete-field-event.md) | released |
 | Inspect command field name first slice | [features/inspect-command-field-name-first-slice.md](./features/inspect-command-field-name-first-slice.md) | released |
 | Inspect command field type first slice | [features/inspect-command-field-type-first-slice.md](./features/inspect-command-field-type-first-slice.md) | released |
+| Inspect after delete parent slice | [features/inspect-after-delete-parent-slice.md](./features/inspect-after-delete-parent-slice.md) | validated |
 
 Status: `draft` → `validated` → `released`.

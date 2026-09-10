@@ -782,8 +782,12 @@ export function bindKeyboard(root, ctx) {
       ctx.selected = null;
       ctx.nameInput()?.closest("label")?.remove();
       ctx.unbindDescription();
-      ctx.unbindType();
       ctx.unbindFieldChrome();
+      const inspector = root.querySelector('[aria-label="Inspector"]');
+      inspector?.insertAdjacentHTML(
+        "beforeend",
+        "<label>Type <select><option>State Change</option><option>State View</option><option>Automation</option></select></label>",
+      );
       return;
     }
     const sliceId = ctx.selectedSliceItem?.dataset?.id;
