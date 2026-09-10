@@ -26,6 +26,39 @@ export function bindInspect(root, ctx) {
   const board = ctx.board;
   const timelineList = timeline;
   const slicesList = ctx.slicesList;
+  const commandEventTitles = (node) => {
+    const holder = root.getElementById("event-model-document");
+    const model = JSON.parse(holder?.textContent || "{}");
+    const connection = (model.connections ?? []).find(
+      (item) => item.id === node.getAttribute("data-id"),
+    );
+    if (
+      !connection ||
+      connection.fromKind !== "COMMAND" ||
+      connection.toKind !== "EVENT"
+    ) {
+      return null;
+    }
+    let fromTitle;
+    let toTitle;
+    for (const slice of model.slices ?? []) {
+      fromTitle ??= (slice.commands ?? []).find(
+        (item) => item.id === connection.fromID,
+      )?.title;
+      toTitle ??= (slice.events ?? []).find(
+        (item) => item.id === connection.toID,
+      )?.title;
+    }
+    if (!fromTitle || !toTitle) return null;
+    return { fromTitle, toTitle };
+  };
+  const paintCommandEventCaptions = () => {
+    for (const line of timeline?.querySelectorAll?.("[data-kind=connection]") ??
+      []) {
+      const titles = commandEventTitles(line);
+      if (titles) line.textContent = `${titles.fromTitle} → ${titles.toTitle}`;
+    }
+  };
   timeline?.addEventListener("click", (event) => {
     const button = event.target?.closest?.("button");
     if (!button || button.textContent !== "Add Command on lane") return;
@@ -1207,6 +1240,9 @@ export function bindInspect(root, ctx) {
           );
           if (text) text.textContent = input.value;
           ctx.selectedEventItem.setAttribute("aria-label", input.value);
+        }
+        if (ctx.selected === "command" || ctx.selected === "event") {
+          paintCommandEventCaptions();
         }
         if (ctx.selected === "readmodel" && ctx.selectedReadModelItem) {
           const text = [...ctx.selectedReadModelItem.childNodes].find(
