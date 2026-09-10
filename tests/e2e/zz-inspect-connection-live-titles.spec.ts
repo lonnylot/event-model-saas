@@ -161,3 +161,16 @@ test("After dragging from `Command port` onto `Event Happened port`, filling the
     inspector.getByText("From Place Order", { exact: true }),
   ).toBeVisible();
 });
+
+test("After dragging from `Command port` onto `Event Happened port`, filling the Timeline `Command` listitem Inspector `Name` with `Place Order`, filling the Timeline `Event Happened` listitem Inspector `Name` with `Order Placed`, clicking the Timeline text `Place Order → Order Placed` shows the text `To Order Placed` in the Inspector region", async ({
+  page,
+}) => {
+  const { timeline, inspector } = await connectThenRename(page);
+  await expect(
+    inspector.getByText("To Order Placed", { exact: true }),
+  ).toHaveCount(0);
+  await timeline.getByText("Place Order → Order Placed", { exact: true }).click();
+  await expect(
+    inspector.getByText("To Order Placed", { exact: true }),
+  ).toBeVisible();
+});

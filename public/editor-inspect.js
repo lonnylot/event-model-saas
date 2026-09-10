@@ -118,11 +118,9 @@ export function bindInspect(root, ctx) {
         if (inspector && !inspector.textContent?.includes(fromCopy)) {
           inspector.insertAdjacentHTML("beforeend", `<p>${fromCopy}</p>`);
         }
-        if (
-          inspector &&
-          !inspector.textContent?.includes("To Event Happened")
-        ) {
-          inspector.insertAdjacentHTML("beforeend", "<p>To Event Happened</p>");
+        const toCopy = `To ${titles.toTitle}`;
+        if (inspector && !inspector.textContent?.includes(toCopy)) {
+          inspector.insertAdjacentHTML("beforeend", `<p>${toCopy}</p>`);
         }
         if (
           inspector &&
