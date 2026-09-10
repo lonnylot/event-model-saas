@@ -1929,6 +1929,7 @@ describe("spec tree", () => {
       "delete-event-read.md",
       "inspect-fields-rest.md",
       "undo-rest.md",
+      "designed-surfaces.md",
     ]) {
       expect(restates, slug).toContain(`[${slug}]`);
       const text = readFileSync(`docs/specs/features/${slug}`, "utf8");
