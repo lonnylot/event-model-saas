@@ -1243,8 +1243,7 @@ export function bindInspect(root, ctx) {
               ? "STATE_VIEW"
               : select.value === "Automation"
                 ? "AUTOMATION"
-                : null;
-          if (!sliceType) return;
+                : "STATE_CHANGE";
           const holder = root.getElementById("event-model-document");
           if (holder) {
             holder.textContent = JSON.stringify(
