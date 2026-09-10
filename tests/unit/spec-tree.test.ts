@@ -2006,4 +2006,38 @@ describe("spec tree", () => {
       "click the Timeline `Command` listitem, Inspector does not show Delete Connection",
     );
   });
+
+  it("redo-connection-pair Restates inspect-connection-live-titles and port-highlight-hovered-event; those Out of scope name redo-connection-pair", () => {
+    const restates =
+      readFileSync(
+        "docs/specs/features/redo-connection-pair.md",
+        "utf8",
+      ).split("## Restates")[1] ?? "";
+    expect(restates).toContain(
+      "[inspect-connection-live-titles.md](./inspect-connection-live-titles.md)",
+    );
+    expect(restates).toContain(
+      "[port-highlight-hovered-event.md](./port-highlight-hovered-event.md)",
+    );
+    const liveOut =
+      readFileSync(
+        "docs/specs/features/inspect-connection-live-titles.md",
+        "utf8",
+      )
+        .split("## Out of scope")[1]
+        ?.split("## Restates")[0] ?? "";
+    expect(liveOut).toContain(
+      "[redo-connection-pair.md](./redo-connection-pair.md)",
+    );
+    const portOut =
+      readFileSync(
+        "docs/specs/features/port-highlight-hovered-event.md",
+        "utf8",
+      )
+        .split("## Out of scope")[1]
+        ?.split("## Restates")[0] ?? "";
+    expect(portOut).toContain(
+      "[redo-connection-pair.md](./redo-connection-pair.md)",
+    );
+  });
 });

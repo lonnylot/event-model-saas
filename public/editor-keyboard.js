@@ -95,20 +95,14 @@ export function bindKeyboard(root, ctx) {
         if (entry === "readmodel") ctx.onAddReadModelClick();
         if (entry === "automation") ctx.onAddAutomationClick();
         if (entry === "slice") ctx.onNewSliceClick();
-        if (entry === "connection") {
+        if (entry?.kind === "connection") {
           const model = JSON.parse(holder.textContent || "{}");
-          const command = (model.slices ?? [])
-            .flatMap((slice) => slice.commands ?? [])
-            .at(-1);
-          const eventBlock = (model.slices ?? [])
-            .flatMap((slice) => slice.events ?? [])
-            .at(-1);
-          if (command && eventBlock) {
+          if (entry.fromID && entry.toID) {
             holder.textContent = JSON.stringify(
               appendConnection(model, {
-                fromID: command.id,
+                fromID: entry.fromID,
                 fromKind: "COMMAND",
-                toID: eventBlock.id,
+                toID: entry.toID,
                 toKind: "EVENT",
               }),
             );
@@ -567,14 +561,20 @@ export function bindKeyboard(root, ctx) {
         return;
       }
       if (kind === "connection") {
-        holder.textContent = JSON.stringify(
-          undoConnection(JSON.parse(holder.textContent || "{}")),
-        );
+        const model = JSON.parse(holder.textContent || "{}");
+        const connection = (model.connections ?? []).at(-1);
+        holder.textContent = JSON.stringify(undoConnection(model));
         const timeline = root.querySelector('[aria-label="Timeline"]');
         for (const node of [...(timeline?.querySelectorAll("p") ?? [])]) {
           if (node.textContent === "Command → Event Happened") node.remove();
         }
-        ctx.redoStack.push("connection");
+        if (connection) {
+          ctx.redoStack.push({
+            kind: "connection",
+            fromID: connection.fromID,
+            toID: connection.toID,
+          });
+        }
         return;
       }
       if (kind !== "slice") return;
