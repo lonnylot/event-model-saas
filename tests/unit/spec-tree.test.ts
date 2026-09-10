@@ -1,5 +1,16 @@
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
+
+function specMarkdownFiles(dir: string): string[] {
+  const out: string[] = [];
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const path = join(dir, entry.name);
+    if (entry.isDirectory()) out.push(...specMarkdownFiles(path));
+    else if (entry.name.endsWith(".md")) out.push(path);
+  }
+  return out;
+}
 
 describe("spec tree", () => {
   it("the repo has no docs/superpowers directory", () => {
@@ -1897,5 +1908,49 @@ describe("spec tree", () => {
     expect(out).toContain("[cmd-s-save.md](./cmd-s-save.md)");
     const cmd = readFileSync("docs/specs/features/cmd-s-save.md", "utf8");
     expect(cmd).toContain("[editor-bind-split.md](./editor-bind-split.md)");
+  });
+
+  it("inspect-delete-connection Restates paths do not assign Command → Event Delete Connection to delete-blocks", () => {
+    for (const path of specMarkdownFiles("docs/specs")) {
+      const text = readFileSync(path, "utf8");
+      expect(text, path).not.toContain("Command → Event Delete Connection");
+    }
+    const restates =
+      readFileSync(
+        "docs/specs/features/inspect-delete-connection.md",
+        "utf8",
+      ).split("## Restates")[1] ?? "";
+    for (const slug of [
+      "connections.md",
+      "canvas.md",
+      "add-on-lane.md",
+      "connection-feedback.md",
+      "inspect-description.md",
+      "delete-event-read.md",
+      "inspect-fields-rest.md",
+      "undo-rest.md",
+      "designed-surfaces.md",
+    ]) {
+      expect(restates, slug).toContain(`[${slug}]`);
+      const text = readFileSync(`docs/specs/features/${slug}`, "utf8");
+      expect(text, slug).toContain(
+        "[inspect-delete-connection.md](./inspect-delete-connection.md)",
+      );
+    }
+  });
+
+  it("inspect-delete-connection Restates of product.md leftover-hide after Command listitem is on the Playwright path", () => {
+    const restates =
+      readFileSync(
+        "docs/specs/features/inspect-delete-connection.md",
+        "utf8",
+      ).split("## Restates")[1] ?? "";
+    expect(restates).toContain(
+      "After that click then the Timeline `Command` listitem, Inspector does not show Delete Connection",
+    );
+    const product = readFileSync("docs/specs/product.md", "utf8");
+    expect(product).toContain(
+      "click the Timeline `Command` listitem, Inspector does not show Delete Connection",
+    );
   });
 });

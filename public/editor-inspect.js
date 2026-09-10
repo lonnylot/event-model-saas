@@ -92,6 +92,17 @@ export function bindInspect(root, ctx) {
         ) {
           inspector.insertAdjacentHTML("beforeend", "<p>To Event Happened</p>");
         }
+        if (
+          inspector &&
+          ![...(inspector.querySelectorAll("button") ?? [])].some(
+            (button) => button.textContent === "Delete Connection",
+          )
+        ) {
+          inspector.insertAdjacentHTML(
+            "beforeend",
+            '<button type="button">Delete Connection</button>',
+          );
+        }
         return;
       }
       if (connection.textContent !== "Event Happened → Read Model") return;
@@ -1284,6 +1295,9 @@ export function bindInspect(root, ctx) {
       [...(inspector?.querySelectorAll("p") ?? [])]
         .find((p) => p.textContent === "Connection")
         ?.remove();
+      [...(inspector?.querySelectorAll("button") ?? [])]
+        .find((button) => button.textContent === "Delete Connection")
+        ?.remove();
       bindName(item.getAttribute("aria-label") ?? "Command");
       if (omitGetRenderedInspectChrome(item)) {
         bindDescription(lastCommandDescription());
@@ -1448,6 +1462,9 @@ export function bindInspect(root, ctx) {
     unbindOptional();
     unbindExample();
     deleteFieldButton()?.remove();
+    [...(inspector?.querySelectorAll("button") ?? [])]
+      .find((button) => button.textContent === "Delete Connection")
+      ?.remove();
   });
   if (timeline && typeof timeline.querySelector === "function") {
     timeline.querySelector(".time-chrome")?.addEventListener("click", () => {
@@ -1456,6 +1473,9 @@ export function bindInspect(root, ctx) {
       unbindDescription();
       unbindType();
       unbindFieldChrome();
+      [...(inspector?.querySelectorAll("button") ?? [])]
+        .find((button) => button.textContent === "Delete Connection")
+        ?.remove();
     });
   }
   board?.addEventListener("click", (event) => {
@@ -1466,6 +1486,9 @@ export function bindInspect(root, ctx) {
     unbindDescription();
     unbindType();
     unbindFieldChrome();
+    [...(inspector?.querySelectorAll("button") ?? [])]
+      .find((button) => button.textContent === "Delete Connection")
+      ?.remove();
   });
   slicesList?.addEventListener("click", (event) => {
     const item = event.target?.closest?.("li");
