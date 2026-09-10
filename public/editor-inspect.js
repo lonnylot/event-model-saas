@@ -26,6 +26,39 @@ export function bindInspect(root, ctx) {
   const board = ctx.board;
   const timelineList = timeline;
   const slicesList = ctx.slicesList;
+  const commandEventTitles = (node) => {
+    const holder = root.getElementById("event-model-document");
+    const model = JSON.parse(holder?.textContent || "{}");
+    const connection = (model.connections ?? []).find(
+      (item) => item.id === node.getAttribute("data-id"),
+    );
+    if (
+      !connection ||
+      connection.fromKind !== "COMMAND" ||
+      connection.toKind !== "EVENT"
+    ) {
+      return null;
+    }
+    let fromTitle;
+    let toTitle;
+    for (const slice of model.slices ?? []) {
+      fromTitle ??= (slice.commands ?? []).find(
+        (item) => item.id === connection.fromID,
+      )?.title;
+      toTitle ??= (slice.events ?? []).find(
+        (item) => item.id === connection.toID,
+      )?.title;
+    }
+    if (!fromTitle || !toTitle) return null;
+    return { fromTitle, toTitle };
+  };
+  const paintCommandEventCaptions = () => {
+    for (const line of timeline?.querySelectorAll?.("[data-kind=connection]") ??
+      []) {
+      const titles = commandEventTitles(line);
+      if (titles) line.textContent = `${titles.fromTitle} → ${titles.toTitle}`;
+    }
+  };
   timeline?.addEventListener("click", (event) => {
     const button = event.target?.closest?.("button");
     if (!button || button.textContent !== "Add Command on lane") return;
@@ -67,7 +100,8 @@ export function bindInspect(root, ctx) {
       const connection = event.target?.closest?.("[data-kind=connection]");
       if (!connection || !timeline.contains(connection)) return;
       const inspector = root.querySelector('[aria-label="Inspector"]');
-      if (connection.textContent === "Command → Event Happened") {
+      const titles = commandEventTitles(connection);
+      if (titles) {
         [...(inspector?.querySelectorAll("p") ?? [])]
           .find((p) => p.textContent === "From Event Happened")
           ?.remove();
@@ -80,17 +114,13 @@ export function bindInspect(root, ctx) {
         ) {
           inspector.insertAdjacentHTML("beforeend", "<p>Connection</p>");
         }
-        if (
-          inspector &&
-          !inspector.textContent?.includes("From Command")
-        ) {
-          inspector.insertAdjacentHTML("beforeend", "<p>From Command</p>");
+        const fromCopy = `From ${titles.fromTitle}`;
+        if (inspector && !inspector.textContent?.includes(fromCopy)) {
+          inspector.insertAdjacentHTML("beforeend", `<p>${fromCopy}</p>`);
         }
-        if (
-          inspector &&
-          !inspector.textContent?.includes("To Event Happened")
-        ) {
-          inspector.insertAdjacentHTML("beforeend", "<p>To Event Happened</p>");
+        const toCopy = `To ${titles.toTitle}`;
+        if (inspector && !inspector.textContent?.includes(toCopy)) {
+          inspector.insertAdjacentHTML("beforeend", `<p>${toCopy}</p>`);
         }
         if (
           inspector &&
@@ -1207,6 +1237,9 @@ export function bindInspect(root, ctx) {
           );
           if (text) text.textContent = input.value;
           ctx.selectedEventItem.setAttribute("aria-label", input.value);
+        }
+        if (ctx.selected === "command" || ctx.selected === "event") {
+          paintCommandEventCaptions();
         }
         if (ctx.selected === "readmodel" && ctx.selectedReadModelItem) {
           const text = [...ctx.selectedReadModelItem.childNodes].find(
