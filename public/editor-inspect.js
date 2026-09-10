@@ -1295,6 +1295,9 @@ export function bindInspect(root, ctx) {
       [...(inspector?.querySelectorAll("p") ?? [])]
         .find((p) => p.textContent === "Connection")
         ?.remove();
+      [...(inspector?.querySelectorAll("button") ?? [])]
+        .find((button) => button.textContent === "Delete Connection")
+        ?.remove();
       bindName(item.getAttribute("aria-label") ?? "Command");
       if (omitGetRenderedInspectChrome(item)) {
         bindDescription(lastCommandDescription());

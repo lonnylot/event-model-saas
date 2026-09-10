@@ -4,11 +4,12 @@ Status: validated
 
 ## Problem
 
-Mac Connection inspector has `Delete Connection`. Web deletes only with Backspace after clicking `Command → Event Happened`. A member looking at From / To has no Inspector control to remove that Connection.
+Mac Connection inspector has `Delete Connection`. Web deletes only with Backspace after clicking `Command → Event Happened`. A member looking at From / To has no Inspector control to remove that Connection. Clicking Command after that Connection click still leaves Inspector `Delete Connection`.
 
 ## Acceptance criteria
 
 - [x] After dragging from `Command port` onto `Event Happened port`, clicking the Timeline text `Command → Event Happened`, the Inspector region shows a button whose accessible name is `Delete Connection`
+- [x] After dragging from `Command port` onto `Event Happened port`, clicking the Timeline text `Command → Event Happened`, then clicking the Timeline `Command` listitem, the Inspector region does not show a button whose accessible name is `Delete Connection`
 
 ## Domain terms
 
@@ -47,4 +48,5 @@ Live Connection titles after rename. Event → Read Model Delete Connection butt
 - [delete-event-read.md](./delete-event-read.md) — Event → Read Model Backspace stays that file. Command → Event Backspace stays [delete-blocks.md](./delete-blocks.md). Inspector Delete Connection is this slice.
 - [inspect-fields-rest.md](./inspect-fields-rest.md) — Field type / optional / example / delete stay that file. Command → Event Backspace stays [delete-blocks.md](./delete-blocks.md). Inspector Delete Connection is this slice.
 - [undo-rest.md](./undo-rest.md) — Undo of remaining delete stays that file. Command → Event Backspace stays [delete-blocks.md](./delete-blocks.md). Inspector Delete Connection is this slice.
-- [product.md](../product.md) — Inspector Delete Connection is this slice. Naming hints, Slice type help, and ⇧⌘I stay not ported. Command → Event Backspace stays [delete-blocks.md](./delete-blocks.md). Playwright path for this slice adds: click `Command → Event Happened`, Inspector shows Delete Connection.
+- [leftover-connection-command.md](./leftover-connection-command.md) — Leftover Connection / From Command / To Event Happened after Command click stay that file. Leftover Delete Connection after Command click is this slice.
+- [product.md](../product.md) — Inspector Delete Connection is this slice. Naming hints, Slice type help, and ⇧⌘I stay not ported. Command → Event Backspace stays [delete-blocks.md](./delete-blocks.md). Playwright path for this slice adds: click `Command → Event Happened`, Inspector shows Delete Connection. After that click then the Timeline `Command` listitem, Inspector does not show Delete Connection.
