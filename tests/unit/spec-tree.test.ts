@@ -1401,6 +1401,22 @@ describe("spec tree", () => {
     }
   });
 
+  it("inspect-command-field-name-first-slice Restates paths do not park GET Field name write of a Command on the first of two Slices as stay later", () => {
+    const paths = [
+      "docs/specs/features/inspect-fields.md",
+      "docs/specs/features/inspect-add-field-first-slice.md",
+      "docs/specs/features/inspect-second-field-name-write.md",
+      "docs/specs/product.md",
+    ];
+    for (const path of paths) {
+      const text = readFileSync(path, "utf8");
+      expect(text, path).toContain("inspect-command-field-name-first-slice.md");
+      expect(text, path).not.toMatch(
+        /GET Field name write of a Command on the first of two Slices stay later/,
+      );
+    }
+  });
+
   it("inspect-add-field-first-slice Restates paths do not park Add Field on a Command in the first of two Slices as stay later", () => {
     const paths = [
       "docs/specs/features/inspect-rest.md",
