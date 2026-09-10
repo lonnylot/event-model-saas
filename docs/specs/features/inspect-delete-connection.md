@@ -4,7 +4,7 @@ Status: validated
 
 ## Problem
 
-Mac Connection inspector has `Delete Connection`. Web deletes only with Backspace after clicking `Command → Event Happened`. A member looking at From / To has no Inspector control to remove that Connection. Clicking Command, `Event Happened → Read Model`, or TIME after that Connection click still leaves Inspector `Delete Connection`.
+Mac Connection inspector has `Delete Connection`. Web deletes only with Backspace after clicking `Command → Event Happened`. A member looking at From / To has no Inspector control to remove that Connection. Clicking Command, `Event Happened → Read Model`, TIME, or empty `.board` after that Connection click still leaves Inspector `Delete Connection`.
 
 ## Acceptance criteria
 
@@ -12,6 +12,7 @@ Mac Connection inspector has `Delete Connection`. Web deletes only with Backspac
 - [x] After dragging from `Command port` onto `Event Happened port`, clicking the Timeline text `Command → Event Happened`, then clicking the Timeline `Command` listitem, the Inspector region does not show a button whose accessible name is `Delete Connection`
 - [x] After dragging from `Command port` onto `Event Happened port`, dragging from `Event Happened port` onto `Read Model port`, clicking the Timeline text `Command → Event Happened`, then clicking the Timeline text `Event Happened → Read Model`, the Inspector region does not show a button whose accessible name is `Delete Connection`
 - [x] After dragging from `Command port` onto `Event Happened port`, clicking the Timeline text `Command → Event Happened`, then clicking `.time-chrome`, the Inspector region does not show a button whose accessible name is `Delete Connection`
+- [x] After dragging from `Command port` onto `Event Happened port`, clicking the Timeline text `Command → Event Happened`, then clicking `.board` at a point that is not a listitem, the Inspector region does not show a button whose accessible name is `Delete Connection`
 
 ## Domain terms
 
@@ -34,7 +35,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-Live Connection titles after rename. Inserting Delete Connection after clicking `Event Happened → Read Model`. TIME click `Nothing Selected` stays [inspect-deselect.md](./inspect-deselect.md). Empty `.board` leftover Delete Connection. Landing. Mac window chrome. Copy changes.
+Live Connection titles after rename. Inserting Delete Connection after clicking `Event Happened → Read Model`. TIME click `Nothing Selected` and empty `.board` `Nothing Selected` stay [inspect-deselect.md](./inspect-deselect.md). Landing. Mac window chrome. Copy changes.
 
 ## Restates
 
@@ -52,5 +53,5 @@ Live Connection titles after rename. Inserting Delete Connection after clicking 
 - [undo-rest.md](./undo-rest.md) — Undo of remaining delete stays that file. Command → Event Backspace stays [delete-blocks.md](./delete-blocks.md). Inspector Delete Connection is this slice.
 - [leftover-connection-command.md](./leftover-connection-command.md) — Leftover Connection / From Command / To Event Happened after Command click stay that file. Leftover Delete Connection after Command click is this slice.
 - [inspect-event-read.md](./inspect-event-read.md) — Leftover Add Field / Field name after `Event Happened → Read Model` stay that file. Leftover Delete Connection after `Event Happened → Read Model` is this slice. Inserting Delete Connection after that click stays Out of scope.
-- [inspect-deselect.md](./inspect-deselect.md) — TIME click `Nothing Selected` stays that file. Leftover Delete Connection after TIME click is this slice. Empty `.board` leftover Delete Connection stays later.
+- [inspect-deselect.md](./inspect-deselect.md) — TIME click `Nothing Selected` and empty `.board` `Nothing Selected` stay that file. Leftover Delete Connection after TIME click and after empty `.board` click is this slice.
 - [product.md](../product.md) — Inspector Delete Connection is this slice. Naming hints, Slice type help, and ⇧⌘I stay not ported. Command → Event Backspace stays [delete-blocks.md](./delete-blocks.md). Playwright path for this slice adds: click `Command → Event Happened`, Inspector shows Delete Connection. After that click then the Timeline `Command` listitem, Inspector does not show Delete Connection.

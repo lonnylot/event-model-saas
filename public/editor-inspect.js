@@ -1486,6 +1486,9 @@ export function bindInspect(root, ctx) {
     unbindDescription();
     unbindType();
     unbindFieldChrome();
+    [...(inspector?.querySelectorAll("button") ?? [])]
+      .find((button) => button.textContent === "Delete Connection")
+      ?.remove();
   });
   slicesList?.addEventListener("click", (event) => {
     const item = event.target?.closest?.("li");
