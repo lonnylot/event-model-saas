@@ -129,6 +129,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Inspect delete connection | [features/inspect-delete-connection.md](./features/inspect-delete-connection.md) | released |
 | Inspect connection live titles | [features/inspect-connection-live-titles.md](./features/inspect-connection-live-titles.md) | released |
 | Inspect in-session delete field event | [features/inspect-in-session-delete-field-event.md](./features/inspect-in-session-delete-field-event.md) | released |
-| Inspect command field name first slice | [features/inspect-command-field-name-first-slice.md](./features/inspect-command-field-name-first-slice.md) | validated |
+| Inspect command field name first slice | [features/inspect-command-field-name-first-slice.md](./features/inspect-command-field-name-first-slice.md) | released |
 
 Status: `draft` → `validated` → `released`.
