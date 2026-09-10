@@ -128,6 +128,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Slice type State Change write | [features/slice-type-state-change-write.md](./features/slice-type-state-change-write.md) | released |
 | Inspect delete connection | [features/inspect-delete-connection.md](./features/inspect-delete-connection.md) | released |
 | Inspect connection live titles | [features/inspect-connection-live-titles.md](./features/inspect-connection-live-titles.md) | released |
-| Inspect in-session delete field event | [features/inspect-in-session-delete-field-event.md](./features/inspect-in-session-delete-field-event.md) | validated |
+| Inspect in-session delete field event | [features/inspect-in-session-delete-field-event.md](./features/inspect-in-session-delete-field-event.md) | released |
 
 Status: `draft` → `validated` → `released`.

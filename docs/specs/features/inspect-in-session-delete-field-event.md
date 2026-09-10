@@ -1,6 +1,6 @@
 # Inspect in-session delete field event
 
-Status: validated
+Status: released
 
 ## Problem
 
