@@ -39,4 +39,11 @@ Live Connection titles after rename. Event → Read Model Delete Connection butt
 - [delete-blocks.md](./delete-blocks.md) — Backspace still deletes the selected Connection. Inspector Delete Connection is this slice.
 - [inspect-rest.md](./inspect-rest.md) — Naming hints, Slice type help, and ⇧⌘I stay not ported. Inspector Delete Connection is this slice. Command → Event Backspace stays [delete-blocks.md](./delete-blocks.md).
 - [delete-rest.md](./delete-rest.md) — Actor / Event / Read Model / Automation Backspace stay that file. Inspector Delete Connection is this slice. Command → Event Backspace stays [delete-blocks.md](./delete-blocks.md).
+- [connections.md](./connections.md) — Command → Event Backspace stays [delete-blocks.md](./delete-blocks.md). Inspector Delete Connection is this slice.
+- [canvas.md](./canvas.md) — Command → Event Backspace stays [delete-blocks.md](./delete-blocks.md). Inspector Delete Connection is this slice.
+- [add-on-lane.md](./add-on-lane.md) — Command → Event Backspace stays [delete-blocks.md](./delete-blocks.md). Inspector Delete Connection is this slice.
+- [connection-feedback.md](./connection-feedback.md) — Command → Event Backspace stays [delete-blocks.md](./delete-blocks.md). Inspector Delete Connection is this slice.
+- [inspect-description.md](./inspect-description.md) — Command → Event Backspace stays [delete-blocks.md](./delete-blocks.md). Inspector Delete Connection is this slice.
+- [delete-event-read.md](./delete-event-read.md) — Event → Read Model Backspace stays that file. Command → Event Backspace stays [delete-blocks.md](./delete-blocks.md). Inspector Delete Connection is this slice.
+- [inspect-fields-rest.md](./inspect-fields-rest.md) — Field type / optional / example / delete stay that file. Command → Event Backspace stays [delete-blocks.md](./delete-blocks.md). Inspector Delete Connection is this slice.
 - [product.md](../product.md) — Inspector Delete Connection is this slice. Naming hints, Slice type help, and ⇧⌘I stay not ported. Command → Event Backspace stays [delete-blocks.md](./delete-blocks.md). Playwright path for this slice adds: click `Command → Event Happened`, Inspector shows Delete Connection.
