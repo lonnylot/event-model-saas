@@ -26,7 +26,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 ## Assumptions
 
 - Playwright unique checkout `PORT` / `INSPECTOR_PORT` and `TEST_MAIL=1` `workers` `1` stay [public-face.md](./public-face.md).
-- GET Field type of the first of two Commands still shows `UUID` ([inspect-get-command-field-type.md](./inspect-get-command-field-type.md)). In-session Field type on the clicked Command of two stays [inspect-fields-rest.md](./inspect-fields-rest.md). GET Field type write of the first of two Commands is this slice.
+- GET Field type of the first of two Commands still shows `UUID` ([inspect-get-command-field-type.md](./inspect-get-command-field-type.md)). In-session Field type on the clicked Command of two stays [inspect-fields-rest.md](./inspect-fields-rest.md). GET Field type write of the first of two Commands is this slice. GET Field type write of a Command on the first of two Slices is [inspect-command-field-type-first-slice.md](./inspect-command-field-type-first-slice.md).
 - Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).
 
 ## Out of scope
