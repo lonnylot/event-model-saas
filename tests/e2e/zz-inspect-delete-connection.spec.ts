@@ -159,3 +159,33 @@ test("After dragging from `Command port` onto `Event Happened port`, clicking th
     inspector.getByRole("button", { name: "Delete Connection", exact: true }),
   ).toHaveCount(0);
 });
+
+test("After dragging from `Command port` onto `Event Happened port`, dragging from `Event Happened port` onto `Read Model port`, clicking the Timeline text `Command → Event Happened`, then clicking the Timeline text `Event Happened → Read Model`, the Inspector region does not show a button whose accessible name is `Delete Connection`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  await dragPort(page, "Command port", "Event Happened port");
+  await dragPort(page, "Event Happened port", "Read Model port");
+  const timeline = page.getByRole("region", {
+    name: "Timeline",
+    exact: true,
+  });
+  const inspector = page.getByRole("region", {
+    name: "Inspector",
+    exact: true,
+  });
+  await timeline.getByText("Command → Event Happened", { exact: true }).click();
+  await expect(
+    inspector.getByRole("button", { name: "Delete Connection", exact: true }),
+  ).toBeVisible();
+  await timeline
+    .getByText("Event Happened → Read Model", { exact: true })
+    .click();
+  await expect(
+    inspector.getByRole("button", { name: "Delete Connection", exact: true }),
+  ).toHaveCount(0);
+});

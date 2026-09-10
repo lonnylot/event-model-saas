@@ -1462,6 +1462,9 @@ export function bindInspect(root, ctx) {
     unbindOptional();
     unbindExample();
     deleteFieldButton()?.remove();
+    [...(inspector?.querySelectorAll("button") ?? [])]
+      .find((button) => button.textContent === "Delete Connection")
+      ?.remove();
   });
   if (timeline && typeof timeline.querySelector === "function") {
     timeline.querySelector(".time-chrome")?.addEventListener("click", () => {
