@@ -1611,6 +1611,27 @@ describe("spec tree", () => {
     }
   });
 
+  it("inspect-in-session-delete-field-event Restates paths do not park in-session Event Delete Field after Actor unbind as stay later", () => {
+    const paths = [
+      "docs/specs/features/inspect-in-session-delete-field-event.md",
+      "docs/specs/features/inspect-in-session-delete-field.md",
+      "docs/specs/features/inspect-delete-field-event-write.md",
+      "docs/specs/product.md",
+    ];
+    for (const path of paths) {
+      const text = readFileSync(path, "utf8");
+      expect(text, path).not.toMatch(
+        /In-session Delete Field after re-click of an Event \/ Read Model \/ Automation that already has a Field stay later/,
+      );
+      expect(text, path).not.toMatch(
+        /In-session Event Delete Field after Actor unbind stay later/,
+      );
+      expect(text, path).not.toMatch(
+        /In-session Delete Field after re-click of an Event that already has a Field stay later/,
+      );
+    }
+  });
+
   it("inspect-in-session-delete-field Restates paths do not park in-session Command re-click Delete Field as stay later", () => {
     const paths = [
       "docs/specs/features/inspect-in-session-delete-field.md",

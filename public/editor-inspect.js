@@ -1386,6 +1386,7 @@ export function bindInspect(root, ctx) {
         bindFieldType(lastEventFieldType());
         bindOptional(lastEventFieldOptional());
         bindExample(lastEventFieldExample());
+        bindDeleteField();
       } else {
         unbindFieldRow();
       }
