@@ -1,6 +1,6 @@
 # Inspect connection live titles
 
-Status: validated
+Status: released
 
 ## Problem
 

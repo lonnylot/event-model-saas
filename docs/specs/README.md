@@ -127,6 +127,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Drag insert before Command | [features/drag-insert-before-command.md](./features/drag-insert-before-command.md) | released |
 | Slice type State Change write | [features/slice-type-state-change-write.md](./features/slice-type-state-change-write.md) | released |
 | Inspect delete connection | [features/inspect-delete-connection.md](./features/inspect-delete-connection.md) | released |
-| Inspect connection live titles | [features/inspect-connection-live-titles.md](./features/inspect-connection-live-titles.md) | validated |
+| Inspect connection live titles | [features/inspect-connection-live-titles.md](./features/inspect-connection-live-titles.md) | released |
 
 Status: `draft` → `validated` → `released`.
