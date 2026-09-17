@@ -358,13 +358,14 @@ export function bindPointer(root, ctx) {
         target.dataset.kind === "READMODEL"
       ) {
         const board = ctx.boardMount();
-        if (
-          board &&
-          !board.textContent?.includes("Event Happened → Read Model")
-        ) {
+        if (board) {
           const line = root.createElement("p");
           line.textContent = "Event Happened → Read Model";
           line.setAttribute("data-kind", "connection");
+          const connection = JSON.parse(
+            holder?.textContent || "{}",
+          ).connections?.at(-1);
+          if (connection) line.setAttribute("data-id", connection.id);
           board.append(line);
         }
       }
