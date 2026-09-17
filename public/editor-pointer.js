@@ -368,6 +368,7 @@ export function bindPointer(root, ctx) {
           if (connection) line.setAttribute("data-id", connection.id);
           board.append(line);
         }
+        ctx.undoStack.push("connection");
       }
       if (
         sourcePort.dataset.kind === "COMMAND" &&

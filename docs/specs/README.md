@@ -137,5 +137,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Port highlight hovered Read Model | [features/port-highlight-hovered-read-model.md](./features/port-highlight-hovered-read-model.md) | released |
 | Connection event read id | [features/connection-event-read-id.md](./features/connection-event-read-id.md) | released |
 | Inspect connection event read titles | [features/inspect-connection-event-read-titles.md](./features/inspect-connection-event-read-titles.md) | released |
+| Undo connection event read | [features/undo-connection-event-read.md](./features/undo-connection-event-read.md) | validated |
 
 Status: `draft` → `validated` → `released`.
