@@ -1,6 +1,6 @@
 # Add on lane paint
 
-Status: validated
+Status: released
 
 ## Problem
 
