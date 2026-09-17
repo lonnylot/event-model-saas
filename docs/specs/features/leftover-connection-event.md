@@ -28,12 +28,12 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 ## Assumptions
 
 - Playwright unique checkout `PORT` / `INSPECTOR_PORT` and `TEST_MAIL=1` `workers` `1` stay [public-face.md](./public-face.md).
-- Leftover default From Command / To Event Happened / Connection after Command click stays [leftover-connection-command.md](./leftover-connection-command.md). Leftover after Event click is this slice.
+- Leftover default From Command / To Event Happened / Connection after Command click stays [leftover-connection-command.md](./leftover-connection-command.md). Leftover after Event click is this slice. Leftover Event → Read Model From / To after Command click is [leftover-connection-event-read-command.md](./leftover-connection-event-read-command.md).
 - Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).
 
 ## Out of scope
 
-Leftover Event → Read Model From / To after Command click. TIME click empty Inspector. Landing. Mac window chrome. Copy changes other than leftover default From / To / Connection.
+Leftover Event → Read Model From / To after Command click is [leftover-connection-event-read-command.md](./leftover-connection-event-read-command.md). TIME click empty Inspector. Landing. Mac window chrome. Copy changes other than leftover default From / To / Connection.
 
 ## Restates
 

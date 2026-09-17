@@ -139,5 +139,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Inspect connection event read titles | [features/inspect-connection-event-read-titles.md](./features/inspect-connection-event-read-titles.md) | released |
 | Undo connection event read | [features/undo-connection-event-read.md](./features/undo-connection-event-read.md) | released |
 | Leftover connection event | [features/leftover-connection-event.md](./features/leftover-connection-event.md) | released |
+| Leftover connection event read command | [features/leftover-connection-event-read-command.md](./features/leftover-connection-event-read-command.md) | validated |
 
 Status: `draft` → `validated` → `released`.
