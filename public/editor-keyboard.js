@@ -567,6 +567,7 @@ export function bindKeyboard(root, ctx) {
         const timeline = root.querySelector('[aria-label="Timeline"]');
         for (const node of [...(timeline?.querySelectorAll("p") ?? [])]) {
           if (node.textContent === "Command → Event Happened") node.remove();
+          if (node.textContent === "Event Happened → Read Model") node.remove();
         }
         if (connection) {
           ctx.redoStack.push({

@@ -26,7 +26,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 ## Assumptions
 
 - Playwright unique checkout `PORT` / `INSPECTOR_PORT` and `TEST_MAIL=1` `workers` `1` stay [public-face.md](./public-face.md).
-- Undo of Command → Event stays [canvas.md](./canvas.md). Redo of Add Command stays [undo-rest.md](./undo-rest.md). Redo of a first-of-two Command → Event pair is this slice.
+- Undo of Command → Event stays [canvas.md](./canvas.md). Undo of Event → Read Model is [undo-connection-event-read.md](./undo-connection-event-read.md). Redo of Add Command stays [undo-rest.md](./undo-rest.md). Redo of a first-of-two Command → Event pair is this slice.
 - Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).
 
 ## Out of scope
@@ -36,7 +36,7 @@ Redo of Event → Read Model. Undo last-slice Add. Live Connection titles. TIME 
 ## Restates
 
 - [undo-rest.md](./undo-rest.md) — Redo of Add Command / Add Event stays that file. Redo of a selected Connection pair is this slice.
-- [canvas.md](./canvas.md) — Undo Command → Event stays that file. Redo of that pair's ids is this slice.
+- [canvas.md](./canvas.md) — Undo Command → Event stays that file. Undo of Event → Read Model is [undo-connection-event-read.md](./undo-connection-event-read.md). Redo of that pair's ids is this slice.
 - [product.md](../product.md) — Connection redo restores the undone fromID and toID.
 - [inspect-connection-live-titles.md](./inspect-connection-live-titles.md) — Out of scope no longer parks Connection redo of a selected pair; that pair's ids are this slice.
 - [port-highlight-hovered-event.md](./port-highlight-hovered-event.md) — Out of scope no longer parks Connection redo; that pair's ids are this slice.
