@@ -1412,6 +1412,9 @@ export function bindInspect(root, ctx) {
     if (item.dataset.kind === "event") {
       ctx.selected = "event";
       ctx.selectedEventItem = item;
+      [...(inspector?.querySelectorAll("p") ?? [])]
+        .find((p) => p.textContent === "From Command")
+        ?.remove();
       bindName(item.getAttribute("aria-label") ?? "Event Happened");
       if (omitGetRenderedInspectChrome(item)) {
         bindDescription(lastEventDescription());
