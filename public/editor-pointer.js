@@ -88,16 +88,18 @@ export function bindPointer(root, ctx) {
         }
       }
       if (port.dataset.kind === "EVENT") {
-        const readModelPort = root.querySelector('[data-kind="READMODEL"]');
+        const readModelPorts = root.querySelectorAll('[data-kind="READMODEL"]');
         const holder = root.getElementById("event-model-document");
         const model = JSON.parse(holder?.textContent || "{}");
-        const alreadyConnected = (model.connections ?? []).some(
-          (connection) =>
-            connection.fromID === port.dataset.id &&
-            connection.toID === readModelPort?.dataset.id,
-        );
-        if (readModelPort && !alreadyConnected) {
-          readModelPort.setAttribute("aria-current", "true");
+        for (const readModelPort of readModelPorts) {
+          const alreadyConnected = (model.connections ?? []).some(
+            (connection) =>
+              connection.fromID === port.dataset.id &&
+              connection.toID === readModelPort.dataset.id,
+          );
+          if (!alreadyConnected) {
+            readModelPort.setAttribute("aria-current", "true");
+          }
         }
       }
     }
