@@ -62,6 +62,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Restates lists inspect-blocks.md / inspect-fields.md that already park Example after reload of one Event (inspect-get-event-optional) with no rewrite hunk; hydrate-add-field.md same prior park | `keeping-specs-current` |
 | Restates lists inspect-connection / inspect-rest / slice-type / inspect-fields without rewriting leftover unused after a Connection click | `keeping-specs-current` |
 | Restates lists port-fit.md / connections.md without rewriting wrapping / same-row as this slice | `keeping-specs-current` |
+| leftover Restates connections.md / product.md / architecture.md only in-session Event → Read Model data-id vs restated second caption | `keeping-specs-current` |
 | Restates lists hydrate-board / inspect-after-reload / name-binding-rest / delete-rest / model-defaults without rewriting leftover GET Actor Name JSON / data-id / Backspace / last-of-kind | `keeping-specs-current` |
 | Leftover unused `measure-landing` 36rem after restated main max-width none | `keeping-specs-current` |
 | Accessible name **is** X / Playwright substring; unit `toContain(">X<")` | `testing`, `playwright-e2e` |

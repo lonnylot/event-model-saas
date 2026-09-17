@@ -37,6 +37,6 @@ Live titles after Name fill. Undo of Event → Read Model. TIME click empty Insp
 ## Restates
 
 - [hydrate-event-read-id.md](./hydrate-event-read-id.md) — GET `data-id` stays that file. In-session `data-id` is this slice.
-- [connections.md](./connections.md) — In-session Command → Event caption stays that file. In-session Event → Read Model `data-id` is this slice.
-- [product.md](../product.md) — In-session Event → Read Model `data-id` is this slice.
-- [architecture.md](../architecture.md) — In-session Event → Read Model `data-id` is this slice.
+- [connections.md](./connections.md) — In-session Command → Event caption stays that file. In-session Event → Read Model `data-id` and a second caption are this slice.
+- [product.md](../product.md) — In-session Event → Read Model `data-id` and a second caption are this slice.
+- [architecture.md](../architecture.md) — In-session Event → Read Model `data-id` and a second caption are this slice.
