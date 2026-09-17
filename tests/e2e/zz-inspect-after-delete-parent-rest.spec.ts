@@ -135,3 +135,28 @@ test("After clicking `Add Event`, clicking the Timeline `Event Happened` listite
     inspector.getByRole("combobox", { name: "Type", exact: true }),
   ).toBeVisible();
 });
+
+test("After clicking `Add Read Model`, clicking the Timeline `Read Model` listitem, pressing Backspace, the Inspector region shows a combobox whose accessible name is `Type`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  const inspector = page.getByRole("region", {
+    name: "Inspector",
+    exact: true,
+  });
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  const readModel = timeline.getByRole("listitem", {
+    name: "Read Model",
+    exact: true,
+  });
+  await expect(readModel).toBeVisible();
+  await readModel.click();
+  await expect(
+    inspector.getByRole("textbox", { name: "Name", exact: true }),
+  ).toBeVisible();
+  await page.keyboard.press("Backspace");
+  await expect(
+    inspector.getByRole("combobox", { name: "Type", exact: true }),
+  ).toBeVisible();
+});

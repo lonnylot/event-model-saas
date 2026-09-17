@@ -10,7 +10,7 @@ Command Backspace already shows parent Slice Type. Backspace of Actor / Event / 
 
 - [x] After clicking `Add Actor`, clicking the Timeline `Actor` listitem, pressing Backspace, the Inspector region shows a combobox whose accessible name is `Type`
 - [x] After clicking `Add Event`, clicking the Timeline `Event Happened` listitem, pressing Backspace, the Inspector region shows a combobox whose accessible name is `Type`
-- [ ] After clicking `Add Read Model`, clicking the Timeline `Read Model` listitem, pressing Backspace, the Inspector region shows a combobox whose accessible name is `Type`
+- [x] After clicking `Add Read Model`, clicking the Timeline `Read Model` listitem, pressing Backspace, the Inspector region shows a combobox whose accessible name is `Type`
 - [ ] After clicking `Add Automation`, clicking the Timeline `Automation` listitem, pressing Backspace, the Inspector region shows a combobox whose accessible name is `Type`
 
 ## Domain terms
