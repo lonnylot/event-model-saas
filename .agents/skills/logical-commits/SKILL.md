@@ -9,7 +9,7 @@ description: >
   path, when a spec-only commit lists every AC, reconstruct after
   tests-after already landed in the TDD slice, when a review-thread
   or CI-fix commit would land on HEAD, when viewport meta is copied
-  onto sibling HTML of named screens, or when a dedicated test or
+  onto sibling HTML of named screens, when independently revertible JSON vs paint share a commit, or when a dedicated test or
   Playwright flow would land after its production in that slice.
 ---
 

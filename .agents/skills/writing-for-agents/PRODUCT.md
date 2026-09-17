@@ -94,4 +94,5 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Leftover-hide From Command vs To Event Happened vs Connection (`unbindConnectionCopy` loop) | `logical-commits` |
 | Leftover-hide unbindFieldChrome vs Nothing Selected (`:has(label)` empty copy); tests-only after review leaves that call in the earlier commit | `logical-commits` |
 | Event → Read Model Backspace JSON `connections` [] vs `.board` caption `node?.remove()`; tests-only after review leaves the remove in the JSON commit (persist-then analog) | `logical-commits` |
+| Selected-index JSON undo vs Timeline Command `.at(-1)` paint; tests-only after review leaves `.at(-1)` in the JSON commit (persist-then analog) | `logical-commits` |
 | Restates leftover rewrite with a production restore of a different path (leftover Restates public-face Field / Page `canvas`/`ink` / design-system Page `type`/`canvas`/`ink` vs unique Send invite radius) | `logical-commits` |

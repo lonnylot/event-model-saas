@@ -25,6 +25,7 @@ Load with `testing`. Portable procedure is `SKILL.md` (spec-loop).
 | TIME chrome does not pan / `.time-chrome` | Timeline `style.transform` does not include `translate(` (TIME chrome inside `.board` stays green) |
 | Event → Read Model copy on `.board` | Command → Event Happened `.board` tests (second kind-gated drag arm stays sibling) |
 | Event → Read Model Backspace JSON `connections` [] vs `.board` caption | One `it` packing JSON **and** caption (`node?.remove()` stays green if only JSON is asserted) |
+| Selected-index JSON undo vs Timeline Command `.at(-1)` paint | Last Slice Command count `0` before and after (Create + New Slice have none) stays green if paint still removes Timeline Command `.at(-1)`. Independently revertible (`logical-commits`) |
 | leftover unused sibling of `.board` / redo Connection copy | after-drag `.board` tests + undo-rest Timeline-shows (⇧⌘Z redo `timelineEl.append` stays green) |
 | GET Connection caption below Slice / later sibling of `.slice-col` | Playwright rect only (GET leftover `.slice-stack` already stacks; deleting `.board-pan { flex-wrap }` / `flex-basis: 100%` stays green) |
 | Timeline region visible at 390 / not below the fold | Playwright `toBeVisible` (released editor-shell GET Timeline stays green; overflow-clipped / stacked under `.slice-rail` stays green) |
