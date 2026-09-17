@@ -2007,6 +2007,46 @@ describe("spec tree", () => {
     );
   });
 
+  it("port-highlight-hovered-read-model Restates connection-refusals; that Out of scope and Restates name last of two Read Model ports on this slice", () => {
+    const restates =
+      readFileSync(
+        "docs/specs/features/port-highlight-hovered-read-model.md",
+        "utf8",
+      ).split("## Restates")[1] ?? "";
+    expect(restates).toContain(
+      "[connection-refusals.md](./connection-refusals.md)",
+    );
+    const refusals = readFileSync(
+      "docs/specs/features/connection-refusals.md",
+      "utf8",
+    );
+    const out =
+      refusals.split("## Out of scope")[1]?.split("## Restates")[0] ?? "";
+    expect(out).toContain(
+      "Event → Read Model of one Read Model (no existing edge) stays [connection-feedback.md](./connection-feedback.md)",
+    );
+    expect(out).toContain(
+      "Last of two Read Model ports lit is [port-highlight-hovered-read-model.md](./port-highlight-hovered-read-model.md).",
+    );
+    const refusalsRestates = refusals.split("## Restates")[1] ?? "";
+    const connectionFeedbackRestates =
+      refusalsRestates.split("- [connections.md]")[0] ?? "";
+    expect(connectionFeedbackRestates).toContain(
+      "Event → Read Model highlight of one Read Model",
+    );
+    expect(connectionFeedbackRestates).toContain(
+      "Last of two Read Model ports lit is [port-highlight-hovered-read-model.md](./port-highlight-hovered-read-model.md).",
+    );
+    const productRestates =
+      refusalsRestates.split("- [product.md](../product.md)")[1] ?? "";
+    expect(productRestates).toContain(
+      "Event → Read Model highlight of one Read Model",
+    );
+    expect(productRestates).toContain(
+      "Last of two Read Model ports lit is [port-highlight-hovered-read-model.md](./port-highlight-hovered-read-model.md).",
+    );
+  });
+
   it("redo-connection-pair Restates inspect-connection-live-titles and port-highlight-hovered-event; those Out of scope name redo-connection-pair", () => {
     const restates =
       readFileSync(

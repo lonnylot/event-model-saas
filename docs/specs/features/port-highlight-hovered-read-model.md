@@ -37,5 +37,6 @@ Hovered Event port among two is [port-highlight-hovered-event.md](./port-highlig
 
 - [port-highlight-hovered-event.md](./port-highlight-hovered-event.md) — Out of scope no longer parks hovered Read Model port among two; last of two Read Model ports lit is this slice.
 - [connection-feedback.md](./connection-feedback.md) — One Read Model port highlight stays that file. Last of two Read Model ports lit is this slice.
+- [connection-refusals.md](./connection-refusals.md) — Event → Read Model highlight of one Read Model stays [connection-feedback.md](./connection-feedback.md). Last of two Read Model ports lit is this slice.
 - [product.md](../product.md) — Legal target highlight of the last of two Read Models is this slice.
 - [architecture.md](../architecture.md) — Last of two Read Model ports lit is this slice.
