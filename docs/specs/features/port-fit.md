@@ -28,7 +28,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 - Playwright unique checkout `PORT` / `INSPECTOR_PORT` and `TEST_MAIL=1` `workers` `1` stay [public-face.md](./public-face.md).
 - `Event Happened port` after `Add Event` stays [connections.md](./connections.md). That button fitting inside its `.slice-col` is this slice. That button wrapping onto a second line under the title, and staying on the same row as the Event Happened title, is [port-wrap.md](./port-wrap.md).
-- Create model still seeds a default Slice ([model-defaults.md](./model-defaults.md)). Toolbar Add Command on the selected first of two Slices is [add-toolbar-selected-slice.md](./add-toolbar-selected-slice.md). Toolbar Add Actor / Event / Read Model / Automation still targets the last Slice ([blocks.md](./blocks.md)).
+- Create model still seeds a default Slice ([model-defaults.md](./model-defaults.md)). Toolbar Add Command on the selected first of two Slices is [add-toolbar-selected-slice.md](./add-toolbar-selected-slice.md). Toolbar Add Actor on the selected first of two Slices is [add-toolbar-selected-slice-rest.md](./add-toolbar-selected-slice-rest.md). Toolbar Add Event / Read Model / Automation still targets the last Slice ([blocks.md](./blocks.md)).
 - Overflow means the port's `getBoundingClientRect` `left`/`right`/`top`/`bottom` is outside that `.slice-col` box.
 - Intersect means the port box overlaps the title text node's `getBoundingClientRect` (`left`/`right`/`top`/`bottom`). The Event title clipped to `Event Happen` is that overlap.
 - Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).

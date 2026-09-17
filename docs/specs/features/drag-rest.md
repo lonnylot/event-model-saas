@@ -24,7 +24,7 @@ Event Model, Slice, Event, Read Model, Automation, Team, Person, Version
 
 ## Assumptions
 
-- Toolbar Add Command on the selected first of two Slices is [add-toolbar-selected-slice.md](./add-toolbar-selected-slice.md). Toolbar Add Actor / Event / Read Model / Automation still targets the last Slice. Drop target for blocks is the first Slices listitem (same as Actor / Command drag). Timeline Slice drag uses Timeline `New Slice` listitems, not the Slices sidebar ([canvas-rest.md](./canvas-rest.md) sidebar).
+- Toolbar Add Command on the selected first of two Slices is [add-toolbar-selected-slice.md](./add-toolbar-selected-slice.md). Toolbar Add Actor on the selected first of two Slices is [add-toolbar-selected-slice-rest.md](./add-toolbar-selected-slice-rest.md). Toolbar Add Event / Read Model / Automation still targets the last Slice. Drop target for blocks is the first Slices listitem (same as Actor / Command drag). Timeline Slice drag uses Timeline `New Slice` listitems, not the Slices sidebar ([canvas-rest.md](./canvas-rest.md) sidebar).
 - Actor drag stays [canvas.md](./canvas.md). Command drag and sidebar reorder stay [canvas-rest.md](./canvas-rest.md). Insert before a Command card is [drag-insert-before-command.md](./drag-insert-before-command.md).
 - Move is in-memory until Save.
 - The `TEST_MAIL=1` memory adapter does not count login attempts, so Playwright files can share one Worker without the production 5-per-hour cap.

@@ -1,0 +1,71 @@
+# Add toolbar selected slice rest
+
+Status: validated
+
+## Problem
+
+Toolbar `Add Command` already targets the selected Slice. `Add Actor` / `Add Event` / `Add Read Model` / `Add Automation` still call `appendX(model)` with no index and paint `lastLaneList`. Mac `targetSliceID` is selection else last. A member who selects the first Slice cannot add those blocks there from the toolbar.
+
+## Acceptance criteria
+
+- [x] After a member creates a model, opens it, clicks `New Slice`, clicks the first `New Slice` listitem in the Slices region, and clicks `Add Actor`, the Timeline region of the first Slice shows 2 listitem whose accessible name is `Actor`
+- [ ] After a member creates a model, opens it, clicks `New Slice`, clicks the first `New Slice` listitem in the Slices region, and clicks `Add Event`, the Timeline region of the first Slice shows a listitem whose accessible name is `Event Happened`
+- [ ] After a member creates a model, opens it, clicks `New Slice`, clicks the first `New Slice` listitem in the Slices region, and clicks `Add Read Model`, the Timeline region of the first Slice shows a listitem whose accessible name is `Read Model`
+- [ ] After a member creates a model, opens it, clicks `New Slice`, clicks the first `New Slice` listitem in the Slices region, and clicks `Add Automation`, the Timeline region of the first Slice shows a listitem whose accessible name is `Automation`
+
+## Domain terms
+
+Event Model, Slice, Actor, Command, Event, Read Model, Automation, Team, Person, Version
+
+## Seams
+
+- `bindEditor` in `public/editor.js` — toolbar Add Actor / Event / Read Model / Automation targets the selected Slice
+- Browser — Playwright against `wrangler dev` with `TEST_MAIL=1`
+
+## UI
+
+Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001](../../adr/0001-look-iteration.md)). Inventory: [design-system.md](../design-system.md).
+
+## Assumptions
+
+- Playwright unique checkout `PORT` / `INSPECTOR_PORT` and `TEST_MAIL=1` `workers` `1` stay [public-face.md](./public-face.md).
+- Toolbar Add Command on the selected first of two Slices stays [add-toolbar-selected-slice.md](./add-toolbar-selected-slice.md). With no Slice selected, toolbar Add still targets the last Slice ([blocks.md](./blocks.md)). Toolbar Add Actor / Event / Read Model / Automation on the selected first of two Slices is this slice. First Slice already has the New Slice default Actor.
+- Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).
+
+## Out of scope
+
+Lane paint is [add-on-lane-paint.md](./add-on-lane-paint.md). Empty canvas Add is [empty-canvas-new-slice.md](./empty-canvas-new-slice.md). TIME click empty Inspector. Landing. Mac window chrome. Copy changes.
+
+## Restates
+
+- [add-toolbar-selected-slice.md](./add-toolbar-selected-slice.md) — Toolbar Add Command on the selected first Slice stays that file. Toolbar Add Actor on the selected first Slice is this slice. Toolbar Add Event / Read Model / Automation still targets the last Slice.
+- [blocks.md](./blocks.md) — Toolbar Add Actor on the selected first of two Slices is this slice. Toolbar Add Event / Read Model / Automation still targets the last Slice. With no Slice selected, toolbar Add still targets the last Slice.
+- [add-on-lane.md](./add-on-lane.md) — `Add Command on lane` and selected-Slice ⌥⌘2 stay that file. Toolbar Add Actor on the selected first of two Slices is this slice. Toolbar Add Event / Read Model / Automation still target the last Slice.
+- [add-on-lane-rest.md](./add-on-lane-rest.md) — Lane Add Actor / Event / Read Model / Automation stay that file. Toolbar Add Actor on the selected first of two Slices is this slice. Toolbar Add Event / Read Model / Automation still targets the last Slice.
+- [shortcut-target.md](./shortcut-target.md) — ⌥⌘2 listitem column stays that file. Toolbar Add Actor on the selected first of two Slices is this slice. Toolbar Add Event / Read Model / Automation still targets the last Slice.
+- [editor-bind-split.md](./editor-bind-split.md) — `bindEditor` stays `public/editor.js`. Toolbar Add Actor on the selected first of two Slices is this slice. Toolbar Add Event / Read Model / Automation still targets the last Slice.
+- [inspect-blocks.md](./inspect-blocks.md) — Toolbar Add Actor on the selected first of two Slices is this slice. Toolbar Add Event / Read Model / Automation still targets the last Slice.
+- [inspect-fields.md](./inspect-fields.md) — Last-Command Add Field stays that file. Toolbar Add Actor on the selected first of two Slices is this slice. Toolbar Add Event / Read Model / Automation still targets the last Slice.
+- [inspect-fields-rest.md](./inspect-fields-rest.md) — In-session Field-by-id stays that file. Toolbar Add Actor on the selected first of two Slices is this slice. Toolbar Add Event / Read Model / Automation still targets the last Slice.
+- [hydrate-add-field.md](./hydrate-add-field.md) — `Add Field` after reload stays that file. Toolbar Add Actor on the selected first of two Slices is this slice. Toolbar Add Event / Read Model / Automation still targets the last Slice.
+- [hydrate-board.md](./hydrate-board.md) — GET hydrate of lane Add and ports stays that file. Toolbar Add Actor on the selected first of two Slices is this slice. Toolbar Add Event / Read Model / Automation still targets the last Slice.
+- [connections.md](./connections.md) — Command port drag stays that file. Toolbar Add Actor on the selected first of two Slices is this slice. Toolbar Add Event / Read Model / Automation still targets the last Slice.
+- [port-fit.md](./port-fit.md) — Port in the Slice column stays that file. Toolbar Add Actor on the selected first of two Slices is this slice. Toolbar Add Event / Read Model / Automation still targets the last Slice.
+- [port-wrap.md](./port-wrap.md) — Port on the same row as the Event title stays that file. Toolbar Add Actor on the selected first of two Slices is this slice. Toolbar Add Event / Read Model / Automation still targets the last Slice.
+- [inspect-event-read.md](./inspect-event-read.md) — Leftover Add Field after Event Happened → Read Model stays that file. Toolbar Add Actor on the selected first of two Slices is this slice. Toolbar Add Event / Read Model / Automation still targets the last Slice.
+- [inspect-event-read-fields.md](./inspect-event-read-fields.md) — Leftover Field type after Event Happened → Read Model stays that file. Toolbar Add Actor on the selected first of two Slices is this slice. Toolbar Add Event / Read Model / Automation still targets the last Slice.
+- [delete-event-read.md](./delete-event-read.md) — Event → Read Model Backspace stays that file. Toolbar Add Actor on the selected first of two Slices is this slice. Toolbar Add Event / Read Model / Automation still targets the last Slice.
+- [leftover-connection-command.md](./leftover-connection-command.md) — Leftover Connection copy after Command click stays that file. Toolbar Add Actor on the selected first of two Slices is this slice. Toolbar Add Event / Read Model / Automation still targets the last Slice.
+- [inspect-after-delete.md](./inspect-after-delete.md) — Leftover Add Field after Command Backspace stays that file. Toolbar Add Actor on the selected first of two Slices is this slice. Toolbar Add Event / Read Model / Automation still targets the last Slice.
+- [inspect-connection.md](./inspect-connection.md) — Click-created Command → Event inspect stays that file. Toolbar Add Actor on the selected first of two Slices is this slice. Toolbar Add Event / Read Model / Automation still targets the last Slice.
+- [inspect-switch.md](./inspect-switch.md) — Leftover Inspector Type after a Connection click stays that file. Toolbar Add Actor on the selected first of two Slices is this slice. Toolbar Add Event / Read Model / Automation still targets the last Slice.
+- [connection-caption.md](./connection-caption.md) — Caption placement stays that file. Toolbar Add Actor on the selected first of two Slices is this slice. Toolbar Add Event / Read Model / Automation still targets the last Slice.
+- [connection-on-board.md](./connection-on-board.md) — Connection copy on `.board` stays that file. Toolbar Add Actor on the selected first of two Slices is this slice. Toolbar Add Event / Read Model / Automation still targets the last Slice.
+- [hydrate-event-read-id.md](./hydrate-event-read-id.md) — GET Event Happened → Read Model `data-id` stays that file. Toolbar Add Actor on the selected first of two Slices is this slice. Toolbar Add Event / Read Model / Automation still targets the last Slice.
+- [hydrate-connection-id.md](./hydrate-connection-id.md) — GET Command → Event Happened `data-id` stays that file. Toolbar Add Actor on the selected first of two Slices is this slice. Toolbar Add Event / Read Model / Automation still targets the last Slice.
+- [connection-feedback.md](./connection-feedback.md) — Highlight / snap-back stays that file. Toolbar Add Actor on the selected first of two Slices is this slice. Toolbar Add Event / Read Model / Automation still targets the last Slice.
+- [drag-rest.md](./drag-rest.md) — Event / Read Model / Automation drag stays that file. Toolbar Add Actor on the selected first of two Slices is this slice. Toolbar Add Event / Read Model / Automation still targets the last Slice.
+- [inspect-description.md](./inspect-description.md) — In-session Description stays that file. Toolbar Add Actor on the selected first of two Slices is this slice. Toolbar Add Event / Read Model / Automation still targets the last Slice.
+- [canvas.md](./canvas.md) — Toolbar Add Actor on the selected first of two Slices is this slice. With no Slice selected, Add Actor still targets the last Slice.
+- [architecture.md](../architecture.md) — Toolbar Add Actor on the selected first of two Slices is this slice. Toolbar Add Event / Read Model / Automation still target the last Slice.
+- [product.md](../product.md) — Toolbar Add Actor on the selected first of two Slices is this slice. Toolbar Add Event / Read Model / Automation still target the last Slice.

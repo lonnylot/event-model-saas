@@ -131,12 +131,19 @@ export function onNewSliceClick(root) {
   undoStack.push("slice");
 }
 
-export function onAddActorClick(root) {
+export function onAddActorClick(root, sliceIndex) {
   const holder = root.getElementById("event-model-document");
-  const next = appendActor(JSON.parse(holder?.textContent || "{}"));
+  const next = appendActor(
+    JSON.parse(holder?.textContent || "{}"),
+    sliceIndex,
+  );
   if (holder) holder.textContent = JSON.stringify(next);
-  const actor = next.slices?.at(-1)?.actors?.at(-1);
-  const list = lastLaneList(root, "actor");
+  const index = sliceIndex ?? (next.slices?.length ?? 1) - 1;
+  const actor = next.slices?.[index]?.actors?.at(-1);
+  const cols = timelineEl(root)?.querySelectorAll?.(".slice-col") ?? [];
+  const list =
+    cols[index]?.querySelector('[data-lane="actor"] ul') ??
+    lastLaneList(root, "actor");
   if (list) {
     const item = root.createElement("li");
     item.textContent = "Actor";
@@ -333,7 +340,9 @@ export function bindEditor(root) {
       button.addEventListener("click", () => onNewSliceClick(root));
     }
     if (button.textContent === "Add Actor") {
-      button.addEventListener("click", () => onAddActorClick(root));
+      button.addEventListener("click", () =>
+        onAddActorClick(root, selectedSliceIndex),
+      );
     }
     if (button.textContent === "Add Command") {
       button.addEventListener("click", () =>
@@ -385,7 +394,7 @@ export function bindEditor(root) {
   ctx.lastLaneList = (kind) => lastLaneList(root, kind);
   ctx.boardMount = () => boardMount(root);
   ctx.onNewSliceClick = () => onNewSliceClick(root);
-  ctx.onAddActorClick = () => onAddActorClick(root);
+  ctx.onAddActorClick = () => onAddActorClick(root, selectedSliceIndex);
   ctx.onAddCommandClick = () => onAddCommandClick(root, selectedSliceIndex);
   ctx.onAddEventClick = () => onAddEventClick(root);
   ctx.onAddReadModelClick = () => onAddReadModelClick(root);
