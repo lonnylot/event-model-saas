@@ -275,16 +275,56 @@ export function bindEditor(root) {
       const index = Number(button.getAttribute("data-slice-index"));
       const model = JSON.parse(holder.textContent || "{}");
       if (button.textContent === "Add Actor on lane") {
-        holder.textContent = JSON.stringify(appendActor(model, index));
+        const next = appendActor(model, index);
+        holder.textContent = JSON.stringify(next);
+        const actor = next.slices?.[index]?.actors?.at(-1);
+        const cols = timeline.querySelectorAll?.(".slice-col") ?? [];
+        const list = cols[index]?.querySelector('[data-lane="actor"] ul');
+        if (list && actor) {
+          const item = root.createElement("li");
+          item.textContent = "Actor";
+          item.setAttribute("aria-label", "Actor");
+          list.append(item);
+        }
       }
       if (button.textContent === "Add Event on lane") {
-        holder.textContent = JSON.stringify(appendEvent(model, index));
+        const next = appendEvent(model, index);
+        holder.textContent = JSON.stringify(next);
+        const eventItem = next.slices?.[index]?.events?.at(-1);
+        const cols = timeline.querySelectorAll?.(".slice-col") ?? [];
+        const list = cols[index]?.querySelector('[data-lane="event"] ul');
+        if (list && eventItem) {
+          const item = root.createElement("li");
+          item.textContent = "Event Happened";
+          item.setAttribute("aria-label", "Event Happened");
+          list.append(item);
+        }
       }
       if (button.textContent === "Add Read Model on lane") {
-        holder.textContent = JSON.stringify(appendReadModel(model, index));
+        const next = appendReadModel(model, index);
+        holder.textContent = JSON.stringify(next);
+        const readModel = next.slices?.[index]?.readModels?.at(-1);
+        const cols = timeline.querySelectorAll?.(".slice-col") ?? [];
+        const list = cols[index]?.querySelector('[data-lane="readmodel"] ul');
+        if (list && readModel) {
+          const item = root.createElement("li");
+          item.textContent = "Read Model";
+          item.setAttribute("aria-label", "Read Model");
+          list.append(item);
+        }
       }
       if (button.textContent === "Add Automation on lane") {
-        holder.textContent = JSON.stringify(appendAutomation(model, index));
+        const next = appendAutomation(model, index);
+        holder.textContent = JSON.stringify(next);
+        const automation = next.slices?.[index]?.processors?.at(-1);
+        const cols = timeline.querySelectorAll?.(".slice-col") ?? [];
+        const list = cols[index]?.querySelector('[data-lane="automation"] ul');
+        if (list && automation) {
+          const item = root.createElement("li");
+          item.textContent = "Automation";
+          item.setAttribute("aria-label", "Automation");
+          list.append(item);
+        }
       }
     });
   }
