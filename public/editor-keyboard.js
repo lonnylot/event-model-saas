@@ -710,6 +710,14 @@ export function bindKeyboard(root, ctx) {
       }
       ctx.selectedEventItem = null;
       ctx.selected = null;
+      ctx.nameInput()?.closest("label")?.remove();
+      ctx.unbindDescription();
+      ctx.unbindFieldChrome();
+      const inspector = root.querySelector('[aria-label="Inspector"]');
+      inspector?.insertAdjacentHTML(
+        "beforeend",
+        "<label>Type <select><option>State Change</option><option>State View</option><option>Automation</option></select></label>",
+      );
       return;
     }
     if (holder && ctx.selected === "actor" && ctx.selectedActorItem) {
