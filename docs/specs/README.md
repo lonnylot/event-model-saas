@@ -133,5 +133,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Inspect command field type first slice | [features/inspect-command-field-type-first-slice.md](./features/inspect-command-field-type-first-slice.md) | released |
 | Inspect after delete parent slice | [features/inspect-after-delete-parent-slice.md](./features/inspect-after-delete-parent-slice.md) | released |
 | Redo connection pair | [features/redo-connection-pair.md](./features/redo-connection-pair.md) | released |
+| Add on lane paint | [features/add-on-lane-paint.md](./features/add-on-lane-paint.md) | validated |
 
 Status: `draft` → `validated` → `released`.

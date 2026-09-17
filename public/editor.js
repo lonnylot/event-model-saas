@@ -275,7 +275,17 @@ export function bindEditor(root) {
       const index = Number(button.getAttribute("data-slice-index"));
       const model = JSON.parse(holder.textContent || "{}");
       if (button.textContent === "Add Actor on lane") {
-        holder.textContent = JSON.stringify(appendActor(model, index));
+        const next = appendActor(model, index);
+        holder.textContent = JSON.stringify(next);
+        const actor = next.slices?.[index]?.actors?.at(-1);
+        const cols = timeline.querySelectorAll?.(".slice-col") ?? [];
+        const list = cols[index]?.querySelector('[data-lane="actor"] ul');
+        if (list && actor) {
+          const item = root.createElement("li");
+          item.textContent = "Actor";
+          item.setAttribute("aria-label", "Actor");
+          list.append(item);
+        }
       }
       if (button.textContent === "Add Event on lane") {
         holder.textContent = JSON.stringify(appendEvent(model, index));
