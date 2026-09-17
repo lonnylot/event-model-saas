@@ -1412,6 +1412,9 @@ export function bindInspect(root, ctx) {
         bindOptional(lastCommandFieldOptional());
         bindExample(lastCommandFieldExample());
         bindDeleteField();
+      } else {
+        unbindFieldName();
+        deleteFieldButton()?.remove();
       }
       return;
     }
