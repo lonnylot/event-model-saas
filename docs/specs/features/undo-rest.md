@@ -47,7 +47,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Connection, T
 
 ## Assumptions
 
-- ⌘Z is `ControlOrMeta+z`. ⇧⌘Z is `Shift+ControlOrMeta+z`. ⌥⌘← stays [canvas.md](./canvas.md). Undo New Slice and undo Command → Event stay [canvas.md](./canvas.md). Undo of Event → Read Model is [undo-connection-event-read.md](./undo-connection-event-read.md). Undo Add Command on the last Slice stays [canvas-rest.md](./canvas-rest.md). Undo of selected-Slice Add Command is [undo-add-selected-slice.md](./undo-add-selected-slice.md). Undo restore paint on the first Slice is [undo-restore-selected-slice.md](./undo-restore-selected-slice.md).
+- ⌘Z is `ControlOrMeta+z`. ⇧⌘Z is `Shift+ControlOrMeta+z`. ⌥⌘← stays [canvas.md](./canvas.md). Undo New Slice and undo Command → Event stay [canvas.md](./canvas.md). Undo of Event → Read Model is [undo-connection-event-read.md](./undo-connection-event-read.md). Undo Add Command on the last Slice stays [canvas-rest.md](./canvas-rest.md). Undo of selected-Slice Add Command is [undo-add-selected-slice.md](./undo-add-selected-slice.md). Redo of selected-Slice Add Command while that Slice stays selected is this slice. Undo restore paint on the first Slice is [undo-restore-selected-slice.md](./undo-restore-selected-slice.md).
 - After ⌥⌘← on two Slices, the first Slice id became what was last; ⌘Z restores the order from before that key.
 - After Backspace on the first of two Slices, remaining JSON `id` is the last; ⌘Z restores the first `id`.
 - Two default-named Commands / Connections / Actors / Events / Read Models / Automations are first vs last, not by renaming. After Backspace of the first, remaining JSON `id` is the last; ⌘Z restores the first `id`.
@@ -57,7 +57,7 @@ Event Model, Slice, Actor, Command, Event, Read Model, Automation, Connection, T
 
 ## Out of scope
 
-Extra undo toolbar. Mac window chrome. Undo New Slice, undo Command → Event (without a prior delete), and undo Add Command on the last Slice stay those specs. Undo of selected-Slice Add Command is [undo-add-selected-slice.md](./undo-add-selected-slice.md). Undo restore paint on the first Slice is [undo-restore-selected-slice.md](./undo-restore-selected-slice.md). Undo of Event → Read Model is [undo-connection-event-read.md](./undo-connection-event-read.md). Redo of a selected Connection pair is [redo-connection-pair.md](./redo-connection-pair.md). Toolbar New Slice default Actor is [new-slice-default-actor.md](./new-slice-default-actor.md).
+Extra undo toolbar. Mac window chrome. Undo New Slice, undo Command → Event (without a prior delete), and undo Add Command on the last Slice stay those specs. Undo of selected-Slice Add Command is [undo-add-selected-slice.md](./undo-add-selected-slice.md). Redo of selected-Slice Add Command while that Slice stays selected is this slice. Undo restore paint on the first Slice is [undo-restore-selected-slice.md](./undo-restore-selected-slice.md). Undo of Event → Read Model is [undo-connection-event-read.md](./undo-connection-event-read.md). Redo of a selected Connection pair is [redo-connection-pair.md](./redo-connection-pair.md). Toolbar New Slice default Actor is [new-slice-default-actor.md](./new-slice-default-actor.md).
 
 ## Restates
 
