@@ -1,6 +1,6 @@
 # Port highlight hovered Read Model
 
-Status: validated
+Status: released
 
 ## Problem
 

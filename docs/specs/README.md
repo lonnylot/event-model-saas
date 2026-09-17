@@ -134,6 +134,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Inspect after delete parent slice | [features/inspect-after-delete-parent-slice.md](./features/inspect-after-delete-parent-slice.md) | released |
 | Redo connection pair | [features/redo-connection-pair.md](./features/redo-connection-pair.md) | released |
 | Add on lane paint | [features/add-on-lane-paint.md](./features/add-on-lane-paint.md) | released |
-| Port highlight hovered Read Model | [features/port-highlight-hovered-read-model.md](./features/port-highlight-hovered-read-model.md) | validated |
+| Port highlight hovered Read Model | [features/port-highlight-hovered-read-model.md](./features/port-highlight-hovered-read-model.md) | released |
 
 Status: `draft` → `validated` → `released`.
