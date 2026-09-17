@@ -33,13 +33,13 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-Delete Connection button. Event → Read Model live titles. Connection redo of a selected pair is [redo-connection-pair.md](./redo-connection-pair.md). Port highlight of the hovered Event. TIME click empty Inspector. Landing. Mac window chrome. Copy changes other than these titles.
+Delete Connection button. Event → Read Model live titles are [inspect-connection-event-read-titles.md](./inspect-connection-event-read-titles.md). Connection redo of a selected pair is [redo-connection-pair.md](./redo-connection-pair.md). Port highlight of the hovered Event. TIME click empty Inspector. Landing. Mac window chrome. Copy changes other than these titles.
 
 ## Restates
 
 - [inspect-connection.md](./inspect-connection.md) — Default-title inspect stays that file. Live titles after Name fill are this slice.
 - [leftover-connection-command.md](./leftover-connection-command.md) — Leftover default From Command / To Event Happened after Command click stays that file.
-- [connection-on-board.md](./connection-on-board.md) — Connection text living in `.board` stays that file. Live titles are this slice.
-- [inspect-delete-connection.md](./inspect-delete-connection.md) — Inspector Delete Connection stays that file. Live titles after Name fill are this slice.
-- [product.md](../product.md) — Inspect a Connection after rename uses current Command and Event titles.
-- [connections.md](./connections.md) — Live Connection caption is this slice.
+- [connection-on-board.md](./connection-on-board.md) — Connection text living in `.board` stays that file. Command → Event live titles are this slice. Event → Read Model live titles are [inspect-connection-event-read-titles.md](./inspect-connection-event-read-titles.md).
+- [inspect-delete-connection.md](./inspect-delete-connection.md) — Inspector Delete Connection stays that file. Command → Event live titles after Name fill are this slice. Event → Read Model live titles are [inspect-connection-event-read-titles.md](./inspect-connection-event-read-titles.md).
+- [product.md](../product.md) — Inspect a Connection after rename uses current Command and Event titles. Inspect an Event → Read Model after rename uses current Event and Read Model titles ([inspect-connection-event-read-titles.md](./inspect-connection-event-read-titles.md)).
+- [connections.md](./connections.md) — Command → Event live caption is this slice. Event → Read Model live titles are [inspect-connection-event-read-titles.md](./inspect-connection-event-read-titles.md).

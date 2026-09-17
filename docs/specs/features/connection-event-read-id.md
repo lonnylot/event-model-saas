@@ -32,7 +32,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-Live titles after Name fill. Undo of Event → Read Model. TIME click empty Inspector. Landing. Mac window chrome. Copy changes.
+Command → Event live titles after Name fill are [inspect-connection-live-titles.md](./inspect-connection-live-titles.md). Event → Read Model live titles after Name fill are [inspect-connection-event-read-titles.md](./inspect-connection-event-read-titles.md). Undo of Event → Read Model. TIME click empty Inspector. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 

@@ -52,10 +52,43 @@ export function bindInspect(root, ctx) {
     if (!fromTitle || !toTitle) return null;
     return { fromTitle, toTitle };
   };
+  const eventReadTitles = (node) => {
+    const holder = root.getElementById("event-model-document");
+    const model = JSON.parse(holder?.textContent || "{}");
+    const connection = (model.connections ?? []).find(
+      (item) => item.id === node.getAttribute("data-id"),
+    );
+    if (
+      !connection ||
+      connection.fromKind !== "EVENT" ||
+      connection.toKind !== "READMODEL"
+    ) {
+      return null;
+    }
+    let fromTitle;
+    let toTitle;
+    for (const slice of model.slices ?? []) {
+      fromTitle ??= (slice.events ?? []).find(
+        (item) => item.id === connection.fromID,
+      )?.title;
+      toTitle ??= (slice.readModels ?? []).find(
+        (item) => item.id === connection.toID,
+      )?.title;
+    }
+    if (!fromTitle || !toTitle) return null;
+    return { fromTitle, toTitle };
+  };
   const paintCommandEventCaptions = () => {
     for (const line of timeline?.querySelectorAll?.("[data-kind=connection]") ??
       []) {
       const titles = commandEventTitles(line);
+      if (titles) line.textContent = `${titles.fromTitle} → ${titles.toTitle}`;
+    }
+  };
+  const paintEventReadCaptions = () => {
+    for (const line of timeline?.querySelectorAll?.("[data-kind=connection]") ??
+      []) {
+      const titles = eventReadTitles(line);
       if (titles) line.textContent = `${titles.fromTitle} → ${titles.toTitle}`;
     }
   };
@@ -1240,6 +1273,9 @@ export function bindInspect(root, ctx) {
         }
         if (ctx.selected === "command" || ctx.selected === "event") {
           paintCommandEventCaptions();
+        }
+        if (ctx.selected === "event" || ctx.selected === "readmodel") {
+          paintEventReadCaptions();
         }
         if (ctx.selected === "readmodel" && ctx.selectedReadModelItem) {
           const text = [...ctx.selectedReadModelItem.childNodes].find(
