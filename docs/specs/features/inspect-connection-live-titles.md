@@ -28,7 +28,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 ## Assumptions
 
 - Playwright unique checkout `PORT` / `INSPECTOR_PORT` and `TEST_MAIL=1` `workers` `1` stay [public-face.md](./public-face.md).
-- At Add defaults, clicking `Command → Event Happened` still shows Connection / From Command / To Event Happened ([inspect-connection.md](./inspect-connection.md)). Live titles after Name fill are this slice.
+- At Add defaults, clicking `Command → Event Happened` still shows Connection / From Command / To Event Happened ([inspect-connection.md](./inspect-connection.md)). Command → Event live titles after Name fill are this slice. Event → Read Model live titles are [inspect-connection-event-read-titles.md](./inspect-connection-event-read-titles.md).
 - Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).
 
 ## Out of scope
@@ -37,7 +37,7 @@ Delete Connection button. Event → Read Model live titles are [inspect-connecti
 
 ## Restates
 
-- [inspect-connection.md](./inspect-connection.md) — Default-title inspect stays that file. Live titles after Name fill are this slice.
+- [inspect-connection.md](./inspect-connection.md) — Default-title inspect stays that file. Command → Event live titles after Name fill are this slice. Event → Read Model live titles are [inspect-connection-event-read-titles.md](./inspect-connection-event-read-titles.md).
 - [leftover-connection-command.md](./leftover-connection-command.md) — Leftover default From Command / To Event Happened after Command click stays that file.
 - [connection-on-board.md](./connection-on-board.md) — Connection text living in `.board` stays that file. Command → Event live titles are this slice. Event → Read Model live titles are [inspect-connection-event-read-titles.md](./inspect-connection-event-read-titles.md).
 - [inspect-delete-connection.md](./inspect-delete-connection.md) — Inspector Delete Connection stays that file. Command → Event live titles after Name fill are this slice. Event → Read Model live titles are [inspect-connection-event-read-titles.md](./inspect-connection-event-read-titles.md).

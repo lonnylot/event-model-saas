@@ -2102,4 +2102,29 @@ describe("spec tree", () => {
       "Event → Read Model live titles after Name fill are [inspect-connection-event-read-titles.md](./inspect-connection-event-read-titles.md).",
     );
   });
+
+  it("inspect-connection-live-titles Assumptions and Restates of inspect-connection do not park unqualified live titles as this slice", () => {
+    const text = readFileSync(
+      "docs/specs/features/inspect-connection-live-titles.md",
+      "utf8",
+    );
+    expect(text).not.toMatch(/(?:^|\. )Live titles after Name fill are/m);
+    const assumptions =
+      text.split("## Assumptions")[1]?.split("## Out of scope")[0] ?? "";
+    expect(assumptions).toContain(
+      "Command → Event live titles after Name fill are this slice.",
+    );
+    expect(assumptions).toContain(
+      "Event → Read Model live titles are [inspect-connection-event-read-titles.md](./inspect-connection-event-read-titles.md).",
+    );
+    const restates = text.split("## Restates")[1] ?? "";
+    const inspectConnectionRestates =
+      restates.split("- [inspect-connection.md]")[1]?.split("\n- [")[0] ?? "";
+    expect(inspectConnectionRestates).toContain(
+      "Command → Event live titles after Name fill are this slice.",
+    );
+    expect(inspectConnectionRestates).toContain(
+      "Event → Read Model live titles are [inspect-connection-event-read-titles.md](./inspect-connection-event-read-titles.md).",
+    );
+  });
 });
