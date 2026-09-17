@@ -1,6 +1,6 @@
 # Leftover connection event
 
-Status: validated
+Status: released
 
 ## Problem
 
