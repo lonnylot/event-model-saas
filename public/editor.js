@@ -255,12 +255,19 @@ export function onAddReadModelClick(root, sliceIndex) {
   undoStack.push("readmodel");
 }
 
-export function onAddAutomationClick(root) {
+export function onAddAutomationClick(root, sliceIndex) {
   const holder = root.getElementById("event-model-document");
-  const next = appendAutomation(JSON.parse(holder?.textContent || "{}"));
+  const next = appendAutomation(
+    JSON.parse(holder?.textContent || "{}"),
+    sliceIndex,
+  );
   if (holder) holder.textContent = JSON.stringify(next);
-  const automation = next.slices?.at(-1)?.processors?.at(-1);
-  const list = lastLaneList(root, "automation");
+  const index = sliceIndex ?? (next.slices?.length ?? 1) - 1;
+  const automation = next.slices?.[index]?.processors?.at(-1);
+  const cols = timelineEl(root)?.querySelectorAll?.(".slice-col") ?? [];
+  const list =
+    cols[index]?.querySelector('[data-lane="automation"] ul') ??
+    lastLaneList(root, "automation");
   if (list && automation) {
     const item = root.createElement("li");
     item.textContent = "Automation";
@@ -374,7 +381,9 @@ export function bindEditor(root) {
       );
     }
     if (button.textContent === "Add Automation") {
-      button.addEventListener("click", () => onAddAutomationClick(root));
+      button.addEventListener("click", () =>
+        onAddAutomationClick(root, selectedSliceIndex),
+      );
     }
   });
   const timelineList = timeline;
@@ -416,7 +425,7 @@ export function bindEditor(root) {
   ctx.onAddCommandClick = () => onAddCommandClick(root, selectedSliceIndex);
   ctx.onAddEventClick = () => onAddEventClick(root, selectedSliceIndex);
   ctx.onAddReadModelClick = () => onAddReadModelClick(root, selectedSliceIndex);
-  ctx.onAddAutomationClick = () => onAddAutomationClick(root);
+  ctx.onAddAutomationClick = () => onAddAutomationClick(root, selectedSliceIndex);
   bindKeyboard(root, ctx);
   bindPointer(root, ctx);
 }
