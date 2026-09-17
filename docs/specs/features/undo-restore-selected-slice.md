@@ -1,6 +1,6 @@
 # Undo restore selected slice
 
-Status: validated
+Status: released
 
 ## Problem
 
