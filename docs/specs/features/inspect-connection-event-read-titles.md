@@ -38,7 +38,7 @@ Command → Event live titles are [inspect-connection-live-titles.md](./inspect-
 ## Restates
 
 - [inspect-connection-live-titles.md](./inspect-connection-live-titles.md) — Out of scope no longer parks Event → Read Model live titles; those titles are this slice. Command → Event live titles stay that file.
-- [inspect-rest.md](./inspect-rest.md) — Default-title Event → Read Model inspect stays that file. Live titles after Name fill are this slice.
+- [inspect-rest.md](./inspect-rest.md) — Default-title Event → Read Model inspect stays that file. Event → Read Model live titles after Name fill are this slice. Command → Event live titles stay [inspect-connection-live-titles.md](./inspect-connection-live-titles.md).
 - [connections.md](./connections.md) — Command → Event live caption stays [inspect-connection-live-titles.md](./inspect-connection-live-titles.md). Event → Read Model live titles after Name fill are this slice.
 - [connection-on-board.md](./connection-on-board.md) — Connection text living in `.board` stays that file. Command → Event live titles stay [inspect-connection-live-titles.md](./inspect-connection-live-titles.md). Event → Read Model live titles after Name fill are this slice.
 - [inspect-delete-connection.md](./inspect-delete-connection.md) — Inspector Delete Connection stays that file. Command → Event live titles stay [inspect-connection-live-titles.md](./inspect-connection-live-titles.md). Event → Read Model live titles after Name fill are this slice.
