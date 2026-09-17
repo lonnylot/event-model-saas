@@ -2152,4 +2152,32 @@ describe("spec tree", () => {
       "Event → Read Model live titles after Name fill are [inspect-connection-event-read-titles.md](./inspect-connection-event-read-titles.md).",
     );
   });
+
+  it("undo-add-selected-slice Out of scope names redo of selected-Slice Add Command as undo-rest.md", () => {
+    for (const path of specMarkdownFiles("docs/specs")) {
+      const text = readFileSync(path, "utf8");
+      expect(text, path).not.toContain("redo-add-selected-slice.md");
+    }
+    const addSelected = readFileSync(
+      "docs/specs/features/undo-add-selected-slice.md",
+      "utf8",
+    );
+    const addOut =
+      addSelected.split("## Out of scope")[1]?.split("## Restates")[0] ?? "";
+    expect(addOut).toContain(
+      "Redo of selected-Slice Add Command while that Slice stays selected is [undo-rest.md](./undo-rest.md).",
+    );
+    const restates = addSelected.split("## Restates")[1] ?? "";
+    const undoRestRow =
+      restates.split("- [undo-rest.md]")[1]?.split("\n- [")[0] ?? "";
+    expect(undoRestRow).toContain(
+      "Redo of selected-Slice Add Command while that Slice stays selected stays that file.",
+    );
+    const undoRest = readFileSync("docs/specs/features/undo-rest.md", "utf8");
+    const undoRestOut =
+      undoRest.split("## Out of scope")[1]?.split("## Restates")[0] ?? "";
+    expect(undoRestOut).toContain(
+      "Redo of selected-Slice Add Command while that Slice stays selected is this slice.",
+    );
+  });
 });
