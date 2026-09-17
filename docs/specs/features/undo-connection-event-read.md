@@ -41,7 +41,7 @@ Redo of Event → Read Model pair ids. TIME click empty Inspector. Landing. Mac 
 - [redo-connection-pair.md](./redo-connection-pair.md) — Command → Event redo ids stay that file. Redo of Event → Read Model stays that file's Out of scope.
 - [connection-event-read-id.md](./connection-event-read-id.md) — In-session Event → Read Model `data-id` stays that file. Undo of Event → Read Model is this slice.
 - [undo-rest.md](./undo-rest.md) — Undo of remaining Adds, move, delete, and redo stay that file. Undo Command → Event stays [canvas.md](./canvas.md). Undo of Event → Read Model is this slice.
-- [canvas-rest.md](./canvas-rest.md) — Undo Add Command stays that file. Undo Command → Event stays [canvas.md](./canvas.md). Undo of Event → Read Model is this slice.
+- [canvas-rest.md](./canvas-rest.md) — Undo Add Command on the last Slice stays that file. Undo of selected-Slice Add Command is [undo-add-selected-slice.md](./undo-add-selected-slice.md). Undo Command → Event stays [canvas.md](./canvas.md). Undo of Event → Read Model is this slice.
 - [add-on-lane.md](./add-on-lane.md) — Lane Add and ⌥⌘2 stay that file. Undo Command → Event stays [canvas.md](./canvas.md). Undo of Event → Read Model is this slice.
 - [connection-feedback.md](./connection-feedback.md) — Highlighting legal targets of one Event stays that file. Undo Command → Event stays [canvas.md](./canvas.md). Undo of Event → Read Model is this slice.
 - [chrome.md](./chrome.md) — Keyboard shortcuts for this slice's keys stay that file. Undo Command → Event stays [canvas.md](./canvas.md). Undo of Event → Read Model is this slice.

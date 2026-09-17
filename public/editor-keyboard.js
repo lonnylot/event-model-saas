@@ -456,7 +456,10 @@ export function bindKeyboard(root, ctx) {
       }
       if (kind === "command") {
         holder.textContent = JSON.stringify(
-          undoAddCommand(JSON.parse(holder.textContent || "{}")),
+          undoAddCommand(
+            JSON.parse(holder.textContent || "{}"),
+            ctx.selectedSliceIndex,
+          ),
         );
         const items = [
           ...(ctx.timelineList?.querySelectorAll("li") ??
