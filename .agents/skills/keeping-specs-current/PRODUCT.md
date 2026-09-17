@@ -89,6 +89,8 @@ A Problem / Assumptions that name leftover Type after a Connection / switching s
 
 A Problem that names only Field name when ACs also drop Field type / Optional / Example / Delete Field is leftover-narrow Problem — name those leftover Field controls.
 
+A Problem that names leftover Field type / Optional / Example when unique ACs drop only leftover Field name and leftover Delete Field after Event → Command is leftover-wide Problem — Out of scope leftover Field type / Optional / Example after that click (`inspect-event-read.md` names only the ACs it proves), or add one AC each. Assumptions “must not keep the Event Field row” cannot both hold with those two ACs. `unbindFieldRow()` unused while unique production is `unbindFieldName()` + `deleteFieldButton()?.remove()` is that leftover-wide.
+
 A Problem that names only Slice leftover Name and Type when ACs also cover Actor leftover Name after empty `.board` is leftover-narrow Problem — name leftover Inspector Name after Timeline `Actor` then empty `.board`, as well as leftover Name and Type after Timeline `New Slice` then TIME chrome. Empty `.board` is not a Slice-only tell (`inspect-deselect`).
 
 A Problem that names Inspector Name on Actor and Automation when unique AC is GET Actor Name JSON is leftover-wide Problem — Out of scope GET Automation Name JSON, or add that AC.
