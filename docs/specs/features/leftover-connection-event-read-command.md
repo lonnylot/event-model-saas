@@ -9,7 +9,7 @@ Command click strips Command → Event From / To, not `From Event Happened` / `T
 ## Acceptance criteria
 
 - [x] After dragging `Event Happened port` onto `Read Model port`, clicking `Event Happened → Read Model`, then clicking the Timeline `Command` listitem, the Inspector region does not show the text `From Event Happened`
-- [ ] After dragging `Event Happened port` onto `Read Model port`, clicking `Event Happened → Read Model`, then clicking the Timeline `Command` listitem, the Inspector region does not show the text `To Read Model`
+- [x] After dragging `Event Happened port` onto `Read Model port`, clicking `Event Happened → Read Model`, then clicking the Timeline `Command` listitem, the Inspector region does not show the text `To Read Model`
 
 ## Domain terms
 

@@ -135,3 +135,18 @@ test("After dragging `Event Happened port` onto `Read Model port`, clicking `Eve
     inspector.getByText("From Event Happened", { exact: true }),
   ).toHaveCount(0);
 });
+
+test("After dragging `Event Happened port` onto `Read Model port`, clicking `Event Happened → Read Model`, then clicking the Timeline `Command` listitem, the Inspector region does not show the text `To Read Model`", async ({
+  page,
+}) => {
+  const { timeline, inspector } = await clickEventReadThenCommand(page);
+  await expect(
+    inspector.getByText("To Read Model", { exact: true }),
+  ).toBeVisible();
+  await timeline
+    .getByRole("listitem", { name: "Command", exact: true })
+    .click();
+  await expect(
+    inspector.getByText("To Read Model", { exact: true }),
+  ).toHaveCount(0);
+});
