@@ -135,6 +135,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Redo connection pair | [features/redo-connection-pair.md](./features/redo-connection-pair.md) | released |
 | Add on lane paint | [features/add-on-lane-paint.md](./features/add-on-lane-paint.md) | released |
 | Port highlight hovered Read Model | [features/port-highlight-hovered-read-model.md](./features/port-highlight-hovered-read-model.md) | released |
-| Connection event read id | [features/connection-event-read-id.md](./features/connection-event-read-id.md) | validated |
+| Connection event read id | [features/connection-event-read-id.md](./features/connection-event-read-id.md) | released |
 
 Status: `draft` → `validated` → `released`.
