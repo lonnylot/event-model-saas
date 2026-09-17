@@ -9,7 +9,7 @@ Inspector From / To and Timeline Event → Read Model text stay the Add defaults
 ## Acceptance criteria
 
 - [x] After dragging from `Event Happened port` onto `Read Model port`, filling the Timeline `Event Happened` listitem Inspector `Name` with `Order Placed`, filling the Timeline `Read Model` listitem Inspector `Name` with `Orders`, the Timeline region shows the text `Order Placed → Orders`
-- [ ] After dragging from `Event Happened port` onto `Read Model port`, filling the Timeline `Event Happened` listitem Inspector `Name` with `Order Placed`, filling the Timeline `Read Model` listitem Inspector `Name` with `Orders`, clicking the Timeline text `Order Placed → Orders` shows the text `From Order Placed` in the Inspector region
+- [x] After dragging from `Event Happened port` onto `Read Model port`, filling the Timeline `Event Happened` listitem Inspector `Name` with `Order Placed`, filling the Timeline `Read Model` listitem Inspector `Name` with `Orders`, clicking the Timeline text `Order Placed → Orders` shows the text `From Order Placed` in the Inspector region
 - [ ] After dragging from `Event Happened port` onto `Read Model port`, filling the Timeline `Event Happened` listitem Inspector `Name` with `Order Placed`, filling the Timeline `Read Model` listitem Inspector `Name` with `Orders`, clicking the Timeline text `Order Placed → Orders` shows the text `To Orders` in the Inspector region
 
 ## Domain terms

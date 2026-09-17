@@ -168,6 +168,20 @@ export function bindInspect(root, ctx) {
         }
         return;
       }
+      const eventRead = eventReadTitles(connection);
+      if (eventRead) {
+        const fromCopy = `From ${eventRead.fromTitle}`;
+        if (inspector && !inspector.textContent?.includes(fromCopy)) {
+          inspector.insertAdjacentHTML("beforeend", `<p>${fromCopy}</p>`);
+        }
+        if (
+          inspector &&
+          !inspector.textContent?.includes("To Read Model")
+        ) {
+          inspector.insertAdjacentHTML("beforeend", "<p>To Read Model</p>");
+        }
+        return;
+      }
       if (connection.textContent !== "Event Happened → Read Model") return;
       if (
         inspector &&
