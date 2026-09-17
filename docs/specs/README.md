@@ -142,5 +142,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Leftover connection event read command | [features/leftover-connection-event-read-command.md](./features/leftover-connection-event-read-command.md) | released |
 | Leftover field chrome switch | [features/leftover-field-chrome-switch.md](./features/leftover-field-chrome-switch.md) | released |
 | Inspect after delete parent rest | [features/inspect-after-delete-parent-rest.md](./features/inspect-after-delete-parent-rest.md) | released |
+| Undo add selected slice | [features/undo-add-selected-slice.md](./features/undo-add-selected-slice.md) | validated |
 
 Status: `draft` → `validated` → `released`.

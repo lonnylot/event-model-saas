@@ -1,9 +1,11 @@
-export function undoAddCommand(model) {
+export function undoAddCommand(model, sliceIndex) {
   const slices = [...(model.slices ?? [])];
   if (slices.length === 0) return model;
-  const last = slices[slices.length - 1];
-  const commands = [...(last.commands ?? [])];
+  const index = sliceIndex ?? slices.length - 1;
+  const target = slices[index];
+  if (!target) return model;
+  const commands = [...(target.commands ?? [])];
   commands.pop();
-  slices[slices.length - 1] = { ...last, commands };
+  slices[index] = { ...target, commands };
   return { ...model, slices };
 }

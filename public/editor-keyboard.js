@@ -456,13 +456,15 @@ export function bindKeyboard(root, ctx) {
       }
       if (kind === "command") {
         holder.textContent = JSON.stringify(
-          undoAddCommand(JSON.parse(holder.textContent || "{}")),
+          undoAddCommand(
+            JSON.parse(holder.textContent || "{}"),
+            ctx.selectedSliceIndex,
+          ),
         );
-        const items = [
-          ...(ctx.timelineList?.querySelectorAll("li") ??
-            []),
-        ];
-        items
+        const cols = ctx.timelineList?.querySelectorAll(".slice-col") ?? [];
+        const index = ctx.selectedSliceIndex ?? cols.length - 1;
+        const list = cols[index]?.querySelector('[data-lane="command"] ul');
+        [...(list?.querySelectorAll("li") ?? [])]
           .filter((item) => item.getAttribute("aria-label") === "Command")
           .at(-1)
           ?.remove();
