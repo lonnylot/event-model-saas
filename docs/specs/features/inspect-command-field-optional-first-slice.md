@@ -26,7 +26,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 ## Assumptions
 
 - Playwright unique checkout `PORT` / `INSPECTOR_PORT` and `TEST_MAIL=1` `workers` `1` stay [public-face.md](./public-face.md).
-- GET Optional write of the first of two Commands on the last Slice stays [inspect-command-optional-write.md](./inspect-command-optional-write.md). First-Slice Command Optional write is this slice.
+- GET Optional write of the first of two Commands on the last Slice stays [inspect-command-optional-write.md](./inspect-command-optional-write.md). First-Slice Command Optional write is this slice. First-Slice Command Example write is [inspect-command-field-example-first-slice.md](./inspect-command-field-example-first-slice.md).
 - Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).
 
 ## Out of scope
