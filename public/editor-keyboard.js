@@ -434,7 +434,9 @@ export function bindKeyboard(root, ctx) {
             entry.index,
           ),
         );
-        const list = ctx.lastLaneList("command");
+        const cols = ctx.timelineList?.querySelectorAll(".slice-col") ?? [];
+        const index = ctx.selectedSliceIndex ?? cols.length - 1;
+        const list = cols[index]?.querySelector('[data-lane="command"] ul');
         if (list && entry.command) {
           const item = root.createElement("li");
           item.textContent = "Command";
