@@ -365,6 +365,10 @@ export function bindPointer(root, ctx) {
           const line = root.createElement("p");
           line.textContent = "Event Happened → Read Model";
           line.setAttribute("data-kind", "connection");
+          const connection = JSON.parse(
+            holder?.textContent || "{}",
+          ).connections?.at(-1);
+          if (connection) line.setAttribute("data-id", connection.id);
           board.append(line);
         }
       }

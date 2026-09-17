@@ -28,7 +28,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 ## Assumptions
 
 - Playwright unique checkout `PORT` / `INSPECTOR_PORT` and `TEST_MAIL=1` `workers` `1` stay [public-face.md](./public-face.md).
-- `.board` still contains `Event Happened → Read Model` ([connection-on-board.md](./connection-on-board.md)). GET From/To inspect stays [inspect-rest.md](./inspect-rest.md). In-session Command → Event Backspace stays [delete-blocks.md](./delete-blocks.md). In-session Event → Read Model Backspace is [delete-event-read.md](./delete-event-read.md). GET `Command → Event Happened` `data-id` is [hydrate-connection-id.md](./hydrate-connection-id.md). GET `data-id` and Backspace on `Event Happened → Read Model` are this slice.
+- `.board` still contains `Event Happened → Read Model` ([connection-on-board.md](./connection-on-board.md)). GET From/To inspect stays [inspect-rest.md](./inspect-rest.md). In-session Command → Event Backspace stays [delete-blocks.md](./delete-blocks.md). In-session Event → Read Model Backspace is [delete-event-read.md](./delete-event-read.md). GET `Command → Event Happened` `data-id` is [hydrate-connection-id.md](./hydrate-connection-id.md). GET `data-id` and Backspace on `Event Happened → Read Model` are this slice. In-session Event → Read Model `data-id` is [connection-event-read-id.md](./connection-event-read-id.md).
 - After selection, Inspector may have focus, so delete is Backspace after clicking the Timeline region.
 - Create model still seeds a default Slice ([model-defaults.md](./model-defaults.md)). Toolbar Add Command on the selected first of two Slices is [add-toolbar-selected-slice.md](./add-toolbar-selected-slice.md). Toolbar Add Actor / Event / Read Model / Automation still targets the last Slice ([blocks.md](./blocks.md)).
 - Delete is in-memory until Save. Save still uses the version check from model-persistence.
@@ -36,7 +36,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-GET `Command → Event Happened` `data-id` is [hydrate-connection-id.md](./hydrate-connection-id.md). GET Actor / Automation `data-id` is [hydrate-kind-id.md](./hydrate-kind-id.md). Connection caption as a flex sibling of `.slice-col`. Leftover Add Field after `Event Happened → Read Model` is [inspect-event-read.md](./inspect-event-read.md). Landing. Mac window chrome. Copy changes.
+GET `Command → Event Happened` `data-id` is [hydrate-connection-id.md](./hydrate-connection-id.md). GET Actor / Automation `data-id` is [hydrate-kind-id.md](./hydrate-kind-id.md). In-session Event → Read Model `data-id` is [connection-event-read-id.md](./connection-event-read-id.md). Connection caption as a flex sibling of `.slice-col`. Leftover Add Field after `Event Happened → Read Model` is [inspect-event-read.md](./inspect-event-read.md). Landing. Mac window chrome. Copy changes.
 
 ## Restates
 
