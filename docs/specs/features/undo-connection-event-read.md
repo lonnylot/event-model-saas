@@ -1,6 +1,6 @@
 # Undo connection event read
 
-Status: validated
+Status: released
 
 ## Problem
 
