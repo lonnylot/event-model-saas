@@ -1,6 +1,6 @@
 # Inspect command field example first slice
 
-Status: validated
+Status: released
 
 ## Problem
 
