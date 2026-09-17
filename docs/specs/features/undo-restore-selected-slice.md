@@ -26,12 +26,12 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 ## Assumptions
 
 - Playwright unique checkout `PORT` / `INSPECTOR_PORT` and `TEST_MAIL=1` `workers` `1` stay [public-face.md](./public-face.md).
-- Undo of Command Backspace on the last Slice stays [undo-rest.md](./undo-rest.md). Undo restore paint on the selected first Slice is this slice.
+- Undo of Command Backspace on the last Slice stays [undo-rest.md](./undo-rest.md). Undo restore paint on the selected first Slice is this slice. Undo restore after the selected Slice has moved stays later.
 - Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).
 
 ## Out of scope
 
-Undo of selected-Slice Add is [undo-add-selected-slice.md](./undo-add-selected-slice.md). TIME click empty Inspector. Landing. Mac window chrome. Copy changes.
+Undo of selected-Slice Add is [undo-add-selected-slice.md](./undo-add-selected-slice.md). Undo restore after the selected Slice has moved (paint by `entry.sliceId` vs `selectedSliceIndex`). TIME click empty Inspector. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 
