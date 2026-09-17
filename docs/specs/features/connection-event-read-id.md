@@ -9,7 +9,7 @@ In-session Event → Read Model paints a `.board` `p` with no `data-id` and skip
 ## Acceptance criteria
 
 - [x] After dragging from `Event Happened port` onto `Read Model port`, the `.board` `Event Happened → Read Model` node has a non-empty `data-id`
-- [ ] After dragging from `Event Happened port` onto `Read Model port` twice, the Timeline region shows 2 text `Event Happened → Read Model`
+- [x] After dragging from `Event Happened port` onto `Read Model port` twice, the Timeline region shows 2 text `Event Happened → Read Model`
 
 ## Domain terms
 

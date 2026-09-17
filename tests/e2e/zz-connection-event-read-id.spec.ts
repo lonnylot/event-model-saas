@@ -114,3 +114,30 @@ test("After dragging from `Event Happened port` onto `Read Model port`, the `.bo
     }),
   ).toHaveAttribute("data-id", /.+/);
 });
+
+test("After dragging from `Event Happened port` onto `Read Model port` twice, the Timeline region shows 2 text `Event Happened → Read Model`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  await dragPort(page, "Event Happened port", "Read Model port");
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  const readModelPorts = page.getByRole("button", {
+    name: "Read Model port",
+    exact: true,
+  });
+  await expect(readModelPorts).toHaveCount(2);
+  const eventPort = page.getByRole("button", {
+    name: "Event Happened port",
+    exact: true,
+  });
+  await expect(eventPort).toBeVisible();
+  await eventPort.hover({ force: true });
+  await eventPort.dragTo(readModelPorts.last());
+  await expect(
+    page
+      .getByRole("region", { name: "Timeline", exact: true })
+      .getByText("Event Happened → Read Model", { exact: true }),
+  ).toHaveCount(2);
+});
