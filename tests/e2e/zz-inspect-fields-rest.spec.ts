@@ -87,13 +87,17 @@ async function openUntitledModel(page: Page) {
 }
 
 async function clickNewSlice(page: Page) {
-  const count =
-    (await page.getByRole("listitem", { name: "New Slice", exact: true }).count()) +
-    2;
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
-  await expect(
-    page.getByRole("listitem", { name: "New Slice", exact: true }),
-  ).toHaveCount(count);
+  const listitems = page.getByRole("listitem", {
+    name: "New Slice",
+    exact: true,
+  });
+  const button = page.getByRole("button", { name: "New Slice", exact: true });
+  await expect(button).toBeVisible();
+  const before = await listitems.count();
+  await expect(async () => {
+    await button.click();
+    await expect(listitems).toHaveCount(before + 2, { timeout: 500 });
+  }).toPass();
 }
 
 test("After clicking `Add Field` on `Command`, selecting `UUID` in Inspector `Field type` sets the last Command `fields[0].type` to `UUID`", async ({
