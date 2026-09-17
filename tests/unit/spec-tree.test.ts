@@ -1417,6 +1417,22 @@ describe("spec tree", () => {
     }
   });
 
+  it("inspect-command-field-example-first-slice Restates paths do not park GET Example write of a Command on the first of two Slices as stay later", () => {
+    const paths = [
+      "docs/specs/features/inspect-command-example-write.md",
+      "docs/specs/features/inspect-command-field-optional-first-slice.md",
+      "docs/specs/product.md",
+      "docs/specs/architecture.md",
+    ];
+    for (const path of paths) {
+      const text = readFileSync(path, "utf8");
+      expect(text, path).toContain("inspect-command-field-example-first-slice.md");
+      expect(text, path).not.toMatch(
+        /GET Example write of a Command on the first of two Slices stay later/,
+      );
+    }
+  });
+
   it("inspect-command-field-type-first-slice Restates paths do not park GET Field type write of a Command on the first of two Slices as stay later", () => {
     const paths = [
       "docs/specs/features/inspect-get-command-field-type-write.md",
