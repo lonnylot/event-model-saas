@@ -32,6 +32,8 @@ Playwright `toBeVisible` of the Timeline region at 390 is the weaker reading (`t
 
 Inspector `Nothing Selected` `toBeVisible` is the weaker reading of leftover Add Field (`testing`) — empty copy is `:has(label)`; Add Field is a `button`. That leftover is `getByRole("button", { name: "Add Field", exact: true })` `toHaveCount(0)`.
 
+Inspector Type `toBeVisible` after Actor / Event / Read Model / Automation Backspace is the weaker reading of leftover Inspector Name / Add Field (`testing`) — Type stays green if `nameInput()?.closest("label")?.remove()` / `unbindFieldChrome()` is deleted.
+
 ## Script
 
 Any script-existence test asserts the exact value `playwright test` (consecutive runner tokens), not `length > 0` and not unordered token inclusion. An AC that says the script "includes the tokens" is a weaker criterion — restate as the script **is** `playwright test` (`keeping-specs-current`).
