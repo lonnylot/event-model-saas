@@ -31,7 +31,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-TIME / empty board deselect. After-delete parent Slice for Actor / Event / Read Model / Automation. TIME click empty Inspector as the empty path. Landing. Mac window chrome. Copy changes.
+TIME / empty board deselect. After-delete parent Slice for Actor / Event / Read Model / Automation is [inspect-after-delete-parent-rest.md](./inspect-after-delete-parent-rest.md). TIME click empty Inspector as the empty path. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 

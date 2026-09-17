@@ -32,7 +32,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-TIME click empty Inspector is [inspect-deselect.md](./inspect-deselect.md). Leftover Connection copy after Command click without delete is [leftover-connection-command.md](./leftover-connection-command.md). Parent Slice Type after Command Backspace is [inspect-after-delete-parent-slice.md](./inspect-after-delete-parent-slice.md). Inspector empty after Actor / Event / Read Model / Automation / Slice / Connection Backspace. Landing. Mac window chrome. Copy changes.
+TIME click empty Inspector is [inspect-deselect.md](./inspect-deselect.md). Leftover Connection copy after Command click without delete is [leftover-connection-command.md](./leftover-connection-command.md). Parent Slice Type after Command Backspace is [inspect-after-delete-parent-slice.md](./inspect-after-delete-parent-slice.md). After-delete parent Slice for Actor / Event / Read Model / Automation is [inspect-after-delete-parent-rest.md](./inspect-after-delete-parent-rest.md). Inspector empty after Slice / Connection Backspace. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 
