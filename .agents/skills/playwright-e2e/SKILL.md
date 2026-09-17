@@ -8,6 +8,7 @@ description: >
   or inherited from a parent/body AC, Playwright locator.focus of
   :focus-visible, Playwright toBeVisible of below-the-fold /
   overflow-clipped, Playwright listitem dragTo that hits a Port,
+  does not lose last Slice Command when last never had one,
   Playwright webServer env,
   blanking live API keys, an empty-state flow after a mutating spec
   file, or an already-mounted UI re-open. Also when updating a Flow

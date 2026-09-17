@@ -47,7 +47,7 @@ Do not write specs or plans under `docs/superpowers/` or any tree other than `do
 
 ## "that Slice" and targeting
 
-A “that Slice” / “that Actor” / clicked-item / Backspace-the-selected-Slice / “the first X” / first-vs-last AC is unfinished until a second item makes last-item mutation / `.first()` is not also last fail, or the bullet is restated to “the last Slice” / off “the first”. GET after Create one seeded Actor / one Automation after Add+Save+reload is that one-item fixture — `json.slices[0].actors[0]` and `[]` stay green for `.at(-1)` / `[0]`.
+A “that Slice” / “that Actor” / clicked-item / Backspace-the-selected-Slice / “the first X” / first-vs-last AC is unfinished until a second item makes last-item mutation / `.first()` is not also last fail, or the bullet is restated to “the last Slice” / off “the first”. GET after Create one seeded Actor / one Automation after Add+Save+reload is that one-item fixture — `json.slices[0].actors[0]` and `[]` stay green for `.at(-1)` / `[0]`. Two Slices with last Command count `0` is still that fixture — a second Slice is not a second Command. A “does not lose” last Slice Command AC is unfinished until last had that listitem (select last, Add Command, then select first, Add Command, then ⌘Z). Assumptions “last Slice still has no Command (Create + New Slice have none)” cannot both hold with AC “does not lose” and Problem “⌘Z then removes a Command from the last Slice”.
 
 Two default-named Slices cannot use “does not show a listitem named New Slice” as that proof.
 
