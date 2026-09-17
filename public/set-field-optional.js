@@ -35,10 +35,26 @@ export function setFieldOptional(model, optional, target = "command", id) {
     slices[slices.length - 1] = { ...slice, processors };
     return { ...model, slices };
   }
+  if (id) {
+    const sliceIndex = slices.findIndex((candidate) =>
+      (candidate.commands ?? []).some((command) => command.id === id),
+    );
+    if (sliceIndex < 0) return model;
+    const selected = slices[sliceIndex];
+    const commands = [...(selected.commands ?? [])];
+    const index = commands.findIndex((command) => command.id === id);
+    if (index < 0) return model;
+    const command = commands[index];
+    if (!command) return model;
+    const fields = [...(command.fields ?? [])];
+    if (!fields.length) return model;
+    fields[0] = { ...fields[0], optional };
+    commands[index] = { ...command, fields };
+    slices[sliceIndex] = { ...selected, commands };
+    return { ...model, slices };
+  }
   const commands = [...(slice.commands ?? [])];
-  const index = id
-    ? commands.findIndex((command) => command.id === id)
-    : commands.length - 1;
+  const index = commands.length - 1;
   if (index < 0) return model;
   const command = commands[index];
   if (!command) return model;
