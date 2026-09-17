@@ -9,7 +9,7 @@ In-session Event → Read Model does not push the undo stack. ⌘Z of a later Co
 ## Acceptance criteria
 
 - [x] After dragging from `Event Happened port` onto `Read Model port`, pressing ⌘Z, the Timeline region does not show the text `Event Happened → Read Model`
-- [ ] After dragging from `Command port` onto `Event Happened port`, then from `Event Happened port` onto `Read Model port`, pressing ⌘Z, the Timeline region still shows the text `Command → Event Happened`
+- [x] After dragging from `Command port` onto `Event Happened port`, then from `Event Happened port` onto `Read Model port`, pressing ⌘Z, the Timeline region still shows the text `Command → Event Happened`
 
 ## Domain terms
 

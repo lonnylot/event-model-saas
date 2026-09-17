@@ -566,7 +566,15 @@ export function bindKeyboard(root, ctx) {
         holder.textContent = JSON.stringify(undoConnection(model));
         const timeline = root.querySelector('[aria-label="Timeline"]');
         for (const node of [...(timeline?.querySelectorAll("p") ?? [])]) {
-          if (node.textContent === "Command → Event Happened") node.remove();
+          if (
+            node.textContent === "Command → Event Happened" &&
+            !(
+              connection?.fromKind === "EVENT" &&
+              connection?.toKind === "READMODEL"
+            )
+          ) {
+            node.remove();
+          }
           if (node.textContent === "Event Happened → Read Model") node.remove();
         }
         if (connection) {

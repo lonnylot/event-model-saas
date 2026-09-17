@@ -117,3 +117,25 @@ test("After dragging from `Event Happened port` onto `Read Model port`, pressing
     timeline.getByText("Event Happened → Read Model", { exact: true }),
   ).toHaveCount(0);
 });
+
+test("After dragging from `Command port` onto `Event Happened port`, then from `Event Happened port` onto `Read Model port`, pressing ⌘Z, the Timeline region still shows the text `Command → Event Happened`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
+  await dragPort(page, "Command port", "Event Happened port");
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  await expect(
+    timeline.getByText("Command → Event Happened", { exact: true }),
+  ).toBeVisible();
+  await dragPort(page, "Event Happened port", "Read Model port");
+  await expect(
+    timeline.getByText("Event Happened → Read Model", { exact: true }),
+  ).toBeVisible();
+  await page.keyboard.press("ControlOrMeta+z");
+  await expect(
+    timeline.getByText("Command → Event Happened", { exact: true }),
+  ).toBeVisible();
+});
