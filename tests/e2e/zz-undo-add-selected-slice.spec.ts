@@ -126,3 +126,39 @@ test("After clicking `New Slice`, clicking the first `New Slice` listitem in the
   );
   expect(after.slices[0].commands).toEqual([]);
 });
+
+test("After clicking `New Slice`, clicking the last `New Slice` listitem in the Slices region, clicking `Add Command`, clicking the first `New Slice` listitem in the Slices region, clicking `Add Command`, pressing ⌘Z, the last Slice Timeline region does not lose a listitem whose accessible name is `Command`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  const slices = page
+    .getByRole("heading", { name: "Slices", exact: true })
+    .locator("xpath=following-sibling::ul[1]");
+  await expect(
+    slices.getByRole("listitem", { name: "New Slice", exact: true }),
+  ).toHaveCount(2);
+  await slices
+    .getByRole("listitem", { name: "New Slice", exact: true })
+    .last()
+    .click();
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  const firstSlice = timeline.locator(".slice-col").first();
+  const lastSlice = timeline.locator(".slice-col").last();
+  await expect(
+    lastSlice.getByRole("button", { name: "Command port", exact: true }),
+  ).toBeVisible();
+  await slices
+    .getByRole("listitem", { name: "New Slice", exact: true })
+    .first()
+    .click();
+  await page.getByRole("button", { name: "Add Command", exact: true }).click();
+  await expect(
+    firstSlice.getByRole("button", { name: "Command port", exact: true }),
+  ).toBeVisible();
+  await page.keyboard.press("ControlOrMeta+z");
+  await expect(
+    lastSlice.getByRole("listitem", { name: "Command", exact: true }),
+  ).toBeVisible();
+});

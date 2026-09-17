@@ -9,7 +9,7 @@ Status: validated
 ## Acceptance criteria
 
 - [x] After clicking `New Slice`, clicking the first `New Slice` listitem in the Slices region, clicking `Add Command`, pressing ⌘Z, the first Slice Timeline region does not show a listitem whose accessible name is `Command`
-- [ ] After clicking `New Slice`, clicking the first `New Slice` listitem in the Slices region, clicking `Add Command`, pressing ⌘Z, the last Slice Timeline region does not lose a listitem whose accessible name is `Command`
+- [x] After clicking `New Slice`, clicking the last `New Slice` listitem in the Slices region, clicking `Add Command`, clicking the first `New Slice` listitem in the Slices region, clicking `Add Command`, pressing ⌘Z, the last Slice Timeline region does not lose a listitem whose accessible name is `Command`
 
 ## Domain terms
 
@@ -27,7 +27,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 ## Assumptions
 
 - Playwright unique checkout `PORT` / `INSPECTOR_PORT` and `TEST_MAIL=1` `workers` `1` stay [public-face.md](./public-face.md).
-- Undo Add Command on the last Slice stays [canvas-rest.md](./canvas-rest.md). Toolbar Add Command on the selected first Slice stays [add-toolbar-selected-slice.md](./add-toolbar-selected-slice.md). Undo of that Add is this slice. The second AC is last Slice still has no Command (Create + New Slice have none).
+- Undo Add Command on the last Slice stays [canvas-rest.md](./canvas-rest.md). Toolbar Add Command on the selected first Slice stays [add-toolbar-selected-slice.md](./add-toolbar-selected-slice.md). Undo of that Add is this slice.
 - Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).
 
 ## Out of scope
