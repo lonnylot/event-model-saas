@@ -288,7 +288,17 @@ export function bindEditor(root) {
         }
       }
       if (button.textContent === "Add Event on lane") {
-        holder.textContent = JSON.stringify(appendEvent(model, index));
+        const next = appendEvent(model, index);
+        holder.textContent = JSON.stringify(next);
+        const eventItem = next.slices?.[index]?.events?.at(-1);
+        const cols = timeline.querySelectorAll?.(".slice-col") ?? [];
+        const list = cols[index]?.querySelector('[data-lane="event"] ul');
+        if (list && eventItem) {
+          const item = root.createElement("li");
+          item.textContent = "Event Happened";
+          item.setAttribute("aria-label", "Event Happened");
+          list.append(item);
+        }
       }
       if (button.textContent === "Add Read Model on lane") {
         holder.textContent = JSON.stringify(appendReadModel(model, index));
