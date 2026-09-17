@@ -33,7 +33,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-TIME click empty Inspector. Landing. Mac window chrome. Copy changes other than leftover default From / To / Connection.
+Leftover Event → Read Model From / To after Command click. TIME click empty Inspector. Landing. Mac window chrome. Copy changes other than leftover default From / To / Connection.
 
 ## Restates
 
