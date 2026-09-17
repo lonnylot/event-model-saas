@@ -314,7 +314,17 @@ export function bindEditor(root) {
         }
       }
       if (button.textContent === "Add Automation on lane") {
-        holder.textContent = JSON.stringify(appendAutomation(model, index));
+        const next = appendAutomation(model, index);
+        holder.textContent = JSON.stringify(next);
+        const automation = next.slices?.[index]?.processors?.at(-1);
+        const cols = timeline.querySelectorAll?.(".slice-col") ?? [];
+        const list = cols[index]?.querySelector('[data-lane="automation"] ul');
+        if (list && automation) {
+          const item = root.createElement("li");
+          item.textContent = "Automation";
+          item.setAttribute("aria-label", "Automation");
+          list.append(item);
+        }
       }
     });
   }
