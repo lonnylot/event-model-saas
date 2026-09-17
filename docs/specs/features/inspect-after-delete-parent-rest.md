@@ -40,6 +40,6 @@ Command after-delete Type is [inspect-after-delete-parent-slice.md](./inspect-af
 
 - [inspect-after-delete-parent-slice.md](./inspect-after-delete-parent-slice.md) — Out of scope no longer parks after-delete parent Slice for Actor / Event / Read Model / Automation; those are this slice.
 - [inspect-after-delete.md](./inspect-after-delete.md) — Out of scope no longer parks Inspector empty after Actor / Event / Read Model / Automation Backspace; those are this slice (parent Slice Type). Inspector empty after Slice / Connection Backspace stays that file.
-- [inspect-deselect.md](./inspect-deselect.md) — TIME / empty `.board` `Nothing Selected` stays that file.
+- [inspect-deselect.md](./inspect-deselect.md) — TIME / empty `.board` `Nothing Selected` stays that file. After-delete parent Slice for Actor / Event / Read Model / Automation is this slice. Leftover Add Field after Command Backspace stays [inspect-after-delete.md](./inspect-after-delete.md).
 - [product.md](../product.md) — After Actor / Event / Read Model / Automation Backspace, Inspector shows the parent Slice.
 - [architecture.md](../architecture.md) — After-delete parent Slice for Actor / Event / Read Model / Automation is this slice.
