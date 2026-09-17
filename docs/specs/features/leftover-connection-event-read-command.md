@@ -1,6 +1,6 @@
 # Leftover connection event read command
 
-Status: validated
+Status: released
 
 ## Problem
 
