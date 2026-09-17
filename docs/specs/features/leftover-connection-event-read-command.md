@@ -36,7 +36,7 @@ Leftover Connection copy after Event click is [leftover-connection-event.md](./l
 
 ## Restates
 
-- [inspect-switch.md](./inspect-switch.md) — Leftover From Event Happened after `Command → Event Happened` stays that file. Leftover after Command click is this slice.
+- [inspect-switch.md](./inspect-switch.md) — Leftover From Event Happened / To Read Model after `Command → Event Happened` stays that file. Leftover after Command click is this slice.
 - [leftover-connection-command.md](./leftover-connection-command.md) — Leftover Command → Event copy after Command click stays that file.
 - [leftover-connection-event.md](./leftover-connection-event.md) — Leftover Connection copy after Event click stays that file. Leftover Event → Read Model From / To after Command click is this slice.
 - [product.md](../product.md) — Leftover Event → Read Model From / To after Command click is this slice.
