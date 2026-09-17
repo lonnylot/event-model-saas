@@ -35,11 +35,11 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-Live Connection titles after rename are [inspect-connection-live-titles.md](./inspect-connection-live-titles.md). Inserting Delete Connection after clicking `Event Happened → Read Model`. TIME click `Nothing Selected` and empty `.board` `Nothing Selected` stay [inspect-deselect.md](./inspect-deselect.md). Landing. Mac window chrome. Copy changes.
+Command → Event live titles after rename are [inspect-connection-live-titles.md](./inspect-connection-live-titles.md). Event → Read Model live titles after Name fill are [inspect-connection-event-read-titles.md](./inspect-connection-event-read-titles.md). Inserting Delete Connection after clicking `Event Happened → Read Model`. TIME click `Nothing Selected` and empty `.board` `Nothing Selected` stay [inspect-deselect.md](./inspect-deselect.md). Landing. Mac window chrome. Copy changes.
 
 ## Restates
 
-- [inspect-connection.md](./inspect-connection.md) — From / To inspect stays that file. Live titles after Name fill are [inspect-connection-live-titles.md](./inspect-connection-live-titles.md). Inspector Delete Connection is this slice. Command → Event Backspace stays [delete-blocks.md](./delete-blocks.md).
+- [inspect-connection.md](./inspect-connection.md) — From / To inspect stays that file. Command → Event live titles after Name fill are [inspect-connection-live-titles.md](./inspect-connection-live-titles.md). Event → Read Model live titles after Name fill are [inspect-connection-event-read-titles.md](./inspect-connection-event-read-titles.md). Inspector Delete Connection is this slice. Command → Event Backspace stays [delete-blocks.md](./delete-blocks.md).
 - [delete-blocks.md](./delete-blocks.md) — Backspace still deletes the selected Connection. Inspector Delete Connection is this slice.
 - [inspect-rest.md](./inspect-rest.md) — Naming hints, Slice type help, and ⇧⌘I stay not ported. Inspector Delete Connection is this slice. Command → Event Backspace stays [delete-blocks.md](./delete-blocks.md).
 - [delete-rest.md](./delete-rest.md) — Actor / Event / Read Model / Automation Backspace stay that file. Inspector Delete Connection is this slice. Command → Event Backspace stays [delete-blocks.md](./delete-blocks.md).

@@ -2080,4 +2080,76 @@ describe("spec tree", () => {
       "[redo-connection-pair.md](./redo-connection-pair.md)",
     );
   });
+
+  it("inspect-connection-event-read-titles Restates inspect-connection; inspect-connection does not park unqualified live titles on inspect-connection-live-titles", () => {
+    const restates =
+      readFileSync(
+        "docs/specs/features/inspect-connection-event-read-titles.md",
+        "utf8",
+      ).split("## Restates")[1] ?? "";
+    expect(restates).toContain(
+      "[inspect-connection.md](./inspect-connection.md)",
+    );
+    const text = readFileSync(
+      "docs/specs/features/inspect-connection.md",
+      "utf8",
+    );
+    expect(text).not.toMatch(/(?:^|\. )Live titles after Name fill are/m);
+    expect(text).toContain(
+      "Command → Event live titles after Name fill are [inspect-connection-live-titles.md](./inspect-connection-live-titles.md).",
+    );
+    expect(text).toContain(
+      "Event → Read Model live titles after Name fill are [inspect-connection-event-read-titles.md](./inspect-connection-event-read-titles.md).",
+    );
+  });
+
+  it("inspect-connection-live-titles Assumptions and Restates of inspect-connection do not park unqualified live titles as this slice", () => {
+    const text = readFileSync(
+      "docs/specs/features/inspect-connection-live-titles.md",
+      "utf8",
+    );
+    expect(text).not.toMatch(/(?:^|\. )Live titles after Name fill are/m);
+    const assumptions =
+      text.split("## Assumptions")[1]?.split("## Out of scope")[0] ?? "";
+    expect(assumptions).toContain(
+      "Command → Event live titles after Name fill are this slice.",
+    );
+    expect(assumptions).toContain(
+      "Event → Read Model live titles are [inspect-connection-event-read-titles.md](./inspect-connection-event-read-titles.md).",
+    );
+    const restates = text.split("## Restates")[1] ?? "";
+    const inspectConnectionRestates =
+      restates.split("- [inspect-connection.md]")[1]?.split("\n- [")[0] ?? "";
+    expect(inspectConnectionRestates).toContain(
+      "Command → Event live titles after Name fill are this slice.",
+    );
+    expect(inspectConnectionRestates).toContain(
+      "Event → Read Model live titles are [inspect-connection-event-read-titles.md](./inspect-connection-event-read-titles.md).",
+    );
+  });
+
+  it("inspect-connection-event-read-titles Restates of inspect-rest and inspect-rest Assumptions do not park unqualified live titles", () => {
+    const restates =
+      readFileSync(
+        "docs/specs/features/inspect-connection-event-read-titles.md",
+        "utf8",
+      ).split("## Restates")[1] ?? "";
+    const inspectRestRow =
+      restates.split("- [inspect-rest.md]")[1]?.split("\n- [")[0] ?? "";
+    expect(inspectRestRow).not.toMatch(/(?:^|\. )Live titles after Name fill are/m);
+    expect(inspectRestRow).toContain(
+      "Event → Read Model live titles after Name fill are this slice.",
+    );
+    const inspectRest = readFileSync(
+      "docs/specs/features/inspect-rest.md",
+      "utf8",
+    );
+    const assumptions =
+      inspectRest.split("## Assumptions")[1]?.split("## Out of scope")[0] ??
+      "";
+    expect(assumptions).not.toMatch(/(?:^|\. )Live titles after Name fill are/m);
+    expect(assumptions).toContain(
+      "Event → Read Model live titles after Name fill are [inspect-connection-event-read-titles.md](./inspect-connection-event-read-titles.md).",
+    );
+  });
 });
