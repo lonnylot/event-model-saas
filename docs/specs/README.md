@@ -143,5 +143,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Leftover field chrome switch | [features/leftover-field-chrome-switch.md](./features/leftover-field-chrome-switch.md) | released |
 | Inspect after delete parent rest | [features/inspect-after-delete-parent-rest.md](./features/inspect-after-delete-parent-rest.md) | released |
 | Undo add selected slice | [features/undo-add-selected-slice.md](./features/undo-add-selected-slice.md) | released |
+| Undo restore selected slice | [features/undo-restore-selected-slice.md](./features/undo-restore-selected-slice.md) | validated |
 
 Status: `draft` → `validated` → `released`.
