@@ -1,6 +1,6 @@
 # Leftover field chrome switch
 
-Status: validated
+Status: released
 
 ## Problem
 

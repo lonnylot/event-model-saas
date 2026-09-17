@@ -140,6 +140,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Undo connection event read | [features/undo-connection-event-read.md](./features/undo-connection-event-read.md) | released |
 | Leftover connection event | [features/leftover-connection-event.md](./features/leftover-connection-event.md) | released |
 | Leftover connection event read command | [features/leftover-connection-event-read-command.md](./features/leftover-connection-event-read-command.md) | released |
-| Leftover field chrome switch | [features/leftover-field-chrome-switch.md](./features/leftover-field-chrome-switch.md) | validated |
+| Leftover field chrome switch | [features/leftover-field-chrome-switch.md](./features/leftover-field-chrome-switch.md) | released |
 
 Status: `draft` → `validated` → `released`.
