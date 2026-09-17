@@ -122,3 +122,18 @@ test("After clicking `Add Event`, clicking the Timeline `Event Happened` listite
     inspector.getByRole("textbox", { name: "Field name", exact: true }),
   ).toHaveCount(0);
 });
+
+test("After clicking `Add Event`, clicking the Timeline `Event Happened` listitem, clicking `Add Field`, clicking `Add Command`, clicking the Timeline `Command` listitem, the Inspector region does not show a button whose accessible name is `Delete Field`", async ({
+  page,
+}) => {
+  const { timeline, inspector } = await addFieldOnEventThenAddCommand(page);
+  await expect(
+    inspector.getByRole("button", { name: "Delete Field", exact: true }),
+  ).toBeVisible();
+  await timeline
+    .getByRole("listitem", { name: "Command", exact: true })
+    .click();
+  await expect(
+    inspector.getByRole("button", { name: "Delete Field", exact: true }),
+  ).toHaveCount(0);
+});

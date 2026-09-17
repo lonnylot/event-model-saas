@@ -1414,6 +1414,7 @@ export function bindInspect(root, ctx) {
         bindDeleteField();
       } else {
         unbindFieldName();
+        deleteFieldButton()?.remove();
       }
       return;
     }

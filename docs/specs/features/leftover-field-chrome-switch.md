@@ -9,7 +9,7 @@ Unbind-then-rebind of Field chrome runs only for GET-rendered listitems. Add Fie
 ## Acceptance criteria
 
 - [x] After clicking `Add Event`, clicking the Timeline `Event Happened` listitem, clicking `Add Field`, clicking `Add Command`, clicking the Timeline `Command` listitem, the Inspector region does not show a textbox whose accessible name is `Field name`
-- [ ] After clicking `Add Event`, clicking the Timeline `Event Happened` listitem, clicking `Add Field`, clicking `Add Command`, clicking the Timeline `Command` listitem, the Inspector region does not show a button whose accessible name is `Delete Field`
+- [x] After clicking `Add Event`, clicking the Timeline `Event Happened` listitem, clicking `Add Field`, clicking `Add Command`, clicking the Timeline `Command` listitem, the Inspector region does not show a button whose accessible name is `Delete Field`
 
 ## Domain terms
 
