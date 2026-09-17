@@ -152,3 +152,16 @@ test("After dragging from `Event Happened port` onto `Read Model port`, filling 
     inspector.getByText("From Order Placed", { exact: true }),
   ).toBeVisible();
 });
+
+test("After dragging from `Event Happened port` onto `Read Model port`, filling the Timeline `Event Happened` listitem Inspector `Name` with `Order Placed`, filling the Timeline `Read Model` listitem Inspector `Name` with `Orders`, clicking the Timeline text `Order Placed → Orders` shows the text `To Orders` in the Inspector region", async ({
+  page,
+}) => {
+  const { timeline, inspector } = await connectThenRename(page);
+  await expect(
+    inspector.getByText("To Orders", { exact: true }),
+  ).toHaveCount(0);
+  await timeline.getByText("Order Placed → Orders", { exact: true }).click();
+  await expect(
+    inspector.getByText("To Orders", { exact: true }),
+  ).toBeVisible();
+});
