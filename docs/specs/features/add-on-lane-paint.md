@@ -10,7 +10,7 @@ Lane `Add Actor on lane` / `Add Event on lane` / `Add Read Model on lane` / `Add
 
 - [x] After clicking `New Slice` twice, clicking the first `Add Actor on lane`, the first Slice Timeline region shows 2 listitem whose accessible name is `Actor`
 - [x] After clicking `New Slice` twice, clicking the first `Add Event on lane`, the first Slice Timeline region shows a listitem whose accessible name is `Event Happened`
-- [ ] After clicking `New Slice` twice, clicking the first `Add Read Model on lane`, the first Slice Timeline region shows a listitem whose accessible name is `Read Model`
+- [x] After clicking `New Slice` twice, clicking the first `Add Read Model on lane`, the first Slice Timeline region shows a listitem whose accessible name is `Read Model`
 - [ ] After clicking `New Slice` twice, clicking the first `Add Automation on lane`, the first Slice Timeline region shows a listitem whose accessible name is `Automation`
 
 ## Domain terms

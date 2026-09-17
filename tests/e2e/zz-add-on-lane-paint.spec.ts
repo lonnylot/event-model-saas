@@ -136,3 +136,19 @@ test("After clicking `New Slice` twice, clicking the first `Add Event on lane`, 
     firstSlice.getByRole("listitem", { name: "Event Happened", exact: true }),
   ).toBeVisible();
 });
+
+test("After clicking `New Slice` twice, clicking the first `Add Read Model on lane`, the first Slice Timeline region shows a listitem whose accessible name is `Read Model`", async ({
+  page,
+}) => {
+  await openImportedEmptyModel(page);
+  await clickNewSlice(page);
+  await clickNewSlice(page);
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  const firstSlice = timeline.locator(".slice-col").first();
+  await firstSlice
+    .getByRole("button", { name: "Add Read Model on lane", exact: true })
+    .click();
+  await expect(
+    firstSlice.getByRole("listitem", { name: "Read Model", exact: true }),
+  ).toBeVisible();
+});

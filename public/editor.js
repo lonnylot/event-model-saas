@@ -301,7 +301,17 @@ export function bindEditor(root) {
         }
       }
       if (button.textContent === "Add Read Model on lane") {
-        holder.textContent = JSON.stringify(appendReadModel(model, index));
+        const next = appendReadModel(model, index);
+        holder.textContent = JSON.stringify(next);
+        const readModel = next.slices?.[index]?.readModels?.at(-1);
+        const cols = timeline.querySelectorAll?.(".slice-col") ?? [];
+        const list = cols[index]?.querySelector('[data-lane="readmodel"] ul');
+        if (list && readModel) {
+          const item = root.createElement("li");
+          item.textContent = "Read Model";
+          item.setAttribute("aria-label", "Read Model");
+          list.append(item);
+        }
       }
       if (button.textContent === "Add Automation on lane") {
         holder.textContent = JSON.stringify(appendAutomation(model, index));
