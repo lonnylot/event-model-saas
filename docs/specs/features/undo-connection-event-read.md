@@ -4,12 +4,13 @@ Status: validated
 
 ## Problem
 
-In-session Event → Read Model does not push the undo stack. ⌘Z of a later Command → Event can `pop()` that Event → Read Model instead. Mac undo restores the snapshot. A member cannot undo a just-drawn Event → Read Model.
+In-session Event → Read Model does not push the undo stack. ⌘Z of a later Command → Event can `pop()` that Event → Read Model instead. Connection undo also removes every `Event Happened → Read Model` caption, so ⌘Z of Command → Event drops that leftover caption. Mac undo restores the snapshot. A member cannot undo a just-drawn Event → Read Model.
 
 ## Acceptance criteria
 
 - [x] After dragging from `Event Happened port` onto `Read Model port`, pressing ⌘Z, the Timeline region does not show the text `Event Happened → Read Model`
 - [x] After dragging from `Command port` onto `Event Happened port`, then from `Event Happened port` onto `Read Model port`, pressing ⌘Z, the Timeline region still shows the text `Command → Event Happened`
+- [x] After dragging from `Event Happened port` onto `Read Model port`, then from `Command port` onto `Event Happened port`, pressing ⌘Z, the Timeline region still shows the text `Event Happened → Read Model`
 
 ## Domain terms
 
@@ -36,7 +37,7 @@ Redo of Event → Read Model pair ids. TIME click empty Inspector. Landing. Mac 
 
 ## Restates
 
-- [canvas.md](./canvas.md) — Undo Command → Event stays that file. Undo Event → Read Model is this slice.
+- [canvas.md](./canvas.md) — Undo Command → Event stays that file. Undo Event → Read Model is this slice. Command → Event undo does not drop the Event → Read Model caption.
 - [redo-connection-pair.md](./redo-connection-pair.md) — Command → Event redo ids stay that file. Redo of Event → Read Model stays that file's Out of scope.
 - [connection-event-read-id.md](./connection-event-read-id.md) — In-session Event → Read Model `data-id` stays that file. Undo of Event → Read Model is this slice.
 - [undo-rest.md](./undo-rest.md) — Undo of remaining Adds, move, delete, and redo stay that file. Undo Command → Event stays [canvas.md](./canvas.md). Undo of Event → Read Model is this slice.

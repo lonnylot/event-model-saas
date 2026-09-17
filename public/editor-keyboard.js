@@ -575,7 +575,13 @@ export function bindKeyboard(root, ctx) {
           ) {
             node.remove();
           }
-          if (node.textContent === "Event Happened → Read Model") node.remove();
+          if (
+            node.textContent === "Event Happened → Read Model" &&
+            connection?.fromKind === "EVENT" &&
+            connection?.toKind === "READMODEL"
+          ) {
+            node.remove();
+          }
         }
         if (connection) {
           ctx.redoStack.push({
