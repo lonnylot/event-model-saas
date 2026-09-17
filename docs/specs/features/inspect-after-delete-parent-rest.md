@@ -1,6 +1,6 @@
 # Inspect after delete parent rest
 
-Status: validated
+Status: released
 
 ## Problem
 
