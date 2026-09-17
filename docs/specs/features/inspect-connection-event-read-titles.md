@@ -1,6 +1,6 @@
 # Inspect connection event read titles
 
-Status: validated
+Status: released
 
 ## Problem
 
