@@ -95,6 +95,8 @@ A Problem that names Inspector Name on Actor and Automation when unique AC is GE
 
 A Problem that names leftover Add Field when unique AC is Inspector `Nothing Selected` is leftover-wide Problem — Add Field is a `button`; `:has(label)` empty copy stays green if `unbindFieldChrome()` is deleted. Add the does-not-show-button AC (`inspect-switch.md` leftover Add Field), or drop Add Field from Problem.
 
+A Problem that names leftover Inspector Name / Add Field when unique ACs are Inspector Type after Actor / Event / Read Model / Automation Backspace is leftover-wide Problem — `nameInput()?.closest("label")?.remove()` / `unbindFieldChrome()` is extra chrome. Type `toBeVisible` stays green if those calls are deleted. Add leftover Name / leftover Add Field ACs, or omit the unbind (`inspect-after-delete-parent-rest`).
+
 A Problem that names Event → Read Model Backspace JSON **and** the caption on `.board` when unique AC is `connections` to `[]` is leftover-wide Problem — `node?.remove()` of `Event Happened → Read Model` is extra chrome. Add the caption AC, or omit the remove (`testing`).
 
 Restates inspect-after-reload “Name JSON and Backspace on those GET listitems” (Actor / Automation) while Out of scope parks GET Automation Name JSON cannot both hold — narrow Restates to GET Actor Name JSON and GET Actor / Automation Backspace.
