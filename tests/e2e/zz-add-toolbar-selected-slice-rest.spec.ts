@@ -122,3 +122,30 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks the f
     lastSlice.getByRole("listitem", { name: "Actor", exact: true }),
   ).toHaveCount(1);
 });
+
+test("After a member creates a model, opens it, clicks `New Slice`, clicks the first `New Slice` listitem in the Slices region, and clicks `Add Event`, the Timeline region of the first Slice shows a listitem whose accessible name is `Event Happened`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  const slices = page
+    .getByRole("heading", { name: "Slices", exact: true })
+    .locator("xpath=following-sibling::ul[1]");
+  await expect(
+    slices.getByRole("listitem", { name: "New Slice", exact: true }),
+  ).toHaveCount(2);
+  await slices
+    .getByRole("listitem", { name: "New Slice", exact: true })
+    .first()
+    .click();
+  await page.getByRole("button", { name: "Add Event", exact: true }).click();
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  const firstSlice = timeline.locator(".slice-col").first();
+  const lastSlice = timeline.locator(".slice-col").last();
+  await expect(
+    firstSlice.getByRole("listitem", { name: "Event Happened", exact: true }),
+  ).toBeVisible();
+  await expect(
+    lastSlice.getByRole("listitem", { name: "Event Happened", exact: true }),
+  ).toHaveCount(0);
+});

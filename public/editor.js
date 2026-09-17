@@ -189,12 +189,19 @@ export function onAddCommandClick(root, sliceIndex) {
   redoStack.length = 0;
 }
 
-export function onAddEventClick(root) {
+export function onAddEventClick(root, sliceIndex) {
   const holder = root.getElementById("event-model-document");
-  const next = appendEvent(JSON.parse(holder?.textContent || "{}"));
+  const next = appendEvent(
+    JSON.parse(holder?.textContent || "{}"),
+    sliceIndex,
+  );
   if (holder) holder.textContent = JSON.stringify(next);
-  const event = next.slices?.at(-1)?.events?.at(-1);
-  const list = lastLaneList(root, "event");
+  const index = sliceIndex ?? (next.slices?.length ?? 1) - 1;
+  const event = next.slices?.[index]?.events?.at(-1);
+  const cols = timelineEl(root)?.querySelectorAll?.(".slice-col") ?? [];
+  const list =
+    cols[index]?.querySelector('[data-lane="event"] ul') ??
+    lastLaneList(root, "event");
   if (list && event) {
     const item = root.createElement("li");
     item.textContent = "Event Happened";
@@ -350,7 +357,9 @@ export function bindEditor(root) {
       );
     }
     if (button.textContent === "Add Event") {
-      button.addEventListener("click", () => onAddEventClick(root));
+      button.addEventListener("click", () =>
+        onAddEventClick(root, selectedSliceIndex),
+      );
     }
     if (button.textContent === "Add Read Model") {
       button.addEventListener("click", () => onAddReadModelClick(root));
@@ -396,7 +405,7 @@ export function bindEditor(root) {
   ctx.onNewSliceClick = () => onNewSliceClick(root);
   ctx.onAddActorClick = () => onAddActorClick(root, selectedSliceIndex);
   ctx.onAddCommandClick = () => onAddCommandClick(root, selectedSliceIndex);
-  ctx.onAddEventClick = () => onAddEventClick(root);
+  ctx.onAddEventClick = () => onAddEventClick(root, selectedSliceIndex);
   ctx.onAddReadModelClick = () => onAddReadModelClick(root);
   ctx.onAddAutomationClick = () => onAddAutomationClick(root);
   bindKeyboard(root, ctx);
