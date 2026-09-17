@@ -2080,4 +2080,26 @@ describe("spec tree", () => {
       "[redo-connection-pair.md](./redo-connection-pair.md)",
     );
   });
+
+  it("inspect-connection-event-read-titles Restates inspect-connection; inspect-connection does not park unqualified live titles on inspect-connection-live-titles", () => {
+    const restates =
+      readFileSync(
+        "docs/specs/features/inspect-connection-event-read-titles.md",
+        "utf8",
+      ).split("## Restates")[1] ?? "";
+    expect(restates).toContain(
+      "[inspect-connection.md](./inspect-connection.md)",
+    );
+    const text = readFileSync(
+      "docs/specs/features/inspect-connection.md",
+      "utf8",
+    );
+    expect(text).not.toMatch(/(?:^|\. )Live titles after Name fill are/m);
+    expect(text).toContain(
+      "Command → Event live titles after Name fill are [inspect-connection-live-titles.md](./inspect-connection-live-titles.md).",
+    );
+    expect(text).toContain(
+      "Event → Read Model live titles after Name fill are [inspect-connection-event-read-titles.md](./inspect-connection-event-read-titles.md).",
+    );
+  });
 });

@@ -44,5 +44,6 @@ Command → Event live titles are [inspect-connection-live-titles.md](./inspect-
 - [inspect-delete-connection.md](./inspect-delete-connection.md) — Inspector Delete Connection stays that file. Command → Event live titles stay [inspect-connection-live-titles.md](./inspect-connection-live-titles.md). Event → Read Model live titles after Name fill are this slice.
 - [connection-event-read-id.md](./connection-event-read-id.md) — In-session `data-id` stays that file. Event → Read Model live titles after Name fill are this slice.
 - [leftover-connection-command.md](./leftover-connection-command.md) — Leftover default From Command / To Event Happened after Command click stays that file. Command → Event live titles stay [inspect-connection-live-titles.md](./inspect-connection-live-titles.md). Event → Read Model live titles after Name fill are this slice.
+- [inspect-connection.md](./inspect-connection.md) — Default-title Command → Event inspect stays that file. Command → Event live titles stay [inspect-connection-live-titles.md](./inspect-connection-live-titles.md). Event → Read Model live titles after Name fill are this slice.
 - [product.md](../product.md) — Inspect an Event → Read Model after rename uses current Event and Read Model titles.
 - [architecture.md](../architecture.md) — Event → Read Model live titles are this slice.
