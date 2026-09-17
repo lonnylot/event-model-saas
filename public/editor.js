@@ -222,12 +222,19 @@ export function onAddEventClick(root, sliceIndex) {
   undoStack.push("event");
 }
 
-export function onAddReadModelClick(root) {
+export function onAddReadModelClick(root, sliceIndex) {
   const holder = root.getElementById("event-model-document");
-  const next = appendReadModel(JSON.parse(holder?.textContent || "{}"));
+  const next = appendReadModel(
+    JSON.parse(holder?.textContent || "{}"),
+    sliceIndex,
+  );
   if (holder) holder.textContent = JSON.stringify(next);
-  const readModel = next.slices?.at(-1)?.readModels?.at(-1);
-  const list = lastLaneList(root, "readmodel");
+  const index = sliceIndex ?? (next.slices?.length ?? 1) - 1;
+  const readModel = next.slices?.[index]?.readModels?.at(-1);
+  const cols = timelineEl(root)?.querySelectorAll?.(".slice-col") ?? [];
+  const list =
+    cols[index]?.querySelector('[data-lane="readmodel"] ul') ??
+    lastLaneList(root, "readmodel");
   if (list && readModel) {
     const item = root.createElement("li");
     item.textContent = "Read Model";
@@ -362,7 +369,9 @@ export function bindEditor(root) {
       );
     }
     if (button.textContent === "Add Read Model") {
-      button.addEventListener("click", () => onAddReadModelClick(root));
+      button.addEventListener("click", () =>
+        onAddReadModelClick(root, selectedSliceIndex),
+      );
     }
     if (button.textContent === "Add Automation") {
       button.addEventListener("click", () => onAddAutomationClick(root));
@@ -406,7 +415,7 @@ export function bindEditor(root) {
   ctx.onAddActorClick = () => onAddActorClick(root, selectedSliceIndex);
   ctx.onAddCommandClick = () => onAddCommandClick(root, selectedSliceIndex);
   ctx.onAddEventClick = () => onAddEventClick(root, selectedSliceIndex);
-  ctx.onAddReadModelClick = () => onAddReadModelClick(root);
+  ctx.onAddReadModelClick = () => onAddReadModelClick(root, selectedSliceIndex);
   ctx.onAddAutomationClick = () => onAddAutomationClick(root);
   bindKeyboard(root, ctx);
   bindPointer(root, ctx);
