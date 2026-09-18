@@ -9,7 +9,7 @@ Imported empty Event Model has no Slice. Toolbar Add is clickable and no-ops. Ma
 ## Acceptance criteria
 
 - [x] After opening Empty Import, the Timeline region shows a button whose accessible name is `New Slice`
-- [ ] After opening Empty Import, the button whose accessible name is `Add Actor` is disabled
+- [x] After opening Empty Import, the button whose accessible name is `Add Actor` is disabled
 
 ## Domain terms
 
@@ -37,8 +37,8 @@ Creating a Slice from toolbar Add. TIME click empty Inspector. Landing. Mac wind
 ## Restates
 
 - [blocks.md](./blocks.md) — Clicking Add with no Slices still does not create a Slice. Empty canvas Timeline New Slice is this slice. Disabled toolbar Add when there are no Slices is this slice.
-- [add-on-lane-rest.md](./add-on-lane-rest.md) — Creating a Slice from Add when there are none stays not a feature. Empty canvas Timeline New Slice is this slice.
-- [product.md](../product.md) — Empty canvas Timeline New Slice and disabled toolbar Add when there are no Slices are this slice.
-- [architecture.md](../architecture.md) — Empty canvas Timeline New Slice is this slice.
+- [add-on-lane-rest.md](./add-on-lane-rest.md) — Creating a Slice from Add when there are none stays not a feature. Empty canvas Timeline New Slice and disabled toolbar Add Actor when there are no Slices are this slice.
+- [product.md](../product.md) — Empty canvas Timeline New Slice and disabled toolbar Add Actor when there are no Slices are this slice.
+- [architecture.md](../architecture.md) — Empty canvas Timeline New Slice and disabled toolbar Add Actor when there are no Slices are this slice.
 - [editor-shell.md](./editor-shell.md) — Toolbar `New Slice` stays that file. Timeline empty New Slice is this slice.
 - [designed-surfaces.md](./designed-surfaces.md) — `Start the timeline` heading stays that file. Timeline empty New Slice is this slice.

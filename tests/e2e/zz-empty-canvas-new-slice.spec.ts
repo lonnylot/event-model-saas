@@ -95,3 +95,12 @@ test("After opening Empty Import, the Timeline region shows a button whose acces
       .getByRole("button", { name: "New Slice", exact: true }),
   ).toBeVisible();
 });
+
+test("After opening Empty Import, the button whose accessible name is `Add Actor` is disabled", async ({
+  page,
+}) => {
+  await openImportedEmptyModel(page);
+  await expect(
+    page.getByRole("button", { name: "Add Actor", exact: true }),
+  ).toBeDisabled();
+});

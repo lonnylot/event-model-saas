@@ -804,6 +804,20 @@ describe("create model", () => {
     );
   });
 
+  it("After opening Empty Import, the button whose accessible name is `Add Actor` is disabled", async () => {
+    const { env } = await importedEmpty();
+    const response = await handleRequest(
+      new Request(
+        "https://event-model.lonnylot.com/app/teams/team-1/models/model-1",
+        { headers: { Cookie: "session=sess-admin" } },
+      ),
+      env,
+    );
+    expect(await response.text()).toContain(
+      '<button type="button" disabled>Add Actor</button>',
+    );
+  });
+
   it("GET `/app/teams/{id}/models/{mid}` as a member shows the text `Time`", async () => {
     const { env } = await createdUntitled();
     const response = await handleRequest(
