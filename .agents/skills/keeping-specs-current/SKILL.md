@@ -7,7 +7,9 @@ description: >
   describe the old behavior, restating Problem / Out of scope while leftover Restates still
   describes the parked behavior, leftover Assumptions after restating Out of scope, leftover locked claims in a restated system spec, when
   Restates omits a released spec that still describes
-  deleted behavior, when this HEAD rewrote a released spec
+  deleted behavior, when Out of scope names a released spec
+  Restates omitted that still parks this slice as later,
+  when this HEAD rewrote a released spec
   that Restates omitted, when Restates omits draft architecture
   that still assigns token or CSS ownership, when Restates names leftover files whose bullets
   were not rewritten, when Restates lists a path this HEAD did not rewrite,

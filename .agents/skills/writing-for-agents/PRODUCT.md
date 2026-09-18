@@ -50,6 +50,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Restates omitting public-face leftover unused `.bento` fill/lift after this HEAD rewrote that Out of scope | `keeping-specs-current` |
 | Restates omitting released `hydrate-board.md` leftover Out of scope covering TIME chrome after this slice took covering TIME chrome | `keeping-specs-current` |
 | Restates omitting released `editor-bind-split.md` leftover Out of scope ⌘S Save after this slice took ⌘S Save | `keeping-specs-current` |
+| Restates omitting released `add-on-lane-paint.md` leftover Out of scope toolbar Add later slice after this slice took those toolbar Adds; naming that file in Out of scope as lane paint is not a rewrite | `keeping-specs-current` |
 | Restates omitting released `editor-shell.md` leftover Out of scope unqualified Slice type after reload / Description after reload parked on inspect-rest after this slice took GET Type / Description of the first of two Slices | `keeping-specs-current` |
 | Restates omitting released `inspect-after-reload.md` leftover Description after reload parked on inspect-rest after this slice took GET Description of the first of two Slices | `keeping-specs-current` |
 | Restates omitting released `inspect-after-reload.md` leftover unqualified Command Description after reload / Command Field after reload parked on inspect-rest after this slice took GET Description / Field of the first of two Commands | `keeping-specs-current` |
