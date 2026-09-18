@@ -802,6 +802,7 @@ export function bindInspect(root, ctx) {
               JSON.parse(holder.textContent || "{}"),
               input.checked,
               "automation",
+              ctx.selectedAutomationItem?.dataset?.id,
             ),
           );
         }
@@ -1185,7 +1186,7 @@ export function bindInspect(root, ctx) {
                     ? ctx.selectedEventItem?.dataset?.id
                     : ctx.selected === "readmodel"
                       ? ctx.selectedReadModelItem?.dataset?.id
-                      : undefined,
+                      : ctx.selectedAutomationItem?.dataset?.id,
               ),
             );
           }

@@ -271,3 +271,90 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks the f
   expect(model.slices[0].readModels[0].fields[0].optional).toBe(false);
   expect(model.slices.at(-1).readModels ?? []).toEqual([]);
 });
+
+test("After a member creates a model, opens it, clicks `New Slice`, clicks the first `New Slice` listitem in the Slices region, clicks `Add Automation on lane` on that Slice, clicks the Timeline `Automation` listitem of the first Slice, clicks `Add Field`, checks `Optional`, fills `Name` with `Send Email`, clicks `Add Automation`, clicks the last Timeline `Automation` listitem, clicks `Add Field`, checks `Optional`, fills `Name` with `Send SMS`, and Saves, a reload of that page, clicking the Timeline `Send Email` listitem, unchecking `Optional`, clicking the Timeline `Send SMS` listitem shows Inspector `Optional` checked", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  const slices = page
+    .getByRole("heading", { name: "Slices", exact: true })
+    .locator("xpath=following-sibling::ul[1]");
+  await expect(
+    slices.getByRole("listitem", { name: "New Slice", exact: true }),
+  ).toHaveCount(2);
+  await slices
+    .getByRole("listitem", { name: "New Slice", exact: true })
+    .first()
+    .click();
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  const inspector = page.getByRole("region", {
+    name: "Inspector",
+    exact: true,
+  });
+  const firstSlice = timeline.locator(".slice-col").first();
+  await expect(
+    firstSlice.getByRole("button", { name: "Add Automation on lane", exact: true }),
+  ).toBeVisible();
+  await firstSlice
+    .getByRole("button", { name: "Add Automation on lane", exact: true })
+    .click();
+  await expect(
+    firstSlice.getByRole("listitem", { name: "Automation", exact: true }),
+  ).toBeVisible();
+  await firstSlice
+    .getByRole("listitem", { name: "Automation", exact: true })
+    .click();
+  await inspector.getByRole("button", { name: "Add Field", exact: true }).click();
+  await inspector
+    .getByRole("checkbox", { name: "Optional", exact: true })
+    .check();
+  await inspector.getByRole("textbox", { name: "Name", exact: true }).fill(
+    "Send Email",
+  );
+  await expect(
+    firstSlice.getByRole("listitem", { name: "Send Email", exact: true }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Add Automation", exact: true }).click();
+  await expect(
+    timeline.getByRole("listitem", { name: "Automation", exact: true }),
+  ).toHaveCount(1);
+  await timeline
+    .getByRole("listitem", { name: "Automation", exact: true })
+    .last()
+    .click();
+  await inspector.getByRole("button", { name: "Add Field", exact: true }).click();
+  await inspector
+    .getByRole("checkbox", { name: "Optional", exact: true })
+    .check();
+  await inspector.getByRole("textbox", { name: "Name", exact: true }).fill(
+    "Send SMS",
+  );
+  await Promise.all([
+    page.waitForResponse(
+      (response) =>
+        response.url().includes("/api/models/") &&
+        response.request().method() === "PUT",
+    ),
+    page.getByRole("button", { name: "Save", exact: true }).click(),
+  ]);
+  await page.reload();
+  await page.waitForLoadState("networkidle");
+  await expect(
+    timeline.getByRole("listitem", { name: "Send Email", exact: true }),
+  ).toBeVisible();
+  await timeline
+    .getByRole("listitem", { name: "Send Email", exact: true })
+    .click();
+  await inspector
+    .getByRole("checkbox", { name: "Optional", exact: true })
+    .uncheck();
+  await timeline.getByRole("listitem", { name: "Send SMS", exact: true }).click();
+  await expect(
+    inspector.getByRole("checkbox", { name: "Optional", exact: true }),
+  ).toBeChecked();
+  const json = await page.locator("#event-model-document").textContent();
+  const model = JSON.parse(json ?? "{}");
+  expect(model.slices[0].processors[0].fields[0].optional).toBe(false);
+  expect(model.slices.at(-1).processors ?? []).toEqual([]);
+});
