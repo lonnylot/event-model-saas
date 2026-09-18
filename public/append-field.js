@@ -68,12 +68,28 @@ export function appendField(model, target = "command", id) {
     return { ...model, slices };
   }
   if (target === "automation") {
+    if (id) {
+      const sliceIndex = slices.findIndex((slice) =>
+        (slice.processors ?? []).some((automation) => automation.id === id),
+      );
+      if (sliceIndex < 0) return model;
+      const slice = slices[sliceIndex];
+      const processors = [...(slice.processors ?? [])];
+      const index = processors.findIndex((automation) => automation.id === id);
+      if (index < 0) return model;
+      const automation = processors[index];
+      if (!automation) return model;
+      processors[index] = {
+        ...automation,
+        fields: [...(automation.fields ?? []), field],
+      };
+      slices[sliceIndex] = { ...slice, processors };
+      return { ...model, slices };
+    }
     const slice = slices.at(-1);
     if (!slice) return model;
     const processors = [...(slice.processors ?? [])];
-    const index = id
-      ? processors.findIndex((automation) => automation.id === id)
-      : processors.length - 1;
+    const index = processors.length - 1;
     if (index < 0) return model;
     const automation = processors[index];
     if (!automation) return model;

@@ -371,6 +371,8 @@ export function bindEditor(root) {
           const item = root.createElement("li");
           item.textContent = "Automation";
           item.setAttribute("aria-label", "Automation");
+          item.dataset.kind = "automation";
+          if (automation.id) item.setAttribute("data-id", automation.id);
           list.append(item);
         }
       }
