@@ -65,6 +65,8 @@ Copying a schema file into Assumptions is not a rewrite. Deleting Spec slices, A
 
 Restating one phrase in a `product.md` bullet is unfinished until you re-read the **entire** touched bullet and rewrite every other locked phrase that bullet still contains which HEAD does not implement (later-slice Playwright `add a slice`, leftover `team list` / `model list`, leftover `highlighting` / `snap-back` / `reason on the source`, leftover Next slice that still names a released slug).
 
+Restating `product.md` Testing to include insert-after / last stays Slice 2 is unfinished until leftover `reload, click New Slice, Description is First column` in that same bullet is rewritten to `click Slice 2`. inspect-rest GET Description of toolbar New Slice clicks the `Slice 2` listitem after Save then reload. Two bullets cannot both hold. Grep `reload, click New Slice, Description`.
+
 Two-dot vs current default deleting a catalog-released spec, Playwright file, or catalog row is blocking — three-dot from a stale merge-base hides that drop.
 
 Leftover `<<<<<<<` in `docs/specs/README.md` is not a feature row — a new catalog row at the bottom while `<<<<<<< Updated upstream` remains in the table is unfinished (Inspect event read after Inspect switch / Port wrap; Connection caption after Editor bind split). The catalog conflict-marker unit test is architecture Spec tree (same home as no `docs/superpowers/`).
