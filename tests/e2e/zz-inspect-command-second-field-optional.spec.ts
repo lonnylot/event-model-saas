@@ -86,7 +86,7 @@ async function openUntitledModel(page: Page) {
   await page.waitForLoadState("networkidle");
 }
 
-test("After a member creates a model, opens it, clicks `Add Command`, clicks the Timeline `Command` listitem, clicks `Add Field`, checks `Optional`, fills the first `Field name` with `orderId`, clicks `Add Field`, and Saves, a reload of that page, clicking the Timeline `Command` listitem, unchecking the second `Optional`, clicking away and the Timeline `Command` listitem shows the first Inspector `Optional` checked", async ({
+test("After a member creates a model, opens it, clicks `Add Command`, clicks the Timeline `Command` listitem, clicks `Add Field`, checks `Optional`, fills the first `Field name` with `orderId`, clicks `Add Field`, and Saves, a reload of that page, clicking the Timeline `Command` listitem, checking the second `Optional`, unchecking the second `Optional`, clicking away and the Timeline `Command` listitem shows the first Inspector `Optional` checked", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -123,6 +123,10 @@ test("After a member creates a model, opens it, clicks `Add Command`, clicks the
     timeline.getByRole("listitem", { name: "Command", exact: true }),
   ).toBeVisible();
   await timeline.getByRole("listitem", { name: "Command", exact: true }).click();
+  await inspector
+    .getByRole("checkbox", { name: "Optional", exact: true })
+    .nth(1)
+    .check();
   await inspector
     .getByRole("checkbox", { name: "Optional", exact: true })
     .nth(1)

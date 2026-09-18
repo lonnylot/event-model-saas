@@ -8,7 +8,7 @@ Status: validated
 
 ## Acceptance criteria
 
-- [x] After a member creates a model, opens it, clicks `Add Command`, clicks the Timeline `Command` listitem, clicks `Add Field`, checks `Optional`, fills the first `Field name` with `orderId`, clicks `Add Field`, and Saves, a reload of that page, clicking the Timeline `Command` listitem, unchecking the second `Optional`, clicking away and the Timeline `Command` listitem shows the first Inspector `Optional` checked
+- [x] After a member creates a model, opens it, clicks `Add Command`, clicks the Timeline `Command` listitem, clicks `Add Field`, checks `Optional`, fills the first `Field name` with `orderId`, clicks `Add Field`, and Saves, a reload of that page, clicking the Timeline `Command` listitem, checking the second `Optional`, unchecking the second `Optional`, clicking away and the Timeline `Command` listitem shows the first Inspector `Optional` checked
 
 ## Domain terms
 
