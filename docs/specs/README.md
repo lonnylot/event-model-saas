@@ -152,6 +152,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Inspect add field event first slice | [features/inspect-add-field-event-first-slice.md](./features/inspect-add-field-event-first-slice.md) | released |
 | Inspect event field name first slice | [features/inspect-event-field-name-first-slice.md](./features/inspect-event-field-name-first-slice.md) | released |
 | Inspect event second field name | [features/inspect-event-second-field-name.md](./features/inspect-event-second-field-name.md) | released |
-| Inspect event field optional first slice | [features/inspect-event-field-optional-first-slice.md](./features/inspect-event-field-optional-first-slice.md) | validated |
+| Inspect event field optional first slice | [features/inspect-event-field-optional-first-slice.md](./features/inspect-event-field-optional-first-slice.md) | released |
 
 Status: `draft` → `validated` → `released`.

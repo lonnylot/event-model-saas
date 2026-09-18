@@ -1,6 +1,6 @@
 # Inspect event field optional first slice
 
-Status: validated
+Status: released
 
 ## Problem
 
