@@ -34,7 +34,7 @@ Environment facts (hostname, test adapter, platform flags). A shippable operator
 
 ## Out of scope
 
-Explicit non-goals.
+Explicit non-goals. Link a spec path only when that file exists. Name later-slice parks without a path until that spec exists (`keeping-specs-current`).
 
 ## Restates
 

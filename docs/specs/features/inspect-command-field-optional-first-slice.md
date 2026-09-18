@@ -31,7 +31,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-First-Slice Command Example write is [inspect-command-field-example-first-slice.md](./inspect-command-field-example-first-slice.md). Second Field Optional is [inspect-command-second-field-optional.md](./inspect-command-second-field-optional.md). TIME click empty Inspector. Landing. Mac window chrome. Copy changes.
+First-Slice Command Example write. Second Field Optional. TIME click empty Inspector. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 

@@ -1,5 +1,5 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
-import { join } from "node:path";
+import { dirname, join, resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 
 function specMarkdownFiles(dir: string): string[] {
@@ -21,6 +21,20 @@ describe("spec tree", () => {
     const text = readFileSync("docs/specs/README.md", "utf8");
     expect(text).not.toContain("<<<<<<<");
     expect(text).not.toContain(">>>>>>>");
+  });
+
+  it("feature spec relative markdown links exist", () => {
+    for (const path of specMarkdownFiles("docs/specs/features")) {
+      const text = readFileSync(path, "utf8");
+      for (const match of text.matchAll(/\]\(([^)\s]+)\)/g)) {
+        const href = match[1].split("#")[0];
+        if (!href || /^(https?:|mailto:)/.test(href)) continue;
+        if (!href.endsWith(".md")) continue;
+        expect(existsSync(resolve(dirname(path), href)), `${path} -> ${href}`).toBe(
+          true,
+        );
+      }
+    }
   });
 
   it("CONTEXT.md **Term** headings are unique", () => {
@@ -1399,6 +1413,19 @@ describe("spec tree", () => {
         /GET Field type write of the first of two Commands stay later/,
       );
     }
+  });
+
+  it("inspect-command-field-optional-first-slice Out of scope names later-slice parks without invented spec paths", () => {
+    const text = readFileSync(
+      "docs/specs/features/inspect-command-field-optional-first-slice.md",
+      "utf8",
+    );
+    const out =
+      text.split("## Out of scope")[1]?.split("## Restates")[0] ?? "";
+    expect(out).not.toContain("inspect-command-field-example-first-slice.md");
+    expect(out).not.toContain("inspect-command-second-field-optional.md");
+    expect(out).toContain("First-Slice Command Example write");
+    expect(out).toContain("Second Field Optional");
   });
 
   it("inspect-command-field-optional-first-slice Restates paths do not park GET Optional write of a Command on the first of two Slices as stay later", () => {

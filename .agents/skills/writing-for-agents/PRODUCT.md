@@ -63,6 +63,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Restates lists inspect-connection / inspect-rest / slice-type / inspect-fields without rewriting leftover unused after a Connection click | `keeping-specs-current` |
 | Restates lists port-fit.md / connections.md without rewriting wrapping / same-row as this slice | `keeping-specs-current` |
 | Restates lists hydrate-board / inspect-after-reload / name-binding-rest / delete-rest / model-defaults without rewriting leftover GET Actor Name JSON / data-id / Backspace / last-of-kind | `keeping-specs-current` |
+| Out of scope invented `inspect-command-field-example-first-slice.md` / `inspect-command-second-field-optional.md` not in the catalog; later-slice park without a file (`Second Field type`) | `keeping-specs-current` |
 | Leftover unused `measure-landing` 36rem after restated main max-width none | `keeping-specs-current` |
 | Accessible name **is** X / Playwright substring; unit `toContain(">X<")` | `testing`, `playwright-e2e` |
 | Listitem **in** the Timeline region (unit HTML Timeline `[\s\S]*` Actor; Inspector after Timeline stays green) | `testing`, `tdd-loop`, `playwright-e2e` |
