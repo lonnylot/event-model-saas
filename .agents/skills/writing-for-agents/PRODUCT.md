@@ -63,6 +63,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Restates lists inspect-connection / inspect-rest / slice-type / inspect-fields without rewriting leftover unused after a Connection click | `keeping-specs-current` |
 | Restates lists port-fit.md / connections.md without rewriting wrapping / same-row as this slice | `keeping-specs-current` |
 | Restates lists hydrate-board / inspect-after-reload / name-binding-rest / delete-rest / model-defaults without rewriting leftover GET Actor Name JSON / data-id / Backspace / last-of-kind | `keeping-specs-current` |
+| Restates names canvas.md without rewriting leftover unqualified undo Add Command / canvas-rest Restates of canvas.md undo of Add after last-Slice vs selected-Slice | `keeping-specs-current` |
 | Leftover unused `measure-landing` 36rem after restated main max-width none | `keeping-specs-current` |
 | Accessible name **is** X / Playwright substring; unit `toContain(">X<")` | `testing`, `playwright-e2e` |
 | Listitem **in** the Timeline region (unit HTML Timeline `[\s\S]*` Actor; Inspector after Timeline stays green) | `testing`, `tdd-loop`, `playwright-e2e` |
@@ -78,6 +79,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Unused cargo-cult Out of scope Inspector leftover Type / Leftover Add Field after Event Happened → Read Model on a slice that does not unbind that chrome (hydrate-connection-id / hydrate-event-read-id hydrate data-id; shortcut-target retarget existing ⌥⌘2 listitem); leftover-narrow is unique Command → Event Happened vs both Connection kinds | `keeping-specs-current` |
 | Leftover Out of scope targeting vs JSON `selectedSliceIndex` / DOM `lastLaneList`; dropping lastLaneList parenthetical because shortcut-shows.md / Assumptions already name last-column (`shortcut-kind`); one-slice Create-default stays green | `keeping-specs-current`, `testing`, `tdd-loop`, `playwright-e2e` |
 | GET after Create one seeded Actor / one Automation after Add+Save+reload (`json.slices[0].actors[0]` / `[]`) is that Actor one-item | `keeping-specs-current`, `testing`, `tdd-loop`, `playwright-e2e` |
+| Assumptions last Slice still has no Command vs AC does not lose / two Slices with last Command count `0` is still one-item-of-kind | `keeping-specs-current`, `testing`, `tdd-loop`, `playwright-e2e` |
 | Leftover Out of scope inspect-after-reload vs in-memory omit `data-id` / `data-kind` | `keeping-specs-current`, `testing` |
 | Playwright `toHaveCSS` of a computed color that is the UA default (Email Field canvas fill) or inherited from a parent/body AC (Landing heading ink after public-face `body.landing`; editor `Slices` heading after `body.app-editor` ink) | `testing`, `keeping-specs-current`, `tdd-loop`, `playwright-e2e`, `logical-commits` |
 | Playwright `locator.focus()` of `:focus-visible` (`Sign in` box-shadow) stays green for a `:focus` rule | `testing`, `tdd-loop`, `playwright-e2e` |
@@ -93,4 +95,5 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Leftover-hide From Command vs To Event Happened vs Connection (`unbindConnectionCopy` loop) | `logical-commits` |
 | Leftover-hide unbindFieldChrome vs Nothing Selected (`:has(label)` empty copy); tests-only after review leaves that call in the earlier commit | `logical-commits` |
 | Event → Read Model Backspace JSON `connections` [] vs `.board` caption `node?.remove()`; tests-only after review leaves the remove in the JSON commit (persist-then analog) | `logical-commits` |
+| Selected-index JSON undo vs Timeline Command `.at(-1)` paint; tests-only after review leaves `.at(-1)` in the JSON commit (persist-then analog) | `logical-commits` |
 | Restates leftover rewrite with a production restore of a different path (leftover Restates public-face Field / Page `canvas`/`ink` / design-system Page `type`/`canvas`/`ink` vs unique Send invite radius) | `logical-commits` |

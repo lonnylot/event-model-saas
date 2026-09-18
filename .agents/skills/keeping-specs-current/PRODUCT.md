@@ -47,7 +47,7 @@ Do not write specs or plans under `docs/superpowers/` or any tree other than `do
 
 ## "that Slice" and targeting
 
-A “that Slice” / “that Actor” / clicked-item / Backspace-the-selected-Slice / “the first X” / first-vs-last AC is unfinished until a second item makes last-item mutation / `.first()` is not also last fail, or the bullet is restated to “the last Slice” / off “the first”. GET after Create one seeded Actor / one Automation after Add+Save+reload is that one-item fixture — `json.slices[0].actors[0]` and `[]` stay green for `.at(-1)` / `[0]`.
+A “that Slice” / “that Actor” / clicked-item / Backspace-the-selected-Slice / “the first X” / first-vs-last AC is unfinished until a second item makes last-item mutation / `.first()` is not also last fail, or the bullet is restated to “the last Slice” / off “the first”. GET after Create one seeded Actor / one Automation after Add+Save+reload is that one-item fixture — `json.slices[0].actors[0]` and `[]` stay green for `.at(-1)` / `[0]`. Two Slices with last Command count `0` is still that fixture — a second Slice is not a second Command. A “does not lose” last Slice Command AC is unfinished until last had that listitem (select last, Add Command, then select first, Add Command, then ⌘Z). Assumptions “last Slice still has no Command (Create + New Slice have none)” cannot both hold with AC “does not lose” and Problem “⌘Z then removes a Command from the last Slice”.
 
 Two default-named Slices cannot use “does not show a listitem named New Slice” as that proof.
 
@@ -138,6 +138,8 @@ Restates listing inspect-connection / inspect-rest / slice-type / inspect-fields
 Restates listing `port-fit.md` / `connections.md` without rewriting wrapping / same-row as this slice is leftover Restates.
 
 Restates listing hydrate-board / inspect-after-reload / name-binding-rest / delete-rest / model-defaults without rewriting leftover GET Actor / Automation `data-id`, GET Actor Name JSON, GET Actor / Automation Backspace, leftover “Name JSON mutates the last of that kind” is leftover Restates.
+
+Restates names `canvas.md` but leftover Restates bullets there (and omitted `blocks.md` Out of scope) still assign unqualified “undo Add Command” to `canvas-rest.md`. Grep `undo Add Command` / `undo of Add`. Rewriting other Restates rows in `canvas-rest.md` to last-Slice vs selected-Slice is unfinished until leftover Restates of `canvas.md` “undo of Add” (historical transfer) is qualified the same way. Assumptions / Out of scope already pointing selected-Slice undo here is not that rewrite.
 
 Leftover unused `measure-landing` `36rem` after restated `main` max-width `none` — mark leftover unused or drop (same as leftover unused paper tokens).
 

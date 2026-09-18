@@ -3,7 +3,8 @@ name: testing
 description: >
   Use when adding or placing tests, choosing seams, writing unit or
   Playwright tests, mapping acceptance criteria to tests, checking a
-  weaker-reading fixture, unit HTML [\s\S]* after a region label,
+  weaker-reading fixture, does not lose empty last,
+  unit HTML [\s\S]* after a region label,
   Playwright locator.focus of :focus-visible,
   Playwright toBeVisible of below-the-fold / overflow-clipped,
   splitting an "and" (any case) test name,
@@ -54,6 +55,7 @@ A criterion that names a screen, "shows", or "lists" is proven at the app or flo
    | Non-empty placeholder | `/placeholder=/` on `placeholder=""` |
    | One row's own text | Document-level `toContain` or `[\s\S]*` that can cross a tag (including `/aria-label="R"[\s\S]*X/` into a later region) |
    | Packed "and" | One `it` covering independent cases |
+   | "does not lose" / still has | Fixture that never had the item (count 0 before and after stays green if last is still emptied / always-delete-last) |
    | `:focus-visible` | `locator.focus()` / programmatic focus (a `:focus` rule stays green) |
    | "visible" / in viewport / not below the fold | Playwright `toBeVisible` (non-empty box including overflow-clipped / below the fold stays green) |
    | Architecture-named production adapter | Injected runtime stays green if the host path never constructs it |

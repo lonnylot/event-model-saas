@@ -5,10 +5,10 @@ description: >
   reviewing a pull request, when two spec bullets can conflict, when
   restating an AC while leftover ACs / Problem/UI/Events/Assumptions still
   describe the old behavior, restating Problem / Out of scope while leftover Restates still
-  describes the parked behavior, leftover Assumptions after restating Out of scope, leftover locked claims in a restated system spec, when
+  describes the parked behavior, leftover Assumptions after restating Out of scope, leftover Assumptions still has no Command vs does not lose, leftover locked claims in a restated system spec, when
   Restates omits a released spec that still describes
   deleted behavior, when this HEAD rewrote a released spec
-  that Restates omitted, when Restates omits draft architecture
+  that Restates omitted, leftover Restates undo of Add / unqualified undo Add Command, when Restates omits draft architecture
   that still assigns token or CSS ownership, when Restates names leftover files whose bullets
   were not rewritten, when Restates lists a path this HEAD did not rewrite,
   when restating Out of scope while the same pointer
