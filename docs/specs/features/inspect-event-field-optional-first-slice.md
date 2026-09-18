@@ -28,12 +28,12 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 ## Assumptions
 
 - Playwright unique checkout `PORT` / `INSPECTOR_PORT` and `TEST_MAIL=1` `workers` `1` stay [public-face.md](./public-face.md).
-- GET Optional of one Event stays [inspect-get-event-optional.md](./inspect-get-event-optional.md). First-Slice Event Optional write is this slice. GET Optional of one Read Model stays [inspect-get-read-model-optional.md](./inspect-get-read-model-optional.md). First-Slice Read Model Optional write is this slice. GET Optional of one Automation stays [inspect-get-automation-optional.md](./inspect-get-automation-optional.md). First-Slice Automation Optional write is this slice.
+- GET Optional of one Event stays [inspect-get-event-optional.md](./inspect-get-event-optional.md). First-Slice Event Optional write is this slice. GET Optional of one Read Model stays [inspect-get-read-model-optional.md](./inspect-get-read-model-optional.md). First-Slice Read Model Optional write is this slice. GET Optional of one Automation stays [inspect-get-automation-optional.md](./inspect-get-automation-optional.md). First-Slice Automation Optional write is this slice. First-Slice Event Example write is [inspect-event-field-example-first-slice.md](./inspect-event-field-example-first-slice.md).
 - Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).
 
 ## Out of scope
 
-TIME click empty Inspector. Landing. Mac window chrome. Copy changes.
+First-Slice Event Example write is [inspect-event-field-example-first-slice.md](./inspect-event-field-example-first-slice.md). TIME click empty Inspector. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 
