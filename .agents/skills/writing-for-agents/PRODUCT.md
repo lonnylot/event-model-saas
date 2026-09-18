@@ -88,6 +88,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Independently revertible fromKind vs toKind / GET already hydrates | `logical-commits` |
 | GET Command → Event Happened caption vs GET Event Happened → Read Model caption when this slice changes wrapping (persist-then-400 of the Event HTML filter); one HTML string unsplit is leftover-wrong | `logical-commits` |
 | wrap CSS (`.board-pan { flex-wrap }` / `flex-basis: 100%`) is GET caption production when GET HTML is already later-sibling; GET Command `it` after that CSS is tests-after | `logical-commits`, `playwright-e2e` |
+| Leftover inspect-rest / inspect-get-slice-* Restates and GET `Slice 2` `test()` titles after `title: Slice ${slices.length + 1}` | `logical-commits` |
 | GET `/editor.js` lock vs bindInspect extract (lock already existed; no production hunk) | `logical-commits` |
 | Leftover To Read Model after a narrower From Event Happened remove | `keeping-specs-current`, `logical-commits` |
 | Leftover Field name after a narrower unbindAddField | `keeping-specs-current`, `logical-commits` |
