@@ -1,6 +1,6 @@
 # Inspect command second field type
 
-Status: validated
+Status: released
 
 ## Problem
 
