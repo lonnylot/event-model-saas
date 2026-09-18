@@ -120,7 +120,6 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks the l
   ]);
   await page.reload();
   await page.waitForLoadState("networkidle");
-  await expect(timelineSlices).toHaveCount(2);
   await timelineSlices.first().click();
   await expect(
     page

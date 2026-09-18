@@ -54,7 +54,7 @@ Renaming Untitled. Toolbar New Slice default Actor is [new-slice-default-actor.m
 ## Restates
 
 - [model-persistence.md](./model-persistence.md) — POST Create still returns 201, title `Untitled`, version `1`, `format` `eventmodel`, `schemaVersion` `1`, `id` the Event Model id. `slices` `[]` is leftover unused; one default Slice is this slice. Empty Event Model JSON in Assumptions is leftover unused.
-- [editor-shell.md](./editor-shell.md) — Clicking `New Slice` still appends title `New Slice`, `sliceType` `STATE_CHANGE`. Default Actor is [new-slice-default-actor.md](./new-slice-default-actor.md). GET after Create now shows `New Slice` (this slice). GET with no Slices (imported empty) stays that file.
+- [editor-shell.md](./editor-shell.md) — Clicking `New Slice` still appends `sliceType` `STATE_CHANGE`. Title `Slice N` is [new-slice-insert-after.md](./new-slice-insert-after.md). Default Actor is [new-slice-default-actor.md](./new-slice-default-actor.md). GET after Create now shows `New Slice` (this slice). GET with no Slices (imported empty) stays that file.
 - [blocks.md](./blocks.md) — GET with no Actors does not show listitem `Actor` stays that file for a Slice that has none. GET after Create shows `Actor` (this slice). Add Actor after New Slice stays that file.
 - [product.md](../product.md) — Create is no longer “empty Event Model (valid schema, no slices)”; Create writes the default Slice in this slice, then opens the editor.
 - [architecture.md](../architecture.md) — `models` create still goes through `createModel`. Default Slice body is this slice.

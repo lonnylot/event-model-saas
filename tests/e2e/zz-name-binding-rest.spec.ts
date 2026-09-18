@@ -145,14 +145,14 @@ test("After clicking `New Slice` twice, clicking the first `New Slice` listitem,
   expect(JSON.parse(json ?? "{}").slices?.[0]?.title).toBe("Checkout");
 });
 
-test("After clicking `New Slice` twice, clicking the first `New Slice` listitem, filling Inspector `Name` with `Checkout` sets the last Slice `title` to `New Slice`", async ({
+test("After clicking `New Slice` twice, clicking the first `New Slice` listitem, filling Inspector `Name` with `Checkout` sets the last Slice `title` to `Slice 2`", async ({
   page,
 }) => {
   await addTwoSlicesClickFirstFillCheckout(page);
   const json = await page
     .locator("#event-model-document")
     .evaluate((el) => el.textContent);
-  expect(JSON.parse(json ?? "{}").slices?.at(-1)?.title).toBe("New Slice");
+  expect(JSON.parse(json ?? "{}").slices?.at(-1)?.title).toBe("Slice 2");
 });
 
 test("Filling the Inspector `Name` textbox with `Checkout` after selecting the first of two `New Slice` listitems sets that listitem visible text to `Checkout`", async ({

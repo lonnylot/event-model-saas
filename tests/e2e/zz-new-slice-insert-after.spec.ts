@@ -119,3 +119,23 @@ test("After clicking `New Slice` twice, clicking the first `New Slice` listitem 
   );
   expect(after.slices.at(-1).id).toBe(lastId);
 });
+
+test("After clicking `New Slice` twice, clicking the first `New Slice` listitem in the Slices region, clicking `New Slice`, the second Slice `title` is `Slice 4`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  await clickNewSlice(page);
+  const slices = page
+    .getByRole("heading", { name: "Slices", exact: true })
+    .locator("xpath=following-sibling::ul[1]");
+  await slices
+    .getByRole("listitem", { name: "New Slice", exact: true })
+    .first()
+    .click();
+  await clickNewSlice(page);
+  const after = JSON.parse(
+    (await page.locator("#event-model-document").textContent()) ?? "{}",
+  );
+  expect(after.slices[1].title).toBe("Slice 4");
+});
