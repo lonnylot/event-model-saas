@@ -496,6 +496,15 @@ export function bindInspect(root, ctx) {
       : model.slices?.at(-1)?.processors?.at(-1);
     return automation?.fields?.[0]?.name;
   };
+  const lastAutomationSecondFieldName = () => {
+    const holder = root.getElementById("event-model-document");
+    const model = JSON.parse(holder?.textContent || "{}");
+    const id = ctx.selectedAutomationItem?.dataset?.id;
+    const automation = id
+      ? model.slices?.flatMap((s) => s.processors ?? []).find((p) => p.id === id)
+      : model.slices?.at(-1)?.processors?.at(-1);
+    return automation?.fields?.[1]?.name;
+  };
   const lastCommandFieldType = () => {
     const holder = root.getElementById("event-model-document");
     const model = JSON.parse(holder?.textContent || "{}");
@@ -974,7 +983,8 @@ export function bindInspect(root, ctx) {
       !inspector ||
       (ctx.selected !== "command" &&
         ctx.selected !== "event" &&
-        ctx.selected !== "readmodel")
+        ctx.selected !== "readmodel" &&
+        ctx.selected !== "automation")
     )
       return;
     inspector.insertAdjacentHTML(
@@ -1018,6 +1028,17 @@ export function bindInspect(root, ctx) {
               input.value,
               ctx.selectedReadModelItem?.dataset?.id,
               "readmodel",
+              1,
+            ),
+          );
+        }
+        if (holder && ctx.selected === "automation") {
+          holder.textContent = JSON.stringify(
+            setFieldName(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+              ctx.selectedAutomationItem?.dataset?.id,
+              "automation",
               1,
             ),
           );
@@ -1551,6 +1572,10 @@ export function bindInspect(root, ctx) {
         const automationFieldName = lastAutomationFieldName();
         if (automationFieldName) {
           bindFieldName(automationFieldName);
+          const secondFieldName = lastAutomationSecondFieldName();
+          if (secondFieldName) {
+            bindSecondFieldName(secondFieldName);
+          }
           bindFieldType(lastAutomationFieldType());
           bindOptional(lastAutomationFieldOptional());
           bindExample(lastAutomationFieldExample());

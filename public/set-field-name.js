@@ -77,8 +77,8 @@ export function setFieldName(model, name, id, target = "command", fieldIndex = 0
       const automation = processors[index];
       if (!automation) return model;
       const fields = [...(automation.fields ?? [])];
-      if (!fields.length) return model;
-      fields[0] = { ...fields[0], name };
+      if (!fields[fieldIndex]) return model;
+      fields[fieldIndex] = { ...fields[fieldIndex], name };
       processors[index] = { ...automation, fields };
       slices[sliceIndex] = { ...selected, processors };
       return { ...model, slices };
@@ -89,8 +89,8 @@ export function setFieldName(model, name, id, target = "command", fieldIndex = 0
     const automation = processors[index];
     if (!automation) return model;
     const fields = [...(automation.fields ?? [])];
-    if (!fields.length) return model;
-    fields[0] = { ...fields[0], name };
+    if (!fields[fieldIndex]) return model;
+    fields[fieldIndex] = { ...fields[fieldIndex], name };
     processors[index] = { ...automation, fields };
     slices[slices.length - 1] = { ...slice, processors };
     return { ...model, slices };

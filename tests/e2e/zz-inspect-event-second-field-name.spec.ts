@@ -182,3 +182,53 @@ test("After a member creates a model, opens it, clicks `Add Read Model`, clicks 
       ?.name,
   ).toBe("sku");
 });
+
+test("After a member creates a model, opens it, clicks `Add Automation`, clicks the Timeline `Automation` listitem, clicks `Add Field`, fills the first `Field name` with `jobId`, clicks `Add Field`, and Saves, a reload of that page, clicking the Timeline `Automation` listitem, filling the second Inspector `Field name` with `sku` sets that Automation `fields[1].name` to `sku`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  const inspector = page.getByRole("region", {
+    name: "Inspector",
+    exact: true,
+  });
+  await page.getByRole("button", { name: "Add Automation", exact: true }).click();
+  await expect(
+    timeline.getByRole("listitem", { name: "Automation", exact: true }),
+  ).toHaveCount(1);
+  await timeline
+    .getByRole("listitem", { name: "Automation", exact: true })
+    .click();
+  await inspector.getByRole("button", { name: "Add Field", exact: true }).click();
+  await inspector
+    .getByRole("textbox", { name: "Field name", exact: true })
+    .fill("jobId");
+  await inspector.getByRole("button", { name: "Add Field", exact: true }).click();
+  await Promise.all([
+    page.waitForResponse(
+      (response) =>
+        response.url().includes("/api/models/") &&
+        response.request().method() === "PUT",
+    ),
+    page.getByRole("button", { name: "Save", exact: true }).click(),
+  ]);
+  await page.reload();
+  await page.waitForLoadState("networkidle");
+  await expect(
+    timeline.getByRole("listitem", { name: "Automation", exact: true }),
+  ).toBeVisible();
+  await timeline
+    .getByRole("listitem", { name: "Automation", exact: true })
+    .click();
+  await inspector
+    .getByRole("textbox", { name: "Field name", exact: true })
+    .nth(1)
+    .fill("sku");
+  const json = await page
+    .locator("#event-model-document")
+    .evaluate((el) => el.textContent);
+  expect(
+    JSON.parse(json ?? "{}").slices?.at(-1)?.processors?.at(-1)?.fields?.[1]
+      ?.name,
+  ).toBe("sku");
+});

@@ -10,7 +10,7 @@ Status: validated
 
 - [x] After a member creates a model, opens it, clicks `Add Event`, clicks the Timeline `Event Happened` listitem, clicks `Add Field`, fills the first `Field name` with `eventId`, clicks `Add Field`, and Saves, a reload of that page, clicking the Timeline `Event Happened` listitem, filling the second Inspector `Field name` with `sku` sets that Event `fields[1].name` to `sku`
 - [x] After a member creates a model, opens it, clicks `Add Read Model`, clicks the Timeline `Read Model` listitem, clicks `Add Field`, fills the first `Field name` with `viewId`, clicks `Add Field`, and Saves, a reload of that page, clicking the Timeline `Read Model` listitem, filling the second Inspector `Field name` with `sku` sets that Read Model `fields[1].name` to `sku`
-- [ ] After a member creates a model, opens it, clicks `Add Automation`, clicks the Timeline `Automation` listitem, clicks `Add Field`, fills the first `Field name` with `jobId`, clicks `Add Field`, and Saves, a reload of that page, clicking the Timeline `Automation` listitem, filling the second Inspector `Field name` with `sku` sets that Automation `fields[1].name` to `sku`
+- [x] After a member creates a model, opens it, clicks `Add Automation`, clicks the Timeline `Automation` listitem, clicks `Add Field`, fills the first `Field name` with `jobId`, clicks `Add Field`, and Saves, a reload of that page, clicking the Timeline `Automation` listitem, filling the second Inspector `Field name` with `sku` sets that Automation `fields[1].name` to `sku`
 
 ## Domain terms
 
