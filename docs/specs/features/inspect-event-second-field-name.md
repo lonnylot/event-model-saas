@@ -33,7 +33,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-Second Field type / optional / example. TIME click empty Inspector. Landing. Mac window chrome. Copy changes.
+GET second Command Field type write is [inspect-command-second-field-type.md](./inspect-command-second-field-type.md). Second Event Field type / optional / example. TIME click empty Inspector. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 
