@@ -45,6 +45,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Restates leftover Name JSON on those GET listitems vs Out of scope GET Automation Name JSON | `keeping-specs-current` |
 | Restates leftover GET Connection data-id / Backspace vs unique Command → Event Happened / parked Event Happened → Read Model | `keeping-specs-current` |
 | Restates omits product.md leftover “the selected Connection (Backspace)” / leftover Delete Connection are delete-blocks (`add-on-lane` / `connection-feedback` / `inspect-description` / `inspect-deselect` / `name-binding-rest` / `undo-rest`) vs unique Event → Read Model Backspace | `keeping-specs-current` |
+| leftover product.md Testing `reload, click New Slice, Description is First column` vs inspect-rest GET Description `click Slice 2` | `keeping-specs-current` |
 | Leftover architecture Front end Inspector unbind on selection change vs leftover Type after a Connection click / leftover From after Command → Event Happened | `keeping-specs-current` |
 | Restates omitting released `editor-shell.md` leftover empty named Inspector after GET Inspector chrome | `keeping-specs-current` |
 | Restates omitting public-face leftover unused `.bento` fill/lift after this HEAD rewrote that Out of scope | `keeping-specs-current` |
@@ -87,6 +88,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Independently revertible fromKind vs toKind / GET already hydrates | `logical-commits` |
 | GET Command → Event Happened caption vs GET Event Happened → Read Model caption when this slice changes wrapping (persist-then-400 of the Event HTML filter); one HTML string unsplit is leftover-wrong | `logical-commits` |
 | wrap CSS (`.board-pan { flex-wrap }` / `flex-basis: 100%`) is GET caption production when GET HTML is already later-sibling; GET Command `it` after that CSS is tests-after | `logical-commits`, `playwright-e2e` |
+| Leftover inspect-rest / inspect-get-slice-* Restates and GET `Slice 2` `test()` titles after `title: Slice ${slices.length + 1}` | `logical-commits` |
 | GET `/editor.js` lock vs bindInspect extract (lock already existed; no production hunk) | `logical-commits` |
 | Leftover To Read Model after a narrower From Event Happened remove | `keeping-specs-current`, `logical-commits` |
 | Leftover Field name after a narrower unbindAddField | `keeping-specs-current`, `logical-commits` |

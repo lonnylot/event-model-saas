@@ -41,4 +41,6 @@ When GET HTML is already `${sliceColumns}${connectionCopy}` (later sibling on ma
 
 A restated weaker fixture after that AC's production landed (one-item Backspace → two-item; `includes scale(` → factor is not pan `1`; widget-role Sign up after a checked AC with no `it`) reconstructs into that production commit. A tests-only follow-up is tests-after.
 
+Leftover inspect-rest / inspect-get-slice-* Restates and leftover GET `Slice 2` `test()` titles after `title: Slice ${slices.length + 1}` production reconstruct into that title commit. Those GET hydrates became true when title production landed. A tests-only follow-up is tests-after.
+
 A tests-only wait-after-open helper, or tests-only locator/fixture after production added a second matching `New Slice`, reconstructs into the production that needed it — not a tests-only commit on HEAD *in this slice*.

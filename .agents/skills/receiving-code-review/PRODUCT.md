@@ -16,4 +16,6 @@ A reply that cites GET `connectionCopy` is one HTML string to keep GET Command c
 
 A reply that lands GET Command `it` after wrap CSS (`.board-pan { flex-wrap }` / `flex-basis: 100%`), or says leftover `.slice-stack` delete / persist-then-400 of the Event filter is the production that made the rect true, has not addressed tests-after (`logical-commits/PRODUCT.md`).
 
+A reply that lands leftover inspect-rest / inspect-get-slice-* Restates or leftover GET `Slice 2` `test()` titles after `title: Slice ${slices.length + 1}` production has not addressed tests-after (`logical-commits/PRODUCT.md`). Reconstruct into the title commit.
+
 A reply that adds Event → Read Model Backspace caption AC/`it` without moving `node?.remove()` out of the JSON commit has not addressed the thread (`logical-commits/PRODUCT.md`). Spec+test only after review is still tests-after of independently revertible JSON vs caption.
