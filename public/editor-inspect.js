@@ -782,6 +782,7 @@ export function bindInspect(root, ctx) {
               JSON.parse(holder.textContent || "{}"),
               input.checked,
               "event",
+              ctx.selectedEventItem?.dataset?.id,
             ),
           );
         }
@@ -791,6 +792,7 @@ export function bindInspect(root, ctx) {
               JSON.parse(holder.textContent || "{}"),
               input.checked,
               "readmodel",
+              ctx.selectedReadModelItem?.dataset?.id,
             ),
           );
         }
@@ -800,6 +802,7 @@ export function bindInspect(root, ctx) {
               JSON.parse(holder.textContent || "{}"),
               input.checked,
               "automation",
+              ctx.selectedAutomationItem?.dataset?.id,
             ),
           );
         }
@@ -1179,7 +1182,11 @@ export function bindInspect(root, ctx) {
                 ctx.selected,
                 ctx.selected === "command"
                   ? ctx.selectedCommandItem?.dataset?.id
-                  : undefined,
+                  : ctx.selected === "event"
+                    ? ctx.selectedEventItem?.dataset?.id
+                    : ctx.selected === "readmodel"
+                      ? ctx.selectedReadModelItem?.dataset?.id
+                      : ctx.selectedAutomationItem?.dataset?.id,
               ),
             );
           }
