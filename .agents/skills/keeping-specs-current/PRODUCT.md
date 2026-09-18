@@ -131,7 +131,7 @@ Restates “Narrow AppBar / Timeline clip” when released `timeline-clip.md` ow
 
 Restates listing `design-system.md` (“Tokens stay that file”) when this HEAD does not rewrite that file is leftover Restates. UI inventory of `design-system.md` is not a rewrite (`timeline-clip.md` inventories it and does not list it; `create-model-border.md` listed it and rewrote Button primary inventory). Drop the Restates row, or rewrite a sentence in `design-system.md` that assigns this slice’s look and keep the row.
 
-Restates listing `inspect-blocks.md` / `inspect-fields.md` when those files already park Example after reload of one Event on this spec (`inspect-get-event-optional.md`) and this HEAD does not rewrite them is leftover Restates. `hydrate-add-field.md` is the same prior park — omit it. Do not no-op rewrite those files. Drop the Restates rows (and spec-tree Restates-paths entries that exist only for that claim).
+Restates listing `inspect-blocks.md` / `inspect-fields.md` when those files already park Example after reload of one Event on this spec (`inspect-get-event-optional.md`) and this HEAD does not rewrite them is leftover Restates. `hydrate-add-field.md` is the same prior park — omit it. `inspect-event-field-name-first-slice.md` already parks Second Event Field name on `inspect-event-second-field-name.md` — omit it. Do not no-op rewrite those files (a Restates bullet that repeats that Out of scope pointer). Drop the Restates rows (and spec-tree Restates-paths entries that exist only for that claim).
 
 Restates listing inspect-connection / inspect-rest / slice-type / inspect-fields without rewriting leftover unused Type / From Event Happened / Add Field after a Connection click is leftover Restates.
 
