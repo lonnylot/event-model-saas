@@ -1245,6 +1245,20 @@ describe("spec tree", () => {
     }
   });
 
+  it("inspect-second-field-name-write Restates of inspect-get-second-field Command-qualifies GET second Field name write", () => {
+    const restates = readFileSync(
+      "docs/specs/features/inspect-second-field-name-write.md",
+      "utf8",
+    ).split("## Restates")[1];
+    expect(restates).not.toMatch(
+      /GET second Field name display stays that file\. GET second Field name write is this slice\./,
+    );
+    expect(restates).toContain(
+      "GET second Field name write of two Fields on one Command is this slice",
+    );
+    expect(restates).toContain("inspect-event-second-field-name.md");
+  });
+
   it("inspect-second-field-name-write Restates paths do not park GET second Field name write as stay later", () => {
     const paths = [
       "docs/specs/features/inspect-second-field-name-write.md",

@@ -47,5 +47,5 @@ Second Event Field name is [inspect-event-second-field-name.md](./inspect-event-
 - [blocks.md](./blocks.md) — GET second Field name write of two Fields on one Command is this slice. Delete Field of one of two Fields (not wiping `fields` to `[]`) stays later.
 - [inspect-blocks.md](./inspect-blocks.md) — GET second Field name write of two Fields on one Command is this slice. Delete Field of one of two Fields (not wiping `fields` to `[]`) stays later.
 - [model-persistence.md](./model-persistence.md) — GET second Field name write of two Fields on one Command is this slice. Delete Field of one of two Fields (not wiping `fields` to `[]`) stays later.
-- [inspect-get-second-field.md](./inspect-get-second-field.md) — GET second Field name display stays that file. GET second Field name write is this slice.
+- [inspect-get-second-field.md](./inspect-get-second-field.md) — GET second Field name display stays that file. GET second Field name write of two Fields on one Command is this slice. GET second Event Field name write is [inspect-event-second-field-name.md](./inspect-event-second-field-name.md).
 - [inspect-in-session-delete-field.md](./inspect-in-session-delete-field.md) — In-session Delete Field after re-click of a Command that already has a Field stays that file. GET second Field name write of two Fields on one Command is this slice.
