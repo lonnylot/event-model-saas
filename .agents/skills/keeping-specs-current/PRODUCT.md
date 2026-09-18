@@ -127,6 +127,8 @@ Restates omitting released `port-wrap.md` leftover Out of scope “Narrow viewpo
 
 Restates omitting released `inspect-connection-live-titles.md` leftover Out of scope “Connection redo of a selected pair” / `port-highlight-hovered-event.md` leftover Out of scope “Connection redo” when this HEAD took remaining Connection fromID/toID of the undone first Command → first Event pair (listed undo-rest / canvas / product.md) is leftover Restates. Grep `Connection redo` even when Restates already lists undo-rest. Search hits for undo/redo of remaining Adds do not include that park.
 
+Restates omitting released `inspect-event-second-field-name.md` leftover Out of scope unqualified `Second Field type / optional / example.` when this HEAD took GET second Command Field type write (listed inspect-second-field-name-write / inspect-command-field-type-first-slice / product.md / architecture.md) is leftover Restates. Grep `Second Field type` even when Restates already lists inspect-command-field-type-first-slice. Search hits for second Field name do not include that park. Qualify leftover as Second Event Field type / optional / example.
+
 Restates “Narrow AppBar / Timeline clip” when released `timeline-clip.md` owns pan/zoom clip is leftover Restates — restate to “narrow Slice-inside-Timeline layout” so the two clips do not read as one owner.
 
 Restates listing `design-system.md` (“Tokens stay that file”) when this HEAD does not rewrite that file is leftover Restates. UI inventory of `design-system.md` is not a rewrite (`timeline-clip.md` inventories it and does not list it; `create-model-border.md` listed it and rewrote Button primary inventory). Drop the Restates row, or rewrite a sentence in `design-system.md` that assigns this slice’s look and keep the row.
