@@ -34,10 +34,26 @@ export function setFieldName(model, name, id, target = "command", fieldIndex = 0
     return { ...model, slices };
   }
   if (target === "readmodel") {
+    if (id) {
+      const sliceIndex = slices.findIndex((candidate) =>
+        (candidate.readModels ?? []).some((readModel) => readModel.id === id),
+      );
+      if (sliceIndex < 0) return model;
+      const selected = slices[sliceIndex];
+      const readModels = [...(selected.readModels ?? [])];
+      const index = readModels.findIndex((readModel) => readModel.id === id);
+      if (index < 0) return model;
+      const readModel = readModels[index];
+      if (!readModel) return model;
+      const fields = [...(readModel.fields ?? [])];
+      if (!fields.length) return model;
+      fields[0] = { ...fields[0], name };
+      readModels[index] = { ...readModel, fields };
+      slices[sliceIndex] = { ...selected, readModels };
+      return { ...model, slices };
+    }
     const readModels = [...(slice.readModels ?? [])];
-    const index = id
-      ? readModels.findIndex((readModel) => readModel.id === id)
-      : readModels.length - 1;
+    const index = readModels.length - 1;
     if (index < 0) return model;
     const readModel = readModels[index];
     if (!readModel) return model;

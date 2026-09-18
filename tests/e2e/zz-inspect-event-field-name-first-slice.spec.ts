@@ -164,3 +164,70 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks the f
     lastSlice.getByRole("listitem", { name: "Order Placed", exact: true }),
   ).toHaveCount(0);
 });
+
+test("After a member creates a model, opens it, clicks `New Slice`, clicks the first `New Slice` listitem in the Slices region, clicks `Add Read Model on lane` on that Slice, clicks the Timeline `Read Model` listitem of the first Slice, clicks `Add Field`, fills `Name` with `Orders`, and Saves, a reload of that page, clicking the Timeline `Orders` listitem, filling Inspector `Field name` with `viewId` sets that Read Model `fields[0].name` to `viewId`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  const slices = page
+    .getByRole("heading", { name: "Slices", exact: true })
+    .locator("xpath=following-sibling::ul[1]");
+  await expect(
+    slices.getByRole("listitem", { name: "New Slice", exact: true }),
+  ).toHaveCount(2);
+  await slices
+    .getByRole("listitem", { name: "New Slice", exact: true })
+    .first()
+    .click();
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  const inspector = page.getByRole("region", {
+    name: "Inspector",
+    exact: true,
+  });
+  const firstSlice = timeline.locator(".slice-col").first();
+  const lastSlice = timeline.locator(".slice-col").last();
+  await expect(
+    firstSlice.getByRole("button", { name: "Add Read Model on lane", exact: true }),
+  ).toBeVisible();
+  await firstSlice
+    .getByRole("button", { name: "Add Read Model on lane", exact: true })
+    .click();
+  await expect(
+    firstSlice.getByRole("listitem", { name: "Read Model", exact: true }),
+  ).toBeVisible();
+  await firstSlice
+    .getByRole("listitem", { name: "Read Model", exact: true })
+    .click();
+  await inspector.getByRole("button", { name: "Add Field", exact: true }).click();
+  await inspector.getByRole("textbox", { name: "Name", exact: true }).fill(
+    "Orders",
+  );
+  await expect(
+    firstSlice.getByRole("listitem", { name: "Orders", exact: true }),
+  ).toBeVisible();
+  await Promise.all([
+    page.waitForResponse(
+      (response) =>
+        response.url().includes("/api/models/") &&
+        response.request().method() === "PUT",
+    ),
+    page.getByRole("button", { name: "Save", exact: true }).click(),
+  ]);
+  await page.reload();
+  await page.waitForLoadState("networkidle");
+  await expect(
+    timeline.getByRole("listitem", { name: "Orders", exact: true }),
+  ).toBeVisible();
+  await timeline.getByRole("listitem", { name: "Orders", exact: true }).click();
+  await inspector
+    .getByRole("textbox", { name: "Field name", exact: true })
+    .fill("viewId");
+  const json = await page.locator("#event-model-document").textContent();
+  const model = JSON.parse(json ?? "{}");
+  expect(model.slices[0].readModels[0].fields[0].name).toBe("viewId");
+  expect(model.slices.at(-1).readModels ?? []).toEqual([]);
+  await expect(
+    lastSlice.getByRole("listitem", { name: "Orders", exact: true }),
+  ).toHaveCount(0);
+});
