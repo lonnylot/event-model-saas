@@ -44,6 +44,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Problem names Event → Read Model Backspace JSON **and** caption vs unique `connections` []; extra `.board` `node?.remove()` without a caption AC | `keeping-specs-current`, `testing`, `tdd-loop`, `playwright-e2e` |
 | Restates leftover Name JSON on those GET listitems vs Out of scope GET Automation Name JSON | `keeping-specs-current` |
 | Restates leftover GET Connection data-id / Backspace vs unique Command → Event Happened / parked Event Happened → Read Model | `keeping-specs-current` |
+| Restates leftover inspect-get-second-field unqualified GET second Field name write is this slice vs unique Command write / parked Event write (inspect-event-second-field-name) | `keeping-specs-current` |
 | Restates omits product.md leftover “the selected Connection (Backspace)” / leftover Delete Connection are delete-blocks (`add-on-lane` / `connection-feedback` / `inspect-description` / `inspect-deselect` / `name-binding-rest` / `undo-rest`) vs unique Event → Read Model Backspace | `keeping-specs-current` |
 | Leftover architecture Front end Inspector unbind on selection change vs leftover Type after a Connection click / leftover From after Command → Event Happened | `keeping-specs-current` |
 | Restates omitting released `editor-shell.md` leftover empty named Inspector after GET Inspector chrome | `keeping-specs-current` |
@@ -59,7 +60,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Restates omitting released `inspect-connection-live-titles.md` / `port-highlight-hovered-event.md` leftover Out of scope Connection redo of a selected pair after this slice took remaining Connection fromID/toID | `keeping-specs-current` |
 | Restates Narrow AppBar / Timeline clip overlapping released timeline-clip.md pan/zoom clip | `keeping-specs-current` |
 | Restates listing design-system.md Tokens stay that file when UI inventory is not a rewrite (timeline-clip inventories without listing) | `keeping-specs-current` |
-| Restates lists inspect-blocks.md / inspect-fields.md that already park Example after reload of one Event (inspect-get-event-optional) with no rewrite hunk; hydrate-add-field.md same prior park | `keeping-specs-current` |
+| Restates lists inspect-blocks.md / inspect-fields.md that already park Example after reload of one Event (inspect-get-event-optional) with no rewrite hunk; hydrate-add-field.md same prior park; inspect-event-field-name-first-slice.md already parks Second Event Field name (inspect-event-second-field-name) | `keeping-specs-current` |
 | Restates lists inspect-connection / inspect-rest / slice-type / inspect-fields without rewriting leftover unused after a Connection click | `keeping-specs-current` |
 | Restates lists port-fit.md / connections.md without rewriting wrapping / same-row as this slice | `keeping-specs-current` |
 | Restates lists hydrate-board / inspect-after-reload / name-binding-rest / delete-rest / model-defaults without rewriting leftover GET Actor Name JSON / data-id / Backspace / last-of-kind | `keeping-specs-current` |
