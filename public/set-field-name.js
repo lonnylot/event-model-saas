@@ -15,8 +15,8 @@ export function setFieldName(model, name, id, target = "command", fieldIndex = 0
       const event = events[index];
       if (!event) return model;
       const fields = [...(event.fields ?? [])];
-      if (!fields.length) return model;
-      fields[0] = { ...fields[0], name };
+      if (!fields[fieldIndex]) return model;
+      fields[fieldIndex] = { ...fields[fieldIndex], name };
       events[index] = { ...event, fields };
       slices[sliceIndex] = { ...selected, events };
       return { ...model, slices };
@@ -27,8 +27,8 @@ export function setFieldName(model, name, id, target = "command", fieldIndex = 0
     const event = events[index];
     if (!event) return model;
     const fields = [...(event.fields ?? [])];
-    if (!fields.length) return model;
-    fields[0] = { ...fields[0], name };
+    if (!fields[fieldIndex]) return model;
+    fields[fieldIndex] = { ...fields[fieldIndex], name };
     events[index] = { ...event, fields };
     slices[slices.length - 1] = { ...slice, events };
     return { ...model, slices };

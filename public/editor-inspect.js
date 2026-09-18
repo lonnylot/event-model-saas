@@ -460,6 +460,15 @@ export function bindInspect(root, ctx) {
       : model.slices?.at(-1)?.events?.at(-1);
     return event?.fields?.[0]?.name;
   };
+  const lastEventSecondFieldName = () => {
+    const holder = root.getElementById("event-model-document");
+    const model = JSON.parse(holder?.textContent || "{}");
+    const id = ctx.selectedEventItem?.dataset?.id;
+    const event = id
+      ? model.slices?.flatMap((s) => s.events ?? []).find((e) => e.id === id)
+      : model.slices?.at(-1)?.events?.at(-1);
+    return event?.fields?.[1]?.name;
+  };
   const lastReadModelFieldName = () => {
     const holder = root.getElementById("event-model-document");
     const model = JSON.parse(holder?.textContent || "{}");
@@ -952,7 +961,11 @@ export function bindInspect(root, ctx) {
     if (input) input.value = value;
   };
   const bindSecondFieldName = (value) => {
-    if (!inspector || ctx.selected !== "command") return;
+    if (
+      !inspector ||
+      (ctx.selected !== "command" && ctx.selected !== "event")
+    )
+      return;
     inspector.insertAdjacentHTML(
       "beforeend",
       "<label>Field name <input /></label>",
@@ -972,6 +985,17 @@ export function bindInspect(root, ctx) {
               input.value,
               ctx.selectedCommandItem?.dataset?.id,
               "command",
+              1,
+            ),
+          );
+        }
+        if (holder && ctx.selected === "event") {
+          holder.textContent = JSON.stringify(
+            setFieldName(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+              ctx.selectedEventItem?.dataset?.id,
+              "event",
               1,
             ),
           );
@@ -1436,6 +1460,10 @@ export function bindInspect(root, ctx) {
         const eventFieldName = lastEventFieldName();
         if (eventFieldName) {
           bindFieldName(eventFieldName);
+          const secondFieldName = lastEventSecondFieldName();
+          if (secondFieldName) {
+            bindSecondFieldName(secondFieldName);
+          }
           bindFieldType(lastEventFieldType());
           bindOptional(lastEventFieldOptional());
           bindExample(lastEventFieldExample());

@@ -38,5 +38,6 @@ Second Event Field name is [inspect-event-second-field-name.md](./inspect-event-
 ## Restates
 
 - [inspect-command-field-name-first-slice.md](./inspect-command-field-name-first-slice.md) — Out of scope no longer parks Event / Read Model / Automation Field name on the first of two Slices; those are this slice.
+- [inspect-event-second-field-name.md](./inspect-event-second-field-name.md) — Second Event Field name is that slice. First Event Field name on the first Slice stays this file.
 - [product.md](../product.md) — GET Field name write of Event / Read Model / Automation on the first of two Slices is this slice.
 - [architecture.md](../architecture.md) — First-Slice Event / Read Model / Automation Field name write is this slice.
