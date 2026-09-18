@@ -60,7 +60,10 @@ async function clickNewSlice(page: Page) {
       .getByRole("region", { name: "Timeline", exact: true })
       .getByRole("button", { name: "Add Actor on lane", exact: true })
       .count()) + 1;
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page
+    .locator(".editor-toolbar")
+    .getByRole("button", { name: "New Slice", exact: true })
+    .click();
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }),
   ).toHaveCount(slices);

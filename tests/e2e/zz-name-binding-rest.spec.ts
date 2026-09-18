@@ -118,8 +118,14 @@ async function addTwoSlicesClickFirstFillCheckout(page: Page) {
     page.getByRole("heading", { name: "Empty Import", exact: true }),
   ).toBeVisible();
   await page.waitForLoadState("networkidle");
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page
+    .locator(".editor-toolbar")
+    .getByRole("button", { name: "New Slice", exact: true })
+    .click();
+  await page
+    .locator(".editor-toolbar")
+    .getByRole("button", { name: "New Slice", exact: true })
+    .click();
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }),
   ).toHaveCount(4);
@@ -166,7 +172,10 @@ test("Filling the Inspector `Name` textbox with `Checkout` after selecting the f
 
 async function addTwoActorsClickFirstFillShopper(page: Page) {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page
+    .locator(".editor-toolbar")
+    .getByRole("button", { name: "New Slice", exact: true })
+    .click();
   await page.getByRole("button", { name: "Add Actor", exact: true }).click();
   await page.getByRole("button", { name: "Add Actor", exact: true }).click();
   await expect(
@@ -210,7 +219,10 @@ test("Filling the Inspector `Name` textbox with `Shopper` after selecting the fi
 
 async function addTwoEventsClickFirstFillOrderPlaced(page: Page) {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page
+    .locator(".editor-toolbar")
+    .getByRole("button", { name: "New Slice", exact: true })
+    .click();
   await page.getByRole("button", { name: "Add Event", exact: true }).click();
   await page.getByRole("button", { name: "Add Event", exact: true }).click();
   await expect(
@@ -254,7 +266,10 @@ test("Filling the Inspector `Name` textbox with `Order Placed` after selecting `
 
 async function addTwoReadModelsClickFirstFillOrders(page: Page) {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page
+    .locator(".editor-toolbar")
+    .getByRole("button", { name: "New Slice", exact: true })
+    .click();
   await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
   await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
   await expect(
@@ -298,7 +313,10 @@ test("Filling the Inspector `Name` textbox with `Orders` after selecting `Read M
 
 async function addTwoAutomationsClickFirstFillSendEmail(page: Page) {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page
+    .locator(".editor-toolbar")
+    .getByRole("button", { name: "New Slice", exact: true })
+    .click();
   await page.getByRole("button", { name: "Add Automation", exact: true }).click();
   await page.getByRole("button", { name: "Add Automation", exact: true }).click();
   await expect(
@@ -344,7 +362,10 @@ test("After clicking `New Slice` then `Add Command` then `Save` on that page, fi
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page
+    .locator(".editor-toolbar")
+    .getByRole("button", { name: "New Slice", exact: true })
+    .click();
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   await Promise.all([
     page.waitForResponse(
@@ -370,7 +391,10 @@ test("After clicking `New Slice` then `Add Event` then `Save` on that page, fill
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page
+    .locator(".editor-toolbar")
+    .getByRole("button", { name: "New Slice", exact: true })
+    .click();
   await page.getByRole("button", { name: "Add Event", exact: true }).click();
   await Promise.all([
     page.waitForResponse(
@@ -396,7 +420,10 @@ test("After clicking `New Slice` then `Add Read Model` then `Save` on that page,
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page
+    .locator(".editor-toolbar")
+    .getByRole("button", { name: "New Slice", exact: true })
+    .click();
   await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
   await Promise.all([
     page.waitForResponse(
@@ -422,7 +449,10 @@ test("After clicking `New Slice` then `Add Automation` then `Save` on that page,
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page
+    .locator(".editor-toolbar")
+    .getByRole("button", { name: "New Slice", exact: true })
+    .click();
   await page.getByRole("button", { name: "Add Automation", exact: true }).click();
   await Promise.all([
     page.waitForResponse(
@@ -476,8 +506,14 @@ async function addTwoSlicesClickFirstFillDescription(page: Page) {
     page.getByRole("heading", { name: "Empty Import", exact: true }),
   ).toBeVisible();
   await page.waitForLoadState("networkidle");
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page
+    .locator(".editor-toolbar")
+    .getByRole("button", { name: "New Slice", exact: true })
+    .click();
+  await page
+    .locator(".editor-toolbar")
+    .getByRole("button", { name: "New Slice", exact: true })
+    .click();
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }),
   ).toHaveCount(4);
@@ -505,7 +541,10 @@ test("After clicking `New Slice` twice, clicking the first `New Slice` listitem,
 
 async function addTwoCommandsClickFirstFillDescription(page: Page) {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page
+    .locator(".editor-toolbar")
+    .getByRole("button", { name: "New Slice", exact: true })
+    .click();
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   await page.getByRole("button", { name: "Add Command", exact: true }).click();
   await expect(
@@ -538,7 +577,10 @@ test("After clicking `New Slice` then `Add Command` twice, clicking the first Ti
 
 async function addTwoActorsClickFirstFillDescription(page: Page) {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page
+    .locator(".editor-toolbar")
+    .getByRole("button", { name: "New Slice", exact: true })
+    .click();
   await page.getByRole("button", { name: "Add Actor", exact: true }).click();
   await page.getByRole("button", { name: "Add Actor", exact: true }).click();
   await expect(
@@ -571,7 +613,10 @@ test("After clicking `New Slice` then `Add Actor` twice, clicking the first Time
 
 async function addTwoEventsClickFirstFillDescription(page: Page) {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page
+    .locator(".editor-toolbar")
+    .getByRole("button", { name: "New Slice", exact: true })
+    .click();
   await page.getByRole("button", { name: "Add Event", exact: true }).click();
   await page.getByRole("button", { name: "Add Event", exact: true }).click();
   await expect(
@@ -604,7 +649,10 @@ test("After clicking `New Slice` then `Add Event` twice, clicking the first Time
 
 async function addTwoReadModelsClickFirstFillDescription(page: Page) {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page
+    .locator(".editor-toolbar")
+    .getByRole("button", { name: "New Slice", exact: true })
+    .click();
   await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
   await page.getByRole("button", { name: "Add Read Model", exact: true }).click();
   await expect(
@@ -637,7 +685,10 @@ test("After clicking `New Slice` then `Add Read Model` twice, clicking the first
 
 async function addTwoAutomationsClickFirstFillDescription(page: Page) {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page
+    .locator(".editor-toolbar")
+    .getByRole("button", { name: "New Slice", exact: true })
+    .click();
   await page.getByRole("button", { name: "Add Automation", exact: true }).click();
   await page.getByRole("button", { name: "Add Automation", exact: true }).click();
   await expect(
@@ -700,8 +751,14 @@ async function addTwoSlicesClickFirstSelectStateView(page: Page) {
     page.getByRole("heading", { name: "Empty Import", exact: true }),
   ).toBeVisible();
   await page.waitForLoadState("networkidle");
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page
+    .locator(".editor-toolbar")
+    .getByRole("button", { name: "New Slice", exact: true })
+    .click();
+  await page
+    .locator(".editor-toolbar")
+    .getByRole("button", { name: "New Slice", exact: true })
+    .click();
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }),
   ).toHaveCount(4);
@@ -743,7 +800,10 @@ test("After clicking `New Slice` then `Save` on that page, filling the Inspector
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page
+    .locator(".editor-toolbar")
+    .getByRole("button", { name: "New Slice", exact: true })
+    .click();
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
   ).toBeVisible();
@@ -771,7 +831,10 @@ test("After clicking `New Slice` then `Add Actor` then `Save` on that page, fill
   const count =
     (await page.getByRole("listitem", { name: "New Slice", exact: true }).count()) +
     2;
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page
+    .locator(".editor-toolbar")
+    .getByRole("button", { name: "New Slice", exact: true })
+    .click();
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }),
   ).toHaveCount(count);
@@ -806,7 +869,10 @@ test("After clicking `New Slice` then `Add Command` then `Save` on that page, fi
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page
+    .locator(".editor-toolbar")
+    .getByRole("button", { name: "New Slice", exact: true })
+    .click();
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
   ).toBeVisible();
@@ -840,7 +906,10 @@ test("After clicking `New Slice` then `Add Event` then `Save` on that page, fill
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page
+    .locator(".editor-toolbar")
+    .getByRole("button", { name: "New Slice", exact: true })
+    .click();
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
   ).toBeVisible();
@@ -874,7 +943,10 @@ test("After clicking `New Slice` then `Add Read Model` then `Save` on that page,
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page
+    .locator(".editor-toolbar")
+    .getByRole("button", { name: "New Slice", exact: true })
+    .click();
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
   ).toBeVisible();
@@ -908,7 +980,10 @@ test("After clicking `New Slice` then `Add Automation` then `Save` on that page,
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page
+    .locator(".editor-toolbar")
+    .getByRole("button", { name: "New Slice", exact: true })
+    .click();
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
   ).toBeVisible();
@@ -942,7 +1017,10 @@ test("After clicking `New Slice` then `Save` on that page, selecting `State View
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page
+    .locator(".editor-toolbar")
+    .getByRole("button", { name: "New Slice", exact: true })
+    .click();
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
   ).toBeVisible();
@@ -967,7 +1045,10 @@ test("After clicking `New Slice` then `Add Command` then `Save` on that page, cl
   page,
 }) => {
   await openUntitledModel(page);
-  await page.getByRole("button", { name: "New Slice", exact: true }).click();
+  await page
+    .locator(".editor-toolbar")
+    .getByRole("button", { name: "New Slice", exact: true })
+    .click();
   await expect(
     page.getByRole("listitem", { name: "New Slice", exact: true }).first(),
   ).toBeVisible();
