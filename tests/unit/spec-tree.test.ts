@@ -1245,6 +1245,20 @@ describe("spec tree", () => {
     }
   });
 
+  it("inspect-second-field-name-write Restates of inspect-get-second-field Command-qualifies GET second Field name write", () => {
+    const restates = readFileSync(
+      "docs/specs/features/inspect-second-field-name-write.md",
+      "utf8",
+    ).split("## Restates")[1];
+    expect(restates).not.toMatch(
+      /GET second Field name display stays that file\. GET second Field name write is this slice\./,
+    );
+    expect(restates).toContain(
+      "GET second Field name write of two Fields on one Command is this slice",
+    );
+    expect(restates).toContain("inspect-event-second-field-name.md");
+  });
+
   it("inspect-second-field-name-write Restates paths do not park GET second Field name write as stay later", () => {
     const paths = [
       "docs/specs/features/inspect-second-field-name-write.md",
@@ -1446,6 +1460,28 @@ describe("spec tree", () => {
       expect(text, path).not.toMatch(
         /GET Field type write of a Command on the first of two Slices stay later/,
       );
+    }
+  });
+
+  it("inspect-event-second-field-name Restates does not list inspect-event-field-name-first-slice", () => {
+    const restates = readFileSync(
+      "docs/specs/features/inspect-event-second-field-name.md",
+      "utf8",
+    ).split("## Restates")[1];
+    expect(restates).not.toContain("inspect-event-field-name-first-slice.md");
+  });
+
+  it("inspect-event-second-field-name Restates paths do not park GET second Event Field name write as stay later", () => {
+    const paths = [
+      "docs/specs/features/inspect-second-field-name-write.md",
+      "docs/specs/product.md",
+      "docs/specs/architecture.md",
+    ];
+    for (const path of paths) {
+      const text = readFileSync(path, "utf8");
+      expect(text, path).toContain("inspect-event-second-field-name.md");
+      expect(text, path).not.toMatch(/GET second Event Field name write stay later/);
+      expect(text, path).not.toMatch(/Second Event Field name stay later/);
     }
   });
 

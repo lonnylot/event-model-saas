@@ -15,8 +15,8 @@ export function setFieldName(model, name, id, target = "command", fieldIndex = 0
       const event = events[index];
       if (!event) return model;
       const fields = [...(event.fields ?? [])];
-      if (!fields.length) return model;
-      fields[0] = { ...fields[0], name };
+      if (!fields[fieldIndex]) return model;
+      fields[fieldIndex] = { ...fields[fieldIndex], name };
       events[index] = { ...event, fields };
       slices[sliceIndex] = { ...selected, events };
       return { ...model, slices };
@@ -27,8 +27,8 @@ export function setFieldName(model, name, id, target = "command", fieldIndex = 0
     const event = events[index];
     if (!event) return model;
     const fields = [...(event.fields ?? [])];
-    if (!fields.length) return model;
-    fields[0] = { ...fields[0], name };
+    if (!fields[fieldIndex]) return model;
+    fields[fieldIndex] = { ...fields[fieldIndex], name };
     events[index] = { ...event, fields };
     slices[slices.length - 1] = { ...slice, events };
     return { ...model, slices };
@@ -46,8 +46,8 @@ export function setFieldName(model, name, id, target = "command", fieldIndex = 0
       const readModel = readModels[index];
       if (!readModel) return model;
       const fields = [...(readModel.fields ?? [])];
-      if (!fields.length) return model;
-      fields[0] = { ...fields[0], name };
+      if (!fields[fieldIndex]) return model;
+      fields[fieldIndex] = { ...fields[fieldIndex], name };
       readModels[index] = { ...readModel, fields };
       slices[sliceIndex] = { ...selected, readModels };
       return { ...model, slices };
@@ -58,8 +58,8 @@ export function setFieldName(model, name, id, target = "command", fieldIndex = 0
     const readModel = readModels[index];
     if (!readModel) return model;
     const fields = [...(readModel.fields ?? [])];
-    if (!fields.length) return model;
-    fields[0] = { ...fields[0], name };
+    if (!fields[fieldIndex]) return model;
+    fields[fieldIndex] = { ...fields[fieldIndex], name };
     readModels[index] = { ...readModel, fields };
     slices[slices.length - 1] = { ...slice, readModels };
     return { ...model, slices };
@@ -77,8 +77,8 @@ export function setFieldName(model, name, id, target = "command", fieldIndex = 0
       const automation = processors[index];
       if (!automation) return model;
       const fields = [...(automation.fields ?? [])];
-      if (!fields.length) return model;
-      fields[0] = { ...fields[0], name };
+      if (!fields[fieldIndex]) return model;
+      fields[fieldIndex] = { ...fields[fieldIndex], name };
       processors[index] = { ...automation, fields };
       slices[sliceIndex] = { ...selected, processors };
       return { ...model, slices };
@@ -89,8 +89,8 @@ export function setFieldName(model, name, id, target = "command", fieldIndex = 0
     const automation = processors[index];
     if (!automation) return model;
     const fields = [...(automation.fields ?? [])];
-    if (!fields.length) return model;
-    fields[0] = { ...fields[0], name };
+    if (!fields[fieldIndex]) return model;
+    fields[fieldIndex] = { ...fields[fieldIndex], name };
     processors[index] = { ...automation, fields };
     slices[slices.length - 1] = { ...slice, processors };
     return { ...model, slices };

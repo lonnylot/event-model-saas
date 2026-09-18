@@ -460,6 +460,15 @@ export function bindInspect(root, ctx) {
       : model.slices?.at(-1)?.events?.at(-1);
     return event?.fields?.[0]?.name;
   };
+  const lastEventSecondFieldName = () => {
+    const holder = root.getElementById("event-model-document");
+    const model = JSON.parse(holder?.textContent || "{}");
+    const id = ctx.selectedEventItem?.dataset?.id;
+    const event = id
+      ? model.slices?.flatMap((s) => s.events ?? []).find((e) => e.id === id)
+      : model.slices?.at(-1)?.events?.at(-1);
+    return event?.fields?.[1]?.name;
+  };
   const lastReadModelFieldName = () => {
     const holder = root.getElementById("event-model-document");
     const model = JSON.parse(holder?.textContent || "{}");
@@ -469,6 +478,15 @@ export function bindInspect(root, ctx) {
       : model.slices?.at(-1)?.readModels?.at(-1);
     return readModel?.fields?.[0]?.name;
   };
+  const lastReadModelSecondFieldName = () => {
+    const holder = root.getElementById("event-model-document");
+    const model = JSON.parse(holder?.textContent || "{}");
+    const id = ctx.selectedReadModelItem?.dataset?.id;
+    const readModel = id
+      ? model.slices?.flatMap((s) => s.readModels ?? []).find((r) => r.id === id)
+      : model.slices?.at(-1)?.readModels?.at(-1);
+    return readModel?.fields?.[1]?.name;
+  };
   const lastAutomationFieldName = () => {
     const holder = root.getElementById("event-model-document");
     const model = JSON.parse(holder?.textContent || "{}");
@@ -477,6 +495,15 @@ export function bindInspect(root, ctx) {
       ? model.slices?.flatMap((s) => s.processors ?? []).find((p) => p.id === id)
       : model.slices?.at(-1)?.processors?.at(-1);
     return automation?.fields?.[0]?.name;
+  };
+  const lastAutomationSecondFieldName = () => {
+    const holder = root.getElementById("event-model-document");
+    const model = JSON.parse(holder?.textContent || "{}");
+    const id = ctx.selectedAutomationItem?.dataset?.id;
+    const automation = id
+      ? model.slices?.flatMap((s) => s.processors ?? []).find((p) => p.id === id)
+      : model.slices?.at(-1)?.processors?.at(-1);
+    return automation?.fields?.[1]?.name;
   };
   const lastCommandFieldType = () => {
     const holder = root.getElementById("event-model-document");
@@ -952,7 +979,14 @@ export function bindInspect(root, ctx) {
     if (input) input.value = value;
   };
   const bindSecondFieldName = (value) => {
-    if (!inspector || ctx.selected !== "command") return;
+    if (
+      !inspector ||
+      (ctx.selected !== "command" &&
+        ctx.selected !== "event" &&
+        ctx.selected !== "readmodel" &&
+        ctx.selected !== "automation")
+    )
+      return;
     inspector.insertAdjacentHTML(
       "beforeend",
       "<label>Field name <input /></label>",
@@ -972,6 +1006,39 @@ export function bindInspect(root, ctx) {
               input.value,
               ctx.selectedCommandItem?.dataset?.id,
               "command",
+              1,
+            ),
+          );
+        }
+        if (holder && ctx.selected === "event") {
+          holder.textContent = JSON.stringify(
+            setFieldName(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+              ctx.selectedEventItem?.dataset?.id,
+              "event",
+              1,
+            ),
+          );
+        }
+        if (holder && ctx.selected === "readmodel") {
+          holder.textContent = JSON.stringify(
+            setFieldName(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+              ctx.selectedReadModelItem?.dataset?.id,
+              "readmodel",
+              1,
+            ),
+          );
+        }
+        if (holder && ctx.selected === "automation") {
+          holder.textContent = JSON.stringify(
+            setFieldName(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
+              ctx.selectedAutomationItem?.dataset?.id,
+              "automation",
               1,
             ),
           );
@@ -1436,6 +1503,10 @@ export function bindInspect(root, ctx) {
         const eventFieldName = lastEventFieldName();
         if (eventFieldName) {
           bindFieldName(eventFieldName);
+          const secondFieldName = lastEventSecondFieldName();
+          if (secondFieldName) {
+            bindSecondFieldName(secondFieldName);
+          }
           bindFieldType(lastEventFieldType());
           bindOptional(lastEventFieldOptional());
           bindExample(lastEventFieldExample());
@@ -1467,6 +1538,10 @@ export function bindInspect(root, ctx) {
         const readModelFieldName = lastReadModelFieldName();
         if (readModelFieldName) {
           bindFieldName(readModelFieldName);
+          const secondFieldName = lastReadModelSecondFieldName();
+          if (secondFieldName) {
+            bindSecondFieldName(secondFieldName);
+          }
           bindFieldType(lastReadModelFieldType());
           bindOptional(lastReadModelFieldOptional());
           bindExample(lastReadModelFieldExample());
@@ -1497,6 +1572,10 @@ export function bindInspect(root, ctx) {
         const automationFieldName = lastAutomationFieldName();
         if (automationFieldName) {
           bindFieldName(automationFieldName);
+          const secondFieldName = lastAutomationSecondFieldName();
+          if (secondFieldName) {
+            bindSecondFieldName(secondFieldName);
+          }
           bindFieldType(lastAutomationFieldType());
           bindOptional(lastAutomationFieldOptional());
           bindExample(lastAutomationFieldExample());
