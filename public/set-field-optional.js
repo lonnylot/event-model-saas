@@ -1,4 +1,4 @@
-export function setFieldOptional(model, optional, target = "command", id) {
+export function setFieldOptional(model, optional, target = "command", id, fieldIndex = 0) {
   const slices = [...(model.slices ?? [])];
   const slice = slices.at(-1);
   if (!slice) return model;
@@ -101,8 +101,8 @@ export function setFieldOptional(model, optional, target = "command", id) {
     const command = commands[index];
     if (!command) return model;
     const fields = [...(command.fields ?? [])];
-    if (!fields.length) return model;
-    fields[0] = { ...fields[0], optional };
+    if (!fields[fieldIndex]) return model;
+    fields[fieldIndex] = { ...fields[fieldIndex], optional };
     commands[index] = { ...command, fields };
     slices[sliceIndex] = { ...selected, commands };
     return { ...model, slices };
