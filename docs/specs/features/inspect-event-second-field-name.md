@@ -38,6 +38,5 @@ Second Field type / optional / example. TIME click empty Inspector. Landing. Mac
 ## Restates
 
 - [inspect-second-field-name-write.md](./inspect-second-field-name-write.md) — Second Command Field name stays that file. Second Event Field name is this slice.
-- [inspect-event-field-name-first-slice.md](./inspect-event-field-name-first-slice.md) — First Event Field name on the first Slice stays that file.
 - [product.md](../product.md) — GET second Event Field name write is this slice.
 - [architecture.md](../architecture.md) — GET second Event Field name write is this slice.
