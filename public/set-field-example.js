@@ -3,6 +3,24 @@ export function setFieldExample(model, example, target = "command", id) {
   const slice = slices.at(-1);
   if (!slice) return model;
   if (target === "event") {
+    if (id) {
+      const sliceIndex = slices.findIndex((candidate) =>
+        (candidate.events ?? []).some((event) => event.id === id),
+      );
+      if (sliceIndex < 0) return model;
+      const selected = slices[sliceIndex];
+      const events = [...(selected.events ?? [])];
+      const index = events.findIndex((event) => event.id === id);
+      if (index < 0) return model;
+      const event = events[index];
+      if (!event) return model;
+      const fields = [...(event.fields ?? [])];
+      if (!fields.length) return model;
+      fields[0] = { ...fields[0], example };
+      events[index] = { ...event, fields };
+      slices[sliceIndex] = { ...selected, events };
+      return { ...model, slices };
+    }
     const events = [...(slice.events ?? [])];
     const event = events.at(-1);
     if (!event) return model;

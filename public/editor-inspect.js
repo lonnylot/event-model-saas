@@ -853,6 +853,7 @@ export function bindInspect(root, ctx) {
               JSON.parse(holder.textContent || "{}"),
               input.value,
               "event",
+              ctx.selectedEventItem?.dataset?.id,
             ),
           );
         }
@@ -1225,7 +1226,9 @@ export function bindInspect(root, ctx) {
                 ctx.selected,
                 ctx.selected === "command"
                   ? ctx.selectedCommandItem?.dataset?.id
-                  : undefined,
+                  : ctx.selected === "event"
+                    ? ctx.selectedEventItem?.dataset?.id
+                    : undefined,
               ),
             );
           }
