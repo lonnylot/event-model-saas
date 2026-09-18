@@ -44,6 +44,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Problem names Event → Read Model Backspace JSON **and** caption vs unique `connections` []; extra `.board` `node?.remove()` without a caption AC | `keeping-specs-current`, `testing`, `tdd-loop`, `playwright-e2e` |
 | Restates leftover Name JSON on those GET listitems vs Out of scope GET Automation Name JSON | `keeping-specs-current` |
 | Restates leftover GET Connection data-id / Backspace vs unique Command → Event Happened / parked Event Happened → Read Model | `keeping-specs-current` |
+| Restates leftover inspect-get-second-field unqualified GET second Field name write is this slice vs unique Command write / parked Event write (inspect-event-second-field-name) | `keeping-specs-current` |
 | Restates omits product.md leftover “the selected Connection (Backspace)” / leftover Delete Connection are delete-blocks (`add-on-lane` / `connection-feedback` / `inspect-description` / `inspect-deselect` / `name-binding-rest` / `undo-rest`) vs unique Event → Read Model Backspace | `keeping-specs-current` |
 | Leftover architecture Front end Inspector unbind on selection change vs leftover Type after a Connection click / leftover From after Command → Event Happened | `keeping-specs-current` |
 | Restates omitting released `editor-shell.md` leftover empty named Inspector after GET Inspector chrome | `keeping-specs-current` |
