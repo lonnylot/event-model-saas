@@ -1,6 +1,6 @@
 # Empty canvas new slice
 
-Status: validated
+Status: released
 
 ## Problem
 
