@@ -150,5 +150,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | New slice insert after | [features/new-slice-insert-after.md](./features/new-slice-insert-after.md) | released |
 | Empty canvas new slice | [features/empty-canvas-new-slice.md](./features/empty-canvas-new-slice.md) | released |
 | Inspect add field event first slice | [features/inspect-add-field-event-first-slice.md](./features/inspect-add-field-event-first-slice.md) | released |
+| Inspect event field name first slice | [features/inspect-event-field-name-first-slice.md](./features/inspect-event-field-name-first-slice.md) | validated |
 
 Status: `draft` → `validated` → `released`.

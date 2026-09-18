@@ -1449,6 +1449,21 @@ describe("spec tree", () => {
     }
   });
 
+  it("inspect-event-field-name-first-slice Restates paths do not park Event / Read Model / Automation Field name on the first of two Slices as stay later", () => {
+    const paths = [
+      "docs/specs/features/inspect-command-field-name-first-slice.md",
+      "docs/specs/product.md",
+      "docs/specs/architecture.md",
+    ];
+    for (const path of paths) {
+      const text = readFileSync(path, "utf8");
+      expect(text, path).toContain("inspect-event-field-name-first-slice.md");
+      expect(text, path).not.toMatch(
+        /Event \/ Read Model \/ Automation Field name on the first of two Slices stay later/,
+      );
+    }
+  });
+
   it("inspect-command-field-name-first-slice Restates paths do not park GET Field name write of a Command on the first of two Slices as stay later", () => {
     const paths = [
       "docs/specs/features/inspect-fields.md",
