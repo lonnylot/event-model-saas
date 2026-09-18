@@ -34,7 +34,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-`Add Command on lane` paint. Toolbar Add Actor / Event / Read Model / Automation on the selected Slice is a later slice. In-memory ports and inspect/delete on those lane-painted listitems. TIME click empty Inspector. Landing. Mac window chrome. Copy changes.
+`Add Command on lane` paint. Toolbar Add Actor / Event / Read Model / Automation on the selected first of two Slices is [add-toolbar-selected-slice-rest.md](./add-toolbar-selected-slice-rest.md). In-memory ports and inspect/delete on those lane-painted listitems. TIME click empty Inspector. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 

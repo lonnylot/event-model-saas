@@ -2185,6 +2185,31 @@ describe("spec tree", () => {
     );
   });
 
+  it("add-toolbar-selected-slice-rest Restates add-on-lane-paint so toolbar Add on the selected first Slice is this slice", () => {
+    const paint = readFileSync(
+      "docs/specs/features/add-on-lane-paint.md",
+      "utf8",
+    );
+    expect(paint).not.toContain(
+      "Toolbar Add Actor / Event / Read Model / Automation on the selected Slice is a later slice.",
+    );
+    const paintOut =
+      paint.split("## Out of scope")[1]?.split("## Restates")[0] ?? "";
+    expect(paintOut).toContain(
+      "Toolbar Add Actor / Event / Read Model / Automation on the selected first of two Slices is [add-toolbar-selected-slice-rest.md](./add-toolbar-selected-slice-rest.md).",
+    );
+    const rest = readFileSync(
+      "docs/specs/features/add-toolbar-selected-slice-rest.md",
+      "utf8",
+    );
+    const restates = rest.split("## Restates")[1] ?? "";
+    const paintRow =
+      restates.split("- [add-on-lane-paint.md]")[1]?.split("\n- [")[0] ?? "";
+    expect(paintRow).toContain(
+      "Lane paint stays that file. Toolbar Add Actor / Event / Read Model / Automation on the selected first of two Slices is this slice.",
+    );
+  });
+
   it("undo-add-selected-slice Out of scope names redo of selected-Slice Add Command as undo-rest.md", () => {
     for (const path of specMarkdownFiles("docs/specs")) {
       const text = readFileSync(path, "utf8");
