@@ -31,7 +31,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-Slice type help copy. New Slice insert after the selected Slice. TIME click empty Inspector. Landing. Mac window chrome. Copy changes.
+Slice type help copy. TIME click empty Inspector. Landing. Mac window chrome. Copy changes. New Slice insert after the selected Slice is [new-slice-insert-after.md](./new-slice-insert-after.md).
 
 ## Restates
 

@@ -295,7 +295,7 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks the `
   ).toHaveValue("Checkout");
 });
 
-test("After a member creates a model, opens it, clicks `New Slice`, clicks the `New Slice` listitem, fills `Description` with `First column`, and Saves, a reload of that page, clicking the `New Slice` listitem shows the Inspector `Description` textbox with the value `First column`", async ({
+test("After a member creates a model, opens it, clicks `New Slice`, clicks the `New Slice` listitem, fills `Description` with `First column`, and Saves, a reload of that page, clicking the `Slice 2` listitem shows the Inspector `Description` textbox with the value `First column`", async ({
   page,
 }) => {
   await openUntitledModel(page);
@@ -322,8 +322,7 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks the `
   await page
     .locator("ul")
     .first()
-    .getByRole("listitem", { name: "New Slice", exact: true })
-    .last()
+    .getByRole("listitem", { name: "Slice 2", exact: true })
     .click();
   await expect(
     page
