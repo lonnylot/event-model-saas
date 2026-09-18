@@ -131,12 +131,19 @@ export function onNewSliceClick(root) {
   undoStack.push("slice");
 }
 
-export function onAddActorClick(root) {
+export function onAddActorClick(root, sliceIndex) {
   const holder = root.getElementById("event-model-document");
-  const next = appendActor(JSON.parse(holder?.textContent || "{}"));
+  const next = appendActor(
+    JSON.parse(holder?.textContent || "{}"),
+    sliceIndex,
+  );
   if (holder) holder.textContent = JSON.stringify(next);
-  const actor = next.slices?.at(-1)?.actors?.at(-1);
-  const list = lastLaneList(root, "actor");
+  const index = sliceIndex ?? (next.slices?.length ?? 1) - 1;
+  const actor = next.slices?.[index]?.actors?.at(-1);
+  const cols = timelineEl(root)?.querySelectorAll?.(".slice-col") ?? [];
+  const list =
+    cols[index]?.querySelector('[data-lane="actor"] ul') ??
+    lastLaneList(root, "actor");
   if (list) {
     const item = root.createElement("li");
     item.textContent = "Actor";
@@ -182,12 +189,19 @@ export function onAddCommandClick(root, sliceIndex) {
   redoStack.length = 0;
 }
 
-export function onAddEventClick(root) {
+export function onAddEventClick(root, sliceIndex) {
   const holder = root.getElementById("event-model-document");
-  const next = appendEvent(JSON.parse(holder?.textContent || "{}"));
+  const next = appendEvent(
+    JSON.parse(holder?.textContent || "{}"),
+    sliceIndex,
+  );
   if (holder) holder.textContent = JSON.stringify(next);
-  const event = next.slices?.at(-1)?.events?.at(-1);
-  const list = lastLaneList(root, "event");
+  const index = sliceIndex ?? (next.slices?.length ?? 1) - 1;
+  const event = next.slices?.[index]?.events?.at(-1);
+  const cols = timelineEl(root)?.querySelectorAll?.(".slice-col") ?? [];
+  const list =
+    cols[index]?.querySelector('[data-lane="event"] ul') ??
+    lastLaneList(root, "event");
   if (list && event) {
     const item = root.createElement("li");
     item.textContent = "Event Happened";
@@ -208,12 +222,19 @@ export function onAddEventClick(root) {
   undoStack.push("event");
 }
 
-export function onAddReadModelClick(root) {
+export function onAddReadModelClick(root, sliceIndex) {
   const holder = root.getElementById("event-model-document");
-  const next = appendReadModel(JSON.parse(holder?.textContent || "{}"));
+  const next = appendReadModel(
+    JSON.parse(holder?.textContent || "{}"),
+    sliceIndex,
+  );
   if (holder) holder.textContent = JSON.stringify(next);
-  const readModel = next.slices?.at(-1)?.readModels?.at(-1);
-  const list = lastLaneList(root, "readmodel");
+  const index = sliceIndex ?? (next.slices?.length ?? 1) - 1;
+  const readModel = next.slices?.[index]?.readModels?.at(-1);
+  const cols = timelineEl(root)?.querySelectorAll?.(".slice-col") ?? [];
+  const list =
+    cols[index]?.querySelector('[data-lane="readmodel"] ul') ??
+    lastLaneList(root, "readmodel");
   if (list && readModel) {
     const item = root.createElement("li");
     item.textContent = "Read Model";
@@ -234,12 +255,19 @@ export function onAddReadModelClick(root) {
   undoStack.push("readmodel");
 }
 
-export function onAddAutomationClick(root) {
+export function onAddAutomationClick(root, sliceIndex) {
   const holder = root.getElementById("event-model-document");
-  const next = appendAutomation(JSON.parse(holder?.textContent || "{}"));
+  const next = appendAutomation(
+    JSON.parse(holder?.textContent || "{}"),
+    sliceIndex,
+  );
   if (holder) holder.textContent = JSON.stringify(next);
-  const automation = next.slices?.at(-1)?.processors?.at(-1);
-  const list = lastLaneList(root, "automation");
+  const index = sliceIndex ?? (next.slices?.length ?? 1) - 1;
+  const automation = next.slices?.[index]?.processors?.at(-1);
+  const cols = timelineEl(root)?.querySelectorAll?.(".slice-col") ?? [];
+  const list =
+    cols[index]?.querySelector('[data-lane="automation"] ul') ??
+    lastLaneList(root, "automation");
   if (list && automation) {
     const item = root.createElement("li");
     item.textContent = "Automation";
@@ -333,7 +361,9 @@ export function bindEditor(root) {
       button.addEventListener("click", () => onNewSliceClick(root));
     }
     if (button.textContent === "Add Actor") {
-      button.addEventListener("click", () => onAddActorClick(root));
+      button.addEventListener("click", () =>
+        onAddActorClick(root, selectedSliceIndex),
+      );
     }
     if (button.textContent === "Add Command") {
       button.addEventListener("click", () =>
@@ -341,13 +371,19 @@ export function bindEditor(root) {
       );
     }
     if (button.textContent === "Add Event") {
-      button.addEventListener("click", () => onAddEventClick(root));
+      button.addEventListener("click", () =>
+        onAddEventClick(root, selectedSliceIndex),
+      );
     }
     if (button.textContent === "Add Read Model") {
-      button.addEventListener("click", () => onAddReadModelClick(root));
+      button.addEventListener("click", () =>
+        onAddReadModelClick(root, selectedSliceIndex),
+      );
     }
     if (button.textContent === "Add Automation") {
-      button.addEventListener("click", () => onAddAutomationClick(root));
+      button.addEventListener("click", () =>
+        onAddAutomationClick(root, selectedSliceIndex),
+      );
     }
   });
   const timelineList = timeline;
@@ -385,11 +421,11 @@ export function bindEditor(root) {
   ctx.lastLaneList = (kind) => lastLaneList(root, kind);
   ctx.boardMount = () => boardMount(root);
   ctx.onNewSliceClick = () => onNewSliceClick(root);
-  ctx.onAddActorClick = () => onAddActorClick(root);
+  ctx.onAddActorClick = () => onAddActorClick(root, selectedSliceIndex);
   ctx.onAddCommandClick = () => onAddCommandClick(root, selectedSliceIndex);
-  ctx.onAddEventClick = () => onAddEventClick(root);
-  ctx.onAddReadModelClick = () => onAddReadModelClick(root);
-  ctx.onAddAutomationClick = () => onAddAutomationClick(root);
+  ctx.onAddEventClick = () => onAddEventClick(root, selectedSliceIndex);
+  ctx.onAddReadModelClick = () => onAddReadModelClick(root, selectedSliceIndex);
+  ctx.onAddAutomationClick = () => onAddAutomationClick(root, selectedSliceIndex);
   bindKeyboard(root, ctx);
   bindPointer(root, ctx);
 }
