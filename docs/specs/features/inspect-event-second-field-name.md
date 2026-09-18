@@ -1,6 +1,6 @@
 # Inspect event second field name
 
-Status: validated
+Status: released
 
 ## Problem
 
