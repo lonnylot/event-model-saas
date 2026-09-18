@@ -40,6 +40,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Problem names only Field name when ACs also drop Field type / Optional / Example / Delete Field | `keeping-specs-current` |
 | Problem names only Slice leftover Name/Type when ACs also cover Actor leftover Name after empty `.board` (inspect-deselect) | `keeping-specs-current` |
 | Problem names Inspector Name on Actor and Automation when unique AC is GET Actor Name JSON | `keeping-specs-current` |
+| Problem / Assumptions / Seams / Restates of blocks.md name Toolbar Add / Add Block / disabled toolbar Add (all kinds) when unique AC is Add Actor disabled (empty-canvas-new-slice) | `keeping-specs-current` |
 | Problem names leftover Add Field vs unique Nothing Selected (`:has(label)` empty copy; Add Field is a button) | `keeping-specs-current`, `testing`, `tdd-loop`, `playwright-e2e` |
 | Problem names Event → Read Model Backspace JSON **and** caption vs unique `connections` []; extra `.board` `node?.remove()` without a caption AC | `keeping-specs-current`, `testing`, `tdd-loop`, `playwright-e2e` |
 | Restates leftover Name JSON on those GET listitems vs Out of scope GET Automation Name JSON | `keeping-specs-current` |

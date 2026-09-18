@@ -93,6 +93,8 @@ A Problem that names only Slice leftover Name and Type when ACs also cover Actor
 
 A Problem that names Inspector Name on Actor and Automation when unique AC is GET Actor Name JSON is leftover-wide Problem — Out of scope GET Automation Name JSON, or add that AC.
 
+A Problem / Assumptions / Seams / Restates of `blocks.md` that name Toolbar Add / Add Block / disabled toolbar Add (all kinds) when unique AC is Add Actor disabled is leftover-wide — sibling Add Command / Add Event / Add Read Model / Add Automation stay later (`empty-canvas-new-slice`).
+
 A Problem that names leftover Add Field when unique AC is Inspector `Nothing Selected` is leftover-wide Problem — Add Field is a `button`; `:has(label)` empty copy stays green if `unbindFieldChrome()` is deleted. Add the does-not-show-button AC (`inspect-switch.md` leftover Add Field), or drop Add Field from Problem.
 
 A Problem that names Event → Read Model Backspace JSON **and** the caption on `.board` when unique AC is `connections` to `[]` is leftover-wide Problem — `node?.remove()` of `Event Happened → Read Model` is extra chrome. Add the caption AC, or omit the remove (`testing`).
