@@ -77,6 +77,8 @@ Restating landing heading `56px` / `main` max-width `none` is unfinished until l
 
 Restating `delete-rest.md` Out of scope so Event → Read Model Backspace is this slice is unfinished until leftover Assumptions no longer say Connection delete stay `delete-blocks.md`. Two bullets in that file cannot both hold.
 
+Assumptions that put toolbar New Slice in the AppBar when production is `.editor-toolbar` cannot both hold — AppBar is `header`; toolbar New Slice is `.editor-toolbar` (`empty-canvas-new-slice`).
+
 Restating inspect-rest as GET Type of one Slice (parking GET Type of the first of two Slices) is unfinished until leftover inspect-rest Type AC no longer clicks extra `New Slice` then `the New Slice listitem` (Create seeds a default Slice; two Slices, no first vs last). Leftover inspect-rest Restates of inspect-description / inspect-blocks / chrome / connections / editor-shell / blocks / model-persistence / connection-feedback / inspect-connection that still claim this slice owns unqualified `Slice type after reload` is leftover Restates. Rename the leftover `it` that quotes that AC (`testing`).
 
 Restating the landing-saas-shot URL-bar AC (`.product-shot` does not show `event-model.lonnylot.com`; `.browser-bar` leftover unused) is unfinished until leftover Problem no longer lists “browser chrome” as a hosted-editor tell.
