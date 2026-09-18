@@ -63,6 +63,8 @@ When Restates names `product.md`, re-read Document flow, Editor (Mac parity), Er
 
 Copying a schema file into Assumptions is not a rewrite. Deleting Spec slices, Architecture sketch, or CI is not a rewrite. Dropping `product.md` from Restates so leftover words would not have to be rewritten is unfinished.
 
+Restating Out of scope `stay later.` with a replacement that already ends in `.` is unfinished until leftover `..` is gone. Architecture Front end, `product.md` Editor, and Restates/OOS pointers (including `inspect-add-field-first-slice.md`) after Add Field on Event / Read Model / Automation in the first of two Slices. Grep rewritten Restates paths for `)\.\.`. Do not keep the parked sentence's trailing period.
+
 Restating one phrase in a `product.md` bullet is unfinished until you re-read the **entire** touched bullet and rewrite every other locked phrase that bullet still contains which HEAD does not implement (later-slice Playwright `add a slice`, leftover `team list` / `model list`, leftover `highlighting` / `snap-back` / `reason on the source`, leftover Next slice that still names a released slug).
 
 Two-dot vs current default deleting a catalog-released spec, Playwright file, or catalog row is blocking — three-dot from a stale merge-base hides that drop.
