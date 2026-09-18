@@ -40,4 +40,4 @@ Leftover Event → Read Model From / To after Command click is [leftover-connect
 - [leftover-connection-command.md](./leftover-connection-command.md) — Leftover after Command click stays that file. Leftover after Event click is this slice.
 - [inspect-switch.md](./inspect-switch.md) — Leftover Type after a Connection click stays that file. Leftover Connection copy after Event click is this slice.
 - [product.md](../product.md) — Leftover Connection copy after Event click is this slice.
-- [architecture.md](../architecture.md) — Leftover Connection copy after Event click is this slice.
+- [architecture.md](../architecture.md) — Leftover Connection copy after Event click is this slice. Leftover Event → Read Model From / To after Command click is [leftover-connection-event-read-command.md](./leftover-connection-event-read-command.md).

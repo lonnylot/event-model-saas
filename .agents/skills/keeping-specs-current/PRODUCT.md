@@ -77,6 +77,8 @@ Restating landing heading `56px` / `main` max-width `none` is unfinished until l
 
 Restating `delete-rest.md` Out of scope so Event → Read Model Backspace is this slice is unfinished until leftover Assumptions no longer say Connection delete stay `delete-blocks.md`. Two bullets in that file cannot both hold.
 
+Restating leftover-connection-event.md Out of scope leftover Event → Read Model From / To after Command click is unfinished until leftover Restates architecture of that file no longer names only leftover after Event click. leftover-connection-command.md Restates architecture already points at leftover-connection-event-read-command.md. Assumptions / Out of scope already pointing here is not that rewrite.
+
 Restating inspect-rest as GET Type of one Slice (parking GET Type of the first of two Slices) is unfinished until leftover inspect-rest Type AC no longer clicks extra `New Slice` then `the New Slice listitem` (Create seeds a default Slice; two Slices, no first vs last). Leftover inspect-rest Restates of inspect-description / inspect-blocks / chrome / connections / editor-shell / blocks / model-persistence / connection-feedback / inspect-connection that still claim this slice owns unqualified `Slice type after reload` is leftover Restates. Rename the leftover `it` that quotes that AC (`testing`).
 
 Restating the landing-saas-shot URL-bar AC (`.product-shot` does not show `event-model.lonnylot.com`; `.browser-bar` leftover unused) is unfinished until leftover Problem no longer lists “browser chrome” as a hosted-editor tell.
@@ -98,6 +100,8 @@ A Problem that names leftover Add Field when unique AC is Inspector `Nothing Sel
 A Problem that names Event → Read Model Backspace JSON **and** the caption on `.board` when unique AC is `connections` to `[]` is leftover-wide Problem — `node?.remove()` of `Event Happened → Read Model` is extra chrome. Add the caption AC, or omit the remove (`testing`).
 
 Restates inspect-after-reload “Name JSON and Backspace on those GET listitems” (Actor / Automation) while Out of scope parks GET Automation Name JSON cannot both hold — narrow Restates to GET Actor Name JSON and GET Actor / Automation Backspace.
+
+Restates of `inspect-switch.md` that names only leftover From Event Happened after `Command → Event Happened` when Assumptions of leftover-connection-event-read-command.md keep leftover From Event Happened / To Read Model after that click is leftover-narrow Restates — name both. Assumptions already keeping both is not that rewrite.
 
 Restates / architecture / Assumptions assigning GET Connection `data-id` / GET Connection Backspace / GET `data-id` on that node when unique production is GET `Command → Event Happened` and Out of scope parks GET `Event Happened → Read Model` cannot both hold — `CONTEXT.md` Connection is both legal edges. Qualify to GET `Command → Event Happened`, or add the Event Happened → Read Model AC. “that node” after an Event Happened → Read Model sentence is that leftover locked claim.
 
