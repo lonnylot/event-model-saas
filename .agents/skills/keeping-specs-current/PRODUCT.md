@@ -22,6 +22,7 @@ Extra visible chrome without an AC is unfinished — add the AC or omit it. Here
 - Leftover Add Field / Field name / Field type / Optional / Example / Delete Field after a narrower unbind. Nothing Selected / `:has(label)` empty copy does not prove leftover Add Field — Add Field is a `button`
 - Leftover To Read Model after a narrower From Event Happened remove
 - Event → Read Model Backspace JSON `connections` [] when Problem names JSON **and** the caption on `.board`; `node?.remove()` of `Event Happened → Read Model` is extra until a dedicated caption AC
+- Ungated `node.remove()` of `Event Happened → Read Model` on any connection undo. Command → Event ⌘Z while that caption exists also drops it. Event undo does-not-show and Command skip still-shows Command caption stay green. Gate on popped EVENT→READMODEL; add AC + `it`: Event → Read Model then Command → Event then ⌘Z, Timeline still shows `Event Happened → Read Model`
 - GET-rendered Description / Add Field when ACs only name Name
 - UI / Restates that claim compose of primitives (Card, Field, Page `type`, Button `radius`) this HEAD does not ship; leftover Field `canvas` fill after dropped Email fill AC; leftover Card `padding` with no AC; leftover Button primary `radius` on `Send invite`; leftover design-system waitlist Card lift when ACs lift `.waitlist-band`; leftover design-system Page on every listed screen; leftover Unique look picker / team / Teams admin / guest `/app` lead `<p><a href="/app">Event Model</a></p>` after those screens wrap wordmark in `header` (`visual-design/PRODUCT.md`)
 - Page ink on Login/404/expired without color ACs; leftover paper `ink-paper` on `body.login` after restating Page (public) ink; leftover signed-in Page `ink`/`type` on guest/picker/team/Teams admin/editor without body ACs; leftover visual-shell background and color when this slice only proves `ink` on one route
@@ -97,6 +98,8 @@ A Problem that names leftover Add Field when unique AC is Inspector `Nothing Sel
 
 A Problem that names Event → Read Model Backspace JSON **and** the caption on `.board` when unique AC is `connections` to `[]` is leftover-wide Problem — `node?.remove()` of `Event Happened → Read Model` is extra chrome. Add the caption AC, or omit the remove (`testing`).
 
+Ungated `node.remove()` of `Event Happened → Read Model` on every connection undo when unique ACs are Event → Read Model undo does-not-show that caption and Command → Event skip still-shows Command caption is extra chrome. Command → Event undo still-shows `Command → Event Happened` stays green if that caption is also dropped. Gate on popped EVENT→READMODEL; add the still-shows Event caption AC (`testing`).
+
 Restates inspect-after-reload “Name JSON and Backspace on those GET listitems” (Actor / Automation) while Out of scope parks GET Automation Name JSON cannot both hold — narrow Restates to GET Actor Name JSON and GET Actor / Automation Backspace.
 
 Restates / architecture / Assumptions assigning GET Connection `data-id` / GET Connection Backspace / GET `data-id` on that node when unique production is GET `Command → Event Happened` and Out of scope parks GET `Event Happened → Read Model` cannot both hold — `CONTEXT.md` Connection is both legal edges. Qualify to GET `Command → Event Happened`, or add the Event Happened → Read Model AC. “that node” after an Event Happened → Read Model sentence is that leftover locked claim.
@@ -126,6 +129,8 @@ Rewriting `editor-bind-split.md` Out of scope to add GET Field of the first of t
 Restates omitting released `port-wrap.md` leftover Out of scope “Narrow viewport” / `inspect-switch.md` leftover Out of scope “Narrow viewport layout” when this HEAD took narrow Editor layout (listed designed-surfaces / visual-shell / architecture) is leftover Restates. Grep Narrow viewport / Narrow viewport layout even when Restates already lists designed-surfaces.
 
 Restates omitting released `inspect-connection-live-titles.md` leftover Out of scope “Connection redo of a selected pair” / `port-highlight-hovered-event.md` leftover Out of scope “Connection redo” when this HEAD took remaining Connection fromID/toID of the undone first Command → first Event pair (listed undo-rest / canvas / product.md) is leftover Restates. Grep `Connection redo` even when Restates already lists undo-rest. Search hits for undo/redo of remaining Adds do not include that park.
+
+Restates omitting released `chrome.md` / `connections.md` / `inspect-blocks.md` / `inspect-description.md` leftover “undo New Slice / Connection are canvas.md” when this HEAD restated canvas.md to Command → Event and this slice took Event → Read Model undo (listed canvas.md) is leftover Restates. Grep `undo Connection` / `undo New Slice / Connection` even when Restates already lists canvas.md. Rewriting canvas.md Restates of those files is not rewriting those files. Command → Event stays canvas.md; Undo of Event → Read Model is this slice.
 
 Restates “Narrow AppBar / Timeline clip” when released `timeline-clip.md` owns pan/zoom clip is leftover Restates — restate to “narrow Slice-inside-Timeline layout” so the two clips do not read as one owner.
 

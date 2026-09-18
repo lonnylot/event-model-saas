@@ -24,6 +24,8 @@ Event → Read Model copy on `.board` is unproven by Command → Event Happened 
 
 Event → Read Model Backspace JSON `connections` [] is unproven for the `.board` caption (`testing`) — deleting `node?.remove()` stays green. Caption AC is `.board` `getByText("Event Happened → Read Model", { exact: true })` `toHaveCount(0)`, not folded into the JSON `it`.
 
+Ungated `node.remove()` of `Event Happened → Read Model` on any connection undo is unproven by Command → Event undo still-shows Command → Event Happened (`testing`). Caption-gate AC is Timeline `getByText("Event Happened → Read Model", { exact: true })` after Event → Read Model then Command → Event then ⌘Z.
+
 Leftover unused sibling of `.board` is unproven by after-drag `.board` + undo-rest Timeline-shows — ⇧⌘Z redo `timelineEl.append` stays green (`testing`). Append redo on `.board` so leftover unused holds (`keeping-specs-current`).
 
 GET Connection caption wrapping below the Slice is unproven by a bounding rect after reload — leftover GET `.slice-stack` already stacks, so deleting `.board-pan { flex-wrap }` / `flex-basis: 100%` stays green (`testing`). Assert the caption parent is `.board-pan` (later sibling of `.slice-col`) and the rect (`keeping-specs-current`). That Playwright `it` lands in the wrap-CSS commit when GET HTML is already later-sibling (`logical-commits`).

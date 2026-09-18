@@ -42,6 +42,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Problem names Inspector Name on Actor and Automation when unique AC is GET Actor Name JSON | `keeping-specs-current` |
 | Problem names leftover Add Field vs unique Nothing Selected (`:has(label)` empty copy; Add Field is a button) | `keeping-specs-current`, `testing`, `tdd-loop`, `playwright-e2e` |
 | Problem names Event → Read Model Backspace JSON **and** caption vs unique `connections` []; extra `.board` `node?.remove()` without a caption AC | `keeping-specs-current`, `testing`, `tdd-loop`, `playwright-e2e` |
+| Ungated Event Happened → Read Model caption `node.remove()` on any connection undo vs unique Event → Read Model undo (Command → Event ⌘Z still shows Event Happened → Read Model) | `keeping-specs-current`, `testing`, `tdd-loop`, `playwright-e2e`, `logical-commits` |
 | Restates leftover Name JSON on those GET listitems vs Out of scope GET Automation Name JSON | `keeping-specs-current` |
 | Restates leftover GET Connection data-id / Backspace vs unique Command → Event Happened / parked Event Happened → Read Model | `keeping-specs-current` |
 | Restates omits product.md leftover “the selected Connection (Backspace)” / leftover Delete Connection are delete-blocks (`add-on-lane` / `connection-feedback` / `inspect-description` / `inspect-deselect` / `name-binding-rest` / `undo-rest`) vs unique Event → Read Model Backspace | `keeping-specs-current` |
@@ -57,6 +58,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Restates editor-bind-split Out of scope GET Field of first of two Read Models twice in the same paragraph (Description first-of-two vs of-one Field) | `keeping-specs-current` |
 | Restates omitting released `port-wrap.md` / `inspect-switch.md` leftover Out of scope Narrow viewport / Narrow viewport layout after this slice took narrow Editor layout | `keeping-specs-current` |
 | Restates omitting released `inspect-connection-live-titles.md` / `port-highlight-hovered-event.md` leftover Out of scope Connection redo of a selected pair after this slice took remaining Connection fromID/toID | `keeping-specs-current` |
+| Restates omitting chrome.md / connections.md / inspect-blocks.md / inspect-description.md leftover “undo New Slice / Connection are canvas.md” after this slice took Event → Read Model undo | `keeping-specs-current` |
 | Restates Narrow AppBar / Timeline clip overlapping released timeline-clip.md pan/zoom clip | `keeping-specs-current` |
 | Restates listing design-system.md Tokens stay that file when UI inventory is not a rewrite (timeline-clip inventories without listing) | `keeping-specs-current` |
 | Restates lists inspect-blocks.md / inspect-fields.md that already park Example after reload of one Event (inspect-get-event-optional) with no rewrite hunk; hydrate-add-field.md same prior park | `keeping-specs-current` |
@@ -93,4 +95,5 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Leftover-hide From Command vs To Event Happened vs Connection (`unbindConnectionCopy` loop) | `logical-commits` |
 | Leftover-hide unbindFieldChrome vs Nothing Selected (`:has(label)` empty copy); tests-only after review leaves that call in the earlier commit | `logical-commits` |
 | Event → Read Model Backspace JSON `connections` [] vs `.board` caption `node?.remove()`; tests-only after review leaves the remove in the JSON commit (persist-then analog) | `logical-commits` |
+| Ungated Event caption `node.remove()` on any connection undo vs gated EVENT→READMODEL (Event undo commit must not already drop Event Happened → Read Model on Command → Event undo) | `logical-commits` |
 | Restates leftover rewrite with a production restore of a different path (leftover Restates public-face Field / Page `canvas`/`ink` / design-system Page `type`/`canvas`/`ink` vs unique Send invite radius) | `logical-commits` |

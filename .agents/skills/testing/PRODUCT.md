@@ -25,6 +25,7 @@ Load with `testing`. Portable procedure is `SKILL.md` (spec-loop).
 | TIME chrome does not pan / `.time-chrome` | Timeline `style.transform` does not include `translate(` (TIME chrome inside `.board` stays green) |
 | Event → Read Model copy on `.board` | Command → Event Happened `.board` tests (second kind-gated drag arm stays sibling) |
 | Event → Read Model Backspace JSON `connections` [] vs `.board` caption | One `it` packing JSON **and** caption (`node?.remove()` stays green if only JSON is asserted) |
+| Event → Read Model undo caption gated on EVENT→READMODEL | Command → Event undo still-shows Command → Event Happened (ungated Event caption `node.remove()` stays green) |
 | leftover unused sibling of `.board` / redo Connection copy | after-drag `.board` tests + undo-rest Timeline-shows (⇧⌘Z redo `timelineEl.append` stays green) |
 | GET Connection caption below Slice / later sibling of `.slice-col` | Playwright rect only (GET leftover `.slice-stack` already stacks; deleting `.board-pan { flex-wrap }` / `flex-basis: 100%` stays green) |
 | Timeline region visible at 390 / not below the fold | Playwright `toBeVisible` (released editor-shell GET Timeline stays green; overflow-clipped / stacked under `.slice-rail` stays green) |
@@ -60,6 +61,8 @@ TIME chrome does not pan is unproven by Timeline `style.transform` does not incl
 Event → Read Model copy on `.board` is unproven by Command → Event Happened `.board` tests — the second kind-gated drag arm stays sibling. That placement is an AC that asserts `.board` contains `Event Happened → Read Model`, or revert that arm (`keeping-specs-current`). GET `connectionCopy` stays the one reload AC when this slice does not change wrapping. Caption placement wrapping is independently revertible GET Command vs GET Event (`logical-commits`).
 
 Event → Read Model Backspace JSON `connections` [] is unproven for the `.board` caption — deleting `node?.remove()` stays green. That caption is its own AC (`keeping-specs-current`). Independently revertible (`logical-commits`).
+
+Ungated `node.remove()` of `Event Happened → Read Model` on any connection undo is unproven by Event undo does-not-show that caption and Command → Event skip still-shows Command caption — Command undo while that caption exists also drops it. Gate on popped EVENT→READMODEL; AC is Timeline still shows `Event Happened → Read Model` after Event → Read Model then Command → Event then ⌘Z (`keeping-specs-current`). Independently revertible (`logical-commits`).
 
 Leftover unused sibling of `.board` is unproven by after-drag `.board` + undo-rest Timeline-shows — ⇧⌘Z redo `timelineEl.append` stays green. Append redo on `.board` and name that criterion, or the leftover-unused sentence is false (`keeping-specs-current`).
 
