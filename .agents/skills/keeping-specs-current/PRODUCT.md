@@ -137,6 +137,8 @@ Restates listing inspect-connection / inspect-rest / slice-type / inspect-fields
 
 Restates listing `port-fit.md` / `connections.md` without rewriting wrapping / same-row as this slice is leftover Restates.
 
+Restates of `connections.md` / `product.md` / `architecture.md` that still summarize only in-session Event → Read Model `data-id` when those files now park a second caption on this slice is leftover-narrow Restates — restate those rows to `data-id` and a second caption. Assumptions / Seams already naming both is not that rewrite. `hydrate-event-read-id.md` Restates stays `data-id` when that file does not park the second caption. Grep this spec's Restates rows against the rewrite hunks on those paths.
+
 Restates listing hydrate-board / inspect-after-reload / name-binding-rest / delete-rest / model-defaults without rewriting leftover GET Actor / Automation `data-id`, GET Actor Name JSON, GET Actor / Automation Backspace, leftover “Name JSON mutates the last of that kind” is leftover Restates.
 
 Leftover unused `measure-landing` `36rem` after restated `main` max-width `none` — mark leftover unused or drop (same as leftover unused paper tokens).
