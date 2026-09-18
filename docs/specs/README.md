@@ -146,6 +146,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Undo restore selected slice | [features/undo-restore-selected-slice.md](./features/undo-restore-selected-slice.md) | released |
 | Inspect command field optional first slice | [features/inspect-command-field-optional-first-slice.md](./features/inspect-command-field-optional-first-slice.md) | released |
 | Inspect command field example first slice | [features/inspect-command-field-example-first-slice.md](./features/inspect-command-field-example-first-slice.md) | released |
-| Add toolbar selected slice rest | [features/add-toolbar-selected-slice-rest.md](./features/add-toolbar-selected-slice-rest.md) | validated |
+| Add toolbar selected slice rest | [features/add-toolbar-selected-slice-rest.md](./features/add-toolbar-selected-slice-rest.md) | released |
 
 Status: `draft` → `validated` → `released`.

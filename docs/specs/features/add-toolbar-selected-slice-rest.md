@@ -1,6 +1,6 @@
 # Add toolbar selected slice rest
 
-Status: validated
+Status: released
 
 ## Problem
 
