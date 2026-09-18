@@ -38,6 +38,7 @@ Portable `SKILL.md` / `AGENT.md` files are spec-loop. Do not add Event Model cat
 | Problem names only Command when ACs also cover Event / Read Model / Automation (hydrate-add-field; inspect-after-reload / inspect-fields / shortcut-shows name every kind) | `keeping-specs-current` |
 | Problem names Connection leftover Type when unique production unbinds Type only on Command → Event Happened (inspect-switch leftover Type after Event Happened → Read Model) | `keeping-specs-current` |
 | Problem names only Field name when ACs also drop Field type / Optional / Example / Delete Field | `keeping-specs-current` |
+| Problem names leftover Field type / Optional / Example vs unique leftover Field name / leftover Delete Field after Event → Command | `keeping-specs-current` |
 | Problem names only Slice leftover Name/Type when ACs also cover Actor leftover Name after empty `.board` (inspect-deselect) | `keeping-specs-current` |
 | Problem names Inspector Name on Actor and Automation when unique AC is GET Actor Name JSON | `keeping-specs-current` |
 | Problem names leftover Add Field vs unique Nothing Selected (`:has(label)` empty copy; Add Field is a button) | `keeping-specs-current`, `testing`, `tdd-loop`, `playwright-e2e` |
