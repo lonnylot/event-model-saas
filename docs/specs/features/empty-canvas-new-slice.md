@@ -27,7 +27,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 ## Assumptions
 
 - Playwright unique checkout `PORT` / `INSPECTOR_PORT` and `TEST_MAIL=1` `workers` `1` stay [public-face.md](./public-face.md).
-- Empty Import is the same fixture as [add-on-lane-rest.md](./add-on-lane-rest.md). Creating a Slice from toolbar Add stays not a feature ([blocks.md](./blocks.md)). Empty canvas Timeline New Slice and disabled toolbar Add Actor are this slice. Toolbar New Slice in the AppBar still exists.
+- Empty Import is the same fixture as [add-on-lane-rest.md](./add-on-lane-rest.md). Creating a Slice from toolbar Add stays not a feature ([blocks.md](./blocks.md)). Empty canvas Timeline New Slice and disabled toolbar Add Actor are this slice. Toolbar New Slice in `.editor-toolbar` still exists.
 - Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).
 
 ## Out of scope
