@@ -341,6 +341,8 @@ export function bindEditor(root) {
           const item = root.createElement("li");
           item.textContent = "Event Happened";
           item.setAttribute("aria-label", "Event Happened");
+          item.dataset.kind = "event";
+          if (eventItem.id) item.setAttribute("data-id", eventItem.id);
           list.append(item);
         }
       }
@@ -354,6 +356,8 @@ export function bindEditor(root) {
           const item = root.createElement("li");
           item.textContent = "Read Model";
           item.setAttribute("aria-label", "Read Model");
+          item.dataset.kind = "readmodel";
+          if (readModel.id) item.setAttribute("data-id", readModel.id);
           list.append(item);
         }
       }
@@ -367,6 +371,8 @@ export function bindEditor(root) {
           const item = root.createElement("li");
           item.textContent = "Automation";
           item.setAttribute("aria-label", "Automation");
+          item.dataset.kind = "automation";
+          if (automation.id) item.setAttribute("data-id", automation.id);
           list.append(item);
         }
       }

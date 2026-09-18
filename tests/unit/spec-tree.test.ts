@@ -1465,6 +1465,45 @@ describe("spec tree", () => {
     }
   });
 
+  it("inspect-add-field-event-first-slice Restates paths do not park Add Field on Event / Read Model / Automation in the first of two Slices as stay later", () => {
+    const paths = [
+      "docs/specs/features/inspect-add-field-first-slice.md",
+      "docs/specs/features/inspect-fields.md",
+      "docs/specs/features/inspect-rest.md",
+      "docs/specs/features/inspect-after-reload.md",
+      "docs/specs/features/inspect-fields-rest.md",
+      "docs/specs/features/hydrate-add-field.md",
+      "docs/specs/features/editor-bind-split.md",
+      "docs/specs/features/editor-shell.md",
+      "docs/specs/features/blocks.md",
+      "docs/specs/features/inspect-blocks.md",
+      "docs/specs/features/model-persistence.md",
+      "docs/specs/architecture.md",
+      "docs/specs/product.md",
+    ];
+    for (const path of paths) {
+      const text = readFileSync(path, "utf8");
+      expect(text, path).toContain("inspect-add-field-event-first-slice.md");
+      expect(text, path).not.toMatch(
+        /Add Field on Event \/ Read Model \/ Automation in the first of two Slices stay later/,
+      );
+    }
+  });
+
+  it("editor-bind-split Out of scope names Add Field on Event / Read Model / Automation in the first of two Slices once", () => {
+    const oos = readFileSync(
+      "docs/specs/features/editor-bind-split.md",
+      "utf8",
+    )
+      .split("## Out of scope")[1]
+      .split("## Restates")[0];
+    expect(
+      oos.split(
+        "Add Field on Event / Read Model / Automation in the first of two Slices is [inspect-add-field-event-first-slice.md](./inspect-add-field-event-first-slice.md).",
+      ).length - 1,
+    ).toBe(1);
+  });
+
   it("inspect-add-field-first-slice Restates paths do not park Add Field on a Command in the first of two Slices as stay later", () => {
     const paths = [
       "docs/specs/features/inspect-rest.md",
