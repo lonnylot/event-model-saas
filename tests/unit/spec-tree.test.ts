@@ -1415,6 +1415,22 @@ describe("spec tree", () => {
     }
   });
 
+  it("inspect-event-field-optional-first-slice Restates paths do not park GET Optional write of an Event on the first of two Slices as stay later", () => {
+    const paths = [
+      "docs/specs/features/inspect-get-event-optional.md",
+      "docs/specs/features/inspect-command-field-optional-first-slice.md",
+      "docs/specs/product.md",
+      "docs/specs/architecture.md",
+    ];
+    for (const path of paths) {
+      const text = readFileSync(path, "utf8");
+      expect(text, path).toContain("inspect-event-field-optional-first-slice.md");
+      expect(text, path).not.toMatch(
+        /GET Optional write of an Event on the first of two Slices stay later/,
+      );
+    }
+  });
+
   it("inspect-command-field-optional-first-slice Restates paths do not park GET Optional write of a Command on the first of two Slices as stay later", () => {
     const paths = [
       "docs/specs/features/inspect-command-optional-write.md",
