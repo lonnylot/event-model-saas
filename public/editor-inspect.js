@@ -863,6 +863,7 @@ export function bindInspect(root, ctx) {
               JSON.parse(holder.textContent || "{}"),
               input.value,
               "readmodel",
+              ctx.selectedReadModelItem?.dataset?.id,
             ),
           );
         }
@@ -1228,7 +1229,9 @@ export function bindInspect(root, ctx) {
                   ? ctx.selectedCommandItem?.dataset?.id
                   : ctx.selected === "event"
                     ? ctx.selectedEventItem?.dataset?.id
-                    : undefined,
+                    : ctx.selected === "readmodel"
+                      ? ctx.selectedReadModelItem?.dataset?.id
+                      : undefined,
               ),
             );
           }

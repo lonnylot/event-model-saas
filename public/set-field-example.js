@@ -32,6 +32,24 @@ export function setFieldExample(model, example, target = "command", id) {
     return { ...model, slices };
   }
   if (target === "readmodel") {
+    if (id) {
+      const sliceIndex = slices.findIndex((candidate) =>
+        (candidate.readModels ?? []).some((readModel) => readModel.id === id),
+      );
+      if (sliceIndex < 0) return model;
+      const selected = slices[sliceIndex];
+      const readModels = [...(selected.readModels ?? [])];
+      const index = readModels.findIndex((readModel) => readModel.id === id);
+      if (index < 0) return model;
+      const readModel = readModels[index];
+      if (!readModel) return model;
+      const fields = [...(readModel.fields ?? [])];
+      if (!fields.length) return model;
+      fields[0] = { ...fields[0], example };
+      readModels[index] = { ...readModel, fields };
+      slices[sliceIndex] = { ...selected, readModels };
+      return { ...model, slices };
+    }
     const readModels = [...(slice.readModels ?? [])];
     const readModel = readModels.at(-1);
     if (!readModel) return model;
