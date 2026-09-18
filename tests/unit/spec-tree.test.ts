@@ -1559,6 +1559,7 @@ describe("spec tree", () => {
     const paths = [
       "docs/specs/features/inspect-second-field-name-write.md",
       "docs/specs/features/inspect-command-field-type-first-slice.md",
+      "docs/specs/features/inspect-event-second-field-name.md",
       "docs/specs/product.md",
       "docs/specs/architecture.md",
     ];

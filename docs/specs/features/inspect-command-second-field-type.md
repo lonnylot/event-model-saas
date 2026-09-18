@@ -37,5 +37,6 @@ Second Field Optional / Example. TIME click empty Inspector. Landing. Mac window
 
 - [inspect-second-field-name-write.md](./inspect-second-field-name-write.md) — Second Field name stays that file. Second Field type is this slice.
 - [inspect-command-field-type-first-slice.md](./inspect-command-field-type-first-slice.md) — Out of scope no longer parks second Field type; that is this slice.
+- [inspect-event-second-field-name.md](./inspect-event-second-field-name.md) — Out of scope no longer parks unqualified Second Field type; GET second Command Field type write is this slice. Second Event Field type / optional / example stay later.
 - [product.md](../product.md) — GET second Command Field type write is this slice.
 - [architecture.md](../architecture.md) — GET second Command Field type write is this slice.
