@@ -2,12 +2,28 @@ export function appendField(model, target = "command", id) {
   const slices = [...(model.slices ?? [])];
   const field = { id: crypto.randomUUID(), name: "newField", type: "String" };
   if (target === "event") {
+    if (id) {
+      const sliceIndex = slices.findIndex((slice) =>
+        (slice.events ?? []).some((event) => event.id === id),
+      );
+      if (sliceIndex < 0) return model;
+      const slice = slices[sliceIndex];
+      const events = [...(slice.events ?? [])];
+      const index = events.findIndex((event) => event.id === id);
+      if (index < 0) return model;
+      const event = events[index];
+      if (!event) return model;
+      events[index] = {
+        ...event,
+        fields: [...(event.fields ?? []), field],
+      };
+      slices[sliceIndex] = { ...slice, events };
+      return { ...model, slices };
+    }
     const slice = slices.at(-1);
     if (!slice) return model;
     const events = [...(slice.events ?? [])];
-    const index = id
-      ? events.findIndex((event) => event.id === id)
-      : events.length - 1;
+    const index = events.length - 1;
     if (index < 0) return model;
     const event = events[index];
     if (!event) return model;

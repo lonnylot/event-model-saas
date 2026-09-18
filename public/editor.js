@@ -341,6 +341,8 @@ export function bindEditor(root) {
           const item = root.createElement("li");
           item.textContent = "Event Happened";
           item.setAttribute("aria-label", "Event Happened");
+          item.dataset.kind = "event";
+          if (eventItem.id) item.setAttribute("data-id", eventItem.id);
           list.append(item);
         }
       }
