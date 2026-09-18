@@ -1555,6 +1555,23 @@ describe("spec tree", () => {
     }
   });
 
+  it("inspect-command-second-field-type Restates paths do not park GET second Command Field type write as stay later", () => {
+    const paths = [
+      "docs/specs/features/inspect-second-field-name-write.md",
+      "docs/specs/features/inspect-command-field-type-first-slice.md",
+      "docs/specs/product.md",
+      "docs/specs/architecture.md",
+    ];
+    for (const path of paths) {
+      const text = readFileSync(path, "utf8");
+      expect(text, path).toContain("inspect-command-second-field-type.md");
+      expect(text, path).not.toMatch(
+        /GET second Command Field type write stay later/,
+      );
+      expect(text, path).not.toMatch(/Second Field type stay later/);
+    }
+  });
+
   it("inspect-event-second-field-name Restates does not list inspect-event-field-name-first-slice", () => {
     const restates = readFileSync(
       "docs/specs/features/inspect-event-second-field-name.md",

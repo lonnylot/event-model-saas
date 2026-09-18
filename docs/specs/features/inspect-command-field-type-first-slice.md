@@ -26,12 +26,12 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 ## Assumptions
 
 - Playwright unique checkout `PORT` / `INSPECTOR_PORT` and `TEST_MAIL=1` `workers` `1` stay [public-face.md](./public-face.md).
-- GET Field type write of the first of two Commands on the last Slice stays [inspect-get-command-field-type-write.md](./inspect-get-command-field-type-write.md). First-Slice Command Field type write is this slice. GET Optional write of a Command on the first of two Slices is [inspect-command-field-optional-first-slice.md](./inspect-command-field-optional-first-slice.md).
+- GET Field type write of the first of two Commands on the last Slice stays [inspect-get-command-field-type-write.md](./inspect-get-command-field-type-write.md). First-Slice Command Field type write is this slice. GET Optional write of a Command on the first of two Slices is [inspect-command-field-optional-first-slice.md](./inspect-command-field-optional-first-slice.md). GET second Command Field type write is [inspect-command-second-field-type.md](./inspect-command-second-field-type.md).
 - Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).
 
 ## Out of scope
 
-GET Field name write of a Command on the first of two Slices. GET Optional write of a Command on the first of two Slices is [inspect-command-field-optional-first-slice.md](./inspect-command-field-optional-first-slice.md). Second Field type. TIME click empty Inspector. Landing. Mac window chrome. Copy changes.
+GET Field name write of a Command on the first of two Slices. GET Optional write of a Command on the first of two Slices is [inspect-command-field-optional-first-slice.md](./inspect-command-field-optional-first-slice.md). Second Field type is [inspect-command-second-field-type.md](./inspect-command-second-field-type.md). TIME click empty Inspector. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 

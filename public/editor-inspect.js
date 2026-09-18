@@ -360,7 +360,7 @@ export function bindInspect(root, ctx) {
   };
   const unbindFieldRow = () => {
     unbindFieldName();
-    fieldTypeLabel()?.remove();
+    unbindFieldType();
     optionalLabel()?.remove();
     exampleLabel()?.remove();
     deleteFieldButton()?.remove();
@@ -513,6 +513,15 @@ export function bindInspect(root, ctx) {
       ? model.slices?.flatMap((s) => s.commands ?? []).find((c) => c.id === id)
       : model.slices?.at(-1)?.commands?.at(-1);
     return command?.fields?.[0]?.type;
+  };
+  const lastCommandSecondFieldType = () => {
+    const holder = root.getElementById("event-model-document");
+    const model = JSON.parse(holder?.textContent || "{}");
+    const id = ctx.selectedCommandItem?.dataset?.id;
+    const command = id
+      ? model.slices?.flatMap((s) => s.commands ?? []).find((c) => c.id === id)
+      : model.slices?.at(-1)?.commands?.at(-1);
+    return command?.fields?.[1]?.type;
   };
   const lastEventFieldType = () => {
     const holder = root.getElementById("event-model-document");
@@ -674,7 +683,13 @@ export function bindInspect(root, ctx) {
     [...(inspector?.querySelectorAll("select") ?? [])].find((select) =>
       select.closest("label")?.textContent?.includes("Field type"),
     );
-  const unbindFieldType = () => fieldTypeSelect()?.closest("label")?.remove();
+  const unbindFieldType = () => {
+    for (const label of [...(inspector?.querySelectorAll("label") ?? [])].filter(
+      (label) => label.textContent?.includes("Field type"),
+    )) {
+      label.remove();
+    }
+  };
   const bindFieldType = (value) => {
     if (
       !inspector ||
@@ -1045,6 +1060,34 @@ export function bindInspect(root, ctx) {
               input.value,
               ctx.selectedAutomationItem?.dataset?.id,
               "automation",
+              1,
+            ),
+          );
+        }
+      });
+    }
+  };
+  const bindSecondFieldType = (value) => {
+    if (!inspector || ctx.selected !== "command") return;
+    inspector.insertAdjacentHTML(
+      "beforeend",
+      "<label>Field type <select><option>String</option><option>Boolean</option><option>Int</option><option>Long</option><option>Double</option><option>Decimal</option><option>Date</option><option>DateTime</option><option>UUID</option><option>Custom</option></select></label>",
+    );
+    const selects = [...inspector.querySelectorAll("select")].filter((select) =>
+      select.closest("label")?.textContent?.includes("Field type"),
+    );
+    const select = selects[1];
+    if (select) {
+      if (value) select.value = value;
+      select.addEventListener("change", () => {
+        const holder = root.getElementById("event-model-document");
+        if (holder) {
+          holder.textContent = JSON.stringify(
+            setFieldType(
+              JSON.parse(holder.textContent || "{}"),
+              select.value,
+              "command",
+              ctx.selectedCommandItem?.dataset?.id,
               1,
             ),
           );
@@ -1477,6 +1520,10 @@ export function bindInspect(root, ctx) {
             bindSecondFieldName(secondFieldName);
           }
           bindFieldType(lastCommandFieldType());
+          const secondFieldType = lastCommandSecondFieldType();
+          if (secondFieldType) {
+            bindSecondFieldType(secondFieldType);
+          }
           bindOptional(lastCommandFieldOptional());
           bindExample(lastCommandFieldExample());
           bindDeleteField();
