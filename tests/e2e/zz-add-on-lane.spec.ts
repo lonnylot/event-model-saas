@@ -96,6 +96,7 @@ async function clickNewSlice(page: Page) {
       .getByRole("button", { name: "Add Actor on lane", exact: true })
       .count()) + 1;
   await page
+    .locator(".editor-toolbar")
     .getByRole("button", { name: "New Slice", exact: true })
     .click();
   await expect(
