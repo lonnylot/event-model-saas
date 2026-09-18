@@ -31,7 +31,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-Inserting New Slice after the selected Slice. New Slice title `Slice N`. Toolbar Add Actor on the selected first of two Slices. TIME click empty Inspector. Landing. Mac window chrome. Copy changes.
+New Slice title `Slice N`. Toolbar Add Actor on the selected first of two Slices. TIME click empty Inspector. Landing. Mac window chrome. Copy changes. Insert after the selected Slice is [new-slice-insert-after.md](./new-slice-insert-after.md).
 
 ## Restates
 

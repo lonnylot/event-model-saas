@@ -105,15 +105,18 @@ function mountSliceColumn(root, slice, sliceIndex) {
     lane.append(button);
     col.append(lane);
   }
-  board.append(col);
+  const before = board.querySelectorAll?.(".slice-col")?.[sliceIndex];
+  if (before) board.insertBefore(col, before);
+  else board.append(col);
 }
 
-export function onNewSliceClick(root) {
+export function onNewSliceClick(root, afterIndex) {
   const holder = root.getElementById("event-model-document");
-  const next = appendSlice(JSON.parse(holder?.textContent || "{}"));
+  const model = JSON.parse(holder?.textContent || "{}");
+  const next = appendSlice(model, afterIndex);
   if (holder) holder.textContent = JSON.stringify(next);
-  const slice = next.slices?.at(-1);
-  const sliceIndex = (next.slices?.length ?? 1) - 1;
+  const sliceIndex = (afterIndex ?? (model.slices?.length ?? 0) - 1) + 1;
+  const slice = next.slices?.[sliceIndex];
   const list = sidebarList(root);
   if (list) {
     const item = root.createElement("li");
@@ -121,9 +124,22 @@ export function onNewSliceClick(root) {
     item.setAttribute("aria-label", "New Slice");
     if (slice) item.setAttribute("data-id", slice.id);
     item.setAttribute("data-slice-index", String(sliceIndex));
-    list.append(item);
+    const before = list.children?.[sliceIndex];
+    if (before) list.insertBefore(item, before);
+    else list.append(item);
+    [...(list.children ?? [])].forEach((node, i) => {
+      if (i > sliceIndex) node.setAttribute("data-slice-index", String(i));
+    });
   }
   mountSliceColumn(root, slice, sliceIndex);
+  const cols = timelineEl(root)?.querySelectorAll?.(".slice-col") ?? [];
+  [...cols].forEach((col, i) => {
+    if (i <= sliceIndex) return;
+    col.setAttribute("data-slice-index", String(i));
+    col.querySelectorAll("[data-slice-index]").forEach((el) => {
+      el.setAttribute("data-slice-index", String(i));
+    });
+  });
   const main = root.querySelector("main");
   if (main && !main.textContent?.includes("Unsaved changes.")) {
     main.insertAdjacentHTML("afterbegin", "<p>Unsaved changes.</p>");
@@ -358,7 +374,9 @@ export function bindEditor(root) {
   }
   root.querySelectorAll("button").forEach((button) => {
     if (button.textContent === "New Slice") {
-      button.addEventListener("click", () => onNewSliceClick(root));
+      button.addEventListener("click", () =>
+        onNewSliceClick(root, selectedSliceIndex),
+      );
     }
     if (button.textContent === "Add Actor") {
       button.addEventListener("click", () =>
@@ -420,7 +438,7 @@ export function bindEditor(root) {
   ctx.timelineList = timelineList;
   ctx.lastLaneList = (kind) => lastLaneList(root, kind);
   ctx.boardMount = () => boardMount(root);
-  ctx.onNewSliceClick = () => onNewSliceClick(root);
+  ctx.onNewSliceClick = () => onNewSliceClick(root, selectedSliceIndex);
   ctx.onAddActorClick = () => onAddActorClick(root, selectedSliceIndex);
   ctx.onAddCommandClick = () => onAddCommandClick(root, selectedSliceIndex);
   ctx.onAddEventClick = () => onAddEventClick(root, selectedSliceIndex);
