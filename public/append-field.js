@@ -35,12 +35,28 @@ export function appendField(model, target = "command", id) {
     return { ...model, slices };
   }
   if (target === "readmodel") {
+    if (id) {
+      const sliceIndex = slices.findIndex((slice) =>
+        (slice.readModels ?? []).some((readModel) => readModel.id === id),
+      );
+      if (sliceIndex < 0) return model;
+      const slice = slices[sliceIndex];
+      const readModels = [...(slice.readModels ?? [])];
+      const index = readModels.findIndex((readModel) => readModel.id === id);
+      if (index < 0) return model;
+      const readModel = readModels[index];
+      if (!readModel) return model;
+      readModels[index] = {
+        ...readModel,
+        fields: [...(readModel.fields ?? []), field],
+      };
+      slices[sliceIndex] = { ...slice, readModels };
+      return { ...model, slices };
+    }
     const slice = slices.at(-1);
     if (!slice) return model;
     const readModels = [...(slice.readModels ?? [])];
-    const index = id
-      ? readModels.findIndex((readModel) => readModel.id === id)
-      : readModels.length - 1;
+    const index = readModels.length - 1;
     if (index < 0) return model;
     const readModel = readModels[index];
     if (!readModel) return model;

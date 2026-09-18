@@ -138,3 +138,46 @@ test("After a member creates a model, opens it, clicks `New Slice`, clicks the f
     lastSlice.getByRole("listitem", { name: "Event Happened", exact: true }),
   ).toHaveCount(0);
 });
+
+test("After a member creates a model, opens it, clicks `New Slice`, clicks the first `New Slice` listitem in the Slices region, clicks `Add Read Model on lane` on that Slice, clicks the Timeline `Read Model` listitem of the first Slice, and clicks `Add Field`, that Read Model `fields[0].name` is `newField`", async ({
+  page,
+}) => {
+  await openUntitledModel(page);
+  await clickNewSlice(page);
+  const slices = page
+    .getByRole("heading", { name: "Slices", exact: true })
+    .locator("xpath=following-sibling::ul[1]");
+  await expect(
+    slices.getByRole("listitem", { name: "New Slice", exact: true }),
+  ).toHaveCount(2);
+  await slices
+    .getByRole("listitem", { name: "New Slice", exact: true })
+    .first()
+    .click();
+  const timeline = page.getByRole("region", { name: "Timeline", exact: true });
+  const firstSlice = timeline.locator(".slice-col").first();
+  const lastSlice = timeline.locator(".slice-col").last();
+  await expect(
+    firstSlice.getByRole("button", { name: "Add Read Model on lane", exact: true }),
+  ).toBeVisible();
+  await firstSlice
+    .getByRole("button", { name: "Add Read Model on lane", exact: true })
+    .click();
+  await expect(
+    firstSlice.getByRole("listitem", { name: "Read Model", exact: true }),
+  ).toBeVisible();
+  await firstSlice
+    .getByRole("listitem", { name: "Read Model", exact: true })
+    .click();
+  await page
+    .getByRole("region", { name: "Inspector", exact: true })
+    .getByRole("button", { name: "Add Field", exact: true })
+    .click();
+  const json = await page.locator("#event-model-document").textContent();
+  const model = JSON.parse(json ?? "{}");
+  expect(model.slices[0].readModels[0].fields[0].name).toBe("newField");
+  expect(model.slices.at(-1).readModels ?? []).toEqual([]);
+  await expect(
+    lastSlice.getByRole("listitem", { name: "Read Model", exact: true }),
+  ).toHaveCount(0);
+});

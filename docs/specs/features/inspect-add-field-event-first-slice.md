@@ -9,7 +9,7 @@ Status: validated
 ## Acceptance criteria
 
 - [x] After a member creates a model, opens it, clicks `New Slice`, clicks the first `New Slice` listitem in the Slices region, clicks `Add Event on lane` on that Slice, clicks the Timeline `Event Happened` listitem of the first Slice, and clicks `Add Field`, that Event `fields[0].name` is `newField`
-- [ ] After a member creates a model, opens it, clicks `New Slice`, clicks the first `New Slice` listitem in the Slices region, clicks `Add Read Model on lane` on that Slice, clicks the Timeline `Read Model` listitem of the first Slice, and clicks `Add Field`, that Read Model `fields[0].name` is `newField`
+- [x] After a member creates a model, opens it, clicks `New Slice`, clicks the first `New Slice` listitem in the Slices region, clicks `Add Read Model on lane` on that Slice, clicks the Timeline `Read Model` listitem of the first Slice, and clicks `Add Field`, that Read Model `fields[0].name` is `newField`
 - [ ] After a member creates a model, opens it, clicks `New Slice`, clicks the first `New Slice` listitem in the Slices region, clicks `Add Automation on lane` on that Slice, clicks the Timeline `Automation` listitem of the first Slice, and clicks `Add Field`, that Automation `fields[0].name` is `newField`
 
 ## Domain terms
