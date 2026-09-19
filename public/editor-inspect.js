@@ -1257,6 +1257,14 @@ export function bindInspect(root, ctx) {
           }
         });
       }
+      if (ctx.selected === "command" && lastCommandSecondFieldName()) {
+        const fieldNameCount = [
+          ...(inspector?.querySelectorAll("label") ?? []),
+        ].filter((label) => label.textContent?.includes("Field name")).length;
+        if (fieldNameCount === 1) {
+          bindSecondFieldName(lastCommandSecondFieldName());
+        }
+      }
       if (
         inspector &&
         (ctx.selected === "command" ||

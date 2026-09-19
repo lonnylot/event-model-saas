@@ -157,5 +157,6 @@ Feature specs live in `features/`. Use [features/_TEMPLATE.md](./features/_TEMPL
 | Inspect command second field type | [features/inspect-command-second-field-type.md](./features/inspect-command-second-field-type.md) | released |
 | Inspect command second field optional | [features/inspect-command-second-field-optional.md](./features/inspect-command-second-field-optional.md) | released |
 | Inspect command second field example | [features/inspect-command-second-field-example.md](./features/inspect-command-second-field-example.md) | released |
+| Inspect delete field one | [features/inspect-delete-field-one.md](./features/inspect-delete-field-one.md) | validated |
 
 Status: `draft` → `validated` → `released`.
