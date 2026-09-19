@@ -361,7 +361,7 @@ export function bindInspect(root, ctx) {
   const unbindFieldRow = () => {
     unbindFieldName();
     unbindFieldType();
-    optionalLabel()?.remove();
+    unbindOptional();
     exampleLabel()?.remove();
     deleteFieldButton()?.remove();
   };
@@ -558,6 +558,15 @@ export function bindInspect(root, ctx) {
       ? model.slices?.flatMap((s) => s.commands ?? []).find((c) => c.id === id)
       : model.slices?.at(-1)?.commands?.at(-1);
     return command?.fields?.[0]?.optional === true;
+  };
+  const lastCommandSecondFieldOptional = () => {
+    const holder = root.getElementById("event-model-document");
+    const model = JSON.parse(holder?.textContent || "{}");
+    const id = ctx.selectedCommandItem?.dataset?.id;
+    const command = id
+      ? model.slices?.flatMap((s) => s.commands ?? []).find((c) => c.id === id)
+      : model.slices?.at(-1)?.commands?.at(-1);
+    return command?.fields?.[1]?.optional === true;
   };
   const lastEventFieldOptional = () => {
     const holder = root.getElementById("event-model-document");
@@ -760,7 +769,13 @@ export function bindInspect(root, ctx) {
         el.type === "checkbox" &&
         el.closest("label")?.textContent?.includes("Optional"),
     );
-  const unbindOptional = () => optionalInput()?.closest("label")?.remove();
+  const unbindOptional = () => {
+    for (const label of [...(inspector?.querySelectorAll("label") ?? [])].filter(
+      (label) => label.textContent?.includes("Optional"),
+    )) {
+      label.remove();
+    }
+  };
   const bindOptional = (checked) => {
     if (
       !inspector ||
@@ -1086,6 +1101,36 @@ export function bindInspect(root, ctx) {
             setFieldType(
               JSON.parse(holder.textContent || "{}"),
               select.value,
+              "command",
+              ctx.selectedCommandItem?.dataset?.id,
+              1,
+            ),
+          );
+        }
+      });
+    }
+  };
+  const bindSecondFieldOptional = (checked) => {
+    if (!inspector || ctx.selected !== "command") return;
+    inspector.insertAdjacentHTML(
+      "beforeend",
+      '<label>Optional <input type="checkbox" /></label>',
+    );
+    const inputs = [...inspector.querySelectorAll("input")].filter(
+      (el) =>
+        el.type === "checkbox" &&
+        el.closest("label")?.textContent?.includes("Optional"),
+    );
+    const input = inputs[1];
+    if (input) {
+      input.checked = !!checked;
+      input.addEventListener("change", () => {
+        const holder = root.getElementById("event-model-document");
+        if (holder) {
+          holder.textContent = JSON.stringify(
+            setFieldOptional(
+              JSON.parse(holder.textContent || "{}"),
+              input.checked,
               "command",
               ctx.selectedCommandItem?.dataset?.id,
               1,
@@ -1525,6 +1570,9 @@ export function bindInspect(root, ctx) {
             bindSecondFieldType(secondFieldType);
           }
           bindOptional(lastCommandFieldOptional());
+          if (secondFieldName) {
+            bindSecondFieldOptional(lastCommandSecondFieldOptional());
+          }
           bindExample(lastCommandFieldExample());
           bindDeleteField();
         }

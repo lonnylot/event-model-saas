@@ -26,12 +26,12 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 ## Assumptions
 
 - Playwright unique checkout `PORT` / `INSPECTOR_PORT` and `TEST_MAIL=1` `workers` `1` stay [public-face.md](./public-face.md).
-- GET second Field name write stays [inspect-second-field-name-write.md](./inspect-second-field-name-write.md). First Field type stays [inspect-fields.md](./inspect-fields.md). Second Field type write is this slice. Two Field names after reload stay [inspect-get-second-field.md](./inspect-get-second-field.md) display.
+- GET second Field name write stays [inspect-second-field-name-write.md](./inspect-second-field-name-write.md). First Field type stays [inspect-fields.md](./inspect-fields.md). Second Field type write is this slice. Two Field names after reload stay [inspect-get-second-field.md](./inspect-get-second-field.md) display. GET second Command Field Optional write is [inspect-command-second-field-optional.md](./inspect-command-second-field-optional.md).
 - Accessibility bar is WCAG 2.2 AA for contrast of locked token pairs and a visible `:focus-visible` affordance ([ADR 0001](../../adr/0001-look-iteration.md)).
 
 ## Out of scope
 
-Second Field Optional / Example. TIME click empty Inspector. Landing. Mac window chrome. Copy changes.
+GET second Command Field Optional write is [inspect-command-second-field-optional.md](./inspect-command-second-field-optional.md). Second Field Example. TIME click empty Inspector. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 
