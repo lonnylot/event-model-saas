@@ -31,7 +31,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-Second Field Example. TIME click empty Inspector. Landing. Mac window chrome. Copy changes.
+GET second Command Field Example write is [inspect-command-second-field-example.md](./inspect-command-second-field-example.md). TIME click empty Inspector. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 

@@ -362,7 +362,7 @@ export function bindInspect(root, ctx) {
     unbindFieldName();
     unbindFieldType();
     unbindOptional();
-    exampleLabel()?.remove();
+    unbindExample();
     deleteFieldButton()?.remove();
   };
   const unbindDescription = () =>
@@ -603,6 +603,15 @@ export function bindInspect(root, ctx) {
       ? model.slices?.flatMap((s) => s.commands ?? []).find((c) => c.id === id)
       : model.slices?.at(-1)?.commands?.at(-1);
     return command?.fields?.[0]?.example ?? "";
+  };
+  const lastCommandSecondFieldExample = () => {
+    const holder = root.getElementById("event-model-document");
+    const model = JSON.parse(holder?.textContent || "{}");
+    const id = ctx.selectedCommandItem?.dataset?.id;
+    const command = id
+      ? model.slices?.flatMap((s) => s.commands ?? []).find((c) => c.id === id)
+      : model.slices?.at(-1)?.commands?.at(-1);
+    return command?.fields?.[1]?.example ?? "";
   };
   const lastEventFieldExample = () => {
     const holder = root.getElementById("event-model-document");
@@ -846,7 +855,13 @@ export function bindInspect(root, ctx) {
         el.type !== "checkbox" &&
         el.closest("label")?.textContent?.includes("Example"),
     );
-  const unbindExample = () => exampleInput()?.closest("label")?.remove();
+  const unbindExample = () => {
+    for (const label of [...(inspector?.querySelectorAll("label") ?? [])].filter(
+      (label) => label.textContent?.includes("Example"),
+    )) {
+      label.remove();
+    }
+  };
   const bindExample = (value) => {
     if (
       !inspector ||
@@ -1131,6 +1146,36 @@ export function bindInspect(root, ctx) {
             setFieldOptional(
               JSON.parse(holder.textContent || "{}"),
               input.checked,
+              "command",
+              ctx.selectedCommandItem?.dataset?.id,
+              1,
+            ),
+          );
+        }
+      });
+    }
+  };
+  const bindSecondFieldExample = (value) => {
+    if (!inspector || ctx.selected !== "command") return;
+    inspector.insertAdjacentHTML(
+      "beforeend",
+      "<label>Example <input /></label>",
+    );
+    const inputs = [...inspector.querySelectorAll("input")].filter(
+      (el) =>
+        el.type !== "checkbox" &&
+        el.closest("label")?.textContent?.includes("Example"),
+    );
+    const input = inputs[1];
+    if (input) {
+      input.value = value ?? "";
+      input.addEventListener("input", () => {
+        const holder = root.getElementById("event-model-document");
+        if (holder) {
+          holder.textContent = JSON.stringify(
+            setFieldExample(
+              JSON.parse(holder.textContent || "{}"),
+              input.value,
               "command",
               ctx.selectedCommandItem?.dataset?.id,
               1,
@@ -1574,6 +1619,9 @@ export function bindInspect(root, ctx) {
             bindSecondFieldOptional(lastCommandSecondFieldOptional());
           }
           bindExample(lastCommandFieldExample());
+          if (secondFieldName) {
+            bindSecondFieldExample(lastCommandSecondFieldExample());
+          }
           bindDeleteField();
         }
         bindAddField();

@@ -1555,6 +1555,24 @@ describe("spec tree", () => {
     }
   });
 
+  it("inspect-command-second-field-example Restates paths do not park GET second Command Field Example write as stay later", () => {
+    const paths = [
+      "docs/specs/features/inspect-command-example-write.md",
+      "docs/specs/features/inspect-command-second-field-optional.md",
+      "docs/specs/features/inspect-command-second-field-type.md",
+      "docs/specs/product.md",
+      "docs/specs/architecture.md",
+    ];
+    for (const path of paths) {
+      const text = readFileSync(path, "utf8");
+      expect(text, path).toContain("inspect-command-second-field-example.md");
+      expect(text, path).not.toMatch(
+        /GET second Command Field Example write stay later/,
+      );
+      expect(text, path).not.toMatch(/Second Field Example stay later/);
+    }
+  });
+
   it("inspect-command-second-field-optional Restates paths do not park GET second Command Field Optional write as stay later", () => {
     const paths = [
       "docs/specs/features/inspect-command-optional-write.md",
