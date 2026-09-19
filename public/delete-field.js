@@ -37,7 +37,11 @@ export function deleteField(model, target = "command", id) {
   if (index < 0) return model;
   const command = commands[index];
   if (!command) return model;
-  commands[index] = { ...command, fields: [] };
+  const fieldId = command.fields?.[0]?.id;
+  commands[index] = {
+    ...command,
+    fields: (command.fields ?? []).filter((field) => field.id !== fieldId),
+  };
   slices[slices.length - 1] = { ...slice, commands };
   return { ...model, slices };
 }

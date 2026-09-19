@@ -31,7 +31,7 @@ Screens: Editor. Primitives: Page. Look of Editor is `visual-design` ([ADR 0001]
 
 ## Out of scope
 
-In-session Read Model / Automation Delete Field. Delete Field of one of two Fields. TIME click empty Inspector. Landing. Mac window chrome. Copy changes.
+In-session Read Model / Automation Delete Field. Delete Field of one of two Fields is [inspect-delete-field-one.md](./inspect-delete-field-one.md). TIME click empty Inspector. Landing. Mac window chrome. Copy changes.
 
 ## Restates
 

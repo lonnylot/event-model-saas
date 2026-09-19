@@ -1910,6 +1910,29 @@ describe("spec tree", () => {
     }
   });
 
+  it("inspect-delete-field-one Restates paths do not park Delete Field of one of two Fields as stay later", () => {
+    const paths = [
+      "docs/specs/features/inspect-delete-field-one.md",
+      "docs/specs/features/inspect-second-field-name-write.md",
+      "docs/specs/features/inspect-get-delete-field.md",
+      "docs/specs/features/inspect-in-session-delete-field-event.md",
+      "docs/specs/architecture.md",
+      "docs/specs/product.md",
+    ];
+    for (const path of paths) {
+      const text = readFileSync(path, "utf8");
+      expect(text, path).not.toMatch(
+        /Delete Field of one of two Fields stay later/,
+      );
+      expect(text, path).not.toMatch(
+        /Delete Field of one of two Fields stays later/,
+      );
+      expect(text, path).not.toMatch(
+        /Delete Field of one of two Fields \(not wiping `fields` to `\[\]`\) stays later/,
+      );
+    }
+  });
+
   it("inspect-in-session-delete-field-event Restates paths do not park in-session Event Delete Field after Actor unbind as stay later", () => {
     const paths = [
       "docs/specs/features/inspect-in-session-delete-field-event.md",
