@@ -6,7 +6,8 @@ description: >
   flow tests, a unique TCP port per checkout for flow tests,
   Playwright toHaveCSS of a computed color that is the UA default
   or inherited from a parent/body AC, Playwright locator.focus of
-  :focus-visible, Playwright toBeVisible of below-the-fold /
+  :focus-visible, Playwright uncheck of already-unchecked Optional,
+  Playwright toBeVisible of below-the-fold /
   overflow-clipped, Playwright listitem dragTo that hits a Port,
   Playwright webServer env,
   blanking live API keys, an empty-state flow after a mutating spec

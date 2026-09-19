@@ -15,6 +15,7 @@ Load with `testing`. Portable procedure is `SKILL.md` (spec-loop).
 | Named link/button/textbox `X` (unit HTML) | `toContain(">X<")` (heading or span named X stays green); `toContain('<a href="/app">X</a>')` packs name vs href |
 | Computed `background-color` / `color` | Unit `toContain` of the stylesheet `<link>`; UA-default `toHaveCSS` (`input` white / Email Field canvas fill) that stays green if the unique declaration is deleted; inherited heading ink after a parent/body AC (Landing heading after public-face `body.landing`; editor `Slices` after `body.app-editor` ink) |
 | `:focus-visible` computed style | Playwright `locator.focus()` / programmatic focus (`Sign in` box-shadow) — a `:focus` rule stays green |
+| Second Field Optional write / `setFieldOptional` `fields[0]` | Playwright `uncheck()` of an already-unchecked Optional after reload (`appendField` omits `optional: true`; no `change`; `fields[0]` write stays green) |
 | Exact script / command value | Unordered `toContain` of each token (`echo playwright test`) |
 | "includes `scale(`" / `toContain("scale(")` | Canvas pan already writes `scale(1)`; deleting the unique ctrl/meta branch stays green |
 | YAML key / workflow event | Prefix match (`/pull_request:/` also hits `pull_request_target:`) |
@@ -70,6 +71,8 @@ Timeline region visible at 390 is unproven by Playwright `toBeVisible` — relea
 A computed-color AC is unproven by stylesheet `toContain` — Playwright `toHaveCSS` of the unique declaration, or uncheck. Playwright `toHaveCSS` of a UA default (`input` white / Email Field canvas fill) or a color inherited from a parent/body AC (Landing heading ink after public-face `body.landing`; editor `Slices` after this slice's `body.app-editor` ink) is existing behavior — drop the bullet (`keeping-specs-current`).
 
 Look of named screens is `visual-design`. Do not prove look as a pile of computed rgb() ACs. Prove names, flows, token *use*, a11y, and that unique look rules exist (composed layout that is not the UA default: `display` flex, `padding-top` not `0px`). A `:focus-visible` AC is unproven by `locator.focus()` — that stays green if the rule is only `:focus`. Keyboard Tab, or a fixture that fails for `:focus` only.
+
+Second Field Optional write is unproven by Playwright `uncheck()` of an already-unchecked Optional after reload — `appendField` omits `optional: true`, so no `change` fires and `setFieldOptional` still writing `fields[0]` stays green. Restate so the second Optional is checked then unchecked (`keeping-specs-current`).
 
 A hosted Worker path is unproven by a handler unit test when `run_worker_first` can be deleted without failing that test.
 
