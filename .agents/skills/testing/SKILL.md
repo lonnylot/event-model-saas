@@ -5,6 +5,7 @@ description: >
   Playwright tests, mapping acceptance criteria to tests, checking a
   weaker-reading fixture, unit HTML [\s\S]* after a region label,
   Playwright locator.focus of :focus-visible,
+  Playwright uncheck of already-unchecked Optional,
   Playwright toBeVisible of below-the-fold / overflow-clipped,
   splitting an "and" (any case) test name,
   an early-return "and" that should stay one criterion,
@@ -55,6 +56,7 @@ A criterion that names a screen, "shows", or "lists" is proven at the app or flo
    | One row's own text | Document-level `toContain` or `[\s\S]*` that can cross a tag (including `/aria-label="R"[\s\S]*X/` into a later region) |
    | Packed "and" | One `it` covering independent cases |
    | `:focus-visible` | `locator.focus()` / programmatic focus (a `:focus` rule stays green) |
+   | Checkbox already in the target state | Playwright `uncheck()` / `check()` of a control already in that state (no `change`; the write path stays unproven) |
    | "visible" / in viewport / not below the fold | Playwright `toBeVisible` (non-empty box including overflow-clipped / below the fold stays green) |
    | Architecture-named production adapter | Injected runtime stays green if the host path never constructs it |
 
